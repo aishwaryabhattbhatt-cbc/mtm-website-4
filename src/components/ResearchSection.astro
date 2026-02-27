@@ -2,6 +2,7 @@
 // ResearchSection.astro
 // Figma node: 1:9423 — "Access credible research on" animated section
 import IconCard from './IconCard.astro';
+const base = import.meta.env.BASE_URL;
 
 const tabs = [
   { label: 'Technology Trends' },
@@ -62,7 +63,7 @@ const cards = [
   },
 ];
 
-const screenSrc = '/images/dashboard.png';
+const screenSrc = `${base}images/dashboard.png`;
 ---
 
 <section class="research-section">
@@ -408,6 +409,8 @@ const screenSrc = '/images/dashboard.png';
 </style>
 
 <script>
+  const baseUrl = import.meta.env.BASE_URL;
+
   // Card positions per tab index
   type CardPos = { top: string; left: string; visible: boolean };
   type CardConfig = Record<string, CardPos>;
@@ -419,7 +422,7 @@ const screenSrc = '/images/dashboard.png';
   const tabStates: TabState[] = [
     // Tab 0: Technology Trends
     {
-      dashboardSrc: '/images/dashboard.png',
+      dashboardSrc: `${baseUrl}images/dashboard.png`,
       cards: {
         'card-ai-usage': { top: '25%', left: '83.5%', visible: true },
         'card-fast':     { top: '58%', left: '6.5%', visible: true },
@@ -435,7 +438,7 @@ const screenSrc = '/images/dashboard.png';
     },
     // Tab 1: Media Behaviour
     {
-      dashboardSrc: '/images/dashboard.png',
+      dashboardSrc: `${baseUrl}images/dashboard.png`,
       cards: {
         'card-ai-usage': { top: '66%', left: '6%', visible: true },
         'card-fast':     { top: '0%', left: '19.5%', visible: true },

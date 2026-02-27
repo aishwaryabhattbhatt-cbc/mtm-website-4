@@ -436,7 +436,7 @@ function initSVGBreathing() {
         
         // Apply breathing to bottom-left SVG
         if (bottomLeftImg) {
-            fetch('assets/svg/bottom-left-new.svg')
+            fetch('svg/bottom-left-new.svg')
                 .then(response => response.text())
                 .then(svgContent => {
                     const svgWrapper = document.createElement('div');
@@ -474,7 +474,7 @@ function initSVGBreathing() {
         
         // Apply breathing to top-right SVG
         if (topRightImg) {
-            fetch('assets/svg/top-right-new.svg')
+            fetch('svg/top-right-new.svg')
                 .then(response => response.text())
                 .then(svgContent => {
                     const svgWrapper = document.createElement('div');

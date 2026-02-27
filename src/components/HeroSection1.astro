@@ -1,5 +1,6 @@
 ---
 // src/components/HeroSection1.astro
+const base = import.meta.env.BASE_URL;
 ---
 
 <!-- Home Section 1: Hero with WebGL Noise Warp Background -->
@@ -22,11 +23,11 @@
             </div>
         </div>
         <div class="hero-image-collage">
-            <img src="/svg/1.svg" alt="Collage Image 1" class="collage-image collage-image-1">
-            <img src="/svg/2.svg" alt="Collage Image 2" class="collage-image collage-image-2">
-            <img src="/svg/3.svg" alt="Collage Image 3" class="collage-image collage-image-3">
-            <img src="/svg/4.svg" alt="Collage Image 4" class="collage-image collage-image-4">
-            <img src="/svg/5.svg" alt="Collage Image 5" class="collage-image collage-image-5">
+            <img src={`${base}svg/1.svg`} alt="Collage Image 1" class="collage-image collage-image-1">
+            <img src={`${base}svg/2.svg`} alt="Collage Image 2" class="collage-image collage-image-2">
+            <img src={`${base}svg/3.svg`} alt="Collage Image 3" class="collage-image collage-image-3">
+            <img src={`${base}svg/4.svg`} alt="Collage Image 4" class="collage-image collage-image-4">
+            <img src={`${base}svg/5.svg`} alt="Collage Image 5" class="collage-image collage-image-5">
         </div>
     </div>
 
