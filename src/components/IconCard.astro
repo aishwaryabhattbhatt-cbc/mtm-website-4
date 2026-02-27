@@ -1,0 +1,116 @@
+---
+/**
+ * IconCard.astro
+ *
+ * Floating icon card component — based on Figma node 1:9442
+ *
+ * Props:
+ *   icon     — path/URL to the icon image
+ *   label    — text label shown beneath the icon
+ *   top      — CSS top value for absolute positioning (e.g. "20%", "120px")
+ *   left     — CSS left value for absolute positioning (e.g. "80%", "40px")
+ *   class    — optional extra CSS classes
+ */
+
+interface Props {
+  id?: string;
+  icon: string;
+  label: string;
+  top?: string;
+  left?: string;
+  class?: string;
+}
+
+const {
+  id,
+  icon,
+  label,
+  top,
+  left,
+  class: className = '',
+} = Astro.props;
+
+const positionStyle = [
+  top  ? `top: ${top};`  : '',
+  left ? `left: ${left};` : '',
+].filter(Boolean).join(' ');
+---
+
+<div
+  id={id}
+  class:list={['icon-card', className]}
+  style={positionStyle}
+  aria-label={label}
+>
+  <!-- Icon + label -->
+  <div class="icon-card__inner">
+    <div class="icon-card__icon">
+      <img src={icon} alt="" width="48" height="48" loading="lazy" />
+    </div>
+    <span class="icon-card__label">{label}</span>
+  </div>
+</div>
+
+<style>
+  .icon-card {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+
+    /* Layered shadow from Figma */
+    box-shadow:
+      0px 3.191px   7.445px  rgba(0, 0, 0, 0.10),
+      0px 13.826px  13.826px rgba(0, 0, 0, 0.09),
+      0px 30.842px  19.144px rgba(0, 0, 0, 0.05),
+      0px 55.304px  22.334px rgba(0, 0, 0, 0.01),
+      0px 87.210px  24.461px rgba(0, 0, 0, 0.00);
+
+    /* Smooth entrance + position transitions for animated use */
+    transition:
+      top  0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      left 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.5s ease,
+      transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .icon-card__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .icon-card__icon {
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-card__icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .icon-card__label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.1;
+    color: #909090;
+    text-align: center;
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+</style>

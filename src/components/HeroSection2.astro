@@ -1,0 +1,39 @@
+---
+// src/components/HeroSection2.astro
+import ResearchSection from "./ResearchSection.astro"
+---
+
+<!-- Home Section 2: Hero with WebGL Noise Warp Background -->
+<section class="hero-section home-section-2">
+    <!-- WebGL Noise Warp Canvas (Three.js) -->
+    <div id="webgl-background-10" class="webgl-background"></div>
+
+    <!-- Grain Overlay for Texture -->
+    <div class="grain-overlay-10 grain-overlay"></div>
+
+    <!-- Top White Gradient Overlay -->
+    <div class="hero10-top-gradient"></div>
+
+    <!-- Bottom White Gradient Overlay -->
+    <div class="hero10-bottom-gradient"></div>
+
+    <!-- Top Gradient Settings GUI (Hidden by Default) -->
+    <div class="hero10-gradient-gui" style="display:none;">
+        <label style="display:block; margin-bottom:6px; color:#333; font-size:13px; font-weight:600;">Top Gradient Settings</label>
+        <label style="font-size:12px; color:#444;">Height (% of viewport):
+            <input type="range" min="5" max="30" value="30" id="gradientHeightSlider10" style="vertical-align:middle;">
+            <span id="gradientHeightValue10">30</span>vh
+        </label>
+        <br>
+        <label style="font-size:12px; color:#444;">Opacity (0-1):
+            <input type="range" min="0" max="1" step="0.01" value="1" id="gradientOpacitySlider10" style="vertical-align:middle;">
+            <span id="gradientOpacityValue10">1</span>
+        </label>
+        <br>
+        <label style="font-size:12px; color:#444;">Intensity (fade):
+            <input type="range" min="0.1" max="2" step="0.01" value="1" id="gradientIntensitySlider10" style="vertical-align:middle;">
+            <span id="gradientIntensityValue10">1</span>
+        </label>
+    </div>
+    <ResearchSection />
+</section>

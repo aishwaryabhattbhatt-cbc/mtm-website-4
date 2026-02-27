@@ -1,0 +1,102 @@
+---
+/**
+ * RightVisual.astro
+ *
+ * Staggered 4-column icon card grid — Figma node 3:11181
+ *
+ * Layout: 4 flex columns, each with vertically stacked IconCards.
+ * Columns have different card counts + vertical offsets to create
+ * the asymmetric, overlapping grid feel from the Figma design.
+ *
+ * Usage:
+ *   <RightVisual />
+ */
+
+import IconCard from './IconCard.astro';
+
+// Icon asset URLs — replace with local paths before shipping
+const icons = {
+  aiUsage: "https://www.figma.com/api/mcp/asset/63e296d1-5c89-4794-ba6e-6e9ef4abeb1c",
+  avod:    "https://www.figma.com/api/mcp/asset/76ac2d15-4498-434e-9940-f8160b517238",
+  svod:    "https://www.figma.com/api/mcp/asset/67d26eb5-b371-4c8b-8adf-62e81472ea56",
+  fast:    "https://www.figma.com/api/mcp/asset/ae08217c-c2b0-4ca5-9e88-4f1197cbebe5",
+};
+
+// Column definitions — each column is an array of { icon, label } cards
+// Matches Figma columns left→right: 3:11177, 3:11178, 3:11179, 3:11180
+const columns: Array<{
+  offset: string;
+  cards: Array<{ icon: string; label: string }>;
+}> = [
+  // Col 1 — starts mid-page (offset down), 2 cards
+  {
+    offset: "5.5rem",
+    cards: [
+      { icon: icons.aiUsage, label: "AI Usage" },
+      { icon: icons.aiUsage, label: "AI Usage" },
+    ],
+  },
+  // Col 2 — starts at top, 3 cards
+  {
+    offset: "0",
+    cards: [
+      { icon: icons.avod,    label: "AVOD"     },
+      { icon: icons.aiUsage, label: "AI Usage" },
+      { icon: icons.avod,    label: "AVOD"     },
+    ],
+  },
+  // Col 3 — starts at top, 3 cards
+  {
+    offset: "0",
+    cards: [
+      { icon: icons.svod, label: "SVOD" },
+      { icon: icons.fast, label: "FAST" },
+      { icon: icons.avod, label: "AVOD" },
+    ],
+  },
+  // Col 4 — starts mid-page (offset down), 2 cards
+  {
+    offset: "5.5rem",
+    cards: [
+      { icon: icons.svod, label: "SVOD" },
+      { icon: icons.fast, label: "FAST" },
+    ],
+  },
+];
+---
+
+<div class="right-visual">
+  {columns.map((col) => (
+    <div class="col" style={`margin-top: ${col.offset};`}>
+      {col.cards.map((card) => (
+        <IconCard icon={card.icon} label={card.label} />
+      ))}
+    </div>
+  ))}
+</div>
+
+<style>
+  .right-visual {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+
+  /*
+   * IconCard is designed for absolute positioning by default.
+   * Override to flow naturally inside this flex layout.
+   */
+  .col :global(.icon-card) {
+    position: relative;
+    top: unset;
+    left: unset;
+  }
+</style>

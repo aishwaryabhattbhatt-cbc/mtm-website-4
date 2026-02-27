@@ -1,0 +1,53 @@
+---
+// src/pages/index.astro
+import Navbar from '../components/Navbar.astro';
+import HeroSection1 from '../components/HeroSection1.astro';
+import HeroSection2 from '../components/HeroSection2.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero 11 - MTM Website</title>
+
+    <!-- Google Fonts: Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="/fonts/fonts.css">
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <Navbar />
+
+    <HeroSection1 />
+
+    <div id="hero-gap" style="height:4vh; width:100%;"></div>
+
+    <HeroSection2 />
+
+    <div id="hero-gap-2" style="height:10vh; width:100%;"></div>
+
+    <!-- Blank Section: Full Screen Height and Width -->
+    <section class="blank-section" style="width:100vw; height:100vh; background:#fff;"></section>
+
+    <script is:inline src="/script.js"></script>
+
+    <!-- Three.js Import Map for ES6 Modules -->
+    <script is:inline type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js"
+      }
+    }
+    </script>
+
+    <script is:inline type="module" src="/hero11-liquid.js"></script>
+    <script is:inline type="module" src="/hero10-liquid.js"></script>
+</body>
+</html>

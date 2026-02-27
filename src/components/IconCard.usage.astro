@@ -1,0 +1,55 @@
+---
+// Example: how to use IconCard.astro in a parent component/page
+import IconCard from './IconCard.astro';
+
+// Import your local icon assets (or use URLs)
+import iconAiUsage from '../assets/icons/ai-usage.svg';
+import iconFast    from '../assets/icons/fast.svg';
+import iconSvod    from '../assets/icons/svod.svg';
+import iconAvod    from '../assets/icons/avod.svg';
+---
+
+<!--
+  IconCard is absolutely positioned, so the parent needs `position: relative`.
+  Set top/left as percentages for responsive positioning, or px for fixed.
+-->
+
+<div class="right-visual">
+
+  <IconCard
+    icon={iconAiUsage}
+    label="AI Usage"
+    top="18%"
+    left="80%"
+  />
+
+  <IconCard
+    icon={iconFast}
+    label="FAST"
+    top="58%"
+    left="4%"
+  />
+
+  <IconCard
+    icon={iconSvod}
+    label="SVOD"
+    top="14%"
+    left="60%"
+  />
+
+  <IconCard
+    icon={iconAvod}
+    label="AVOD"
+    top="50%"
+    left="80%"
+  />
+
+</div>
+
+<style>
+  .right-visual {
+    position: relative;
+    height: 480px;
+    width: 100%;
+  }
+</style>
