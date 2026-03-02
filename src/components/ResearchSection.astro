@@ -703,41 +703,44 @@ const screenSrc = `${base}images/dashboard.png`;
     }
 
     function syncGuiFromState() {
-      const tabIdx = Number(tabSelect.value);
-      const cardId = cardSelect.value;
-      const cardState = tabStates[tabIdx].cards[cardId];
-      leftInput.value = String(parsePercentValue(cardState.left));
-      topInput.value = String(parsePercentValue(cardState.top));
-      visibleInput.checked = cardState.visible;
-      leftValue.textContent = `${leftInput.value}%`;
-      topValue.textContent = `${topInput.value}%`;
+      const tabIdx = Number(tabSelect?.value ?? 0);
+      const cardId = cardSelect?.value ?? '';
+      const cardState = tabStates[tabIdx]?.cards?.[cardId];
+      if (!cardState) return;
+      if (leftInput) leftInput.value = String(parsePercentValue(cardState.left));
+      if (topInput) topInput.value = String(parsePercentValue(cardState.top));
+      if (visibleInput) visibleInput.checked = cardState.visible;
+      if (leftValue && leftInput) leftValue.textContent = `${leftInput.value}%`;
+      if (topValue && topInput) topValue.textContent = `${topInput.value}%`;
     }
 
     function applyGuiToState() {
-      const tabIdx = Number(tabSelect.value);
+      const tabIdx = Number(tabSelect?.value ?? 0);
       if (!editableTabIndexes.includes(tabIdx)) return;
-      const cardId = cardSelect.value;
-      const nextLeft = `${leftInput.value}%`;
-      const nextTop = `${topInput.value}%`;
-      tabStates[tabIdx].cards[cardId].left = nextLeft;
-      tabStates[tabIdx].cards[cardId].top = nextTop;
-      tabStates[tabIdx].cards[cardId].visible = visibleInput.checked;
-      leftValue.textContent = nextLeft;
-      topValue.textContent = nextTop;
+      const cardId = cardSelect?.value ?? '';
+      const nextLeft = `${leftInput?.value ?? 0}%`;
+      const nextTop = `${topInput?.value ?? 0}%`;
+      if (tabStates[tabIdx]?.cards?.[cardId]) {
+        tabStates[tabIdx].cards[cardId].left = nextLeft;
+        tabStates[tabIdx].cards[cardId].top = nextTop;
+        tabStates[tabIdx].cards[cardId].visible = visibleInput?.checked ?? false;
+      }
+      if (leftValue) leftValue.textContent = nextLeft;
+      if (topValue) topValue.textContent = nextTop;
 
       if (currentTab === tabIdx) {
         applyConfig(currentTab);
       }
     }
 
-    tabSelect.addEventListener('change', () => {
-      const selectedTabIdx = Number(tabSelect.value);
+    tabSelect?.addEventListener('change', () => {
+      const selectedTabIdx = Number(tabSelect?.value ?? 0);
       setTab(selectedTabIdx);
       syncGuiFromState();
     });
-    cardSelect.addEventListener('change', syncGuiFromState);
-    leftInput.addEventListener('input', applyGuiToState);
-    topInput.addEventListener('input', applyGuiToState);
+    cardSelect?.addEventListener('change', syncGuiFromState);
+    leftInput?.addEventListener('input', applyGuiToState);
+    topInput?.addEventListener('input', applyGuiToState);
     visibleInput.addEventListener('change', applyGuiToState);
 
     copyButton.addEventListener('click', async () => {
