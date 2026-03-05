@@ -17,7 +17,7 @@ class LiquidGradientEffect {
     }
     this.config = {
       "warpAmp": 0.3,
-      "sharpness": 10,
+      "sharpness": 6,
       "speed": 0.8,
       "fbmOctaves": 1,
       "noiseScale": 0.5,
@@ -132,9 +132,9 @@ class LiquidGradientEffect {
       "tealInfluence": 1,
       "purpleInfluence": 1,
       "pinkInfluence": 1,
-      "color2GroupInfluence": 0.15,
+      "color2GroupInfluence": 2.5,
       "whiteGroupInfluence": 4,
-      "colorGroupInfluence": 0.05,
+      "colorGroupInfluence": 2.1,
       "colorWhite": {
         "r": 1,
         "g": 1,
@@ -143,7 +143,7 @@ class LiquidGradientEffect {
       "colorBlue": {
         "r": 0.196,
         "g": 0.392,
-        "b": 1
+        "b": 1 
       },
       "colorTeal": {
         "r": 0.196,
@@ -160,15 +160,15 @@ class LiquidGradientEffect {
         "g": 0.34901960784313724,
         "b": 0.6705882352941176
       },
-      "gradientSaturation": 1.75,
+      "gradientSaturation": 3,
       "gradientBrightness": 1.5,
-      "cellPx": 16,
+      "cellPx": 8,
       "contrast": 5,
-      "gamma": 0,
-      "softness": 0.01,
+      "gamma": 3,
+      "softness": 0.07,
       "minR": 0.01,
-      "maxR": 0.7,
-      "dotSpacing": 0.0,
+      "maxR": 0.57,
+      "dotSpacing": 0.06,
       "lumThreshold": 0,
       "invertDots": true,
       "invert": false,
