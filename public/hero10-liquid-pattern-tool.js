@@ -1237,26 +1237,15 @@ class LiquidGradientEffect {
   }
 
   saveSettings() {
-    try {
-      const payload = {
-        version: this.settingsVersion,
-        config: this.config
-      };
-      const settings = JSON.stringify(payload, null, 2);
-      localStorage.setItem(this.storageKey, settings);
-      console.log('Settings saved to localStorage');
-      
-      // Visual feedback
-      const button = event.target;
-      const originalText = button.textContent;
-      button.textContent = 'Saved!';
-      setTimeout(() => {
-        button.textContent = originalText;
-      }, 1500);
-    } catch (error) {
-      console.error('Failed to save settings:', error);
-      alert('Failed to save settings');
-    }
+    console.log('Settings persistence disabled; using in-code defaults only.');
+
+    // Visual feedback
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = 'Defaults Only';
+    setTimeout(() => {
+      button.textContent = originalText;
+    }, 1500);
   }
 
   loadSettings() {
