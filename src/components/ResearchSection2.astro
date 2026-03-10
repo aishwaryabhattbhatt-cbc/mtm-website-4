@@ -176,6 +176,25 @@ const screenSrc = `${base}images/dashboard.png`;
     margin-bottom: 12px;
   }
 
+  @media (max-height: 750px) {
+    .heading {
+      margin-bottom: 4px;
+      font-size: clamp(24px, 3.5vw, 40px);
+    }
+
+    .content {
+      gap: 20px;
+    }
+
+    .left-text {
+      gap: 10px;
+    }
+
+    .tab-item {
+      gap: 4px;
+    }
+  }
+
   .heading-fly-in {
     opacity: 0;
     transform: translateY(26px);
