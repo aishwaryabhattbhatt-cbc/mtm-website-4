@@ -14,9 +14,18 @@ import mediaBox5 from '../assets/images/laptop-section/media/box-5.webp';
 const base = import.meta.env.BASE_URL;
 
 const tabs = [
-  { label: 'Technology Trends' },
-  { label: 'Media Behaviour' },
-  { label: '5000+ variables' },
+  {
+    label: 'Technology Trends',
+    body: 'Track rapid shifts across AI, devices, and platforms. Identify where consumer demand is moving next.',
+  },
+  {
+    label: 'Media Behaviour',
+    body: 'Understand attention, viewing patterns, and engagement signals. See how audience habits evolve across channels.',
+  },
+  {
+    label: '5000+ variables',
+    body: 'Explore a deep dataset spanning demographics, intent, and usage. Connect variables to uncover high-value opportunities.',
+  },
 ];
 
 const cards = [
@@ -87,7 +96,8 @@ const screenSrc = `${base}images/dashboard.png`;
           class="tab-item"
           data-tab={i}
         >
-          {tab.label}
+          <span class="tab-label">{tab.label}</span>
+          <span class="tab-body">{tab.body}</span>
         </div>
       ))}
     </div>
@@ -110,71 +120,6 @@ const screenSrc = `${base}images/dashboard.png`;
         <div class="box box-xs box11" style="opacity:0; left:515px; top:365px;"></div>
         <div class="box box-xs box12" style="opacity:0; left:625px; top:200px;"></div>
         <div class="box box-xs box13" style="opacity:0; left:625px; top:310px;"></div>
-      </div>
-
-      <!-- Position GUI (fixed overlay, moved to body by JS) -->
-      <div class="box-gui-panel" id="boxGuiPanel">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-          <strong style="font-size:13px;">🎛️ Position GUI</strong>
-          <button id="boxGuiToggle" type="button" style="padding:2px 9px; font-size:16px; line-height:1.2; cursor:pointer; border:1px solid #ccc; border-radius:5px; background:#f5f5f5;">−</button>
-        </div>
-        <div id="guiBody">
-          <div id="guiTabLabel" style="font-size:11px; color:#888; margin-bottom:4px;">Technology Trends</div>
-
-          <!-- Tab 0: box position controls -->
-          <div id="guiTab0">
-            <label>
-              Select Box:
-              <select id="boxSelect">
-                <option value="box1">Box 1 (Large)</option>
-                <option value="box2">Box 2 (Large)</option>
-                <option value="box3">Box 3 (Small)</option>
-                <option value="box4">Box 4 (Small)</option>
-                <option value="box5">Box 5 (XS)</option>
-              </select>
-            </label>
-            <label>
-              Left (px): <input id="boxLeft" type="range" min="0" max="900" step="1" />
-              <span id="boxLeftValue">40px</span>
-            </label>
-            <label>
-              Top (px): <input id="boxTop" type="range" min="0" max="600" step="1" />
-              <span id="boxTopValue">60px</span>
-            </label>
-          </div>
-
-          <!-- Tab 1: box position controls -->
-          <div id="guiTab1" style="display:none">
-            <label>
-              Select Box:
-              <select id="t1boxSelect">
-                <option value="box1">Box 1 (Large)</option>
-                <option value="box2">Box 2 (Large)</option>
-                <option value="box3">Box 3 (Small)</option>
-                <option value="box4">Box 4 (Small)</option>
-                <option value="box5">Box 5 (XS)</option>
-              </select>
-            </label>
-            <label>
-              Left (px): <input id="t1boxLeft" type="range" min="0" max="900" step="1" />
-              <span id="t1boxLeftValue">199px</span>
-            </label>
-            <label>
-              Top (px): <input id="t1boxTop" type="range" min="0" max="600" step="1" />
-              <span id="t1boxTopValue">139px</span>
-            </label>
-          </div>
-
-          <!-- Tab 2: no position controls yet -->
-          <div id="guiTab2" style="display:none">
-            <em style="font-size:11px; color:#999;">Grid layout — configure later</em>
-          </div>
-
-          <div style="display:flex; gap:6px; margin-top:8px;">
-            <button id="boxGuiCopy" type="button" style="flex:1; padding:5px 6px; font-size:11px; cursor:pointer; border:1px solid #ccc; border-radius:6px; background:#f0f7ff;">📋 Copy JSON</button>
-            <button id="boxGuiDownload" type="button" style="flex:1; padding:5px 6px; font-size:11px; cursor:pointer; border:1px solid #ccc; border-radius:6px; background:#f0fff4;">⬇️ Download</button>
-          </div>
-        </div>
       </div>
 
     </div>
@@ -261,7 +206,7 @@ const screenSrc = `${base}images/dashboard.png`;
     gap: 20px;
     padding-left: 24px;
     flex-shrink: 0;
-    width: 320px;
+    width: 375px;
     margin-right: auto;
   }
 
@@ -304,7 +249,25 @@ const screenSrc = `${base}images/dashboard.png`;
     cursor: pointer;
     transition: color 0.4s ease;
     user-select: none;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tab-label {
     white-space: nowrap;
+  }
+
+  .tab-body {
+    display: none;
+    font-size: clamp(12px, 1.1vw, 14px);
+    line-height: 1.45;
+    letter-spacing: 0;
+    color: #4d4d4d;
+    max-width: none;
+    width: 100%;
   }
 
   .tab-item:hover {
@@ -313,6 +276,10 @@ const screenSrc = `${base}images/dashboard.png`;
 
   .tab-item.active {
     color: #1a1a1a;
+  }
+
+  .tab-item.active .tab-body {
+    display: block;
   }
 
   .tab-item.is-disabled {
@@ -484,20 +451,44 @@ const screenSrc = `${base}images/dashboard.png`;
   }
 
   .box-gui-panel {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
     background: #fff;
     border: 1px solid #d9d9d9;
     border-radius: 10px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     padding: 16px 18px;
-    z-index: 9999;
+    z-index: 25;
     display: flex;
     flex-direction: column;
     gap: 12px;
     width: 240px;
     font-size: 13px;
+  }
+
+  .box-gui-panel.is-collapsed {
+    width: auto;
+    padding: 6px;
+    gap: 0;
+    border-radius: 999px;
+  }
+
+  .box-gui-panel.is-collapsed .box-gui-title {
+    display: none;
+  }
+
+  .box-gui-panel.is-collapsed .box-gui-header {
+    justify-content: center;
+  }
+
+  .box-gui-panel.is-collapsed #boxGuiToggle {
+    width: 28px;
+    height: 28px;
+    padding: 0 !important;
+    border-radius: 999px !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
   }
 
   .box-gui-panel label {
@@ -1134,10 +1125,6 @@ const screenSrc = `${base}images/dashboard.png`;
     (Object.keys(boxPositions) as BoxId[]).forEach(id => updateBoxPosition(id, 0));
     updateGuiValues('box1', 0);
 
-    // Move GUI panel to body so position:fixed isn't broken by parent CSS transform
-    const guiPanelEl = document.getElementById('boxGuiPanel');
-    if (guiPanelEl) document.body.appendChild(guiPanelEl);
-
     // ── Tab 0: Box position controls ──
     const boxSelect = document.getElementById('boxSelect') as HTMLSelectElement | null;
     const boxLeft = document.getElementById('boxLeft') as HTMLInputElement | null;
@@ -1181,6 +1168,7 @@ const screenSrc = `${base}images/dashboard.png`;
     });
 
     // ── Toggle / Copy / Download ──
+    const guiPanel = document.getElementById('boxGuiPanel');
     const guiBody = document.getElementById('guiBody');
     const guiToggle = document.getElementById('boxGuiToggle');
     const guiCopy = document.getElementById('boxGuiCopy') as HTMLButtonElement | null;
@@ -1208,11 +1196,12 @@ const screenSrc = `${base}images/dashboard.png`;
       URL.revokeObjectURL(url);
     });
 
-    let guiExpanded = true;
+    let guiExpanded = false;
     guiToggle?.addEventListener('click', () => {
       guiExpanded = !guiExpanded;
       if (guiBody) guiBody.style.display = guiExpanded ? '' : 'none';
       if (guiToggle) guiToggle.textContent = guiExpanded ? '−' : '+';
+      guiPanel?.classList.toggle('is-collapsed', !guiExpanded);
     });
   });
 </script>

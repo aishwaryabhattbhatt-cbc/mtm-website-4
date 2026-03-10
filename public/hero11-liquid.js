@@ -156,7 +156,7 @@ class LiquidGradientEffect {
       gradientBrightness: 1.0,
       
       // Glyph Dither Controls
-      cellPx: 8.0,
+      cellPx: 14.0,
       contrast: 4.3,
       gamma: 3,
       softness: 0.05,
