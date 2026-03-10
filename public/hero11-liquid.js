@@ -932,6 +932,7 @@ class LiquidGradientEffect {
       padding: 8px 10px; border: 1px solid #bbb; border-radius: 6px;
       background: rgba(255,255,255,0.95); color: #222; cursor: pointer;
       font: 600 12px system-ui, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      display: none;
     `;
     toggleGuiButton.onclick = () => {
       guiVisible = !guiVisible;

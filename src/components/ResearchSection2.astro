@@ -506,20 +506,7 @@ const screenSrc = `${base}images/dashboard.png`;
   }
 
   .box-gui-panel {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background: #fff;
-    border: 1px solid #d9d9d9;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    padding: 16px 18px;
-    z-index: 25;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 240px;
-    font-size: 13px;
+    display: none !important;
   }
 
   .box-gui-panel.is-collapsed {
@@ -560,36 +547,12 @@ const screenSrc = `${base}images/dashboard.png`;
   }
 
   .icon-pos-gui-toggle {
-    position: absolute;
-    right: 0;
-    bottom: -46px;
-    z-index: 50;
-    border: 1px solid #d8d8d8;
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 7px 12px;
-    font-size: 12px;
-    cursor: pointer;
+    display: none !important;
   }
 
-  .icon-pos-gui {
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 55;
-    width: 260px;
-    background: rgba(255, 255, 255, 0.96);
-    border: 1px solid #d9d9d9;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    padding: 12px;
-    display: none;
-    gap: 8px;
-    font-size: 12px;
-  }
-
+  .icon-pos-gui,
   .icon-pos-gui.is-open {
-    display: grid;
+    display: none !important;
   }
 
   .icon-pos-gui label {
@@ -973,8 +936,9 @@ const screenSrc = `${base}images/dashboard.png`;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        isInView = entry.isIntersecting && entry.intersectionRatio >= 0.99;
-        if (isInView) {
+        const ratio = entry.intersectionRatio;
+        if (entry.isIntersecting && ratio >= 0.5) {
+          isInView = true;
           if (!hasStartedPlayback) {
             hasStartedPlayback = true;
             hasPlaybackUnlocked = true;
@@ -982,12 +946,14 @@ const screenSrc = `${base}images/dashboard.png`;
             setTab(0, TAB_DURATION_MS);
           }
           startAutoRotate();
-        } else {
+        } else if (ratio < 0.1) {
+          // Only truly stop when section is nearly gone — prevents layout-shift jitter
+          isInView = false;
           stopAutoRotate();
         }
       },
       {
-        threshold: [0.99, 1]
+        threshold: [0, 0.1, 0.5, 1]
       }
     );
 

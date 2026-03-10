@@ -36,67 +36,6 @@ import ResearchSection2 from "./ResearchSection2.astro"
         </label>
     </div>
 
-        <!-- Position GUI (Section 2 scoped) -->
-        <div class="box-gui-panel is-collapsed" id="boxGuiPanel">
-                <div class="box-gui-header" style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-                        <strong class="box-gui-title" style="font-size:13px;">🎛️ Position GUI</strong>
-                        <button id="boxGuiToggle" type="button" style="padding:2px 9px; font-size:16px; line-height:1.2; cursor:pointer; border:1px solid #ccc; border-radius:5px; background:#f5f5f5;">+</button>
-                </div>
-                <div id="guiBody" style="display:none;">
-                        <div id="guiTabLabel" style="font-size:11px; color:#888; margin-bottom:4px;">Technology Trends</div>
-
-                        <div id="guiTab0">
-                                <label>
-                                        Select Box:
-                                        <select id="boxSelect">
-                                                <option value="box1">Box 1 (Large)</option>
-                                                <option value="box2">Box 2 (Large)</option>
-                                                <option value="box3">Box 3 (Small)</option>
-                                                <option value="box4">Box 4 (Small)</option>
-                                                <option value="box5">Box 5 (XS)</option>
-                                        </select>
-                                </label>
-                                <label>
-                                        Left (px): <input id="boxLeft" type="range" min="0" max="900" step="1" />
-                                        <span id="boxLeftValue">40px</span>
-                                </label>
-                                <label>
-                                        Top (px): <input id="boxTop" type="range" min="0" max="600" step="1" />
-                                        <span id="boxTopValue">60px</span>
-                                </label>
-                        </div>
-
-                        <div id="guiTab1" style="display:none">
-                                <label>
-                                        Select Box:
-                                        <select id="t1boxSelect">
-                                                <option value="box1">Box 1 (Large)</option>
-                                                <option value="box2">Box 2 (Large)</option>
-                                                <option value="box3">Box 3 (Small)</option>
-                                                <option value="box4">Box 4 (Small)</option>
-                                                <option value="box5">Box 5 (XS)</option>
-                                        </select>
-                                </label>
-                                <label>
-                                        Left (px): <input id="t1boxLeft" type="range" min="0" max="900" step="1" />
-                                        <span id="t1boxLeftValue">199px</span>
-                                </label>
-                                <label>
-                                        Top (px): <input id="t1boxTop" type="range" min="0" max="600" step="1" />
-                                        <span id="t1boxTopValue">139px</span>
-                                </label>
-                        </div>
-
-                        <div id="guiTab2" style="display:none">
-                                <em style="font-size:11px; color:#999;">Grid layout — configure later</em>
-                        </div>
-
-                        <div style="display:flex; gap:6px; margin-top:8px;">
-                                <button id="boxGuiCopy" type="button" style="flex:1; padding:5px 6px; font-size:11px; cursor:pointer; border:1px solid #ccc; border-radius:6px; background:#f0f7ff;">📋 Copy JSON</button>
-                                <button id="boxGuiDownload" type="button" style="flex:1; padding:5px 6px; font-size:11px; cursor:pointer; border:1px solid #ccc; border-radius:6px; background:#f0fff4;">⬇️ Download</button>
-                        </div>
-                </div>
-        </div>
 
     <ResearchSection2 />
 </section>
