@@ -11,6 +11,17 @@ import mediaBox2 from '../assets/images/laptop-section/media/box-2.webp';
 import mediaBox3 from '../assets/images/laptop-section/media/box-3.webp';
 import mediaBox4 from '../assets/images/laptop-section/media/box-4.webp';
 import mediaBox5 from '../assets/images/laptop-section/media/box-5.webp';
+import varBox1 from '../assets/images/laptop-section/variables/icon-age0-group.png';
+import varBox2 from '../assets/images/laptop-section/variables/icon-audio.png';
+import varBox3 from '../assets/images/laptop-section/variables/icon-avod.png';
+import varBox4 from '../assets/images/laptop-section/variables/icon-digital-audio.png';
+import varBox5 from '../assets/images/laptop-section/variables/icon-home-internet.png';
+import varBox6 from '../assets/images/laptop-section/variables/icon-music.png';
+import varBox7 from '../assets/images/laptop-section/variables/icon-smartphone-audio.png';
+import varBox8 from '../assets/images/laptop-section/variables/icon-smartphone-love.png';
+import varBox9 from '../assets/images/laptop-section/variables/icon-speech.png';
+import varBox10 from '../assets/images/laptop-section/variables/icon-trends.png';
+import varBox11 from '../assets/images/laptop-section/variables/icon-tv-time.png';
 const base = import.meta.env.BASE_URL;
 
 const tabs = [
@@ -107,19 +118,19 @@ const screenSrc = `${base}images/dashboard.png`;
 
       <!-- Tab 0 + 1 + 2: shared boxes — positions/sizes animate between tabs -->
       <div class="custom-box-layout" id="boxVisual">
-        <div class="box box-lg box1" data-tech={techBox1.src} data-media={mediaBox1.src}><img src={techBox1.src} alt="Box 1" /></div>
-        <div class="box box-lg box2" data-tech={techBox2.src} data-media={mediaBox2.src}><img src={techBox2.src} alt="Box 2" /></div>
-        <div class="box box-sm box3" data-tech={techBox3.src} data-media={mediaBox3.src}><img src={techBox3.src} alt="Box 3" /></div>
-        <div class="box box-sm box4" data-tech={techBox4.src} data-media={mediaBox4.src}><img src={techBox4.src} alt="Box 4" /></div>
-        <div class="box box-xs box5" data-media={mediaBox5.src}><img src={mediaBox5.src} alt="Box 5" /></div>
-        <div class="box box-xs box6"  style="opacity:0; left:405px; top:165px;"></div>
-        <div class="box box-xs box7"  style="opacity:0; left:405px; top:275px;"></div>
-        <div class="box box-xs box8"  style="opacity:0; left:405px; top:385px;"></div>
-        <div class="box box-xs box9"  style="opacity:0; left:515px; top:145px;"></div>
-        <div class="box box-xs box10" style="opacity:0; left:515px; top:255px;"></div>
-        <div class="box box-xs box11" style="opacity:0; left:515px; top:365px;"></div>
-        <div class="box box-xs box12" style="opacity:0; left:625px; top:200px;"></div>
-        <div class="box box-xs box13" style="opacity:0; left:625px; top:310px;"></div>
+        <div class="box box-lg box1" data-tech={techBox1.src} data-media={mediaBox1.src} data-variables={varBox1.src}><img src={techBox1.src} alt="Box 1" /></div>
+        <div class="box box-lg box2" data-tech={techBox2.src} data-media={mediaBox2.src} data-variables={varBox2.src}><img src={techBox2.src} alt="Box 2" /></div>
+        <div class="box box-sm box3" data-tech={techBox3.src} data-media={mediaBox3.src} data-variables={varBox3.src}><img src={techBox3.src} alt="Box 3" /></div>
+        <div class="box box-sm box4" data-tech={techBox4.src} data-media={mediaBox4.src} data-variables={varBox4.src}><img src={techBox4.src} alt="Box 4" /></div>
+        <div class="box box-xs box5" data-media={mediaBox5.src} data-variables={varBox5.src}><img src={mediaBox5.src} alt="Box 5" /></div>
+        <div class="box box-xs box6"  style="opacity:0; left:405px; top:165px;"><img src={varBox6.src} alt="Music" /></div>
+        <div class="box box-xs box7"  style="opacity:0; left:405px; top:275px;"><img src={varBox7.src} alt="Smartphone Audio" /></div>
+        <div class="box box-xs box8"  style="opacity:0; left:405px; top:385px;"><img src={varBox8.src} alt="Smartphone Love" /></div>
+        <div class="box box-xs box9"  style="opacity:0; left:515px; top:145px;"><img src={varBox9.src} alt="Speech" /></div>
+        <div class="box box-xs box10" style="opacity:0; left:515px; top:255px;"><img src={varBox10.src} alt="Trends" /></div>
+        <div class="box box-xs box11" style="opacity:0; left:515px; top:365px;"><img src={varBox11.src} alt="TV Time" /></div>
+        <div class="box box-xs box12" style="opacity:0; left:625px; top:200px;"><img src={varBox1.src} alt="Age Group" /></div>
+        <div class="box box-xs box13" style="opacity:0; left:625px; top:310px;"><img src={varBox2.src} alt="Audio" /></div>
       </div>
 
     </div>
@@ -343,12 +354,20 @@ const screenSrc = `${base}images/dashboard.png`;
     transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  /* Remove box styling for image boxes (box1-5) */
+  /* Remove box styling for image boxes (box1-13) */
   .custom-box-layout .box1,
   .custom-box-layout .box2,
   .custom-box-layout .box3,
   .custom-box-layout .box4,
-  .custom-box-layout .box5 {
+  .custom-box-layout .box5,
+  .custom-box-layout .box6,
+  .custom-box-layout .box7,
+  .custom-box-layout .box8,
+  .custom-box-layout .box9,
+  .custom-box-layout .box10,
+  .custom-box-layout .box11,
+  .custom-box-layout .box12,
+  .custom-box-layout .box13 {
     background: transparent;
     border: none;
     opacity: 1;
@@ -358,11 +377,47 @@ const screenSrc = `${base}images/dashboard.png`;
     align-items: unset;
     justify-content: unset;
   }
-  /* Tab 2: all boxes shrink to XS */
+  /* Tab 2: all boxes shrink to XS, no card — just the image */
   #boxVisual.tab2 .box {
     width: 90px;
     height: 90px;
+    background: transparent;
+    border: none;
+    opacity: 0.85;
+    display: block;
   }
+
+  /* box1-13: all fully transparent image boxes in tab2 */
+  #boxVisual.tab2 .box1,
+  #boxVisual.tab2 .box2,
+  #boxVisual.tab2 .box3,
+  #boxVisual.tab2 .box4,
+  #boxVisual.tab2 .box5,
+  #boxVisual.tab2 .box6,
+  #boxVisual.tab2 .box7,
+  #boxVisual.tab2 .box8,
+  #boxVisual.tab2 .box9,
+  #boxVisual.tab2 .box10,
+  #boxVisual.tab2 .box11,
+  #boxVisual.tab2 .box12,
+  #boxVisual.tab2 .box13 {
+    background: transparent;
+    border: none;
+    opacity: 0.85;
+    padding: 0;
+    margin: 0;
+    display: block;
+  }
+
+  /* Images in tab2: fill the box fully, no padding */
+  #boxVisual.tab2 .box img {
+    object-fit: cover;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+
 
   /* Hide box 5 only for tab 0 */
   .custom-box-layout.tab0 .box5 {
@@ -765,6 +820,20 @@ const screenSrc = `${base}images/dashboard.png`;
     } else {
       // Tab 2: shrink all boxes, stagger into 5-column grid (2|3|3|3|2)
       boxVisual?.classList.add('tab2');
+      boxVisual?.classList.remove('tab0');
+
+      // Crossfade box1-5 images to their variables icons (same timing as tab0→1)
+      ['box1', 'box2', 'box3', 'box4', 'box5'].forEach((id) => {
+        const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
+        if (!box) return;
+        const img = box.querySelector<HTMLImageElement>('img');
+        if (!img) return;
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = box.getAttribute('data-variables') || img.src;
+          img.style.opacity = '1';
+        }, 300);
+      });
 
       // Col 1 (box1, box2) — immediate
       (['box1', 'box2'] as BoxId[]).forEach(id => {
