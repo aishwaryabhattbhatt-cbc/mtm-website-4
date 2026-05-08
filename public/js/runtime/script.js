@@ -89,7 +89,6 @@ class ResponsiveManager {
      * Callback when breakpoint changes
      */
     onBreakpointChange(breakpoint) {
-        console.log(`Breakpoint changed to: ${breakpoint}`);
         document.documentElement.setAttribute('data-breakpoint', breakpoint);
         
         // Dispatch custom event
@@ -134,44 +133,7 @@ class ResponsiveManager {
 // INITIALIZE
 // ============================================
 
-// Create global responsive manager instance
 const responsive = new ResponsiveManager();
-
-// Log current state for debugging
-console.log('Responsive Manager Initialized:', {
-    breakpoint: responsive.currentBreakpoint,
-    dimensions: responsive.getWindowDimensions(),
-    gridGap: responsive.getGridGap(),
-    containerWidth: responsive.getContainerWidth()
-});
-
-// Listen for breakpoint changes
-window.addEventListener('breakpointchange', (event) => {
-    console.log('Breakpoint changed:', event.detail.breakpoint);
-});
-
-// ============================================
-// EXAMPLE: DYNAMIC CONTENT LOADING
-// ============================================
-
-/**
- * Load different content based on breakpoint
- */
-function loadResponsiveContent() {
-    if (responsive.isMobile()) {
-        console.log('Loading mobile-optimized content');
-    } else if (responsive.isTablet()) {
-        console.log('Loading tablet-optimized content');
-    } else if (responsive.isDesktop()) {
-        console.log('Loading desktop-optimized content');
-    }
-}
-
-// Call on page load
-document.addEventListener('DOMContentLoaded', loadResponsiveContent);
-
-// Call when breakpoint changes
-window.addEventListener('breakpointchange', loadResponsiveContent);
 
 // ============================================
 // UTILITY FUNCTIONS
@@ -217,8 +179,6 @@ function isTouch() {
             (navigator.msMaxTouchPoints > 0));
 }
 
-console.log('Touch support:', isTouch());
-
 // ============================================
 // NAVBAR MOBILE MENU
 // ============================================
@@ -237,6 +197,7 @@ function initNavbarMenu() {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navbarMenu.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', String(navbarMenu.classList.contains('active')));
     });
 
     // Close menu when clicking on a nav link
@@ -244,6 +205,7 @@ function initNavbarMenu() {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navbarMenu.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
         });
     });
 
@@ -252,6 +214,7 @@ function initNavbarMenu() {
         if (!event.target.closest('.navbar') && navbarMenu.classList.contains('active')) {
             hamburger.classList.remove('active');
             navbarMenu.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
         }
     });
 
@@ -260,25 +223,110 @@ function initNavbarMenu() {
         if (window.innerWidth > 1023) {
             hamburger.classList.remove('active');
             navbarMenu.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
         }
     });
 }
 
-/**
- * Language selector
- */
-function initLanguageSelector() {
-    const langButtons = document.querySelectorAll('.lang-btn');
+// ============================================
+// GOOGLE SHEETS CMS RUNTIME REFRESH
+// ============================================
 
-    langButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            langButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
-            console.log('Language changed to:', button.getAttribute('data-lang'));
-        });
+function normalizeCmsCell(value) {
+    if (value === null || value === undefined) return '';
+    return String(value).trim();
+}
+
+function parseCmsDictionaryFromCsv(csvText) {
+    if (!window.Papa) {
+        console.warn('[CMS] Papa Parse not found on window. Runtime CMS refresh skipped.');
+        return null;
+    }
+
+    const parsed = window.Papa.parse(csvText, { skipEmptyLines: true });
+    const rows = parsed?.data || [];
+    const dictionary = {};
+
+    rows.forEach((row, index) => {
+        if (!Array.isArray(row) || row.length === 0) return;
+
+        const key = normalizeCmsCell(row[0]);
+        const en = normalizeCmsCell(row[1]);
+        const fr = normalizeCmsCell(row[2]);
+
+        if (index === 0 && ['key', 'tag', 'id'].includes(key.toLowerCase())) return;
+        if (!key) return;
+
+        dictionary[key] = { en, fr };
     });
+
+    return dictionary;
+}
+
+function applyCmsDictionary(dictionary, locale) {
+    if (!dictionary) return;
+
+    const nodes = document.querySelectorAll('[data-copy-key]');
+    nodes.forEach((node) => {
+        const key = node.getAttribute('data-copy-key');
+        if (!key) return;
+
+        const row = dictionary[key];
+        if (!row) {
+            console.warn(`[CMS] Missing key in runtime dictionary: ${key}`);
+            return;
+        }
+
+        const value = (locale === 'fr' ? row.fr : row.en) || row.en;
+        if (!value) {
+            console.warn(`[CMS] Missing localized content for key: ${key}`);
+            return;
+        }
+
+        node.textContent = value;
+    });
+}
+
+async function fetchAndApplyRuntimeCmsCopy() {
+    const body = document.body;
+    const locale = body?.dataset?.locale || 'en';
+    const directCsvUrl = body?.dataset?.cmsCsvUrl;
+    const sheetId = body?.dataset?.cmsSheetId;
+    const gid = body?.dataset?.cmsTabGid;
+
+    if (!directCsvUrl && (!sheetId || !gid)) return;
+
+    const csvUrl = directCsvUrl
+        ? `${directCsvUrl}${directCsvUrl.includes('?') ? '&' : '?'}_ts=${Date.now()}`
+        : `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}&_ts=${Date.now()}`;
+
+    try {
+        const response = await fetch(csvUrl, { cache: 'no-store' });
+        if (!response.ok) {
+            console.warn(`[CMS] Runtime fetch failed with status ${response.status}`);
+            return;
+        }
+
+        const csvText = await response.text();
+        const dictionary = parseCmsDictionaryFromCsv(csvText);
+        applyCmsDictionary(dictionary, locale);
+    } catch (error) {
+        console.warn('[CMS] Runtime fetch failed. Keeping prerendered copy.', error);
+    }
+}
+
+function initRuntimeCmsRefresh() {
+    const body = document.body;
+    const directCsvUrl = body?.dataset?.cmsCsvUrl;
+    const sheetId = body?.dataset?.cmsSheetId;
+    const gid = body?.dataset?.cmsTabGid;
+    if (!directCsvUrl && (!sheetId || !gid)) return;
+
+    const refreshMs = Number(body?.dataset?.cmsRefreshMs || '30000');
+    const intervalMs = Number.isFinite(refreshMs) && refreshMs >= 5000 ? refreshMs : 30000;
+
+    fetchAndApplyRuntimeCmsCopy();
+    window.setInterval(fetchAndApplyRuntimeCmsCopy, intervalMs);
 }
 
 // ============================================
@@ -286,22 +334,11 @@ function initLanguageSelector() {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('✓ Responsive website loaded successfully');
-    console.log('Current setup:', {
-        breakpoint: responsive.currentBreakpoint,
-        isMobile: responsive.isMobile(),
-        isTablet: responsive.isTablet(),
-        isDesktop: responsive.isDesktop(),
-        windowWidth: window.innerWidth,
-        gridGap: responsive.getGridGap(),
-        containerWidth: responsive.getContainerWidth()
-    });
-
     // Initialize navbar menu
     initNavbarMenu();
-    
-    // Initialize language selector
-    initLanguageSelector();
+
+    // Initialize runtime CMS refresh (near-live Google Sheet updates)
+    initRuntimeCmsRefresh();
     
     // Initialize hero title word animation
     initHeroTitleAnimation();
@@ -467,7 +504,6 @@ function initSVGBreathing() {
                         });
                     });
                     
-                    console.log(`✓ Section ${sectionIndex + 1} Bottom-left: Breathing applied to ${totalCircles} circles`);
                 })
                 .catch(err => console.error('Error loading bottom-left SVG:', err));
         }
@@ -505,7 +541,6 @@ function initSVGBreathing() {
                         });
                     });
                     
-                    console.log(`✓ Section ${sectionIndex + 1} Top-right: Breathing applied to ${totalCircles} circles`);
                 })
                 .catch(err => console.error('Error loading top-right SVG:', err));
         }
@@ -539,7 +574,6 @@ function initViewportObserver() {
         observer.observe(section);
     });
     
-    console.log('✓ Viewport observer initialized for performance optimization');
 }
 
 // ============================================
@@ -633,5 +667,4 @@ function runTitleAnimation() {
         });
     }, 10);
     
-    console.log('✓ Hero title word animation initialized with sequential content reveal and collage images');
 }

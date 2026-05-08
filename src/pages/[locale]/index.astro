@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/shared/Navbar.astro';
+import HomeHeroSection from '../../components/home/HomeHeroSection.astro';
+import HomeIntroductionSection from '../../components/home/HomeIntroductionSection.astro';
+import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
+import type { Locale } from '../../lib/cms/types';
+
+export function getStaticPaths() {
+  return [
+    { params: { locale: 'en' } },
+    { params: { locale: 'fr' } },
+  ];
+}
+
+const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
+const pageId = 'home';
+const copy = await getPageDictionary(pageId);
+const cmsConfig = getRuntimeCMSConfig(pageId);
+const base = import.meta.env.BASE_URL;
+const resolvedCmsCsvUrl = cmsConfig.csvUrl ?? (cmsConfig.sheetId && cmsConfig.gid
+  ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
+  : '');
+
+const localeSwitchUrls = {
+  en: `${base}en/`,
+  fr: `${base}fr/`,
+};
+
+const pageTitle = locale === 'fr' ? 'MTM | Accueil' : 'MTM | Home';
+const pageDescription = locale === 'fr'
+  ? 'Données et perspectives sur la façon dont les Canadiens utilisent la technologie, le contenu et les médias.'
+  : 'Data and insights on how Canadians use technology, content, and media.';
+---
+
+<Layout title={pageTitle} description={pageDescription} locale={locale} alternates={localeSwitchUrls}>
+  <main
+    data-locale={locale}
+    data-cms-page-id={pageId}
+    data-cms-csv-url={resolvedCmsCsvUrl}
+    data-cms-sheet-id={cmsConfig.sheetId ?? ''}
+    data-cms-tab-gid={cmsConfig.gid ?? ''}
+    data-cms-refresh-ms={String(cmsConfig.refreshMs)}
+  >
+    <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+
+    <HomeHeroSection locale={locale} copy={copy} />
+
+    <div class="section-gap section-gap-sm" aria-hidden="true"></div>
+
+    <HomeIntroductionSection locale={locale} copy={copy} />
+
+    <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+
+  </main>
+
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'MTM',
+      url: localeSwitchUrls[locale],
+    })} />
+  </Fragment>
+
+  <Fragment slot="scripts">
+    <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script is:inline src={`${base}js/runtime/script.js`}></script>
+
+    <script is:inline type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js"
+      }
+    }
+    </script>
+
+    <script is:inline type="module" src={`${base}js/backgrounds/home-hero-background.js`}></script>
+    <script is:inline type="module" src={`${base}js/backgrounds/research-hero-background.js`}></script>
+  </Fragment>
+</Layout>

@@ -1,41 +1,55 @@
 ---
-// ResearchSection.astro
+// ResearchTabsSection.astro
 // Figma node: 1:9423 — "Access credible research on" animated section
-import IconCard from './IconCard.astro';
-import techBox1 from '../assets/images/laptop-section/tech/box-1.webp';
-import techBox2 from '../assets/images/laptop-section/tech/box-2.webp';
-import techBox3 from '../assets/images/laptop-section/tech/box-3.webp';
-import techBox4 from '../assets/images/laptop-section/tech/box-4.webp';
-import mediaBox1 from '../assets/images/laptop-section/media/box-1.webp';
-import mediaBox2 from '../assets/images/laptop-section/media/box-2.webp';
-import mediaBox3 from '../assets/images/laptop-section/media/box-3.webp';
-import mediaBox4 from '../assets/images/laptop-section/media/box-4.webp';
-import mediaBox5 from '../assets/images/laptop-section/media/box-5.webp';
-import varBox1 from '../assets/images/laptop-section/variables/icon-age0-group.png';
-import varBox2 from '../assets/images/laptop-section/variables/icon-audio.png';
-import varBox3 from '../assets/images/laptop-section/variables/icon-avod.png';
-import varBox4 from '../assets/images/laptop-section/variables/icon-digital-audio.png';
-import varBox5 from '../assets/images/laptop-section/variables/icon-home-internet.png';
-import varBox6 from '../assets/images/laptop-section/variables/icon-music.png';
-import varBox7 from '../assets/images/laptop-section/variables/icon-smartphone-audio.png';
-import varBox8 from '../assets/images/laptop-section/variables/icon-smartphone-love.png';
-import varBox9 from '../assets/images/laptop-section/variables/icon-speech.png';
-import varBox10 from '../assets/images/laptop-section/variables/icon-trends.png';
-import varBox11 from '../assets/images/laptop-section/variables/icon-tv-time.png';
+import techBox1 from '../../assets/images/laptop-section/tech/box-1.webp';
+import techBox2 from '../../assets/images/laptop-section/tech/box-2.webp';
+import techBox3 from '../../assets/images/laptop-section/tech/box-3.webp';
+import techBox4 from '../../assets/images/laptop-section/tech/box-4.webp';
+import mediaBox1 from '../../assets/images/laptop-section/media/box-1.webp';
+import mediaBox2 from '../../assets/images/laptop-section/media/box-2.webp';
+import mediaBox3 from '../../assets/images/laptop-section/media/box-3.webp';
+import mediaBox4 from '../../assets/images/laptop-section/media/box-4.webp';
+import mediaBox5 from '../../assets/images/laptop-section/media/box-5.webp';
+import varBox1 from '../../assets/images/laptop-section/variables/icon-age0-group.png';
+import varBox2 from '../../assets/images/laptop-section/variables/icon-audio.png';
+import varBox3 from '../../assets/images/laptop-section/variables/icon-avod.png';
+import varBox4 from '../../assets/images/laptop-section/variables/icon-digital-audio.png';
+import varBox5 from '../../assets/images/laptop-section/variables/icon-home-internet.png';
+import varBox6 from '../../assets/images/laptop-section/variables/icon-music.png';
+import varBox7 from '../../assets/images/laptop-section/variables/icon-smartphone-audio.png';
+import varBox8 from '../../assets/images/laptop-section/variables/icon-smartphone-love.png';
+import varBox9 from '../../assets/images/laptop-section/variables/icon-speech.png';
+import varBox10 from '../../assets/images/laptop-section/variables/icon-trends.png';
+import varBox11 from '../../assets/images/laptop-section/variables/icon-tv-time.png';
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface Props {
+  locale: Locale;
+  copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 
 const tabs = [
   {
-    label: 'Technology Trends',
-    body: 'Track rapid shifts across AI, devices, and platforms. Identify where consumer demand is moving next.',
+    labelKey: 'access_item_1_title',
+    labelFallback: 'Technology Trends',
+    bodyKey: 'access_item_1_description',
+    bodyFallback: 'Track rapid shifts across AI, devices, and platforms. Identify where consumer demand is moving next.',
   },
   {
-    label: 'Media Behaviour',
-    body: 'Understand attention, viewing patterns, and engagement signals. See how audience habits evolve across channels.',
+    labelKey: 'access_item_2_title',
+    labelFallback: 'Media Behaviour',
+    bodyKey: 'access_item_2_description',
+    bodyFallback: 'Understand attention, viewing patterns, and engagement signals. See how audience habits evolve across channels.',
   },
   {
-    label: '5000+ variables',
-    body: 'Explore a deep dataset spanning demographics, intent, and usage. Connect variables to uncover high-value opportunities.',
+    labelKey: 'access_item_3_title',
+    labelFallback: '5000+ variables',
+    bodyKey: 'access_item_3_description',
+    bodyFallback: 'Explore a deep dataset spanning demographics, intent, and usage. Connect variables to uncover high-value opportunities.',
   },
 ];
 
@@ -96,7 +110,7 @@ const screenSrc = `${base}images/dashboard.png`;
 ---
 
 <section class="research-section">
-  <h2 class="heading heading-fly-in">Access credible research on</h2>
+  <h2 class="heading heading-fly-in" data-copy-key="access_title">{t(copy, 'access_title', locale, 'Access credible research on')}</h2>
 
   <div class="content content-fly-in">
 
@@ -107,8 +121,8 @@ const screenSrc = `${base}images/dashboard.png`;
           class="tab-item"
           data-tab={i}
         >
-          <span class="tab-label">{tab.label}</span>
-          <span class="tab-body">{tab.body}</span>
+          <span class="tab-label" data-copy-key={tab.labelKey}>{t(copy, tab.labelKey, locale, tab.labelFallback)}</span>
+          <span class="tab-body" data-copy-key={tab.bodyKey}>{t(copy, tab.bodyKey, locale, tab.bodyFallback)}</span>
         </div>
       ))}
     </div>
@@ -123,14 +137,14 @@ const screenSrc = `${base}images/dashboard.png`;
         <div class="box box-sm box3" data-tech={techBox3.src} data-media={mediaBox3.src} data-variables={varBox3.src}><img src={techBox3.src} alt="Box 3" /></div>
         <div class="box box-sm box4" data-tech={techBox4.src} data-media={mediaBox4.src} data-variables={varBox4.src}><img src={techBox4.src} alt="Box 4" /></div>
         <div class="box box-xs box5" data-media={mediaBox5.src} data-variables={varBox5.src}><img src={mediaBox5.src} alt="Box 5" /></div>
-        <div class="box box-xs box6"  style="opacity:0; left:405px; top:165px;"><img src={varBox6.src} alt="Music" /></div>
-        <div class="box box-xs box7"  style="opacity:0; left:405px; top:275px;"><img src={varBox7.src} alt="Smartphone Audio" /></div>
-        <div class="box box-xs box8"  style="opacity:0; left:405px; top:385px;"><img src={varBox8.src} alt="Smartphone Love" /></div>
-        <div class="box box-xs box9"  style="opacity:0; left:515px; top:145px;"><img src={varBox9.src} alt="Speech" /></div>
-        <div class="box box-xs box10" style="opacity:0; left:515px; top:255px;"><img src={varBox10.src} alt="Trends" /></div>
-        <div class="box box-xs box11" style="opacity:0; left:515px; top:365px;"><img src={varBox11.src} alt="TV Time" /></div>
-        <div class="box box-xs box12" style="opacity:0; left:625px; top:200px;"><img src={varBox1.src} alt="Age Group" /></div>
-        <div class="box box-xs box13" style="opacity:0; left:625px; top:310px;"><img src={varBox2.src} alt="Audio" /></div>
+        <div class="box box-xs box6 box-variables-6"><img src={varBox6.src} alt="Music" /></div>
+        <div class="box box-xs box7 box-variables-7"><img src={varBox7.src} alt="Smartphone Audio" /></div>
+        <div class="box box-xs box8 box-variables-8"><img src={varBox8.src} alt="Smartphone Love" /></div>
+        <div class="box box-xs box9 box-variables-9"><img src={varBox9.src} alt="Speech" /></div>
+        <div class="box box-xs box10 box-variables-10"><img src={varBox10.src} alt="Trends" /></div>
+        <div class="box box-xs box11 box-variables-11"><img src={varBox11.src} alt="TV Time" /></div>
+        <div class="box box-xs box12 box-variables-12"><img src={varBox1.src} alt="Age Group" /></div>
+        <div class="box box-xs box13 box-variables-13"><img src={varBox2.src} alt="Audio" /></div>
       </div>
 
     </div>
@@ -140,9 +154,7 @@ const screenSrc = `${base}images/dashboard.png`;
 <style>
   .research-section {
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 var(--grid-gap);
+    padding: 0 var(--content-margin-inline);
     font-family: 'Roboto', sans-serif;
     position: absolute;
     left: 0;
@@ -154,15 +166,15 @@ const screenSrc = `${base}images/dashboard.png`;
 
   @media (min-width: 768px) {
     .research-section {
-      padding-left: var(--grid-gap-md);
-      padding-right: var(--grid-gap-md);
+      padding-left: var(--content-margin-inline);
+      padding-right: var(--content-margin-inline);
     }
   }
 
   @media (min-width: 1024px) {
     .research-section {
-      padding-left: var(--grid-gap-lg);
-      padding-right: var(--grid-gap-lg);
+      padding-left: var(--content-margin-inline);
+      padding-right: var(--content-margin-inline);
     }
   }
 
@@ -224,6 +236,57 @@ const screenSrc = `${base}images/dashboard.png`;
   .content-fly-in.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .box-variables-6,
+  .box-variables-7,
+  .box-variables-8,
+  .box-variables-9,
+  .box-variables-10,
+  .box-variables-11,
+  .box-variables-12,
+  .box-variables-13 {
+    opacity: 0;
+  }
+
+  .box-variables-6 {
+    left: 405px;
+    top: 165px;
+  }
+
+  .box-variables-7 {
+    left: 405px;
+    top: 275px;
+  }
+
+  .box-variables-8 {
+    left: 405px;
+    top: 385px;
+  }
+
+  .box-variables-9 {
+    left: 515px;
+    top: 145px;
+  }
+
+  .box-variables-10 {
+    left: 515px;
+    top: 255px;
+  }
+
+  .box-variables-11 {
+    left: 515px;
+    top: 365px;
+  }
+
+  .box-variables-12 {
+    left: 625px;
+    top: 200px;
+  }
+
+  .box-variables-13 {
+    left: 625px;
+    top: 310px;
   }
 
   /* LEFT TABS */

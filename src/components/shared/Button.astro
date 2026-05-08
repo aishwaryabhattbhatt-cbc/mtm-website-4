@@ -1,0 +1,89 @@
+---
+type ButtonVariant = 'primary' | 'secondary';
+type ButtonSize = 'md' | 'lg';
+
+interface Props {
+    variant?: ButtonVariant;
+    size?: ButtonSize;
+    href?: string;
+    type?: 'button' | 'submit' | 'reset';
+    class?: string;
+}
+
+const {
+    variant = 'primary',
+    size = 'md',
+    href,
+    type = 'button',
+    class: className = '',
+    ...attrs
+} = Astro.props as Props & Record<string, unknown>;
+
+const variantClass = variant === 'secondary' ? 'btn-outline' : 'btn-primary';
+
+const classes = ['btn', variantClass, `btn-size-${size}`, className]
+    .filter(Boolean)
+    .join(' ');
+---
+
+{href ? (
+    <a href={href} class={classes} {...attrs}>
+        <slot />
+    </a>
+) : (
+    <button type={type} class={classes} {...attrs}>
+        <slot />
+    </button>
+)}
+
+<style is:global>
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+        font-weight: 400;
+        border-radius: 8px;
+        font-family: var(--font-family-base);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .btn-outline {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border: 1.5px solid var(--color-black);
+    }
+
+    .btn-outline:hover {
+        background-color: var(--color-gray-100);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary {
+        background-color: var(--color-black);
+        color: var(--color-white);
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--color-gray-900);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-size-md {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+
+    .btn-size-lg {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+</style>

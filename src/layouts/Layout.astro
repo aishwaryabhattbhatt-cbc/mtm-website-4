@@ -1,19 +1,77 @@
 ---
-import '../styles/global.css';
+interface AlternateLinks {
+    en?: string;
+    fr?: string;
+    [key: string]: string | undefined;
+}
+
+interface Props {
+    title: string;
+    description: string;
+    locale?: string;
+    noindex?: boolean;
+    canonicalUrl?: string;
+    alternates?: AlternateLinks;
+}
+
+const {
+    title,
+    description,
+    locale = 'en',
+    noindex = false,
+    canonicalUrl,
+    alternates = {},
+} = Astro.props as Props;
+
 const base = import.meta.env.BASE_URL;
+const siteUrl = Astro.site ? new URL(base, Astro.site).toString() : undefined;
+const resolvedCanonical = canonicalUrl ?? (Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined);
+const socialImage = siteUrl ? new URL('favicon.svg', siteUrl).toString() : undefined;
+const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
 ---
+
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="robots" content={robotsContent} />
+		<meta name="theme-color" content="#ffffff" />
+
+		<title>{title}</title>
+
+		{resolvedCanonical && <link rel="canonical" href={resolvedCanonical} />}
+		{alternates.en && <link rel="alternate" hreflang="en" href={alternates.en} />}
+		{alternates.fr && <link rel="alternate" hreflang="fr" href={alternates.fr} />}
+		{alternates.en && <link rel="alternate" hreflang="x-default" href={alternates.en} />}
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		{resolvedCanonical && <meta property="og:url" content={resolvedCanonical} />}
+		{socialImage && <meta property="og:image" content={socialImage} />}
+		<meta property="og:locale" content={locale === 'fr' ? 'fr_CA' : 'en_CA'} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		{socialImage && <meta name="twitter:image" content={socialImage} />}
+
 		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
 		<link rel="icon" href={`${base}favicon.ico`} />
-		<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href={`${base}fonts/fonts.css`} />
+		<link rel="stylesheet" href={`${base}styles.css`} />
+		<link rel="manifest" href={`${base}site.webmanifest`} />
+
+		<slot name="head" />
 	</head>
 	<body>
 		<slot />
+		<slot name="scripts" />
 	</body>
 </html>

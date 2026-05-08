@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/shared/Button.astro';
+import type { Locale } from '../../lib/cms/types';
+
+const pageConfig = {
+  products: {
+    title: 'Products',
+    description: 'Explore MTM products and datasets.',
+  },
+  tools: {
+    title: 'Tools',
+    description: 'Explore MTM tools and interactive resources.',
+  },
+  solutions: {
+    title: 'Solutions',
+    description: 'Explore MTM solutions for teams and organizations.',
+  },
+  insights: {
+    title: 'Insights',
+    description: 'Explore MTM insights and research highlights.',
+  },
+  'sign-in': {
+    title: 'Sign In',
+    description: 'Access your MTM account.',
+  },
+  'request-demo': {
+    title: 'Request a Demo',
+    description: 'Request a demo of MTM products and services.',
+  },
+} as const;
+
+export function getStaticPaths() {
+  const slugs = ['products', 'tools', 'solutions', 'insights', 'sign-in', 'request-demo'];
+
+  return ['en', 'fr'].flatMap((locale) =>
+    slugs.map((slug) => ({ params: { locale, slug } }))
+  );
+}
+
+const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
+const slug = Astro.params.slug as keyof typeof pageConfig;
+const config = pageConfig[slug];
+const base = import.meta.env.BASE_URL;
+
+const localeSwitchUrls = {
+  en: `${base}en/${slug}/`,
+  fr: `${base}fr/${slug}/`,
+};
+
+const title = locale === 'fr' ? `MTM | ${config.title}` : `MTM | ${config.title}`;
+const description = locale === 'fr' ? config.description : config.description;
+---
+
+<Layout title={title} description={description} locale={locale} alternates={localeSwitchUrls} noindex={true}>
+  <main class="content-boundary placeholder-page">
+    <section class="placeholder-card">
+      <h1>{config.title}</h1>
+      <p>{locale === 'fr' ? 'Cette page arrive bientôt.' : 'This page is coming soon.'}</p>
+      <Button href={`${base}${locale}/`} variant="primary" size="md">{locale === 'fr' ? 'Retour à l’accueil' : 'Back to home'}</Button>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .placeholder-page {
+    padding-top: calc(var(--navbar-height) + 48px);
+    padding-bottom: 64px;
+  }
+
+  .placeholder-card {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 16px;
+    background: var(--color-white);
+  }
+
+  .placeholder-card h1 {
+    margin-bottom: 16px;
+  }
+
+  .placeholder-card p {
+    margin-bottom: 24px;
+  }
+</style>

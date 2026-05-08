@@ -1,5 +1,5 @@
 /**
- * Hero 10 - WebGL Liquid Gradient + Halftone Dither
+ * Research Hero Background - WebGL Liquid Gradient + Halftone Dither
  */
 
 import * as THREE from 'three';
@@ -7,171 +7,175 @@ import * as THREE from 'three';
 class LiquidGradientEffect {
   constructor() {
     console.log('Initializing LiquidGradientEffect...');
-    this.storageKey = 'hero11-liquid-settings';
+    this.storageKey = 'research-hero-background-settings';
     this.settingsVersion = 2;
 
     // ===== CONFIGURATION =====
     // Remove any previously saved settings
     if (window && window.localStorage) {
       window.localStorage.removeItem(this.storageKey);
-      window.localStorage.removeItem('hero10-liquid-settings');
     }
-
-    // ===== CONFIGURATION =====
-    this.config = this.loadSettings() || {
-      // Liquid Gradient Parameters
-      warpAmp:0.3,
-      sharpness: 10.0,
-      speed: 0.5,
-      fbmOctaves: 1,
-      noiseScale: 0.5,
-      waveAmp: 0.10,
-      waveFreq: 10.0,
-      waveRotation: 0.0,
-      white2Influence: 10.0,
-      
-      // Center movement amplitudes
-      white1RadiusX: 0.60,
-      white1RadiusY: 0.45,
-      blueRadiusX: 0.55,
-      blueRadiusY: 0.50,
-      tealRadiusX: 0.50,
-      tealRadiusY: 0.55,
-      purpleRadiusX: 0.58,
-      purpleRadiusY: 0.48,
-      pinkRadiusX: 0.52,
-      pinkRadiusY: 0.52,
-      white2RadiusX: 0.25,
-      white2RadiusY: 0.25,
-      white3RadiusX: 0.15,
-      white3RadiusY: 0.50,
-
-      // Per-blob movement zones (remap orbit to rectangle)
-      white1ZoneCenterX: -0.43,
-      white1ZoneCenterY: -0.03,
-      white1ZoneHalfWidth: 0.41,
-      white1ZoneHalfHeight: 0.33,
-      white1SpeedMulX: 2.29,
-      white1SpeedMulY: 2.33,
-      white1PhaseX: 1.007,
-      white1PhaseY: 1.217,
-      blueZoneCenterX: 0.53,
-      blueZoneCenterY: 0.0,
-      blueZoneHalfWidth: 0.47,
-      blueZoneHalfHeight: 0.56,
-      blueSpeedMulX: 1.0,
-      blueSpeedMulY: 1.0,
-      bluePhaseX: 3.387,
-      bluePhaseY: 0.667,
-      tealZoneCenterX: 0.53,
-      tealZoneCenterY: 0.0,
-      tealZoneHalfWidth: 0.47,
-      tealZoneHalfHeight: 0.58,
-      tealSpeedMulX: 1.0,
-      tealSpeedMulY: 1.0,
-      tealPhaseX: 1.317,
-      tealPhaseY: -0.643,
-      purpleZoneCenterX: 0.53,
-      purpleZoneCenterY: 0.0,
-      purpleZoneHalfWidth: 0.47,
-      purpleZoneHalfHeight: 0.58,
-      purpleSpeedMulX: 1.0,
-      purpleSpeedMulY: 1.0,
-      purplePhaseX: 0.057,
-      purplePhaseY: -0.273,
-      pinkZoneCenterX: 0.53,
-      pinkZoneCenterY: 0.0,
-      pinkZoneHalfWidth: 0.47,
-      pinkZoneHalfHeight: 0.59,
-      pinkSpeedMulX: 1.0,
-      pinkSpeedMulY: 1.0,
-      pinkPhaseX: -0.523,
-      pinkPhaseY: 2.097,
-      blue2ZoneCenterX: -1.5,
-      blue2ZoneCenterY: -0.03,
-      blue2ZoneHalfWidth: 0.12,
-      blue2ZoneHalfHeight: 0.56,
-      blue2SpeedMulX: 1.0,
-      blue2SpeedMulY: 1.0,
-      blue2PhaseX: -2.773,
-      blue2PhaseY: 1.407,
-      teal2ZoneCenterX: -1.5,
-      teal2ZoneCenterY: -0.04,
-      teal2ZoneHalfWidth: 0.04,
-      teal2ZoneHalfHeight: 0.58,
-      teal2SpeedMulX: 1.0,
-      teal2SpeedMulY: 1.0,
-      teal2PhaseX: 1.147,
-      teal2PhaseY: -0.453,
-      purple2ZoneCenterX: -1.5,
-      purple2ZoneCenterY: -0.05,
-      purple2ZoneHalfWidth: 0.04,
-      purple2ZoneHalfHeight: 0.58,
-      purple2SpeedMulX: 1.0,
-      purple2SpeedMulY: 1.0,
-      purple2PhaseX: -5.353,
-      purple2PhaseY: 0.037,
-      pink2ZoneCenterX: -1.5,
-      pink2ZoneCenterY: -0.05,
-      pink2ZoneHalfWidth: 0.02,
-      pink2ZoneHalfHeight: 0.59,
-      pink2SpeedMulX: 1.0,
-      pink2SpeedMulY: 1.0,
-      pink2PhaseX: -4.533,
-      pink2PhaseY: -0.433,
-      white2ZoneCenterX: -0.43,
-      white2ZoneCenterY: -0.04,
-      white2ZoneHalfWidth: 0.41,
-      white2ZoneHalfHeight: 0.30,
-      white2SpeedMulX: 2.29,
-      white2SpeedMulY: 2.31,
-      white2PhaseX: 0.817,
-      white2PhaseY: 0.767,
-      white3ZoneCenterX: -0.44,
-      white3ZoneCenterY: -0.04,
-      white3ZoneHalfWidth: 0.42,
-      white3ZoneHalfHeight: 0.34,
-      white3SpeedMulX: 2.28,
-      white3SpeedMulY: 2.22,
-      white3PhaseX: 0.727,
-      white3PhaseY: 0.887,
-      
-      // Color influence controls
-      white1Influence: 1.0,
-      blueInfluence: 1.0,
-      tealInfluence: 1.0,
-      purpleInfluence: 1.0,
-      pinkInfluence: 1.0,
-      color2GroupInfluence: 0.15,
-      whiteGroupInfluence: 4.0,
-      colorGroupInfluence: 0.19,
-      
-      // Colors (RGB 0-1 range)
-      colorWhite: { r: 1.0, g: 1.0, b: 1.0 },
-      colorBlue: { r: 0.196, g: 0.392, b: 1.0 },
-      colorTeal: { r: 0.196, g: 0.863, b: 0.784 },
-      colorPurple: { r: 0.588, g: 0.314, b: 1.0 },
-      colorPink: { r: 0.9686274509803922, g: 0.34901960784313724, b: 0.6705882352941176 },
-      gradientSaturation: 1.0,
-      gradientBrightness: 1.0,
-      
-      // Glyph Dither Controls
-      cellPx: 14.0,
-      contrast: 4.3,
-      gamma: 3,
-      softness: 0.05,
-      minR: 0.1,
-      maxR: 0.3,
-      dotSpacing: 0.1,
-      lumThreshold: 0.0,
-      invertDots: true,
-      invert: true,
-      bayer: false,
-      bayerStrength: 0.04,
-      
-      // Layer Toggles
-      showGlyphDither: true,
-      showMotionGuides: false
+    this.config = {
+      "warpAmp": 0.3,
+      "sharpness": 6,
+      "speed": 0.8,
+      "fbmOctaves": 1,
+      "noiseScale": 0.5,
+      "waveAmp": 0.1,
+      "waveFreq": 10,
+      "waveRotation": 0,
+      "white2Influence": 10,
+      "white1RadiusX": 0.6,
+      "white1RadiusY": 0.45,
+      "blueRadiusX": 0.55,
+      "blueRadiusY": 0.5,
+      "tealRadiusX": 0.5,
+      "tealRadiusY": 0.55,
+      "purpleRadiusX": 0.58,
+      "purpleRadiusY": 0.48,
+      "pinkRadiusX": 0.52,
+      "pinkRadiusY": 0.52,
+      "white2RadiusX": 0.25,
+      "white2RadiusY": 0.25,
+      "white3RadiusX": 0.15,
+      "white3RadiusY": 0.5,
+      "white1ZoneCenterX": -0.43,
+      "white1ZoneCenterY": -0.03,
+      "white1ZoneHalfWidth": 0.41,
+      "white1ZoneHalfHeight": 0.33,
+      "white1SpeedMulX": 2.29,
+      "white1SpeedMulY": 2.33,
+      "white1PhaseX": 1.007,
+      "white1PhaseY": 1.217,
+      "blueZoneCenterX": 1,
+      "blueZoneCenterY": 0,
+      "blueZoneHalfWidth": 0.2,
+      "blueZoneHalfHeight": 0.56,
+        blueZoneCenterX: 1.5,
+        blueZoneCenterY: 0.0,
+        blueZoneHalfWidth: 0.1,
+        blueZoneHalfHeight: 0.56,
+      "tealZoneCenterX": 1,
+      "tealZoneCenterY": 0,
+      "tealZoneHalfWidth": 0.2,
+      "tealZoneHalfHeight": 0.58,
+        tealZoneCenterX: 1.5,
+        tealZoneCenterY: 0.0,
+        tealZoneHalfWidth: 0.1,
+        tealZoneHalfHeight: 0.58,
+      "purpleZoneCenterX": 1,
+      "purpleZoneCenterY": 0,
+      "purpleZoneHalfWidth": 0.2,
+      "purpleZoneHalfHeight": 0.58,
+        purpleZoneCenterX: 1.5,
+        purpleZoneCenterY: 0.0,
+        purpleZoneHalfWidth: 0.1,
+        purpleZoneHalfHeight: 0.58,
+      "pinkZoneCenterX": 1,
+      "pinkZoneCenterY": 0,
+      "pinkZoneHalfWidth": 0.2,
+      "pinkZoneHalfHeight": 0.59,
+        pinkZoneCenterX: 1.5,
+        pinkZoneCenterY: 0.0,
+        pinkZoneHalfWidth: 0.1,
+        pinkZoneHalfHeight: 0.59,
+      "blue2ZoneCenterX": -1.5,
+      "blue2ZoneCenterY": -0.03,
+      "blue2ZoneHalfWidth": 0.12,
+      "blue2ZoneHalfHeight": 0.56,
+      "blue2SpeedMulX": 1,
+      "blue2SpeedMulY": 1,
+      "blue2PhaseX": -2.773,
+      "blue2PhaseY": 1.407,
+      "teal2ZoneCenterX": -1.5,
+      "teal2ZoneCenterY": -0.04,
+      "teal2ZoneHalfWidth": 0.04,
+      "teal2ZoneHalfHeight": 0.58,
+      "teal2SpeedMulX": 1,
+      "teal2SpeedMulY": 1,
+      "teal2PhaseX": 1.147,
+      "teal2PhaseY": -0.453,
+      "purple2ZoneCenterX": -1.5,
+      "purple2ZoneCenterY": -0.05,
+      "purple2ZoneHalfWidth": 0.04,
+      "purple2ZoneHalfHeight": 0.58,
+      "purple2SpeedMulX": 1,
+      "purple2SpeedMulY": 1,
+      "purple2PhaseX": -5.353,
+      "purple2PhaseY": 0.037,
+      "pink2ZoneCenterX": -1.5,
+      "pink2ZoneCenterY": -0.05,
+      "pink2ZoneHalfWidth": 0.02,
+      "pink2ZoneHalfHeight": 0.59,
+      "pink2SpeedMulX": 1,
+      "pink2SpeedMulY": 1,
+      "pink2PhaseX": -4.533,
+      "pink2PhaseY": -0.433,
+      "white2ZoneCenterX": -0.43,
+      "white2ZoneCenterY": -0.04,
+      "white2ZoneHalfWidth": 0.41,
+      "white2ZoneHalfHeight": 0.3,
+      "white2SpeedMulX": 2.29,
+      "white2SpeedMulY": 2.31,
+      "white2PhaseX": 0.817,
+      "white2PhaseY": 0.767,
+      "white3ZoneCenterX": -0.44,
+      "white3ZoneCenterY": -0.04,
+      "white3ZoneHalfWidth": 0.42,
+      "white3ZoneHalfHeight": 0.34,
+      "white3SpeedMulX": 2.28,
+      "white3SpeedMulY": 2.22,
+      "white3PhaseX": 0.727,
+      "white3PhaseY": 0.887,
+      "white1Influence": 1,
+      "blueInfluence": 1,
+      "tealInfluence": 1,
+      "purpleInfluence": 1,
+      "pinkInfluence": 1,
+      "color2GroupInfluence": 2.5,
+      "whiteGroupInfluence": 4,
+      "colorGroupInfluence": 2.1,
+      "colorWhite": {
+        "r": 1,
+        "g": 1,
+        "b": 1
+      },
+      "colorBlue": {
+        "r": 0.196,
+        "g": 0.392,
+        "b": 1 
+      },
+      "colorTeal": {
+        "r": 0.196,
+        "g": 0.863,
+        "b": 0.784
+      },
+      "colorPurple": {
+        "r": 0.588,
+        "g": 0.314,
+        "b": 1
+      },
+      "colorPink": {
+        "r": 0.9686274509803922,
+        "g": 0.34901960784313724,
+        "b": 0.6705882352941176
+      },
+      "gradientSaturation": 3,
+      "gradientBrightness": 1.5,
+      "cellPx": 14,
+      "contrast": 5,
+      "gamma": 3,
+      "softness": 0.07,
+      "minR": 0.01,
+      "maxR": 0.6,
+      "dotSpacing": 0.01,
+      "lumThreshold": 0,
+      "invertDots": true,
+      "invert": false,
+      "bayer": false,
+      "bayerStrength": 0.04,
+      "showGlyphDither": true,
+      "showMotionGuides": false
     };
     if (this.config.gradientSaturation === undefined) {
       this.config.gradientSaturation = 1.0;
@@ -182,6 +186,10 @@ class LiquidGradientEffect {
     if (this.config.showMotionGuides === undefined) {
       this.config.showMotionGuides = false;
     }
+    if (this.config.blueInfluence === undefined) this.config.blueInfluence = 1.0;
+    if (this.config.tealInfluence === undefined) this.config.tealInfluence = 1.0;
+    if (this.config.purpleInfluence === undefined) this.config.purpleInfluence = 1.0;
+    if (this.config.pinkInfluence === undefined) this.config.pinkInfluence = 1.0;
     if (this.config.color2GroupInfluence === undefined) {
       this.config.color2GroupInfluence = this.config.blue2Influence ?? this.config.colorGroupInfluence ?? 1.0;
     }
@@ -220,9 +228,9 @@ class LiquidGradientEffect {
       glyphDither: this.config.showGlyphDither
     };
 
-    this.container = document.getElementById('webgl-background-11');
+    this.container = document.getElementById('webgl-background-10');
     if (!this.container) {
-      console.error('Container #webgl-background-11 not found!');
+      console.error('Container #webgl-background-10 not found!');
       return;
     }
 
@@ -915,25 +923,25 @@ class LiquidGradientEffect {
 
   createControls() {
     const panel = document.createElement('div');
-    panel.style.cssText = `
-      position: absolute; top: 20px; right: 20px; z-index: 100;
-      background: rgba(255,255,255,0.95); padding: 16px; border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-family: system-ui, sans-serif;
-      font-size: 13px; max-width: 280px; max-height: 70vh; overflow-y: auto;
-    `;
+      panel.style.cssText = `
+        position: absolute; top: 20px; right: 20px; z-index: 10000;
+        background: rgba(255,255,255,0.95); padding: 16px; border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-family: system-ui, sans-serif;
+        font-size: 13px; max-width: 280px; max-height: calc(100vh - 40px); overflow-y: auto;
+      `;
     let guiVisible = false;
     panel.style.display = 'none';
 
     const toggleGuiButton = document.createElement('button');
     toggleGuiButton.type = 'button';
     toggleGuiButton.textContent = 'Show GUI';
-    toggleGuiButton.style.cssText = `
-      position: absolute; top: 0; right: 0; z-index: 101;
-      padding: 8px 10px; border: 1px solid #bbb; border-radius: 6px;
-      background: rgba(255,255,255,0.95); color: #222; cursor: pointer;
-      font: 600 12px system-ui, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-      display: none;
-    `;
+      toggleGuiButton.style.cssText = `
+        position: absolute; top: 20px; right: 20px; z-index: 10001;
+        padding: 8px 10px; border: 1px solid #bbb; border-radius: 6px;
+        background: rgba(255,255,255,0.95); color: #222; cursor: pointer;
+        font: 600 12px system-ui, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        display: none;
+      `;
     toggleGuiButton.onclick = () => {
       guiVisible = !guiVisible;
       panel.style.display = guiVisible ? 'block' : 'none';
@@ -1143,6 +1151,30 @@ class LiquidGradientEffect {
       this.uniformsLiquid.color2GroupInfluence.value = v;
     }));
 
+    const blueInfluenceLabel = makeLabel('Blue Influence');
+    blueInfluenceLabel.appendChild(makeRange(0.0, 4.0, 0.01, this.config.blueInfluence, (v) => {
+      this.config.blueInfluence = v;
+      this.uniformsLiquid.blueInfluence.value = v;
+    }));
+
+    const tealInfluenceLabel = makeLabel('Teal Influence');
+    tealInfluenceLabel.appendChild(makeRange(0.0, 4.0, 0.01, this.config.tealInfluence, (v) => {
+      this.config.tealInfluence = v;
+      this.uniformsLiquid.tealInfluence.value = v;
+    }));
+
+    const purpleInfluenceLabel = makeLabel('Purple Influence');
+    purpleInfluenceLabel.appendChild(makeRange(0.0, 4.0, 0.01, this.config.purpleInfluence, (v) => {
+      this.config.purpleInfluence = v;
+      this.uniformsLiquid.purpleInfluence.value = v;
+    }));
+
+    const pinkInfluenceLabel = makeLabel('Pink Influence');
+    pinkInfluenceLabel.appendChild(makeRange(0.0, 4.0, 0.01, this.config.pinkInfluence, (v) => {
+      this.config.pinkInfluence = v;
+      this.uniformsLiquid.pinkInfluence.value = v;
+    }));
+
     const saturationLabel = makeLabel('Saturation');
     saturationLabel.appendChild(makeRange(0.0, 4.0, 0.01, this.config.gradientSaturation, (v) => {
       this.config.gradientSaturation = v;
@@ -1175,6 +1207,10 @@ class LiquidGradientEffect {
     colorsSection.content.appendChild(purpleLabel);
     colorsSection.content.appendChild(pinkLabel);
     colorsSection.content.appendChild(color2GroupInfluenceLabel);
+    colorsSection.content.appendChild(blueInfluenceLabel);
+    colorsSection.content.appendChild(tealInfluenceLabel);
+    colorsSection.content.appendChild(purpleInfluenceLabel);
+    colorsSection.content.appendChild(pinkInfluenceLabel);
     colorsSection.content.appendChild(saturationLabel);
     colorsSection.content.appendChild(brightnessLabel);
     colorsSection.content.appendChild(whiteGroupInfluenceLabel);
@@ -1251,13 +1287,19 @@ class LiquidGradientEffect {
     }));
 
     const maxRLabel = makeLabel('Max Radius');
-    maxRLabel.appendChild(makeRange(0.0, 0.5, 0.01, this.config.maxR, (v) => {
+    maxRLabel.appendChild(makeRange(0.0, 0.7, 0.01, this.config.maxR, (v) => {
       this.uniformsDither.uMaxR.value = v;
     }));
 
     const dotSpacingLabel = makeLabel('Dot Spacing');
     dotSpacingLabel.appendChild(makeRange(0.0, 0.3, 0.01, this.config.dotSpacing, (v) => {
       this.uniformsDither.uDotSpacing.value = v;
+    }));
+
+    const lumThresholdLabel = makeLabel('Lum Threshold');
+    lumThresholdLabel.appendChild(makeRange(0.0, 1.0, 0.01, this.config.lumThreshold, (v) => {
+      this.config.lumThreshold = v;
+      this.uniformsDither.uLumThreshold.value = v;
     }));
 
     const ditherToggleLabel = makeLabel('Show Layer');
@@ -1280,6 +1322,7 @@ class LiquidGradientEffect {
     glyphSection.content.appendChild(minRLabel);
     glyphSection.content.appendChild(maxRLabel);
     glyphSection.content.appendChild(dotSpacingLabel);
+    glyphSection.content.appendChild(lumThresholdLabel);
     glyphSection.content.appendChild(invertLabel);
     panel.appendChild(glyphSection.container);
 
@@ -1308,24 +1351,11 @@ class LiquidGradientEffect {
     buttonsDiv.appendChild(downloadButton);
     panel.appendChild(buttonsDiv);
 
-    const hero11Section = document.querySelector('.hero-section.home-section-1');
-    if (hero11Section) {
-      hero11Section.style.position = 'relative';
-      // Create a container for the GUI elements if not present
-      let guiContainer = hero11Section.querySelector('.hero11-webgl-gui-container');
-      if (!guiContainer) {
-        guiContainer = document.createElement('div');
-        guiContainer.className = 'hero11-webgl-gui-container';
-        guiContainer.style.position = 'absolute';
-        guiContainer.style.top = '0';
-        guiContainer.style.right = '0';
-        guiContainer.style.width = 'auto';
-        guiContainer.style.height = 'auto';
-        guiContainer.style.zIndex = '100';
-        hero11Section.appendChild(guiContainer);
-      }
-      guiContainer.appendChild(toggleGuiButton);
-      guiContainer.appendChild(panel);
+    const hero10Section = document.querySelector('.hero-section.home-section-2');
+    if (hero10Section) {
+      hero10Section.style.position = 'relative';
+      hero10Section.appendChild(toggleGuiButton);
+      hero10Section.appendChild(panel);
     } else {
       document.body.appendChild(toggleGuiButton);
       document.body.appendChild(panel);
@@ -1345,7 +1375,7 @@ class LiquidGradientEffect {
   }
 
   loadSettings() {
-    // Always boot Hero 11 from in-code defaults; ignore persisted localStorage.
+    // Always boot Hero 10 from in-code defaults; ignore persisted localStorage.
     console.log('Ignoring saved settings; using in-code defaults');
     return null;
   }
@@ -1357,7 +1387,7 @@ class LiquidGradientEffect {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `hero10-liquid-settings-${Date.now()}.json`;
+      a.download = `research-hero-background-settings-${Date.now()}.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);

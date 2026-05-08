@@ -1,187 +1,178 @@
 /**
- * Hero 10 - WebGL Liquid Gradient + Halftone Dither (Pattern Tool)
+ * Home Hero Background - WebGL Liquid Gradient + Halftone Dither
  */
 
 import * as THREE from 'three';
 
 class LiquidGradientEffect {
   constructor() {
-    console.log('Initializing LiquidGradientEffect (Pattern Tool)...');
-    this.storageKey = 'hero10-liquid-pattern-tool-settings';
+    console.log('Initializing LiquidGradientEffect...');
+    this.storageKey = 'home-hero-background-settings';
     this.settingsVersion = 2;
 
     // ===== CONFIGURATION =====
     // Remove any previously saved settings
     if (window && window.localStorage) {
       window.localStorage.removeItem(this.storageKey);
+      window.localStorage.removeItem('hero11-liquid-settings');
+      window.localStorage.removeItem('hero10-liquid-settings');
     }
-    this.config = {
-      "warpAmp": 0.3,
-      "sharpness": 10,
-      "speed": 0.8,
-      "fbmOctaves": 1,
-      "noiseScale": 0.5,
-      "waveAmp": 0.1,
-      "waveFreq": 10,
-      "waveRotation": 0,
-      "white2Influence": 10,
-      "white1RadiusX": 0.6,
-      "white1RadiusY": 0.45,
-      "blueRadiusX": 0.55,
-      "blueRadiusY": 0.5,
-      "tealRadiusX": 0.5,
-      "tealRadiusY": 0.55,
-      "purpleRadiusX": 0.58,
-      "purpleRadiusY": 0.48,
-      "pinkRadiusX": 0.52,
-      "pinkRadiusY": 0.52,
-      "white2RadiusX": 0.25,
-      "white2RadiusY": 0.25,
-      "white3RadiusX": 0.15,
-      "white3RadiusY": 0.5,
-      "white1ZoneCenterX": -0.43,
-      "white1ZoneCenterY": -0.03,
-      "white1ZoneHalfWidth": 0.41,
-      "white1ZoneHalfHeight": 0.33,
-      "white1SpeedMulX": 2.29,
-      "white1SpeedMulY": 2.33,
-      "white1PhaseX": 1.007,
-      "white1PhaseY": 1.217,
-      "blueZoneCenterX": 1,
-      "blueZoneCenterY": 0,
-      "blueZoneHalfWidth": 0.2,
-      "blueZoneHalfHeight": 0.56,
-        blueZoneCenterX: 1.5,
-        blueZoneCenterY: 0.0,
-        blueZoneHalfWidth: 0.1,
-        blueZoneHalfHeight: 0.56,
-      "tealZoneCenterX": 1,
-      "tealZoneCenterY": 0,
-      "tealZoneHalfWidth": 0.2,
-      "tealZoneHalfHeight": 0.58,
-        tealZoneCenterX: 1.5,
-        tealZoneCenterY: 0.0,
-        tealZoneHalfWidth: 0.1,
-        tealZoneHalfHeight: 0.58,
-      "purpleZoneCenterX": 1,
-      "purpleZoneCenterY": 0,
-      "purpleZoneHalfWidth": 0.2,
-      "purpleZoneHalfHeight": 0.58,
-        purpleZoneCenterX: 1.5,
-        purpleZoneCenterY: 0.0,
-        purpleZoneHalfWidth: 0.1,
-        purpleZoneHalfHeight: 0.58,
-      "pinkZoneCenterX": 1,
-      "pinkZoneCenterY": 0,
-      "pinkZoneHalfWidth": 0.2,
-      "pinkZoneHalfHeight": 0.59,
-        pinkZoneCenterX: 1.5,
-        pinkZoneCenterY: 0.0,
-        pinkZoneHalfWidth: 0.1,
-        pinkZoneHalfHeight: 0.59,
-      "blue2ZoneCenterX": -1.5,
-      "blue2ZoneCenterY": -0.03,
-      "blue2ZoneHalfWidth": 0.12,
-      "blue2ZoneHalfHeight": 0.56,
-      "blue2SpeedMulX": 1,
-      "blue2SpeedMulY": 1,
-      "blue2PhaseX": -2.773,
-      "blue2PhaseY": 1.407,
-      "teal2ZoneCenterX": -1.5,
-      "teal2ZoneCenterY": -0.04,
-      "teal2ZoneHalfWidth": 0.04,
-      "teal2ZoneHalfHeight": 0.58,
-      "teal2SpeedMulX": 1,
-      "teal2SpeedMulY": 1,
-      "teal2PhaseX": 1.147,
-      "teal2PhaseY": -0.453,
-      "purple2ZoneCenterX": -1.5,
-      "purple2ZoneCenterY": -0.05,
-      "purple2ZoneHalfWidth": 0.04,
-      "purple2ZoneHalfHeight": 0.58,
-      "purple2SpeedMulX": 1,
-      "purple2SpeedMulY": 1,
-      "purple2PhaseX": -5.353,
-      "purple2PhaseY": 0.037,
-      "pink2ZoneCenterX": -1.5,
-      "pink2ZoneCenterY": -0.05,
-      "pink2ZoneHalfWidth": 0.02,
-      "pink2ZoneHalfHeight": 0.59,
-      "pink2SpeedMulX": 1,
-      "pink2SpeedMulY": 1,
-      "pink2PhaseX": -4.533,
-      "pink2PhaseY": -0.433,
-      "white2ZoneCenterX": -0.43,
-      "white2ZoneCenterY": -0.04,
-      "white2ZoneHalfWidth": 0.41,
-      "white2ZoneHalfHeight": 0.3,
-      "white2SpeedMulX": 2.29,
-      "white2SpeedMulY": 2.31,
-      "white2PhaseX": 0.817,
-      "white2PhaseY": 0.767,
-      "white3ZoneCenterX": -0.44,
-      "white3ZoneCenterY": -0.04,
-      "white3ZoneHalfWidth": 0.42,
-      "white3ZoneHalfHeight": 0.34,
-      "white3SpeedMulX": 2.28,
-      "white3SpeedMulY": 2.22,
-      "white3PhaseX": 0.727,
-      "white3PhaseY": 0.887,
-      "white1Influence": 1,
-      "blueInfluence": 1,
-      "tealInfluence": 1,
-      "purpleInfluence": 1,
-      "pinkInfluence": 1,
-      "color2GroupInfluence": 0.15,
-      "whiteGroupInfluence": 4,
-      "colorGroupInfluence": 0.05,
-      "colorWhite": {
-        "r": 1,
-        "g": 1,
-        "b": 1
-      },
-      "colorBlue": {
-        "r": 0.196,
-        "g": 0.392,
-        "b": 1
-      },
-      "colorTeal": {
-        "r": 0.196,
-        "g": 0.863,
-        "b": 0.784
-      },
-      "colorPurple": {
-        "r": 0.588,
-        "g": 0.314,
-        "b": 1
-      },
-      "colorPink": {
-        "r": 0.9686274509803922,
-        "g": 0.34901960784313724,
-        "b": 0.6705882352941176
-      },
-      "inputSaturation": 1.5,
-      "inputBrightness": 1.01,
-      "defaultImagePath": "./images/gradient.png",
-      "imageFitContain": true,
-      "inputWhiteThreshold": 0.98,
-      "inputWhiteFeather": 0.135,
-      "inputWhiteSatMax": 0.3,
-      "gradientSaturation": 1.75,
-      "gradientBrightness": 1.5,
-      "cellPx": 10,
-      "contrast": 1.1,
-      "gamma": 1.2,
-      "minR": 0.01,
-      "maxR": 0.7,
-      "dotSpacing": -0.1,
-      "lumThreshold": 0,
-      "invertDots": true,
-      "invert": false,
-        "bgColor": { "r": 0.741, "g": 0.741, "b": 0.741 },
-        "bgAlpha": 0.0,
-      "showGlyphDither": true,
-      "showMotionGuides": false
+
+    // ===== CONFIGURATION =====
+    this.config = this.loadSettings() || {
+      // Liquid Gradient Parameters
+      warpAmp:0.3,
+      sharpness: 10.0,
+      speed: 0.5,
+      fbmOctaves: 1,
+      noiseScale: 0.5,
+      waveAmp: 0.10,
+      waveFreq: 10.0,
+      waveRotation: 0.0,
+      white2Influence: 10.0,
+      
+      // Center movement amplitudes
+      white1RadiusX: 0.60,
+      white1RadiusY: 0.45,
+      blueRadiusX: 0.55,
+      blueRadiusY: 0.50,
+      tealRadiusX: 0.50,
+      tealRadiusY: 0.55,
+      purpleRadiusX: 0.58,
+      purpleRadiusY: 0.48,
+      pinkRadiusX: 0.52,
+      pinkRadiusY: 0.52,
+      white2RadiusX: 0.25,
+      white2RadiusY: 0.25,
+      white3RadiusX: 0.15,
+      white3RadiusY: 0.50,
+
+      // Per-blob movement zones (remap orbit to rectangle)
+      white1ZoneCenterX: -0.43,
+      white1ZoneCenterY: -0.03,
+      white1ZoneHalfWidth: 0.41,
+      white1ZoneHalfHeight: 0.33,
+      white1SpeedMulX: 2.29,
+      white1SpeedMulY: 2.33,
+      white1PhaseX: 1.007,
+      white1PhaseY: 1.217,
+      blueZoneCenterX: 0.53,
+      blueZoneCenterY: 0.0,
+      blueZoneHalfWidth: 0.47,
+      blueZoneHalfHeight: 0.56,
+      blueSpeedMulX: 1.0,
+      blueSpeedMulY: 1.0,
+      bluePhaseX: 3.387,
+      bluePhaseY: 0.667,
+      tealZoneCenterX: 0.53,
+      tealZoneCenterY: 0.0,
+      tealZoneHalfWidth: 0.47,
+      tealZoneHalfHeight: 0.58,
+      tealSpeedMulX: 1.0,
+      tealSpeedMulY: 1.0,
+      tealPhaseX: 1.317,
+      tealPhaseY: -0.643,
+      purpleZoneCenterX: 0.53,
+      purpleZoneCenterY: 0.0,
+      purpleZoneHalfWidth: 0.47,
+      purpleZoneHalfHeight: 0.58,
+      purpleSpeedMulX: 1.0,
+      purpleSpeedMulY: 1.0,
+      purplePhaseX: 0.057,
+      purplePhaseY: -0.273,
+      pinkZoneCenterX: 0.53,
+      pinkZoneCenterY: 0.0,
+      pinkZoneHalfWidth: 0.47,
+      pinkZoneHalfHeight: 0.59,
+      pinkSpeedMulX: 1.0,
+      pinkSpeedMulY: 1.0,
+      pinkPhaseX: -0.523,
+      pinkPhaseY: 2.097,
+      blue2ZoneCenterX: -1.5,
+      blue2ZoneCenterY: -0.03,
+      blue2ZoneHalfWidth: 0.12,
+      blue2ZoneHalfHeight: 0.56,
+      blue2SpeedMulX: 1.0,
+      blue2SpeedMulY: 1.0,
+      blue2PhaseX: -2.773,
+      blue2PhaseY: 1.407,
+      teal2ZoneCenterX: -1.5,
+      teal2ZoneCenterY: -0.04,
+      teal2ZoneHalfWidth: 0.04,
+      teal2ZoneHalfHeight: 0.58,
+      teal2SpeedMulX: 1.0,
+      teal2SpeedMulY: 1.0,
+      teal2PhaseX: 1.147,
+      teal2PhaseY: -0.453,
+      purple2ZoneCenterX: -1.5,
+      purple2ZoneCenterY: -0.05,
+      purple2ZoneHalfWidth: 0.04,
+      purple2ZoneHalfHeight: 0.58,
+      purple2SpeedMulX: 1.0,
+      purple2SpeedMulY: 1.0,
+      purple2PhaseX: -5.353,
+      purple2PhaseY: 0.037,
+      pink2ZoneCenterX: -1.5,
+      pink2ZoneCenterY: -0.05,
+      pink2ZoneHalfWidth: 0.02,
+      pink2ZoneHalfHeight: 0.59,
+      pink2SpeedMulX: 1.0,
+      pink2SpeedMulY: 1.0,
+      pink2PhaseX: -4.533,
+      pink2PhaseY: -0.433,
+      white2ZoneCenterX: -0.43,
+      white2ZoneCenterY: -0.04,
+      white2ZoneHalfWidth: 0.41,
+      white2ZoneHalfHeight: 0.30,
+      white2SpeedMulX: 2.29,
+      white2SpeedMulY: 2.31,
+      white2PhaseX: 0.817,
+      white2PhaseY: 0.767,
+      white3ZoneCenterX: -0.44,
+      white3ZoneCenterY: -0.04,
+      white3ZoneHalfWidth: 0.42,
+      white3ZoneHalfHeight: 0.34,
+      white3SpeedMulX: 2.28,
+      white3SpeedMulY: 2.22,
+      white3PhaseX: 0.727,
+      white3PhaseY: 0.887,
+      
+      // Color influence controls
+      white1Influence: 1.0,
+      blueInfluence: 1.0,
+      tealInfluence: 1.0,
+      purpleInfluence: 1.0,
+      pinkInfluence: 1.0,
+      color2GroupInfluence: 0.15,
+      whiteGroupInfluence: 4.0,
+      colorGroupInfluence: 0.19,
+      
+      // Colors (RGB 0-1 range)
+      colorWhite: { r: 1.0, g: 1.0, b: 1.0 },
+      colorBlue: { r: 0.196, g: 0.392, b: 1.0 },
+      colorTeal: { r: 0.196, g: 0.863, b: 0.784 },
+      colorPurple: { r: 0.588, g: 0.314, b: 1.0 },
+      colorPink: { r: 0.9686274509803922, g: 0.34901960784313724, b: 0.6705882352941176 },
+      gradientSaturation: 1.0,
+      gradientBrightness: 1.0,
+      
+      // Glyph Dither Controls
+      cellPx: 14.0,
+      contrast: 4.3,
+      gamma: 3,
+      softness: 0.05,
+      minR: 0.1,
+      maxR: 0.3,
+      dotSpacing: 0.1,
+      lumThreshold: 0.0,
+      invertDots: true,
+      invert: true,
+      bayer: false,
+      bayerStrength: 0.04,
+      
+      // Layer Toggles
+      showGlyphDither: true,
+      showMotionGuides: false
     };
     if (this.config.gradientSaturation === undefined) {
       this.config.gradientSaturation = 1.0;
@@ -189,34 +180,9 @@ class LiquidGradientEffect {
     if (this.config.gradientBrightness === undefined) {
       this.config.gradientBrightness = 1.0;
     }
-    if (this.config.inputSaturation === undefined) {
-      this.config.inputSaturation = 1.0;
-    }
-    if (this.config.inputBrightness === undefined) {
-      this.config.inputBrightness = 1.0;
-    }
-    if (this.config.defaultImagePath === undefined) {
-      this.config.defaultImagePath = './images/gradient.png';
-    }
-    if (this.config.imageFitContain === undefined) {
-      this.config.imageFitContain = true;
-    }
-    if (this.config.inputWhiteThreshold === undefined) {
-      this.config.inputWhiteThreshold = 0.98;
-    }
-    if (this.config.inputWhiteFeather === undefined) {
-      this.config.inputWhiteFeather = 0.06;
-    }
-    if (this.config.inputWhiteSatMax === undefined) {
-      this.config.inputWhiteSatMax = 0.12;
-    }
     if (this.config.showMotionGuides === undefined) {
       this.config.showMotionGuides = false;
     }
-    if (this.config.blueInfluence === undefined) this.config.blueInfluence = 1.0;
-    if (this.config.tealInfluence === undefined) this.config.tealInfluence = 1.0;
-    if (this.config.purpleInfluence === undefined) this.config.purpleInfluence = 1.0;
-    if (this.config.pinkInfluence === undefined) this.config.pinkInfluence = 1.0;
     if (this.config.color2GroupInfluence === undefined) {
       this.config.color2GroupInfluence = this.config.blue2Influence ?? this.config.colorGroupInfluence ?? 1.0;
     }
@@ -255,10 +221,9 @@ class LiquidGradientEffect {
       glyphDither: this.config.showGlyphDither
     };
 
-    this.container = document.getElementById('webgl-background-pattern-tool');
-    this.guiContainer = document.getElementById('pattern-tool-gui');
+    this.container = document.getElementById('webgl-background-11');
     if (!this.container) {
-      console.error('Container #webgl-background-pattern-tool not found!');
+      console.error('Container #webgl-background-11 not found!');
       return;
     }
 
@@ -268,21 +233,19 @@ class LiquidGradientEffect {
     this.camera.position.z = 1;
     
     this.renderer = new THREE.WebGLRenderer({
-      antialias: false,
-      alpha: true,
-      preserveDrawingBuffer: true
+      antialias: true,
+      alpha: false
     });
-
-    const initialSize = this.getContainerSize();
-    this.renderer.setSize(initialSize.w, initialSize.h);
+    
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.container.appendChild(this.renderer.domElement);
     this.createMotionGuideOverlay();
 
     const dpr = Math.min(window.devicePixelRatio, 2);
     this.renderTargetLiquid = new THREE.WebGLRenderTarget(
-      Math.floor(initialSize.w * dpr),
-      Math.floor(initialSize.h * dpr),
+      Math.floor(window.innerWidth * dpr),
+      Math.floor(window.innerHeight * dpr),
       {
         minFilter: THREE.LinearFilter,
         magFilter: THREE.LinearFilter,
@@ -290,19 +253,9 @@ class LiquidGradientEffect {
       }
     );
 
-    this.fallbackTexture = new THREE.DataTexture(
-      new Uint8Array([255, 255, 255, 255]),
-      1,
-      1,
-      THREE.RGBAFormat
-    );
-    this.fallbackTexture.needsUpdate = true;
-    this.uploadedTexture = null;
-    this.uploadedImageAspect = 1;
-
     // Uniforms for liquid gradient shader
     this.uniformsLiquid = {
-      uRes: { value: new THREE.Vector2(initialSize.w * dpr, initialSize.h * dpr) },
+      uRes: { value: new THREE.Vector2(window.innerWidth * dpr, window.innerHeight * dpr) },
       uTime: { value: 0.0 },
       c0: { value: new THREE.Vector3(this.config.colorWhite.r, this.config.colorWhite.g, this.config.colorWhite.b) },
       c1: { value: new THREE.Vector3(this.config.colorBlue.r, this.config.colorBlue.g, this.config.colorBlue.b) },
@@ -323,16 +276,6 @@ class LiquidGradientEffect {
       color2GroupInfluence: { value: this.config.color2GroupInfluence },
       whiteGroupInfluence: { value: this.config.whiteGroupInfluence },
       colorGroupInfluence: { value: this.config.colorGroupInfluence },
-      uImage: { value: this.fallbackTexture },
-      uImageScale: { value: new THREE.Vector2(1, 1) },
-      uImageOffset: { value: new THREE.Vector2(0, 0) },
-      uFitContain: { value: this.config.imageFitContain ? 1.0 : 0.0 },
-      uHasImage: { value: 0.0 },
-      uInputSaturation: { value: this.config.inputSaturation },
-      uInputBrightness: { value: this.config.inputBrightness },
-      uInputWhiteThreshold: { value: this.config.inputWhiteThreshold },
-      uInputWhiteFeather: { value: this.config.inputWhiteFeather },
-      uInputWhiteSatMax: { value: this.config.inputWhiteSatMax },
       m0: { value: new THREE.Vector2(0, 0) },
       m1: { value: new THREE.Vector2(0, 0) },
       m2: { value: new THREE.Vector2(0, 0) },
@@ -349,19 +292,19 @@ class LiquidGradientEffect {
     // Uniforms for dither shader
     this.uniformsDither = {
       uSource: { value: this.renderTargetLiquid.texture },
-      uResolution: { value: new THREE.Vector2(initialSize.w * dpr, initialSize.h * dpr) },
+      uResolution: { value: new THREE.Vector2(window.innerWidth * dpr, window.innerHeight * dpr) },
       uCellPx: { value: this.config.cellPx },
-      uDpr: { value: dpr },
       uContrast: { value: this.config.contrast },
       uGamma: { value: this.config.gamma },
+      uSoftness: { value: this.config.softness },
       uMinR: { value: this.config.minR },
       uMaxR: { value: this.config.maxR },
       uDotSpacing: { value: this.config.dotSpacing },
       uLumThreshold: { value: this.config.lumThreshold },
       uInvertDots: { value: this.config.invertDots ? 1.0 : 0.0 },
       uInvert: { value: this.config.invert ? 1.0 : 0.0 },
-      uBgColor: { value: new THREE.Vector3(this.config.bgColor.r, this.config.bgColor.g, this.config.bgColor.b) },
-      uBgAlpha: { value: this.config.bgAlpha }
+      uBayer: { value: this.config.bayer ? 1.0 : 0.0 },
+      uBayerStrength: { value: this.config.bayerStrength }
     };
 
     const vertexShader = `
@@ -372,113 +315,221 @@ class LiquidGradientEffect {
       }
     `;
 
-    // Image pass shader: uploaded image becomes the source for dither
+    // Liquid gradient fragment shader (from p5.js code)
     const fragmentShaderLiquid = `
       precision highp float;
 
       varying vec2 vUv;
-      uniform sampler2D uImage;
-      uniform vec2 uImageScale;
-      uniform vec2 uImageOffset;
-      uniform float uFitContain;
-      uniform float uHasImage;
-      uniform float uInputSaturation;
-      uniform float uInputBrightness;
-      uniform float uInputWhiteThreshold;
-      uniform float uInputWhiteFeather;
-      uniform float uInputWhiteSatMax;
+      uniform vec2 uRes;
+      uniform float uTime;
+
+      uniform vec3 c0;
+      uniform vec3 c1;
+      uniform vec3 c2;
+      uniform vec3 c3;
+      uniform vec3 c4;
+
+      uniform float warpAmp;
+      uniform float sharp;
+      uniform float noiseScale;
+      uniform int fbmOctaves;
+      uniform float waveAmp;
+      uniform float waveFreq;
+      uniform float waveRotation;
+      uniform float blueInfluence;
+      uniform float tealInfluence;
+      uniform float purpleInfluence;
+      uniform float pinkInfluence;
+      uniform float color2GroupInfluence;
+      uniform float whiteGroupInfluence;
+      uniform float colorGroupInfluence;
+
+      uniform vec2 m0;
+      uniform vec2 m1;
+      uniform vec2 m2;
+      uniform vec2 m3;
+      uniform vec2 m4;
+      uniform vec2 m5;
+      uniform vec2 m6;
+      uniform vec2 m7;
+      uniform vec2 m8;
+      uniform vec2 m9;
+      uniform vec2 m10;
+
+      float hash21(vec2 p){
+        p = fract(p * vec2(123.34, 456.21));
+        p += dot(p, p + 34.345);
+        return fract(p.x * p.y);
+      }
+
+      float noise(vec2 p){
+        vec2 i = floor(p);
+        vec2 f = fract(p);
+        float a = hash21(i);
+        float b = hash21(i + vec2(1.0, 0.0));
+        float c = hash21(i + vec2(0.0, 1.0));
+        float d = hash21(i + vec2(1.0, 1.0));
+        vec2 u = f * f * (3.0 - 2.0 * f);
+        return mix(a, b, u.x) + (c - a)*u.y*(1.0 - u.x) + (d - b)*u.x*u.y;
+      }
+
+      float fbm(vec2 p){
+        float v = 0.0;
+        float a = 0.5;
+        for(int i=0;i<10;i++){
+          if(i >= fbmOctaves) break;
+          v += a * noise(p);
+          p *= 2.02;
+          a *= 0.5;
+        }
+        return v;
+      }
+
+      float influence(vec2 p, vec2 center, float sharp){
+        float d = length(p - center);
+        return exp(-sharp * d * d);
+      }
 
       void main() {
-        vec2 rectMin = 0.5 - 0.5 * uImageScale + uImageOffset;
-        vec2 uv = (vUv - rectMin) / uImageScale;
-        vec3 color = vec3(1.0);
+        vec2 uv = vUv;
+        vec2 p = (uv - 0.5) * vec2(uRes.x / uRes.y, 1.0);
 
-        bool inRect = uv.x >= 0.0 && uv.x <= 1.0 && uv.y >= 0.0 && uv.y <= 1.0;
+        float t = uTime;
 
-        // Contain mode: keep full image visible with white bars around.
-        // Cover mode: fill viewport and crop overflow.
-        if (uHasImage > 0.5 && (inRect || uFitContain < 0.5)) {
-          vec2 sampleUv = uv;
-          if (uFitContain < 0.5) {
-            sampleUv = clamp(sampleUv, 0.0, 1.0);
-          }
-          vec4 tex = texture2D(uImage, sampleUv);
-          color = mix(vec3(1.0), tex.rgb, tex.a);
+        float cosR = cos(waveRotation);
+        float sinR = sin(waveRotation);
+        vec2 pRotated = vec2(
+          p.x * cosR - p.y * sinR,
+          p.x * sinR + p.y * cosR
+        );
+        
+        vec2 wave = vec2(
+          sin(pRotated.y * waveFreq + t * 0.5) * waveAmp,
+          sin(pRotated.x * waveFreq + t * 0.4) * waveAmp
+        );
+        p += wave;
 
-          // For non-transparent assets (e.g. JPG/PNG with white bg),
-          // fade near-white pixels to white as if they were transparent.
-          float lumaTex = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
-          float maxC = max(tex.r, max(tex.g, tex.b));
-          float minC = min(tex.r, min(tex.g, tex.b));
-          float sat = maxC - minC;
-          float whiteByLuma = smoothstep(
-            uInputWhiteThreshold - uInputWhiteFeather,
-            uInputWhiteThreshold + uInputWhiteFeather,
-            lumaTex
-          );
-          float lowSatMask = 1.0 - smoothstep(uInputWhiteSatMax, uInputWhiteSatMax + 0.05, sat);
-          float bgMask = whiteByLuma * lowSatMask;
-          color = mix(color, vec3(1.0), bgMask);
-        }
+        float n1 = fbm(p * noiseScale + vec2(0.0, t * 0.18));
+        float n2 = fbm(p * noiseScale + vec2(10.0, -t * 0.15));
+        vec2 warp = vec2(n1, n2) - 0.5;
 
-        float luma = dot(color, vec3(0.299, 0.587, 0.114));
-        color = vec3(luma) + (color - vec3(luma)) * uInputSaturation;
-        color *= uInputBrightness;
-        color = clamp(color, 0.0, 1.0);
+        vec2 q = p + warp * warpAmp;
 
-        gl_FragColor = vec4(color, 1.0);
+        float w0 = influence(q, m0, sharp);
+        float w1 = influence(q, m1, sharp);
+        float w2 = influence(q, m2, sharp);
+        float w3 = influence(q, m3, sharp);
+        float w4 = influence(q, m4, sharp);
+        float w5 = influence(q, m5, sharp);
+        float w6 = influence(q, m6, sharp);
+        float w7 = influence(q, m7, sharp);
+        float w8 = influence(q, m8, sharp);
+        float w9 = influence(q, m9, sharp);
+        float w10 = influence(q, m10, sharp);
+
+        w0 *= whiteGroupInfluence;
+        w1 *= blueInfluence * colorGroupInfluence;
+        w2 *= tealInfluence * colorGroupInfluence;
+        w3 *= purpleInfluence * colorGroupInfluence;
+        w4 *= pinkInfluence * colorGroupInfluence;
+        w5 *= color2GroupInfluence * colorGroupInfluence;
+        w6 *= color2GroupInfluence * colorGroupInfluence;
+        w7 *= color2GroupInfluence * colorGroupInfluence;
+        w8 *= color2GroupInfluence * colorGroupInfluence;
+        w9 *= whiteGroupInfluence;
+        w10 *= whiteGroupInfluence;
+
+        float s = w0 + w1 + w2 + w3 + w4 + w5 + w6 + w7 + w8 + w9 + w10 + 1e-6;
+        w0 /= s; w1 /= s; w2 /= s; w3 /= s; w4 /= s; w5 /= s; w6 /= s; w7 /= s; w8 /= s; w9 /= s; w10 /= s;
+
+        vec3 col = c0*(w0 + w9 + w10) + c1*(w1 + w5) + c2*(w2 + w6) + c3*(w3 + w7) + c4*(w4 + w8);
+        
+        float totalInfluence = w0 + w1 + w2 + w3 + w4 + w5 + w6 + w7 + w8 + w9 + w10;
+        col = mix(vec3(1.0), col, totalInfluence * 1.5);
+        col = clamp(col, 0.0, 1.0);
+
+        gl_FragColor = vec4(col, 1.0);
       }
     `;
 
-    // Halftone dither shader – pure circles
+    // Halftone dither shader (same as hero9)
     const fragmentShaderDither = `
       precision highp float;
       uniform sampler2D uSource;
       uniform vec2 uResolution;
       uniform float uCellPx;
-      uniform float uDpr;
       uniform float uContrast;
       uniform float uGamma;
+      uniform float uSoftness;
       uniform float uMinR;
       uniform float uMaxR;
       uniform float uDotSpacing;
       uniform float uLumThreshold;
       uniform float uInvertDots;
       uniform float uInvert;
-      uniform vec3 uBgColor;
-      uniform float uBgAlpha;
+      uniform float uBayer;
+      uniform float uBayerStrength;
+
+      float bayerMatrix4x4(vec2 p) {
+        ivec2 ip = ivec2(floor(p));
+        int x = ip.x & 3;
+        int y = ip.y & 3;
+        int index = x + y * 4;
+        float values[16];
+        values[0]=0.0;values[1]=8.0;values[2]=2.0;values[3]=10.0;
+        values[4]=12.0;values[5]=4.0;values[6]=14.0;values[7]=6.0;
+        values[8]=3.0;values[9]=11.0;values[10]=1.0;values[11]=9.0;
+        values[12]=15.0;values[13]=7.0;values[14]=13.0;values[15]=5.0;
+        return values[index]/16.0;
+      }
 
       void main() {
-        // Cell size in PHYSICAL pixels (gl_FragCoord is in physical/device pixels)
-        float cellPx = uCellPx * uDpr;
+        vec2 uv = gl_FragCoord.xy / uResolution;
+        vec3 col = texture2D(uSource, uv).rgb;
+        
+        // Calculate cell position
+        vec2 cellCoord = gl_FragCoord.xy / uCellPx;
+        vec2 cellCenter = floor(cellCoord) + 0.5;
+        vec2 offset = cellCoord - cellCenter;
+        float dist = length(offset);
+        
+        // Sample gradient at cell center to determine dot size
+        vec2 cellCenterUV = cellCenter * uCellPx / uResolution;
+        vec3 cellColor = texture2D(uSource, cellCenterUV).rgb;
+        
+        // Calculate RAW luminance for sizing (before any processing)
+        float rawLum = dot(cellColor, vec3(0.299, 0.587, 0.114));
+        
+        // Control dot size based on RAW luminance
+        // When inverted: darker/colored = bigger dots, white = smaller dots
+        float lumForSize = uInvertDots > 0.5 ? (1.0 - rawLum) : rawLum;
+        
+        // Map lumForSize (0 to 1) directly to radius range
+        float radius = mix(uMinR, uMaxR, lumForSize);
+        // Apply dot spacing by reducing effective radius
+        radius = max(0.0, radius - uDotSpacing);
+        
+        // Now calculate luminance for visual output (with all processing)
+        float lum = dot(col, vec3(0.299, 0.587, 0.114));
+        
+        // Apply luminance threshold
+        lum = max(0.0, lum - uLumThreshold) / max(0.001, 1.0 - uLumThreshold);
+        
+        if (uBayer > 0.5) {
+          float threshold = bayerMatrix4x4(gl_FragCoord.xy);
+          lum = mix(lum, lum + (threshold - 0.5) * uBayerStrength, uBayer);
+        }
 
-        // Cell grid
-        vec2 cellCoord   = (gl_FragCoord.xy - 0.5) / cellPx;
-        vec2 cellCenter  = floor(cellCoord) + 0.5;
-        vec2 local       = fract(cellCoord) - 0.5; // [-0.5, 0.5], circle fits in [0, 0.5]
-        float dist       = length(local);           // 0 = cell centre, 0.5 = inscribed circle edge
-
-        // Sample source at the centre of this cell
-        vec2 cellCenterUV = clamp((cellCenter * cellPx + 0.5) / uResolution, 0.0, 1.0);
-        vec3 cellColor    = texture2D(uSource, cellCenterUV).rgb;
-
-        // Luminance -> tone curve
-        float lum = dot(cellColor, vec3(0.299, 0.587, 0.114));
-        lum = pow(clamp(lum, 0.0, 1.0), max(0.001, uGamma));
-        lum = clamp((lum - 0.5) * uContrast + 0.5, 0.0, 1.0);
-
-        // Radius in cell-units (0 = invisible, 0.5 = fills cell)
-        float t      = uInvertDots > 0.5 ? (1.0 - lum) : lum;
-        float radius = clamp(mix(uMinR, uMaxR, t) - uDotSpacing, 0.0, 0.499);
-
-        // Smooth circle edge: 1 physical pixel wide so it looks round, not jagged
-        float edge  = 1.0 / cellPx;
-        float alpha = 1.0 - smoothstep(radius - edge, radius + edge, dist);
+        lum = pow(lum, uGamma);
+        lum = (lum - 0.5) * uContrast + 0.5;
+        lum = clamp(lum, 0.0, 1.0);
+        float alpha = smoothstep(radius + uSoftness, radius - uSoftness, dist);
+        
         if (uInvert > 0.5) alpha = 1.0 - alpha;
-
-        vec3 finalColor  = mix(uBgColor, cellColor, alpha);
-        float finalAlpha = mix(uBgAlpha, 1.0, alpha);
-        gl_FragColor = vec4(finalColor, finalAlpha);
+        
+        // Output colored dots: use alpha as mask, preserve gradient color
+        vec3 finalColor = col * alpha + vec3(1.0) * (1.0 - alpha);
+        gl_FragColor = vec4(finalColor, 1.0);
       }
     `;
 
@@ -500,140 +551,38 @@ class LiquidGradientEffect {
     this.sceneDither.add(new THREE.Mesh(quad, matDither));
 
     this.createControls();
-    this.loadDefaultImage();
-    this.updateImageFit();
     window.addEventListener('resize', () => this.onWindowResize());
     this.animate();
   }
 
-  getContainerSize() {
-    const w = Math.max(1, this.container?.clientWidth || window.innerWidth);
-    const h = Math.max(1, this.container?.clientHeight || window.innerHeight);
-    return { w, h };
-  }
-
   onWindowResize() {
-    const { w, h } = this.getContainerSize();
+    const w = window.innerWidth;
+    const h = window.innerHeight;
     this.renderer.setSize(w, h);
     const dpr = Math.min(window.devicePixelRatio, 2);
     this.renderTargetLiquid.setSize(Math.floor(w * dpr), Math.floor(h * dpr));
     this.uniformsLiquid.uRes.value.set(w * dpr, h * dpr);
     this.uniformsDither.uResolution.value.set(w * dpr, h * dpr);
-    this.uniformsDither.uDpr.value = dpr;
     if (this.guideCanvas) {
       this.guideCanvas.width = w;
       this.guideCanvas.height = h;
     }
-    this.updateImageFit();
-  }
-
-  loadUploadedImage(file) {
-    if (!file) return;
-
-    const objectUrl = URL.createObjectURL(file);
-    const loader = new THREE.TextureLoader();
-
-    loader.load(
-      objectUrl,
-      (texture) => {
-        this.applyImageTexture(texture);
-        URL.revokeObjectURL(objectUrl);
-      },
-      undefined,
-      () => {
-        URL.revokeObjectURL(objectUrl);
-        console.error('Failed to load uploaded image');
-      }
-    );
-  }
-
-  loadDefaultImage() {
-    const loader = new THREE.TextureLoader();
-    const defaultUrl = new URL(this.config.defaultImagePath, import.meta.url).href;
-
-    loader.load(
-      defaultUrl,
-      (texture) => {
-        this.applyImageTexture(texture);
-      },
-      undefined,
-      () => {
-        console.error('Failed to load default image:', defaultUrl);
-      }
-    );
-  }
-
-  applyImageTexture(texture) {
-    if (this.uploadedTexture) {
-      this.uploadedTexture.dispose();
-    }
-
-    texture.minFilter = THREE.NearestFilter;
-    texture.magFilter = THREE.NearestFilter;
-    texture.wrapS = THREE.ClampToEdgeWrapping;
-    texture.wrapT = THREE.ClampToEdgeWrapping;
-    texture.encoding = THREE.sRGBEncoding;
-
-    this.uploadedTexture = texture;
-    this.uploadedImageAspect = texture.image && texture.image.height
-      ? texture.image.width / texture.image.height
-      : 1;
-    this.uploadedImageNativeWidth  = texture.image ? texture.image.width  : null;
-    this.uploadedImageNativeHeight = texture.image ? texture.image.height : null;
-
-    this.uniformsLiquid.uImage.value = texture;
-    this.uniformsLiquid.uHasImage.value = 1.0;
-    this.updateImageFit();
-  }
-
-  updateImageFit() {
-    const { w, h } = this.getContainerSize();
-    const viewportAspect = w / Math.max(h, 1);
-    const imageAspect = this.uploadedImageAspect || 1;
-
-    let scaleX = 1;
-    let scaleY = 1;
-
-    if (this.config.imageFitContain) {
-      // Contain: full image visible, no crop.
-      if (imageAspect > viewportAspect) {
-        scaleX = 1;
-        scaleY = viewportAspect / imageAspect;
-      } else {
-        scaleX = imageAspect / viewportAspect;
-        scaleY = 1;
-      }
-    } else {
-      // Cover: fill viewport, crop overflow.
-      if (imageAspect > viewportAspect) {
-        scaleX = imageAspect / viewportAspect;
-        scaleY = 1;
-      } else {
-        scaleX = 1;
-        scaleY = viewportAspect / imageAspect;
-      }
-    }
-
-    this.uniformsLiquid.uImageScale.value.set(scaleX, scaleY);
-    this.uniformsLiquid.uImageOffset.value.set(0, 0);
-    this.uniformsLiquid.uFitContain.value = this.config.imageFitContain ? 1.0 : 0.0;
   }
 
   createMotionGuideOverlay() {
     this.guideCanvas = document.createElement('canvas');
-    const { w, h } = this.getContainerSize();
-    this.guideCanvas.width = w;
-    this.guideCanvas.height = h;
+    this.guideCanvas.width = window.innerWidth;
+    this.guideCanvas.height = window.innerHeight;
     this.guideCanvas.style.cssText = `
-      position: absolute;
+      position: fixed;
       left: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
-      z-index: 2;
+      z-index: 9998;
     `;
-    this.container.appendChild(this.guideCanvas);
+    document.body.appendChild(this.guideCanvas);
     this.guideCtx = this.guideCanvas.getContext('2d');
   }
 
@@ -967,35 +916,53 @@ class LiquidGradientEffect {
 
   createControls() {
     const panel = document.createElement('div');
-      panel.style.cssText = `
-        position: relative;
-        background: rgba(255,255,255,0.95); padding: 16px; border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-family: system-ui, sans-serif;
-        font-size: 13px; width: 100%; max-height: calc(100vh - 32px); overflow-y: auto; box-sizing: border-box;
-      `;
-    panel.style.display = 'block';
+    panel.style.cssText = `
+      position: absolute; top: 20px; right: 20px; z-index: 100;
+      background: rgba(255,255,255,0.95); padding: 16px; border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-family: system-ui, sans-serif;
+      font-size: 13px; max-width: 280px; max-height: 70vh; overflow-y: auto;
+    `;
+    let guiVisible = false;
+    panel.style.display = 'none';
 
-    const imageSection = document.createElement('div');
-    imageSection.style.cssText = 'padding: 10px; margin-bottom: 10px; border: 1px solid #eee; border-radius: 6px;';
-
-    const imageLabel = document.createElement('div');
-    imageLabel.textContent = 'Source Image (for Dither Input)';
-    imageLabel.style.cssText = 'font-weight: 600; margin-bottom: 6px; font-size: 12px;';
-
-    const imageInput = document.createElement('input');
-    imageInput.type = 'file';
-    imageInput.accept = 'image/*';
-    imageInput.style.width = '100%';
-    imageInput.addEventListener('change', (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (file) this.loadUploadedImage(file);
-    });
-
-    imageSection.appendChild(imageLabel);
-    imageSection.appendChild(imageInput);
-    panel.appendChild(imageSection);
+    const toggleGuiButton = document.createElement('button');
+    toggleGuiButton.type = 'button';
+    toggleGuiButton.textContent = 'Show GUI';
+    toggleGuiButton.style.cssText = `
+      position: absolute; top: 0; right: 0; z-index: 101;
+      padding: 8px 10px; border: 1px solid #bbb; border-radius: 6px;
+      background: rgba(255,255,255,0.95); color: #222; cursor: pointer;
+      font: 600 12px system-ui, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      display: none;
+    `;
+    toggleGuiButton.onclick = () => {
+      guiVisible = !guiVisible;
+      panel.style.display = guiVisible ? 'block' : 'none';
+      toggleGuiButton.textContent = guiVisible ? 'Hide GUI' : 'Show GUI';
+    };
 
     // Helper functions for UI
+    const makeAccordion = (title, openByDefault = false) => {
+      const container = document.createElement('div');
+      container.style.marginBottom = '8px';
+      
+      const header = document.createElement('div');
+      header.style.cssText = 'cursor: pointer; padding: 8px; background: #f0f0f0; border-radius: 4px; font-weight: 600; user-select: none;';
+      header.textContent = title;
+      
+      const content = document.createElement('div');
+      content.style.cssText = `padding: 8px 4px; display: ${openByDefault ? 'block' : 'none'};`;
+      
+      header.onclick = () => {
+        const isOpen = content.style.display === 'block';
+        content.style.display = isOpen ? 'none' : 'block';
+      };
+      
+      container.appendChild(header);
+      container.appendChild(content);
+      
+      return { container, content };
+    };
 
     const makeLabel = (text) => {
       const label = document.createElement('label');
@@ -1044,6 +1011,14 @@ class LiquidGradientEffect {
       return wrapper;
     };
 
+    const makeColor = (value, onChange) => {
+      const input = document.createElement('input');
+      input.type = 'color';
+      input.value = value;
+      input.addEventListener('input', () => onChange(input.value));
+      return input;
+    };
+
     const makeCheckbox = (checked, onChange) => {
       const input = document.createElement('input');
       input.type = 'checkbox';
@@ -1052,64 +1027,204 @@ class LiquidGradientEffect {
       return input;
     };
 
-    const inputLayerSection = document.createElement('div');
-    inputLayerSection.style.cssText = 'padding: 10px; margin-bottom: 10px; border: 1px solid #eee; border-radius: 6px;';
+    const hexToRgb = (hex) => {
+      const h = hex.replace('#', '').trim();
+      const r = parseInt(h.slice(0, 2), 16) / 255;
+      const g = parseInt(h.slice(2, 4), 16) / 255;
+      const b = parseInt(h.slice(4, 6), 16) / 255;
+      return { r, g, b };
+    };
 
-    const inputLayerTitle = document.createElement('div');
-    inputLayerTitle.textContent = 'Input Layer';
-    inputLayerTitle.style.cssText = 'font-weight: 600; margin-bottom: 8px; font-size: 12px;';
-    inputLayerSection.appendChild(inputLayerTitle);
+    const rgbToHex = (color) => {
+      const toHex = (c) => {
+        const v = Math.max(0, Math.min(255, Math.round(c * 255)));
+        return v.toString(16).padStart(2, '0');
+      };
+      return `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`;
+    };
 
-    const inputSaturationLabel = makeLabel('Input Saturation');
-    inputSaturationLabel.appendChild(makeRange(0.0, 2.0, 0.01, this.config.inputSaturation, (v) => {
-      this.config.inputSaturation = v;
-      this.uniformsLiquid.uInputSaturation.value = v;
+    // Liquid Gradient section
+    const liquidSection = makeAccordion('Liquid Gradient', true);
+
+    const warpLabel = makeLabel('Warp Amount');
+    warpLabel.appendChild(makeRange(0, 2, 0.1, this.config.warpAmp, (v) => {
+      this.uniformsLiquid.warpAmp.value = v;
     }));
 
-    const inputBrightnessLabel = makeLabel('Input Brightness');
-    inputBrightnessLabel.appendChild(makeRange(0.0, 2.0, 0.01, this.config.inputBrightness, (v) => {
-      this.config.inputBrightness = v;
-      this.uniformsLiquid.uInputBrightness.value = v;
+    const sharpLabel = makeLabel('Edge Sharpness');
+    sharpLabel.appendChild(makeRange(1, 20, 0.5, this.config.sharpness, (v) => {
+      this.uniformsLiquid.sharp.value = v;
     }));
 
-    const fitContainLabel = makeLabel('Contain (no crop)');
-    fitContainLabel.appendChild(makeCheckbox(this.config.imageFitContain, (v) => {
-      this.config.imageFitContain = v;
-      this.updateImageFit();
+    const speedLabel = makeLabel('Speed');
+    speedLabel.appendChild(makeRange(0, 3, 0.1, this.config.speed, (v) => {
+      this.config.speed = v;
     }));
 
-    const inputWhiteThresholdLabel = makeLabel('White BG Threshold');
-    inputWhiteThresholdLabel.appendChild(makeRange(0.85, 1.0, 0.005, this.config.inputWhiteThreshold, (v) => {
-      this.config.inputWhiteThreshold = v;
-      this.uniformsLiquid.uInputWhiteThreshold.value = v;
+    liquidSection.content.appendChild(warpLabel);
+    liquidSection.content.appendChild(sharpLabel);
+    liquidSection.content.appendChild(speedLabel);
+    panel.appendChild(liquidSection.container);
+
+    // Colors section
+    const colorsSection = makeAccordion('Colors', false);
+
+    const makeHexColorInput = (hex, onChange) => {
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.gap = '8px';
+      wrapper.style.alignItems = 'center';
+      const input = document.createElement('input');
+      input.type = 'color';
+      input.value = hex;
+      input.style.width = '32px';
+      input.style.height = '32px';
+      const hexInput = document.createElement('input');
+      hexInput.type = 'text';
+      hexInput.value = hex;
+      hexInput.style.width = '70px';
+      hexInput.style.fontSize = '12px';
+      hexInput.style.marginLeft = '6px';
+      hexInput.style.border = '1px solid #ccc';
+      hexInput.style.borderRadius = '4px';
+      hexInput.style.padding = '2px 4px';
+      input.addEventListener('input', () => {
+        hexInput.value = input.value;
+        onChange(input.value);
+      });
+      hexInput.addEventListener('input', () => {
+        if (/^#([0-9a-fA-F]{6})$/.test(hexInput.value)) {
+          input.value = hexInput.value;
+          onChange(hexInput.value);
+        }
+      });
+      wrapper.appendChild(input);
+      wrapper.appendChild(hexInput);
+      return wrapper;
+    };
+
+    const whiteLabel = makeLabel('White');
+    whiteLabel.appendChild(makeHexColorInput(rgbToHex(this.config.colorWhite), (hex) => {
+      const c = hexToRgb(hex);
+      this.config.colorWhite = c;
+      this.updateGradientColors();
     }));
 
-    const inputWhiteFeatherLabel = makeLabel('White BG Feather');
-    inputWhiteFeatherLabel.appendChild(makeRange(0.0, 0.2, 0.005, this.config.inputWhiteFeather, (v) => {
-      this.config.inputWhiteFeather = v;
-      this.uniformsLiquid.uInputWhiteFeather.value = v;
+    const blueLabel = makeLabel('Blue');
+    blueLabel.appendChild(makeHexColorInput(rgbToHex(this.config.colorBlue), (hex) => {
+      const c = hexToRgb(hex);
+      this.config.colorBlue = c;
+      this.updateGradientColors();
     }));
 
-    const inputWhiteSatMaxLabel = makeLabel('White BG Saturation Max');
-    inputWhiteSatMaxLabel.appendChild(makeRange(0.0, 0.3, 0.005, this.config.inputWhiteSatMax, (v) => {
-      this.config.inputWhiteSatMax = v;
-      this.uniformsLiquid.uInputWhiteSatMax.value = v;
+    const tealLabel = makeLabel('Teal');
+    tealLabel.appendChild(makeHexColorInput(rgbToHex(this.config.colorTeal), (hex) => {
+      const c = hexToRgb(hex);
+      this.config.colorTeal = c;
+      this.updateGradientColors();
     }));
 
-    inputLayerSection.appendChild(inputSaturationLabel);
-    inputLayerSection.appendChild(inputBrightnessLabel);
-    inputLayerSection.appendChild(fitContainLabel);
-    inputLayerSection.appendChild(inputWhiteThresholdLabel);
-    inputLayerSection.appendChild(inputWhiteFeatherLabel);
-    inputLayerSection.appendChild(inputWhiteSatMaxLabel);
-    panel.appendChild(inputLayerSection);
-    const glyphSection = document.createElement('div');
-    glyphSection.style.cssText = 'padding: 10px; margin-bottom: 10px; border: 1px solid #eee; border-radius: 6px;';
+    const purpleLabel = makeLabel('Purple');
+    purpleLabel.appendChild(makeHexColorInput(rgbToHex(this.config.colorPurple), (hex) => {
+      const c = hexToRgb(hex);
+      this.config.colorPurple = c;
+      this.updateGradientColors();
+    }));
 
-    const glyphTitle = document.createElement('div');
-    glyphTitle.textContent = 'Glyph Dither';
-    glyphTitle.style.cssText = 'font-weight: 600; margin-bottom: 8px; font-size: 12px;';
-    glyphSection.appendChild(glyphTitle);
+    const pinkLabel = makeLabel('Pink');
+    pinkLabel.appendChild(makeHexColorInput(rgbToHex(this.config.colorPink), (hex) => {
+      const c = hexToRgb(hex);
+      this.config.colorPink = c;
+      this.updateGradientColors();
+    }));
+
+    const color2GroupInfluenceLabel = makeLabel('Color 2 Influence');
+    color2GroupInfluenceLabel.appendChild(makeRange(0.0, 4.0, 0.01, this.config.color2GroupInfluence, (v) => {
+      this.config.color2GroupInfluence = v;
+      this.uniformsLiquid.color2GroupInfluence.value = v;
+    }));
+
+    const saturationLabel = makeLabel('Saturation');
+    saturationLabel.appendChild(makeRange(0.0, 4.0, 0.01, this.config.gradientSaturation, (v) => {
+      this.config.gradientSaturation = v;
+      this.updateGradientColors();
+    }));
+
+    const brightnessLabel = makeLabel('Brightness');
+    brightnessLabel.appendChild(makeRange(0.0, 2.0, 0.01, this.config.gradientBrightness, (v) => {
+      this.config.gradientBrightness = v;
+      this.updateGradientColors();
+    }));
+
+    const whiteGroupInfluenceLabel = makeLabel('White Influence');
+    const whiteGroupInfluenceControl = makeRange(0.0, 4.0, 0.01, this.config.whiteGroupInfluence, (v) => {
+      this.config.whiteGroupInfluence = v;
+      this.uniformsLiquid.whiteGroupInfluence.value = v;
+    });
+    whiteGroupInfluenceLabel.appendChild(whiteGroupInfluenceControl);
+
+    const colorGroupInfluenceLabel = makeLabel('Color Group Influence');
+    const colorGroupInfluenceControl = makeRange(0.0, 4.0, 0.01, this.config.colorGroupInfluence, (v) => {
+      this.config.colorGroupInfluence = v;
+      this.uniformsLiquid.colorGroupInfluence.value = v;
+    });
+    colorGroupInfluenceLabel.appendChild(colorGroupInfluenceControl);
+
+    colorsSection.content.appendChild(whiteLabel);
+    colorsSection.content.appendChild(blueLabel);
+    colorsSection.content.appendChild(tealLabel);
+    colorsSection.content.appendChild(purpleLabel);
+    colorsSection.content.appendChild(pinkLabel);
+    colorsSection.content.appendChild(color2GroupInfluenceLabel);
+    colorsSection.content.appendChild(saturationLabel);
+    colorsSection.content.appendChild(brightnessLabel);
+    colorsSection.content.appendChild(whiteGroupInfluenceLabel);
+    colorsSection.content.appendChild(colorGroupInfluenceLabel);
+    panel.appendChild(colorsSection.container);
+
+    // Movement Zones section
+    const movementSection = makeAccordion('Movement Zones', false);
+    const showGuidesLabel = makeLabel('Show Motion Guides');
+    const showGuidesCheckbox = makeCheckbox(this.config.showMotionGuides, (v) => {
+      this.config.showMotionGuides = v;
+    });
+    showGuidesLabel.appendChild(showGuidesCheckbox);
+    movementSection.content.appendChild(showGuidesLabel);
+
+    const addMovementSlider = (parent, field, text, min, max, step) => {
+      const label = makeLabel(text);
+      const range = makeRange(min, max, step, this.config[field], (v) => {
+        this.config[field] = v;
+      });
+      label.appendChild(range);
+      parent.appendChild(label);
+    };
+
+    for (const def of this.centerDefs) {
+      const group = document.createElement('div');
+      group.style.cssText = 'padding: 8px; border: 1px solid #eee; border-radius: 6px; margin-bottom: 10px;';
+
+      const groupTitle = document.createElement('div');
+      groupTitle.textContent = def.label;
+      groupTitle.style.cssText = 'font-weight: 600; margin-bottom: 6px; font-size: 12px;';
+      group.appendChild(groupTitle);
+
+      addMovementSlider(group, `${def.key}ZoneCenterX`, 'Center X', -1.5, 1.5, 0.01);
+      addMovementSlider(group, `${def.key}ZoneCenterY`, 'Center Y', -1.0, 1.0, 0.01);
+      addMovementSlider(group, `${def.key}ZoneHalfWidth`, 'Half Width', 0.0, 1.5, 0.01);
+      addMovementSlider(group, `${def.key}ZoneHalfHeight`, 'Half Height', 0.0, 1.5, 0.01);
+      addMovementSlider(group, `${def.key}SpeedMulX`, 'Speed X', 0.0, 4.0, 0.01);
+      addMovementSlider(group, `${def.key}SpeedMulY`, 'Speed Y', 0.0, 4.0, 0.01);
+      addMovementSlider(group, `${def.key}PhaseX`, 'Phase X', -6.283, 6.283, 0.01);
+      addMovementSlider(group, `${def.key}PhaseY`, 'Phase Y', -6.283, 6.283, 0.01);
+
+      movementSection.content.appendChild(group);
+    }
+
+    panel.appendChild(movementSection.container);
+
+    // Glyph Dither section
+    const glyphSection = makeAccordion('Glyph Dither', false);
 
     const cellLabel = makeLabel('Cell Size (px)');
     cellLabel.appendChild(makeRange(6.0, 24.0, 1.0, this.config.cellPx, (v) => {
@@ -1126,25 +1241,24 @@ class LiquidGradientEffect {
       this.uniformsDither.uGamma.value = v;
     }));
 
+    const softnessLabel = makeLabel('Softness');
+    softnessLabel.appendChild(makeRange(0.0, 0.1, 0.01, this.config.softness, (v) => {
+      this.uniformsDither.uSoftness.value = v;
+    }));
+
     const minRLabel = makeLabel('Min Radius');
     minRLabel.appendChild(makeRange(0.0, 0.5, 0.01, this.config.minR, (v) => {
       this.uniformsDither.uMinR.value = v;
     }));
 
     const maxRLabel = makeLabel('Max Radius');
-    maxRLabel.appendChild(makeRange(0.0, 0.7, 0.01, this.config.maxR, (v) => {
+    maxRLabel.appendChild(makeRange(0.0, 0.5, 0.01, this.config.maxR, (v) => {
       this.uniformsDither.uMaxR.value = v;
     }));
 
-    const dotSpacingLabel = makeLabel('Dot Spacing (+gap / -overlap)');
-    dotSpacingLabel.appendChild(makeRange(-0.3, 0.3, 0.01, this.config.dotSpacing, (v) => {
+    const dotSpacingLabel = makeLabel('Dot Spacing');
+    dotSpacingLabel.appendChild(makeRange(0.0, 0.3, 0.01, this.config.dotSpacing, (v) => {
       this.uniformsDither.uDotSpacing.value = v;
-    }));
-
-    const lumThresholdLabel = makeLabel('Lum Threshold');
-    lumThresholdLabel.appendChild(makeRange(0.0, 1.0, 0.01, this.config.lumThreshold, (v) => {
-      this.config.lumThreshold = v;
-      this.uniformsDither.uLumThreshold.value = v;
     }));
 
     const ditherToggleLabel = makeLabel('Show Layer');
@@ -1159,45 +1273,16 @@ class LiquidGradientEffect {
       this.uniformsDither.uInvert.value = v ? 1.0 : 0.0;
     }));
 
-    // Background color helpers
-    const toHex = (r, g, b) =>
-      '#' + [r, g, b].map(v => Math.round(v * 255).toString(16).padStart(2, '0')).join('');
-    const fromHex = (hex) => ({
-      r: parseInt(hex.slice(1, 3), 16) / 255,
-      g: parseInt(hex.slice(3, 5), 16) / 255,
-      b: parseInt(hex.slice(5, 7), 16) / 255
-    });
-
-    const bgColorLabel = makeLabel('Background Color');
-    const bgColorPicker = document.createElement('input');
-    bgColorPicker.type = 'color';
-    bgColorPicker.value = toHex(this.config.bgColor.r, this.config.bgColor.g, this.config.bgColor.b);
-    bgColorPicker.style.cssText = 'width: 100%; height: 32px; padding: 2px; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; box-sizing: border-box;';
-    bgColorPicker.addEventListener('input', () => {
-      const c = fromHex(bgColorPicker.value);
-      this.config.bgColor = c;
-      this.uniformsDither.uBgColor.value.set(c.r, c.g, c.b);
-    });
-    bgColorLabel.appendChild(bgColorPicker);
-
-    const bgAlphaLabel = makeLabel('Background Opacity');
-    bgAlphaLabel.appendChild(makeRange(0.0, 1.0, 0.01, this.config.bgAlpha, (v) => {
-      this.config.bgAlpha = v;
-      this.uniformsDither.uBgAlpha.value = v;
-    }));
-
-    glyphSection.appendChild(bgColorLabel);
-    glyphSection.appendChild(bgAlphaLabel);
-    glyphSection.appendChild(ditherToggleLabel);
-    glyphSection.appendChild(cellLabel);
-    glyphSection.appendChild(contrastLabel);
-    glyphSection.appendChild(gammaLabel);
-    glyphSection.appendChild(minRLabel);
-    glyphSection.appendChild(maxRLabel);
-    glyphSection.appendChild(dotSpacingLabel);
-    glyphSection.appendChild(lumThresholdLabel);
-    glyphSection.appendChild(invertLabel);
-    panel.appendChild(glyphSection);
+    glyphSection.content.appendChild(ditherToggleLabel);
+    glyphSection.content.appendChild(cellLabel);
+    glyphSection.content.appendChild(contrastLabel);
+    glyphSection.content.appendChild(gammaLabel);
+    glyphSection.content.appendChild(softnessLabel);
+    glyphSection.content.appendChild(minRLabel);
+    glyphSection.content.appendChild(maxRLabel);
+    glyphSection.content.appendChild(dotSpacingLabel);
+    glyphSection.content.appendChild(invertLabel);
+    panel.appendChild(glyphSection.container);
 
     // Sync uniforms with loaded config values
     this.syncUniformsWithConfig();
@@ -1219,21 +1304,33 @@ class LiquidGradientEffect {
     downloadButton.onmouseover = () => downloadButton.style.background = '#0b7dda';
     downloadButton.onmouseout = () => downloadButton.style.background = '#2196F3';
     downloadButton.onclick = () => this.downloadSettings();
-
-    const downloadOutputButton = document.createElement('button');
-    downloadOutputButton.textContent = 'Download Output PNG';
-    downloadOutputButton.style.cssText = 'padding: 10px; background: #8E44AD; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;';
-    downloadOutputButton.onmouseover = () => downloadOutputButton.style.background = '#7D3C98';
-    downloadOutputButton.onmouseout = () => downloadOutputButton.style.background = '#8E44AD';
-    downloadOutputButton.onclick = () => this.downloadOutput();
     
     buttonsDiv.appendChild(saveButton);
     buttonsDiv.appendChild(downloadButton);
-    buttonsDiv.appendChild(downloadOutputButton);
     panel.appendChild(buttonsDiv);
 
-    const mount = this.guiContainer || document.body;
-    mount.appendChild(panel);
+    const hero11Section = document.querySelector('.hero-section.home-section-1');
+    if (hero11Section) {
+      hero11Section.style.position = 'relative';
+      // Create a container for the GUI elements if not present
+      let guiContainer = hero11Section.querySelector('.hero11-webgl-gui-container');
+      if (!guiContainer) {
+        guiContainer = document.createElement('div');
+        guiContainer.className = 'hero11-webgl-gui-container';
+        guiContainer.style.position = 'absolute';
+        guiContainer.style.top = '0';
+        guiContainer.style.right = '0';
+        guiContainer.style.width = 'auto';
+        guiContainer.style.height = 'auto';
+        guiContainer.style.zIndex = '100';
+        hero11Section.appendChild(guiContainer);
+      }
+      guiContainer.appendChild(toggleGuiButton);
+      guiContainer.appendChild(panel);
+    } else {
+      document.body.appendChild(toggleGuiButton);
+      document.body.appendChild(panel);
+    }
   }
 
   saveSettings() {
@@ -1249,7 +1346,7 @@ class LiquidGradientEffect {
   }
 
   loadSettings() {
-    // Always boot Hero 10 from in-code defaults; ignore persisted localStorage.
+    // Always boot Hero 11 from in-code defaults; ignore persisted localStorage.
     console.log('Ignoring saved settings; using in-code defaults');
     return null;
   }
@@ -1261,7 +1358,7 @@ class LiquidGradientEffect {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `hero10-liquid-pattern-tool-settings-${Date.now()}.json`;
+      a.download = `home-hero-background-settings-${Date.now()}.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -1281,104 +1378,6 @@ class LiquidGradientEffect {
     }
   }
 
-  downloadOutput() {
-    const btn = event.target;
-    try {
-      // Use native input image size; fall back to current viewport
-      const imgW = this.uploadedImageNativeWidth  || this.getContainerSize().w;
-      const imgH = this.uploadedImageNativeHeight || this.getContainerSize().h;
-
-      // Off-screen render targets at native image resolution
-      const rtLiquid = new THREE.WebGLRenderTarget(imgW, imgH, {
-        minFilter: THREE.LinearFilter,
-        magFilter: THREE.LinearFilter,
-        format: THREE.RGBAFormat
-      });
-      const rtDither = new THREE.WebGLRenderTarget(imgW, imgH, {
-        minFilter: THREE.LinearFilter,
-        magFilter: THREE.LinearFilter,
-        format: THREE.RGBAFormat
-      });
-
-      // Stash uniforms we temporarily override
-      const prevLiqRes  = this.uniformsLiquid.uRes.value.clone();
-      const prevScale   = this.uniformsLiquid.uImageScale.value.clone();
-      const prevOffset  = this.uniformsLiquid.uImageOffset.value.clone();
-      const prevFit     = this.uniformsLiquid.uFitContain.value;
-      const prevRes     = this.uniformsDither.uResolution.value.clone();
-      const prevDpr     = this.uniformsDither.uDpr.value;
-      const prevSource  = this.uniformsDither.uSource.value;
-
-      // Override for native-res render
-      // Image fills the output 1:1 (no letterbox bars)
-      this.uniformsLiquid.uRes.value.set(imgW, imgH);
-      this.uniformsLiquid.uImageScale.value.set(1, 1);
-      this.uniformsLiquid.uImageOffset.value.set(0, 0);
-      this.uniformsLiquid.uFitContain.value = 1.0;
-      this.uniformsDither.uResolution.value.set(imgW, imgH);
-      this.uniformsDither.uDpr.value = 1.0;  // render target has no screen DPR
-      this.uniformsDither.uSource.value = rtLiquid.texture;
-
-      // Liquid pass → rtLiquid
-      this.renderer.setRenderTarget(rtLiquid);
-      this.renderer.render(this.sceneLiquid, this.camera);
-
-      // Dither pass → rtDither
-      this.renderer.setRenderTarget(rtDither);
-      this.renderer.render(this.sceneDither, this.camera);
-
-      // Read raw pixels (WebGL returns rows bottom-up)
-      const pixels = new Uint8Array(imgW * imgH * 4);
-      this.renderer.readRenderTargetPixels(rtDither, 0, 0, imgW, imgH, pixels);
-
-      // Restore everything
-      this.renderer.setRenderTarget(null);
-      this.uniformsLiquid.uRes.value.copy(prevLiqRes);
-      this.uniformsLiquid.uImageScale.value.copy(prevScale);
-      this.uniformsLiquid.uImageOffset.value.copy(prevOffset);
-      this.uniformsLiquid.uFitContain.value = prevFit;
-      this.uniformsDither.uResolution.value.copy(prevRes);
-      this.uniformsDither.uDpr.value = prevDpr;
-      this.uniformsDither.uSource.value = prevSource;
-      rtLiquid.dispose();
-      rtDither.dispose();
-
-      // Flip rows (WebGL origin is bottom-left, canvas is top-left)
-      const canvas = document.createElement('canvas');
-      canvas.width  = imgW;
-      canvas.height = imgH;
-      const ctx = canvas.getContext('2d');
-      const imageData = ctx.createImageData(imgW, imgH);
-      for (let row = 0; row < imgH; row++) {
-        const srcRow = imgH - 1 - row;
-        imageData.data.set(
-          pixels.subarray(srcRow * imgW * 4, (srcRow + 1) * imgW * 4),
-          row * imgW * 4
-        );
-      }
-      ctx.putImageData(imageData, 0, 0);
-
-      canvas.toBlob((blob) => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `pattern-tool-output-${Date.now()}.png`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        const orig = btn.textContent;
-        btn.textContent = 'Downloaded!';
-        setTimeout(() => { btn.textContent = orig; }, 1500);
-      }, 'image/png');
-
-      console.log(`Output downloaded at ${imgW}×${imgH} (native image size)`);
-    } catch (error) {
-      console.error('Failed to download output image:', error);
-      alert('Failed to download output image: ' + error.message);
-    }
-  }
-
   syncUniformsWithConfig() {
     // Sync all uniforms with config values (used after loading settings)
     this.uniformsLiquid.warpAmp.value = this.config.warpAmp;
@@ -1395,25 +1394,20 @@ class LiquidGradientEffect {
     this.uniformsLiquid.color2GroupInfluence.value = this.config.color2GroupInfluence;
     this.uniformsLiquid.whiteGroupInfluence.value = this.config.whiteGroupInfluence;
     this.uniformsLiquid.colorGroupInfluence.value = this.config.colorGroupInfluence;
-    this.uniformsLiquid.uInputSaturation.value = this.config.inputSaturation;
-    this.uniformsLiquid.uInputBrightness.value = this.config.inputBrightness;
-    this.uniformsLiquid.uFitContain.value = this.config.imageFitContain ? 1.0 : 0.0;
-    this.uniformsLiquid.uInputWhiteThreshold.value = this.config.inputWhiteThreshold;
-    this.uniformsLiquid.uInputWhiteFeather.value = this.config.inputWhiteFeather;
-    this.uniformsLiquid.uInputWhiteSatMax.value = this.config.inputWhiteSatMax;
     this.updateGradientColors();
     
     this.uniformsDither.uCellPx.value = this.config.cellPx;
     this.uniformsDither.uContrast.value = this.config.contrast;
     this.uniformsDither.uGamma.value = this.config.gamma;
+    this.uniformsDither.uSoftness.value = this.config.softness;
     this.uniformsDither.uMinR.value = this.config.minR;
     this.uniformsDither.uMaxR.value = this.config.maxR;
     this.uniformsDither.uDotSpacing.value = this.config.dotSpacing;
     this.uniformsDither.uLumThreshold.value = this.config.lumThreshold;
     this.uniformsDither.uInvertDots.value = this.config.invertDots ? 1.0 : 0.0;
     this.uniformsDither.uInvert.value = this.config.invert ? 1.0 : 0.0;
-    this.uniformsDither.uBgColor.value.set(this.config.bgColor.r, this.config.bgColor.g, this.config.bgColor.b);
-    this.uniformsDither.uBgAlpha.value = this.config.bgAlpha;
+    this.uniformsDither.uBayer.value = this.config.bayer ? 1.0 : 0.0;
+    this.uniformsDither.uBayerStrength.value = this.config.bayerStrength;
     
     // Restore layer toggle
     this.layerToggles.glyphDither = this.config.showGlyphDither;
