@@ -1,0 +1,17 @@
+---
+/**
+ * Deprecated compatibility wrapper.
+ * New implementation lives in src/components/home/ResearchTabsSection.astro
+ */
+import ResearchTabsSection from './home/ResearchTabsSection.astro';
+import type { CMSDictionary, Locale } from '../lib/cms/types';
+
+interface Props {
+  locale?: Locale;
+  copy?: CMSDictionary;
+}
+
+const { locale = 'en', copy = {} as CMSDictionary } = Astro.props as Props;
+---
+
+<ResearchTabsSection locale={locale} copy={copy} />
