@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 144 144">
+  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+      }
+
+      .st1 {
+        fill: #bed63a;
+      }
+    </style>
+  </defs>
+  <path id="Chart" class="st1" d="M133.6,113.5v11.3c0,8.3-6.7,15-15,15s-15-6.7-15-15v-11.3c0-8.3,6.7-15,15-15s15,6.7,15,15ZM71.9,52.4c-8.3,0-15,6.7-15,15v57.3c0,8.3,6.7,15,15,15s15-6.7,15-15v-57.3c0-8.3-6.7-15-15-15ZM25.4,4.2c-8.3,0-15,6.7-15,15v105.6c0,8.3,6.7,15,15,15s15-6.7,15-15V19.2c0-8.3-6.7-15-15-15Z"/>
+  <rect class="st0" width="144" height="144"/>
+  <rect class="st0" width="144" height="144"/>
+</svg>

@@ -383,10 +383,12 @@ const screenSrc = `${base}images/dashboard.png`;
   /* RIGHT VISUAL */
   .right-visual {
     position: relative;
-    flex: 1 1 auto;
-    width: auto;
+    flex: 0 0 860px;
+    width: 860px;
+    max-width: none;
     min-width: 0;
     margin-left: auto;
+    overflow: visible;
   }
 
   .screen-wrapper {
@@ -401,9 +403,11 @@ const screenSrc = `${base}images/dashboard.png`;
 
   .custom-box-layout {
     position: relative;
-    width: 100%;
+    width: 860px;
+    max-width: none;
     height: 600px;
     min-height: 400px;
+    margin-left: 0;
   }
   .custom-box-layout .box {
     position: absolute;
@@ -675,8 +679,16 @@ const screenSrc = `${base}images/dashboard.png`;
     }
 
     .right-visual {
+      flex: 0 0 100%;
       width: 100%;
+      max-width: 100%;
       height: auto;
+      overflow: visible;
+    }
+
+    .custom-box-layout {
+      width: 100%;
+      min-height: 320px;
     }
 
     .left-text {
@@ -781,6 +793,23 @@ const screenSrc = `${base}images/dashboard.png`;
   function parsePercentValue(value: string): number {
     const parsed = Number.parseFloat(value.replace('%', ''));
     return Number.isFinite(parsed) ? parsed : 0;
+  }
+
+  function normalizeBoxVisual() {
+    const boxVisual = document.getElementById('boxVisual') as HTMLElement | null;
+    const container = document.getElementById('rightVisual') as HTMLElement | null;
+    if (!boxVisual || !container) return;
+
+    // Use a stable, screen-size-based normalization (not per-tab):
+    // Across tab states, composition bounds are approximately minX=176, maxX=878.
+    const contentMinX = 176;
+    const contentWidth = 702;
+    const containerWidth = container.clientWidth || boxVisual.clientWidth || 860;
+    const scale = Math.min(1, containerWidth / contentWidth);
+    const offsetX = ((containerWidth - contentWidth * scale) / 2) - (contentMinX * scale);
+
+    boxVisual.style.transformOrigin = 'top left';
+    boxVisual.style.transform = `translateX(${offsetX}px) scale(${scale})`;
   }
 
   function applyConfig(idx: number, skipTransition = false) {
@@ -1319,6 +1348,12 @@ const screenSrc = `${base}images/dashboard.png`;
       if (guiBody) guiBody.style.display = guiExpanded ? '' : 'none';
       if (guiToggle) guiToggle.textContent = guiExpanded ? '−' : '+';
       guiPanel?.classList.toggle('is-collapsed', !guiExpanded);
+    });
+
+    normalizeBoxVisual();
+
+    window.addEventListener('resize', () => {
+      normalizeBoxVisual();
     });
   });
 </script>

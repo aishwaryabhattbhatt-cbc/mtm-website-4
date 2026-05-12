@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 
 class LiquidGradientEffect {
-  constructor() {
+  constructor(containerId = 'webgl-background-10') {
     console.log('Initializing LiquidGradientEffect...');
     this.storageKey = 'research-hero-background-settings';
     this.settingsVersion = 2;
@@ -228,9 +228,9 @@ class LiquidGradientEffect {
       glyphDither: this.config.showGlyphDither
     };
 
-    this.container = document.getElementById('webgl-background-10');
+    this.container = document.getElementById(containerId);
     if (!this.container) {
-      console.error('Container #webgl-background-10 not found!');
+      console.error(`Container #${containerId} not found!`);
       return;
     }
 
@@ -1445,11 +1445,24 @@ class LiquidGradientEffect {
 
 // Initialize
 function init() {
-  try {
-    new LiquidGradientEffect();
-  } catch (error) {
-    console.error('Failed to initialize:', error);
+  const ids = new Set();
+  const variantContainers = document.querySelectorAll('[data-webgl-variant="research"]');
+
+  variantContainers.forEach((el) => {
+    if (el.id) ids.add(el.id);
+  });
+
+  if (ids.size === 0) {
+    ids.add('webgl-background-10');
   }
+
+  ids.forEach((id) => {
+    try {
+      new LiquidGradientEffect(id);
+    } catch (error) {
+      console.error(`Failed to initialize container #${id}:`, error);
+    }
+  });
 }
 
 if (document.readyState === 'loading') {

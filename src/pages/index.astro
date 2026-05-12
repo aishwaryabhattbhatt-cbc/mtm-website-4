@@ -6,15 +6,16 @@ const base = import.meta.env.BASE_URL;
 <Layout title="Redirecting to MTM" description="Redirecting to the MTM homepage." locale="en" noindex={true}>
     <Fragment slot="head">
         <meta http-equiv="refresh" content={`0;url=${base}en/`} />
+        <script is:inline>
+            window.location.replace(`${base}en/`);
+        </script>
     </Fragment>
 
-        <main class="content-boundary redirect-main">
-        <a href={`${base}en/`}>Go to English site</a>
-    </main>
+    <main class="redirect-main" aria-hidden="true"></main>
 </Layout>
 
 <style>
     .redirect-main {
-        padding-top: calc(var(--navbar-height) + 32px);
+        display: none;
     }
 </style>

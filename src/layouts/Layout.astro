@@ -26,7 +26,7 @@ const {
 const base = import.meta.env.BASE_URL;
 const siteUrl = Astro.site ? new URL(base, Astro.site).toString() : undefined;
 const resolvedCanonical = canonicalUrl ?? (Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined);
-const socialImage = siteUrl ? new URL('favicon.svg', siteUrl).toString() : undefined;
+const socialImage = siteUrl ? new URL('images/mtm-favicon.svg', siteUrl).toString() : undefined;
 const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
 ---
 
@@ -59,8 +59,8 @@ const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
 		<meta name="twitter:description" content={description} />
 		{socialImage && <meta name="twitter:image" content={socialImage} />}
 
-		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
-		<link rel="icon" href={`${base}favicon.ico`} />
+		<link rel="icon" type="image/svg+xml" href={`${base}images/mtm-favicon.svg`} />
+		<link rel="alternate icon" type="image/svg+xml" href={`${base}images/mtm-favicon.svg`} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />

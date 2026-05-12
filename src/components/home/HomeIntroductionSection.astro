@@ -14,7 +14,7 @@ const { locale, copy } = Astro.props as Props;
 <!-- Home Section 2: Hero with WebGL Noise Warp Background -->
 <section class="hero-section home-section-2">
     <!-- WebGL Noise Warp Canvas (Three.js) -->
-    <div id="webgl-background-10" class="webgl-background"></div>
+    <div id="webgl-background-10" class="webgl-background" data-webgl-variant="research"></div>
 
     <!-- Grain Overlay for Texture -->
     <div class="grain-overlay-10 grain-overlay"></div>
@@ -57,6 +57,8 @@ const { locale, copy } = Astro.props as Props;
         position: relative;
         margin-top: 0 !important;
         height: 100vh;
+        width: 100%;
+        overflow: hidden;
     }
 
     .home-section-2 .box-gui-panel {

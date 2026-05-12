@@ -7,7 +7,7 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/mtm-website-4/favicon.svg",
+      "src": "/mtm-website-4/images/mtm-favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
