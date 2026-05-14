@@ -102,7 +102,7 @@ const copyKeys = {
     }
 
     .home-section-1 .hero-content {
-        max-width: 700px;
+        max-width: min(700px, calc(100% - 700px));
         display: flex;
         flex-direction: column;
         align-self: flex-start;
@@ -230,6 +230,62 @@ const copyKeys = {
         100% {
             opacity: 1;
             transform: translateY(0);
+        }
+    }
+
+    /* Proportional scale-down: 1555px → 1440px
+       Both columns shrink at the same rate (ratio of available content widths: 1200÷1315 = 0.913)
+       --hero-scale interpolates linearly between 1.0 and 0.913 across this range */
+    @media (min-width: 1440px) and (max-width: 1554px) {
+        .home-section-1 .hero-container {
+            --hero-scale: calc(0.913 + (100vw - 1440px) / 1321px);
+        }
+
+        .home-section-1 .hero-content {
+            /* reserve collage width + 80px gap — text narrows instead of the gap collapsing */
+            max-width: calc(100% - 620px * var(--hero-scale) - 80px);
+            gap: calc(24px * var(--hero-scale));
+        }
+
+        .hero-title {
+            font-size: calc(var(--fs-hero) * var(--hero-scale));
+        }
+
+        .hero-subtitle {
+            font-size: calc(var(--fs-body-xl) * var(--hero-scale));
+        }
+
+        /* zoom shrinks the collage AND its layout footprint — all absolute-positioned
+           images inside scale correctly without any position recalculation */
+        .hero-image-collage {
+            zoom: var(--hero-scale);
+            flex-shrink: 0;
+        }
+    }
+
+    /* Proportional scale-down: 1439px → 1024px
+       Continuous with the 1440–1554px range: scale = 0.913 at both shared boundaries */
+    @media (min-width: 1024px) and (max-width: 1439px) {
+        .home-section-1 .hero-container {
+            --hero-scale: calc(0.7 + (100vw - 1024px) / 1949px);
+        }
+
+        .home-section-1 .hero-content {
+            max-width: calc(100% - 620px * var(--hero-scale) - 80px);
+            gap: calc(24px * var(--hero-scale));
+        }
+
+        .hero-title {
+            font-size: calc(var(--fs-hero) * var(--hero-scale));
+        }
+
+        .hero-subtitle {
+            font-size: calc(var(--fs-body-xl) * var(--hero-scale));
+        }
+
+        .hero-image-collage {
+            zoom: var(--hero-scale);
+            flex-shrink: 0;
         }
     }
 
