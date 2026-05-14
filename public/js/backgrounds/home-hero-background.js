@@ -157,7 +157,7 @@ class LiquidGradientEffect {
       gradientBrightness: 1.0,
       
       // Glyph Dither Controls
-      cellPx: 14.0,
+      cellPx: 7.0 * Math.min(window.devicePixelRatio, 2),
       contrast: 4.3,
       gamma: 3,
       softness: 0.05,
@@ -563,6 +563,7 @@ class LiquidGradientEffect {
     this.renderTargetLiquid.setSize(Math.floor(w * dpr), Math.floor(h * dpr));
     this.uniformsLiquid.uRes.value.set(w * dpr, h * dpr);
     this.uniformsDither.uResolution.value.set(w * dpr, h * dpr);
+    this.uniformsDither.uCellPx.value = 7.0 * dpr;
     if (this.guideCanvas) {
       this.guideCanvas.width = w;
       this.guideCanvas.height = h;

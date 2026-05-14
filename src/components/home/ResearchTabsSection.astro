@@ -179,12 +179,12 @@ const screenSrc = `${base}images/dashboard.png`;
   }
 
   .heading {
-    font-family: var(--font-family-heading);
+    font-family: var(--font-heading);
     font-size: clamp(32px, 4vw, 51px);
-    font-weight: 300;
-    color: #1a1a1a;
+
+    color: var(--text-primary);
     letter-spacing: -0.06em;
-    line-height: 1;
+    line-height: var(--lh-tight);
     margin-bottom: 12px;
   }
 
@@ -333,12 +333,12 @@ const screenSrc = `${base}images/dashboard.png`;
   }
 
   .tab-item {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    font-family: var(--font-body);
+    font-weight: var(--fw-regular);
     font-size: clamp(28px, 3.5vw, 44px);
     letter-spacing: -0.06em;
-    line-height: 1.2;
-    color: #c5c5c5;
+    line-height: var(--lh-snug);
+    color: var(--neutral-grey-3);
     cursor: pointer;
     transition: color 0.4s ease;
     user-select: none;
@@ -356,19 +356,19 @@ const screenSrc = `${base}images/dashboard.png`;
   .tab-body {
     display: none;
     font-size: clamp(12px, 1.1vw, 14px);
-    line-height: 1.45;
+    line-height: var(--lh-relaxed);
     letter-spacing: 0;
-    color: #4d4d4d;
+    color: var(--text-secondary);
     max-width: none;
     width: 100%;
   }
 
   .tab-item:hover {
-    color: #888;
+    color: var(--neutral-grey-2);
   }
 
   .tab-item.active {
-    color: #1a1a1a;
+    color: var(--text-primary);
   }
 
   .tab-item.active .tab-body {
@@ -376,7 +376,7 @@ const screenSrc = `${base}images/dashboard.png`;
   }
 
   .tab-item.is-disabled {
-    color: #c5c5c5;
+    color: var(--neutral-grey-3);
     pointer-events: none;
   }
 
