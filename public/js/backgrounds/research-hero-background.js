@@ -162,13 +162,13 @@ class LiquidGradientEffect {
       },
       "gradientSaturation": 3,
       "gradientBrightness": 1.5,
-      "cellPx": 14,
+      "cellPx": 7 * Math.min(window.devicePixelRatio, 2),
       "contrast": 5,
       "gamma": 3,
       "softness": 0.07,
       "minR": 0.01,
       "maxR": 0.6,
-      "dotSpacing": 0.01,
+      "dotSpacing": 0.1,
       "lumThreshold": 0,
       "invertDots": true,
       "invert": false,
@@ -570,6 +570,7 @@ class LiquidGradientEffect {
     this.renderTargetLiquid.setSize(Math.floor(w * dpr), Math.floor(h * dpr));
     this.uniformsLiquid.uRes.value.set(w * dpr, h * dpr);
     this.uniformsDither.uResolution.value.set(w * dpr, h * dpr);
+    this.uniformsDither.uCellPx.value = 7 * dpr;
     if (this.guideCanvas) {
       this.guideCanvas.width = w;
       this.guideCanvas.height = h;
