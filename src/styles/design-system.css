@@ -1,0 +1,497 @@
+/* ============================================
+   MTM Website Design System
+   Generated from Figma: MTM-Website-3
+   ============================================ */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+/*
+ * FONT WEIGHTS REFERENCE
+ *
+ * Roboto available weights: 300, 400, 500, 600, 700
+ * Source Serif 4 available weights: 200-900 (variable)
+ */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  /* === Colors === */
+
+  /* Text */
+  --text-primary: #000000;
+  --text-secondary: #545454;
+  --text-disabled: #b0b0b0;
+  --text-white: #ffffff;
+  --text-accent: #553dcc;
+
+  /* Surface */
+  --surface-primary: #553dcc;
+  --surface-white: #ffffff;
+  --surface-blue: #f1f3fa;
+
+  /* Border */
+  --border-primary: #553dcc;
+  --border-secondary: #545454;
+  --border-tertiary: #8a8a8a;
+
+  /* Brand */
+  --brand-blue-main: #1659f3;
+  --brand-blue-dark: #052161;
+  --brand-purple: #a36ceb;
+  --brand-indigo: #7b76ff;
+
+  /* Neutral */
+  --neutral-black: #000000;
+  --neutral-white: #ffffff;
+  --neutral-grey-1: #3d3d3d;
+  --neutral-grey-2: #707070;
+  --neutral-grey-3: #adadad;
+  --neutral-grey-4: #e6e6e6;
+
+  /* Badge */
+  --badge-mtm-18: #0e7fde;
+  --badge-juniors: #cb61d8;
+  --badge-newcomers: #229e8e;
+  --badge-census: #52a4c2;
+
+  /* Feedback */
+  --feedback-error: #c84d4d;
+  --feedback-success: #5ba87a;
+
+  /* Secondary */
+  --secondary-orange: #ffb55b;
+  --secondary-green: #71dd8c;
+  --secondary-red: #ff4747;
+
+  /* Highcharts */
+  --highcharts-bg: #f7f7f800;
+  --highcharts-color-0: #0e7fde;
+  --highcharts-color-1: #229e8e;
+  --highcharts-color-2: #cb61d8;
+  --highcharts-color-3: #a36ceb;
+  --highcharts-color-4: #7b76ff;
+  --highcharts-color-5: #54a2e4;
+  --highcharts-color-6: #1659f3;
+  --highcharts-color-7: #5d89df;
+  --highcharts-neutral-10: #e3e3e8;
+  --highcharts-neutral-60: #666666;
+  --highcharts-neutral-80: #000000;
+
+  /* === Font Families === */
+  --font-heading: "Source Serif 4", serif;
+  --font-subheading: "Roboto", sans-serif;
+  --font-body: "Roboto", sans-serif;
+  --font-button: "Roboto", sans-serif;
+  --font-ui: "Roboto", sans-serif;
+
+  /* === Font Sizes === */
+  --fs-hero: 84px;
+  --fs-section-h1: 56px;
+  --fs-metrics: 48px;
+  --fs-subsection-h2: 44px;
+  --fs-tertiary-h3: 40px;
+  --fs-h4: 32px;
+  --fs-body-xl: 24px;
+  --fs-body-l: 20px;
+  --fs-body-m: 18px;
+  --fs-body-s: 16px;
+  --fs-button-regular: 18px;
+  --fs-button-small: 14px;
+  --fs-label-small: 14px;
+  --fs-label-xs: 12px;
+  --fs-input-text: 14px;
+  --fs-input-label: 10px;
+
+  /* === Font Weights === */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* === Letter Spacing === */
+  --ls-hero: -3px;
+  --ls-heading-lg: -2.5px;
+  --ls-heading-sm: -2px;
+  --ls-subhead: -1.5px;
+  --ls-body-lg: -1px;
+  --ls-body-md: -0.5px;
+  --ls-button: 2px;
+  --ls-button-small: 3px;
+  --ls-label: 2px;
+  --ls-pill: -1px;
+  --ls-none: 0px;
+
+  /* === Line Heights === */
+  --lh-tight: 1.1;
+  --lh-snug: 1.2;
+  --lh-heading: 1.25;
+  --lh-normal: 1.3;
+  --lh-relaxed: 1.4;
+  --lh-body: 1.5;
+
+  /* === Spacing === */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 40px;
+  --space-11: 64px;
+  --space-12: 48px;
+  --space-13: 120px;
+  --space-15: 60px;
+  --space-25: 100px;
+
+  /* === Layout === */
+  --layout-page-margin: 240px;
+  --layout-card-gap: 40px;
+
+  /* === Border Radius === */
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-s: 8px;
+  --radius-m: 16px;
+  --radius-full: 100px;
+
+  /* === Stroke === */
+  --stroke-1: 1px;
+  --stroke-2: 2px;
+
+  /* === Shadows === */
+  --shadow-e1: 0 2px 4px 0 rgba(27, 28, 29, 0.04);
+  --shadow-e2: 0 16px 32px -12px rgba(88, 92, 95, 0.1);
+  --shadow-drop: 2px 2px 40px 1px rgba(0, 0, 0, 0.075);
+  --shadow-nav: 0 0 32px -8px rgba(12, 12, 13, 0.4);
+  --shadow-beautiful:
+    0 3px 7px 0 rgba(0, 0, 0, 0.1),
+    0 12px 12px 0 rgba(0, 0, 0, 0.09),
+    0 28px 17px 0 rgba(0, 0, 0, 0.05),
+    0 49px 20px 0 rgba(0, 0, 0, 0.01),
+    0 77px 22px 0 rgba(0, 0, 0, 0);
+  --shadow-card:
+    0 12px 26px 0 rgba(0, 0, 0, 0.1),
+    0 47px 47px 0 rgba(0, 0, 0, 0.09);
+}
+
+
+/* ============================================
+   Text Style Classes
+   ============================================ */
+
+/* --- Headings (Source Serif Pro) --- */
+
+.text-hero {
+  font-family: var(--font-heading);
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-hero);
+}
+
+.text-section-h1 {
+  font-family: var(--font-heading);
+  font-size: var(--fs-section-h1);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-heading-lg);
+}
+
+.text-metrics {
+  font-family: var(--font-heading);
+  font-size: var(--fs-metrics);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-hero);
+}
+
+.text-subsection-h2 {
+  font-family: var(--font-heading);
+  font-size: var(--fs-subsection-h2);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-heading-lg);
+}
+
+/* --- Subheadings (Roboto) --- */
+
+.text-tertiary-h3 {
+  font-family: var(--font-subheading);
+  font-size: var(--fs-tertiary-h3);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-body-lg);
+}
+
+.text-h4 {
+  font-family: var(--font-subheading);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-subhead);
+}
+
+/* --- Body (Roboto) --- */
+
+.text-body-p0 {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-xl);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  letter-spacing: var(--ls-body-lg);
+}
+
+.text-body-p1 {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-l);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-body-lg);
+}
+
+.text-body-p1-bold {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-l);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-body-lg);
+}
+
+.text-body-p2 {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-m);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-body-md);
+}
+
+.text-body-p3 {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-s);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body-md);
+}
+
+/* --- UI Text (Inter) --- */
+
+.text-ui-h1-bold {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-l);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: -2px;
+}
+
+.text-ui-h2-bold {
+  font-family: var(--font-ui);
+  font-size: 44px;
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-body-lg);
+}
+
+.text-ui-h3 {
+  font-family: var(--font-ui);
+  font-size: 28px;
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-none);
+}
+
+.text-ui-h4 {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-l);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-none);
+}
+
+.text-ui-body-medium {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-l);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-none);
+}
+
+.text-ui-body-default {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-s);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-none);
+}
+
+.text-ui-body-small {
+  font-family: var(--font-ui);
+  font-size: var(--fs-button-small);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-none);
+}
+
+.text-ui-caption {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-none);
+}
+
+.text-ui-menu-bold {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-s);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-none);
+}
+
+/* --- Buttons & Labels --- */
+
+.text-button-regular {
+  font-family: var(--font-button);
+  font-size: var(--fs-button-regular);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-button);
+}
+
+.text-button-small {
+  font-family: var(--font-button);
+  font-size: var(--fs-button-small);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-button-small);
+}
+
+.text-button-big {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-l);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  letter-spacing: var(--ls-button);
+}
+
+.text-button-large {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-s);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-none);
+}
+
+.text-button-menu {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-s);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-none);
+}
+
+.text-label-regular {
+  font-family: var(--font-button);
+  font-size: var(--fs-body-m);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-label);
+}
+
+.text-label-small {
+  font-family: var(--font-button);
+  font-size: var(--fs-label-small);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-label);
+}
+
+.text-label-xs {
+  font-family: var(--font-button);
+  font-size: var(--fs-label-xs);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-label);
+}
+
+/* --- Pills --- */
+
+.text-pill-regular {
+  font-family: var(--font-body);
+  font-size: var(--fs-button-regular);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-pill);
+}
+
+.text-pill-small {
+  font-family: var(--font-body);
+  font-size: var(--fs-button-small);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-pill);
+}
+
+.text-pill-xs {
+  font-family: var(--font-body);
+  font-size: var(--fs-label-xs);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-pill);
+}
+
+/* --- Inputs (Inter) --- */
+
+.text-input-title {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-none);
+}
+
+.text-input-text {
+  font-family: var(--font-ui);
+  font-size: var(--fs-input-text);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-none);
+}
+
+.text-input-label {
+  font-family: var(--font-ui);
+  font-size: var(--fs-input-label);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-none);
+}
+
+/* --- Content variants (Inter) --- */
+
+.text-content-body-medium {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-s);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-none);
+}
+
+.text-content-body-medium-bold {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-s);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-none);
+}
+
+.text-content-body-small {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body-s);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-none);
+}

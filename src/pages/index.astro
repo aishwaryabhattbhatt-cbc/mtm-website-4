@@ -1,21 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { DEFAULT_LOCALE } from '../lib/i18n/routing';
 const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Redirecting to MTM" description="Redirecting to the MTM homepage." locale="en" noindex={true}>
-    <Fragment slot="head">
-        <meta http-equiv="refresh" content={`0;url=${base}en/`} />
-        <script is:inline>
-            window.location.replace(`${base}en/`);
-        </script>
-    </Fragment>
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content={`0;url=${base}${DEFAULT_LOCALE}/`} />
+    <script is:inline>
+      window.location.replace(`${base}${DEFAULT_LOCALE}/`);
+    </script>
+  </Fragment>
 
-    <main class="redirect-main" aria-hidden="true"></main>
+  <main class="redirect-main" aria-hidden="true"></main>
 </Layout>
 
 <style>
-    .redirect-main {
-        display: none;
-    }
+  .redirect-main {
+    display: none;
+  }
 </style>

@@ -283,16 +283,22 @@ function applyCmsDictionary(dictionary, locale) {
             return;
         }
 
+        const scrollLabelNode = node.querySelector?.('.btn-scroll-label');
+        if (scrollLabelNode) {
+            scrollLabelNode.textContent = value;
+            return;
+        }
+
         node.textContent = value;
     });
 }
 
 async function fetchAndApplyRuntimeCmsCopy() {
-    const body = document.body;
-    const locale = body?.dataset?.locale || 'en';
-    const directCsvUrl = body?.dataset?.cmsCsvUrl;
-    const sheetId = body?.dataset?.cmsSheetId;
-    const gid = body?.dataset?.cmsTabGid;
+    const cmsRoot = document.querySelector('main[data-cms-page-id]') || document.body;
+    const locale = cmsRoot?.dataset?.locale || document.documentElement.lang || 'en';
+    const directCsvUrl = cmsRoot?.dataset?.cmsCsvUrl;
+    const sheetId = cmsRoot?.dataset?.cmsSheetId;
+    const gid = cmsRoot?.dataset?.cmsTabGid;
 
     if (!directCsvUrl && (!sheetId || !gid)) return;
 
@@ -316,13 +322,13 @@ async function fetchAndApplyRuntimeCmsCopy() {
 }
 
 function initRuntimeCmsRefresh() {
-    const body = document.body;
-    const directCsvUrl = body?.dataset?.cmsCsvUrl;
-    const sheetId = body?.dataset?.cmsSheetId;
-    const gid = body?.dataset?.cmsTabGid;
+    const cmsRoot = document.querySelector('main[data-cms-page-id]') || document.body;
+    const directCsvUrl = cmsRoot?.dataset?.cmsCsvUrl;
+    const sheetId = cmsRoot?.dataset?.cmsSheetId;
+    const gid = cmsRoot?.dataset?.cmsTabGid;
     if (!directCsvUrl && (!sheetId || !gid)) return;
 
-    const refreshMs = Number(body?.dataset?.cmsRefreshMs || '30000');
+    const refreshMs = Number(cmsRoot?.dataset?.cmsRefreshMs || '30000');
     const intervalMs = Number.isFinite(refreshMs) && refreshMs >= 5000 ? refreshMs : 30000;
 
     fetchAndApplyRuntimeCmsCopy();

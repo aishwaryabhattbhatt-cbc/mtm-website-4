@@ -1,17 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/shared/Navbar.astro';
-import HomeHeroSection from '../../components/home/HomeHeroSection.astro';
-import HomeIntroductionSection from '../../components/home/HomeIntroductionSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
-import { resolveLocale, SUPPORTED_LOCALES, getLocaleSwitchUrls } from '../../lib/i18n/routing';
+import type { Locale } from '../../lib/cms/types';
 
 export function getStaticPaths() {
-  return SUPPORTED_LOCALES.map((locale) => ({ params: { locale } }));
+  return [
+    { params: { locale: 'en' } },
+    { params: { locale: 'fr' } },
+  ];
 }
 
-const locale = resolveLocale(Astro.params.locale);
-const pageId = 'home';
+const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
+const pageId = 'insights';
 const copy = await getPageDictionary(pageId);
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;
@@ -19,12 +20,15 @@ const resolvedCmsCsvUrl = cmsConfig.csvUrl ?? (cmsConfig.sheetId && cmsConfig.gi
   ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
   : '');
 
-const localeSwitchUrls = getLocaleSwitchUrls(base);
+const localeSwitchUrls: Record<Locale, string> = {
+  en: `${base}en/insights/`,
+  fr: `${base}fr/insights/`,
+};
 
-const pageTitle = locale === 'fr' ? 'MTM | Accueil' : 'MTM | Home';
+const pageTitle = locale === 'fr' ? 'MTM | Perspectives' : 'MTM | Insights';
 const pageDescription = locale === 'fr'
-  ? 'Données et perspectives sur la façon dont les Canadiens utilisent la technologie, le contenu et les médias.'
-  : 'Data and insights on how Canadians use technology, content, and media.';
+  ? 'Perspectives et analyses sur les tendances médiatiques et technologiques canadiennes.'
+  : 'Insights and analysis on Canadian media and technology trends.';
 ---
 
 <Layout title={pageTitle} description={pageDescription} locale={locale} alternates={localeSwitchUrls}>
@@ -38,21 +42,15 @@ const pageDescription = locale === 'fr'
   >
     <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-    <HomeHeroSection locale={locale} copy={copy} />
-
-    <div class="section-gap section-gap-sm" aria-hidden="true"></div>
-
-    <HomeIntroductionSection locale={locale} copy={copy} />
-
-    <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+    <!-- Insights page content goes here -->
 
   </main>
 
   <Fragment slot="head">
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: 'MTM',
+      '@type': 'WebPage',
+      name: pageTitle,
       url: localeSwitchUrls[locale],
     })} />
   </Fragment>
@@ -60,16 +58,5 @@ const pageDescription = locale === 'fr'
   <Fragment slot="scripts">
     <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script is:inline src={`${base}js/runtime/script.js`}></script>
-
-    <script is:inline type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js"
-      }
-    }
-    </script>
-
-    <script is:inline type="module" src={`${base}js/backgrounds/home-hero-background.js`}></script>
-    <script is:inline type="module" src={`${base}js/backgrounds/research-hero-background.js`}></script>
   </Fragment>
 </Layout>

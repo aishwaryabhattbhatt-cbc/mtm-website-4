@@ -2,10 +2,34 @@ import type { PageCMSConfig, PageTabMap } from './types';
 
 const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
   home: '0',
+  'mtm-18-plus': '0',
+  juniors: '0',
+  newcomers: '0',
+  census: '0',
+  'analytic-tools': '0',
+  'census-tool': '0',
+  insights: '0',
+  media: '0',
+  advertising: '0',
+  industry: '0',
+  education: '0',
+  'gov-ngos': '0',
 };
 
 const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
   home: '',
+  'mtm-18-plus': '',
+  juniors: '',
+  newcomers: '',
+  census: '',
+  'analytic-tools': '',
+  'census-tool': '',
+  insights: '',
+  media: '',
+  advertising: '',
+  industry: '',
+  education: '',
+  'gov-ngos': '',
 };
 
 const DEFAULT_REFRESH_MS = 30000;

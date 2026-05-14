@@ -1,0 +1,62 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/shared/Navbar.astro';
+import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
+import type { Locale } from '../../../lib/cms/types';
+
+export function getStaticPaths() {
+  return [
+    { params: { locale: 'en' } },
+    { params: { locale: 'fr' } },
+  ];
+}
+
+const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
+const pageId = 'industry';
+const copy = await getPageDictionary(pageId);
+const cmsConfig = getRuntimeCMSConfig(pageId);
+const base = import.meta.env.BASE_URL;
+const resolvedCmsCsvUrl = cmsConfig.csvUrl ?? (cmsConfig.sheetId && cmsConfig.gid
+  ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
+  : '');
+
+const localeSwitchUrls = {
+  en: `${base}en/solutions/industry/`,
+  fr: `${base}fr/solutions/industry/`,
+};
+
+const pageTitle = locale === 'fr' ? 'MTM | Industrie' : 'MTM | Industry';
+const pageDescription = locale === 'fr'
+  ? 'Solutions MTM pour les entreprises industrielles.'
+  : 'MTM solutions for industry enterprises.';
+---
+
+<Layout title={pageTitle} description={pageDescription} locale={locale} alternates={localeSwitchUrls}>
+  <main
+    data-locale={locale}
+    data-cms-page-id={pageId}
+    data-cms-csv-url={resolvedCmsCsvUrl}
+    data-cms-sheet-id={cmsConfig.sheetId ?? ''}
+    data-cms-tab-gid={cmsConfig.gid ?? ''}
+    data-cms-refresh-ms={String(cmsConfig.refreshMs)}
+  >
+    <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+
+    <!-- Industry solutions page content goes here -->
+
+  </main>
+
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: pageTitle,
+      url: localeSwitchUrls[locale],
+    })} />
+  </Fragment>
+
+  <Fragment slot="scripts">
+    <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script is:inline src={`${base}js/runtime/script.js`}></script>
+  </Fragment>
+</Layout>

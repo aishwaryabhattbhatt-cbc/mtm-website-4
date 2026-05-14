@@ -4,22 +4,6 @@ import Button from '../../components/shared/Button.astro';
 import type { Locale } from '../../lib/cms/types';
 
 const pageConfig = {
-  products: {
-    title: 'Products',
-    description: 'Explore MTM products and datasets.',
-  },
-  tools: {
-    title: 'Tools',
-    description: 'Explore MTM tools and interactive resources.',
-  },
-  solutions: {
-    title: 'Solutions',
-    description: 'Explore MTM solutions for teams and organizations.',
-  },
-  insights: {
-    title: 'Insights',
-    description: 'Explore MTM insights and research highlights.',
-  },
   'sign-in': {
     title: 'Sign In',
     description: 'Access your MTM account.',
@@ -31,7 +15,7 @@ const pageConfig = {
 } as const;
 
 export function getStaticPaths() {
-  const slugs = ['products', 'tools', 'solutions', 'insights', 'sign-in', 'request-demo'];
+  const slugs = ['sign-in', 'request-demo'];
 
   return ['en', 'fr'].flatMap((locale) =>
     slugs.map((slug) => ({ params: { locale, slug } }))
