@@ -34,8 +34,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Sync copy from Google Sheets
+        run: npm run sync-copy
+        env:
+          GOOGLE_SHEET_CSV_URL_MAP_JSON: ${{ secrets.GOOGLE_SHEET_CSV_URL_MAP_JSON }}
+
       - name: Build with Astro
         run: npm run build
+        env:
+          GOOGLE_SHEET_CSV_URL_MAP_JSON: ${{ secrets.GOOGLE_SHEET_CSV_URL_MAP_JSON }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
