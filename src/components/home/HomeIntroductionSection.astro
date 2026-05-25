@@ -14,16 +14,16 @@ const { locale, copy } = Astro.props as Props;
 <!-- Home Section 2: Hero with WebGL Noise Warp Background -->
 <section class="hero-section home-section-2">
     <!-- WebGL Noise Warp Canvas (Three.js) -->
-    <div id="webgl-background-10" class="webgl-background" data-webgl-variant="research"></div>
+    <div id="webgl-background-10" class="webgl-background" data-webgl-variant="research" aria-hidden="true"></div>
 
     <!-- Grain Overlay for Texture -->
-    <div class="grain-overlay-10 grain-overlay"></div>
+    <div class="grain-overlay-10 grain-overlay" aria-hidden="true"></div>
 
     <!-- Top White Gradient Overlay -->
-    <div class="hero10-top-gradient"></div>
+    <div class="hero10-top-gradient" aria-hidden="true"></div>
 
     <!-- Bottom White Gradient Overlay -->
-    <div class="hero10-bottom-gradient"></div>
+    <div class="hero10-bottom-gradient" aria-hidden="true"></div>
 
     <ResearchTabsSection locale={locale} copy={copy} />
 </section>
@@ -56,9 +56,7 @@ const { locale, copy } = Astro.props as Props;
     .home-section-2 {
         position: relative;
         margin-top: 0 !important;
-        height: 100vh;
         width: 100%;
-        overflow: hidden;
     }
 
     .home-section-2 .box-gui-panel {
@@ -115,9 +113,5 @@ const { locale, copy } = Astro.props as Props;
         font-size: 13px;
     }
 
-    @media (max-width: 1023px) {
-        .hero-section.home-section-2 {
-            height: 80vh;
-        }
-    }
+
 </style>

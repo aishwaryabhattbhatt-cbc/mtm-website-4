@@ -8,7 +8,7 @@ function normalizeCell(value: unknown): string {
 
 function isHeaderRow(firstCell: string): boolean {
   const normalized = firstCell.toLowerCase();
-  return normalized === 'key' || normalized === 'tag' || normalized === 'id';
+  return normalized.startsWith('key') || normalized === 'tag' || normalized === 'id';
 }
 
 function findColumnIndex(headers: string[], candidates: string[]): number {
@@ -71,7 +71,7 @@ export function parseSheetCsv(csvText: string): CMSDictionary {
 }
 
 export async function fetchSheetDictionary(csvUrl: string): Promise<CMSDictionary> {
-  const response = await fetch(csvUrl, { cache: 'no-store' });
+  const response = await fetch(csvUrl, { cache: 'no-store', redirect: 'follow' });
 
   if (!response.ok) {
     throw new Error(`[CMS] Failed to fetch sheet CSV (${response.status})`);

@@ -245,20 +245,36 @@ function parseCmsDictionaryFromCsv(csvText) {
 
     const parsed = window.Papa.parse(csvText, { skipEmptyLines: true });
     const rows = parsed?.data || [];
+    if (rows.length === 0) return {};
+
+    const headerRow = rows[0].map(cell => normalizeCmsCell(cell).toLowerCase());
+    const firstCell = headerRow[0];
+    const hasHeader = firstCell === 'key' || firstCell === 'tag' || firstCell === 'id';
+    if (!hasHeader) return {};
+
+    function findCol(candidates) {
+        return headerRow.findIndex(h => candidates.some(c => h.includes(c)));
+    }
+
+    const enIdx = (() => {
+        const u = findCol(['updated text (english)', 'updated text', 'english']);
+        if (u !== -1) return u;
+        const t = findCol(['current text', 'text']);
+        return t !== -1 ? t : 1;
+    })();
+    const frIdx = findCol(['updated text (french)', 'french']);
+    const currentTextIdx = findCol(['current text', 'text']);
+
     const dictionary = {};
-
-    rows.forEach((row, index) => {
-        if (!Array.isArray(row) || row.length === 0) return;
-
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
         const key = normalizeCmsCell(row[0]);
-        const en = normalizeCmsCell(row[1]);
-        const fr = normalizeCmsCell(row[2]);
-
-        if (index === 0 && ['key', 'tag', 'id'].includes(key.toLowerCase())) return;
-        if (!key) return;
-
+        if (!key) continue;
+        const currentText = currentTextIdx >= 0 ? normalizeCmsCell(row[currentTextIdx]) : '';
+        const en = normalizeCmsCell(row[enIdx]) || currentText;
+        const fr = frIdx >= 0 ? normalizeCmsCell(row[frIdx]) : '';
         dictionary[key] = { en, fr };
-    });
+    }
 
     return dictionary;
 }

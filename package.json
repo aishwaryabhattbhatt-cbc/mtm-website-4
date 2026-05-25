@@ -8,9 +8,18 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
+    "lint": "eslint src",
+    "format": "prettier --write \"src/**/*.{astro,ts,css}\"",
+    "sync-copy": "node scripts/sync-copy.mjs",
     "audit:site": "node scripts/site-audit.mjs",
     "validate": "npm run check && npm run build && npm run audit:site",
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "src/**/*.{astro,ts,css}": [
+      "eslint",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
@@ -21,6 +30,13 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@types/papaparse": "^5.5.2",
+    "@typescript-eslint/eslint-plugin": "^8.59.4",
+    "@typescript-eslint/parser": "^8.59.4",
+    "eslint": "^10.4.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.9.3"
   }
 }

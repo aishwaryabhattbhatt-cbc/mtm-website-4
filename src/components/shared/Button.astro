@@ -1,5 +1,5 @@
 ---
-type ButtonVariant = 'primary' | 'secondary' | 'scroll';
+type ButtonVariant = 'primary' | 'secondary' | 'scroll' | 'tertiary';
 type ButtonSize = 'md' | 'lg';
 
 interface Props {
@@ -8,6 +8,8 @@ interface Props {
     href?: string;
     type?: 'button' | 'submit' | 'reset';
     class?: string;
+    tabindex?: number | string;
+    'aria-label'?: string;
 }
 
 const {
@@ -19,61 +21,84 @@ const {
     ...attrs
 } = Astro.props as Props & Record<string, unknown>;
 
-const base = import.meta.env.BASE_URL;
-const scrollIconSrc = `${base}svg/icon-chevron%201.svg`;
+import scrollIconAsset from '../../assets/svg/icon-chevron.svg';
+const scrollIconSrc = scrollIconAsset.src;
 
 const variantClass =
     variant === 'secondary'
         ? 'btn-outline'
         : variant === 'scroll'
-            ? 'btn-scroll'
+          ? 'btn-scroll'
+          : variant === 'tertiary'
+            ? 'btn-tertiary'
             : 'btn-primary';
 
 const isScroll = variant === 'scroll';
+const isTertiary = variant === 'tertiary';
 
-const classes = ['btn', variantClass, `btn-size-${size}`, className]
+const textClass = size === 'lg' ? 'text-button-regular' : 'text-button-small';
+
+const classes = ['btn', variantClass, `btn-size-${size}`, textClass, className]
     .filter(Boolean)
     .join(' ');
 ---
 
-{href ? (
-    <a href={href} class={classes} {...attrs}>
-        {isScroll ? (
-            <>
-                <span class="btn-scroll-label"><slot /></span>
-                <span class="btn-scroll-icon" aria-hidden="true">
-                    <img src={scrollIconSrc} alt="" loading="lazy" decoding="async" />
-                </span>
-            </>
-        ) : (
-            <slot />
-        )}
-    </a>
-) : (
-    <button type={type} class={classes} {...attrs}>
-        {isScroll ? (
-            <>
-                <span class="btn-scroll-label"><slot /></span>
-                <span class="btn-scroll-icon" aria-hidden="true">
-                    <img src={scrollIconSrc} alt="" loading="lazy" decoding="async" />
-                </span>
-            </>
-        ) : (
-            <slot />
-        )}
-    </button>
-)}
+{
+    href ? (
+        <a href={href} class={classes} {...attrs}>
+            {isScroll ? (
+                <>
+                    <span class="btn-scroll-label">
+                        <slot />
+                    </span>
+                    <span class="btn-scroll-icon" aria-hidden="true">
+                        <img src={scrollIconSrc} alt="" loading="lazy" decoding="async" />
+                    </span>
+                </>
+            ) : isTertiary ? (
+                <>
+                    <span class="btn-tertiary-label">
+                        <slot />
+                    </span>
+                    <span class="btn-tertiary-icon" aria-hidden="true">
+                        <img src={scrollIconSrc} alt="" loading="lazy" decoding="async" />
+                    </span>
+                </>
+            ) : (
+                <slot />
+            )}
+        </a>
+    ) : (
+        <button type={type} class={classes} {...attrs}>
+            {isScroll ? (
+                <>
+                    <span class="btn-scroll-label">
+                        <slot />
+                    </span>
+                    <span class="btn-scroll-icon" aria-hidden="true">
+                        <img src={scrollIconSrc} alt="" loading="lazy" decoding="async" />
+                    </span>
+                </>
+            ) : isTertiary ? (
+                <>
+                    <span class="btn-tertiary-label">
+                        <slot />
+                    </span>
+                    <span class="btn-tertiary-icon" aria-hidden="true">
+                        <img src={scrollIconSrc} alt="" loading="lazy" decoding="async" />
+                    </span>
+                </>
+            ) : (
+                <slot />
+            )}
+        </button>
+    )
+}
 
 <style is:global>
     .btn {
         padding: var(--space-3) var(--space-5);
-        font-size: var(--fs-button-small);
-        font-weight: var(--fw-medium);
-        line-height: var(--lh-tight);
         border-radius: var(--radius-s);
-        font-family: var(--font-button);
-        text-transform: uppercase;
-        letter-spacing: var(--ls-button);
         text-decoration: none;
         cursor: pointer;
         border: var(--stroke-2) solid transparent;
@@ -114,13 +139,10 @@ const classes = ['btn', variantClass, `btn-size-${size}`, className]
         align-items: center;
         justify-content: center;
         gap: var(--space-3);
-        font-size: var(--fs-button-regular);
-        font-weight: var(--fw-medium);
     }
 
     .btn-scroll:hover {
         transform: translateY(-2px);
-        background: rgba(0, 0, 0, 0.03);
     }
 
     .btn-scroll-label {
@@ -131,9 +153,9 @@ const classes = ['btn', variantClass, `btn-size-${size}`, className]
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 16.04px;
-        height: 16.04px;
-        line-height: 1;
+        width: 1rem;
+        height: 1rem;
+        line-height: var(--lh-tight);
     }
 
     .btn-scroll-icon img {
@@ -142,14 +164,51 @@ const classes = ['btn', variantClass, `btn-size-${size}`, className]
         display: block;
     }
 
+    .btn-tertiary {
+        border: none;
+        background: transparent;
+        color: var(--text-primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-3);
+    }
+
+    .btn-tertiary:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn-tertiary-label {
+        display: inline-block;
+    }
+
+    .btn-tertiary-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1rem;
+        height: 1rem;
+        line-height: var(--lh-tight);
+        transform: rotate(-90deg);
+    }
+
+    .btn-tertiary-icon img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
     .btn-size-md {
-        font-size: var(--fs-button-small);
-        letter-spacing: var(--ls-button-small);
         padding: var(--space-3) var(--space-5);
     }
 
     .btn-size-lg {
-        font-size: var(--fs-button-regular);
         padding: var(--space-3) var(--space-5);
+    }
+
+    .btn-scroll,
+    .btn-tertiary {
+        padding-left: 0;
+        padding-right: 0;
     }
 </style>

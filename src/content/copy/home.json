@@ -1,0 +1,57 @@
+{
+  "package_title": {
+    "key": "package_title",
+    "en": "The MTM Suite",
+    "fr": ""
+  },
+  "package_1_eyebrow": {
+    "key": "package_1_eyebrow",
+    "en": "Data Products",
+    "fr": ""
+  },
+  "package_1_title": {
+    "key": "package_1_title",
+    "en": "41 Million Canadians Mapped",
+    "fr": ""
+  },
+  "product_1_title": {
+    "key": "product_1_title",
+    "en": "MTM 18+",
+    "fr": ""
+  },
+  "product_1_description": {
+    "key": "product_1_description",
+    "en": "Comprehensive data on Canadians aged 18 and older, covering media consumption, technology adoption, and digital behaviours",
+    "fr": ""
+  },
+  "product_2_title": {
+    "key": "product_2_title",
+    "en": "MTM Junior",
+    "fr": ""
+  },
+  "product_2_description": {
+    "key": "product_2_description",
+    "en": "Insights into the media and technology habits of Canadians aged 2–17",
+    "fr": ""
+  },
+  "product_3_title": {
+    "key": "product_3_title",
+    "en": "MTM Newcomers",
+    "fr": ""
+  },
+  "product_3_description": {
+    "key": "product_3_description",
+    "en": "Research focused on Canadians who have arrived within the past five years, offering valuable insights into settlement, media usage, and technology adoption",
+    "fr": ""
+  },
+  "product_4_title": {
+    "key": "product_4_title",
+    "en": "MTM Census Tool",
+    "fr": ""
+  },
+  "product_4_description": {
+    "key": "product_4_description",
+    "en": "Comprehensive demographic and population data for enhanced analysis and targeting.",
+    "fr": ""
+  }
+}
