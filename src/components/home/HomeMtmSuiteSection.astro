@@ -1,0 +1,541 @@
+---
+// src/components/home/HomeMtmSuiteSection.astro
+// Figma node: 2:7413 — "Data Products" suite showcase with interactive product tabs
+import { Image } from 'astro:assets';
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+import Eyebrow from '../shared/Eyebrow.astro';
+import bg18 from '../../assets/images/home/mtm-suite/home-products-bg-18.webp';
+import people18 from '../../assets/images/home/mtm-suite/home-products-people-18.webp';
+import bgJr from '../../assets/images/home/mtm-suite/home-products-bg-jr.webp';
+import peopleJr from '../../assets/images/home/mtm-suite/home-products-people-jr.webp';
+import bgNc from '../../assets/images/home/mtm-suite/home-products-bg-nc.webp';
+import peopleNc from '../../assets/images/home/mtm-suite/home-products-people-nc.webp';
+import bgCs from '../../assets/images/home/mtm-suite/home-products-bg-cs.webp';
+import peopleCs from '../../assets/images/home/mtm-suite/home-products-people-cs.webp';
+import chart18 from '../../assets/svg/home/data-products/mtm18plus.svg';
+import chartJr from '../../assets/svg/home/data-products/junior.svg';
+import chartNc from '../../assets/svg/home/data-products/newcomers.svg';
+import chartCs from '../../assets/svg/home/data-products/census.svg';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+
+const products = [
+    {
+        id: 'mtm18plus',
+        nameKey: 'product_1_title',
+        nameFallback: 'MTM 18+',
+        descKey: 'product_1_description',
+        descFallback:
+            'Comprehensive data on Canadians aged 18 and older, covering media consumption, technology adoption, and digital behaviours',
+        href: `/${locale}/products/mtm-18-plus`,
+        bg: bg18,
+        people: people18,
+        chartSrc: chart18.src,
+    },
+    {
+        id: 'junior',
+        nameKey: 'product_2_title',
+        nameFallback: 'MTM Junior',
+        descKey: 'product_2_description',
+        descFallback: 'Insights into the media and technology habits of Canadians aged 2–17',
+        href: `/${locale}/products/juniors`,
+        bg: bgJr,
+        people: peopleJr,
+        chartSrc: chartJr.src,
+        chevronFill: 'var(--badge-juniors)',
+    },
+    {
+        id: 'newcomer',
+        nameKey: 'product_3_title',
+        nameFallback: 'MTM Newcomers',
+        descKey: 'product_3_description',
+        descFallback:
+            'Research focused on Canadians who have arrived within the past five years, offering insights into settlement, media usage, and technology adoption',
+        href: `/${locale}/products/newcomers`,
+        bg: bgNc,
+        people: peopleNc,
+        chartSrc: chartNc.src,
+        chevronFill: 'var(--badge-newcomers)',
+    },
+    {
+        id: 'census',
+        nameKey: 'product_4_title',
+        nameFallback: 'MTM Census Tool',
+        descKey: 'product_4_description',
+        descFallback:
+            'Comprehensive demographic and population data for enhanced analysis and targeting',
+        href: `/${locale}/products/census`,
+        bg: bgCs,
+        people: peopleCs,
+        chartSrc: chartCs.src,
+        chevronFill: 'var(--badge-census)',
+    },
+];
+---
+
+<section class="mtm-suite-section">
+    <h2 class="suite-section-heading" data-copy-key="package_title">
+        {t(copy, 'package_title', locale, 'The MTM Suite')}
+    </h2>
+    <div class="data-products row">
+        <!-- LEFT: Heading + product tabs -->
+        <div class="products-left col col-12 col-lg-5">
+            <Eyebrow>{t(copy, 'package_1_eyebrow', locale, 'Data Products')}</Eyebrow>
+
+            <h3 class="suite-heading">
+                {t(copy, 'package_1_title', locale, '41 Million Canadians Mapped')}
+            </h3>
+
+            <div class="suite-products" id="suiteProducts">
+                {
+                    products.map((product, i) => (
+                        <div
+                            class={`product-row${i === 0 ? ' active' : ''}`}
+                            data-idx={i}
+                            role="button"
+                            tabindex="0"
+                        >
+                            <div class="product-row-inner">
+                                <span class="product-chevron" aria-hidden="true">
+                                    <svg
+                                        width="100%"
+                                        height="100%"
+                                        viewBox="0 0 15 22"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g clip-path={`url(#clip-${product.id})`}>
+                                            <path
+                                                d="M3.86782 5.53252C4.79584 5.53252 5.54815 4.78021 5.54815 3.8522C5.54815 2.92418 4.79584 2.17188 3.86782 2.17188C2.93981 2.17188 2.1875 2.92418 2.1875 3.8522C2.1875 4.78021 2.93981 5.53252 3.86782 5.53252Z"
+                                                fill={product.chevronFill ?? '#026BC4'}
+                                            />
+                                            <path
+                                                d="M7.64712 9.31231C8.57514 9.31231 9.32744 8.56 9.32744 7.63198C9.32744 6.70397 8.57514 5.95166 7.64712 5.95166C6.7191 5.95166 5.9668 6.70397 5.9668 7.63198C5.9668 8.56 6.7191 9.31231 7.64712 9.31231Z"
+                                                fill={product.chevronFill ?? '#026BC4'}
+                                            />
+                                            <path
+                                                d="M3.86782 20.6502C4.79584 20.6502 5.54815 19.8979 5.54815 18.9699C5.54815 18.0419 4.79584 17.2896 3.86782 17.2896C2.93981 17.2896 2.1875 18.0419 2.1875 18.9699C2.1875 19.8979 2.93981 20.6502 3.86782 20.6502Z"
+                                                fill={product.chevronFill ?? '#026BC4'}
+                                            />
+                                            <path
+                                                d="M7.64712 16.8714C8.57514 16.8714 9.32744 16.1191 9.32744 15.1911C9.32744 14.263 8.57514 13.5107 7.64712 13.5107C6.7191 13.5107 5.9668 14.263 5.9668 15.1911C5.9668 16.8714 7.64712 16.8714Z"
+                                                fill={product.chevronFill ?? '#026BC4'}
+                                            />
+                                            <path
+                                                d="M11.4284 13.0921C12.3564 13.0921 13.1087 12.3398 13.1087 11.4118C13.1087 10.4838 12.3564 9.73145 11.4284 9.73145C10.5004 9.73145 9.74805 10.4838 9.74805 11.4118C9.74805 12.3398 10.5004 13.0921 11.4284 13.0921Z"
+                                                fill={product.chevronFill ?? '#026BC4'}
+                                            />
+                                        </g>
+                                        <defs>
+                                            <clipPath id={`clip-${product.id}`}>
+                                                <rect width="14.2353" height="22" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </span>
+                                <span
+                                    class="product-name text-body-p1-bold"
+                                    data-copy-key={product.nameKey}
+                                >
+                                    {t(copy, product.nameKey, locale, product.nameFallback)}
+                                </span>
+                                <Button
+                                    variant="tertiary"
+                                    href={product.href}
+                                    tabindex="-1"
+                                    aria-label={`Explore ${product.nameFallback}`}
+                                >
+                                    {t(copy, 'mtm_suite_cta', locale, 'EXPLORE MORE')}
+                                </Button>
+                            </div>
+                            <div class="product-divider" aria-hidden="true">
+                                <div class="product-progress" aria-hidden="true" />
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- RIGHT: Product image card -->
+        <div class="products-right col col-12 col-lg-7" id="suiteRight">
+            {
+                products.map((product, i) => (
+                    <div
+                        class={`card-panel${i === 0 ? ' active' : ''}`}
+                        data-idx={i}
+                        aria-hidden={i !== 0 ? 'true' : 'false'}
+                    >
+                        <Image class="card-bg" src={product.bg} alt="" loading="lazy" />
+                        <img
+                            class="card-chart-svg"
+                            src={product.chartSrc}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <p class="card-desc text-body-p0" data-copy-key={product.descKey}>
+                            {t(copy, product.descKey, locale, product.descFallback)}
+                        </p>
+                        <Image
+                            class="card-people"
+                            src={product.people}
+                            alt={product.nameFallback}
+                            loading="lazy"
+                        />
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .suite-section-heading {
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .mtm-suite-section {
+        width: 100%;
+        padding: var(--space-12) var(--content-margin-inline);
+        background: var(--surface-white);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-12);
+    }
+
+    .data-products {
+        margin-bottom: 0;
+        align-items: start;
+    }
+
+    /* ── LEFT PANEL ── */
+    .products-left {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .suite-products {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: var(--surface-white);
+    }
+
+    .product-row {
+        cursor: pointer;
+        outline: none;
+    }
+
+    .product-row-inner {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: var(--space-3);
+        min-height: 4rem;
+    }
+
+    .product-chevron {
+        flex-shrink: 0;
+        width: 0.875rem;
+        height: 1.375rem;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .product-chevron img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .product-row.active .product-chevron {
+        display: flex;
+        opacity: 1;
+    }
+
+    .product-name {
+        flex: 1;
+        color: var(--neutral-grey-3);
+        transition: color 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .product-row.active .product-name {
+        color: var(--text-primary);
+    }
+
+    .product-row .btn {
+        display: none;
+        flex-shrink: 0;
+    }
+
+    .product-row.active .btn {
+        display: inline-flex;
+    }
+
+    .product-divider {
+        position: relative;
+        height: var(--stroke-2);
+        width: 100%;
+        border-radius: var(--radius-full);
+        background: rgba(211, 211, 211, 0.58);
+        overflow: hidden;
+    }
+
+    .product-progress {
+        position: absolute;
+        inset: 0;
+        width: 0%;
+        border-radius: var(--radius-full);
+        background: linear-gradient(
+            to right,
+            var(--color-chart-teal) 0%,
+            var(--highcharts-color-5) 35%,
+            var(--brand-indigo) 65%,
+            var(--badge-juniors) 90%
+        );
+        transition: width 0ms linear;
+    }
+
+    /* ── RIGHT PANEL ── */
+    .products-right {
+        position: relative;
+        height: 28rem;
+        border-radius: var(--radius-m);
+        overflow: hidden;
+        min-width: 0;
+    }
+
+    .card-panel {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+    }
+
+    .card-panel.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .card-bg {
+        position: absolute;
+        inset: 0;
+        width: 110%;
+        height: 100%;
+        object-fit: cover;
+        left: -1.125rem;
+    }
+
+    .card-chart-svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .card-chart-wrap {
+        position: absolute;
+        bottom: 0;
+        left: -1.125rem;
+        width: calc(100% + 2.25rem);
+        height: 61%;
+        transform: scaleX(-1);
+        pointer-events: none;
+    }
+
+    .card-chart {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+    .card-desc {
+        position: absolute;
+        top: var(--space-8);
+        left: var(--space-8);
+        width: 18rem;
+        color: var(--text-primary);
+        margin: 0;
+        z-index: 2;
+    }
+
+    .card-people {
+        position: absolute;
+        inset: 0;
+        width: 110%;
+        height: 100%;
+        object-fit: cover;
+        left: -1.125rem;
+        z-index: 3;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1023px) {
+        .products-right {
+            height: 25rem;
+        }
+
+        .card-desc {
+            width: 15rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .mtm-suite-section {
+            padding-top: var(--space-9);
+            padding-bottom: var(--space-9);
+        }
+
+        .products-left {
+            gap: var(--space-6);
+        }
+
+        .products-right {
+            height: 20rem;
+        }
+
+        .card-desc {
+            width: 11.25rem;
+            top: var(--space-6);
+            left: var(--space-6);
+        }
+    }
+</style>
+
+<script>
+    const AUTO_ADVANCE_DELAY = 5000; // ms between auto-advances — change this to adjust timing
+
+    const section = document.querySelector<HTMLElement>('.mtm-suite-section');
+    if (section) {
+        const rows = section.querySelectorAll<HTMLElement>('.product-row');
+        const panels = section.querySelectorAll<HTMLElement>('.card-panel');
+        let autoTimer: ReturnType<typeof setTimeout> | null = null;
+        let autoLoopDone = false;
+
+        function setProduct(idx: number) {
+            rows.forEach((row, i) => {
+                row.classList.toggle('active', i === idx);
+                row.setAttribute('aria-selected', String(i === idx));
+            });
+            panels.forEach((panel, i) => {
+                panel.classList.toggle('active', i === idx);
+                panel.setAttribute('aria-hidden', String(i !== idx));
+                const cta = rows[i]?.querySelector<HTMLAnchorElement>('.btn');
+                if (cta) cta.tabIndex = i === idx ? 0 : -1;
+            });
+        }
+
+        function resetProgress() {
+            rows.forEach((row) => {
+                const bar = row.querySelector<HTMLElement>('.product-progress');
+                if (!bar) return;
+                bar.style.transition = 'width 0ms linear';
+                bar.style.width = '0%';
+            });
+        }
+
+        function startProgress(idx: number) {
+            const bar = rows[idx]?.querySelector<HTMLElement>('.product-progress');
+            if (!bar) return;
+            bar.getBoundingClientRect(); // force reflow so the 0% reset lands before transition starts
+            bar.style.transition = `width ${AUTO_ADVANCE_DELAY}ms linear`;
+            bar.style.width = '100%';
+        }
+
+        function scheduleNext(currentIdx: number) {
+            if (currentIdx >= rows.length - 1) {
+                setTimeout(() => {
+                    autoLoopDone = true;
+                }, AUTO_ADVANCE_DELAY);
+                return;
+            }
+            autoTimer = setTimeout(() => {
+                const next = currentIdx + 1;
+                resetProgress();
+                setProduct(next);
+                startProgress(next);
+                scheduleNext(next);
+            }, AUTO_ADVANCE_DELAY);
+        }
+
+        function stopAuto() {
+            if (autoTimer !== null) {
+                clearTimeout(autoTimer);
+                autoTimer = null;
+            }
+        }
+
+        rows.forEach((row, idx) => {
+            row.addEventListener('mouseenter', () => {
+                if (!autoLoopDone) return;
+                stopAuto();
+                resetProgress();
+                setProduct(idx);
+            });
+            row.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    stopAuto();
+                    resetProgress();
+                    setProduct(idx);
+                }
+            });
+        });
+
+        // Keyboard: arrow keys to navigate products
+        section.addEventListener('keydown', (e) => {
+            const active = [...rows].findIndex((r) => r.classList.contains('active'));
+            if (e.key === 'ArrowDown' && active < rows.length - 1) {
+                e.preventDefault();
+                stopAuto();
+                resetProgress();
+                setProduct(active + 1);
+                rows[active + 1].focus();
+            } else if (e.key === 'ArrowUp' && active > 0) {
+                e.preventDefault();
+                stopAuto();
+                resetProgress();
+                setProduct(active - 1);
+                rows[active - 1].focus();
+            }
+        });
+
+        // Start auto-advance when section enters the viewport
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const current = [...rows].findIndex((r) => r.classList.contains('active'));
+                        startProgress(current);
+                        scheduleNext(current);
+                    } else {
+                        stopAuto();
+                        resetProgress();
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+        observer.observe(section);
+    }
+</script>

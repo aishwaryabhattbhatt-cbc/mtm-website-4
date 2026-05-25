@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/shared/Navbar.astro';
 import HomeHeroSection from '../../components/home/HomeHeroSection.astro';
 import HomeIntroductionSection from '../../components/home/HomeIntroductionSection.astro';
+import HomeMtmSuiteSection from '../../components/home/HomeMtmSuiteSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
 import { resolveLocale, SUPPORTED_LOCALES, getLocaleSwitchUrls } from '../../lib/i18n/routing';
 
@@ -43,6 +44,10 @@ const pageDescription = locale === 'fr'
     <div class="section-gap section-gap-sm" aria-hidden="true"></div>
 
     <HomeIntroductionSection locale={locale} copy={copy} />
+
+    <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+
+    <HomeMtmSuiteSection locale={locale} copy={copy} />
 
     <div class="section-gap section-gap-lg" aria-hidden="true"></div>
 

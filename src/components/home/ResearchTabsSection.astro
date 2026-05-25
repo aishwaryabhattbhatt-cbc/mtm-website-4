@@ -21,1065 +21,1239 @@ import varBox8 from '../../assets/images/laptop-section/variables/icon-smartphon
 import varBox9 from '../../assets/images/laptop-section/variables/icon-speech.png';
 import varBox10 from '../../assets/images/laptop-section/variables/icon-trends.png';
 import varBox11 from '../../assets/images/laptop-section/variables/icon-tv-time.png';
+import dashboardImg from '../../assets/images/dashboard.png';
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 
 interface Props {
-  locale: Locale;
-  copy: CMSDictionary;
+    locale: Locale;
+    copy: CMSDictionary;
 }
 
 const { locale, copy } = Astro.props as Props;
-const base = import.meta.env.BASE_URL;
 
 const tabs = [
-  {
-    labelKey: 'access_item_1_title',
-    labelFallback: 'Technology Trends',
-    bodyKey: 'access_item_1_description',
-    bodyFallback: 'Track rapid shifts across AI, devices, and platforms. Identify where consumer demand is moving next.',
-  },
-  {
-    labelKey: 'access_item_2_title',
-    labelFallback: 'Media Behaviour',
-    bodyKey: 'access_item_2_description',
-    bodyFallback: 'Understand attention, viewing patterns, and engagement signals. See how audience habits evolve across channels.',
-  },
-  {
-    labelKey: 'access_item_3_title',
-    labelFallback: '5000+ variables',
-    bodyKey: 'access_item_3_description',
-    bodyFallback: 'Explore a deep dataset spanning demographics, intent, and usage. Connect variables to uncover high-value opportunities.',
-  },
+    {
+        labelKey: 'access_item_1_title',
+        labelFallback: 'Technology Trends',
+        bodyKey: 'access_item_1_description',
+        bodyFallback:
+            'Track rapid shifts across AI, devices, and platforms. Identify where consumer demand is moving next.',
+    },
+    {
+        labelKey: 'access_item_2_title',
+        labelFallback: 'Media Behaviour',
+        bodyKey: 'access_item_2_description',
+        bodyFallback:
+            'Understand attention, viewing patterns, and engagement signals. See how audience habits evolve across channels.',
+    },
+    {
+        labelKey: 'access_item_3_title',
+        labelFallback: '5000+ variables',
+        bodyKey: 'access_item_3_description',
+        bodyFallback:
+            'Explore a deep dataset spanning demographics, intent, and usage. Connect variables to uncover high-value opportunities.',
+    },
 ];
 
 const cards = [
-  {
-    id: 'card-ai-usage',
-    label: 'AI Usage',
-    src: 'https://www.figma.com/api/mcp/asset/f3a681fe-a53a-4860-a5bb-41d42f70683e',
-  },
-  {
-    id: 'card-fast',
-    label: 'FAST',
-    src: 'https://www.figma.com/api/mcp/asset/fa8e679c-509e-4839-887d-76cd8bc771ec',
-  },
-  {
-    id: 'card-svod',
-    label: 'SVOD',
-    src: 'https://www.figma.com/api/mcp/asset/6ead7ec3-ee3c-486e-9a9f-5d87ae00e46b',
-  },
-  {
-    id: 'card-avod',
-    label: 'AVOD',
-    src: 'https://www.figma.com/api/mcp/asset/d9105888-c61d-4678-ba3c-4a9d0bf8b7a9',
-  },
-  {
-    id: 'card-gaming',
-    label: 'Gaming',
-    src: 'https://www.figma.com/api/mcp/asset/fa8e679c-509e-4839-887d-76cd8bc771ec',
-  },
-  {
-    id: 'card-news',
-    label: 'News',
-    src: 'https://www.figma.com/api/mcp/asset/f3a681fe-a53a-4860-a5bb-41d42f70683e',
-  },
-  {
-    id: 'card-social',
-    label: 'Social',
-    src: 'https://www.figma.com/api/mcp/asset/6ead7ec3-ee3c-486e-9a9f-5d87ae00e46b',
-  },
-  {
-    id: 'card-podcasts',
-    label: 'Podcasts',
-    src: 'https://www.figma.com/api/mcp/asset/d9105888-c61d-4678-ba3c-4a9d0bf8b7a9',
-  },
-  {
-    id: 'card-mobile',
-    label: 'Mobile',
-    src: 'https://www.figma.com/api/mcp/asset/fa8e679c-509e-4839-887d-76cd8bc771ec',
-  },
-  {
-    id: 'card-ecommerce',
-    label: 'Ecommerce',
-    src: 'https://www.figma.com/api/mcp/asset/f3a681fe-a53a-4860-a5bb-41d42f70683e',
-  },
+    {
+        id: 'card-ai-usage',
+        label: 'AI Usage',
+        src: 'https://www.figma.com/api/mcp/asset/f3a681fe-a53a-4860-a5bb-41d42f70683e',
+    },
+    {
+        id: 'card-fast',
+        label: 'FAST',
+        src: 'https://www.figma.com/api/mcp/asset/fa8e679c-509e-4839-887d-76cd8bc771ec',
+    },
+    {
+        id: 'card-svod',
+        label: 'SVOD',
+        src: 'https://www.figma.com/api/mcp/asset/6ead7ec3-ee3c-486e-9a9f-5d87ae00e46b',
+    },
+    {
+        id: 'card-avod',
+        label: 'AVOD',
+        src: 'https://www.figma.com/api/mcp/asset/d9105888-c61d-4678-ba3c-4a9d0bf8b7a9',
+    },
+    {
+        id: 'card-gaming',
+        label: 'Gaming',
+        src: 'https://www.figma.com/api/mcp/asset/fa8e679c-509e-4839-887d-76cd8bc771ec',
+    },
+    {
+        id: 'card-news',
+        label: 'News',
+        src: 'https://www.figma.com/api/mcp/asset/f3a681fe-a53a-4860-a5bb-41d42f70683e',
+    },
+    {
+        id: 'card-social',
+        label: 'Social',
+        src: 'https://www.figma.com/api/mcp/asset/6ead7ec3-ee3c-486e-9a9f-5d87ae00e46b',
+    },
+    {
+        id: 'card-podcasts',
+        label: 'Podcasts',
+        src: 'https://www.figma.com/api/mcp/asset/d9105888-c61d-4678-ba3c-4a9d0bf8b7a9',
+    },
+    {
+        id: 'card-mobile',
+        label: 'Mobile',
+        src: 'https://www.figma.com/api/mcp/asset/fa8e679c-509e-4839-887d-76cd8bc771ec',
+    },
+    {
+        id: 'card-ecommerce',
+        label: 'Ecommerce',
+        src: 'https://www.figma.com/api/mcp/asset/f3a681fe-a53a-4860-a5bb-41d42f70683e',
+    },
 ];
-
-const screenSrc = `${base}images/dashboard.png`;
 ---
 
+<div id="research-assets" data-dashboard={dashboardImg.src} hidden aria-hidden="true"></div>
 <section class="research-section">
-  <h2 class="heading heading-fly-in" data-copy-key="access_title">{t(copy, 'access_title', locale, 'Access credible research on')}</h2>
+    <h2 class="heading heading-fly-in" data-copy-key="access_title">
+        {t(copy, 'access_title', locale, 'Access credible research on')}
+    </h2>
 
-  <div class="content content-fly-in">
-
-    <!-- LEFT: Topic Tabs -->
-    <div class="left-text">
-      {tabs.map((tab, i) => (
-        <div
-          class="tab-item"
-          data-tab={i}
-        >
-          <span class="tab-label" data-copy-key={tab.labelKey}>{t(copy, tab.labelKey, locale, tab.labelFallback)}</span>
-          <span class="tab-body" data-copy-key={tab.bodyKey}>{t(copy, tab.bodyKey, locale, tab.bodyFallback)}</span>
+    <div class="content content-fly-in">
+        <!-- LEFT: Topic Tabs -->
+        <div class="left-text">
+            {
+                tabs.map((tab, i) => (
+                    <div class="tab-item" data-tab={i}>
+                        <span class="tab-label text-h4" data-copy-key={tab.labelKey}>
+                            {t(copy, tab.labelKey, locale, tab.labelFallback)}
+                        </span>
+                        <span class="tab-body text-body-p1" data-copy-key={tab.bodyKey}>
+                            {t(copy, tab.bodyKey, locale, tab.bodyFallback)}
+                        </span>
+                    </div>
+                ))
+            }
         </div>
-      ))}
+
+        <!-- RIGHT: Visual -->
+        <div class="right-visual" id="rightVisual">
+            <!-- Tab 0 + 1 + 2: shared boxes — positions/sizes animate between tabs -->
+            <div class="custom-box-layout" id="boxVisual">
+                <div
+                    class="box box-lg box1"
+                    data-tech={techBox1.src}
+                    data-media={mediaBox1.src}
+                    data-variables={varBox1.src}
+                >
+                    <img src={techBox1.src} alt="Box 1" />
+                </div>
+                <div
+                    class="box box-lg box2"
+                    data-tech={techBox2.src}
+                    data-media={mediaBox2.src}
+                    data-variables={varBox2.src}
+                >
+                    <img src={techBox2.src} alt="Box 2" />
+                </div>
+                <div
+                    class="box box-sm box3"
+                    data-tech={techBox3.src}
+                    data-media={mediaBox3.src}
+                    data-variables={varBox3.src}
+                >
+                    <img src={techBox3.src} alt="Box 3" />
+                </div>
+                <div
+                    class="box box-sm box4"
+                    data-tech={techBox4.src}
+                    data-media={mediaBox4.src}
+                    data-variables={varBox4.src}
+                >
+                    <img src={techBox4.src} alt="Box 4" />
+                </div>
+                <div
+                    class="box box-xs box5"
+                    data-media={mediaBox5.src}
+                    data-variables={varBox5.src}
+                >
+                    <img src={mediaBox5.src} alt="Box 5" />
+                </div>
+                <div class="box box-xs box6 box-variables-6">
+                    <img src={varBox6.src} alt="Music" />
+                </div>
+                <div class="box box-xs box7 box-variables-7">
+                    <img src={varBox7.src} alt="Smartphone Audio" />
+                </div>
+                <div class="box box-xs box8 box-variables-8">
+                    <img src={varBox8.src} alt="Smartphone Love" />
+                </div>
+                <div class="box box-xs box9 box-variables-9">
+                    <img src={varBox9.src} alt="Speech" />
+                </div>
+                <div class="box box-xs box10 box-variables-10">
+                    <img src={varBox10.src} alt="Trends" />
+                </div>
+                <div class="box box-xs box11 box-variables-11">
+                    <img src={varBox11.src} alt="TV Time" />
+                </div>
+                <div class="box box-xs box12 box-variables-12">
+                    <img src={varBox1.src} alt="Age Group" />
+                </div>
+                <div class="box box-xs box13 box-variables-13">
+                    <img src={varBox2.src} alt="Audio" />
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- RIGHT: Visual -->
-    <div class="right-visual" id="rightVisual">
-
-      <!-- Tab 0 + 1 + 2: shared boxes — positions/sizes animate between tabs -->
-      <div class="custom-box-layout" id="boxVisual">
-        <div class="box box-lg box1" data-tech={techBox1.src} data-media={mediaBox1.src} data-variables={varBox1.src}><img src={techBox1.src} alt="Box 1" /></div>
-        <div class="box box-lg box2" data-tech={techBox2.src} data-media={mediaBox2.src} data-variables={varBox2.src}><img src={techBox2.src} alt="Box 2" /></div>
-        <div class="box box-sm box3" data-tech={techBox3.src} data-media={mediaBox3.src} data-variables={varBox3.src}><img src={techBox3.src} alt="Box 3" /></div>
-        <div class="box box-sm box4" data-tech={techBox4.src} data-media={mediaBox4.src} data-variables={varBox4.src}><img src={techBox4.src} alt="Box 4" /></div>
-        <div class="box box-xs box5" data-media={mediaBox5.src} data-variables={varBox5.src}><img src={mediaBox5.src} alt="Box 5" /></div>
-        <div class="box box-xs box6 box-variables-6"><img src={varBox6.src} alt="Music" /></div>
-        <div class="box box-xs box7 box-variables-7"><img src={varBox7.src} alt="Smartphone Audio" /></div>
-        <div class="box box-xs box8 box-variables-8"><img src={varBox8.src} alt="Smartphone Love" /></div>
-        <div class="box box-xs box9 box-variables-9"><img src={varBox9.src} alt="Speech" /></div>
-        <div class="box box-xs box10 box-variables-10"><img src={varBox10.src} alt="Trends" /></div>
-        <div class="box box-xs box11 box-variables-11"><img src={varBox11.src} alt="TV Time" /></div>
-        <div class="box box-xs box12 box-variables-12"><img src={varBox1.src} alt="Age Group" /></div>
-        <div class="box box-xs box13 box-variables-13"><img src={varBox2.src} alt="Audio" /></div>
-      </div>
-
-    </div>
-  </div>
 </section>
 
 <style>
-  .research-section {
-    width: 100%;
-    padding: 0 var(--content-margin-inline);
-    font-family: 'Roboto', sans-serif;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-  }
-
-  @media (min-width: 768px) {
     .research-section {
-      padding-left: var(--content-margin-inline);
-      padding-right: var(--content-margin-inline);
+        width: 100%;
+        padding: 0 var(--content-margin-inline);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
     }
-  }
 
-  @media (min-width: 1024px) {
-    .research-section {
-      padding-left: var(--content-margin-inline);
-      padding-right: var(--content-margin-inline);
+    @media (min-width: 768px) {
+        .research-section {
+            padding-left: var(--content-margin-inline);
+            padding-right: var(--content-margin-inline);
+        }
     }
-  }
 
-  .heading {
-    font-family: var(--font-heading);
-    font-size: clamp(32px, 4vw, 51px);
+    @media (min-width: 1024px) {
+        .research-section {
+            padding-left: var(--content-margin-inline);
+            padding-right: var(--content-margin-inline);
+        }
+    }
 
-    color: var(--text-primary);
-    letter-spacing: -0.06em;
-    line-height: var(--lh-tight);
-    margin-bottom: 12px;
-  }
-
-  @media (max-height: 750px) {
     .heading {
-      margin-bottom: 4px;
-      font-size: clamp(24px, 3.5vw, 40px);
+        margin-bottom: var(--space-3);
+    }
+
+    @media (max-height: 750px) {
+        .heading {
+            margin-bottom: var(--space-1);
+        }
+
+        .content {
+            gap: var(--space-5);
+        }
+
+        .left-text {
+            gap: 0.625rem;
+        }
+
+        .tab-item {
+            gap: var(--space-1);
+        }
+    }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 0.65s ease,
+            transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+        will-change: opacity, transform;
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .content {
-      gap: 20px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: var(--space-8);
     }
 
+    .content-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 0.65s ease 1s,
+            transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) 1s;
+        will-change: opacity, transform;
+    }
+
+    .content-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .box-variables-6,
+    .box-variables-7,
+    .box-variables-8,
+    .box-variables-9,
+    .box-variables-10,
+    .box-variables-11,
+    .box-variables-12,
+    .box-variables-13 {
+        opacity: 0;
+    }
+
+    .box-variables-6 {
+        left: 507px;
+        top: 165px;
+    }
+
+    .box-variables-7 {
+        left: 507px;
+        top: 275px;
+    }
+
+    .box-variables-8 {
+        left: 507px;
+        top: 385px;
+    }
+
+    .box-variables-9 {
+        left: 617px;
+        top: 145px;
+    }
+
+    .box-variables-10 {
+        left: 617px;
+        top: 255px;
+    }
+
+    .box-variables-11 {
+        left: 617px;
+        top: 365px;
+    }
+
+    .box-variables-12 {
+        left: 727px;
+        top: 200px;
+    }
+
+    .box-variables-13 {
+        left: 727px;
+        top: 310px;
+    }
+
+    /* LEFT TABS */
     .left-text {
-      gap: 10px;
+        position: relative;
+        --tab-progress: 0%;
+        --tab-progress-duration: 3000ms;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        padding-left: var(--space-6);
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .left-text::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0.375rem;
+        border-radius: var(--radius-full);
+        background: var(--color-divider);
+    }
+
+    .left-text::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0.375rem;
+        height: var(--tab-progress);
+        border-radius: var(--radius-full);
+        background: linear-gradient(
+            to bottom,
+            var(--color-chart-teal) 0%,
+            var(--highcharts-color-5) 35.0962%,
+            var(--brand-indigo) 65%,
+            var(--badge-juniors) 90%
+        );
+        transition: height var(--tab-progress-duration) linear;
     }
 
     .tab-item {
-      gap: 4px;
-    }
-  }
-
-  .heading-fly-in {
-    opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
-    will-change: opacity, transform;
-  }
-
-  .heading-fly-in.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 40px;
-  }
-
-  .content-fly-in {
-    opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 0.65s ease 1s, transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) 1s;
-    will-change: opacity, transform;
-  }
-
-  .content-fly-in.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .box-variables-6,
-  .box-variables-7,
-  .box-variables-8,
-  .box-variables-9,
-  .box-variables-10,
-  .box-variables-11,
-  .box-variables-12,
-  .box-variables-13 {
-    opacity: 0;
-  }
-
-  .box-variables-6 {
-    left: 405px;
-    top: 165px;
-  }
-
-  .box-variables-7 {
-    left: 405px;
-    top: 275px;
-  }
-
-  .box-variables-8 {
-    left: 405px;
-    top: 385px;
-  }
-
-  .box-variables-9 {
-    left: 515px;
-    top: 145px;
-  }
-
-  .box-variables-10 {
-    left: 515px;
-    top: 255px;
-  }
-
-  .box-variables-11 {
-    left: 515px;
-    top: 365px;
-  }
-
-  .box-variables-12 {
-    left: 625px;
-    top: 200px;
-  }
-
-  .box-variables-13 {
-    left: 625px;
-    top: 310px;
-  }
-
-  /* LEFT TABS */
-  .left-text {
-    position: relative;
-    --tab-progress: 0%;
-    --tab-progress-duration: 3000ms;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-left: 24px;
-    flex-shrink: 0;
-    width: 375px;
-    margin-right: auto;
-  }
-
-  .left-text::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 6px;
-    border-radius: 999px;
-    background: #d9d9d9;
-  }
-
-  .left-text::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 6px;
-    height: var(--tab-progress);
-    border-radius: 999px;
-    background: linear-gradient(
-      to bottom,
-      #0DC57E 0%,
-      #54A2E4 35.0962%,
-      #7B76FF 65%,
-      #CB61D8 90%
-    );
-    transition: height var(--tab-progress-duration) linear;
-  }
-
-  .tab-item {
-    font-family: var(--font-body);
-    font-weight: var(--fw-regular);
-    font-size: clamp(28px, 3.5vw, 44px);
-    letter-spacing: -0.06em;
-    line-height: var(--lh-snug);
-    color: var(--neutral-grey-3);
-    cursor: pointer;
-    transition: color 0.4s ease;
-    user-select: none;
-    white-space: normal;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .tab-label {
-    white-space: nowrap;
-  }
-
-  .tab-body {
-    display: none;
-    font-size: clamp(12px, 1.1vw, 14px);
-    line-height: var(--lh-relaxed);
-    letter-spacing: 0;
-    color: var(--text-secondary);
-    max-width: none;
-    width: 100%;
-  }
-
-  .tab-item:hover {
-    color: var(--neutral-grey-2);
-  }
-
-  .tab-item.active {
-    color: var(--text-primary);
-  }
-
-  .tab-item.active .tab-body {
-    display: block;
-  }
-
-  .tab-item.is-disabled {
-    color: var(--neutral-grey-3);
-    pointer-events: none;
-  }
-
-  /* RIGHT VISUAL */
-  .right-visual {
-    position: relative;
-    flex: 0 0 860px;
-    width: 860px;
-    max-width: none;
-    min-width: 0;
-    margin-left: auto;
-    overflow: visible;
-  }
-
-  .screen-wrapper {
-    position: relative;
-    margin-left: auto;
-    width: 95%;
-    aspect-ratio: 16 / 9;
-    overflow: visible;
-    box-shadow: none;
-    background: transparent;
-  }
-
-  .custom-box-layout {
-    position: relative;
-    width: 860px;
-    max-width: none;
-    height: 600px;
-    min-height: 400px;
-    margin-left: 0;
-  }
-  .custom-box-layout .box {
-    position: absolute;
-    background: #cddcde;
-    border: 1px solid #7a9cae;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    font-family: inherit;
-    font-weight: 400;
-    text-align: center;
-    opacity: 0.85;
-    overflow: hidden;
-    transition:
-      left    1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      top     1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      width   0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      height  0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      opacity 0.6s ease;
-  }
-
-  .custom-box-layout .box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 1;
-    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  /* Remove box styling for image boxes (box1-13) */
-  .custom-box-layout .box1,
-  .custom-box-layout .box2,
-  .custom-box-layout .box3,
-  .custom-box-layout .box4,
-  .custom-box-layout .box5,
-  .custom-box-layout .box6,
-  .custom-box-layout .box7,
-  .custom-box-layout .box8,
-  .custom-box-layout .box9,
-  .custom-box-layout .box10,
-  .custom-box-layout .box11,
-  .custom-box-layout .box12,
-  .custom-box-layout .box13 {
-    background: transparent;
-    border: none;
-    opacity: 1;
-    padding: 0;
-    margin: 0;
-    display: block;
-    align-items: unset;
-    justify-content: unset;
-  }
-  /* Tab 2: all boxes shrink to XS, no card — just the image */
-  #boxVisual.tab2 .box {
-    width: 90px;
-    height: 90px;
-    background: transparent;
-    border: none;
-    opacity: 0.85;
-    display: block;
-  }
-
-  /* box1-13: all fully transparent image boxes in tab2 */
-  #boxVisual.tab2 .box1,
-  #boxVisual.tab2 .box2,
-  #boxVisual.tab2 .box3,
-  #boxVisual.tab2 .box4,
-  #boxVisual.tab2 .box5,
-  #boxVisual.tab2 .box6,
-  #boxVisual.tab2 .box7,
-  #boxVisual.tab2 .box8,
-  #boxVisual.tab2 .box9,
-  #boxVisual.tab2 .box10,
-  #boxVisual.tab2 .box11,
-  #boxVisual.tab2 .box12,
-  #boxVisual.tab2 .box13 {
-    background: transparent;
-    border: none;
-    opacity: 0.85;
-    padding: 0;
-    margin: 0;
-    display: block;
-  }
-
-  /* Images in tab2: fill the box fully, no padding */
-  #boxVisual.tab2 .box img {
-    object-fit: cover;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-
-
-  /* Hide box 5 only for tab 0 */
-  .custom-box-layout.tab0 .box5 {
-    display: none !important;
-  }
-  /* Hide label text when in grid mode */
-  #boxVisual.tab2 .box span {
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  .custom-box-layout .box-lg {
-    width: 400px;
-    height: 400px;
-  }
-  .custom-box-layout .box-sm {
-    width: 120px;
-    height: 120px;
-  }
-  .custom-box-layout .box-xs {
-    width: 90px;
-    height: 90px;
-  }
-  /* Positioning for demo, adjust as needed */
-  .custom-box-layout .box1 {
-    left: 199px;
-    top: 139px;
-  }
-  .custom-box-layout .box2 {
-    left: 529px;
-    top: 86px;
-  }
-  .custom-box-layout .box3 {
-    left: 349px;
-    top: 56px;
-  }
-  .custom-box-layout .box4 {
-    left: 247px;
-    top: 480px;
-  }
-  .custom-box-layout .box5 {
-    left: 740px;
-    top: 439px;
-  }
-
-  .screen-wrapper.hidden {
-    display: none;
-  }
-
-  .screen-wrapper img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    margin-top: 0;
-    background: transparent;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.45s ease, visibility 0s linear 0s;
-  }
-
-  .screen-wrapper img.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.45s ease, visibility 0s linear 0.45s;
-  }
-
-  .cards-layer {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  .screen-wrapper.is-empty::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: transparent;
-  }
-
-  :global(.research-icon-card.hidden) {
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
-  }
-
-  .box-gui-panel {
-    display: none !important;
-  }
-
-  .box-gui-panel.is-collapsed {
-    width: auto;
-    padding: 6px;
-    gap: 0;
-    border-radius: 999px;
-  }
-
-  .box-gui-panel.is-collapsed .box-gui-title {
-    display: none;
-  }
-
-  .box-gui-panel.is-collapsed .box-gui-header {
-    justify-content: center;
-  }
-
-  .box-gui-panel.is-collapsed #boxGuiToggle {
-    width: 28px;
-    height: 28px;
-    padding: 0 !important;
-    border-radius: 999px !important;
-    font-size: 18px !important;
-    line-height: 1 !important;
-  }
-
-  .box-gui-panel label {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-size: 12px;
-  }
-
-  .box-gui-panel select,
-  .box-gui-panel input[type='range'] {
-    width: 100%;
-    font-size: 13px;
-  }
-
-  .icon-pos-gui-toggle {
-    display: none !important;
-  }
-
-  .icon-pos-gui,
-  .icon-pos-gui.is-open {
-    display: none !important;
-  }
-
-  .icon-pos-gui label {
-    display: grid;
-    gap: 4px;
-  }
-
-  .icon-pos-gui select,
-  .icon-pos-gui input[type='range'] {
-    width: 100%;
-  }
-
-  .icon-pos-gui-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  .icon-pos-gui-actions {
-    display: flex;
-    gap: 8px;
-  }
-
-  .icon-pos-gui-actions button {
-    border: 1px solid #d8d8d8;
-    background: #fff;
-    border-radius: 8px;
-    padding: 6px 8px;
-    font-size: 12px;
-    cursor: pointer;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .content {
-      flex-direction: column;
+        color: var(--neutral-grey-3);
+        cursor: pointer;
+        transition: color 0.4s ease;
+        user-select: none;
+        white-space: normal;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.625rem;
     }
 
+    .tab-label {
+        white-space: nowrap;
+    }
+
+    .tab-body {
+        display: none;
+        color: var(--text-secondary);
+        max-width: none;
+        width: 100%;
+    }
+
+    .tab-item:hover {
+        color: var(--neutral-grey-2);
+    }
+
+    .tab-item.active {
+        color: var(--text-primary);
+    }
+
+    .tab-item.active .tab-body {
+        display: block;
+    }
+
+    .tab-item.is-disabled {
+        color: var(--neutral-grey-3);
+        pointer-events: none;
+    }
+
+    /* RIGHT VISUAL */
     .right-visual {
-      flex: 0 0 100%;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      overflow: visible;
+        position: relative;
+        flex: 0 0 53.75rem;
+        width: 53.75rem;
+        max-width: none;
+        min-width: 0;
+        margin-left: auto;
+        overflow: hidden;
+    }
+
+    .screen-wrapper {
+        position: relative;
+        margin-left: auto;
+        width: 95%;
+        aspect-ratio: 16 / 9;
+        overflow: visible;
+        box-shadow: none;
+        background: transparent;
     }
 
     .custom-box-layout {
-      width: 100%;
-      min-height: 320px;
+        position: relative;
+        width: 53.75rem;
+        max-width: none;
+        height: 37.5rem;
+        min-height: 25rem;
+        margin-left: 0;
+    }
+    .custom-box-layout .box {
+        position: absolute;
+        background: var(--color-box-bg);
+        border: var(--stroke-1) solid var(--color-box-border);
+        color: var(--text-white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        opacity: 0.85;
+        overflow: hidden;
+        transition:
+            left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            width 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            height 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            opacity 0.6s ease;
     }
 
-    .left-text {
-      width: 100%;
-      padding-left: 0;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 12px;
+    .custom-box-layout .box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 1;
+        transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .tab-item {
-      font-size: 22px;
+    /* Remove box styling for image boxes (box1-13) */
+    .custom-box-layout .box1,
+    .custom-box-layout .box2,
+    .custom-box-layout .box3,
+    .custom-box-layout .box4,
+    .custom-box-layout .box5,
+    .custom-box-layout .box6,
+    .custom-box-layout .box7,
+    .custom-box-layout .box8,
+    .custom-box-layout .box9,
+    .custom-box-layout .box10,
+    .custom-box-layout .box11,
+    .custom-box-layout .box12,
+    .custom-box-layout .box13 {
+        background: transparent;
+        border: none;
+        opacity: 1;
+        padding: 0;
+        margin: 0;
+        display: block;
+        align-items: unset;
+        justify-content: unset;
+    }
+    /* Tab 2: all boxes shrink to XS, no card — just the image */
+    #boxVisual.tab2 .box {
+        width: 90px;
+        height: 90px;
+        background: transparent;
+        border: none;
+        opacity: 0.85;
+        display: block;
     }
 
-    :global(.research-icon-card) {
-      width: 84px;
-      height: 84px;
+    /* box1-13: all fully transparent image boxes in tab2 */
+    #boxVisual.tab2 .box1,
+    #boxVisual.tab2 .box2,
+    #boxVisual.tab2 .box3,
+    #boxVisual.tab2 .box4,
+    #boxVisual.tab2 .box5,
+    #boxVisual.tab2 .box6,
+    #boxVisual.tab2 .box7,
+    #boxVisual.tab2 .box8,
+    #boxVisual.tab2 .box9,
+    #boxVisual.tab2 .box10,
+    #boxVisual.tab2 .box11,
+    #boxVisual.tab2 .box12,
+    #boxVisual.tab2 .box13 {
+        background: transparent;
+        border: none;
+        opacity: 0.85;
+        padding: 0;
+        margin: 0;
+        display: block;
     }
-  }
+
+    /* Images in tab2: fill the box fully, no padding */
+    #boxVisual.tab2 .box img {
+        object-fit: cover;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Hide box 5 only for tab 0 */
+    .custom-box-layout.tab0 .box5 {
+        display: none !important;
+    }
+    /* Hide label text when in grid mode */
+    #boxVisual.tab2 .box span {
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+    .custom-box-layout .box-lg {
+        width: 25rem;
+        height: 25rem;
+    }
+    .custom-box-layout .box-sm {
+        width: 7.5rem;
+        height: 7.5rem;
+    }
+    .custom-box-layout .box-xs {
+        width: 5.625rem;
+        height: 5.625rem;
+    }
+    /* Positioning for demo, adjust as needed */
+    .custom-box-layout .box1 {
+        left: 199px;
+        top: 139px;
+    }
+    .custom-box-layout .box2 {
+        left: 529px;
+        top: 86px;
+    }
+    .custom-box-layout .box3 {
+        left: 349px;
+        top: 56px;
+    }
+    .custom-box-layout .box4 {
+        left: 247px;
+        top: 480px;
+    }
+    .custom-box-layout .box5 {
+        left: 740px;
+        top: 439px;
+    }
+
+    .screen-wrapper.hidden {
+        display: none;
+    }
+
+    .screen-wrapper img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        margin-top: 0;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
+        transition:
+            opacity 0.45s ease,
+            visibility 0s linear 0s;
+    }
+
+    .screen-wrapper img.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            opacity 0.45s ease,
+            visibility 0s linear 0.45s;
+    }
+
+    .cards-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .screen-wrapper.is-empty::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: transparent;
+    }
+
+    :global(.research-icon-card.hidden) {
+        opacity: 0;
+        transform: scale(0.8);
+        pointer-events: none;
+    }
+
+    .box-gui-panel {
+        display: none !important;
+    }
+
+    .box-gui-panel.is-collapsed {
+        width: auto;
+        padding: 6px;
+        gap: 0;
+        border-radius: 999px;
+    }
+
+    .box-gui-panel.is-collapsed .box-gui-title {
+        display: none;
+    }
+
+    .box-gui-panel.is-collapsed .box-gui-header {
+        justify-content: center;
+    }
+
+    .box-gui-panel.is-collapsed #boxGuiToggle {
+        width: 28px;
+        height: 28px;
+        padding: 0 !important;
+        border-radius: 999px !important;
+        font-size: 18px !important;
+        line-height: 1 !important;
+    }
+
+    .box-gui-panel label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 12px;
+    }
+
+    .box-gui-panel select,
+    .box-gui-panel input[type='range'] {
+        width: 100%;
+        font-size: 13px;
+    }
+
+    .icon-pos-gui-toggle {
+        display: none !important;
+    }
+
+    .icon-pos-gui,
+    .icon-pos-gui.is-open {
+        display: none !important;
+    }
+
+    .icon-pos-gui label {
+        display: grid;
+        gap: 4px;
+    }
+
+    .icon-pos-gui select,
+    .icon-pos-gui input[type='range'] {
+        width: 100%;
+    }
+
+    .icon-pos-gui-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .icon-pos-gui-actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    .icon-pos-gui-actions button {
+        border: 1px solid #d8d8d8;
+        background: #fff;
+        border-radius: 8px;
+        padding: 6px 8px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    /* ─── Row-mode proportional scale-down ─── */
+
+    /* Range 1: 1440–1554px (margin-inline: 120px → available = vw − 240px)
+     Scale interpolates 1.0 → 0.913, keeping left-text at 375px + 40px gap */
+    @media (min-width: 1440px) and (max-width: 1554px) {
+        .research-section {
+            --research-scale: calc(0.913 + (100vw - 1440px) / 1321px);
+        }
+        .right-visual {
+            flex: 0 0 auto;
+            width: calc(var(--research-scale) * 53.75rem);
+            max-width: none;
+        }
+    }
+
+    /* Range 2: 1024–1439px (margin-inline: 72px → available = vw − 144px)
+     Scale interpolates 0.913 → 0.541, preserving 375px for left-text at 1024px */
+    @media (min-width: 1024px) and (max-width: 1439px) {
+        .research-section {
+            --research-scale: calc(0.541 + (100vw - 1024px) / 1115px);
+        }
+        .right-visual {
+            flex: 0 0 auto;
+            width: calc(var(--research-scale) * 53.75rem);
+            max-width: none;
+        }
+    }
+
+    /* ─── Column mode: ≤ 1023px ─── */
+    @media (max-width: 1023px) {
+        .research-section {
+            position: relative;
+            top: auto;
+            transform: none;
+            padding-top: var(--space-12);
+            padding-bottom: var(--space-12);
+        }
+
+        .content {
+            flex-direction: column;
+            gap: 1.875rem;
+        }
+
+        .right-visual {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            overflow: hidden;
+            order: -1;
+        }
+
+        .custom-box-layout {
+            width: 100%;
+            min-height: 20rem;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .left-text {
+            width: 23.4375rem;
+            max-width: 100%;
+            align-self: center;
+            padding-left: 0;
+            padding-top: var(--space-6);
+            align-items: center;
+        }
+
+        /* Rotate progress bar to horizontal, placed above tabs */
+        .left-text::before {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: auto;
+            width: 100%;
+            height: 0.375rem;
+        }
+
+        .left-text::after {
+            left: 0;
+            top: 0;
+            bottom: auto;
+            width: var(--tab-progress);
+            height: 0.375rem;
+            background: linear-gradient(
+                to right,
+                var(--color-chart-teal) 0%,
+                var(--highcharts-color-5) 35.0962%,
+                var(--brand-indigo) 65%,
+                var(--badge-juniors) 90%
+            );
+            transition: width var(--tab-progress-duration) linear;
+        }
+
+        .tab-item {
+            align-items: center;
+        }
+
+        .tab-body {
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .research-section {
+            padding-top: var(--space-8);
+            padding-bottom: var(--space-8);
+        }
+
+        .left-text {
+            padding-left: 0;
+            padding-top: var(--space-6);
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        :global(.research-icon-card) {
+            width: 5.25rem;
+            height: 5.25rem;
+        }
+    }
 </style>
 
 <script>
-  const baseUrl = import.meta.env.BASE_URL;
+    const dashboardSrc =
+        (document.getElementById('research-assets') as HTMLElement | null)?.dataset.dashboard ?? '';
 
-  // Card positions per tab index
-  type CardPos = { top: string; left: string; visible: boolean };
-  type CardConfig = Record<string, CardPos>;
-  type TabState = {
-    dashboardSrc: string | null;
-    cards: CardConfig;
-  };
+    // Card positions per tab index
+    type CardPos = { top: string; left: string; visible: boolean };
+    type CardConfig = Record<string, CardPos>;
+    type TabState = {
+        dashboardSrc: string | null;
+        cards: CardConfig;
+    };
 
-  const tabStates: TabState[] = [
-    // Tab 0: Technology Trends
-    {
-      dashboardSrc: `${baseUrl}images/dashboard.png`,
-      cards: {
-        'card-ai-usage': { top: '25%', left: '83.5%', visible: true },
-        'card-fast':     { top: '58%', left: '6.5%', visible: true },
-        'card-svod':     { top: '20.5%', left: '4%', visible: true },
-        'card-avod':     { top: '59.5%', left: '81.5%', visible: true },
-        'card-gaming':   { top: '10%', left: '10%', visible: false },
-        'card-news':     { top: '12%', left: '42%', visible: false },
-        'card-social':   { top: '42%', left: '24%', visible: false },
-        'card-podcasts': { top: '66%', left: '30%', visible: false },
-        'card-mobile':   { top: '68%', left: '62%', visible: false },
-        'card-ecommerce':{ top: '36%', left: '84%', visible: false },
-      },
-    },
-    // Tab 1: Media Behaviour
-    {
-      dashboardSrc: `${baseUrl}images/dashboard.png`,
-      cards: {
-        'card-ai-usage': { top: '66%', left: '6%', visible: true },
-        'card-fast':     { top: '0%', left: '19.5%', visible: true },
-        'card-svod':     { top: '79.5%', left: '66%', visible: true },
-        'card-avod':     { top: '56.5%', left: '84%', visible: true },
-        'card-gaming':   { top: '32.5%', left: '3%', visible: true },
-        'card-news':     { top: '18%', left: '81.5%', visible: true },
-        'card-social':   { top: '22%', left: '28%', visible: false },
-        'card-podcasts': { top: '80%', left: '30%', visible: false },
-        'card-mobile':   { top: '44%', left: '30%', visible: false },
-        'card-ecommerce':{ top: '48%', left: '52%', visible: false },
-      },
-    },
-    // Tab 2: 5000+ variables
-    {
-      dashboardSrc: null,
-      cards: {
-        // 4 columns centered in frame:
-        // grid width = 460px (4*100 + 3*20), height = 340px
-        // origin = (50% - 230px, 50% - 170px)
-        // Col 1: x=0, y=60/180 (center-aligned to 3-card columns)
-        'card-ai-usage': { top: 'calc(50% - 110px)', left: 'calc(50% - 230px)', visible: true },
-        'card-gaming':   { top: 'calc(50% + 10px)',  left: 'calc(50% - 230px)', visible: true },
-        // Col 2: x=120, y=0/120/240
-        'card-avod':     { top: 'calc(50% - 170px)', left: 'calc(50% - 110px)', visible: true },
-        'card-news':     { top: 'calc(50% - 50px)',  left: 'calc(50% - 110px)', visible: true },
-        'card-podcasts': { top: 'calc(50% + 70px)',  left: 'calc(50% - 110px)', visible: true },
-        // Col 3: x=240, y=0/120/240
-        'card-svod':     { top: 'calc(50% - 170px)', left: 'calc(50% + 10px)',  visible: true },
-        'card-fast':     { top: 'calc(50% - 50px)',  left: 'calc(50% + 10px)',  visible: true },
-        'card-mobile':   { top: 'calc(50% + 70px)',  left: 'calc(50% + 10px)',  visible: true },
-        // Col 4: x=360, y=60/180 (center-aligned to 3-card columns)
-        'card-social':   { top: 'calc(50% - 110px)', left: 'calc(50% + 130px)', visible: true },
-        'card-ecommerce':{ top: 'calc(50% + 10px)',  left: 'calc(50% + 130px)', visible: true },
-      },
-    },
-  ];
+    const tabStates: TabState[] = [
+        // Tab 0: Technology Trends
+        {
+            dashboardSrc,
+            cards: {
+                'card-ai-usage': { top: '25%', left: '83.5%', visible: true },
+                'card-fast': { top: '58%', left: '6.5%', visible: true },
+                'card-svod': { top: '20.5%', left: '4%', visible: true },
+                'card-avod': { top: '59.5%', left: '81.5%', visible: true },
+                'card-gaming': { top: '10%', left: '10%', visible: false },
+                'card-news': { top: '12%', left: '42%', visible: false },
+                'card-social': { top: '42%', left: '24%', visible: false },
+                'card-podcasts': { top: '66%', left: '30%', visible: false },
+                'card-mobile': { top: '68%', left: '62%', visible: false },
+                'card-ecommerce': { top: '36%', left: '84%', visible: false },
+            },
+        },
+        // Tab 1: Media Behaviour
+        {
+            dashboardSrc,
+            cards: {
+                'card-ai-usage': { top: '66%', left: '6%', visible: true },
+                'card-fast': { top: '0%', left: '19.5%', visible: true },
+                'card-svod': { top: '79.5%', left: '66%', visible: true },
+                'card-avod': { top: '56.5%', left: '84%', visible: true },
+                'card-gaming': { top: '32.5%', left: '3%', visible: true },
+                'card-news': { top: '18%', left: '81.5%', visible: true },
+                'card-social': { top: '22%', left: '28%', visible: false },
+                'card-podcasts': { top: '80%', left: '30%', visible: false },
+                'card-mobile': { top: '44%', left: '30%', visible: false },
+                'card-ecommerce': { top: '48%', left: '52%', visible: false },
+            },
+        },
+        // Tab 2: 5000+ variables
+        {
+            dashboardSrc: null,
+            cards: {
+                // 4 columns centered in frame:
+                // grid width = 460px (4*100 + 3*20), height = 340px
+                // origin = (50% - 230px, 50% - 170px)
+                // Col 1: x=0, y=60/180 (center-aligned to 3-card columns)
+                'card-ai-usage': {
+                    top: 'calc(50% - 110px)',
+                    left: 'calc(50% - 230px)',
+                    visible: true,
+                },
+                'card-gaming': {
+                    top: 'calc(50% + 10px)',
+                    left: 'calc(50% - 230px)',
+                    visible: true,
+                },
+                // Col 2: x=120, y=0/120/240
+                'card-avod': { top: 'calc(50% - 170px)', left: 'calc(50% - 110px)', visible: true },
+                'card-news': { top: 'calc(50% - 50px)', left: 'calc(50% - 110px)', visible: true },
+                'card-podcasts': {
+                    top: 'calc(50% + 70px)',
+                    left: 'calc(50% - 110px)',
+                    visible: true,
+                },
+                // Col 3: x=240, y=0/120/240
+                'card-svod': { top: 'calc(50% - 170px)', left: 'calc(50% + 10px)', visible: true },
+                'card-fast': { top: 'calc(50% - 50px)', left: 'calc(50% + 10px)', visible: true },
+                'card-mobile': { top: 'calc(50% + 70px)', left: 'calc(50% + 10px)', visible: true },
+                // Col 4: x=360, y=60/180 (center-aligned to 3-card columns)
+                'card-social': {
+                    top: 'calc(50% - 110px)',
+                    left: 'calc(50% + 130px)',
+                    visible: true,
+                },
+                'card-ecommerce': {
+                    top: 'calc(50% + 10px)',
+                    left: 'calc(50% + 130px)',
+                    visible: true,
+                },
+            },
+        },
+    ];
 
-  let currentTab = -1;
-  const TAB_DURATION_MS = 3000;
-  const tabs = document.querySelectorAll<HTMLElement>('.tab-item');
-  const section = document.querySelector<HTMLElement>('.research-section');
-  const heading = section?.querySelector<HTMLElement>('.heading-fly-in');
-  const contentBlock = section?.querySelector<HTMLElement>('.content-fly-in');
-  const leftText = section?.querySelector<HTMLElement>('.left-text');
-  const dashboardImage = section?.querySelector<HTMLImageElement>('#research-dashboard-image');
-  const dashboardFrame = section?.querySelector<HTMLElement>('.screen-wrapper');
-  const iconCards = section?.querySelectorAll<HTMLElement>('.research-icon-card');
+    let currentTab = -1;
+    const TAB_DURATION_MS = 3000;
+    const tabs = document.querySelectorAll<HTMLElement>('.tab-item');
+    const section = document.querySelector<HTMLElement>('.research-section');
+    const heading = section?.querySelector<HTMLElement>('.heading-fly-in');
+    const contentBlock = section?.querySelector<HTMLElement>('.content-fly-in');
+    const leftText = section?.querySelector<HTMLElement>('.left-text');
+    const dashboardImage = section?.querySelector<HTMLImageElement>('#research-dashboard-image');
+    const dashboardFrame = section?.querySelector<HTMLElement>('.screen-wrapper');
+    const iconCards = section?.querySelectorAll<HTMLElement>('.research-icon-card');
 
-  function parsePercentValue(value: string): number {
-    const parsed = Number.parseFloat(value.replace('%', ''));
-    return Number.isFinite(parsed) ? parsed : 0;
-  }
-
-  function normalizeBoxVisual() {
-    const boxVisual = document.getElementById('boxVisual') as HTMLElement | null;
-    const container = document.getElementById('rightVisual') as HTMLElement | null;
-    if (!boxVisual || !container) return;
-
-    // Use a stable, screen-size-based normalization (not per-tab):
-    // Across tab states, composition bounds are approximately minX=176, maxX=878.
-    const contentMinX = 176;
-    const contentWidth = 702;
-    const containerWidth = container.clientWidth || boxVisual.clientWidth || 860;
-    const scale = Math.min(1, containerWidth / contentWidth);
-    const offsetX = ((containerWidth - contentWidth * scale) / 2) - (contentMinX * scale);
-
-    boxVisual.style.transformOrigin = 'top left';
-    boxVisual.style.transform = `translateX(${offsetX}px) scale(${scale})`;
-  }
-
-  function applyConfig(idx: number, skipTransition = false) {
-    const state = tabStates[idx];
-    const config = state.cards;
-
-    if (dashboardImage) {
-      if (state.dashboardSrc) {
-        dashboardImage.src = state.dashboardSrc;
-        dashboardImage.classList.remove('is-hidden');
-        dashboardFrame?.classList.remove('is-empty');
-      } else {
-        dashboardImage.classList.add('is-hidden');
-        dashboardFrame?.classList.add('is-empty');
-      }
+    function parsePercentValue(value: string): number {
+        const parsed = Number.parseFloat(value.replace('%', ''));
+        return Number.isFinite(parsed) ? parsed : 0;
     }
 
-    Object.entries(config).forEach(([id, pos]) => {
-      const card = document.getElementById(id);
-      if (!card) return;
+    function normalizeBoxVisual() {
+        const boxVisual = document.getElementById('boxVisual') as HTMLElement | null;
+        const container = document.getElementById('rightVisual') as HTMLElement | null;
+        if (!boxVisual || !container) return;
 
-      if (skipTransition) {
-        card.style.transition = 'none';
-      }
+        // Visible content spans x=176 to x=878 within the 860px box layout.
+        const contentMinX = 176;
+        const contentWidth = 753; // box2 right edge (529+400=929) minus contentMinX (176)
+        const containerWidth = container.clientWidth || boxVisual.clientWidth || 860;
+        const scale = Math.min(1, containerWidth / contentWidth);
+        const offsetX = (containerWidth - contentWidth * scale) / 2 - contentMinX * scale;
 
-      card.style.top = pos.top;
-      card.style.left = pos.left;
-      card.classList.toggle('hidden', !pos.visible);
+        boxVisual.style.transformOrigin = 'top left';
+        boxVisual.style.transform = `translateX(${offsetX}px) scale(${scale})`;
 
-      if (skipTransition) {
-        // Re-enable transitions after two frames
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            card.style.transition = '';
-          });
-        });
-      }
-    });
-  }
-
-  function setTab(idx: number, progressDurationMs = TAB_DURATION_MS) {
-    if (idx === currentTab) return;
-    currentTab = idx;
-    tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
-
-    const boxVisual = document.getElementById('boxVisual');
-    const extraBoxIds = ['box6','box7','box8','box9','box10','box11','box12','box13'];
-
-    if (idx === 0 || idx === 1) {
-      // Leave tab2 mode — restore sizes, hide extra boxes
-      boxVisual?.classList.remove('tab2');
-      boxVisual?.classList.toggle('tab0', idx === 0);
-      extraBoxIds.forEach(id => {
-        const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
-        if (box) box.style.opacity = '0';
-      });
-      // Animate boxes 1-5 to their tab positions
-      const targetPositions = idx === 0 ? boxPositions : tab1BoxPositions;
-      (Object.keys(targetPositions) as BoxId[]).forEach(id => updateBoxPosition(id, idx as 0 | 1));
-
-      // Switch images based on tab with crossfade effect
-      ['box1', 'box2', 'box3', 'box4', 'box5'].forEach((id, i) => {
-        const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
-        if (!box) return;
-        const img = box.querySelector<HTMLImageElement>('img');
-        if (!img) return;
-        
-        // Fade out
-        img.style.opacity = '0';
-        
-        // Switch source after fade starts (300ms for longer crossfade)
-        setTimeout(() => {
-          if (idx === 0) {
-            img.src = box.getAttribute('data-tech') || img.src;
-          } else if (idx === 1) {
-            img.src = box.getAttribute('data-media') || img.src;
-          }
-          // Fade back in
-          img.style.opacity = '1';
-        }, 300);
-      });
-    } else {
-      // Tab 2: shrink all boxes, stagger into 5-column grid (2|3|3|3|2)
-      boxVisual?.classList.add('tab2');
-      boxVisual?.classList.remove('tab0');
-
-      // Crossfade box1-5 images to their variables icons (same timing as tab0→1)
-      ['box1', 'box2', 'box3', 'box4', 'box5'].forEach((id) => {
-        const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
-        if (!box) return;
-        const img = box.querySelector<HTMLImageElement>('img');
-        if (!img) return;
-        img.style.opacity = '0';
-        setTimeout(() => {
-          img.src = box.getAttribute('data-variables') || img.src;
-          img.style.opacity = '1';
-        }, 300);
-      });
-
-      // Col 1 (box1, box2) — immediate
-      (['box1', 'box2'] as BoxId[]).forEach(id => {
-        const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
-        if (box) { box.style.left = tab2BoxPositions[id].left + 'px'; box.style.top = tab2BoxPositions[id].top + 'px'; }
-      });
-
-      // Col 2 (box3, box4, box5) — shortly after
-      setTimeout(() => {
-        (['box3', 'box4', 'box5'] as BoxId[]).forEach(id => {
-          const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
-          if (box) { box.style.left = tab2BoxPositions[id].left + 'px'; box.style.top = tab2BoxPositions[id].top + 'px'; }
-        });
-      }, 80);
-
-      // Col 3 CENTER (box6, box7, box8) — slightly delayed for center stagger
-      ['box6', 'box7', 'box8'].forEach((id, i) => {
-        const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
-        const pos = tab2ExtraPositions[id];
-        if (!box || !pos) return;
-        box.style.left = pos.left + 'px';
-        box.style.top  = pos.top  + 'px';
-        setTimeout(() => { box.style.opacity = '0.85'; }, 300 + i * 80);
-      });
-
-      // Col 4 (box9, box10, box11)
-      ['box9', 'box10', 'box11'].forEach((id, i) => {
-        const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
-        const pos = tab2ExtraPositions[id];
-        if (!box || !pos) return;
-        box.style.left = pos.left + 'px';
-        box.style.top  = pos.top  + 'px';
-        setTimeout(() => { box.style.opacity = '0.85'; }, 470 + i * 80);
-      });
-
-      // Col 5 (box12, box13)
-      ['box12', 'box13'].forEach((id, i) => {
-        const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
-        const pos = tab2ExtraPositions[id];
-        if (!box || !pos) return;
-        box.style.left = pos.left + 'px';
-        box.style.top  = pos.top  + 'px';
-        setTimeout(() => { box.style.opacity = '0.85'; }, 650 + i * 80);
-      });
+        // 610px covers the tallest content (tab1 box4 bottom = 482+120 = 602px)
+        container.style.height = Math.ceil(610 * scale) + 'px';
     }
 
-    // Switch GUI section
-    ['guiTab0', 'guiTab1', 'guiTab2'].forEach((id, i) => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = i === idx ? '' : 'none';
-    });
-    const guiTabLabel = document.getElementById('guiTabLabel');
-    const tabNames = ['Technology Trends', 'Media Behaviour', '5000+ variables'];
-    if (guiTabLabel) guiTabLabel.textContent = tabNames[idx] ?? '';
+    function applyConfig(idx: number, skipTransition = false) {
+        const state = tabStates[idx];
+        const config = state.cards;
 
-    updateTabProgressBar(idx, progressDurationMs);
-  }
-
-  function updateTabProgressBar(idx: number, durationMs = TAB_DURATION_MS, immediate = false) {
-    if (!leftText) return;
-    const progress = ((idx + 1) / 3) * 100;
-    leftText.style.setProperty('--tab-progress-duration', `${immediate ? 0 : durationMs}ms`);
-    leftText.style.setProperty('--tab-progress', `${progress}%`);
-  }
-
-  // Attach click listeners
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => {
-      if (!hasPlaybackUnlocked) return;
-      hasCompletedSingleLoop = true;
-      stopAutoRotate();
-      setTab(i, 220);
-    });
-  });
-
-  let autoTimer: number | null = null;
-  let isInView = false;
-  let hasCompletedSingleLoop = false;
-  let hasStartedPlayback = false;
-  let hasPlaybackUnlocked = false;
-
-  function setTabsEnabled(enabled: boolean) {
-    tabs.forEach((tab) => tab.classList.toggle('is-disabled', !enabled));
-  }
-
-  function setAllIconsHidden(hidden: boolean) {
-    iconCards?.forEach((card) => card.classList.toggle('hidden', hidden));
-  }
-
-  function startAutoRotate() {
-    if (!isInView || autoTimer !== null || tabs.length <= 1 || hasCompletedSingleLoop) return;
-    autoTimer = window.setInterval(() => {
-      // Run one forward cycle only: tab1 -> tab2 -> tab3, then stop.
-      if (currentTab >= tabs.length - 1) {
-        hasCompletedSingleLoop = true;
-        stopAutoRotate();
-        return;
-      }
-      const nextTab = currentTab + 1;
-      setTab(nextTab, TAB_DURATION_MS);
-    }, TAB_DURATION_MS);
-  }
-
-  function stopAutoRotate() {
-    if (autoTimer === null) return;
-    window.clearInterval(autoTimer);
-    autoTimer = null;
-  }
-
-  // Pause on hover
-  section?.addEventListener('mouseenter', stopAutoRotate);
-  section?.addEventListener('mouseleave', () => {
-    startAutoRotate();
-  });
-
-  // Init default state: no active tab interactions and no icons shown.
-  setAllIconsHidden(true);
-  setTabsEnabled(false);
-  // Start at 0 and wait for full in-view before beginning playback.
-  updateTabProgressBar(-1, 0, true);
-
-  // Start animation only when section is in viewport
-  if (section) {
-    // Heading reveal: trigger sooner as user scrolls from Hero 1 into Hero 2.
-    const headingObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          heading?.classList.add('is-visible');
-          contentBlock?.classList.add('is-visible');
-          headingObserver.disconnect();
+        if (dashboardImage) {
+            if (state.dashboardSrc) {
+                dashboardImage.src = state.dashboardSrc;
+                dashboardImage.classList.remove('is-hidden');
+                dashboardFrame?.classList.remove('is-empty');
+            } else {
+                dashboardImage.classList.add('is-hidden');
+                dashboardFrame?.classList.add('is-empty');
+            }
         }
-      },
-      { threshold: 0.25 }
-    );
 
-    headingObserver.observe(section);
+        Object.entries(config).forEach(([id, pos]) => {
+            const card = document.getElementById(id);
+            if (!card) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const ratio = entry.intersectionRatio;
-        if (entry.isIntersecting && ratio >= 0.5) {
-          isInView = true;
-          if (!hasStartedPlayback) {
-            hasStartedPlayback = true;
-            hasPlaybackUnlocked = true;
-            setTabsEnabled(true);
-            setTab(0, TAB_DURATION_MS);
-          }
-          startAutoRotate();
-        } else if (ratio < 0.1) {
-          // Only truly stop when section is nearly gone — prevents layout-shift jitter
-          isInView = false;
-          stopAutoRotate();
+            if (skipTransition) {
+                card.style.transition = 'none';
+            }
+
+            card.style.top = pos.top;
+            card.style.left = pos.left;
+            card.classList.toggle('hidden', !pos.visible);
+
+            if (skipTransition) {
+                // Re-enable transitions after two frames
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        card.style.transition = '';
+                    });
+                });
+            }
+        });
+    }
+
+    function setTab(idx: number, progressDurationMs = TAB_DURATION_MS) {
+        if (idx === currentTab) return;
+        currentTab = idx;
+        tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+
+        const boxVisual = document.getElementById('boxVisual');
+        const extraBoxIds = ['box6', 'box7', 'box8', 'box9', 'box10', 'box11', 'box12', 'box13'];
+
+        if (idx === 0 || idx === 1) {
+            // Leave tab2 mode — restore sizes, hide extra boxes
+            boxVisual?.classList.remove('tab2');
+            boxVisual?.classList.toggle('tab0', idx === 0);
+            extraBoxIds.forEach((id) => {
+                const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
+                if (box) box.style.opacity = '0';
+            });
+            // Animate boxes 1-5 to their tab positions
+            const targetPositions = idx === 0 ? boxPositions : tab1BoxPositions;
+            (Object.keys(targetPositions) as BoxId[]).forEach((id) =>
+                updateBoxPosition(id, idx as 0 | 1)
+            );
+
+            // Switch images based on tab with crossfade effect
+            ['box1', 'box2', 'box3', 'box4', 'box5'].forEach((id, i) => {
+                const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
+                if (!box) return;
+                const img = box.querySelector<HTMLImageElement>('img');
+                if (!img) return;
+
+                // Fade out
+                img.style.opacity = '0';
+
+                // Switch source after fade starts (300ms for longer crossfade)
+                setTimeout(() => {
+                    if (idx === 0) {
+                        img.src = box.getAttribute('data-tech') || img.src;
+                    } else if (idx === 1) {
+                        img.src = box.getAttribute('data-media') || img.src;
+                    }
+                    // Fade back in
+                    img.style.opacity = '1';
+                }, 300);
+            });
+        } else {
+            // Tab 2: shrink all boxes, stagger into 5-column grid (2|3|3|3|2)
+            boxVisual?.classList.add('tab2');
+            boxVisual?.classList.remove('tab0');
+
+            // Crossfade box1-5 images to their variables icons (same timing as tab0→1)
+            ['box1', 'box2', 'box3', 'box4', 'box5'].forEach((id) => {
+                const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
+                if (!box) return;
+                const img = box.querySelector<HTMLImageElement>('img');
+                if (!img) return;
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.src = box.getAttribute('data-variables') || img.src;
+                    img.style.opacity = '1';
+                }, 300);
+            });
+
+            // Col 1 (box1, box2) — immediate
+            (['box1', 'box2'] as BoxId[]).forEach((id) => {
+                const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
+                if (box) {
+                    box.style.left = tab2BoxPositions[id].left + 'px';
+                    box.style.top = tab2BoxPositions[id].top + 'px';
+                }
+            });
+
+            // Col 2 (box3, box4, box5) — shortly after
+            setTimeout(() => {
+                (['box3', 'box4', 'box5'] as BoxId[]).forEach((id) => {
+                    const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
+                    if (box) {
+                        box.style.left = tab2BoxPositions[id].left + 'px';
+                        box.style.top = tab2BoxPositions[id].top + 'px';
+                    }
+                });
+            }, 80);
+
+            // Col 3 CENTER (box6, box7, box8) — slightly delayed for center stagger
+            ['box6', 'box7', 'box8'].forEach((id, i) => {
+                const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
+                const pos = tab2ExtraPositions[id];
+                if (!box || !pos) return;
+                box.style.left = pos.left + 'px';
+                box.style.top = pos.top + 'px';
+                setTimeout(
+                    () => {
+                        box.style.opacity = '0.85';
+                    },
+                    300 + i * 80
+                );
+            });
+
+            // Col 4 (box9, box10, box11)
+            ['box9', 'box10', 'box11'].forEach((id, i) => {
+                const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
+                const pos = tab2ExtraPositions[id];
+                if (!box || !pos) return;
+                box.style.left = pos.left + 'px';
+                box.style.top = pos.top + 'px';
+                setTimeout(
+                    () => {
+                        box.style.opacity = '0.85';
+                    },
+                    470 + i * 80
+                );
+            });
+
+            // Col 5 (box12, box13)
+            ['box12', 'box13'].forEach((id, i) => {
+                const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
+                const pos = tab2ExtraPositions[id];
+                if (!box || !pos) return;
+                box.style.left = pos.left + 'px';
+                box.style.top = pos.top + 'px';
+                setTimeout(
+                    () => {
+                        box.style.opacity = '0.85';
+                    },
+                    650 + i * 80
+                );
+            });
         }
-      },
-      {
-        threshold: [0, 0.1, 0.5, 1]
-      }
-    );
 
-    observer.observe(section);
-  }
+        // Switch GUI section
+        ['guiTab0', 'guiTab1', 'guiTab2'].forEach((id, i) => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = i === idx ? '' : 'none';
+        });
+        const guiTabLabel = document.getElementById('guiTabLabel');
+        const tabNames = ['Technology Trends', 'Media Behaviour', '5000+ variables'];
+        if (guiTabLabel) guiTabLabel.textContent = tabNames[idx] ?? '';
 
-  function initIconPositionGui() {
-    if (!section) return;
+        updateTabProgressBar(idx, progressDurationMs);
+    }
 
-    const editableTabIndexes = [0, 1];
-    const editableCardIds = Object.keys(tabStates[0].cards);
+    function updateTabProgressBar(idx: number, durationMs = TAB_DURATION_MS, immediate = false) {
+        if (!leftText) return;
+        const progress = ((idx + 1) / 3) * 100;
+        leftText.style.setProperty('--tab-progress-duration', `${immediate ? 0 : durationMs}ms`);
+        leftText.style.setProperty('--tab-progress', `${progress}%`);
+    }
 
-    const gui = document.createElement('div');
-    gui.className = 'icon-pos-gui';
-    gui.innerHTML = `
+    // Attach click listeners
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => {
+            if (!hasPlaybackUnlocked) return;
+            hasCompletedSingleLoop = true;
+            stopAutoRotate();
+            setTab(i, 220);
+        });
+    });
+
+    let autoTimer: number | null = null;
+    let isInView = false;
+    let hasCompletedSingleLoop = false;
+    let hasStartedPlayback = false;
+    let hasPlaybackUnlocked = false;
+
+    function setTabsEnabled(enabled: boolean) {
+        tabs.forEach((tab) => tab.classList.toggle('is-disabled', !enabled));
+    }
+
+    function setAllIconsHidden(hidden: boolean) {
+        iconCards?.forEach((card) => card.classList.toggle('hidden', hidden));
+    }
+
+    function startAutoRotate() {
+        if (!isInView || autoTimer !== null || tabs.length <= 1 || hasCompletedSingleLoop) return;
+        autoTimer = window.setInterval(() => {
+            // Run one forward cycle only: tab1 -> tab2 -> tab3, then stop.
+            if (currentTab >= tabs.length - 1) {
+                hasCompletedSingleLoop = true;
+                stopAutoRotate();
+                return;
+            }
+            const nextTab = currentTab + 1;
+            setTab(nextTab, TAB_DURATION_MS);
+        }, TAB_DURATION_MS);
+    }
+
+    function stopAutoRotate() {
+        if (autoTimer === null) return;
+        window.clearInterval(autoTimer);
+        autoTimer = null;
+    }
+
+    // Pause on hover
+    section?.addEventListener('mouseenter', stopAutoRotate);
+    section?.addEventListener('mouseleave', () => {
+        startAutoRotate();
+    });
+
+    // Init default state: no active tab interactions and no icons shown.
+    setAllIconsHidden(true);
+    setTabsEnabled(false);
+    // Start at 0 and wait for full in-view before beginning playback.
+    updateTabProgressBar(-1, 0, true);
+
+    // Start animation only when section is in viewport
+    if (section) {
+        // Heading reveal: trigger sooner as user scrolls from Hero 1 into Hero 2.
+        const headingObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    heading?.classList.add('is-visible');
+                    contentBlock?.classList.add('is-visible');
+                    headingObserver.disconnect();
+                }
+            },
+            { threshold: 0.25 }
+        );
+
+        headingObserver.observe(section);
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                const ratio = entry.intersectionRatio;
+                if (entry.isIntersecting && ratio >= 0.5) {
+                    isInView = true;
+                    if (!hasStartedPlayback) {
+                        hasStartedPlayback = true;
+                        hasPlaybackUnlocked = true;
+                        setTabsEnabled(true);
+                        setTab(0, TAB_DURATION_MS);
+                    }
+                    startAutoRotate();
+                } else if (ratio < 0.1) {
+                    // Only truly stop when section is nearly gone — prevents layout-shift jitter
+                    isInView = false;
+                    stopAutoRotate();
+                }
+            },
+            {
+                threshold: [0, 0.1, 0.5, 1],
+            }
+        );
+
+        observer.observe(section);
+    }
+
+    function initIconPositionGui() {
+        if (!section) return;
+
+        const editableTabIndexes = [0, 1];
+        const editableCardIds = Object.keys(tabStates[0].cards);
+
+        const gui = document.createElement('div');
+        gui.className = 'icon-pos-gui';
+        gui.innerHTML = `
       <strong>Icon Position GUI</strong>
       <label>
         Tab
@@ -1113,248 +1287,267 @@ const screenSrc = `${base}images/dashboard.png`;
       </div>
     `;
 
-    const toggleButton = document.createElement('button');
-    toggleButton.className = 'icon-pos-gui-toggle';
-    toggleButton.type = 'button';
-    toggleButton.textContent = 'Icon GUI';
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'icon-pos-gui-toggle';
+        toggleButton.type = 'button';
+        toggleButton.textContent = 'Icon GUI';
 
-    section.appendChild(gui);
-    section.appendChild(toggleButton);
+        section.appendChild(gui);
+        section.appendChild(toggleButton);
 
-    const tabSelect = gui.querySelector<HTMLSelectElement>('#iconGuiTab');
-    const cardSelect = gui.querySelector<HTMLSelectElement>('#iconGuiCard');
-    const leftInput = gui.querySelector<HTMLInputElement>('#iconGuiLeft');
-    const topInput = gui.querySelector<HTMLInputElement>('#iconGuiTop');
-    const visibleInput = gui.querySelector<HTMLInputElement>('#iconGuiVisible');
-    const leftValue = gui.querySelector<HTMLSpanElement>('#iconGuiLeftValue');
-    const topValue = gui.querySelector<HTMLSpanElement>('#iconGuiTopValue');
-    const copyButton = gui.querySelector<HTMLButtonElement>('#iconGuiCopy');
+        const tabSelect = gui.querySelector<HTMLSelectElement>('#iconGuiTab');
+        const cardSelect = gui.querySelector<HTMLSelectElement>('#iconGuiCard');
+        const leftInput = gui.querySelector<HTMLInputElement>('#iconGuiLeft');
+        const topInput = gui.querySelector<HTMLInputElement>('#iconGuiTop');
+        const visibleInput = gui.querySelector<HTMLInputElement>('#iconGuiVisible');
+        const leftValue = gui.querySelector<HTMLSpanElement>('#iconGuiLeftValue');
+        const topValue = gui.querySelector<HTMLSpanElement>('#iconGuiTopValue');
+        const copyButton = gui.querySelector<HTMLButtonElement>('#iconGuiCopy');
 
-    if (!tabSelect || !cardSelect || !leftInput || !topInput || !visibleInput || !leftValue || !topValue || !copyButton) {
-      return;
-    }
+        if (
+            !tabSelect ||
+            !cardSelect ||
+            !leftInput ||
+            !topInput ||
+            !visibleInput ||
+            !leftValue ||
+            !topValue ||
+            !copyButton
+        ) {
+            return;
+        }
 
-    function syncGuiFromState() {
-      const tabIdx = Number(tabSelect?.value ?? 0);
-      const cardId = cardSelect?.value ?? '';
-      const cardState = tabStates[tabIdx]?.cards?.[cardId];
-      if (!cardState) return;
-      if (leftInput) leftInput.value = String(parsePercentValue(cardState.left));
-      if (topInput) topInput.value = String(parsePercentValue(cardState.top));
-      if (visibleInput) visibleInput.checked = cardState.visible;
-      if (leftValue && leftInput) leftValue.textContent = `${leftInput.value}%`;
-      if (topValue && topInput) topValue.textContent = `${topInput.value}%`;
-    }
+        function syncGuiFromState() {
+            const tabIdx = Number(tabSelect?.value ?? 0);
+            const cardId = cardSelect?.value ?? '';
+            const cardState = tabStates[tabIdx]?.cards?.[cardId];
+            if (!cardState) return;
+            if (leftInput) leftInput.value = String(parsePercentValue(cardState.left));
+            if (topInput) topInput.value = String(parsePercentValue(cardState.top));
+            if (visibleInput) visibleInput.checked = cardState.visible;
+            if (leftValue && leftInput) leftValue.textContent = `${leftInput.value}%`;
+            if (topValue && topInput) topValue.textContent = `${topInput.value}%`;
+        }
 
-    function applyGuiToState() {
-      const tabIdx = Number(tabSelect?.value ?? 0);
-      if (!editableTabIndexes.includes(tabIdx)) return;
-      const cardId = cardSelect?.value ?? '';
-      const nextLeft = `${leftInput?.value ?? 0}%`;
-      const nextTop = `${topInput?.value ?? 0}%`;
-      if (tabStates[tabIdx]?.cards?.[cardId]) {
-        tabStates[tabIdx].cards[cardId].left = nextLeft;
-        tabStates[tabIdx].cards[cardId].top = nextTop;
-        tabStates[tabIdx].cards[cardId].visible = visibleInput?.checked ?? false;
-      }
-      if (leftValue) leftValue.textContent = nextLeft;
-      if (topValue) topValue.textContent = nextTop;
+        function applyGuiToState() {
+            const tabIdx = Number(tabSelect?.value ?? 0);
+            if (!editableTabIndexes.includes(tabIdx)) return;
+            const cardId = cardSelect?.value ?? '';
+            const nextLeft = `${leftInput?.value ?? 0}%`;
+            const nextTop = `${topInput?.value ?? 0}%`;
+            if (tabStates[tabIdx]?.cards?.[cardId]) {
+                tabStates[tabIdx].cards[cardId].left = nextLeft;
+                tabStates[tabIdx].cards[cardId].top = nextTop;
+                tabStates[tabIdx].cards[cardId].visible = visibleInput?.checked ?? false;
+            }
+            if (leftValue) leftValue.textContent = nextLeft;
+            if (topValue) topValue.textContent = nextTop;
 
-      if (currentTab === tabIdx) {
-        applyConfig(currentTab);
-      }
-    }
+            if (currentTab === tabIdx) {
+                applyConfig(currentTab);
+            }
+        }
 
-    tabSelect?.addEventListener('change', () => {
-      const selectedTabIdx = Number(tabSelect?.value ?? 0);
-      setTab(selectedTabIdx);
-      syncGuiFromState();
-    });
-    cardSelect?.addEventListener('change', syncGuiFromState);
-    leftInput?.addEventListener('input', applyGuiToState);
-    topInput?.addEventListener('input', applyGuiToState);
-    visibleInput.addEventListener('change', applyGuiToState);
+        tabSelect?.addEventListener('change', () => {
+            const selectedTabIdx = Number(tabSelect?.value ?? 0);
+            setTab(selectedTabIdx);
+            syncGuiFromState();
+        });
+        cardSelect?.addEventListener('change', syncGuiFromState);
+        leftInput?.addEventListener('input', applyGuiToState);
+        topInput?.addEventListener('input', applyGuiToState);
+        visibleInput.addEventListener('change', applyGuiToState);
 
-    copyButton.addEventListener('click', async () => {
-      const tabIdx = Number(tabSelect.value);
-      const payload = JSON.stringify(tabStates[tabIdx].cards, null, 2);
-      await navigator.clipboard.writeText(payload);
-      copyButton.textContent = 'Copied';
-      window.setTimeout(() => {
-        copyButton.textContent = 'Copy Tab JSON';
-      }, 1200);
-    });
+        copyButton.addEventListener('click', async () => {
+            const tabIdx = Number(tabSelect.value);
+            const payload = JSON.stringify(tabStates[tabIdx].cards, null, 2);
+            await navigator.clipboard.writeText(payload);
+            copyButton.textContent = 'Copied';
+            window.setTimeout(() => {
+                copyButton.textContent = 'Copy Tab JSON';
+            }, 1200);
+        });
 
-    toggleButton.addEventListener('click', () => {
-      gui.classList.toggle('is-open');
-      if (gui.classList.contains('is-open')) {
-        stopAutoRotate();
+        toggleButton.addEventListener('click', () => {
+            gui.classList.toggle('is-open');
+            if (gui.classList.contains('is-open')) {
+                stopAutoRotate();
+                syncGuiFromState();
+            }
+        });
+
         syncGuiFromState();
-      }
-    });
-
-    syncGuiFromState();
-  }
-
-  // GUI kept in code but hidden for now.
-  // initIconPositionGui();
-
-  // Box position GUI for custom layout
-  type BoxId = 'box1' | 'box2' | 'box3' | 'box4' | 'box5';
-  type BoxPositions = Record<BoxId, { left: number; top: number }>;
-
-  const boxPositions: BoxPositions = {
-    box1: { left: 176, top: 58 },
-    box2: { left: 529, top: 128 },
-    box3: { left: 314, top: 402 },
-    box4: { left: 750, top: 57 },
-    box5: { left: 740, top: 439 }
-  };
-
-  const tab1BoxPositions: BoxPositions = {
-    box1: { left: 188, top: 147 },
-    box2: { left: 528, top: 71 },
-    box3: { left: 758, top: 18 },
-    box4: { left: 398, top: 482 },
-    box5: { left: 398, top: 103 }
-  };
-
-  // Tab 2: 5-column staggered grid — 2|3|3|3|2
-  // Box size 90px, gap 20px, stride 110px
-  // 3-box columns baseline top=145; center 3-box column is slightly staggered down
-  const tab2BoxPositions: BoxPositions = {
-    // Col 1 (2 boxes, vertically centered)
-    box1: { left: 185, top: 200 },
-    box2: { left: 185, top: 310 },
-    // Col 2 (3 boxes)
-    box3: { left: 295, top: 145 },
-    box4: { left: 295, top: 255 },
-    box5: { left: 295, top: 365 },
-  };
-  const tab2ExtraPositions: Record<string, { left: number; top: number }> = {
-    // Col 3 (center, 3 boxes) — slightly staggered down
-    box6:  { left: 405, top: 165 },
-    box7:  { left: 405, top: 275 },
-    box8:  { left: 405, top: 385 },
-    // Col 4 (3 boxes)
-    box9:  { left: 515, top: 145 },
-    box10: { left: 515, top: 255 },
-    box11: { left: 515, top: 365 },
-    // Col 5 (2 boxes, vertically centered)
-    box12: { left: 625, top: 200 },
-    box13: { left: 625, top: 310 },
-  };
-
-  function updateBoxPosition(boxId: BoxId, tabIdx: 0 | 1 = 0) {
-    const box = document.querySelector<HTMLElement>(`#boxVisual .${boxId}`);
-    if (!box) return;
-    const positions = tabIdx === 0 ? boxPositions : tab1BoxPositions;
-    box.style.left = positions[boxId].left + 'px';
-    box.style.top = positions[boxId].top + 'px';
-  }
-
-  function updateGuiValues(boxId: BoxId, tabIdx: 0 | 1 = 0) {
-    const prefix = tabIdx === 0 ? '' : 't1';
-    const boxLeft = document.getElementById(`${prefix}boxLeft`) as HTMLInputElement | null;
-    const boxTop = document.getElementById(`${prefix}boxTop`) as HTMLInputElement | null;
-    const boxLeftValue = document.getElementById(`${prefix}boxLeftValue`);
-    const boxTopValue = document.getElementById(`${prefix}boxTopValue`);
-    const positions = tabIdx === 0 ? boxPositions : tab1BoxPositions;
-    if (boxLeft) boxLeft.value = String(positions[boxId].left);
-    if (boxTop) boxTop.value = String(positions[boxId].top);
-    if (boxLeftValue) boxLeftValue.textContent = positions[boxId].left + 'px';
-    if (boxTopValue) boxTopValue.textContent = positions[boxId].top + 'px';
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    // Set initial box positions (tab 0 is default active)
-    (Object.keys(boxPositions) as BoxId[]).forEach(id => updateBoxPosition(id, 0));
-    updateGuiValues('box1', 0);
-
-    // ── Tab 0: Box position controls ──
-    const boxSelect = document.getElementById('boxSelect') as HTMLSelectElement | null;
-    const boxLeft = document.getElementById('boxLeft') as HTMLInputElement | null;
-    const boxTop = document.getElementById('boxTop') as HTMLInputElement | null;
-    let selectedBox: BoxId = 'box1';
-
-    boxSelect?.addEventListener('change', (e) => {
-      selectedBox = (e.target as HTMLSelectElement).value as BoxId;
-      updateGuiValues(selectedBox, 0);
-    });
-    boxLeft?.addEventListener('input', (e) => {
-      boxPositions[selectedBox].left = parseInt((e.target as HTMLInputElement).value, 10);
-      updateBoxPosition(selectedBox, 0);
-      updateGuiValues(selectedBox, 0);
-    });
-    boxTop?.addEventListener('input', (e) => {
-      boxPositions[selectedBox].top = parseInt((e.target as HTMLInputElement).value, 10);
-      updateBoxPosition(selectedBox, 0);
-      updateGuiValues(selectedBox, 0);
-    });
-
-    // ── Tab 1: Box position controls ──
-    const t1boxSelect = document.getElementById('t1boxSelect') as HTMLSelectElement | null;
-    const t1boxLeft = document.getElementById('t1boxLeft') as HTMLInputElement | null;
-    const t1boxTop = document.getElementById('t1boxTop') as HTMLInputElement | null;
-    let selectedT1Box: BoxId = 'box1';
-
-    t1boxSelect?.addEventListener('change', (e) => {
-      selectedT1Box = (e.target as HTMLSelectElement).value as BoxId;
-      updateGuiValues(selectedT1Box, 1);
-    });
-    t1boxLeft?.addEventListener('input', (e) => {
-      tab1BoxPositions[selectedT1Box].left = parseInt((e.target as HTMLInputElement).value, 10);
-      updateBoxPosition(selectedT1Box, 1);
-      updateGuiValues(selectedT1Box, 1);
-    });
-    t1boxTop?.addEventListener('input', (e) => {
-      tab1BoxPositions[selectedT1Box].top = parseInt((e.target as HTMLInputElement).value, 10);
-      updateBoxPosition(selectedT1Box, 1);
-      updateGuiValues(selectedT1Box, 1);
-    });
-
-    // ── Toggle / Copy / Download ──
-    const guiPanel = document.getElementById('boxGuiPanel');
-    const guiBody = document.getElementById('guiBody');
-    const guiToggle = document.getElementById('boxGuiToggle');
-    const guiCopy = document.getElementById('boxGuiCopy') as HTMLButtonElement | null;
-    const guiDownload = document.getElementById('boxGuiDownload') as HTMLButtonElement | null;
-
-    function buildPositionsJson(): string {
-      if (currentTab === 0) return JSON.stringify(boxPositions, null, 2);
-      if (currentTab === 1) return JSON.stringify(tab1BoxPositions, null, 2);
-      return JSON.stringify({ row1: tab2BoxPositions, row2: tab2ExtraPositions }, null, 2);
     }
 
-    guiCopy?.addEventListener('click', async () => {
-      await navigator.clipboard.writeText(buildPositionsJson());
-      if (guiCopy) { guiCopy.textContent = '✅ Copied!'; setTimeout(() => { guiCopy.textContent = '📋 Copy JSON'; }, 1500); }
-    });
+    // GUI kept in code but hidden for now.
+    // initIconPositionGui();
 
-    guiDownload?.addEventListener('click', () => {
-      const names = ['tab0-box-positions.json', 'tab1-box-positions.json', 'tab2-grid.json'];
-      const blob = new Blob([buildPositionsJson()], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = names[currentTab] ?? 'positions.json';
-      a.click();
-      URL.revokeObjectURL(url);
-    });
+    // Box position GUI for custom layout
+    type BoxId = 'box1' | 'box2' | 'box3' | 'box4' | 'box5';
+    type BoxPositions = Record<BoxId, { left: number; top: number }>;
 
-    let guiExpanded = false;
-    guiToggle?.addEventListener('click', () => {
-      guiExpanded = !guiExpanded;
-      if (guiBody) guiBody.style.display = guiExpanded ? '' : 'none';
-      if (guiToggle) guiToggle.textContent = guiExpanded ? '−' : '+';
-      guiPanel?.classList.toggle('is-collapsed', !guiExpanded);
-    });
+    const boxPositions: BoxPositions = {
+        box1: { left: 176, top: 58 },
+        box2: { left: 529, top: 128 },
+        box3: { left: 314, top: 402 },
+        box4: { left: 750, top: 57 },
+        box5: { left: 740, top: 439 },
+    };
 
-    normalizeBoxVisual();
+    const tab1BoxPositions: BoxPositions = {
+        box1: { left: 188, top: 147 },
+        box2: { left: 528, top: 71 },
+        box3: { left: 758, top: 18 },
+        box4: { left: 398, top: 482 },
+        box5: { left: 398, top: 103 },
+    };
 
-    window.addEventListener('resize', () => {
-      normalizeBoxVisual();
+    // Tab 2: 5-column staggered grid — 2|3|3|3|2
+    // Box size 90px, gap 20px, stride 110px
+    // 3-box columns baseline top=145; center 3-box column is slightly staggered down
+    const tab2BoxPositions: BoxPositions = {
+        // Col 1 (2 boxes, vertically centered)
+        box1: { left: 287, top: 200 },
+        box2: { left: 287, top: 310 },
+        // Col 2 (3 boxes)
+        box3: { left: 397, top: 145 },
+        box4: { left: 397, top: 255 },
+        box5: { left: 397, top: 365 },
+    };
+    const tab2ExtraPositions: Record<string, { left: number; top: number }> = {
+        // Col 3 (center, 3 boxes) — slightly staggered down
+        box6: { left: 507, top: 165 },
+        box7: { left: 507, top: 275 },
+        box8: { left: 507, top: 385 },
+        // Col 4 (3 boxes)
+        box9: { left: 617, top: 145 },
+        box10: { left: 617, top: 255 },
+        box11: { left: 617, top: 365 },
+        // Col 5 (2 boxes, vertically centered)
+        box12: { left: 727, top: 200 },
+        box13: { left: 727, top: 310 },
+    };
+
+    function updateBoxPosition(boxId: BoxId, tabIdx: 0 | 1 = 0) {
+        const box = document.querySelector<HTMLElement>(`#boxVisual .${boxId}`);
+        if (!box) return;
+        const positions = tabIdx === 0 ? boxPositions : tab1BoxPositions;
+        box.style.left = positions[boxId].left + 'px';
+        box.style.top = positions[boxId].top + 'px';
+    }
+
+    function updateGuiValues(boxId: BoxId, tabIdx: 0 | 1 = 0) {
+        const prefix = tabIdx === 0 ? '' : 't1';
+        const boxLeft = document.getElementById(`${prefix}boxLeft`) as HTMLInputElement | null;
+        const boxTop = document.getElementById(`${prefix}boxTop`) as HTMLInputElement | null;
+        const boxLeftValue = document.getElementById(`${prefix}boxLeftValue`);
+        const boxTopValue = document.getElementById(`${prefix}boxTopValue`);
+        const positions = tabIdx === 0 ? boxPositions : tab1BoxPositions;
+        if (boxLeft) boxLeft.value = String(positions[boxId].left);
+        if (boxTop) boxTop.value = String(positions[boxId].top);
+        if (boxLeftValue) boxLeftValue.textContent = positions[boxId].left + 'px';
+        if (boxTopValue) boxTopValue.textContent = positions[boxId].top + 'px';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        // Set initial box positions (tab 0 is default active)
+        (Object.keys(boxPositions) as BoxId[]).forEach((id) => updateBoxPosition(id, 0));
+        updateGuiValues('box1', 0);
+
+        // ── Tab 0: Box position controls ──
+        const boxSelect = document.getElementById('boxSelect') as HTMLSelectElement | null;
+        const boxLeft = document.getElementById('boxLeft') as HTMLInputElement | null;
+        const boxTop = document.getElementById('boxTop') as HTMLInputElement | null;
+        let selectedBox: BoxId = 'box1';
+
+        boxSelect?.addEventListener('change', (e) => {
+            selectedBox = (e.target as HTMLSelectElement).value as BoxId;
+            updateGuiValues(selectedBox, 0);
+        });
+        boxLeft?.addEventListener('input', (e) => {
+            boxPositions[selectedBox].left = parseInt((e.target as HTMLInputElement).value, 10);
+            updateBoxPosition(selectedBox, 0);
+            updateGuiValues(selectedBox, 0);
+        });
+        boxTop?.addEventListener('input', (e) => {
+            boxPositions[selectedBox].top = parseInt((e.target as HTMLInputElement).value, 10);
+            updateBoxPosition(selectedBox, 0);
+            updateGuiValues(selectedBox, 0);
+        });
+
+        // ── Tab 1: Box position controls ──
+        const t1boxSelect = document.getElementById('t1boxSelect') as HTMLSelectElement | null;
+        const t1boxLeft = document.getElementById('t1boxLeft') as HTMLInputElement | null;
+        const t1boxTop = document.getElementById('t1boxTop') as HTMLInputElement | null;
+        let selectedT1Box: BoxId = 'box1';
+
+        t1boxSelect?.addEventListener('change', (e) => {
+            selectedT1Box = (e.target as HTMLSelectElement).value as BoxId;
+            updateGuiValues(selectedT1Box, 1);
+        });
+        t1boxLeft?.addEventListener('input', (e) => {
+            tab1BoxPositions[selectedT1Box].left = parseInt(
+                (e.target as HTMLInputElement).value,
+                10
+            );
+            updateBoxPosition(selectedT1Box, 1);
+            updateGuiValues(selectedT1Box, 1);
+        });
+        t1boxTop?.addEventListener('input', (e) => {
+            tab1BoxPositions[selectedT1Box].top = parseInt(
+                (e.target as HTMLInputElement).value,
+                10
+            );
+            updateBoxPosition(selectedT1Box, 1);
+            updateGuiValues(selectedT1Box, 1);
+        });
+
+        // ── Toggle / Copy / Download ──
+        const guiPanel = document.getElementById('boxGuiPanel');
+        const guiBody = document.getElementById('guiBody');
+        const guiToggle = document.getElementById('boxGuiToggle');
+        const guiCopy = document.getElementById('boxGuiCopy') as HTMLButtonElement | null;
+        const guiDownload = document.getElementById('boxGuiDownload') as HTMLButtonElement | null;
+
+        function buildPositionsJson(): string {
+            if (currentTab === 0) return JSON.stringify(boxPositions, null, 2);
+            if (currentTab === 1) return JSON.stringify(tab1BoxPositions, null, 2);
+            return JSON.stringify({ row1: tab2BoxPositions, row2: tab2ExtraPositions }, null, 2);
+        }
+
+        guiCopy?.addEventListener('click', async () => {
+            await navigator.clipboard.writeText(buildPositionsJson());
+            if (guiCopy) {
+                guiCopy.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    guiCopy.textContent = '📋 Copy JSON';
+                }, 1500);
+            }
+        });
+
+        guiDownload?.addEventListener('click', () => {
+            const names = ['tab0-box-positions.json', 'tab1-box-positions.json', 'tab2-grid.json'];
+            const blob = new Blob([buildPositionsJson()], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = names[currentTab] ?? 'positions.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        let guiExpanded = false;
+        guiToggle?.addEventListener('click', () => {
+            guiExpanded = !guiExpanded;
+            if (guiBody) guiBody.style.display = guiExpanded ? '' : 'none';
+            if (guiToggle) guiToggle.textContent = guiExpanded ? '−' : '+';
+            guiPanel?.classList.toggle('is-collapsed', !guiExpanded);
+        });
+
+        normalizeBoxVisual();
+
+        window.addEventListener('resize', () => {
+            normalizeBoxVisual();
+        });
     });
-  });
 </script>
-

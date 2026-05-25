@@ -1,0 +1,24 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`eyebrow text-button-small${className ? ` ${className}` : ''}`}>
+  <slot />
+</div>
+
+<style>
+  .eyebrow {
+    display: inline-flex;
+    padding: var(--space-3) var(--space-6);
+    background: var(--surface-white);
+    border-radius: var(--radius-tag);
+    box-shadow: var(--shadow-eyebrow);
+    color: var(--text-primary);
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+</style>

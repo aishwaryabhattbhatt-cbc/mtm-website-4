@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 914.02 353.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 2611954">
+<path id="Vector 6" d="M1 352.5V94.503C1 94.503 34.9177 60.5 69 60.5C142.5 60.5 126.982 165.567 164.5 176.5C222.583 193.425 249.113 88.8067 310.169 94.503C344.149 97.6732 391.099 12.2755 425 16C510.002 25.3387 521.5 111.5 598.5 86.5C675.5 61.5 720.339 183.66 789.932 127.547C836.5 90 840 1 906 1L913 352.5H1Z" fill="url(#paint0_linear_0_1446)" fill-opacity="0.8" stroke="var(--stroke-0, #026BC4)" stroke-width="2"/>
+<circle id="Ellipse 41" cx="131.5" cy="115" r="8.5" fill="var(--fill-0, #026BC4)"/>
+<circle id="Ellipse 42" cx="39.5" cy="68" r="8.5" fill="var(--fill-0, #026BC4)"/>
+<circle id="Ellipse 37" cx="762.5" cy="142" r="8.5" fill="var(--fill-0, #026BC4)"/>
+<circle id="Ellipse 38" cx="643.5" cy="85" r="8.5" fill="var(--fill-0, #026BC4)"/>
+<circle id="Ellipse 39" cx="504.5" cy="54" r="8.5" fill="var(--fill-0, #026BC4)"/>
+<circle id="Ellipse 40" cx="259.5" cy="106" r="8.5" fill="var(--fill-0, #026BC4)"/>
+<circle id="Ellipse 38_2" cx="858" cy="25.5" r="9" fill="var(--fill-0, #0E7FDE)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_1446" x1="457" y1="34.5" x2="457" y2="352.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#54A2E4" stop-opacity="0.5"/>
+<stop offset="1" stop-color="#54A2E4"/>
+</linearGradient>
+</defs>
+</svg>
