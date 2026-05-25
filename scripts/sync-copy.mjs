@@ -98,9 +98,9 @@ function parseCSV(csvText) {
 async function main() {
   const env = loadEnv();
 
-  const rawMap = env.GOOGLE_SHEET_CSV_URL_MAP_JSON;
+  const rawMap = env.GOOGLE_SHEET_CSV_URL_MAP_JSON ?? process.env.GOOGLE_SHEET_CSV_URL_MAP_JSON;
   if (!rawMap) {
-    console.error('❌  GOOGLE_SHEET_CSV_URL_MAP_JSON not found in .env');
+    console.error('❌  GOOGLE_SHEET_CSV_URL_MAP_JSON not found in .env or environment');
     process.exit(1);
   }
 
