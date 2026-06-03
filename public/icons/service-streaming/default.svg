@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #2e6af5;
+        stroke-width: 3px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-3 {
+        stroke: #125;
+        stroke-linejoin: round;
+        stroke-width: 6px;
+      }
+
+      .cls-4 {
+        fill: #125;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="uuid-53b5a948-75b3-48a9-b17a-216992a39b27" data-name="Layer 1-2">
+      <g>
+        <rect class="cls-1" width="145" height="145"/>
+        <g>
+          <path class="cls-4" d="M94.66,69.35l-34.02-19.64c-2.82-1.63-6.34.41-6.34,3.66v39.28c0,3.25,3.52,5.29,6.34,3.66l34.02-19.64c2.82-1.63,2.82-5.69,0-7.32Z"/>
+          <path class="cls-3" d="M93.22,119.86c-6.53,2.96-13.78,4.6-21.41,4.6-28.7,0-51.97-23.27-51.97-51.97,0-10.15,2.91-19.61,7.94-27.62"/>
+          <g>
+            <circle class="cls-2" cx="115.19" cy="99.96" r="17.95"/>
+            <ellipse class="cls-2" cx="115.19" cy="99.96" rx="8.18" ry="17.95"/>
+            <line class="cls-2" x1="97.24" y1="99.96" x2="133.14" y2="99.96"/>
+          </g>
+          <circle class="cls-3" cx="33.2" cy="37.73" r="8.32"/>
+          <path class="cls-2" d="M46.36,27.19c7.53-4.24,16.21-6.66,25.47-6.66,17.05,0,32.19,8.22,41.67,20.9,1.44,1.93,2.75,3.96,3.92,6.08,4.07,7.41,6.39,15.93,6.39,24.98"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

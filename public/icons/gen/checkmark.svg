@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke-width: 6px;
+      }
+
+      .cls-2, .cls-4 {
+        stroke: #125;
+      }
+
+      .cls-3 {
+        stroke: #2e6af5;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="uuid-b02e9439-3857-4868-9156-09a45a3bcc4a" data-name="Layer 1-2">
+      <g>
+        <g>
+          <circle class="cls-4" cx="72.5" cy="72.49" r="50"/>
+          <polyline class="cls-2" points="57.15 76.17 67.45 84.3 87.96 59.66"/>
+          <path class="cls-3" d="M88.67,101.02h-32.36c-6.79,0-12.34-5.55-12.34-12.34v-32.36c0-6.79,5.55-12.34,12.34-12.34h32.36c6.79,0,12.34,5.55,12.34,12.34v32.36c0,6.79-5.55,12.34-12.34,12.34Z"/>
+        </g>
+        <rect class="cls-1" width="145" height="145"/>
+      </g>
+    </g>
+  </g>
+</svg>

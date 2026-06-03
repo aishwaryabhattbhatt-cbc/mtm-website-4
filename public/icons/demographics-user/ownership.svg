@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #125;
+        stroke-width: 6px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-4 {
+        fill: #2e6af5;
+      }
+
+      .cls-3 {
+        stroke: #2e6af5;
+        stroke-width: 3px;
+      }
+
+      .cls-5 {
+        fill: #125;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect class="cls-1" x="0" y="0" width="145" height="145" transform="translate(145 145) rotate(-180)"/>
+      <g>
+        <path class="cls-2" d="M72.02,80.36s-6.86-4.36-6.86-6.86v-6.38c1.52-1.24,3.95-2.75,6.18-4.03,3.22-1.86,4.01-2.21,4.93-5.96l.77-3.6c1.37-6.43,1.89-13,1.54-19.56l-.17-3.23c0-1.75-1.04-3.34-2.69-4.1-.79-.36-1.66-.72-2.58-1.06-9.99-3.73-20.91-3.67-30.74,0-.92.34-1.79.7-2.58,1.06-1.65.76-2.69,2.35-2.69,4.1l-.17,3.23c-.34,6.56.18,13.14,1.54,19.56l.77,3.6c.91,3.74,1.7,4.09,4.93,5.96,2.23,1.29,4.67,2.79,6.18,4.03v6.38c0,2.5-6.86,6.86-6.86,6.86l-11.08,4.71c-3.55,1.12-5.97,4.42-5.97,8.14l-1.21,21.33"/>
+        <g>
+          <rect class="cls-5" x="106.69" y="67.04" width="13.07" height="13.07" rx="3.72" ry="3.72" transform="translate(226.45 147.15) rotate(-180)"/>
+          <rect class="cls-5" x="106.69" y="88.09" width="13.07" height="13.07" rx="3.72" ry="3.72" transform="translate(226.45 189.25) rotate(-180)"/>
+          <rect class="cls-5" x="106.69" y="109.15" width="13.07" height="13.07" rx="3.72" ry="3.72" transform="translate(226.45 231.36) rotate(-180)"/>
+          <path class="cls-3" d="M98.14,73.07h-8.71c-3.75,0-6.78,3.04-6.78,6.78v29.18c0,3.75,3.04,6.78,6.78,6.78h8.71"/>
+          <line class="cls-3" x1="99.03" y1="94.44" x2="69.8" y2="94.44"/>
+          <circle class="cls-4" cx="69.8" cy="94.29" r="6"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

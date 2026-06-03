@@ -1,0 +1,69 @@
+/**
+ * Icon Size Utilities
+ * Scalable rem-based icon sizing for consistent proportions across all breakpoints
+ * Usage: <svg class="icon-xl"></svg>
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ICON SIZES */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.icon-xs {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.icon-s {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon-m {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon-l {
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon-xl {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.icon-2xl {
+  width: 3rem;
+  height: 3rem;
+}
+
+.icon-3xl {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ICON DISPLAY & POSITIONING */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ICON COLORS */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.icon-inactive {
+  color: var(--neutral-grey-3);
+}

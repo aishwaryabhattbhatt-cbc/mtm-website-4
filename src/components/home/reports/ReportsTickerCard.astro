@@ -1,0 +1,165 @@
+---
+// src/components/home/reports/ReportsTickerCard.astro
+// Figma node: 1391:11826 — Continuously scrolling reports ticker card
+
+import ReportsRow from './ReportsRow.astro';
+import type { ProductVariant } from '../../shared/ProductPill.astro';
+
+interface ReportItem {
+    title: string;
+    date: string;
+    products: ProductVariant | ProductVariant[];
+    thumbnail: string;
+    href?: string;
+}
+
+interface Props {
+    class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const BASE = import.meta.env.BASE_URL;
+const THUMB_A = `${BASE}images/home/mtm-suite/reports-thumb-a.webp`;
+const THUMB_B = `${BASE}images/home/mtm-suite/reports-thumb-b.webp`;
+
+const allReports: ReportItem[] = [
+    {
+        title: 'Canadian Viewing Profiles',
+        date: 'Feb 3, 2026',
+        products: 'mtm18plus',
+        thumbnail: THUMB_B,
+    },
+    {
+        title: 'Indigenous Respondents and Media Technology',
+        date: 'Jan 22, 2026',
+        products: 'mtm18plus',
+        thumbnail: THUMB_B,
+    },
+    {
+        title: 'Zipping Through Content',
+        date: 'Jan 10, 2026',
+        products: ['mtm18plus', 'junior'],
+        thumbnail: THUMB_A,
+    },
+    {
+        title: 'From Arrival to Integration',
+        date: 'Dec 11, 2025',
+        products: 'newcomers',
+        thumbnail: THUMB_A,
+    },
+    { title: 'Co-viewing with Kids', date: 'Dec 04, 2025', products: 'junior', thumbnail: THUMB_B },
+    {
+        title: 'A.I. Tool Usage Among Online Canadians',
+        date: 'Nov 27, 2025',
+        products: 'mtm18plus',
+        thumbnail: THUMB_B,
+    },
+    { title: 'Kids and News', date: 'Nov 20, 2025', products: 'junior', thumbnail: THUMB_B },
+    { title: 'FAST Channels', date: 'Nov 13, 2025', products: 'newcomers', thumbnail: THUMB_B },
+];
+
+// Duplicate for seamless looping
+const loopedReports = [...allReports, ...allReports];
+---
+
+<div
+    class={`reports-ticker-card${className ? ` ${className}` : ''}`}
+    data-row-count={allReports.length}
+>
+    <div class="reports-ticker-viewport">
+        <div class="reports-ticker-track">
+            {
+                loopedReports.map((report) => (
+                    <ReportsRow
+                        title={report.title}
+                        date={report.date}
+                        products={report.products}
+                        thumbnail={report.thumbnail}
+                        href={report.href}
+                    />
+                ))
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Card fills the wrapper exactly — height is controlled by the wrapper, not the ticker */
+    .reports-ticker-card {
+        background: var(--surface-white);
+        border-radius: var(--radius-m) var(--radius-m) 0 0;
+        padding-inline: var(--space-5);
+        padding-top: var(--space-5);
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Viewport fills the card's content area (below padding-top) */
+    .reports-ticker-viewport {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Fade out bottom edge */
+    .reports-ticker-viewport::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3rem;
+        pointer-events: none;
+        z-index: 1;
+        background: linear-gradient(to top, var(--surface-white), transparent);
+    }
+
+    .reports-ticker-track {
+        display: flex;
+        flex-direction: column;
+        will-change: transform;
+    }
+</style>
+
+<script>
+    const card = document.querySelector<HTMLElement>('.reports-ticker-card');
+    const track = card?.querySelector<HTMLElement>('.reports-ticker-track');
+
+    if (card && track) {
+        const rowCount = parseInt(card.dataset.rowCount ?? '8', 10);
+        // Slow, weighty ease — accelerates gently then decelerates into each stop
+        const EASING = 'cubic-bezier(0.65, 0, 0.35, 1)';
+        const SLIDE_MS = 1000;
+        const PAUSE_MS = 2000;
+        let currentIndex = 0;
+
+        // Measure the real rendered row height (includes border-bottom, sub-pixel rounding, etc.)
+        // so each step lands on an exact pixel boundary with no accumulated drift.
+        const firstRow = track.querySelector<HTMLElement>(':scope > *');
+        const rowHeightPx = firstRow?.getBoundingClientRect().height ?? 84;
+
+        function step() {
+            currentIndex++;
+            track!.style.transition = `transform ${SLIDE_MS}ms ${EASING}`;
+            track!.style.transform = `translateY(${-currentIndex * rowHeightPx}px)`;
+
+            if (currentIndex >= rowCount) {
+                // After reaching the duplicate-list position, silently reset to the start
+                setTimeout(() => {
+                    track!.style.transition = 'none';
+                    track!.style.transform = 'translateY(0)';
+                    currentIndex = 0;
+                    // Two rAFs ensure transition:none is committed before the next slide
+                    requestAnimationFrame(() =>
+                        requestAnimationFrame(() => setTimeout(step, PAUSE_MS))
+                    );
+                }, SLIDE_MS + PAUSE_MS);
+            } else {
+                setTimeout(step, SLIDE_MS + PAUSE_MS);
+            }
+        }
+
+        setTimeout(step, PAUSE_MS);
+    }
+</script>

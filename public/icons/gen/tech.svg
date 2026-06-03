@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #125;
+        stroke-linejoin: round;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+        stroke-width: 6px;
+      }
+
+      .cls-3 {
+        stroke: #2e6af5;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <rect class="cls-2" x="49.22" y="49.22" width="46.56" height="46.56"/>
+        <g>
+          <line class="cls-3" x1="57.06" y1="30.58" x2="57.06" y2="37.73"/>
+          <line class="cls-3" x1="67.35" y1="30.58" x2="67.35" y2="37.73"/>
+          <line class="cls-3" x1="77.65" y1="30.58" x2="77.65" y2="37.73"/>
+          <line class="cls-3" x1="87.94" y1="30.58" x2="87.94" y2="37.73"/>
+        </g>
+        <g>
+          <line class="cls-3" x1="87.94" y1="114.42" x2="87.94" y2="107.27"/>
+          <line class="cls-3" x1="77.65" y1="114.42" x2="77.65" y2="107.27"/>
+          <line class="cls-3" x1="67.35" y1="114.42" x2="67.35" y2="107.27"/>
+          <line class="cls-3" x1="57.06" y1="114.42" x2="57.06" y2="107.27"/>
+        </g>
+        <g>
+          <line class="cls-3" x1="114.42" y1="57.06" x2="107.27" y2="57.06"/>
+          <line class="cls-3" x1="114.42" y1="67.35" x2="107.27" y2="67.35"/>
+          <line class="cls-3" x1="114.42" y1="77.65" x2="107.27" y2="77.65"/>
+          <line class="cls-3" x1="114.42" y1="87.94" x2="107.27" y2="87.94"/>
+        </g>
+        <g>
+          <line class="cls-3" x1="30.58" y1="87.94" x2="37.73" y2="87.94"/>
+          <line class="cls-3" x1="30.58" y1="77.65" x2="37.73" y2="77.65"/>
+          <line class="cls-3" x1="30.58" y1="67.35" x2="37.73" y2="67.35"/>
+          <line class="cls-3" x1="30.58" y1="57.06" x2="37.73" y2="57.06"/>
+        </g>
+      </g>
+      <rect class="cls-1" width="145" height="145"/>
+    </g>
+  </g>
+</svg>

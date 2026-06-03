@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #2e6af5;
+      }
+
+      .cls-2 {
+        stroke: #125;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 6px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect class="cls-1" x="0" y="0" width="145" height="145" transform="translate(145 145) rotate(-180)"/>
+      <g>
+        <g>
+          <path class="cls-2" d="M60.74,104.56c3.69,1.15,7.61,1.76,11.68,1.76,21.7,0,39.28-17.55,39.28-39.21,0-21.65-17.59-39.21-39.28-39.21s-39.28,17.55-39.28,39.21c0,13.68,7.02,25.73,17.67,32.74"/>
+          <polyline class="cls-2" points="50.81 99.86 50.81 117.09 70.4 106.32"/>
+        </g>
+        <ellipse class="cls-3" cx="54.94" cy="67.12" rx="6.01" ry="6"/>
+        <ellipse class="cls-3" cx="72.42" cy="67.12" rx="6.01" ry="6"/>
+        <ellipse class="cls-3" cx="89.9" cy="67.12" rx="6.01" ry="6"/>
+        <path class="cls-3" d="M132.03,66.15l-10.45-6.03c-.74-.43-1.67.11-1.67.96v12.06c0,.86.93,1.39,1.67.96l10.45-6.03c.74-.43.74-1.5,0-1.93Z"/>
+        <path class="cls-3" d="M12.97,66.15l10.45-6.03c.74-.43,1.67.11,1.67.96v12.06c0,.86-.93,1.39-1.67.96l-10.45-6.03c-.74-.43-.74-1.5,0-1.93Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #125;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+        stroke-width: 6px;
+      }
+
+      .cls-4 {
+        fill: #2e6af5;
+      }
+
+      .cls-3 {
+        stroke: #2e6af5;
+      }
+
+      .cls-5 {
+        fill: #125;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="cls-3" d="M31.84,94.94c-3.68-6.65-5.77-14.3-5.77-22.44,0-25.64,20.79-46.43,46.43-46.43,6.24,0,12.2,1.23,17.64,3.47"/>
+        <path class="cls-3" d="M113.16,50.06c3.68,6.65,5.77,14.3,5.77,22.44,0,25.64-20.79,46.43-46.43,46.43-6.24,0-12.2-1.23-17.64-3.47"/>
+        <polygon class="cls-4" points="72.5 37.8 81.91 27.99 63.09 27.99 72.5 37.8"/>
+        <polygon class="cls-4" points="37.8 72.5 27.99 63.09 27.99 81.91 37.8 72.5"/>
+        <polygon class="cls-4" points="72.5 107.2 63.09 117.01 81.91 117.01 72.5 107.2"/>
+        <polygon class="cls-4" points="107.2 72.5 117.01 81.91 117.01 63.09 107.2 72.5"/>
+        <path class="cls-2" d="M98.37,40.57l-35.84,21.95c-.4.24-.71.59-.92,1.01l-18.45,37.76c-1.07,2.19,1.38,4.43,3.47,3.15l35.84-21.95c.4-.24.71-.59.92-1.01l18.45-37.76c1.07-2.19-1.38-4.43-3.47-3.15Z"/>
+        <circle class="cls-5" cx="72.5" cy="72.5" r="6"/>
+      </g>
+      <rect class="cls-1" x="0" y="0" width="145" height="145" transform="translate(145 145) rotate(-180)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,92 @@
+---
+// src/components/shared/ProductPill.astro
+// Figma node: 362:11068 — Product badge pill for MTM product lines
+
+export type ProductVariant = 'mtm18plus' | 'junior' | 'newcomers' | 'census';
+export type PillSize = 'xsmall' | 'small' | 'big';
+
+interface Props {
+  variant: ProductVariant;
+  size?: PillSize;
+  responsive?: boolean;
+  class?: string;
+}
+
+const { variant, size = 'small', responsive = false, class: className = '' } = Astro.props;
+
+const labels: Record<ProductVariant, string> = {
+  mtm18plus: 'MTM 18+',
+  junior: 'Junior',
+  newcomers: 'Newcomers',
+  census: 'Census',
+};
+---
+
+<span
+  class={`product-pill product-pill--${variant} product-pill--${size}${responsive ? ' product-pill--responsive' : ''}${className ? ` ${className}` : ''}`}
+>
+  {labels[variant]}
+</span>
+
+<style>
+  .product-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    color: var(--neutral-white, #fff);
+    white-space: nowrap;
+  }
+
+  /* Sizes */
+  .product-pill--xsmall {
+    padding: var(--space-1) var(--space-3);
+  }
+  .product-pill--xsmall {
+    font-family: var(--font-body);
+    font-size: var(--fs-input-label);
+    font-weight: var(--fw-regular);
+    line-height: 1.1;
+    letter-spacing: var(--ls-pill);
+  }
+
+  .product-pill--small {
+    padding: var(--space-2) var(--space-4);
+  }
+  .product-pill--small {
+    font-family: var(--font-body);
+    font-size: var(--fs-label-xs);
+    font-weight: var(--fw-regular);
+    line-height: 1.1;
+    letter-spacing: var(--ls-pill);
+  }
+
+  .product-pill--big {
+    padding: var(--space-2) var(--space-6);
+  }
+  .product-pill--big {
+    font-family: var(--font-body);
+    font-size: var(--fs-button-regular);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-pill);
+  }
+
+  /* Variants */
+  .product-pill--mtm18plus  { background: var(--badge-mtm-18); }
+  .product-pill--junior     { background: var(--badge-juniors); }
+  .product-pill--newcomers  { background: var(--badge-newcomers); }
+  .product-pill--census     { background: var(--badge-census); }
+
+  .product-pill--responsive.product-pill--small {
+    padding: calc(var(--space-2) * var(--reports-scale, 1)) calc(var(--space-4) * var(--reports-scale, 1));
+    font-size: calc(var(--fs-label-xs) * var(--reports-scale, 1));
+    line-height: 1.1;
+  }
+
+  .product-pill--responsive.product-pill--big {
+    padding: calc(var(--space-2) * var(--reports-scale, 1)) calc(var(--space-6) * var(--reports-scale, 1));
+    font-size: calc(var(--fs-button-regular) * var(--reports-scale, 1));
+    line-height: var(--lh-tight);
+  }
+</style>
