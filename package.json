@@ -24,6 +24,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
     "astro": "^5.18.0",
+    "gsap": "^3.15.0",
     "husky": "^9.1.7",
     "papaparse": "^5.5.3"
   },

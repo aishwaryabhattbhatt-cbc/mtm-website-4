@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #125;
+        stroke-width: 6px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-5 {
+        fill: #2e6af5;
+      }
+
+      .cls-3 {
+        stroke-linejoin: round;
+      }
+
+      .cls-3, .cls-4 {
+        stroke: #2e6af5;
+        stroke-width: 4px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="cls-2" d="M80.07,103.94H29.97c-6.1,0-11.05-4.95-11.05-11.05v-55.11c0-6.1,4.95-11.05,11.05-11.05h81.4c6.1,0,11.05,4.95,11.05,11.05v29.64"/>
+        <g>
+          <rect class="cls-4" x="38.45" y="74.17" width="11.99" height="18.81" rx="1.04" ry="1.04" transform="translate(128.03 39.13) rotate(90)"/>
+          <rect class="cls-4" x="64.67" y="74.17" width="11.99" height="18.81" rx="1.04" ry="1.04" transform="translate(154.25 12.92) rotate(90)"/>
+          <rect class="cls-4" x="57.51" y="18.64" width="26.32" height="71.25" rx="1.04" ry="1.04" transform="translate(124.93 -16.4) rotate(90)"/>
+        </g>
+        <circle class="cls-5" cx="51.27" cy="117.31" r="4.95"/>
+        <line class="cls-2" x1="29.19" y1="117.31" x2="38.77" y2="117.31"/>
+        <line class="cls-2" x1="64.09" y1="117.31" x2="80.07" y2="117.31"/>
+        <g>
+          <path class="cls-3" d="M123.28,84.89c7.05,6.52,7.98,17.48,1.89,25.12-4.69,5.89-12.24,8.15-19.08,6.4"/>
+          <path class="cls-5" d="M102.19,117.23l8.59,5.7c.61.4,1.43,0,1.48-.73l.64-10.29c.05-.73-.72-1.24-1.37-.91l-9.23,4.59c-.66.33-.71,1.24-.1,1.64Z"/>
+          <path class="cls-3" d="M96.93,112.47c-6.89-6.54-7.74-17.38-1.71-24.95,4.69-5.89,12.24-8.15,19.08-6.4"/>
+          <path class="cls-5" d="M118.2,80.31l-8.59-5.7c-.61-.4-1.43,0-1.48.73l-.64,10.29c-.05.73.72,1.24,1.37.91l9.23-4.59c.66-.33.71-1.24.1-1.64Z"/>
+        </g>
+      </g>
+      <rect class="cls-1" width="145" height="145"/>
+    </g>
+  </g>
+</svg>

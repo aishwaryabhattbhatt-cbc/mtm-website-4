@@ -4,8 +4,11 @@
 import { Image } from 'astro:assets';
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
 import Button from '../shared/Button.astro';
 import Eyebrow from '../shared/Eyebrow.astro';
+import ProductPill from '../shared/ProductPill.astro';
+import ReportsTickerCard from './reports/ReportsTickerCard.astro';
 import bg18 from '../../assets/images/home/mtm-suite/home-products-bg-18.webp';
 import people18 from '../../assets/images/home/mtm-suite/home-products-people-18.webp';
 import bgJr from '../../assets/images/home/mtm-suite/home-products-bg-jr.webp';
@@ -18,6 +21,10 @@ import chart18 from '../../assets/svg/home/data-products/mtm18plus.svg';
 import chartJr from '../../assets/svg/home/data-products/junior.svg';
 import chartNc from '../../assets/svg/home/data-products/newcomers.svg';
 import chartCs from '../../assets/svg/home/data-products/census.svg';
+
+// TODO: Import video assets when available
+// import toolsVideo from '../../assets/videos/tools-suite.mp4';
+// import toolsPoster from '../../assets/images/tools-suite/poster.webp';
 
 interface Props {
     locale: Locale;
@@ -196,6 +203,315 @@ const products = [
             }
         </div>
     </div>
+
+    <!-- MOBILE: Data Products — vertical card stack, hidden on desktop -->
+    <div class="data-products-mobile">
+        <div class="mobile-products-header">
+            <Eyebrow>{t(copy, 'package_1_eyebrow', locale, 'Data Products')}</Eyebrow>
+            <h3>
+                {t(copy, 'package_1_title', locale, '41 Million Canadians Mapped')}
+            </h3>
+        </div>
+        <div class="mobile-products-list">
+            {
+                products.map((product) => (
+                    <a class="mobile-product-card" href={product.href}>
+                        <div class="mobile-card-image">
+                            <Image class="mobile-card-bg" src={product.bg} alt="" loading="lazy" />
+                            <img
+                                class="mobile-card-chart"
+                                src={product.chartSrc}
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                            <Image
+                                class="mobile-card-people"
+                                src={product.people}
+                                alt={product.nameFallback}
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="mobile-card-info">
+                            <div class="mobile-card-text">
+                                <span
+                                    class="mobile-card-name text-body-p0"
+                                    data-copy-key={product.nameKey}
+                                >
+                                    {t(copy, product.nameKey, locale, product.nameFallback)}
+                                </span>
+                                <span
+                                    class="mobile-card-desc text-body-p3"
+                                    data-copy-key={product.descKey}
+                                >
+                                    {t(copy, product.descKey, locale, product.descFallback)}
+                                </span>
+                            </div>
+                            <span class="mobile-card-chevron" aria-hidden="true">
+                                <svg
+                                    width="100%"
+                                    height="100%"
+                                    viewBox="0 0 15 22"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g clip-path={`url(#clip-mobile-${product.id})`}>
+                                        <path
+                                            d="M3.86782 5.53252C4.79584 5.53252 5.54815 4.78021 5.54815 3.8522C5.54815 2.92418 4.79584 2.17188 3.86782 2.17188C2.93981 2.17188 2.1875 2.92418 2.1875 3.8522C2.1875 4.78021 2.93981 5.53252 3.86782 5.53252Z"
+                                            fill={product.chevronFill ?? '#026BC4'}
+                                        />
+                                        <path
+                                            d="M7.64712 9.31231C8.57514 9.31231 9.32744 8.56 9.32744 7.63198C9.32744 6.70397 8.57514 5.95166 7.64712 5.95166C6.7191 5.95166 5.9668 6.70397 5.9668 7.63198C5.9668 8.56 6.7191 9.31231 7.64712 9.31231Z"
+                                            fill={product.chevronFill ?? '#026BC4'}
+                                        />
+                                        <path
+                                            d="M3.86782 20.6502C4.79584 20.6502 5.54815 19.8979 5.54815 18.9699C5.54815 18.0419 4.79584 17.2896 3.86782 17.2896C2.93981 17.2896 2.1875 18.0419 2.1875 18.9699C2.1875 19.8979 2.93981 20.6502 3.86782 20.6502Z"
+                                            fill={product.chevronFill ?? '#026BC4'}
+                                        />
+                                        <path
+                                            d="M7.64712 16.8714C8.57514 16.8714 9.32744 16.1191 9.32744 15.1911C9.32744 14.263 8.57514 13.5107 7.64712 13.5107C6.7191 13.5107 5.9668 14.263 5.9668 15.1911C5.9668 16.8714 7.64712 16.8714Z"
+                                            fill={product.chevronFill ?? '#026BC4'}
+                                        />
+                                        <path
+                                            d="M11.4284 13.0921C12.3564 13.0921 13.1087 12.3398 13.1087 11.4118C13.1087 10.4838 12.3564 9.73145 11.4284 9.73145C10.5004 9.73145 9.74805 10.4838 9.74805 11.4118C9.74805 12.3398 10.5004 13.0921 11.4284 13.0921Z"
+                                            fill={product.chevronFill ?? '#026BC4'}
+                                        />
+                                    </g>
+                                    <defs>
+                                        <clipPath id={`clip-mobile-${product.id}`}>
+                                            <rect width="14.2353" height="22" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+
+    <div class="reports-library-bg">
+        <div class="reports-library row">
+            <!-- LEFT: Heading + description -->
+            <div class="products-left col col-12 col-lg-5 reports-content">
+                <Eyebrow>{t(copy, 'package_2_eyebrow', locale, 'Reports Library')}</Eyebrow>
+
+                <h3 class="suite-heading">
+                    {t(copy, 'package_2_title', locale, '70+ Reports every year')}
+                </h3>
+
+                <p class="reports-desc text-body-p1" data-copy-key="package_2_description">
+                    {
+                        t(
+                            copy,
+                            'package_2_description',
+                            locale,
+                            'Instantly tap into our repository of 70+ reports and infographics each year on a wide range of trends and demographic groups written in both official languages. Explore our latest report or download a free sneak peek report.'
+                        )
+                    }
+                </p>
+
+                <div class="reports-ctas reports-ctas-desktop">
+                    <Button
+                        variant="tertiary"
+                        href={`/${locale}/reports`}
+                        data-copy-key="package_2_cta_1"
+                    >
+                        {t(copy, 'package_2_cta_1', locale, 'LEARN MORE ABOUT REPORTS')}
+                    </Button>
+                    <Button
+                        variant="tertiary"
+                        href={`/${locale}/reports#sneak-peek`}
+                        data-copy-key="package_2_cta_2"
+                    >
+                        {t(copy, 'package_2_cta_2', locale, 'DOWNLOAD SNEAK PEEK REPORT')}
+                    </Button>
+                </div>
+            </div>
+
+            <!-- RIGHT: Reports static image card -->
+            <div class="products-right col col-12 col-lg-7">
+                <div class="reports-image-card">
+                    <img
+                        class="reports-bg"
+                        src={`${import.meta.env.BASE_URL}images/home/mtm-suite/reports-bg-dots.webp`}
+                        alt=""
+                        aria-hidden="true"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                    <div class="reports-ticker-wrapper">
+                        <ReportsTickerCard />
+                    </div>
+                    <img
+                        class="reports-fg"
+                        src={`${import.meta.env.BASE_URL}images/home/mtm-suite/reports-woman-fg.webp`}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </div>
+            </div>
+
+            <!-- Bottom: CTAs -->
+            <div class="col col-12 reports-ctas-row reports-ctas-mobile-row">
+                <div class="reports-ctas">
+                    <Button
+                        variant="tertiary"
+                        href={`/${locale}/reports`}
+                        data-copy-key="package_2_cta_1"
+                    >
+                        {t(copy, 'package_2_cta_1', locale, 'LEARN MORE ABOUT REPORTS')}
+                    </Button>
+                    <Button
+                        variant="tertiary"
+                        href={`/${locale}/reports#sneak-peek`}
+                        data-copy-key="package_2_cta_2"
+                    >
+                        {t(copy, 'package_2_cta_2', locale, 'DOWNLOAD SNEAK PEEK REPORT')}
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tools-suite row">
+        <!-- LEFT: Heading + tool items -->
+        <div class="products-left col col-12 col-lg-5">
+            <Eyebrow>{t(copy, 'package_3_eyebrow', locale, 'Tools Suite')}</Eyebrow>
+
+            <h3 class="suite-heading">
+                {t(copy, 'package_3_title', locale, 'Your Data, Your Way.')}
+            </h3>
+
+            <p class="tools-description text-body-p1" data-copy-key="package_3_description">
+                {
+                    t(
+                        copy,
+                        'package_3_description',
+                        locale,
+                        "Don't just read the trends, discover them. Our proprietary toolset allows you to build custom views, forecast future shifts, and benchmark your audience against the national average."
+                    )
+                }
+            </p>
+
+            <div class="tools-items">
+                {
+                    [
+                        {
+                            titleKey: 'tools_item_1_title',
+                            titleFallback: 'Data Analysis Tool',
+                            variants: ['mtm18plus', 'junior', 'newcomers'] as const,
+                            iconPath: icons.tool.dat,
+                        },
+                        {
+                            titleKey: 'tools_item_2_title',
+                            titleFallback: 'Trending Tool',
+                            variants: ['mtm18plus', 'junior'] as const,
+                            iconPath: icons.tool.trending,
+                        },
+                        {
+                            titleKey: 'tools_item_3_title',
+                            titleFallback: 'Forecasting Tool',
+                            variants: ['mtm18plus'] as const,
+                            iconPath: icons.tool.forecast,
+                        },
+                        {
+                            titleKey: 'tools_item_4_title',
+                            titleFallback: 'Census Tool',
+                            variants: ['census'] as const,
+                            iconPath: icons.tool.census,
+                        },
+                    ].map((tool) => (
+                        <div class="tool-item">
+                            <div class="tool-icon" aria-hidden="true">
+                                <img
+                                    src={`${import.meta.env.BASE_URL}${tool.iconPath}`}
+                                    alt=""
+                                    class="icon icon-m"
+                                />
+                            </div>
+                            <div class="tool-content">
+                                <div class="tool-header">
+                                    <h4 class="tool-title" data-copy-key={tool.titleKey}>
+                                        {t(copy, tool.titleKey, locale, tool.titleFallback)}
+                                    </h4>
+                                </div>
+                                <div class="tool-tags">
+                                    {tool.variants.map((variant) => (
+                                        <ProductPill variant={variant} size="small" />
+                                    ))}
+                                </div>
+                            </div>
+                            <div class="tool-arrow" aria-hidden="true">
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M3 10H17M12 5L17 10L12 15"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- RIGHT: Video card -->
+        <div class="products-right col col-12 col-lg-7">
+            <div class="tools-video-container">
+                {/* TODO: Connect video asset when available */}
+                <video
+                    class="tools-video"
+                    autoplay
+                    loop
+                    muted
+                    aria-label="Tools suite demonstration"
+                >
+                    {/* Video source - uncomment and update path when video is added */}
+                    {/* <source src={toolsVideo} type="video/mp4" /> */}
+                    Your browser does not support the video tag.
+                </video>
+                <button
+                    class="tools-video-play-btn"
+                    aria-label="Play/pause video"
+                    title="Play/pause"
+                >
+                    <svg
+                        class="play-icon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M8 5v14l11-7z" fill="currentColor"></path>
+                    </svg>
+                    <svg
+                        class="pause-icon"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style="display: none;"
+                    >
+                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" fill="currentColor"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
 </section>
 
 <style>
@@ -216,6 +532,94 @@ const products = [
     .data-products {
         margin-bottom: 0;
         align-items: start;
+    }
+
+    .reports-library-bg {
+        background: var(--surface-blue);
+        margin-inline: calc(-1 * var(--content-margin-inline));
+        padding-inline: var(--content-margin-inline);
+        padding-block: var(--space-12);
+    }
+
+    .reports-library {
+        margin-bottom: 0;
+        align-items: start;
+        --reports-card-ratio: 16 / 10;
+    }
+
+    .reports-library .products-right {
+        order: 1;
+        height: auto;
+        aspect-ratio: var(--reports-card-ratio);
+    }
+
+    .reports-library .products-left.reports-content {
+        order: 2;
+    }
+
+    .reports-image-card {
+        position: relative;
+        width: 100%;
+        height: auto;
+        aspect-ratio: var(--reports-card-ratio);
+        overflow: hidden;
+    }
+
+    .reports-image-card .reports-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .reports-image-card .reports-fg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: bottom center;
+        z-index: 2;
+    }
+
+    /* Ticker card sits between bg dots and fg woman */
+    .reports-ticker-wrapper {
+        position: absolute;
+        --reports-ticker-inset: 1rem;
+        top: 12%;
+        left: var(--reports-ticker-inset);
+        right: var(--reports-ticker-inset);
+        bottom: 0;
+        z-index: 1;
+        border-radius: var(--radius-m) var(--radius-m) 0 0;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .reports-desc {
+        color: var(--text-primary);
+        margin: 0;
+        margin-top: calc(-1 * var(--space-5));
+    }
+
+    .reports-ctas {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: var(--space-3);
+    }
+
+    .reports-ctas-row {
+        margin-top: var(--space-4);
+    }
+
+    .reports-ctas-mobile-row {
+        display: none;
+    }
+
+    .reports-ctas-desktop {
+        display: flex;
     }
 
     /* ── LEFT PANEL ── */
@@ -389,8 +793,137 @@ const products = [
         z-index: 3;
     }
 
+    /* ── MOBILE DATA PRODUCTS ── */
+    .data-products-mobile {
+        display: none;
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .mobile-products-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .mobile-products-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-9);
+        width: 100%;
+    }
+
+    .mobile-product-card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .mobile-card-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 5 / 3;
+        border-radius: var(--radius-m);
+        overflow: hidden;
+    }
+
+    .mobile-card-bg {
+        position: absolute;
+        inset: 0;
+        width: 110%;
+        height: 100%;
+        object-fit: cover;
+        left: -1.125rem;
+    }
+
+    .mobile-card-chart {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .mobile-card-people {
+        position: absolute;
+        inset: 0;
+        width: 110%;
+        height: 100%;
+        object-fit: cover;
+        left: -1.125rem;
+        z-index: 3;
+    }
+
+    .mobile-card-info {
+        display: flex;
+        align-items: center;
+        gap: var(--space-6);
+    }
+
+    .mobile-card-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        min-width: 0;
+    }
+
+    .mobile-card-name {
+        color: var(--text-primary);
+    }
+
+    .mobile-card-desc {
+        color: var(--text-secondary);
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .mobile-card-chevron {
+        flex-shrink: 0;
+        width: 1.125rem;
+        height: 1.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1023px) {
+        /* swap desktop ↔ mobile data-products layouts */
+        .data-products {
+            display: none;
+        }
+
+        .data-products-mobile {
+            display: flex;
+        }
+
+        .reports-library .products-left.reports-content {
+            order: 1;
+        }
+
+        .reports-library .products-right {
+            order: 2;
+            height: auto;
+            aspect-ratio: var(--reports-card-ratio);
+        }
+
+        .reports-library .reports-ctas-mobile-row {
+            order: 3;
+            display: block;
+        }
+
+        .reports-library .reports-ctas-desktop {
+            display: none;
+        }
+
         .products-right {
             height: 25rem;
         }
@@ -404,6 +937,11 @@ const products = [
         .mtm-suite-section {
             padding-top: var(--space-9);
             padding-bottom: var(--space-9);
+        }
+
+        .reports-library .products-right {
+            height: auto;
+            aspect-ratio: var(--reports-card-ratio);
         }
 
         .products-left {
@@ -420,9 +958,210 @@ const products = [
             left: var(--space-6);
         }
     }
+
+    /* ── TOOLS SUITE ── */
+    .tools-suite {
+        align-items: stretch;
+    }
+
+    .tools-suite .products-right {
+        height: 100%;
+    }
+
+    .tools-description {
+        color: var(--text-primary);
+        margin: 0;
+        margin-top: calc(-1 * var(--space-5));
+    }
+
+    .tools-items {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: var(--space-0);
+    }
+
+    .tool-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        padding: var(--space-1);
+        border-bottom: var(--stroke-2) solid #ddd;
+        transition: background-color 0.3s ease;
+    }
+
+    .tool-item:last-child {
+        border-bottom: none;
+    }
+
+    .tool-item:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    .tool-icon {
+        flex-shrink: 0;
+        width: 5rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--surface-white);
+        border-radius: var(--radius-m);
+    }
+
+    .tool-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        min-width: 0;
+    }
+
+    .tool-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    .tool-title {
+        color: var(--text-primary);
+        margin: 0;
+        white-space: nowrap;
+        font-family: var(--font-body);
+        font-size: var(--fs-body-l);
+        font-weight: 500;
+        line-height: 1.1;
+    }
+
+    .tool-tags {
+        display: flex;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+    }
+
+    .tool-arrow {
+        flex-shrink: 0;
+        width: 1.25rem;
+        height: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+    }
+
+    .tool-arrow svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* ── TOOLS VIDEO ── */
+    .tools-video-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #e5e5e5;
+        border-radius: var(--radius-m);
+        overflow: hidden;
+    }
+
+    .tools-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .tools-video-play-btn {
+        position: absolute;
+        bottom: var(--space-4);
+        right: var(--space-4);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .tools-video-play-btn:hover {
+        background-color: var(--neutral-white);
+    }
+
+    .tools-video-play-btn svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    @media (max-width: 1023px) {
+        .tools-suite .products-right {
+            height: auto;
+            aspect-ratio: 16 / 9;
+            min-height: 20rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .tools-suite .products-right {
+            height: auto;
+            aspect-ratio: 16 / 9;
+            min-height: 18rem;
+        }
+
+        .tools-video-play-btn {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .tools-video-play-btn svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    }
 </style>
 
 <script>
+    // Tools video play/pause control
+    const toolsVideoContainers = document.querySelectorAll<HTMLElement>('.tools-video-container');
+    toolsVideoContainers.forEach((container) => {
+        const video = container.querySelector<HTMLVideoElement>('video');
+        const playBtn = container.querySelector<HTMLButtonElement>('.tools-video-play-btn');
+        const playIcon = playBtn?.querySelector<SVGElement>('.play-icon');
+        const pauseIcon = playBtn?.querySelector<SVGElement>('.pause-icon');
+
+        if (video && playBtn && playIcon && pauseIcon) {
+            const updateButton = () => {
+                if (video.paused) {
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                } else {
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                }
+            };
+
+            playBtn.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+
+            video.addEventListener('play', updateButton);
+            video.addEventListener('pause', updateButton);
+            video.addEventListener('ended', updateButton);
+
+            // Set initial state
+            updateButton();
+        }
+    });
+
+    // Original product carousel script
     const AUTO_ADVANCE_DELAY = 5000; // ms between auto-advances — change this to adjust timing
 
     const section = document.querySelector<HTMLElement>('.mtm-suite-section');

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-6 {
+        fill: #2e6af5;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-linecap: round;
+      }
+
+      .cls-2, .cls-3, .cls-5 {
+        stroke: #2e6af5;
+      }
+
+      .cls-2, .cls-5 {
+        stroke-width: 3px;
+      }
+
+      .cls-3 {
+        stroke-width: 4px;
+      }
+
+      .cls-4 {
+        stroke: #125;
+        stroke-linejoin: round;
+        stroke-width: 6px;
+      }
+
+      .cls-5 {
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="cls-4" d="M72.5,107.84c-19.52,0-35.34-15.82-35.34-35.34s15.82-35.34,35.34-35.34c16.13,0,29.74,10.8,33.97,25.57"/>
+        <path class="cls-4" d="M72.5,107.84c-8.13,0-14.72-15.82-14.72-35.34s6.59-35.34,14.72-35.34c7.71,0,14.03,14.21,14.67,32.31"/>
+        <line class="cls-4" x1="39.69" y1="85.64" x2="72.5" y2="85.64"/>
+        <line class="cls-4" x1="38.53" y1="62.73" x2="106.47" y2="62.73"/>
+        <path class="cls-5" d="M111.89,46.94c4.37,6.72,6.94,14.53,7.46,22.53"/>
+        <path class="cls-5" d="M33.11,98.06c-10.08-15.5-10.08-35.63,0-51.12"/>
+        <path class="cls-3" d="M120.78,41.17c8.12,12.5,11.05,27.95,8.16,42.56"/>
+        <path class="cls-3" d="M24.22,103.83c-12.35-18.99-12.35-43.67,0-62.66"/>
+        <g>
+          <circle class="cls-3" cx="100.78" cy="95.21" r="19.8"/>
+          <polyline class="cls-2" points="91.35 100.14 100.78 95.21 108.17 82.38"/>
+          <line class="cls-3" x1="116.66" y1="95.26" x2="120.07" y2="95.26"/>
+          <line class="cls-3" x1="100.83" y1="79.34" x2="100.83" y2="75.93"/>
+          <line class="cls-3" x1="84.91" y1="95.17" x2="81.5" y2="95.17"/>
+          <line class="cls-3" x1="100.74" y1="111.08" x2="100.74" y2="114.49"/>
+          <circle class="cls-6" cx="100.78" cy="95.21" r="5.43"/>
+        </g>
+      </g>
+      <rect class="cls-1" x="0" y="0" width="145" height="145" transform="translate(145 145) rotate(-180)"/>
+    </g>
+  </g>
+</svg>

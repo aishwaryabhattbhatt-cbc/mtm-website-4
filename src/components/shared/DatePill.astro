@@ -1,0 +1,58 @@
+---
+// src/components/shared/DatePill.astro
+// Figma node: 418:13071 — Date label in muted grey body-p2 text
+
+interface Props {
+  date: string | Date;
+  size?: 'default' | 'small';
+  responsive?: boolean;
+  class?: string;
+}
+
+const { date, size = 'default', responsive = false, class: className = '' } = Astro.props;
+
+const formatted =
+  date instanceof Date
+    ? date.toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' })
+    : date;
+---
+
+<time
+  class={`date-pill date-pill--${size}${responsive ? ' date-pill--responsive' : ''}${className ? ` ${className}` : ''}`}
+  datetime={date instanceof Date ? date.toISOString().split('T')[0] : date}
+>
+  {formatted}
+</time>
+
+<style>
+  .date-pill {
+    color: var(--neutral-grey-2);
+    white-space: nowrap;
+  }
+
+  .date-pill--default {
+    font-family: var(--font-body);
+    font-size: var(--fs-body-s);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-body);
+    letter-spacing: var(--ls-body-md);
+  }
+
+  .date-pill--small {
+    font-family: var(--font-body);
+    font-size: var(--fs-label-xs);
+    font-weight: var(--fw-regular);
+    line-height: 1.2;
+    letter-spacing: var(--ls-body-md);
+  }
+
+  .date-pill--responsive.date-pill--default {
+    font-size: calc(var(--fs-body-s) * var(--reports-scale, 1));
+    line-height: var(--lh-body);
+  }
+
+  .date-pill--responsive.date-pill--small {
+    font-size: calc(var(--fs-label-xs) * var(--reports-scale, 1));
+    line-height: 1.2;
+  }
+</style>

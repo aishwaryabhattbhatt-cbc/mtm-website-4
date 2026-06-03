@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke-width: 6px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #125;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke-linecap: round;
+      }
+
+      .cls-3, .cls-4 {
+        stroke-width: 4px;
+      }
+
+      .cls-5 {
+        fill: #2e6af5;
+      }
+
+      .cls-4 {
+        stroke: #2e6af5;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <line class="cls-2" x1="108.42" y1="110.88" x2="34.02" y2="110.88"/>
+        <line class="cls-3" x1="34.02" y1="71.97" x2="34.02" y2="96.87"/>
+        <line class="cls-3" x1="52.62" y1="60.97" x2="52.62" y2="96.87"/>
+        <line class="cls-3" x1="71.22" y1="66.3" x2="71.22" y2="96.87"/>
+        <line class="cls-3" x1="89.82" y1="55.34" x2="89.82" y2="96.87"/>
+        <line class="cls-3" x1="108.42" y1="50.98" x2="108.42" y2="96.87"/>
+        <polyline class="cls-4" points="34.02 56.86 64.06 39.09 71.22 51.19 108.72 29.09"/>
+        <path class="cls-5" d="M111.76,25.2l-19.5.46c-1.38.03-2.21,1.55-1.49,2.74l10.15,16.65c.72,1.18,2.45,1.14,3.12-.07l9.35-17.11c.66-1.22-.24-2.69-1.62-2.66Z"/>
+      </g>
+      <rect class="cls-1" x="0" y="0" width="145" height="145" transform="translate(145 145) rotate(-180)"/>
+    </g>
+  </g>
+</svg>

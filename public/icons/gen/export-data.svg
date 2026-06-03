@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-6 {
+        fill: #2e6af5;
+      }
+
+      .cls-2 {
+        stroke-width: 3px;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke: #2e6af5;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-linecap: round;
+      }
+
+      .cls-3, .cls-5 {
+        stroke-width: 6px;
+      }
+
+      .cls-4 {
+        stroke-width: 4px;
+      }
+
+      .cls-5 {
+        stroke: #125;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect class="cls-1" width="145" height="145"/>
+      <g>
+        <path class="cls-6" d="M134.03,71l-11.41-6.59c-.81-.47-1.82.12-1.82,1.05v13.18c0,.94,1.01,1.52,1.82,1.05l11.41-6.59c.81-.47.81-1.64,0-2.11Z"/>
+        <line class="cls-3" x1="104.92" y1="38.51" x2="104.92" y2="106.49"/>
+        <g>
+          <path class="cls-5" d="M26.79,66.06c-4.5,0-8.14-3.64-8.14-8.14v-15.01c0-4.5,3.64-8.14,8.14-8.14h15.01c4.5,0,8.14,3.64,8.14,8.14"/>
+          <path class="cls-5" d="M61.94,42.9c0-4.5,3.64-8.14,8.14-8.14h15.01c4.5,0,8.14,3.64,8.14,8.14v15.01c0,4.5-3.64,8.14-8.14,8.14"/>
+          <path class="cls-5" d="M85.09,77.12c4.5,0,8.14,3.64,8.14,8.14v15.01c0,4.5-3.64,8.14-8.14,8.14h-15.01c-4.5,0-8.14-3.64-8.14-8.14"/>
+          <path class="cls-5" d="M49.95,101.2c0,4.5-3.64,8.14-8.14,8.14h-15.01c-4.5,0-8.14-3.64-8.14-8.14v-15.01c0-4.5,3.64-8.14,8.14-8.14"/>
+        </g>
+        <line class="cls-3" x1="104.92" y1="72.05" x2="127.72" y2="72.05"/>
+        <g>
+          <circle class="cls-4" cx="55.94" cy="72.05" r="19.76"/>
+          <polyline class="cls-2" points="69.89 86 55.94 72.05 55.94 52.49"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
