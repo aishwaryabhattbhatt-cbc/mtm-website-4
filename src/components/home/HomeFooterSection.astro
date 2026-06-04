@@ -1,0 +1,623 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+import FormField from '../shared/FormField.astro';
+import mtmLogo from '../../assets/svg/mtm-logo.svg';
+
+interface Props {
+	locale: Locale;
+	copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const footerMenus = [
+	{
+		title: locale === 'fr' ? 'Entreprise' : 'Company',
+		items: [
+			{ label: locale === 'fr' ? 'Accueil' : 'Home', href: `${base}${locale}/` },
+			{ label: locale === 'fr' ? 'À propos' : 'About Us', href: `${base}${locale}/about-us/` },
+			{ label: locale === 'fr' ? 'Nouvelles' : 'News', href: `${base}${locale}/insights/` },
+			{ label: locale === 'fr' ? 'Contactez-nous' : 'Contact Us', href: `${base}${locale}/contact/` },
+		],
+	},
+	{
+		title: locale === 'fr' ? 'Produits' : 'Products',
+		items: [
+			{ label: 'MTM 18+', href: `${base}${locale}/products/mtm-18-plus/` },
+			{ label: 'MTM Juniors', href: `${base}${locale}/products/juniors/` },
+			{ label: 'MTM Newcomers', href: `${base}${locale}/products/newcomers/` },
+			{ label: locale === 'fr' ? 'Census' : 'Census', href: `${base}${locale}/products/census/` },
+		],
+	},
+	{
+		title: locale === 'fr' ? 'Outils' : 'Tools',
+		items: [
+			{ label: locale === 'fr' ? 'Analyse des données' : 'Data Analysis', href: `${base}${locale}/tools/` },
+			{ label: locale === 'fr' ? 'Tendances' : 'Trending', href: `${base}${locale}/tools/` },
+			{ label: locale === 'fr' ? 'Prévisions' : 'Forecasting', href: `${base}${locale}/tools/` },
+			{ label: locale === 'fr' ? 'Recensement' : 'Census', href: `${base}${locale}/products/census/` },
+		],
+	},
+	{
+		title: locale === 'fr' ? 'Solutions' : 'Solutions',
+		items: [
+			{ label: t(copy, 'solutions_item_1', locale, 'Industry'), href: `${base}${locale}/solutions/industry/` },
+			{ label: t(copy, 'solutions_item_2', locale, 'Media'), href: `${base}${locale}/solutions/media/` },
+			{
+				label: t(copy, 'solutions_item_3', locale, 'Advertising'),
+				href: `${base}${locale}/solutions/advertising/`,
+			},
+			{ label: t(copy, 'solutions_item_4', locale, 'Education'), href: `${base}${locale}/solutions/education/` },
+			{
+				label: t(copy, 'solutions_item_5', locale, 'Government'),
+				href: `${base}${locale}/solutions/government-ngos/`,
+			},
+		],
+	},
+	{
+		title: locale === 'fr' ? 'Perspectives' : 'Insights',
+		items: [{ label: locale === 'fr' ? 'Vos perspectives' : 'Your Insights', href: `${base}${locale}/insights/` }],
+	},
+];
+---
+
+<footer class="home-footer">
+	<div class="home-footer__cta">
+		<div class="home-footer__cta-card">
+			<div class="home-footer__cta-copy">
+				<p class="home-footer__cta-eyebrow text-body-p1" data-copy-key="cta_subtitle">
+					{t(copy, 'cta_subtitle', locale, 'Ready to Get Started?')}
+				</p>
+				<h2 class="home-footer__cta-title text-subsection-h2" data-copy-key="cta_title">
+					{t(copy, 'footer_cta_title', locale, 'Request a Demo Now.')}
+				</h2>
+			</div>
+
+			<form class="home-footer__cta-form" onsubmit="event.preventDefault()" aria-label="Request a demo">
+				<FormField
+					locale={locale}
+					copy={copy}
+					variant="field-only"
+					type="email"
+					name="email"
+					placeholderKey="footer_cta_email_placeholder"
+					placeholder="Enter your work email"
+					ariaLabel={t(copy, 'footer_cta_email_label', locale, 'Work email')}
+				/>
+				<Button variant="primary" href={`/${locale}/contact`} class="home-footer__cta-button">
+					{t(copy, 'footer_cta_button', locale, 'Request a demo')}
+				</Button>
+			</form>
+		</div>
+	</div>
+
+	<div class="home-footer__newsletter">
+		<div class="home-footer__newsletter-container">
+			<div class="home-footer__newsletter-content">
+				<h2 class="home-footer__newsletter-title text-tertiary-h3" data-copy-key="newsletter_title">
+					{t(copy, 'newsletter_title', locale, 'Subscribe to our Newsletter')}
+				</h2>
+				<p class="home-footer__newsletter-description text-body-p1" data-copy-key="newsletter_description">
+					{t(copy, 'newsletter_description', locale, 'Subscribe to receive our exclusive insights, reports, and analysis directly to your inbox. Join the community of industry leaders staying ahead with MTM.')}
+				</p>
+			</div>
+
+			<form class="home-footer__newsletter-form" onsubmit="event.preventDefault()" aria-label="Newsletter signup">
+				<FormField
+					locale={locale}
+					copy={copy}
+					variant="field-with-label"
+					type="email"
+					name="email"
+					labelKey="newsletter_email_label"
+					label="Work Email"
+					placeholderKey="newsletter_email_placeholder"
+					placeholder="Enter your work email"
+					required
+				/>
+
+				<div class="home-footer__newsletter-controls">
+					<FormField
+						locale={locale}
+						copy={copy}
+						variant="field-only"
+						type="select"
+						name="industry"
+						placeholder="Select your industry"
+						options={[
+							{ value: '', label: 'Select your industry', labelKey: 'newsletter_industry_placeholder' },
+							{ value: 'industry', label: 'Industry', labelKey: 'solutions_item_1' },
+						{ value: 'media', label: 'Media', labelKey: 'solutions_item_2' },
+						{ value: 'advertising', label: 'Advertising', labelKey: 'solutions_item_3' },
+						{ value: 'education', label: 'Education', labelKey: 'solutions_item_4' },
+						{ value: 'govngo', label: 'Gov & NGOs', labelKey: 'solutions_item_5' },
+						]}
+					/>
+					<Button variant="primary" type="submit" class="home-footer__newsletter-submit">
+						{t(copy, 'newsletter_submit', locale, 'Submit')}
+					</Button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="home-footer__footer">
+		<div class="home-footer__footer-container">
+			<div class="home-footer__footer-left">
+				<div class="home-footer__footer-menus">
+					{
+						footerMenus.map((menu) => (
+							<nav class="home-footer__footer-menu" aria-label={menu.title}>
+								<h3 class="home-footer__footer-menu-title text-body-p2">{menu.title}</h3>
+								<ul class="home-footer__footer-menu-list">
+									{
+										menu.items.map((item) => (
+											<li>
+												<a class="home-footer__footer-menu-link text-body-p3" href={item.href}>{item.label}</a>
+											</li>
+										))
+									}
+								</ul>
+							</nav>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="home-footer__footer-right">
+				<a href={`${base}${locale}/`} class="home-footer__footer-logo" aria-label="MTM home">
+					<img src={mtmLogo.src} alt="MTM - Media Technology Monitor" />
+				</a>
+
+				<div class="home-footer__footer-address text-body-p2">
+					<span>Media Technology Monitor,</span>
+					<span>181 Queen St, Ottawa, Ontario, K1P1K9</span>
+					<a href="tel:1-855-898-4999">1-855-898-4999</a>
+				</div>
+
+				<a
+					class="home-footer__footer-linkedin text-body-p2"
+					href="https://www.linkedin.com/company/media-technology-monitor/"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="LinkedIn"
+				>
+					in
+				</a>
+
+				<div class="home-footer__footer-policies home-footer__footer-policies--mobile text-body-p2">
+					<a href="#">Site Policies</a>
+					<a href="#">Privacy Policy</a>
+					<a href="#">Terms &amp; Conditions</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="home-footer__footer-meta">
+			<p class="home-footer__footer-copyright text-body-p2">
+				© 2025 Media Technology Monitor. All Rights Reserved. A division of CBC/Radio-Canada.
+			</p>
+
+			<div class="home-footer__footer-policies text-body-p2">
+				<a href="#">Site Policies</a>
+				<span aria-hidden="true">|</span>
+				<a href="#">Privacy Policy</a>
+				<span aria-hidden="true">|</span>
+				<a href="#">Terms &amp; Conditions</a>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.home-footer {
+		display: flex;
+		flex-direction: column;
+		background: var(--surface-white);
+	}
+
+	.home-footer__cta {
+		padding: var(--space-12) var(--content-margin-inline);
+		display: flex;
+		justify-content: center;
+	}
+
+	.home-footer__cta-card {
+		display: flex;
+		width: min(100%, 90rem);
+		padding: var(--space-12) var(--space-12);
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: var(--space-15);
+		border-radius: var(--radius-m);
+		border: var(--stroke-1) solid rgba(255, 255, 255, 0.37);
+		background: rgba(255, 255, 255, 0.39);
+		backdrop-filter: blur(10px);
+		box-shadow: var(--shadow-beautiful);
+	}
+
+	.home-footer__cta-copy {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-2);
+		text-align: center;
+	}
+
+	.home-footer__cta-eyebrow,
+	.home-footer__cta-title {
+		margin: 0;
+		color: var(--text-primary);
+	}
+
+	.home-footer__cta-title {
+		max-width: 50rem;
+	}
+
+	.home-footer__cta-form {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-5);
+		width: 100%;
+		max-width: 38rem;
+	}
+
+	.home-footer__cta-button {
+		height: var(--space-8);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		white-space: nowrap;
+	}
+
+	.home-footer__newsletter {
+		padding: var(--space-12) var(--content-margin-inline);
+		display: flex;
+		justify-content: center;
+		background: var(--surface-white);
+	}
+
+	.home-footer__newsletter-container {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		width: 100%;
+		max-width: 90rem;
+		gap: var(--space-11);
+		align-items: start;
+	}
+
+	.home-footer__newsletter-content {
+		grid-column: span 8;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.home-footer__newsletter-title {
+		margin: 0;
+		color: var(--text-primary);
+	}
+
+	.home-footer__newsletter-description {
+		margin: 0;
+		color: var(--text-secondary);
+		max-width: 40rem;
+	}
+
+	.home-footer__newsletter-form {
+		grid-column: span 4;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-5);
+		width: 100%;
+	}
+
+	.home-footer__newsletter-controls {
+		display: flex;
+		gap: var(--space-3);
+		align-items: center;
+	}
+
+	.home-footer__newsletter-controls > :first-child {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.home-footer__newsletter-submit {
+		height: var(--space-8);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		white-space: nowrap;
+		align-self: flex-end;
+	}
+
+	.home-footer__footer {
+		padding: var(--space-11) var(--content-margin-inline) var(--space-12);
+		background: var(--surface-white);
+	}
+
+	.home-footer__footer-container {
+		width: min(100%, 90rem);
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		gap: var(--space-11);
+	}
+
+	.home-footer__footer-left {
+		grid-column: span 8;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-width: 0;
+		gap: var(--space-9);
+	}
+
+	.home-footer__footer-menus {
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1.35fr) minmax(0, 0.7fr);
+		gap: var(--space-5);
+	}
+
+	.home-footer__footer-menu {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.home-footer__footer-menu-title {
+		margin: 0;
+		color: var(--text-primary);
+	}
+
+	.home-footer__footer-menu-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	.home-footer__footer-menu-link {
+		color: var(--text-secondary);
+		text-decoration: none;
+	}
+
+	.home-footer__footer-menu-link:hover {
+		color: var(--text-primary);
+	}
+
+	.home-footer__footer-copyright {
+		margin: 0;
+		color: var(--neutral-grey-2);
+	}
+
+	.home-footer__footer-meta {
+		width: min(100%, 90rem);
+		margin: var(--space-8) auto 0;
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		align-items: center;
+		gap: var(--space-11);
+	}
+
+	.home-footer__footer-meta .home-footer__footer-copyright {
+		grid-column: span 8;
+	}
+
+	.home-footer__footer-right {
+		grid-column: span 4;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: var(--space-3);
+	}
+
+	.home-footer__footer-logo {
+		display: inline-flex;
+		width: 9.5rem;
+	}
+
+	.home-footer__footer-logo img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.home-footer__footer-address {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	.home-footer__footer-address a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.home-footer__footer-linkedin {
+		width: 2rem;
+		height: 2rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--text-primary);
+		color: var(--text-white);
+		text-decoration: none;
+		border-radius: var(--radius-s);
+	}
+
+	.home-footer__footer-policies {
+		grid-column: span 4;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: var(--space-2);
+		color: var(--neutral-grey-2);
+		white-space: nowrap;
+	}
+
+	.home-footer__footer-policies--mobile {
+		display: none;
+	}
+
+	.home-footer__footer-policies a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.home-footer__footer-policies a:hover {
+		color: var(--text-secondary);
+	}
+
+	@media (max-width: 1300px) {
+		.home-footer__newsletter-container {
+			grid-template-columns: 1fr;
+			gap: var(--space-6);
+		}
+
+		.home-footer__newsletter-content {
+			grid-column: auto;
+		}
+
+		.home-footer__newsletter-form {
+			grid-column: auto;
+			max-width: 25rem;
+		}
+
+		.home-footer__footer {
+			padding-top: var(--space-9);
+			padding-bottom: var(--space-8);
+		}
+
+		.home-footer__footer-container {
+			grid-template-columns: 1fr;
+			gap: var(--space-8);
+		}
+
+		.home-footer__footer-right {
+			order: 1;
+			grid-column: auto;
+			width: 100%;
+			gap: var(--space-5);
+		}
+
+		.home-footer__footer-logo {
+			width: 6.625rem;
+		}
+
+		.home-footer__footer-address {
+			gap: var(--space-0);
+		}
+
+		.home-footer__footer-policies--mobile {
+			display: none;
+		}
+
+		.home-footer__footer-left {
+			order: 2;
+			grid-column: auto;
+			gap: 0;
+		}
+
+		.home-footer__footer-menus {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: var(--space-6) var(--space-6);
+		}
+
+		.home-footer__footer-meta {
+			order: 3;
+			margin-top: var(--space-8);
+			grid-template-columns: 1fr;
+			align-items: start;
+			gap: var(--space-4);
+		}
+
+		.home-footer__footer-meta .home-footer__footer-copyright {
+			grid-column: auto;
+		}
+
+		.home-footer__footer-meta .home-footer__footer-policies {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: var(--space-2);
+			grid-column: auto;
+			white-space: nowrap;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.home-footer__cta {
+			padding-top: var(--space-9);
+			padding-bottom: var(--space-9);
+		}
+
+		.home-footer__cta-card {
+			padding: var(--space-8) var(--space-5);
+			gap: var(--space-7);
+		}
+
+		.home-footer__cta-form {
+			flex-direction: column;
+			align-items: stretch;
+			gap: var(--space-3);
+		}
+
+		.home-footer__cta-button {
+			width: 100%;
+			text-align: center;
+		}
+
+		.home-footer__newsletter {
+			padding-top: var(--space-9);
+			padding-bottom: var(--space-9);
+		}
+
+		.home-footer__newsletter-container {
+			grid-template-columns: 1fr;
+			gap: var(--space-6);
+		}
+
+		.home-footer__newsletter-form {
+			max-width: 100%;
+		}
+
+		.home-footer__newsletter-controls {
+			flex-direction: column;
+		}
+
+		.home-footer__newsletter-submit {
+			align-self: stretch;
+		}
+
+		.home-footer__footer-menus {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: var(--space-6);
+		}
+
+		.home-footer__footer-right {
+			gap: var(--space-4);
+		}
+
+		.home-footer__footer-policies {
+			gap: var(--space-1);
+		}
+
+		.home-footer__footer-meta {
+			margin-top: var(--space-6);
+			align-items: flex-start;
+			gap: var(--space-3);
+		}
+	}
+</style>

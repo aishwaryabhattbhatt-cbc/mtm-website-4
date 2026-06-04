@@ -1,0 +1,315 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+import chevronIconAsset from '../../assets/svg/icon-chevron.svg';
+import { icons } from '../../lib/icons/registry';
+
+interface Props {
+	locale: Locale;
+	copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const chevronIconSrc = chevronIconAsset.src;
+const askMtmIconPath = `${import.meta.env.BASE_URL}${icons.tool.askMtm}`;
+
+const faqs = [
+	{
+		id: 'faq_1',
+		questionKey: 'faq_1_question',
+		answerKey: 'faq_1_answer',
+		questionFallback: 'Can MTM data be customized for specific funding, research, or measurement projects?',
+		answerFallback: 'Yes. MTM\'s DAT Tool and Census platform allow for flexible data querying by demographic group, platform type, or region. For organizations requiring deeper or comparative analysis, MTM provides custom cross-tabulations and export support, ensuring that the data aligns with each partner\'s reporting framework, whether for funding applications, program evaluation, or strategic benchmarking.',
+	},
+	{
+		id: 'faq_2',
+		questionKey: 'faq_2_question',
+		answerKey: 'faq_2_answer',
+		questionFallback: 'What are the turnaround times for high-volume or complex data requests?',
+		answerFallback: 'Turnaround times vary based on complexity. Standard queries through our tools are instant. Custom requests typically take 5–10 business days. For urgent requests, expedited processing is available.',
+	},
+	{
+		id: 'faq_3',
+		questionKey: 'faq_3_question',
+		answerKey: 'faq_3_answer',
+		questionFallback: 'Is MTM data accepted as a source for funding justification and policy submissions?',
+		answerFallback: 'Yes. MTM data is recognized and cited by funding bodies, policy makers, and research institutions across Canada. Our datasets meet rigorous quality standards and are suitable for policy submissions and funding applications.',
+	},
+	{
+		id: 'faq_4',
+		questionKey: 'faq_4_question',
+		answerKey: 'faq_4_answer',
+		questionFallback: 'How does MTM ensure the validity and reliability of its datasets?',
+		answerFallback: 'MTM employs rigorous methodology, continuous validation, peer review, and partnerships with industry experts to ensure data accuracy and relevance. Our processes comply with international research standards.',
+	},
+];
+---
+
+<section class="home-faqs" aria-label={t(copy, 'faq_section_title', locale, 'Frequently Asked Questions')}>
+	<div class="home-faqs__heading">
+		<h2 class="home-faqs__title" data-copy-key="faq_section_title">
+			{t(copy, 'faq_section_title', locale, 'Frequently Asked Questions')}
+		</h2>
+	</div>
+
+	<div class="home-faqs__accordion">
+		{
+			faqs.map((faq, idx) => (
+				<div class={`home-faqs__item${idx === 0 ? ' is-open' : ''}`} data-faq-id={faq.id}>
+					<button
+						type="button"
+						class={`home-faqs__trigger${idx === 0 ? ' is-open' : ''}`}
+						data-faq-trigger={faq.id}
+						aria-expanded={idx === 0 ? 'true' : 'false'}
+						aria-controls={`home-faqs-content-${faq.id}`}
+					>
+						<span class="home-faqs__question text-body-p1-bold" data-copy-key={faq.questionKey}>
+							{t(copy, faq.questionKey, locale, faq.questionFallback)}
+						</span>
+						<img
+							class="home-faqs__chevron"
+							src={chevronIconSrc}
+							alt=""
+							aria-hidden="true"
+							loading="lazy"
+							decoding="async"
+						/>
+					</button>
+
+					<div
+						class={`home-faqs__content${idx === 0 ? ' is-open' : ''}`}
+						id={`home-faqs-content-${faq.id}`}
+						role="region"
+						aria-labelledby={`home-faqs-trigger-${faq.id}`}
+					>
+						<p class="home-faqs__answer text-body-p1" data-copy-key={faq.answerKey}>
+							{t(copy, faq.answerKey, locale, faq.answerFallback)}
+						</p>
+					</div>
+				</div>
+			))
+		}
+	</div>
+
+	<div class="home-faqs__footer">
+		<div class="home-faqs__footer-text text-body-p1">
+			{t(copy, 'faq_footer_text_before', locale, 'Got a question not listed here? Speak to our chatbot')}
+		</div>
+		<Button
+			variant="secondary-icon"
+			href={`/${locale}/tools`}
+			class="home-faqs__ask-mtm-button"
+			aria-label={t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
+			iconSrc={askMtmIconPath}
+			iconAlt="Ask MTM"
+		>
+			{t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
+		</Button>
+		<span class="home-faqs__footer-or text-body-p1">
+			{t(copy, 'faq_footer_text_after', locale, 'or')}
+		</span>
+		<Button variant="secondary" href={`/${locale}/contact`} class="home-faqs__footer-button">
+			{t(copy, 'faq_contact_button', locale, 'Contact us')}
+		</Button>
+	</div>
+</section>
+
+<style>
+	.home-faqs {
+		background: var(--surface-white);
+		padding: var(--space-12) var(--content-margin-inline);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-9);
+	}
+
+	.home-faqs__heading {
+		width: min(100%, 90rem);
+		text-align: center;
+	}
+
+	.home-faqs__title {
+		margin: 0;
+		color: var(--text-primary);
+	}
+
+	.home-faqs__accordion {
+		width: min(100%, 90rem);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-5);
+	}
+
+	.home-faqs__item {
+		border: var(--stroke-1) solid var(--border-tertiary);
+		border-radius: var(--radius-m);
+		transition: box-shadow 220ms ease;
+	}
+
+	.home-faqs__item.is-open {
+		box-shadow: var(--shadow-beautiful);
+	}
+
+	.home-faqs__trigger {
+		appearance: none;
+		background: transparent;
+		border: 0;
+		padding: var(--space-7);
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-4);
+		cursor: pointer;
+		text-align: left;
+		transition: all 220ms ease;
+	}
+
+	.home-faqs__trigger:focus-visible {
+		outline: var(--stroke-2) solid var(--brand-blue-main);
+		outline-offset: var(--space-1);
+	}
+
+	.home-faqs__question {
+		margin: 0;
+		color: var(--text-primary);
+		flex: 1;
+		font-weight: 600;
+	}
+
+	.home-faqs__chevron {
+		width: 1.5rem;
+		height: 1.5rem;
+		flex-shrink: 0;
+		transform: rotate(0deg);
+		transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
+		object-fit: contain;
+	}
+
+	.home-faqs__trigger.is-open .home-faqs__chevron {
+		transform: rotate(180deg);
+	}
+
+	.home-faqs__content {
+		display: none;
+		padding: 0 var(--space-7) var(--space-7) var(--space-7);
+		overflow: hidden;
+	}
+
+	.home-faqs__content.is-open {
+		display: block;
+	}
+
+	.home-faqs__answer {
+		margin: 0;
+		color: var(--text-primary);
+	}
+
+	.home-faqs__footer {
+		width: min(100%, 90rem);
+		display: flex;
+		align-items: center;
+		gap: var(--space-4);
+	}
+
+	.home-faqs__footer-text {
+		margin: 0;
+		color: var(--text-primary);
+	}
+
+	:global(.home-faqs__ask-mtm-button),
+	:global(.home-faqs__footer-button) {
+		height: var(--space-8);
+		padding-top: 0;
+		padding-bottom: 0;
+		display: inline-flex;
+		align-items: center;
+	}
+
+	:global(.home-faqs__ask-mtm-button) {
+		padding-left: var(--space-1);
+		padding-right: var(--space-4);
+	}
+
+	:global(.home-faqs__ask-mtm-button .btn-secondary-icon-wrap) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	:global(.home-faqs__ask-mtm-button .btn-secondary-icon-asset) {
+		width: var(--space-8);
+		height: var(--space-8);
+		min-width: var(--space-8);
+		min-height: var(--space-8);
+		object-fit: contain;
+	}
+
+	.home-faqs__footer-or {
+		color: var(--text-primary);
+	}
+
+	@media (max-width: 767px) {
+		.home-faqs {
+			padding-top: var(--space-9);
+			padding-bottom: var(--space-9);
+			gap: var(--space-8);
+		}
+
+		.home-faqs__trigger {
+			padding: var(--space-5);
+		}
+
+		.home-faqs__content {
+			padding: 0 var(--space-5) var(--space-5) var(--space-5);
+		}
+
+		.home-faqs__chevron {
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+
+		.home-faqs__footer {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: var(--space-3);
+		}
+	}
+</style>
+
+<script>
+	const faqsSection = document.querySelector('.home-faqs');
+
+	if (faqsSection) {
+		const triggers = faqsSection.querySelectorAll('.home-faqs__trigger');
+		const items = faqsSection.querySelectorAll('.home-faqs__item');
+
+		triggers.forEach((trigger) => {
+			trigger.addEventListener('click', () => {
+				const item = trigger.closest('.home-faqs__item');
+				const content = item?.querySelector('.home-faqs__content');
+				const isOpen = trigger.classList.contains('is-open');
+
+				// Close all items
+				triggers.forEach((t) => {
+					t.classList.remove('is-open');
+					t.setAttribute('aria-expanded', 'false');
+					t.closest('.home-faqs__item')?.classList.remove('is-open');
+				});
+				faqsSection.querySelectorAll('.home-faqs__content').forEach((c) => {
+					c.classList.remove('is-open');
+				});
+
+				// Open clicked item if it was closed
+				if (!isOpen) {
+					trigger.classList.add('is-open');
+					trigger.setAttribute('aria-expanded', 'true');
+					content?.classList.add('is-open');
+					item?.classList.add('is-open');
+				}
+			});
+		});
+	}
+</script>

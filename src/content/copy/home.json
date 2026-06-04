@@ -1,12 +1,12 @@
 {
   "hero_title": {
     "key": "hero_title",
-    "en": "The Standard for Media & Tech Insights",
+    "en": "The Standard for Canadian Media & Technology Insights",
     "fr": ""
   },
   "hero_description": {
     "key": "hero_description",
-    "en": "Real data on how Canadians consume tech, content, and media. Built for leaders who don't guess.",
+    "en": "Real data on how Canadians consume media, technology, and content — built for organizations that need evidence, not assumptions.",
     "fr": ""
   },
   "hero_cta_1": {
@@ -16,12 +16,12 @@
   },
   "hero_cta_2": {
     "key": "hero_cta_2",
-    "en": "Scroll to Learn More",
+    "en": "Scroll to Explore",
     "fr": ""
   },
   "hero_stat_value": {
     "key": "hero_stat_value",
-    "en": "300K+",
+    "en": "300,000 +",
     "fr": ""
   },
   "hero_stat_label": {
@@ -31,12 +31,12 @@
   },
   "hero_featured_report_title": {
     "key": "hero_featured_report_title",
-    "en": "The Rise Of Vertical Video",
+    "en": "The Rise Of Shortform Video",
     "fr": ""
   },
   "access_title": {
     "key": "access_title",
-    "en": "Access credible research on",
+    "en": "Access Trusted Research On",
     "fr": ""
   },
   "access_item_1_title": {
@@ -46,7 +46,7 @@
   },
   "access_item_1_description": {
     "key": "access_item_1_description",
-    "en": "Track rapid shifts across Al, devices, and platforms. Identify where consumer demand is moving next.",
+    "en": "Track rapid shifts across streaming platforms, AI advancements, connected devices, and emerging technologies. Identify where consumer demand is heading next.",
     "fr": ""
   },
   "access_item_2_title": {
@@ -56,22 +56,22 @@
   },
   "access_item_2_description": {
     "key": "access_item_2_description",
-    "en": "Understand attention, viewing patterns, and engagement signals. See how audience habits evolve across channels.",
+    "en": "Understand attention, viewing habits, engagement, and platform usage across audiences and channels.",
     "fr": ""
   },
   "access_item_3_title": {
     "key": "access_item_3_title",
-    "en": "5000+ variables",
+    "en": "5,000+ Variables",
     "fr": ""
   },
   "access_item_3_description": {
     "key": "access_item_3_description",
-    "en": "Explore a deep dataset spanning demographics, intent, and usage. Connect variables to uncover high-value opportunities",
+    "en": "Explore one of Canada’s most comprehensive media and technology datasets. Connect demographics, behaviours, attitudes, and intent to uncover meaningful opportunities.",
     "fr": ""
   },
   "package_title": {
     "key": "package_title",
-    "en": "The MTM Package",
+    "en": "The MTM Suite",
     "fr": ""
   },
   "package_1_eyebrow": {
@@ -81,7 +81,7 @@
   },
   "package_1_title": {
     "key": "package_1_title",
-    "en": "38 Million Canadians Mapped",
+    "en": "41 Million Canadians Mapped",
     "fr": ""
   },
   "product_1_title": {
@@ -91,37 +91,37 @@
   },
   "product_1_description": {
     "key": "product_1_description",
-    "en": "MTM 18+ provides data on Canadians 18+",
+    "en": "Comprehensive data on Canadians aged 18 and older, covering media consumption, technology adoption, and digital behaviours",
     "fr": ""
   },
   "product_2_title": {
     "key": "product_2_title",
-    "en": "Juniors",
+    "en": "MTM Junior",
     "fr": ""
   },
   "product_2_description": {
     "key": "product_2_description",
-    "en": "Juniors provides data on Canadians 2-17",
+    "en": "Insights into the media and technology habits of Canadians aged 2–17",
     "fr": ""
   },
   "product_3_title": {
     "key": "product_3_title",
-    "en": "Newcomer",
+    "en": "MTM Newcomers",
     "fr": ""
   },
   "product_3_description": {
     "key": "product_3_description",
-    "en": "Newcomers data covers new arrivals to Canada in the past 5 years",
+    "en": "Research focused on Canadians who have arrived within the past five years, offering valuable insights into settlement, media usage, and technology adoption",
     "fr": ""
   },
   "product_4_title": {
     "key": "product_4_title",
-    "en": "Census",
+    "en": "MTM Census Tool",
     "fr": ""
   },
   "product_4_description": {
     "key": "product_4_description",
-    "en": "Census covers the demographic data",
+    "en": "Comprehensive demographic and population data for enhanced analysis and targeting.",
     "fr": ""
   },
   "package_2_eyebrow": {
@@ -131,12 +131,12 @@
   },
   "package_2_title": {
     "key": "package_2_title",
-    "en": "70+ Reports every year",
+    "en": "70 + Reports Published Annually",
     "fr": ""
   },
   "package_2_description": {
     "key": "package_2_description",
-    "en": "Valuable reports composed of the reports and infographics each year on a wide range of trends, activities and demographic groups written in both official languages. Explore our latest report or download a sneak peak report.",
+    "en": "Access a growing library of reports, infographics, and trend analyses covering media, technology, platforms, behaviours, and demographic groups across Canada — available in both official languages. Explore the latest findings or download a sample report to see the depth of MTM insights.",
     "fr": ""
   },
   "reports_cta_1": {
@@ -146,7 +146,7 @@
   },
   "reports_cta_2": {
     "key": "reports_cta_2",
-    "en": "Download Sneak Peak",
+    "en": "Download a Sample Report",
     "fr": ""
   },
   "package_3_eyebrow": {
@@ -161,7 +161,7 @@
   },
   "package_3_description": {
     "key": "package_3_description",
-    "en": "Configure your data the way you want it. Our streaming toolkits allow you to build custom views, find your own filters, and dynamically give updates to planned settings.",
+    "en": "Build custom views, apply advanced filters, and explore trends dynamically with MTM’s suite of interactive data tools.",
     "fr": ""
   },
   "tools_item_1_title": {
@@ -171,22 +171,22 @@
   },
   "tools_item_1_tags": {
     "key": "tools_item_1_tags",
-    "en": "MTM 18+, Juniors, Newcomers",
+    "en": "MTM 18+, MTM Junior., MTM Newcomers",
     "fr": ""
   },
   "tools_item_2_title": {
     "key": "tools_item_2_title",
-    "en": "Trending",
+    "en": "Trending Tool",
     "fr": ""
   },
   "tools_item_2_tags": {
     "key": "tools_item_2_tags",
-    "en": "MTM 18+, Juniors",
+    "en": "MTM 18+, MTM Junior",
     "fr": ""
   },
   "tools_item_3_title": {
     "key": "tools_item_3_title",
-    "en": "Forecasting",
+    "en": "Forecasting Tool",
     "fr": ""
   },
   "tools_item_3_tags": {
@@ -196,7 +196,7 @@
   },
   "tools_item_4_title": {
     "key": "tools_item_4_title",
-    "en": "Census",
+    "en": "MTM Census Tool",
     "fr": ""
   },
   "solutions_title": {
@@ -211,22 +211,22 @@
   },
   "solutions_item_2": {
     "key": "solutions_item_2",
-    "en": "Media",
+    "en": "Media and Broadcasting",
     "fr": ""
   },
   "solutions_item_3": {
     "key": "solutions_item_3",
-    "en": "Advertising",
+    "en": "Advertising and Marketing",
     "fr": ""
   },
   "solutions_item_4": {
     "key": "solutions_item_4",
-    "en": "Education",
+    "en": "Education and Research",
     "fr": ""
   },
   "solutions_item_5": {
     "key": "solutions_item_5",
-    "en": "Gov & NGOs",
+    "en": "Government & NGO's",
     "fr": ""
   },
   "faq_title": {
@@ -236,7 +236,7 @@
   },
   "faq_1_question": {
     "key": "faq_1_question",
-    "en": "Can MTM data be used for specific funding research or measurement projects?",
+    "en": "When is the data released for MTM 18+/ MTM Jr./ MTM Newcomers/Census?",
     "fr": ""
   },
   "faq_1_answer": {
@@ -246,7 +246,7 @@
   },
   "faq_2_question": {
     "key": "faq_2_question",
-    "en": "What are the turnaround times for high-volume or complex data exports?",
+    "en": "How many seats come with a subscription?",
     "fr": ""
   },
   "faq_2_answer": {
@@ -261,7 +261,7 @@
   },
   "faq_3_answer": {
     "key": "faq_3_answer",
-    "en": "NEW",
+    "en": "Yes. MTM data is widely used across the Canadian media, advertising, academic, and public sectors to support publications, strategic planning, funding applications, and policy development.",
     "fr": ""
   },
   "faq_4_question": {
@@ -271,7 +271,7 @@
   },
   "faq_4_answer": {
     "key": "faq_4_answer",
-    "en": "NEW",
+    "en": "MTM uses rigorous research methodologies, large-scale national sampling, and ongoing quality assurance processes to ensure data accuracy, consistency, and representativeness across all studies.",
     "fr": ""
   },
   "faq_5_question": {
@@ -286,12 +286,12 @@
   },
   "faq_contact_label": {
     "key": "faq_contact_label",
-    "en": "Got a question not listed here? Speak to our chatbot or",
+    "en": "Have a question that isn't listed here? Speak with our chatbot or",
     "fr": ""
   },
   "faq_contact_cta": {
     "key": "faq_contact_cta",
-    "en": "Contact Us",
+    "en": "Contact Us.",
     "fr": ""
   },
   "cta_subtitle": {
@@ -301,22 +301,22 @@
   },
   "cta_title": {
     "key": "cta_title",
-    "en": "Request a demo now",
+    "en": "Discover how MTM can help your organization make smarter, data-driven decisions.",
     "fr": ""
   },
   "cta_button": {
     "key": "cta_button",
-    "en": "Reuqest a demo",
+    "en": "Request a Demo",
     "fr": ""
   },
   "newsletter_title": {
     "key": "newsletter_title",
-    "en": "Subscribe to our Newsletter",
+    "en": "Subscribe to Our Newsletter",
     "fr": ""
   },
   "newsletter_description": {
     "key": "newsletter_description",
-    "en": "Stay up to date with the latest trends. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed purus eu nibh rhoncus.",
+    "en": "Stay informed with the latest Canadian media and technology trends, new reports, research releases, and industry insights delivered directly to your inbox.",
     "fr": ""
   }
 }

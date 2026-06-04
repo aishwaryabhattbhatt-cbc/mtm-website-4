@@ -72,10 +72,14 @@ function parseCSV(csvText) {
   if (!hasHeader) return {};
 
   const enIdx = (() => {
-    const u = findCol(headerRow, ['updated text (english)', 'english', 'en']);
-    if (u !== -1) return u;
-    const t = findCol(headerRow, ['current text', 'text']);
-    return t !== -1 ? t : 1;
+    // Check in priority order: most specific first, to avoid 'en' matching 'current text'
+    const specific = findCol(headerRow, ['updated text (english)']);
+    if (specific !== -1) return specific;
+    const english = findCol(headerRow, ['english']);
+    if (english !== -1) return english;
+    const current = findCol(headerRow, ['current text', 'text']);
+    if (current !== -1) return current;
+    return 1;
   })();
   const frIdx = findCol(headerRow, ['updated text (french)', 'french', 'fr']);
   const currentTextIdx = findCol(headerRow, ['current text', 'text']);
