@@ -14,6 +14,11 @@
 - **CSS/typography rules**: see `.claude/rules/css-conventions.md` (e.g., never use font properties in component styles, always use design system text classes).
 - **Icon registry**: use `src/lib/icons/registry.ts` for all icon references. Type-safe helpers: `getIconPath(category, name)`, `icons[category].iconName`. Categories: demographics, devices, services, tools, solutions, gen (utilities). 450+ SVG icons organized by semantic group.
 - **Automated review**: run `.claude/commands/review.md` before marking work complete; any grep output = violation.
+- **Pre-commit audit is mandatory**: before committing or pushing any changes, run `npm run audit:site` and fix all reported violations.
+	- Never ship `href="#"` placeholder links. Use a real locale-aware destination such as ``${base}${locale}/contact/`` or the actual target page.
+	- Never use inline `style=""` attributes. Move styles into the component `<style>` block and apply a CSS class.
+	- Remove all `console.log()` calls before commit/push.
+	- If a destination page does not exist yet, link to the closest real page (for example `/contact/`) until the target page is built.
 
 ## Key Directories
 
