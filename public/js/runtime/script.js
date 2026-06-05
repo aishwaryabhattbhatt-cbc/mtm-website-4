@@ -228,6 +228,81 @@ function initNavbarMenu() {
     });
 }
 
+/**
+ * Desktop dropdown interaction:
+ * - Keep dropdown open while pointer is inside navbar + dropdown area
+ * - Switch active dropdown when hovering another menu button
+ * - Close only when pointer leaves navbar area (or focus/click moves away)
+ */
+function initNavbarDropdownInteraction() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    const dropdownItems = Array.from(navbar.querySelectorAll('.nav-item--dropdown'));
+    if (!dropdownItems.length) return;
+
+    const desktopMediaQuery = window.matchMedia('(min-width: 1024px)');
+    let activeItem = null;
+
+    function clearActiveItem() {
+        if (activeItem) {
+            activeItem.classList.remove('is-active');
+            activeItem = null;
+        }
+    }
+
+    function setActiveItem(item) {
+        if (!desktopMediaQuery.matches) return;
+        if (activeItem === item) return;
+
+        clearActiveItem();
+        activeItem = item;
+        activeItem.classList.add('is-active');
+    }
+
+    dropdownItems.forEach((item) => {
+        item.addEventListener('mouseenter', () => setActiveItem(item));
+
+        const trigger = item.querySelector('.nav-link--has-dropdown');
+        if (trigger) {
+            trigger.addEventListener('focus', () => setActiveItem(item));
+        }
+    });
+
+    navbar.addEventListener('mouseleave', () => {
+        if (!desktopMediaQuery.matches) return;
+        clearActiveItem();
+    });
+
+    navbar.addEventListener('focusout', (event) => {
+        if (!desktopMediaQuery.matches) return;
+
+        const nextTarget = event.relatedTarget;
+        if (!nextTarget || !navbar.contains(nextTarget)) {
+            clearActiveItem();
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!desktopMediaQuery.matches) return;
+        if (!event.target.closest('.navbar')) {
+            clearActiveItem();
+        }
+    });
+
+    function handleViewportChange() {
+        if (!desktopMediaQuery.matches) {
+            clearActiveItem();
+        }
+    }
+
+    if (desktopMediaQuery.addEventListener) {
+        desktopMediaQuery.addEventListener('change', handleViewportChange);
+    } else {
+        desktopMediaQuery.addListener(handleViewportChange);
+    }
+}
+
 // ============================================
 // GOOGLE SHEETS CMS RUNTIME REFRESH
 // ============================================
@@ -358,6 +433,9 @@ function initRuntimeCmsRefresh() {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize navbar menu
     initNavbarMenu();
+
+    // Initialize desktop navbar dropdown interaction
+    initNavbarDropdownInteraction();
 
     // Initialize runtime CMS refresh (near-live Google Sheet updates)
     initRuntimeCmsRefresh();
