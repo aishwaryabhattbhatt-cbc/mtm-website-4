@@ -4,586 +4,616 @@ import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
 import Button from '../shared/Button.astro';
 import HomeSolutionsCard from './solutions/HomeSolutionsCard.astro';
-import chevronIconAsset from '../../assets/svg/icon-chevron.svg';
+import chevronIconAsset from '../../assets/svg/icon-chevron.svg?url';
 
 interface Props {
-	locale: Locale;
-	copy: CMSDictionary;
+    locale: Locale;
+    copy: CMSDictionary;
 }
 
 const { locale, copy } = Astro.props as Props;
-const chevronIconSrc = chevronIconAsset.src;
+const chevronIconSrc = chevronIconAsset;
 
 const logoSets = {
-	industry: [
-		{ id: 'telefilm', width: '42%' },
-		{ id: 'ebu', width: '30%' },
-		{ id: 'moffettnathanson', width: '58%' },
-		{ id: 'numeris', width: '40%' },
-		{ id: 'cmf', width: '34%' },
-	],
-	media: [
-		{ id: 'cbc', width: '36%' },
-		{ id: 'bell', width: '30%' },
-		{ id: 'rogers', width: '42%' },
-		{ id: 'corus', width: '36%' },
-		{ id: 'quebecor', width: '44%' },
-	],
-	advertising: [
-		{ id: 'iab', width: '26%' },
-		{ id: 'comscore', width: '46%' },
-		{ id: 'nielsen', width: '38%' },
-		{ id: 'dentsu', width: '34%' },
-		{ id: 'publicis', width: '40%' },
-	],
-	education: [
-		{ id: 'universities', width: '54%' },
-		{ id: 'colleges', width: '44%' },
-		{ id: 'boards', width: '34%' },
-		{ id: 'institutes', width: '44%' },
-		{ id: 'libraries', width: '38%' },
-	],
-	govngo: [
-		{ id: 'federal', width: '40%' },
-		{ id: 'provincial', width: '46%' },
-		{ id: 'municipal', width: '42%' },
-		{ id: 'associations', width: '52%' },
-		{ id: 'foundations', width: '46%' },
-	],
+    industry: [
+        { id: 'telefilm', width: '42%' },
+        { id: 'ebu', width: '30%' },
+        { id: 'moffettnathanson', width: '58%' },
+        { id: 'numeris', width: '40%' },
+        { id: 'cmf', width: '34%' },
+    ],
+    media: [
+        { id: 'cbc', width: '36%' },
+        { id: 'bell', width: '30%' },
+        { id: 'rogers', width: '42%' },
+        { id: 'corus', width: '36%' },
+        { id: 'quebecor', width: '44%' },
+    ],
+    advertising: [
+        { id: 'iab', width: '26%' },
+        { id: 'comscore', width: '46%' },
+        { id: 'nielsen', width: '38%' },
+        { id: 'dentsu', width: '34%' },
+        { id: 'publicis', width: '40%' },
+    ],
+    education: [
+        { id: 'universities', width: '54%' },
+        { id: 'colleges', width: '44%' },
+        { id: 'boards', width: '34%' },
+        { id: 'institutes', width: '44%' },
+        { id: 'libraries', width: '38%' },
+    ],
+    govngo: [
+        { id: 'federal', width: '40%' },
+        { id: 'provincial', width: '46%' },
+        { id: 'municipal', width: '42%' },
+        { id: 'associations', width: '52%' },
+        { id: 'foundations', width: '46%' },
+    ],
 } as const;
 
 const cards = [
-	{
-		solutionId: 'industry',
-		titleKey: 'solutions_item_1',
-		title: t(copy, 'solutions_item_1', locale, 'Industry'),
-		imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/industry.png`,
-		imageAlt: t(copy, 'solutions_item_1_image_alt', locale, 'Professional using a laptop'),
-		iconPath: `${import.meta.env.BASE_URL}${icons.solutions.industry}`,
-		href: `/${locale}/solutions/industry`,
-		ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
-	},
-	{
-		solutionId: 'media',
-		titleKey: 'solutions_item_2',
-		title: t(copy, 'solutions_item_2', locale, 'Media'),
-		imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/media.png`,
-		imageAlt: t(copy, 'solutions_item_2_image_alt', locale, 'Professional using a laptop'),
-		iconPath: `${import.meta.env.BASE_URL}${icons.solutions.media}`,
-		href: `/${locale}/solutions/media`,
-		ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
-	},
-	{
-		solutionId: 'advertising',
-		titleKey: 'solutions_item_3',
-		title: t(copy, 'solutions_item_3', locale, 'Advertising'),
-		imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/advertising.png`,
-		imageAlt: t(copy, 'solutions_item_3_image_alt', locale, 'Professional using a laptop'),
-		iconPath: `${import.meta.env.BASE_URL}${icons.solutions.advertising}`,
-		href: `/${locale}/solutions/advertising`,
-		ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
-	},
-	{
-		solutionId: 'education',
-		titleKey: 'solutions_item_4',
-		title: t(copy, 'solutions_item_4', locale, 'Education'),
-		imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/education.png`,
-		imageAlt: t(copy, 'solutions_item_4_image_alt', locale, 'Professional using a laptop'),
-		iconPath: `${import.meta.env.BASE_URL}${icons.solutions.education}`,
-		href: `/${locale}/solutions/education`,
-		ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
-	},
-	{
-		solutionId: 'govngo',
-		titleKey: 'solutions_item_5',
-		title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
-		imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/govn&ngo.png`,
-		imageAlt: t(copy, 'solutions_item_5_image_alt', locale, 'Professional using a laptop'),
-		iconPath: `${import.meta.env.BASE_URL}${icons.solutions.govNgo}`,
-		href: `/${locale}/solutions/government-ngos`,
-		ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
-	},
+    {
+        solutionId: 'industry',
+        titleKey: 'solutions_item_1',
+        title: t(copy, 'solutions_item_1', locale, 'Industry'),
+        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/industry.png`,
+        imageAlt: t(copy, 'solutions_item_1_image_alt', locale, 'Professional using a laptop'),
+        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.industry}`,
+        href: `/${locale}/solutions/industry`,
+        ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
+    },
+    {
+        solutionId: 'media',
+        titleKey: 'solutions_item_2',
+        title: t(copy, 'solutions_item_2', locale, 'Media'),
+        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/media.png`,
+        imageAlt: t(copy, 'solutions_item_2_image_alt', locale, 'Professional using a laptop'),
+        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.media}`,
+        href: `/${locale}/solutions/media`,
+        ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
+    },
+    {
+        solutionId: 'advertising',
+        titleKey: 'solutions_item_3',
+        title: t(copy, 'solutions_item_3', locale, 'Advertising'),
+        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/advertising.png`,
+        imageAlt: t(copy, 'solutions_item_3_image_alt', locale, 'Professional using a laptop'),
+        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.advertising}`,
+        href: `/${locale}/solutions/advertising`,
+        ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
+    },
+    {
+        solutionId: 'education',
+        titleKey: 'solutions_item_4',
+        title: t(copy, 'solutions_item_4', locale, 'Education'),
+        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/education.png`,
+        imageAlt: t(copy, 'solutions_item_4_image_alt', locale, 'Professional using a laptop'),
+        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.education}`,
+        href: `/${locale}/solutions/education`,
+        ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
+    },
+    {
+        solutionId: 'govngo',
+        titleKey: 'solutions_item_5',
+        title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
+        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/govn&ngo.png`,
+        imageAlt: t(copy, 'solutions_item_5_image_alt', locale, 'Professional using a laptop'),
+        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.govNgo}`,
+        href: `/${locale}/solutions/government-ngos`,
+        ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
+    },
 ];
 ---
 
 <section class="home-solutions" aria-label={t(copy, 'solutions_title', locale, 'Solutions')}>
-	<div class="home-solutions__heading">
-		<h2 class="home-solutions__title" data-copy-key="solutions_title">
-			{t(copy, 'solutions_title', locale, 'Solutions for Every Decision-Maker')}
-		</h2>
-	</div>
-	<div class="home-solutions__content home-solutions__content--desktop">
-		<div class="home-solutions__inner">
-			{
-				cards.map((card) => (
-					<div class="home-solutions__item" data-solution={card.solutionId}>
-						<HomeSolutionsCard
-							titleKey={card.titleKey}
-							title={card.title}
-							imageSrc={card.imageSrc}
-							imageAlt={card.imageAlt}
-							iconPath={card.iconPath}
-							href={card.href}
-							ctaLabel={card.ctaLabel}
-							state="default"
-						/>
-					</div>
-				))
-			}
-		</div>
+    <div class="home-solutions__heading">
+        <h2 class="home-solutions__title" data-copy-key="solutions_title">
+            {t(copy, 'solutions_title', locale, 'Solutions for Every Decision-Maker')}
+        </h2>
+    </div>
+    <div class="home-solutions__content home-solutions__content--desktop">
+        <div class="home-solutions__inner">
+            {
+                cards.map((card) => (
+                    <div class="home-solutions__item" data-solution={card.solutionId}>
+                        <HomeSolutionsCard
+                            titleKey={card.titleKey}
+                            title={card.title}
+                            imageSrc={card.imageSrc}
+                            imageAlt={card.imageAlt}
+                            iconPath={card.iconPath}
+                            href={card.href}
+                            ctaLabel={card.ctaLabel}
+                            state="default"
+                        />
+                    </div>
+                ))
+            }
+        </div>
 
-		<div class="home-solutions__indicator" aria-hidden="true">
-			{
-				cards.map((card, idx) => (
-					<div class="home-solutions__indicator-cell">
-						<span
-							class={`home-solutions__indicator-icon icon-m${idx === 0 ? ' is-active' : ''}`}
-							data-solution-arrow={card.solutionId}
-						>
-							<img src={chevronIconSrc} alt="" loading="lazy" decoding="async" />
-						</span>
-					</div>
-				))
-			}
-		</div>
+        <div class="home-solutions__indicator" aria-hidden="true">
+            {
+                cards.map((card, idx) => (
+                    <div class="home-solutions__indicator-cell">
+                        <span
+                            class={`home-solutions__indicator-icon icon-m${idx === 0 ? ' is-active' : ''}`}
+                            data-solution-arrow={card.solutionId}
+                        >
+                            <img src={chevronIconSrc} alt="" loading="lazy" decoding="async" />
+                        </span>
+                    </div>
+                ))
+            }
+        </div>
 
-		<div class="home-solutions__logos" aria-label="Client logos">
-			{
-				Object.entries(logoSets).map(([solutionId, logos], idx) => (
-					<div
-						class={`home-solutions__logos-grid${idx === 0 ? ' is-active' : ''}`}
-						data-solution-logos={solutionId}
-						aria-hidden={idx === 0 ? 'false' : 'true'}
-					>
-						{
-							logos.map((logo) => (
-								<div class="home-solutions__logo-placeholder" data-logo={logo.id}>
-									<div class="home-solutions__logo-mark" style={`--logo-width: ${logo.width};`} />
-								</div>
-							))
-						}
-					</div>
-				))
-			}
-		</div>
-	</div>
+        <div class="home-solutions__logos" aria-label="Client logos">
+            {
+                Object.entries(logoSets).map(([solutionId, logos], idx) => (
+                    <div
+                        class={`home-solutions__logos-grid${idx === 0 ? ' is-active' : ''}`}
+                        data-solution-logos={solutionId}
+                        aria-hidden={idx === 0 ? 'false' : 'true'}
+                    >
+                        {logos.map((logo) => (
+                            <div class="home-solutions__logo-placeholder" data-logo={logo.id}>
+                                <div
+                                    class="home-solutions__logo-mark"
+                                    style={`--logo-width: ${logo.width};`}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 
-	<div class="home-solutions__mobile" data-solutions-mobile>
-		<div class="home-solutions__tabs" role="tablist" aria-label={t(copy, 'solutions_title', locale, 'Solutions')}>
-			{
-				cards.map((card, idx) => (
-					<button
-						type="button"
-						class={`home-solutions__tab${idx === 0 ? ' is-active' : ''}`}
-						data-solution-tab={card.solutionId}
-						role="tab"
-						aria-selected={idx === 0 ? 'true' : 'false'}
-						tabindex={idx === 0 ? '0' : '-1'}
-						aria-controls={`home-solutions-panel-${card.solutionId}`}
-					>
-						<img class="home-solutions__tab-icon" src={card.iconPath} alt="" aria-hidden="true" />
-						<span class="home-solutions__tab-label text-body-p3" data-copy-key={card.titleKey}>
-							{card.title}
-						</span>
-					</button>
-				))
-			}
-		</div>
+    <div class="home-solutions__mobile" data-solutions-mobile>
+        <div
+            class="home-solutions__tabs"
+            role="tablist"
+            aria-label={t(copy, 'solutions_title', locale, 'Solutions')}
+        >
+            {
+                cards.map((card, idx) => (
+                    <button
+                        type="button"
+                        class={`home-solutions__tab${idx === 0 ? ' is-active' : ''}`}
+                        data-solution-tab={card.solutionId}
+                        role="tab"
+                        aria-selected={idx === 0 ? 'true' : 'false'}
+                        tabindex={idx === 0 ? '0' : '-1'}
+                        aria-controls={`home-solutions-panel-${card.solutionId}`}
+                    >
+                        <img
+                            class="home-solutions__tab-icon"
+                            src={card.iconPath}
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <span
+                            class="home-solutions__tab-label text-body-p3"
+                            data-copy-key={card.titleKey}
+                        >
+                            {card.title}
+                        </span>
+                    </button>
+                ))
+            }
+        </div>
 
-		<div class="home-solutions__mobile-panels">
-			{
-				cards.map((card, idx) => (
-					<div
-						class={`home-solutions__mobile-panel${idx === 0 ? ' is-active' : ''}`}
-						data-solution-panel={card.solutionId}
-						id={`home-solutions-panel-${card.solutionId}`}
-						role="tabpanel"
-						aria-hidden={idx === 0 ? 'false' : 'true'}
-					>
-						<div class="home-solutions__mobile-image-wrap">
-							<img
-								class="home-solutions__mobile-image"
-								src={card.imageSrc}
-								alt={card.imageAlt}
-								loading="lazy"
-								decoding="async"
-							/>
-						</div>
+        <div class="home-solutions__mobile-panels">
+            {
+                cards.map((card, idx) => (
+                    <div
+                        class={`home-solutions__mobile-panel${idx === 0 ? ' is-active' : ''}`}
+                        data-solution-panel={card.solutionId}
+                        id={`home-solutions-panel-${card.solutionId}`}
+                        role="tabpanel"
+                        aria-hidden={idx === 0 ? 'false' : 'true'}
+                    >
+                        <div class="home-solutions__mobile-image-wrap">
+                            <img
+                                class="home-solutions__mobile-image"
+                                src={card.imageSrc}
+                                alt={card.imageAlt}
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </div>
 
-						<div class="home-solutions__mobile-clients">
-							<div class="home-solutions__mobile-clients-header">
-								<p class="home-solutions__mobile-clients-label text-label-xs">
-									{`${card.title.toUpperCase()} CLIENTS`}
-								</p>
-								<Button variant="tertiary" href={card.href} class="home-solutions__mobile-clients-cta">
-									{t(copy, 'solutions_cta', locale, 'Learn more')}
-								</Button>
-							</div>
-							<div class="home-solutions__mobile-logos">
-								{logoSets[card.solutionId as keyof typeof logoSets].slice(0, 3).map((logo) => (
-									<div class="home-solutions__mobile-logo-placeholder" data-logo={logo.id}>
-										<div
-											class="home-solutions__mobile-logo-mark"
-											style={`--logo-width: ${logo.width};`}
-										/>
-									</div>
-								))}
-							</div>
-						</div>
-					</div>
-				))
-			}
-		</div>
-	</div>
+                        <div class="home-solutions__mobile-clients">
+                            <div class="home-solutions__mobile-clients-header">
+                                <p class="home-solutions__mobile-clients-label text-label-xs">
+                                    {`${card.title.toUpperCase()} CLIENTS`}
+                                </p>
+                                <Button
+                                    variant="tertiary"
+                                    href={card.href}
+                                    class="home-solutions__mobile-clients-cta"
+                                >
+                                    {t(copy, 'solutions_cta', locale, 'Learn more')}
+                                </Button>
+                            </div>
+                            <div class="home-solutions__mobile-logos">
+                                {logoSets[card.solutionId as keyof typeof logoSets]
+                                    .slice(0, 3)
+                                    .map((logo) => (
+                                        <div
+                                            class="home-solutions__mobile-logo-placeholder"
+                                            data-logo={logo.id}
+                                        >
+                                            <div
+                                                class="home-solutions__mobile-logo-mark"
+                                                style={`--logo-width: ${logo.width};`}
+                                            />
+                                        </div>
+                                    ))}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 </section>
 
 <style>
-	.home-solutions {
-		background: var(--surface-blue);
-		padding: var(--space-12) var(--content-margin-inline);
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		flex-direction: column;
-		gap: var(--space-12);
-	}
+    .home-solutions {
+        background: var(--surface-blue);
+        padding: var(--space-12) var(--content-margin-inline);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: var(--space-12);
+    }
 
-	.home-solutions__content {
-		width: min(100%, 90rem);
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
-	}
+    .home-solutions__content {
+        width: min(100%, 90rem);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
 
-	.home-solutions__mobile {
-		display: none;
-	}
+    .home-solutions__mobile {
+        display: none;
+    }
 
-	.home-solutions__heading {
-		width: min(100%, 90rem);
-		text-align: center;
-	}
+    .home-solutions__heading {
+        width: min(100%, 90rem);
+        text-align: center;
+    }
 
-	.home-solutions__title {
-		margin: 0;
-		color: var(--text-primary);
-	}
+    .home-solutions__title {
+        margin: 0;
+        color: var(--text-primary);
+    }
 
-	.home-solutions__inner {
-		width: 100%;
-		display: grid;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-		gap: var(--space-6);
-	}
+    .home-solutions__inner {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: var(--space-6);
+    }
 
-	.home-solutions__item {
-		min-width: 0;
-	}
+    .home-solutions__item {
+        min-width: 0;
+    }
 
-	.home-solutions__logos {
-		width: 100%;
-		border-top: var(--stroke-1) solid var(--border-tertiary);
-		border-bottom: var(--stroke-1) solid var(--border-tertiary);
-		padding: var(--space-4) 0;
-	}
+    .home-solutions__logos {
+        width: 100%;
+        border-top: var(--stroke-1) solid var(--border-tertiary);
+        border-bottom: var(--stroke-1) solid var(--border-tertiary);
+        padding: var(--space-4) 0;
+    }
 
-	.home-solutions__indicator {
-		width: 100%;
-		display: grid;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-		gap: var(--space-6);
-	}
+    .home-solutions__indicator {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: var(--space-6);
+    }
 
-	.home-solutions__indicator-cell {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-height: var(--space-6);
-	}
+    .home-solutions__indicator-cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: var(--space-6);
+    }
 
-	.home-solutions__indicator-icon {
-		opacity: 0;
-		transition: opacity 180ms ease;
-	}
+    .home-solutions__indicator-icon {
+        opacity: 0;
+        transition: opacity 180ms ease;
+    }
 
-	.home-solutions__indicator-icon.is-active {
-		opacity: 1;
-	}
+    .home-solutions__indicator-icon.is-active {
+        opacity: 1;
+    }
 
-	.home-solutions__indicator-icon img {
-		width: 100%;
-		height: 100%;
-		display: block;
-	}
+    .home-solutions__indicator-icon img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
 
-	.home-solutions__logos-grid {
-		width: 100%;
-		display: none;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-		gap: var(--space-6);
-	}
+    .home-solutions__logos-grid {
+        width: 100%;
+        display: none;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: var(--space-6);
+    }
 
-	.home-solutions__logos-grid.is-active {
-		display: grid;
-	}
+    .home-solutions__logos-grid.is-active {
+        display: grid;
+    }
 
-	.home-solutions__logo-placeholder {
-		background: var(--surface-white);
-		border-radius: var(--radius-s);
-		min-height: var(--space-10);
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0 var(--space-3);
-	}
+    .home-solutions__logo-placeholder {
+        background: var(--surface-white);
+        border-radius: var(--radius-s);
+        min-height: var(--space-10);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 var(--space-3);
+    }
 
-	.home-solutions__logo-mark {
-		width: var(--logo-width, 40%);
-		height: var(--space-3);
-		border-radius: var(--radius-xs);
-		background: var(--border-primary);
-		opacity: 0.25;
-	}
+    .home-solutions__logo-mark {
+        width: var(--logo-width, 40%);
+        height: var(--space-3);
+        border-radius: var(--radius-xs);
+        background: var(--border-primary);
+        opacity: 0.25;
+    }
 
-	.home-solutions__logos-image {
-		width: 100%;
-		height: auto;
-		display: block;
-	}
+    .home-solutions__logos-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 
-	@media (max-width: 1200px) {
-		.home-solutions {
-			padding-top: var(--space-9);
-			padding-bottom: var(--space-9);
-			gap: var(--space-6);
-		}
+    @media (max-width: 1200px) {
+        .home-solutions {
+            padding-top: var(--space-9);
+            padding-bottom: var(--space-9);
+            gap: var(--space-6);
+        }
 
-		.home-solutions__heading {
-			width: 100%;
-			text-align: center;
-		}
+        .home-solutions__heading {
+            width: 100%;
+            text-align: center;
+        }
 
-		.home-solutions__content--desktop {
-			display: none;
-		}
+        .home-solutions__content--desktop {
+            display: none;
+        }
 
-		.home-solutions__mobile {
-			display: flex;
-			flex-direction: column;
-			gap: var(--space-7);
-			width: 100%;
-		}
+        .home-solutions__mobile {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-7);
+            width: 100%;
+        }
 
-		.home-solutions__tabs {
-			display: grid;
-			grid-template-columns: repeat(5, minmax(0, 1fr));
-			gap: var(--space-2);
-		}
+        .home-solutions__tabs {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: var(--space-2);
+        }
 
-		.home-solutions__tab {
-			appearance: none;
-			background: transparent;
-			border: 0;
-			border-bottom: var(--stroke-1) solid var(--border-tertiary);
-			padding: 0 0 var(--space-2);
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: flex-start;
-			gap: var(--space-1);
-			cursor: pointer;
-		}
+        .home-solutions__tab {
+            appearance: none;
+            background: transparent;
+            border: 0;
+            border-bottom: var(--stroke-1) solid var(--border-tertiary);
+            padding: 0 0 var(--space-2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: var(--space-1);
+            cursor: pointer;
+        }
 
-		.home-solutions__tab.is-active {
-			border-bottom-color: var(--brand-blue-main);
-		}
+        .home-solutions__tab.is-active {
+            border-bottom-color: var(--brand-blue-main);
+        }
 
-		.home-solutions__tab:focus-visible {
-			outline: var(--stroke-2) solid var(--border-primary);
-			outline-offset: var(--space-1);
-		}
+        .home-solutions__tab:focus-visible {
+            outline: var(--stroke-2) solid var(--border-primary);
+            outline-offset: var(--space-1);
+        }
 
-		.home-solutions__tab-icon {
-			width: var(--space-7);
-			height: var(--space-7);
-			display: block;
-			opacity: 0.55;
-			filter: grayscale(1);
-		}
+        .home-solutions__tab-icon {
+            width: var(--space-7);
+            height: var(--space-7);
+            display: block;
+            opacity: 0.55;
+            filter: grayscale(1);
+        }
 
-		.home-solutions__tab.is-active .home-solutions__tab-icon {
-			opacity: 1;
-			filter: none;
-		}
+        .home-solutions__tab.is-active .home-solutions__tab-icon {
+            opacity: 1;
+            filter: none;
+        }
 
-		.home-solutions__tab-label {
-			color: var(--text-disabled);
-			text-align: center;
-			white-space: normal;
-			line-height: var(--lh-tight);
-		}
+        .home-solutions__tab-label {
+            color: var(--text-disabled);
+            text-align: center;
+            white-space: normal;
+            line-height: var(--lh-tight);
+        }
 
-		.home-solutions__tab.is-active .home-solutions__tab-label {
-			color: var(--text-primary);
-		}
+        .home-solutions__tab.is-active .home-solutions__tab-label {
+            color: var(--text-primary);
+        }
 
-		.home-solutions__mobile-panel {
-			display: none;
-			flex-direction: column;
-			gap: var(--space-6);
-		}
+        .home-solutions__mobile-panel {
+            display: none;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
 
-		.home-solutions__mobile-panel.is-active {
-			display: flex;
-		}
+        .home-solutions__mobile-panel.is-active {
+            display: flex;
+        }
 
-		.home-solutions__mobile-image-wrap {
-			width: 100%;
-			aspect-ratio: 16 / 9;
-			overflow: hidden;
-			border-radius: var(--radius-tag);
-			background: var(--surface-white);
-		}
+        .home-solutions__mobile-image-wrap {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: var(--radius-tag);
+            background: var(--surface-white);
+        }
 
-		.home-solutions__mobile-image {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			display: block;
-		}
+        .home-solutions__mobile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-		.home-solutions__mobile-clients {
-			display: flex;
-			flex-direction: column;
-			gap: var(--space-4);
-		}
+        .home-solutions__mobile-clients {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
 
-		.home-solutions__mobile-clients-header {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: var(--space-3);
-		}
+        .home-solutions__mobile-clients-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-3);
+        }
 
-		.home-solutions__mobile-clients-label {
-			margin: 0;
-			color: var(--text-secondary);
-			text-align: left;
-		}
+        .home-solutions__mobile-clients-label {
+            margin: 0;
+            color: var(--text-secondary);
+            text-align: left;
+        }
 
-		.home-solutions__mobile-clients-cta {
-			flex-shrink: 0;
-		}
+        .home-solutions__mobile-clients-cta {
+            flex-shrink: 0;
+        }
 
-		.home-solutions__mobile-logos {
-			width: 100%;
-			border-top: var(--stroke-1) solid var(--border-tertiary);
-			border-bottom: var(--stroke-1) solid var(--border-tertiary);
-			padding: var(--space-4) 0;
-			display: grid;
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-			gap: var(--space-3);
-		}
+        .home-solutions__mobile-logos {
+            width: 100%;
+            border-top: var(--stroke-1) solid var(--border-tertiary);
+            border-bottom: var(--stroke-1) solid var(--border-tertiary);
+            padding: var(--space-4) 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--space-3);
+        }
 
-		.home-solutions__mobile-logo-placeholder {
-			background: var(--surface-white);
-			border-radius: var(--radius-s);
-			min-height: var(--space-9);
-			width: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 0 var(--space-2);
-		}
+        .home-solutions__mobile-logo-placeholder {
+            background: var(--surface-white);
+            border-radius: var(--radius-s);
+            min-height: var(--space-9);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 var(--space-2);
+        }
 
-		.home-solutions__mobile-logo-mark {
-			width: var(--logo-width, 40%);
-			height: var(--space-2);
-			border-radius: var(--radius-xs);
-			background: var(--border-primary);
-			opacity: 0.25;
-		}
-	}
+        .home-solutions__mobile-logo-mark {
+            width: var(--logo-width, 40%);
+            height: var(--space-2);
+            border-radius: var(--radius-xs);
+            background: var(--border-primary);
+            opacity: 0.25;
+        }
+    }
 
-	@media (max-width: 767px) {
-		.home-solutions__tabs {
-			gap: var(--space-1);
-		}
+    @media (max-width: 767px) {
+        .home-solutions__tabs {
+            gap: var(--space-1);
+        }
 
-		.home-solutions__tab {
-			padding-bottom: var(--space-1);
-		}
+        .home-solutions__tab {
+            padding-bottom: var(--space-1);
+        }
 
-		.home-solutions__mobile {
-			gap: var(--space-6);
-		}
+        .home-solutions__mobile {
+            gap: var(--space-6);
+        }
 
-		.home-solutions__mobile-logos {
-			gap: var(--space-2);
-			padding: var(--space-3) 0;
-		}
+        .home-solutions__mobile-logos {
+            gap: var(--space-2);
+            padding: var(--space-3) 0;
+        }
 
-		.home-solutions__mobile-logo-placeholder {
-			min-height: var(--space-8);
-		}
-	}
+        .home-solutions__mobile-logo-placeholder {
+            min-height: var(--space-8);
+        }
+    }
 </style>
 
 <script>
-	const solutionsSection = document.querySelector('.home-solutions');
+    const solutionsSection = document.querySelector('.home-solutions');
 
-	if (solutionsSection) {
-		const solutionItems = solutionsSection.querySelectorAll('.home-solutions__item[data-solution]');
-		const logoGrids = solutionsSection.querySelectorAll('.home-solutions__logos-grid[data-solution-logos]');
-		const arrows = solutionsSection.querySelectorAll('.home-solutions__indicator-icon[data-solution-arrow]');
-		const tabs = solutionsSection.querySelectorAll('.home-solutions__tab[data-solution-tab]');
-		const mobilePanels = solutionsSection.querySelectorAll('.home-solutions__mobile-panel[data-solution-panel]');
-		const defaultSolution = 'industry';
+    if (solutionsSection) {
+        const solutionItems = solutionsSection.querySelectorAll(
+            '.home-solutions__item[data-solution]'
+        );
+        const logoGrids = solutionsSection.querySelectorAll(
+            '.home-solutions__logos-grid[data-solution-logos]'
+        );
+        const arrows = solutionsSection.querySelectorAll(
+            '.home-solutions__indicator-icon[data-solution-arrow]'
+        );
+        const tabs = solutionsSection.querySelectorAll('.home-solutions__tab[data-solution-tab]');
+        const mobilePanels = solutionsSection.querySelectorAll(
+            '.home-solutions__mobile-panel[data-solution-panel]'
+        );
+        const defaultSolution = 'industry';
 
-		const setActiveSolution = (solutionId: string) => {
-			logoGrids.forEach((grid) => {
-				const isActive = grid.getAttribute('data-solution-logos') === solutionId;
-				grid.classList.toggle('is-active', isActive);
-				grid.setAttribute('aria-hidden', String(!isActive));
-			});
+        const setActiveSolution = (solutionId: string) => {
+            logoGrids.forEach((grid) => {
+                const isActive = grid.getAttribute('data-solution-logos') === solutionId;
+                grid.classList.toggle('is-active', isActive);
+                grid.setAttribute('aria-hidden', String(!isActive));
+            });
 
-			arrows.forEach((arrow) => {
-				const isActive = arrow.getAttribute('data-solution-arrow') === solutionId;
-				arrow.classList.toggle('is-active', isActive);
-			});
+            arrows.forEach((arrow) => {
+                const isActive = arrow.getAttribute('data-solution-arrow') === solutionId;
+                arrow.classList.toggle('is-active', isActive);
+            });
 
-			tabs.forEach((tab) => {
-				const isActive = tab.getAttribute('data-solution-tab') === solutionId;
-				tab.classList.toggle('is-active', isActive);
-				tab.setAttribute('aria-selected', String(isActive));
-				tab.setAttribute('tabindex', isActive ? '0' : '-1');
-			});
+            tabs.forEach((tab) => {
+                const isActive = tab.getAttribute('data-solution-tab') === solutionId;
+                tab.classList.toggle('is-active', isActive);
+                tab.setAttribute('aria-selected', String(isActive));
+                tab.setAttribute('tabindex', isActive ? '0' : '-1');
+            });
 
-			mobilePanels.forEach((panel) => {
-				const isActive = panel.getAttribute('data-solution-panel') === solutionId;
-				panel.classList.toggle('is-active', isActive);
-				panel.setAttribute('aria-hidden', String(!isActive));
-			});
-		};
+            mobilePanels.forEach((panel) => {
+                const isActive = panel.getAttribute('data-solution-panel') === solutionId;
+                panel.classList.toggle('is-active', isActive);
+                panel.setAttribute('aria-hidden', String(!isActive));
+            });
+        };
 
-		solutionItems.forEach((item) => {
-			const solutionId = item.getAttribute('data-solution');
-			if (!solutionId) return;
+        solutionItems.forEach((item) => {
+            const solutionId = item.getAttribute('data-solution');
+            if (!solutionId) return;
 
-			item.addEventListener('mouseenter', () => setActiveSolution(solutionId));
-			item.addEventListener('focusin', () => setActiveSolution(solutionId));
-		});
+            item.addEventListener('mouseenter', () => setActiveSolution(solutionId));
+            item.addEventListener('focusin', () => setActiveSolution(solutionId));
+        });
 
-		tabs.forEach((tab) => {
-			const solutionId = tab.getAttribute('data-solution-tab');
-			if (!solutionId) return;
+        tabs.forEach((tab) => {
+            const solutionId = tab.getAttribute('data-solution-tab');
+            if (!solutionId) return;
 
-			tab.addEventListener('click', () => setActiveSolution(solutionId));
-			tab.addEventListener('focus', () => setActiveSolution(solutionId));
-		});
+            tab.addEventListener('click', () => setActiveSolution(solutionId));
+            tab.addEventListener('focus', () => setActiveSolution(solutionId));
+        });
 
-		solutionsSection.addEventListener('mouseleave', () => setActiveSolution(defaultSolution));
-		setActiveSolution(defaultSolution);
-	}
+        solutionsSection.addEventListener('mouseleave', () => setActiveSolution(defaultSolution));
+        setActiveSolution(defaultSolution);
+    }
 </script>

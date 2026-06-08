@@ -25,19 +25,19 @@ const {
     ...attrs
 } = Astro.props as Props & Record<string, unknown>;
 
-import scrollIconAsset from '../../assets/svg/icon-chevron.svg';
-const scrollIconSrc = scrollIconAsset.src;
+import scrollIconAsset from '../../assets/svg/icon-chevron.svg?url';
+const scrollIconSrc = scrollIconAsset;
 
 const variantClass =
-        variant === 'secondary-icon'
-                ? 'btn-outline btn-outline-icon'
-                : variant === 'secondary'
-        ? 'btn-outline'
-        : variant === 'scroll'
-          ? 'btn-scroll'
-          : variant === 'tertiary'
-            ? 'btn-tertiary'
-            : 'btn-primary';
+    variant === 'secondary-icon'
+        ? 'btn-outline btn-outline-icon'
+        : variant === 'secondary'
+          ? 'btn-outline'
+          : variant === 'scroll'
+            ? 'btn-scroll'
+            : variant === 'tertiary'
+              ? 'btn-tertiary'
+              : 'btn-primary';
 
 const isScroll = variant === 'scroll';
 const isTertiary = variant === 'tertiary';
@@ -74,8 +74,17 @@ const classes = ['btn', variantClass, `btn-size-${size}`, textClass, className]
             ) : isSecondaryIcon ? (
                 <>
                     {iconSrc ? (
-                        <span class="btn-secondary-icon-wrap" aria-hidden={iconAlt ? undefined : 'true'}>
-                            <img class="btn-secondary-icon-asset" src={iconSrc} alt={iconAlt} loading="lazy" decoding="async" />
+                        <span
+                            class="btn-secondary-icon-wrap"
+                            aria-hidden={iconAlt ? undefined : 'true'}
+                        >
+                            <img
+                                class="btn-secondary-icon-asset"
+                                src={iconSrc}
+                                alt={iconAlt}
+                                loading="lazy"
+                                decoding="async"
+                            />
                         </span>
                     ) : null}
                     <span class="btn-secondary-icon-label">
@@ -109,8 +118,17 @@ const classes = ['btn', variantClass, `btn-size-${size}`, textClass, className]
             ) : isSecondaryIcon ? (
                 <>
                     {iconSrc ? (
-                        <span class="btn-secondary-icon-wrap" aria-hidden={iconAlt ? undefined : 'true'}>
-                            <img class="btn-secondary-icon-asset" src={iconSrc} alt={iconAlt} loading="lazy" decoding="async" />
+                        <span
+                            class="btn-secondary-icon-wrap"
+                            aria-hidden={iconAlt ? undefined : 'true'}
+                        >
+                            <img
+                                class="btn-secondary-icon-asset"
+                                src={iconSrc}
+                                alt={iconAlt}
+                                loading="lazy"
+                                decoding="async"
+                            />
                         </span>
                     ) : null}
                     <span class="btn-secondary-icon-label">

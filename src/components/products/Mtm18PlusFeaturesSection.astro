@@ -1,0 +1,173 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const features = [
+    {
+        icon: `${base}${icons.gen.badgeOne}`,
+        titleKey: 'feature_1_title',
+        descKey: 'feature_1_description',
+        titleFallback: 'First of its Kind',
+        descFallback:
+            'The only annual study tracking media and technology habits across the full adult Canadian population.',
+    },
+    {
+        icon: `${base}${icons.gen.coastToCoast}`,
+        titleKey: 'feature_2_title',
+        descKey: 'feature_2_description',
+        titleFallback: 'Broad Coverage',
+        descFallback:
+            'Data spanning adults 18 and over across all provinces, demographics, and household types.',
+    },
+    {
+        icon: `${base}${icons.gen.methodologyRepresentation}`,
+        titleKey: 'feature_3_title',
+        descKey: 'feature_3_description',
+        titleFallback: 'Representative Methodology',
+        descFallback:
+            'Nationally representative sampling ensures findings reflect the true Canadian adult population.',
+    },
+    {
+        icon: `${base}${icons.gen.largeSamples}`,
+        titleKey: 'feature_4_title',
+        descKey: 'feature_4_description',
+        titleFallback: 'Large Sample',
+        descFallback:
+            'Over 25,000 respondents annually, giving you the statistical confidence to act on the data.',
+    },
+    {
+        icon: `${base}${icons['demographics-household'].total}`,
+        titleKey: 'feature_5_title',
+        descKey: 'feature_5_description',
+        titleFallback: 'Household Habits',
+        descFallback:
+            'Insights into household-level media consumption, from solo viewers to multi-person homes.',
+    },
+];
+---
+
+<section class="mtm18-features-section">
+    <div class="mtm18-features-grid">
+        {
+            features.map((f) => (
+                <div class="mtm18-feature-item">
+                    <img
+                        src={f.icon}
+                        alt=""
+                        class="mtm18-feature-icon"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                    <p class="text-body-p1-bold mtm18-feature-title" data-copy-key={f.titleKey}>
+                        {t(copy, f.titleKey, locale, f.titleFallback)}
+                    </p>
+                    <p class="text-body-p3 mtm18-feature-desc" data-copy-key={f.descKey}>
+                        {t(copy, f.descKey, locale, f.descFallback)}
+                    </p>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .mtm18-features-section {
+        width: 100%;
+        background-color: var(--surface-blue);
+        padding: var(--space-11) var(--content-margin-inline);
+    }
+
+    /* 5-column grid; display:contents on each item lets the grid treat
+       icons, titles, and descriptions as direct children — each type
+       gets its own row so they align across all columns */
+    .mtm18-features-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: var(--space-8);
+        text-align: center;
+        justify-items: center;
+    }
+
+    .mtm18-feature-item {
+        display: contents;
+    }
+
+    .mtm18-feature-icon {
+        grid-row: 1;
+        width: var(--space-12);
+        height: var(--space-12);
+        margin-bottom: var(--space-6);
+        align-self: center;
+    }
+
+    .mtm18-feature-title {
+        grid-row: 2;
+        color: var(--text-primary);
+        margin: 0 0 var(--space-4);
+        align-self: start;
+    }
+
+    .mtm18-feature-desc {
+        grid-row: 3;
+        color: var(--text-secondary);
+        margin: 0;
+        align-self: start;
+    }
+
+    /* Tablet + mobile: stack features vertically, icon inline with title */
+    @media (max-width: 1023px) {
+        .mtm18-features-section {
+            padding: var(--space-5) var(--content-margin-inline) var(--space-8);
+        }
+
+        .mtm18-features-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+
+        /* Switch from display:contents to a 2-col inner grid:
+           col 1 = icon, col 2 = title — description spans both */
+        .mtm18-feature-item {
+            display: grid;
+            grid-template-columns: var(--space-8) 1fr;
+            grid-template-rows: auto auto;
+            column-gap: var(--space-2);
+            row-gap: 0;
+            align-items: center;
+        }
+
+        .mtm18-feature-icon {
+            grid-column: 1;
+            grid-row: 1;
+            width: var(--space-8);
+            height: var(--space-8);
+            margin-bottom: 0;
+            align-self: center;
+        }
+
+        .mtm18-feature-title {
+            grid-column: 2;
+            grid-row: 1;
+            text-align: left;
+            margin: 0;
+            align-self: center;
+        }
+
+        .mtm18-feature-desc {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            text-align: left;
+            align-self: start;
+        }
+    }
+</style>

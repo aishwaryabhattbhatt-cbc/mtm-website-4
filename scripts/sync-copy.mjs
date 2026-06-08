@@ -82,15 +82,13 @@ function parseCSV(csvText) {
     return 1;
   })();
   const frIdx = findCol(headerRow, ['updated text (french)', 'french', 'fr']);
-  const currentTextIdx = findCol(headerRow, ['current text', 'text']);
 
   const dict = {};
   for (let i = 1; i < rows.length; i++) {
     const row = rows[i];
     const key = normalizeCell(row[0]);
     if (!key) continue;
-    const currentText = currentTextIdx >= 0 ? normalizeCell(row[currentTextIdx]) : '';
-    const en = normalizeCell(row[enIdx]) || currentText;
+    const en = normalizeCell(row[enIdx]);
     const fr = frIdx >= 0 ? normalizeCell(row[frIdx]) : '';
     dict[key] = { key, en, fr };
   }

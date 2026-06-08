@@ -17,10 +17,10 @@ import bgNc from '../../assets/images/home/mtm-suite/home-products-bg-nc.webp';
 import peopleNc from '../../assets/images/home/mtm-suite/home-products-people-nc.webp';
 import bgCs from '../../assets/images/home/mtm-suite/home-products-bg-cs.webp';
 import peopleCs from '../../assets/images/home/mtm-suite/home-products-people-cs.webp';
-import chart18 from '../../assets/svg/home/data-products/mtm18plus.svg';
-import chartJr from '../../assets/svg/home/data-products/junior.svg';
-import chartNc from '../../assets/svg/home/data-products/newcomers.svg';
-import chartCs from '../../assets/svg/home/data-products/census.svg';
+import chart18 from '../../assets/svg/home/data-products/mtm18plus.svg?url';
+import chartJr from '../../assets/svg/home/data-products/junior.svg?url';
+import chartNc from '../../assets/svg/home/data-products/newcomers.svg?url';
+import chartCs from '../../assets/svg/home/data-products/census.svg?url';
 
 // TODO: Import video assets when available
 // import toolsVideo from '../../assets/videos/tools-suite.mp4';
@@ -44,7 +44,7 @@ const products = [
         href: `/${locale}/products/mtm-18-plus`,
         bg: bg18,
         people: people18,
-        chartSrc: chart18.src,
+        chartSrc: chart18,
     },
     {
         id: 'junior',
@@ -55,7 +55,7 @@ const products = [
         href: `/${locale}/products/juniors`,
         bg: bgJr,
         people: peopleJr,
-        chartSrc: chartJr.src,
+        chartSrc: chartJr,
         chevronFill: 'var(--badge-juniors)',
     },
     {
@@ -68,7 +68,7 @@ const products = [
         href: `/${locale}/products/newcomers`,
         bg: bgNc,
         people: peopleNc,
-        chartSrc: chartNc.src,
+        chartSrc: chartNc,
         chevronFill: 'var(--badge-newcomers)',
     },
     {
@@ -81,7 +81,7 @@ const products = [
         href: `/${locale}/products/census`,
         bg: bgCs,
         people: peopleCs,
-        chartSrc: chartCs.src,
+        chartSrc: chartCs,
         chevronFill: 'var(--badge-census)',
     },
 ];

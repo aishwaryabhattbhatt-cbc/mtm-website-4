@@ -3,11 +3,11 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
-import collage1 from '../../assets/svg/1.svg';
-import collage2 from '../../assets/svg/2.svg';
-import collage3 from '../../assets/svg/3.svg';
-import collage4 from '../../assets/svg/4.svg';
-import collage5 from '../../assets/svg/5.svg';
+import collage1 from '../../assets/svg/1.svg?url';
+import collage2 from '../../assets/svg/2.svg?url';
+import collage3 from '../../assets/svg/3.svg?url';
+import collage4 from '../../assets/svg/4.svg?url';
+import collage5 from '../../assets/svg/5.svg?url';
 
 interface Props {
     locale: Locale;
@@ -65,35 +65,35 @@ const copyKeys = {
         </div>
         <div class="hero-image-collage">
             <img
-                src={collage1.src}
+                src={collage1}
                 alt=""
                 class="collage-image collage-image-1"
                 loading="lazy"
                 decoding="async"
             />
             <img
-                src={collage2.src}
+                src={collage2}
                 alt=""
                 class="collage-image collage-image-2"
                 loading="lazy"
                 decoding="async"
             />
             <img
-                src={collage3.src}
+                src={collage3}
                 alt=""
                 class="collage-image collage-image-3"
                 loading="lazy"
                 decoding="async"
             />
             <img
-                src={collage4.src}
+                src={collage4}
                 alt=""
                 class="collage-image collage-image-4"
                 loading="lazy"
                 decoding="async"
             />
             <img
-                src={collage5.src}
+                src={collage5}
                 alt=""
                 class="collage-image collage-image-5"
                 loading="lazy"

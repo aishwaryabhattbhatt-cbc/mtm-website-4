@@ -4,7 +4,7 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
 import Button from './Button.astro';
-import mtmLogo from '../../assets/svg/mtm-logo.svg';
+import mtmLogo from '../../assets/svg/mtm-logo.svg?url';
 
 interface Props {
     locale: Locale;
@@ -160,7 +160,7 @@ const solutionsDropdown = {
 <nav class="navbar">
     <div class="navbar-container">
         <a class="navbar-logo" href={homeUrl} aria-label="MTM home">
-            <img src={mtmLogo.src} alt="MTM - Media Technology Monitor" class="logo-image" />
+            <img src={mtmLogo} alt="MTM - Media Technology Monitor" class="logo-image" />
         </a>
 
         <button
@@ -192,33 +192,57 @@ const solutionsDropdown = {
                                     stroke="currentColor"
                                     stroke-width="1"
                                     stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></path>
+                                    stroke-linejoin="round"></path>
                             </svg>
                         </span>
                     </a>
-                    <div class="nav-dropdown-panel nav-dropdown-panel--split" aria-label={productsDropdown.mainLabel}>
+                    <div
+                        class="nav-dropdown-panel nav-dropdown-panel--split"
+                        aria-label={productsDropdown.mainLabel}
+                    >
                         <div class="nav-dropdown-columns">
                             <div class="nav-dropdown-column nav-dropdown-column--main">
-                                <p class="dropdown-panel-heading text-button-small">{productsDropdown.mainLabel}</p>
+                                <p class="dropdown-panel-heading text-button-small">
+                                    {productsDropdown.mainLabel}
+                                </p>
                                 <div class="dropdown-items dropdown-items--three">
                                     {
                                         productsDropdown.mainItems.map((item) => (
                                             <a class="dropdown-card" href={item.href}>
-                                                <img class="dropdown-card-icon" src={item.iconPath} alt="" loading="lazy" />
-                                                <p class="dropdown-card-title text-body-p1-bold">{item.title}</p>
-                                                <p class="dropdown-card-description text-body-p2">{item.description}</p>
+                                                <img
+                                                    class="dropdown-card-icon"
+                                                    src={item.iconPath}
+                                                    alt=""
+                                                    loading="lazy"
+                                                />
+                                                <p class="dropdown-card-title text-body-p1-bold">
+                                                    {item.title}
+                                                </p>
+                                                <p class="dropdown-card-description text-body-p2">
+                                                    {item.description}
+                                                </p>
                                             </a>
                                         ))
                                     }
                                 </div>
                             </div>
                             <div class="nav-dropdown-column nav-dropdown-column--side">
-                                <p class="dropdown-panel-heading text-button-small">{productsDropdown.sideLabel}</p>
+                                <p class="dropdown-panel-heading text-button-small">
+                                    {productsDropdown.sideLabel}
+                                </p>
                                 <a class="dropdown-card" href={productsDropdown.sideItem.href}>
-                                    <img class="dropdown-card-icon" src={productsDropdown.sideItem.iconPath} alt="" loading="lazy" />
-                                    <p class="dropdown-card-title text-body-p1-bold">{productsDropdown.sideItem.title}</p>
-                                    <p class="dropdown-card-description text-body-p2">{productsDropdown.sideItem.description}</p>
+                                    <img
+                                        class="dropdown-card-icon"
+                                        src={productsDropdown.sideItem.iconPath}
+                                        alt=""
+                                        loading="lazy"
+                                    />
+                                    <p class="dropdown-card-title text-body-p1-bold">
+                                        {productsDropdown.sideItem.title}
+                                    </p>
+                                    <p class="dropdown-card-description text-body-p2">
+                                        {productsDropdown.sideItem.description}
+                                    </p>
                                 </a>
                             </div>
                         </div>
@@ -238,23 +262,36 @@ const solutionsDropdown = {
                                     stroke="currentColor"
                                     stroke-width="1"
                                     stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></path>
+                                    stroke-linejoin="round"></path>
                             </svg>
                         </span>
                     </a>
-                    <div class="nav-dropdown-panel nav-dropdown-panel--split" aria-label={toolsDropdown.mainLabel}>
+                    <div
+                        class="nav-dropdown-panel nav-dropdown-panel--split"
+                        aria-label={toolsDropdown.mainLabel}
+                    >
                         <div class="nav-dropdown-columns">
                             <div class="nav-dropdown-column nav-dropdown-column--main">
-                                <p class="dropdown-panel-heading text-button-small">{toolsDropdown.mainLabel}</p>
+                                <p class="dropdown-panel-heading text-button-small">
+                                    {toolsDropdown.mainLabel}
+                                </p>
                                 <div class="dropdown-items-wrapper">
                                     <div class="dropdown-items dropdown-items--three">
                                         {
                                             toolsDropdown.mainItems.map((item) => (
                                                 <a class="dropdown-card" href={item.href}>
-                                                    <img class="dropdown-card-icon" src={item.iconPath} alt="" loading="lazy" />
-                                                    <p class="dropdown-card-title text-body-p1-bold">{item.title}</p>
-                                                    <p class="dropdown-card-description text-body-p2">{item.description}</p>
+                                                    <img
+                                                        class="dropdown-card-icon"
+                                                        src={item.iconPath}
+                                                        alt=""
+                                                        loading="lazy"
+                                                    />
+                                                    <p class="dropdown-card-title text-body-p1-bold">
+                                                        {item.title}
+                                                    </p>
+                                                    <p class="dropdown-card-description text-body-p2">
+                                                        {item.description}
+                                                    </p>
                                                 </a>
                                             ))
                                         }
@@ -262,11 +299,22 @@ const solutionsDropdown = {
                                 </div>
                             </div>
                             <div class="nav-dropdown-column nav-dropdown-column--side">
-                                <p class="dropdown-panel-heading text-button-small">{toolsDropdown.sideLabel}</p>
+                                <p class="dropdown-panel-heading text-button-small">
+                                    {toolsDropdown.sideLabel}
+                                </p>
                                 <a class="dropdown-card" href={toolsDropdown.sideItem.href}>
-                                    <img class="dropdown-card-icon" src={toolsDropdown.sideItem.iconPath} alt="" loading="lazy" />
-                                    <p class="dropdown-card-title text-body-p1-bold">{toolsDropdown.sideItem.title}</p>
-                                    <p class="dropdown-card-description text-body-p2">{toolsDropdown.sideItem.description}</p>
+                                    <img
+                                        class="dropdown-card-icon"
+                                        src={toolsDropdown.sideItem.iconPath}
+                                        alt=""
+                                        loading="lazy"
+                                    />
+                                    <p class="dropdown-card-title text-body-p1-bold">
+                                        {toolsDropdown.sideItem.title}
+                                    </p>
+                                    <p class="dropdown-card-description text-body-p2">
+                                        {toolsDropdown.sideItem.description}
+                                    </p>
                                 </a>
                             </div>
                         </div>
@@ -286,20 +334,33 @@ const solutionsDropdown = {
                                     stroke="currentColor"
                                     stroke-width="1"
                                     stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></path>
+                                    stroke-linejoin="round"></path>
                             </svg>
                         </span>
                     </a>
-                    <div class="nav-dropdown-panel nav-dropdown-panel--solutions" aria-label={solutionsDropdown.label}>
-                        <p class="dropdown-panel-heading text-button-small">{solutionsDropdown.label}</p>
+                    <div
+                        class="nav-dropdown-panel nav-dropdown-panel--solutions"
+                        aria-label={solutionsDropdown.label}
+                    >
+                        <p class="dropdown-panel-heading text-button-small">
+                            {solutionsDropdown.label}
+                        </p>
                         <div class="dropdown-items dropdown-items--five">
                             {
                                 solutionsDropdown.items.map((item) => (
                                     <a class="dropdown-card" href={item.href}>
-                                        <img class="dropdown-card-icon" src={item.iconPath} alt="" loading="lazy" />
-                                        <p class="dropdown-card-title text-body-p1-bold">{item.title}</p>
-                                        <p class="dropdown-card-description text-body-p2">{item.description}</p>
+                                        <img
+                                            class="dropdown-card-icon"
+                                            src={item.iconPath}
+                                            alt=""
+                                            loading="lazy"
+                                        />
+                                        <p class="dropdown-card-title text-body-p1-bold">
+                                            {item.title}
+                                        </p>
+                                        <p class="dropdown-card-description text-body-p2">
+                                            {item.description}
+                                        </p>
                                     </a>
                                 ))
                             }
@@ -750,7 +811,6 @@ const solutionsDropdown = {
         .dropdown-items--five {
             gap: var(--space-4);
         }
-
     }
 
     @media (max-width: 1023px) {

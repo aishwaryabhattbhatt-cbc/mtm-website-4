@@ -1,0 +1,266 @@
+---
+import Button from './Button.astro';
+
+interface StatItem {
+    iconSrc: string;
+    iconAlt?: string;
+    metric: string;
+    description: string;
+}
+
+interface Props {
+    imageSrc: string;
+    imageAlt?: string;
+    graphIconSrc?: string;
+    graphIconAlt?: string;
+    graphTitle: string;
+    graphDetail: string;
+    chartSrc: string;
+    chartAlt?: string;
+    ctaHref: string;
+    ctaLabel: string;
+    stats?: StatItem[];
+}
+
+const {
+    imageSrc,
+    imageAlt = '',
+    graphIconSrc,
+    graphIconAlt = '',
+    graphTitle,
+    graphDetail,
+    chartSrc,
+    chartAlt = '',
+    ctaHref,
+    ctaLabel,
+    stats = [],
+} = Astro.props as Props;
+---
+
+<div class="report-card">
+    <div class="report-card-photo">
+        <img src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
+    </div>
+    <div class="report-card-graph">
+        <div class="report-card-graph-header">
+            <div class="report-card-graph-meta">
+                {
+                    graphIconSrc && (
+                        <img
+                            src={graphIconSrc}
+                            alt={graphIconAlt}
+                            class="icon-3xl report-card-graph-icon"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    )
+                }
+                <div class="report-card-graph-title-group">
+                    <p class="text-body-p1-bold report-card-graph-name">{graphTitle}</p>
+                    <p class="text-body-p3 report-card-graph-detail">{graphDetail}</p>
+                </div>
+            </div>
+            <Button variant="tertiary" size="lg" href={ctaHref}>{ctaLabel}</Button>
+        </div>
+        <img
+            src={chartSrc}
+            alt={chartAlt}
+            class="report-card-chart"
+            loading="lazy"
+            decoding="async"
+        />
+    </div>
+</div>
+
+{
+    stats.length > 0 && (
+        <div class="report-stats">
+            {stats.map((stat) => (
+                <div class="report-stat-card">
+                    <img
+                        src={stat.iconSrc}
+                        alt={stat.iconAlt ?? ''}
+                        class="icon-3xl report-stat-icon"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                    <div class="report-stat-body">
+                        <p class="text-metrics report-stat-metric">{stat.metric}</p>
+                        <p class="text-body-p1 report-stat-description">{stat.description}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+<style>
+    .report-card {
+        display: flex;
+        align-items: center;
+        background-color: var(--surface-white);
+        border-radius: var(--radius-m);
+        padding: var(--space-6);
+        gap: var(--space-6);
+        box-shadow: var(--shadow-card);
+    }
+
+    .report-card-photo {
+        flex: 0 0 52%;
+        border-radius: var(--radius-s);
+        overflow: hidden;
+        align-self: stretch;
+    }
+
+    .report-card-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .report-card-graph {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-self: stretch;
+        padding: var(--space-3) 0;
+        gap: var(--space-5);
+    }
+
+    .report-card-graph-header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: var(--space-4);
+    }
+
+    .report-card-graph-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        overflow: hidden;
+    }
+
+    .report-card-graph-icon {
+        flex-shrink: 0;
+    }
+
+    .report-card-graph-title-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .report-card-graph-name {
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .report-card-graph-detail {
+        margin: 0;
+    }
+
+    .report-card-graph-detail {
+        color: var(--text-secondary);
+    }
+
+    .report-card-chart {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .report-stats {
+        display: flex;
+        flex-direction: row;
+        gap: var(--space-8);
+        margin-top: var(--space-8);
+    }
+
+    .report-stat-card {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+        background-color: var(--surface-white);
+        border-radius: var(--radius-m);
+        padding: var(--space-7);
+        box-shadow: var(--shadow-card);
+    }
+
+    .report-stat-body {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-5);
+    }
+
+    .report-stat-metric {
+        margin: 0;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .report-stat-description {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    @media (max-width: 1023px) {
+        .report-card {
+            flex-direction: column;
+        }
+
+        .report-card-photo {
+            flex: none;
+            width: 100%;
+            height: auto;
+        }
+
+        .report-card-photo img {
+            height: auto;
+        }
+
+        .report-card-graph {
+            width: 100%;
+            padding: 0;
+        }
+
+        .report-stats {
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .report-stat-card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .report-stat-icon {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .report-stat-body {
+            display: contents;
+        }
+
+        .report-stat-metric {
+            grid-column: 2;
+            grid-row: 1;
+            align-self: center;
+        }
+
+        .report-stat-description {
+            grid-column: 1 / -1;
+            grid-row: 2;
+        }
+    }
+</style>

@@ -1,0 +1,109 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    ctaHref: string;
+    heroImageSrc?: string;
+}
+
+const { locale, copy, ctaHref, heroImageSrc } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner.png`;
+---
+
+<section class="products-hero-section">
+    <div class="products-hero-media" aria-hidden="true">
+        <img src={imageSrc} alt="" class="products-hero-image" loading="eager" decoding="async" />
+        <div class="products-hero-fade"></div>
+    </div>
+    <div class="products-hero-content">
+        <h1 data-copy-key="hero_title">
+            {t(copy, 'hero_title', locale, 'MTM 18+')}
+        </h1>
+        <p class="text-body-p1 products-hero-description" data-copy-key="hero_description">
+            {
+                t(
+                    copy,
+                    'hero_description',
+                    locale,
+                    'Annual data on the media and technology habits of Canadians aged 18 and over — built for media leaders, broadcasters, and advertisers.'
+                )
+            }
+        </p>
+        <Button variant="primary" size="lg" href={ctaHref} data-copy-key="hero_cta">
+            {t(copy, 'hero_cta', locale, 'REQUEST A DEMO')}
+        </Button>
+    </div>
+</section>
+
+<style>
+    .products-hero-section {
+        position: relative;
+        background-color: var(--surface-blue);
+        overflow: hidden;
+        margin-top: var(--navbar-height);
+    }
+
+    .products-hero-media {
+        position: relative;
+        width: 100%;
+        /* 770 / 1920 matches the Figma image proportion */
+        aspect-ratio: 1920 / 770;
+    }
+
+    .products-hero-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .products-hero-fade {
+        position: absolute;
+        inset: 0;
+        /* fades the bottom of the image into the surface-blue background */
+        background: linear-gradient(
+            to bottom,
+            transparent 48%,
+            color-mix(in srgb, var(--surface-blue) 47%, transparent) 74%,
+            var(--surface-blue) 100%
+        );
+    }
+
+    .products-hero-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 var(--content-margin-inline) var(--space-13);
+        margin-top: calc(-1 * var(--space-11));
+        gap: var(--space-6);
+    }
+
+    .products-hero-description {
+        max-width: 61.25rem;
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    @media (max-width: 1023px) {
+        .products-hero-section {
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .products-hero-content {
+            margin-top: calc(-1 * var(--space-6));
+            gap: var(--space-5);
+        }
+    }
+</style>
