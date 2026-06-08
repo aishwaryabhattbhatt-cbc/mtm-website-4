@@ -1,0 +1,69 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
+import Reports from '../shared/Reports.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="mtm18-reports-section">
+    <div class="mtm18-reports-headline">
+        <h2 data-copy-key="report_title">
+            {t(copy, 'report_title', locale, 'Reports')}
+        </h2>
+        <p class="text-body-p1 mtm18-reports-description" data-copy-key="report_description">
+            {t(copy, 'report_description', locale, '')}
+        </p>
+    </div>
+
+    <Reports
+        imageSrc={`${base}images/products/mtm-18-plus/report-image.png`}
+        imageAlt=""
+        graphIconSrc={`${base}${icons['service-video-svod'].gaming}`}
+        graphTitle={t(copy, 'graph_name', locale, 'Name of Graph')}
+        graphDetail={t(copy, 'graph_detail', locale, '')}
+        chartSrc={`${base}images/products/mtm-18-plus/report-graph.png`}
+        chartAlt=""
+        ctaHref={`${base}${locale}/request-demo/`}
+        ctaLabel={t(copy, 'dat_cta', locale, 'EXPLORE GRAPH')}
+        stats={[
+            {
+                iconSrc: `${base}${icons['service-video-svod'].premium}`,
+                metric: t(copy, 'stat_1_value', locale, ''),
+                description: t(copy, 'stat_1_description', locale, ''),
+            },
+            {
+                iconSrc: `${base}${icons['service-video-svod'].time}`,
+                metric: t(copy, 'stat_2_value', locale, ''),
+                description: t(copy, 'stat_2_description', locale, ''),
+            },
+        ]}
+    />
+</section>
+
+<style>
+    .mtm18-reports-section {
+        width: 100%;
+        padding: var(--space-13) var(--content-margin-inline);
+        background-color: var(--surface-blue);
+    }
+
+    .mtm18-reports-headline {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        margin-bottom: var(--space-9);
+    }
+
+    .mtm18-reports-description {
+        color: var(--text-primary);
+        margin: 0;
+    }
+</style>

@@ -1,0 +1,337 @@
+{
+  "hero_title": {
+    "key": "hero_title",
+    "en": "18+",
+    "fr": ""
+  },
+  "hero_description": {
+    "key": "hero_description",
+    "en": "MTM 18+ is the largest and longest running study on media and technology among the adult Canadian population. By taking an exhaustive approach, it provides key insights to understand your audiences or users.",
+    "fr": ""
+  },
+  "hero_cta": {
+    "key": "hero_cta",
+    "en": "Request a Demo",
+    "fr": ""
+  },
+  "Features": {
+    "key": "Features",
+    "en": "",
+    "fr": ""
+  },
+  "feature_1_title": {
+    "key": "feature_1_title",
+    "en": "Decades Of Data",
+    "fr": ""
+  },
+  "feature_1_description": {
+    "key": "feature_1_description",
+    "en": "MTM 18+ has been gathering data since 2001 on large array of topics.",
+    "fr": ""
+  },
+  "feature_2_title": {
+    "key": "feature_2_title",
+    "en": "Large, Robust Sampling",
+    "fr": ""
+  },
+  "feature_2_description": {
+    "key": "feature_2_description",
+    "en": "We've surveyed more than 300,000 adult Canadians to date and reach an additional 12,000 or more annually.",
+    "fr": ""
+  },
+  "feature_3_title": {
+    "key": "feature_3_title",
+    "en": "Exhaustive Value For Clients",
+    "fr": ""
+  },
+  "feature_3_description": {
+    "key": "feature_3_description",
+    "en": "Clients gain access to a full suite of more than 45 reports annually and thousands of variables across our suite of tools.",
+    "fr": ""
+  },
+  "feature_4_title": {
+    "key": "feature_4_title",
+    "en": "A Fully Bilingual Product",
+    "fr": ""
+  },
+  "feature_4_description": {
+    "key": "feature_4_description",
+    "en": "All content available through MTM 18+ and the rest of the MTM product suite is offered in English and French.",
+    "fr": ""
+  },
+  "feature_5_title": {
+    "key": "feature_5_title",
+    "en": "Data On Canadians From Coast To Coast To Coast",
+    "fr": ""
+  },
+  "feature_5_description": {
+    "key": "feature_5_description",
+    "en": "The MTM offers data on every region and province, including the North.",
+    "fr": ""
+  },
+  "tools_title": {
+    "key": "tools_title",
+    "en": "Tools",
+    "fr": ""
+  },
+  "tools_description": {
+    "key": "tools_description",
+    "en": "Explore our suite of tools and leverage data insights for confident decision-making on Canadian adults.",
+    "fr": ""
+  },
+  "dat_title": {
+    "key": "dat_title",
+    "en": "Data Analysis Tool",
+    "fr": ""
+  },
+  "dat_description": {
+    "key": "dat_description",
+    "en": "The Data Analysis Tool (DAT) offers clients full access to our robust data set on Canadian adults. Tailor your analysis your way, filter the results, and create visually stunning outputs.",
+    "fr": ""
+  },
+  "dat_cta": {
+    "key": "dat_cta",
+    "en": "Learn More",
+    "fr": ""
+  },
+  "dat_callout": {
+    "key": "dat_callout",
+    "en": "Want to know Canadians are using connected TV sets?\nAll you need to know is a few clicks away with the DAT.",
+    "fr": ""
+  },
+  "???(Key Insights text?)": {
+    "key": "???(Key Insights text?)",
+    "en": "Key Insight\nSamsung is the most common TV set brand among Canadians.",
+    "fr": ""
+  },
+  "trending_title": {
+    "key": "trending_title",
+    "en": "Trending Tool",
+    "fr": ""
+  },
+  "trending_description": {
+    "key": "trending_description",
+    "en": "The Trending Tool lets clients see how technology and media adoption has shifted since 2010. Chart your path forward with 15+ years of data and demographic data filters.",
+    "fr": ""
+  },
+  "trending_cta": {
+    "key": "trending_cta",
+    "en": "Learn More",
+    "fr": ""
+  },
+  "trending_callout": {
+    "key": "trending_callout",
+    "en": "How has TikTok grown? Past month usage has increased from 3% in Fall 2019 to 23% in Fall 2025.",
+    "fr": ""
+  },
+  "forecasting_title": {
+    "key": "forecasting_title",
+    "en": "Forecasting Tool",
+    "fr": ""
+  },
+  "forecasting_description": {
+    "key": "forecasting_description",
+    "en": "The Forecasting Tool is for clients with an eye on the past and the future. Easy to read charts and insights from our experts will help you stay ahead of your competition.",
+    "fr": ""
+  },
+  "forecasting_cta": {
+    "key": "forecasting_cta",
+    "en": "Learn More",
+    "fr": ""
+  },
+  "forecasting_callout": {
+    "key": "forecasting_callout",
+    "en": "Is Amazon Prime Video on-track to surpass Netflix?\nFind out this and more with acccess to the Forecasting tool.",
+    "fr": ""
+  },
+  "report_title": {
+    "key": "report_title",
+    "en": "Adoption Report",
+    "fr": ""
+  },
+  "report_description": {
+    "key": "report_description",
+    "en": "Our flagship report covering the very latest data on of key media and technology adoption among adult Canadians.",
+    "fr": ""
+  },
+  "graph_name": {
+    "key": "graph_name",
+    "en": "Top SVOD Platforms - Past Month Usage",
+    "fr": ""
+  },
+  "graph_detail": {
+    "key": "graph_detail",
+    "en": "Anglophones 18+",
+    "fr": ""
+  },
+  "stat_1_value": {
+    "key": "stat_1_value",
+    "en": "61%",
+    "fr": ""
+  },
+  "stat_1_description": {
+    "key": "stat_1_description",
+    "en": "of households subscribe to Netflix, the platform to popularize SVOD services.",
+    "fr": ""
+  },
+  "stat_2_value": {
+    "key": "stat_2_value",
+    "en": "56%",
+    "fr": ""
+  },
+  "stat_2_description": {
+    "key": "stat_2_description",
+    "en": "of households subscribe to Amazon Prime Video, the current runner up in the SVOD space.",
+    "fr": ""
+  },
+  "methodology_title": {
+    "key": "methodology_title",
+    "en": "Research Methodology",
+    "fr": ""
+  },
+  "methodology_description": {
+    "key": "methodology_description",
+    "en": "MTM 18+ is based on a nationally representative telephone survey with a follow up online compontent, reaching Canadian adults across all provinces and territories.",
+    "fr": ""
+  },
+  "methodology_cta": {
+    "key": "methodology_cta",
+    "en": "",
+    "fr": ""
+  },
+  "sample_title": {
+    "key": "sample_title",
+    "en": "Sample Coverage",
+    "fr": ""
+  },
+  "sample_stat_1": {
+    "key": "sample_stat_1",
+    "en": "12,000+",
+    "fr": ""
+  },
+  "sample_stat_1_label": {
+    "key": "sample_stat_1_label",
+    "en": "Canadian adults surveyed annually",
+    "fr": ""
+  },
+  "sample_stat_1_description": {
+    "key": "sample_stat_1_description",
+    "en": "The largest on-going survey of its kind.",
+    "fr": ""
+  },
+  "sample_stat_2": {
+    "key": "sample_stat_2",
+    "en": "300,000+",
+    "fr": ""
+  },
+  "sample_stat_2_label": {
+    "key": "sample_stat_2_label",
+    "en": "Canadian adults surveyed to date",
+    "fr": ""
+  },
+  "sample_stat_2_description": {
+    "key": "sample_stat_2_description",
+    "en": "Decades of results available.",
+    "fr": ""
+  },
+  "sample_stat_3": {
+    "key": "sample_stat_3",
+    "en": "6,000+/6,000+",
+    "fr": ""
+  },
+  "sample_stat_3_label": {
+    "key": "sample_stat_3_label",
+    "en": "Anglophone respondents/Francophone respondents",
+    "fr": ""
+  },
+  "sample_stat_3_description": {
+    "key": "sample_stat_3_description",
+    "en": "Large, viable samples for either Official Canadian language market.",
+    "fr": ""
+  },
+  "survey_title": {
+    "key": "survey_title",
+    "en": "Survey Design",
+    "fr": ""
+  },
+  "survey_stat_1": {
+    "key": "survey_stat_1",
+    "en": "25+",
+    "fr": ""
+  },
+  "survey_stat_1_label": {
+    "key": "survey_stat_1_label",
+    "en": "Years of data collection",
+    "fr": ""
+  },
+  "survey_stat_1_description": {
+    "key": "survey_stat_1_description",
+    "en": "Industry standard level tracking",
+    "fr": ""
+  },
+  "survey_stat_2": {
+    "key": "survey_stat_2",
+    "en": "22%",
+    "fr": ""
+  },
+  "survey_stat_2_label": {
+    "key": "survey_stat_2_label",
+    "en": "Response rate",
+    "fr": ""
+  },
+  "survey_stat_2_description": {
+    "key": "survey_stat_2_description",
+    "en": "Exceeds industry standards",
+    "fr": ""
+  },
+  "survey_stat_3_label": {
+    "key": "survey_stat_3_label",
+    "en": "Two-Part survey structure",
+    "fr": ""
+  },
+  "survey_stat_3_description": {
+    "key": "survey_stat_3_description",
+    "en": "Respondents complete a phone survey and an additional follow up online survey, with questions optomized for each medium",
+    "fr": ""
+  },
+  "data_collected_title": {
+    "key": "data_collected_title",
+    "en": "Sample Composition",
+    "fr": ""
+  },
+  "method_1": {
+    "key": "method_1",
+    "en": "Landline Proportion",
+    "fr": ""
+  },
+  "method_1_percentage": {
+    "key": "method_1_percentage",
+    "en": "57%",
+    "fr": ""
+  },
+  "method_1_unit": {
+    "key": "method_1_unit",
+    "en": "",
+    "fr": ""
+  },
+  "method_2": {
+    "key": "method_2",
+    "en": "Cellphone Only Household (CPO) Proportion",
+    "fr": ""
+  },
+  "method_2_percentage": {
+    "key": "method_2_percentage",
+    "en": "43%",
+    "fr": ""
+  },
+  "method_2_unit": {
+    "key": "method_2_unit",
+    "en": "",
+    "fr": ""
+  },
+  "???(research provider)": {
+    "key": "???(research provider)",
+    "en": "Research Provider",
+    "fr": ""
+  }
+}

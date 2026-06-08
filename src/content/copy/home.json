@@ -231,7 +231,7 @@
   },
   "faq_title": {
     "key": "faq_title",
-    "en": "Frequently Asked Questions",
+    "en": "",
     "fr": ""
   },
   "faq_1_question": {
@@ -241,7 +241,7 @@
   },
   "faq_1_answer": {
     "key": "faq_1_answer",
-    "en": "Yes. MTM's DAT Tool and Census platform allow for flexible data querying by demographic group, platform type, or region. For organizations requiring deeper or comparative analysis, MTM provides custom cross-tabulations and export support, ensuring that the data aligns with each partner's reporting framework, whether for funding applications, program evaluation, or strategic benchmarking.",
+    "en": "",
     "fr": ""
   },
   "faq_2_question": {
@@ -251,7 +251,7 @@
   },
   "faq_2_answer": {
     "key": "faq_2_answer",
-    "en": "NEW",
+    "en": "",
     "fr": ""
   },
   "faq_3_question": {
@@ -276,7 +276,7 @@
   },
   "faq_5_question": {
     "key": "faq_5_question",
-    "en": "When is the data released for MTM 18+",
+    "en": "",
     "fr": ""
   },
   "faq_5_answer": {
