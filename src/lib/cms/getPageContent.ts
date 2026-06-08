@@ -6,10 +6,27 @@ import { fetchSheetDictionary } from './sheets';
 import type { CMSDictionary, PageCMSConfig } from './types';
 
 const inMemoryCache = new Map<string, CMSDictionary>();
+const SHARED_PAGE_ID = 'home';
 
 function getLocalCopyPath(pageId: string): string {
     const dir = dirname(fileURLToPath(import.meta.url));
     return resolve(dir, `../../content/copy/${pageId}.json`);
+}
+
+function mergeSharedDictionary(pageId: string, dictionary: CMSDictionary): CMSDictionary {
+    if (pageId === SHARED_PAGE_ID) {
+        return dictionary;
+    }
+
+    const sharedDictionary = inMemoryCache.get(SHARED_PAGE_ID);
+    if (!sharedDictionary) {
+        return dictionary;
+    }
+
+    return {
+        ...sharedDictionary,
+        ...dictionary,
+    };
 }
 
 export async function getPageDictionary(pageId: string): Promise<CMSDictionary> {
@@ -17,13 +34,18 @@ export async function getPageDictionary(pageId: string): Promise<CMSDictionary> 
         return inMemoryCache.get(pageId) ?? {};
     }
 
+    if (pageId !== SHARED_PAGE_ID) {
+        await getPageDictionary(SHARED_PAGE_ID);
+    }
+
     // 1. Local copy file (written by `npm run sync-copy`) — fast, no network
     const localPath = getLocalCopyPath(pageId);
     if (existsSync(localPath)) {
         try {
             const dict = JSON.parse(readFileSync(localPath, 'utf-8')) as CMSDictionary;
-            inMemoryCache.set(pageId, dict);
-            return dict;
+            const mergedDict = mergeSharedDictionary(pageId, dict);
+            inMemoryCache.set(pageId, mergedDict);
+            return mergedDict;
         } catch {
             console.warn(
                 `[CMS] Failed to read local copy for "${pageId}", falling back to sheet fetch`
@@ -46,8 +68,9 @@ export async function getPageDictionary(pageId: string): Promise<CMSDictionary> 
 
     try {
         const dictionary = await fetchSheetDictionary(csvUrl);
-        inMemoryCache.set(pageId, dictionary);
-        return dictionary;
+        const mergedDictionary = mergeSharedDictionary(pageId, dictionary);
+        inMemoryCache.set(pageId, mergedDictionary);
+        return mergedDictionary;
     } catch (error) {
         console.warn(
             `[CMS] Failed to load page dictionary for "${pageId}". Run \`npm run sync-copy\` to create a local copy.`,
