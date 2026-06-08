@@ -60,8 +60,7 @@ const footerMenus = [
         ],
     },
     {
-        title: t(copy, 'solutions_title', locale, 'Solutions'),
-        titleKey: 'solutions_title',
+        title: locale === 'fr' ? 'Solutions' : 'Solutions',
         items: [
             {
                 label: t(copy, 'solutions_item_1', locale, 'Industry'),
@@ -221,7 +220,7 @@ const footerMenus = [
                     {
                         footerMenus.map((menu) => (
                             <nav class="home-footer__footer-menu" aria-label={menu.title}>
-                                <h3 class="home-footer__footer-menu-title text-body-p2" data-copy-key={menu.titleKey}>
+                                <h3 class="home-footer__footer-menu-title text-body-p2">
                                     {menu.title}
                                 </h3>
                                 <ul class="home-footer__footer-menu-list">

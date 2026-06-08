@@ -18,7 +18,7 @@ const base = import.meta.env.BASE_URL;
 const copyKeys = {
     products: 'home.nav.products',
     tools: 'home.nav.tools',
-    solutions: 'solutions_title',
+    solutions: 'home.nav.solutions',
     insights: 'home.nav.insights',
     signIn: 'home.nav.signIn',
     requestDemo: 'home.nav.requestDemo',
@@ -114,7 +114,7 @@ const solutionsDropdown = {
     label: isFrench ? 'Solutions par secteur' : 'Solutions by Industry',
     items: [
         {
-            title: isFrench ? 'Publicité' : 'Advertising',
+            title: t(copy, 'solutions_item_3', locale, 'Advertising'),
             description: isFrench
                 ? 'Soutenez vos décisions média et marketing.'
                 : 'Support media and marketing decisions with confidence.',
@@ -122,7 +122,7 @@ const solutionsDropdown = {
             iconPath: `${base}${icons.solutions.advertising}`,
         },
         {
-            title: isFrench ? 'Médias' : 'Media',
+            title: t(copy, 'solutions_item_2', locale, 'Media'),
             description: isFrench
                 ? 'Comprenez les audiences et usages multiplateformes.'
                 : 'Understand audiences and cross-platform consumption.',
@@ -130,7 +130,7 @@ const solutionsDropdown = {
             iconPath: `${base}${icons.solutions.media}`,
         },
         {
-            title: isFrench ? 'Industrie' : 'Industry',
+            title: t(copy, 'solutions_item_1', locale, 'Industry'),
             description: isFrench
                 ? 'Mesurez la portée et la performance de votre secteur.'
                 : 'Measure sector reach and performance more precisely.',
@@ -138,7 +138,7 @@ const solutionsDropdown = {
             iconPath: `${base}${icons.solutions.industry}`,
         },
         {
-            title: isFrench ? 'Éducation' : 'Education',
+            title: t(copy, 'solutions_item_4', locale, 'Education'),
             description: isFrench
                 ? 'Accédez à des insights utiles pour l’apprentissage.'
                 : 'Access insights that strengthen learning outcomes.',
@@ -146,7 +146,7 @@ const solutionsDropdown = {
             iconPath: `${base}${icons.solutions.education}`,
         },
         {
-            title: isFrench ? 'Gouvernement et OBNL' : 'Government and NGO',
+            title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
             description: isFrench
                 ? 'Planifiez des services fondés sur des données fiables.'
                 : 'Plan services and policies with reliable evidence.',
