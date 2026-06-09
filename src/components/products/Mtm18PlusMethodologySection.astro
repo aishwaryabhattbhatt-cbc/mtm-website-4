@@ -1,0 +1,182 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
+import Mtm18PlusMethodologyCard from './Mtm18PlusMethodologyCard.astro';
+import Mtm18PlusSampleCompositionCard from './Mtm18PlusSampleCompositionCard.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const surveyStats = [
+    {
+        value: t(copy, 'survey_stat_1', locale, '25+'),
+        label: t(copy, 'survey_stat_1_label', locale, 'Years of data collection'),
+        description: t(
+            copy,
+            'survey_stat_1_description',
+            locale,
+            'Industry standard level tracking'
+        ),
+    },
+    {
+        value: t(copy, 'survey_stat_2', locale, '22%'),
+        label: t(copy, 'survey_stat_2_label', locale, 'Response rate'),
+        description: t(copy, 'survey_stat_2_description', locale, 'Exceeds industry standards'),
+    },
+    {
+        label: t(copy, 'survey_stat_3_label', locale, 'Two-Part survey structure'),
+        description: t(
+            copy,
+            'survey_stat_3_description',
+            locale,
+            'Respondents complete a phone survey and an additional follow up online survey, with questions optimized for each medium.'
+        ),
+    },
+];
+
+const compositionItems = [
+    {
+        label: t(copy, 'method_1', locale, 'Landline Proportion'),
+        percentage: t(copy, 'method_1_percentage', locale, '57%'),
+    },
+    {
+        label: t(copy, 'method_2', locale, 'Cellphone Only Household (CPO) Proportion'),
+        percentage: t(copy, 'method_2_percentage', locale, '43%'),
+    },
+];
+
+const providerStats = [
+    {
+        label: t(copy, 'provider_label', locale, 'Forum Research'),
+        logoSrc: `${base}images/products/forum_research_logo.png`,
+        description: t(copy, 'provider_description', locale, ''),
+    },
+];
+
+const sampleStats = [
+    {
+        value: t(copy, 'sample_stat_1', locale, '12,000+'),
+        label: t(copy, 'sample_stat_1_label', locale, 'Canadian adults surveyed annually'),
+        description: t(
+            copy,
+            'sample_stat_1_description',
+            locale,
+            'The largest on-going survey of its kind.'
+        ),
+    },
+    {
+        value: t(copy, 'sample_stat_2', locale, '300,000+'),
+        label: t(copy, 'sample_stat_2_label', locale, 'Canadian adults surveyed to date'),
+        description: t(copy, 'sample_stat_2_description', locale, 'Decades of results available.'),
+    },
+    {
+        value: t(copy, 'sample_stat_3', locale, '6,000+/6,000+'),
+        label: t(
+            copy,
+            'sample_stat_3_label',
+            locale,
+            'Anglophone respondents/Francophone respondents'
+        ),
+        description: t(
+            copy,
+            'sample_stat_3_description',
+            locale,
+            'Large, viable samples for either Official Canadian language market.'
+        ),
+    },
+];
+---
+
+<section class="mtm18-methodology-section">
+    <div class="mtm18-methodology-headline">
+        <h2 data-copy-key="methodology_title">
+            {t(copy, 'methodology_title', locale, 'Research Methodology')}
+        </h2>
+        <p
+            class="text-body-p1 mtm18-methodology-description"
+            data-copy-key="methodology_description"
+        >
+            {t(copy, 'methodology_description', locale, '')}
+        </p>
+    </div>
+
+    <div class="mtm18-methodology-cards">
+        <Mtm18PlusMethodologyCard
+            pillLabel={t(copy, 'sample_title', locale, 'Sample Coverage')}
+            iconSrc={`${base}${icons.gen.largeSamples}`}
+            stats={sampleStats}
+        />
+        <Mtm18PlusMethodologyCard
+            pillLabel={t(copy, 'survey_title', locale, 'Survey Design')}
+            iconSrc={`${base}${icons.gen.largeSamples}`}
+            stats={surveyStats}
+        />
+        <Mtm18PlusSampleCompositionCard
+            pillLabel={t(copy, 'data_collected_title', locale, 'Sample Composition')}
+            iconSrc={`${base}${icons.gen.largeSamples}`}
+            items={compositionItems}
+        />
+        <div class="mtm18-methodology-provider-row">
+            <Mtm18PlusMethodologyCard
+                pillLabel={t(copy, 'provider_title', locale, 'Research Provider')}
+                iconSrc={`${base}${icons.gen.largeSamples}`}
+                stats={providerStats}
+                statLayout="row"
+            />
+        </div>
+    </div>
+</section>
+
+<style>
+    .mtm18-methodology-section {
+        width: 100%;
+        padding: var(--space-13) var(--content-margin-inline);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-10);
+    }
+
+    .mtm18-methodology-headline {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        max-width: 51.25rem;
+    }
+
+    .mtm18-methodology-description {
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .mtm18-methodology-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: var(--space-6);
+    }
+
+    .mtm18-methodology-provider-row {
+        grid-column: 1 / -1;
+    }
+
+    @media (max-width: 1023px) {
+        .mtm18-methodology-cards {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .mtm18-methodology-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .mtm18-methodology-provider-row {
+            grid-column: 1;
+        }
+    }
+</style>

@@ -329,9 +329,19 @@
     "en": "",
     "fr": ""
   },
-  "???(research provider)": {
-    "key": "???(research provider)",
+  "provider_title": {
+    "key": "provider_title",
     "en": "Research Provider",
+    "fr": ""
+  },
+  "provider_label": {
+    "key": "provider_label",
+    "en": "Forum Research",
+    "fr": ""
+  },
+  "provider_description": {
+    "key": "provider_description",
+    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Forum Research conducts all of the French and English research for the MTM 18+.\n\nEstablished in 1993, Forum Research Inc. is a Canadian market research and technology company, with offices in Toronto, Montreal, and Saskatoon. With over 30 years of experience, they combine industry talent, cutting-edge technology, and behavioral science to provide in-depth insights.",
     "fr": ""
   }
 }

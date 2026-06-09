@@ -1,0 +1,64 @@
+---
+interface Props {
+    percentage: string;
+    size?: string;
+}
+
+const { percentage, size = '12rem' } = Astro.props as Props;
+
+const RADIUS = 52;
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+function dasharray(percentStr: string): string {
+    const pct = parseFloat(percentStr.replace('%', ''));
+    if (isNaN(pct)) return `0 ${CIRCUMFERENCE}`;
+    return `${(pct / 100) * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+}
+---
+
+<div class="donut-chart" style={`--donut-size: ${size}`} aria-hidden="true">
+    <svg viewBox="0 0 140 140">
+        <circle
+            cx="70"
+            cy="70"
+            r={RADIUS}
+            fill="none"
+            stroke="var(--neutral-grey-4)"
+            stroke-width="12"></circle>
+        <circle
+            cx="70"
+            cy="70"
+            r={RADIUS}
+            fill="none"
+            stroke="var(--brand-blue-main)"
+            stroke-width="12"
+            stroke-linecap="round"
+            stroke-dasharray={dasharray(percentage)}
+            transform="rotate(-90 70 70)"></circle>
+    </svg>
+    <span class="donut-value text-h4">{percentage}</span>
+</div>
+
+<style>
+    .donut-chart {
+        position: relative;
+        width: var(--donut-size);
+        height: var(--donut-size);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .donut-chart svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .donut-value {
+        position: relative;
+        z-index: 1;
+        color: var(--brand-blue-main);
+    }
+</style>

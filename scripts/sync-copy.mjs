@@ -5,6 +5,14 @@
  * in dev and build, so no live network fetches are needed during dev.
  *
  * Usage: npm run sync-copy
+ *
+ * HOW URLs ARE RESOLVED (in priority order):
+ *  1. GOOGLE_SHEET_ID in .env  →  export?format=csv  (live, no CDN cache — recommended)
+ *  2. GOOGLE_SHEET_CSV_URL_MAP_JSON in .env  →  used as-is (may lag 1-5 min after edits)
+ *
+ * To enable instant sync, add your real spreadsheet ID to .env:
+ *   GOOGLE_SHEET_ID=<the ID from your sheet's edit URL>
+ * The ID is the long string between /d/ and /edit in the browser address bar.
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
@@ -95,23 +103,66 @@ function parseCSV(csvText) {
   return dict;
 }
 
+// ── Tab GID map (mirrors src/lib/cms/config.ts DEFAULT_PAGE_TAB_MAP) ─────────
+
+const DEFAULT_TAB_MAP = {
+  home: '328712104',
+  'mtm-18-plus': '7615361',
+  juniors: '1128385549',
+  newcomers: '1277962868',
+  census: '0',
+  'analytic-tools': '1734378829',
+  'census-tool': '606257462',
+  insights: '1724411017',
+};
+
+// ── Build the URL map from available env config ───────────────────────────────
+
+function buildCsvUrlMap(env) {
+  const sheetId = env.GOOGLE_SHEET_ID ?? process.env.GOOGLE_SHEET_ID;
+
+  if (sheetId) {
+    // export?format=csv bypasses Google's CDN cache — always returns live data
+    const tabMapRaw = env.GOOGLE_SHEET_TAB_MAP_JSON ?? process.env.GOOGLE_SHEET_TAB_MAP_JSON;
+    const tabMap = tabMapRaw
+      ? { ...DEFAULT_TAB_MAP, ...JSON.parse(tabMapRaw) }
+      : DEFAULT_TAB_MAP;
+
+    const urlMap = {};
+    for (const [pageId, gid] of Object.entries(tabMap)) {
+      if (gid && gid !== '0') {
+        urlMap[pageId] = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`;
+      }
+    }
+    return { urlMap, mode: 'export' };
+  }
+
+  // Fall back to pub URLs — may lag 1-5 minutes after sheet edits due to Google CDN caching.
+  // Add GOOGLE_SHEET_ID to .env to fix this permanently (see comment at top of file).
+  const rawMap = env.GOOGLE_SHEET_CSV_URL_MAP_JSON ?? process.env.GOOGLE_SHEET_CSV_URL_MAP_JSON;
+  if (!rawMap) return { urlMap: null, mode: 'pub' };
+
+  try {
+    return { urlMap: JSON.parse(rawMap), mode: 'pub' };
+  } catch {
+    return { urlMap: null, mode: 'pub' };
+  }
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
   const env = loadEnv();
+  const { urlMap: csvUrlMap, mode } = buildCsvUrlMap(env);
 
-  const rawMap = env.GOOGLE_SHEET_CSV_URL_MAP_JSON ?? process.env.GOOGLE_SHEET_CSV_URL_MAP_JSON;
-  if (!rawMap) {
-    console.error('❌  GOOGLE_SHEET_CSV_URL_MAP_JSON not found in .env or environment');
+  if (!csvUrlMap) {
+    console.error('❌  No sheet config found. Set GOOGLE_SHEET_ID or GOOGLE_SHEET_CSV_URL_MAP_JSON in .env');
     process.exit(1);
   }
 
-  let csvUrlMap;
-  try {
-    csvUrlMap = JSON.parse(rawMap);
-  } catch {
-    console.error('❌  Failed to parse GOOGLE_SHEET_CSV_URL_MAP_JSON — check JSON syntax in .env');
-    process.exit(1);
+  if (mode === 'pub') {
+    console.log('⚠️   Using published CSV URLs — changes may take 1-5 min to appear after editing.');
+    console.log('    Add GOOGLE_SHEET_ID=<your-sheet-id> to .env for instant sync.\n');
   }
 
   const outputDir = join(projectRoot, 'src', 'content', 'copy');
@@ -128,7 +179,10 @@ async function main() {
     process.stdout.write(`  Syncing ${pageId}… `);
 
     try {
-      const res = await fetch(url, { redirect: 'follow' });
+      const res = await fetch(url, {
+        redirect: 'follow',
+        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' },
+      });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const csv = await res.text();

@@ -19,6 +19,8 @@ interface Props {
     chartAlt?: string;
     ctaHref: string;
     ctaLabel: string;
+    insightsHref: string;
+    sampleReportHref?: string;
     stats?: StatItem[];
 }
 
@@ -33,6 +35,8 @@ const {
     chartAlt = '',
     ctaHref,
     ctaLabel,
+    insightsHref,
+    sampleReportHref,
     stats = [],
 } = Astro.props as Props;
 ---
@@ -94,7 +98,71 @@ const {
     )
 }
 
+<div class="report-action-card">
+    <p class="text-body-p1 report-action-text">
+        Explore our full library of reports or download a free sneak peek.
+    </p>
+    <div class="report-action-buttons">
+        <Button variant="secondary" size="lg" href={insightsHref}>GO TO INSIGHTS</Button>
+        {
+            sampleReportHref && (
+                <Button variant="primary" size="lg" href={sampleReportHref}>
+                    <span class="report-action-btn-inner">
+                        SAMPLE REPORT
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                    </span>
+                </Button>
+            )
+        }
+    </div>
+</div>
+
 <style>
+    .report-action-card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: var(--space-8);
+        margin-top: var(--space-8);
+        background-color: var(--surface-white);
+        border-radius: var(--radius-m);
+        padding: var(--space-7);
+        box-shadow: var(--shadow-card);
+    }
+
+    .report-action-text {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .report-action-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: var(--space-4);
+        flex-shrink: 0;
+    }
+
+    .report-action-btn-inner {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
     .report-card {
         display: flex;
         align-items: center;
@@ -157,15 +225,14 @@ const {
 
     .report-card-graph-name {
         margin: 0;
-        white-space: nowrap;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
         overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .report-card-graph-detail {
-        margin: 0;
     }
 
     .report-card-graph-detail {
+        margin: 0;
         color: var(--text-secondary);
     }
 

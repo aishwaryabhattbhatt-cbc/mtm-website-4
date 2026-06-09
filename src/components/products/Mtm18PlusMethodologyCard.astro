@@ -1,0 +1,134 @@
+---
+interface StatItem {
+    value?: string;
+    label: string;
+    logoSrc?: string;
+    description: string;
+}
+
+interface Props {
+    pillLabel: string;
+    iconSrc: string;
+    stats: StatItem[];
+    statLayout?: 'column' | 'row';
+}
+
+const { pillLabel, iconSrc, stats, statLayout = 'column' } = Astro.props as Props;
+---
+
+<div class="methodology-card">
+    <div class="methodology-card-pill">
+        <img
+            src={iconSrc}
+            alt=""
+            aria-hidden="true"
+            class="icon-xl methodology-card-icon"
+            loading="lazy"
+            decoding="async"
+        />
+        <span class="text-label-regular methodology-card-pill-label">{pillLabel}</span>
+    </div>
+
+    <ul class="methodology-card-stats" role="list">
+        {
+            stats.map((stat) => (
+                <li
+                    class={`methodology-card-stat${statLayout === 'row' ? ' methodology-card-stat--row' : ''}`}
+                >
+                    {stat.value && (
+                        <span class="text-h4 methodology-card-stat-value">{stat.value}</span>
+                    )}
+                    {stat.logoSrc ? (
+                        <img
+                            src={stat.logoSrc}
+                            alt={stat.label}
+                            class="methodology-card-stat-logo"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    ) : (
+                        <span class="text-body-p1-bold methodology-card-stat-label">
+                            {stat.label}
+                        </span>
+                    )}
+                    <p class="text-body-p3 methodology-card-stat-desc">{stat.description}</p>
+                </li>
+            ))
+        }
+    </ul>
+</div>
+
+<style>
+    .methodology-card {
+        background-color: var(--surface-white);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-card);
+        padding: var(--space-8);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .methodology-card-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-3);
+        background-color: var(--surface-blue);
+        border-radius: var(--radius-s);
+        padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+        align-self: flex-start;
+    }
+
+    .methodology-card-icon {
+        flex-shrink: 0;
+    }
+
+    .methodology-card-pill-label {
+        color: var(--text-secondary);
+        white-space: nowrap;
+    }
+
+    .methodology-card-stats {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-7);
+    }
+
+    .methodology-card-stat {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    .methodology-card-stat-value {
+        color: var(--brand-blue-main);
+        white-space: nowrap;
+    }
+
+    .methodology-card-stat-label {
+        color: var(--text-primary);
+    }
+
+    .methodology-card-stat-logo {
+        max-height: var(--space-13);
+        width: auto;
+        display: block;
+        align-self: flex-start;
+    }
+
+    .methodology-card-stat--row {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: start;
+        gap: var(--space-6);
+    }
+
+    .methodology-card-stat-desc {
+        color: var(--text-secondary);
+        margin: 0;
+        white-space: pre-line;
+    }
+</style>
