@@ -42,8 +42,9 @@ function dasharray(percentStr: string): string {
 <style>
     .donut-chart {
         position: relative;
-        width: var(--donut-size);
-        height: var(--donut-size);
+        width: 100%;
+        max-width: var(--donut-size);
+        aspect-ratio: 1;
         display: flex;
         align-items: center;
         justify-content: center;

@@ -1,12 +1,12 @@
 {
   "hero_title": {
     "key": "hero_title",
-    "en": "MTM 18+",
+    "en": "MTM Junior",
     "fr": ""
   },
   "hero_description": {
     "key": "hero_description",
-    "en": "MTM 18+ is the largest and longest running study on media and technology among the adult Canadian population. By taking an exhaustive approach, it provides key insights to understand your audiences or users.",
+    "en": "MTM Jr. is the first annual youth media survey in Canada. With a focus on media consumption of Canadians aged 2 to 17, it offers you a roadmap to todays young and emerging audiences.",
     "fr": ""
   },
   "hero_cta": {
@@ -21,32 +21,32 @@
   },
   "feature_1_title": {
     "key": "feature_1_title",
-    "en": "Decades Of Data",
+    "en": "8 Years Of Data",
     "fr": ""
   },
   "feature_1_description": {
     "key": "feature_1_description",
-    "en": "MTM 18+ has been gathering data since 2001 on large array of topics.",
+    "en": "MTM Jr. offers 8 years worth of exhaustive results readily available to clients.",
     "fr": ""
   },
   "feature_2_title": {
     "key": "feature_2_title",
-    "en": "Large, Robust Sampling",
+    "en": "A Large Sample You Can Rely On",
     "fr": ""
   },
   "feature_2_description": {
     "key": "feature_2_description",
-    "en": "We've surveyed more than 300,000 adult Canadians to date and reach an additional 12,000 or more annually.",
+    "en": "We reach more than 3,000 Canadians aged 2-17 across more than 2,000 households every year.",
     "fr": ""
   },
   "feature_3_title": {
     "key": "feature_3_title",
-    "en": "Exhaustive Value For Clients",
+    "en": "Focused on Kids",
     "fr": ""
   },
   "feature_3_description": {
     "key": "feature_3_description",
-    "en": "Clients gain access to a full suite of more than 45 reports annually and thousands of variables across our suite of tools.",
+    "en": "Gain deep insights on children aged 2-6, 7-11, 12-17 and the households they reside in.",
     "fr": ""
   },
   "feature_4_title": {
@@ -56,17 +56,17 @@
   },
   "feature_4_description": {
     "key": "feature_4_description",
-    "en": "All content available through MTM 18+ and the rest of the MTM product suite is offered in English and French.",
+    "en": "All content available through MTM Jr. and the rest of the MTM product suite is offered in English and French.",
     "fr": ""
   },
   "feature_5_title": {
     "key": "feature_5_title",
-    "en": "Data On Canadians From Coast To Coast To Coast",
+    "en": "Surveying Teens Directly",
     "fr": ""
   },
   "feature_5_description": {
     "key": "feature_5_description",
-    "en": "The MTM offers data on every region and province, including the North.",
+    "en": "MTM Jr. surveys Canadians 12-17 directly to gain the most accurate and detailed findings possible.",
     "fr": ""
   },
   "tools_title": {
@@ -76,7 +76,7 @@
   },
   "tools_description": {
     "key": "tools_description",
-    "en": "Explore our suite of tools and leverage data insights for confident decision-making on Canadian adults.",
+    "en": "Get the full picture on kids media and technology habits with our easy-to-use web-based tools.",
     "fr": ""
   },
   "dat_title": {
@@ -86,7 +86,7 @@
   },
   "dat_description": {
     "key": "dat_description",
-    "en": "The Data Analysis Tool (DAT) offers clients full access to our robust data set on Canadian adults. Tailor your analysis your way, filter the results, and create visually stunning outputs.",
+    "en": "The Data Analysis Tool (DAT) makes playing with data fun, but yields real results. Dig into what kids are watching, listening to, playing and scrolling, create visuals your clients will love, all within minutes.",
     "fr": ""
   },
   "dat_cta": {
@@ -96,12 +96,12 @@
   },
   "dat_callout": {
     "key": "dat_callout",
-    "en": "Want to know Canadians are using connected TV sets?\nAll you need to know is a few clicks away with the DAT.",
+    "en": "How many kids are playing video games?\nFind this and so much more on the DAT.",
     "fr": ""
   },
   "???(Key Insights text?)": {
     "key": "???(Key Insights text?)",
-    "en": "Key Insight\nSamsung is the most common TV set brand among Canadians.",
+    "en": "Key Insight\n76% of kids have played a video game in the past month and smartphones/tablets are the most popular way to play (53%)",
     "fr": ""
   },
   "trending_title": {
@@ -111,7 +111,7 @@
   },
   "trending_description": {
     "key": "trending_description",
-    "en": "The Trending Tool lets clients see how technology and media adoption has shifted since 2010. Chart your path forward with 15+ years of data and demographic data filters.",
+    "en": "Kids change and so do their habits. With the Trending Tool, see how devices, services and platforms have changed over the last 8 years.",
     "fr": ""
   },
   "trending_cta": {
@@ -121,67 +121,47 @@
   },
   "trending_callout": {
     "key": "trending_callout",
-    "en": "How has TikTok grown? Past month usage has increased from 3% in Fall 2019 to 23% in Fall 2025.",
-    "fr": ""
-  },
-  "forecasting_title": {
-    "key": "forecasting_title",
-    "en": "Forecasting Tool",
-    "fr": ""
-  },
-  "forecasting_description": {
-    "key": "forecasting_description",
-    "en": "The Forecasting Tool is for clients with an eye on the past and the future. Easy to read charts and insights from our experts will help you stay ahead of your competition.",
-    "fr": ""
-  },
-  "forecasting_cta": {
-    "key": "forecasting_cta",
-    "en": "Learn More",
-    "fr": ""
-  },
-  "forecasting_callout": {
-    "key": "forecasting_callout",
-    "en": "Is Amazon Prime Video on-track to surpass Netflix?\nFind out this and more with acccess to the Forecasting tool.",
+    "en": "Are teens still on Facebook or have they left it behind for Instagram? See where all key social media platforms stand with the Trending Tool.",
     "fr": ""
   },
   "report_title": {
     "key": "report_title",
-    "en": "Adoption Report",
+    "en": "Futures Report",
     "fr": ""
   },
   "report_description": {
     "key": "report_description",
-    "en": "Our flagship report covering the very latest data on of key media and technology adoption among adult Canadians.",
+    "en": "Find actionable insights on the newest trends for Canadian kids with the Futures Report.",
     "fr": ""
   },
   "graph_name": {
     "key": "graph_name",
-    "en": "Top SVOD Platforms - Past Month Usage",
+    "en": "FAST Channel Viewership - Past Month",
     "fr": ""
   },
   "graph_detail": {
     "key": "graph_detail",
-    "en": "Anglophones 18+",
+    "en": "Canadians 2-17",
     "fr": ""
   },
   "stat_1_value": {
     "key": "stat_1_value",
-    "en": "61%",
+    "en": "39%",
     "fr": ""
   },
   "stat_1_description": {
     "key": "stat_1_description",
-    "en": "of households subscribe to Netflix, the platform to popularize SVOD services.",
+    "en": "The percentage of Canadians aged 2-17 that have watched a free ad-supported TV channel (FAST) in the past month.",
     "fr": ""
   },
   "stat_2_value": {
     "key": "stat_2_value",
-    "en": "56%",
+    "en": "43%",
     "fr": ""
   },
   "stat_2_description": {
     "key": "stat_2_description",
-    "en": "of households subscribe to Amazon Prime Video, the current runner up in the SVOD space.",
+    "en": "The percentaged of anglophone children who are tuning in for FAST content.",
     "fr": ""
   },
   "methodology_title": {
@@ -191,12 +171,12 @@
   },
   "methodology_description": {
     "key": "methodology_description",
-    "en": "MTM 18+ is based on a nationally representative telephone survey with a follow up online compontent, reaching Canadian adults across all provinces and territories.",
+    "en": "MTM Jr. is based on a nationally representative online survey conducted across Canada. Relying on panel respondents, this online survey reaches Canadian households and children across all provinces and territories.",
     "fr": ""
   },
   "methodology_cta": {
     "key": "methodology_cta",
-    "en": "",
+    "en": "Download Methodology Data",
     "fr": ""
   },
   "sample_title": {
@@ -206,47 +186,47 @@
   },
   "sample_stat_1": {
     "key": "sample_stat_1",
-    "en": "12,000+",
+    "en": "3,000+",
     "fr": ""
   },
   "sample_stat_1_label": {
     "key": "sample_stat_1_label",
-    "en": "Canadian adults surveyed annually",
+    "en": "Canadians (aged 2-17) surveyed annually.",
     "fr": ""
   },
   "sample_stat_1_description": {
     "key": "sample_stat_1_description",
-    "en": "The largest on-going survey of its kind.",
+    "en": "A robust, nationally respresentative sample.",
     "fr": ""
   },
   "sample_stat_2": {
     "key": "sample_stat_2",
-    "en": "300,000+",
+    "en": "2,000+",
     "fr": ""
   },
   "sample_stat_2_label": {
     "key": "sample_stat_2_label",
-    "en": "Canadian adults surveyed to date",
+    "en": "Canadian households surveyed annually",
     "fr": ""
   },
   "sample_stat_2_description": {
     "key": "sample_stat_2_description",
-    "en": "Decades of results available.",
+    "en": "Reaching households from coast to coast to coast",
     "fr": ""
   },
   "sample_stat_3": {
     "key": "sample_stat_3",
-    "en": "6,000+/6,000+",
+    "en": "50/50",
     "fr": ""
   },
   "sample_stat_3_label": {
     "key": "sample_stat_3_label",
-    "en": "Anglophone/Francophone respondents",
+    "en": "Anglophone respondents/Francophone respondents",
     "fr": ""
   },
   "sample_stat_3_description": {
     "key": "sample_stat_3_description",
-    "en": "Large, viable samples for either Official Canadian language market.",
+    "en": "Large, viable samples for both anglophone and francophone children and households.",
     "fr": ""
   },
   "survey_title": {
@@ -256,7 +236,7 @@
   },
   "survey_stat_1": {
     "key": "survey_stat_1",
-    "en": "25+",
+    "en": "8+",
     "fr": ""
   },
   "survey_stat_1_label": {
@@ -271,67 +251,62 @@
   },
   "survey_stat_2": {
     "key": "survey_stat_2",
-    "en": "22%",
+    "en": "Always refining",
     "fr": ""
   },
   "survey_stat_2_label": {
     "key": "survey_stat_2_label",
-    "en": "Response rate",
+    "en": "Survey is updated annually",
     "fr": ""
   },
   "survey_stat_2_description": {
     "key": "survey_stat_2_description",
-    "en": "Exceeds industry standards",
-    "fr": ""
-  },
-  "survey_stat_3": {
-    "key": "survey_stat_3",
-    "en": "Two-Part",
+    "en": "Ensuring new data on emergent technologies",
     "fr": ""
   },
   "survey_stat_3_label": {
     "key": "survey_stat_3_label",
-    "en": "Survey structure",
+    "en": "Two-Part survey structure",
     "fr": ""
   },
   "survey_stat_3_description": {
     "key": "survey_stat_3_description",
-    "en": "Respondents complete a phone survey and an additional follow up online survey, with questions optomized for each medium",
+    "en": "Parents complete complete a survey about their household and their children aged 2-11 while teens (aged 12-17) respond directly to a survey of their own.",
     "fr": ""
   },
   "data_collected_title": {
     "key": "data_collected_title",
-    "en": "Sample Composition",
+    "en": "",
     "fr": ""
   },
   "method_1": {
     "key": "method_1",
-    "en": "Landline Proportion",
+    "en": "remove",
     "fr": ""
   },
   "method_1_percentage": {
     "key": "method_1_percentage",
-    "en": "57%",
+    "en": "remove",
     "fr": ""
   },
   "method_1_unit": {
     "key": "method_1_unit",
-    "en": "",
+    "en": "remove",
     "fr": ""
   },
   "method_2": {
     "key": "method_2",
-    "en": "Cellphone Only Household (CPO) Proportion",
+    "en": "remove",
     "fr": ""
   },
   "method_2_percentage": {
     "key": "method_2_percentage",
-    "en": "43%",
+    "en": "remove",
     "fr": ""
   },
   "method_2_unit": {
     "key": "method_2_unit",
-    "en": "",
+    "en": "remove",
     "fr": ""
   },
   "provider_title": {
@@ -341,12 +316,12 @@
   },
   "provider_label": {
     "key": "provider_label",
-    "en": "Forum Research",
+    "en": "Ad Hoc Research",
     "fr": ""
   },
   "provider_description": {
     "key": "provider_description",
-    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Forum Research conducts all of the French and English research for the MTM 18+.\n\nEstablished in 1993, Forum Research Inc. is a Canadian market research and technology company, with offices in Toronto, Montreal, and Saskatoon. With over 30 years of experience, they combine industry talent, cutting-edge technology, and behavioral science to provide in-depth insights.",
+    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Ad Hoc Research conducts all of the French and English research for the MTM Jr. MTM Jr. research was conducted in February 2026.\r\n\nFounded in 1984 in Montreal, Canada, Ad Hoc Research is a full-service marketing, communications and social research firm, with a multidisciplinary team of more than 100 employees and a constantly growing network of national and international clients. Leaders in the Canadian market, Ad Hoc Research builds lasting relationships with their clients, guiding them every step of the way with a creative and passionate approach.",
     "fr": ""
   }
 }

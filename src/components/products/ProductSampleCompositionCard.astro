@@ -1,5 +1,5 @@
 ---
-import Mtm18PlusDonutChart from './Mtm18PlusDonutChart.astro';
+import ProductDonutChart from './ProductDonutChart.astro';
 
 interface DonutItem {
     label: string;
@@ -21,16 +21,22 @@ const { pillLabel, iconSrc, items } = Astro.props as Props;
             src={iconSrc}
             alt=""
             aria-hidden="true"
-            class="icon-xl composition-card-icon"
+            class="icon-l composition-card-icon"
             loading="lazy"
             decoding="async"
         />
-        <span class="text-label-regular composition-card-pill-label">{pillLabel}</span>
+        <span class="text-label-small composition-card-pill-label">{pillLabel}</span>
     </div>
 
     <div class="composition-card-donuts">
-        {items.map((item) => <p class="text-body-p1-bold composition-donut-label">{item.label}</p>)}
-        {items.map((item) => <Mtm18PlusDonutChart percentage={item.percentage} size="12rem" />)}
+        {
+            items.map((item) => (
+                <>
+                    <p class="text-body-p2-bold composition-donut-label">{item.label}</p>
+                    <ProductDonutChart percentage={item.percentage} size="9rem" />
+                </>
+            ))
+        }
     </div>
 
     <p class="text-body-p3 composition-card-description">
@@ -41,12 +47,13 @@ const { pillLabel, iconSrc, items } = Astro.props as Props;
 <style>
     .composition-card {
         background-color: var(--surface-white);
-        border-radius: var(--radius-m);
+        border-radius: var(--layout-card-radius);
         box-shadow: var(--shadow-card);
-        padding: var(--space-8);
+        padding: var(--space-6);
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--space-6);
+        min-width: 0;
     }
 
     .composition-card-pill {
@@ -72,12 +79,11 @@ const { pillLabel, iconSrc, items } = Astro.props as Props;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--space-4) var(--space-8);
-        justify-items: center;
+        align-items: center;
     }
 
     .composition-donut-label {
         color: var(--text-primary);
-        text-align: center;
         margin: 0;
     }
 

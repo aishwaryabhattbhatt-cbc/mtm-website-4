@@ -247,6 +247,8 @@ function initNavbarDropdownInteraction() {
     function clearActiveItem() {
         if (activeItem) {
             activeItem.classList.remove('is-active');
+            const trigger = activeItem.querySelector('.nav-link--has-dropdown');
+            if (trigger) trigger.setAttribute('aria-expanded', 'false');
             activeItem = null;
         }
     }
@@ -258,6 +260,8 @@ function initNavbarDropdownInteraction() {
         clearActiveItem();
         activeItem = item;
         activeItem.classList.add('is-active');
+        const trigger = activeItem.querySelector('.nav-link--has-dropdown');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
     }
 
     dropdownItems.forEach((item) => {

@@ -22,11 +22,11 @@ const { pillLabel, iconSrc, stats, statLayout = 'column' } = Astro.props as Prop
             src={iconSrc}
             alt=""
             aria-hidden="true"
-            class="icon-xl methodology-card-icon"
+            class="icon-l methodology-card-icon"
             loading="lazy"
             decoding="async"
         />
-        <span class="text-label-regular methodology-card-pill-label">{pillLabel}</span>
+        <span class="text-label-small methodology-card-pill-label">{pillLabel}</span>
     </div>
 
     <ul class="methodology-card-stats" role="list">
@@ -36,7 +36,9 @@ const { pillLabel, iconSrc, stats, statLayout = 'column' } = Astro.props as Prop
                     class={`methodology-card-stat${statLayout === 'row' ? ' methodology-card-stat--row' : ''}`}
                 >
                     {stat.value && (
-                        <span class="text-h4 methodology-card-stat-value">{stat.value}</span>
+                        <span class="text-body-p0-bold methodology-card-stat-value">
+                            {stat.value}
+                        </span>
                     )}
                     {stat.logoSrc ? (
                         <img
@@ -47,7 +49,7 @@ const { pillLabel, iconSrc, stats, statLayout = 'column' } = Astro.props as Prop
                             decoding="async"
                         />
                     ) : (
-                        <span class="text-body-p1-bold methodology-card-stat-label">
+                        <span class="text-body-p2-bold methodology-card-stat-label">
                             {stat.label}
                         </span>
                     )}
@@ -61,12 +63,13 @@ const { pillLabel, iconSrc, stats, statLayout = 'column' } = Astro.props as Prop
 <style>
     .methodology-card {
         background-color: var(--surface-white);
-        border-radius: var(--radius-m);
+        border-radius: var(--layout-card-radius);
         box-shadow: var(--shadow-card);
-        padding: var(--space-8);
+        padding: var(--space-6);
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--space-6);
+        min-width: 0;
     }
 
     .methodology-card-pill {
@@ -130,5 +133,11 @@ const { pillLabel, iconSrc, stats, statLayout = 'column' } = Astro.props as Prop
         color: var(--text-secondary);
         margin: 0;
         white-space: pre-line;
+    }
+
+    @media (max-width: 1023px) {
+        .methodology-card-stat--row {
+            grid-template-columns: 1fr;
+        }
     }
 </style>

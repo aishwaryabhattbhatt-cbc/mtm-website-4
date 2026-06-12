@@ -136,7 +136,7 @@ const {
         gap: var(--space-8);
         margin-top: var(--space-8);
         background-color: var(--surface-white);
-        border-radius: var(--radius-m);
+        border-radius: var(--layout-card-radius);
         padding: var(--space-7);
         box-shadow: var(--shadow-card);
     }
@@ -163,7 +163,7 @@ const {
         display: flex;
         align-items: center;
         background-color: var(--surface-white);
-        border-radius: var(--radius-m);
+        border-radius: var(--layout-card-radius);
         padding: var(--space-6);
         gap: var(--space-6);
         box-shadow: var(--shadow-card);
@@ -241,7 +241,7 @@ const {
     .report-stats {
         display: flex;
         flex-direction: row;
-        gap: var(--space-8);
+        gap: var(--layout-card-gap);
         margin-top: var(--space-8);
     }
 
@@ -252,7 +252,7 @@ const {
         flex-direction: column;
         gap: var(--space-8);
         background-color: var(--surface-white);
-        border-radius: var(--radius-m);
+        border-radius: var(--layout-card-radius);
         padding: var(--space-7);
         box-shadow: var(--shadow-card);
     }
@@ -324,6 +324,15 @@ const {
         .report-stat-description {
             grid-column: 1 / -1;
             grid-row: 2;
+        }
+
+        .report-action-card {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .report-action-buttons {
+            justify-content: center;
         }
     }
 </style>

@@ -1,5 +1,9 @@
 # MTM Website — Claude Reference
 
+## Codebase map
+
+Structured analysis lives in `.planning/codebase/` — STACK.md, ARCHITECTURE.md, STRUCTURE.md, CONVENTIONS.md, TESTING.md, INTEGRATIONS.md, CONCERNS.md. Reference these when planning or onboarding to a new area.
+
 ## Before marking any task done
 
 Run `/review` to check every change against the project's conventions. A single violation means the work is incomplete.

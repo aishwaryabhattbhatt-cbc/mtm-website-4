@@ -1,0 +1,285 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+
+interface ToolItem {
+    imageSrc: string;
+    imageAlt: string;
+    iconSrc: string;
+    title: string;
+    description: string;
+    calloutText: string;
+    ctaLabel: string;
+    ctaHref: string;
+}
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    tools: ToolItem[];
+}
+
+const { locale, copy, tools } = Astro.props as Props;
+
+function splitCallout(text: string): [string, string] {
+    const idx = text.indexOf('?');
+    if (idx === -1) return [text, ''];
+    return [
+        text.slice(0, idx + 1),
+        text
+            .slice(idx + 1)
+            .replace(/^\n/, '')
+            .trim(),
+    ];
+}
+---
+
+<section class="product-tools-section">
+    <div class="product-tools-headline">
+        <h2 data-copy-key="tools_title">
+            {t(copy, 'tools_title', locale, 'Tools')}
+        </h2>
+        <p class="text-body-p1 product-tools-description" data-copy-key="tools_description">
+            {
+                t(
+                    copy,
+                    'tools_description',
+                    locale,
+                    'Explore our suite of analytics, forecasting, and trending tools.'
+                )
+            }
+        </p>
+    </div>
+
+    {
+        tools.map((tool, index) => {
+            const reversed = index % 2 === 1;
+            const [calloutQ, calloutA] = splitCallout(tool.calloutText);
+            return (
+                <div
+                    class={`row product-tools-grid${reversed ? ' product-tools-grid--reversed' : ''}`}
+                >
+                    <div class="col col-12 col-lg-7 product-tools-left">
+                        <img
+                            src={tool.imageSrc}
+                            alt={tool.imageAlt}
+                            class="product-tools-image"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <div class="col col-12 col-lg-5 product-tools-right">
+                        <div class="product-tools-card">
+                            <div class="product-tools-card-header">
+                                <img
+                                    src={tool.iconSrc}
+                                    alt=""
+                                    aria-hidden="true"
+                                    class="icon-2xl product-tools-card-icon"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <h3>{tool.title}</h3>
+                            </div>
+                            <p class="text-body-p2 product-tools-card-desc">{tool.description}</p>
+                            <Button variant="tertiary" size="lg" href={tool.ctaHref}>
+                                {tool.ctaLabel}
+                            </Button>
+
+                            {tool.calloutText && (
+                                <div
+                                    class={`product-float-card${reversed ? ' product-float-card--reversed' : ''}`}
+                                    aria-hidden="true"
+                                >
+                                    {!reversed && (
+                                        <svg
+                                            class="product-float-card-arrow"
+                                            viewBox="0 0 10 14"
+                                            fill="none"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M10 0L0 7L10 14V0Z" fill="currentColor" />
+                                        </svg>
+                                    )}
+                                    <div class="product-float-card-text">
+                                        <p class="text-body-p2-bold">{calloutQ}</p>
+                                        <p class="text-body-p2">{calloutA}</p>
+                                    </div>
+                                    {reversed && (
+                                        <svg
+                                            class="product-float-card-arrow"
+                                            viewBox="0 0 10 14"
+                                            fill="none"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M10 0L0 7L10 14V0Z" fill="currentColor" />
+                                        </svg>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        })
+    }
+</section>
+
+<style>
+    .product-tools-section {
+        width: 100%;
+        padding: var(--space-13) var(--content-margin-inline);
+    }
+
+    .product-tools-headline {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        max-width: 51.25rem;
+    }
+
+    .product-tools-description {
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .product-tools-grid {
+        margin-top: var(--space-12);
+    }
+
+    .product-tools-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: var(--layout-card-radius);
+    }
+
+    .product-tools-card-icon {
+        flex-shrink: 0;
+    }
+
+    .product-tools-right {
+        padding-bottom: var(--space-6);
+    }
+
+    .product-tools-card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+        height: 100%;
+    }
+
+    .product-tools-card-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .product-tools-card-desc {
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .product-float-card {
+        margin-top: auto;
+        margin-left: calc(-1 * var(--space-9));
+        background-color: var(--surface-white);
+        border-radius: var(--layout-card-radius);
+        box-shadow: var(--shadow-beautiful);
+        padding: var(--space-5);
+        display: flex;
+        gap: var(--space-3);
+        align-items: flex-start;
+        position: relative;
+        z-index: 1;
+    }
+
+    .product-float-card-arrow {
+        color: var(--brand-blue-main);
+        flex-shrink: 0;
+        width: auto;
+        height: 0.875rem;
+        margin-top: var(--space-1);
+    }
+
+    .product-float-card-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .product-float-card-text p {
+        margin: 0;
+    }
+
+    .product-tools-grid--reversed .product-tools-left {
+        order: 2;
+    }
+
+    .product-tools-grid--reversed .product-tools-right {
+        order: 1;
+    }
+
+    .product-float-card--reversed {
+        margin-left: 0;
+        margin-right: calc(-1 * var(--space-9));
+        align-self: flex-end;
+    }
+
+    .product-float-card--reversed .product-float-card-arrow {
+        transform: scaleX(-1);
+    }
+
+    @media (max-width: 1023px) {
+        .product-tools-right {
+            order: 1;
+            padding-bottom: 0;
+        }
+
+        .product-tools-left {
+            order: 2;
+            margin-top: calc(-1 * var(--space-8));
+            position: relative;
+            z-index: 0;
+        }
+
+        .product-tools-card {
+            height: auto;
+        }
+
+        .product-tools-card-header {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .product-tools-image {
+            border-radius: var(--radius-s);
+        }
+
+        .product-float-card {
+            margin-top: 0;
+            margin-left: 0;
+            align-self: center;
+            border-radius: var(--radius-s);
+            padding: var(--space-3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-float-card-arrow {
+            transform: rotate(-90deg);
+        }
+
+        .product-float-card--reversed {
+            margin-right: 0;
+            align-self: center;
+            flex-direction: row-reverse;
+        }
+
+        .product-float-card--reversed .product-float-card-arrow {
+            transform: rotate(-90deg);
+        }
+    }
+</style>

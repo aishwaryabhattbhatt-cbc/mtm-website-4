@@ -1,0 +1,136 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface FeatureItem {
+    icon: string;
+    titleKey: string;
+    descKey: string;
+    titleFallback: string;
+    descFallback: string;
+}
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    features: FeatureItem[];
+}
+
+const { locale, copy, features } = Astro.props as Props;
+---
+
+<section class="product-features-section">
+    <div
+        class="product-features-grid"
+        style={`grid-template-columns: repeat(${features.length}, 1fr)`}
+    >
+        {
+            features.map((f) => (
+                <div class="product-feature-item">
+                    <img
+                        src={f.icon}
+                        alt=""
+                        class="product-feature-icon"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                    <p class="text-body-p1-bold product-feature-title" data-copy-key={f.titleKey}>
+                        {t(copy, f.titleKey, locale, f.titleFallback)}
+                    </p>
+                    <p class="text-body-p3 product-feature-desc" data-copy-key={f.descKey}>
+                        {t(copy, f.descKey, locale, f.descFallback)}
+                    </p>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .product-features-section {
+        width: 100%;
+        background-color: var(--surface-blue);
+        padding: var(--space-11) var(--content-margin-inline);
+    }
+
+    /* grid-template-columns is set inline to match the feature count */
+    .product-features-grid {
+        display: grid;
+        column-gap: var(--space-8);
+        text-align: center;
+        justify-items: center;
+    }
+
+    /* display:contents lets the grid treat icon/title/desc as direct children
+       so each type aligns in its own row across all columns */
+    .product-feature-item {
+        display: contents;
+    }
+
+    .product-feature-icon {
+        grid-row: 1;
+        width: var(--space-12);
+        height: var(--space-12);
+        margin-bottom: var(--space-6);
+        align-self: center;
+    }
+
+    .product-feature-title {
+        grid-row: 2;
+        color: var(--text-primary);
+        margin: 0 0 var(--space-4);
+        align-self: start;
+    }
+
+    .product-feature-desc {
+        grid-row: 3;
+        color: var(--text-secondary);
+        margin: 0;
+        align-self: start;
+    }
+
+    @media (max-width: 1023px) {
+        .product-features-section {
+            padding: var(--space-5) var(--content-margin-inline) var(--space-8);
+        }
+
+        .product-features-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+
+        .product-feature-item {
+            display: grid;
+            grid-template-columns: var(--space-8) 1fr;
+            grid-template-rows: auto auto;
+            column-gap: var(--space-2);
+            row-gap: 0;
+            align-items: center;
+        }
+
+        .product-feature-icon {
+            grid-column: 1;
+            grid-row: 1;
+            width: var(--space-8);
+            height: var(--space-8);
+            margin-bottom: 0;
+            align-self: center;
+        }
+
+        .product-feature-title {
+            grid-column: 2;
+            grid-row: 1;
+            text-align: left;
+            margin: 0;
+            align-self: center;
+        }
+
+        .product-feature-desc {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            text-align: left;
+            align-self: start;
+        }
+    }
+</style>
