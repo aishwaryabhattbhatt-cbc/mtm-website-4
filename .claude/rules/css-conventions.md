@@ -44,6 +44,10 @@ No exact match → use the closest by font-size first, then weight. If a genuine
 
 Exceptions: `1px` / `2px` borders → use `--stroke-1` / `--stroke-2`.
 
+### Card gaps
+
+Always use `--layout-card-gap` for the gap between cards in any grid, flex row, or horizontal scroll container. Never use a raw `--space-*` token for inter-card spacing — this token has responsive overrides built in (desktop: 2.5rem, ≤1023px: 1rem).
+
 ## Color tokens
 
 Semantic tokens only — never raw hex or `rgba()` when a token exists.

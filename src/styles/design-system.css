@@ -185,6 +185,7 @@ html {
     /* === Layout (rem-based) === */
     --layout-page-margin: 15rem;
     --layout-card-gap: 2.5rem;
+    --layout-card-radius: var(--radius-m);
 
     /* === Border Radius === */
     --radius-none: 0;
@@ -282,7 +283,7 @@ html {
     :root {
         /* Reduce spacing on mobile/tablet for better use of limited screen space */
         --layout-page-margin: 1rem;
-        --layout-card-gap: 1.5rem;
+        --layout-card-gap: 1rem;
         --space-13: 3rem; /* was 7.5rem */
         --space-25: 3rem; /* was 6.25rem */
     }
@@ -292,7 +293,7 @@ html {
     :root {
         /* Medium spacing for tablets */
         --layout-page-margin: 2rem;
-        --layout-card-gap: 2rem;
+        --layout-card-gap: 1rem;
     }
 }
 

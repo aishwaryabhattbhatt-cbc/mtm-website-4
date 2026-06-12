@@ -1284,81 +1284,20 @@ class LiquidGradientEffect {
   downloadOutput() {
     const btn = event.target;
     try {
-      // Use native input image size; fall back to current viewport
-      const imgW = this.uploadedImageNativeWidth  || this.getContainerSize().w;
-      const imgH = this.uploadedImageNativeHeight || this.getContainerSize().h;
-
-      // Off-screen render targets at native image resolution
-      const rtLiquid = new THREE.WebGLRenderTarget(imgW, imgH, {
-        minFilter: THREE.LinearFilter,
-        magFilter: THREE.LinearFilter,
-        format: THREE.RGBAFormat
-      });
-      const rtDither = new THREE.WebGLRenderTarget(imgW, imgH, {
-        minFilter: THREE.LinearFilter,
-        magFilter: THREE.LinearFilter,
-        format: THREE.RGBAFormat
-      });
-
-      // Stash uniforms we temporarily override
-      const prevLiqRes  = this.uniformsLiquid.uRes.value.clone();
-      const prevScale   = this.uniformsLiquid.uImageScale.value.clone();
-      const prevOffset  = this.uniformsLiquid.uImageOffset.value.clone();
-      const prevFit     = this.uniformsLiquid.uFitContain.value;
-      const prevRes     = this.uniformsDither.uResolution.value.clone();
-      const prevDpr     = this.uniformsDither.uDpr.value;
-      const prevSource  = this.uniformsDither.uSource.value;
-
-      // Override for native-res render
-      // Image fills the output 1:1 (no letterbox bars)
-      this.uniformsLiquid.uRes.value.set(imgW, imgH);
-      this.uniformsLiquid.uImageScale.value.set(1, 1);
-      this.uniformsLiquid.uImageOffset.value.set(0, 0);
-      this.uniformsLiquid.uFitContain.value = 1.0;
-      this.uniformsDither.uResolution.value.set(imgW, imgH);
-      this.uniformsDither.uDpr.value = 1.0;  // render target has no screen DPR
-      this.uniformsDither.uSource.value = rtLiquid.texture;
-
-      // Liquid pass → rtLiquid
-      this.renderer.setRenderTarget(rtLiquid);
-      this.renderer.render(this.sceneLiquid, this.camera);
-
-      // Dither pass → rtDither
-      this.renderer.setRenderTarget(rtDither);
-      this.renderer.render(this.sceneDither, this.camera);
-
-      // Read raw pixels (WebGL returns rows bottom-up)
-      const pixels = new Uint8Array(imgW * imgH * 4);
-      this.renderer.readRenderTargetPixels(rtDither, 0, 0, imgW, imgH, pixels);
-
-      // Restore everything
-      this.renderer.setRenderTarget(null);
-      this.uniformsLiquid.uRes.value.copy(prevLiqRes);
-      this.uniformsLiquid.uImageScale.value.copy(prevScale);
-      this.uniformsLiquid.uImageOffset.value.copy(prevOffset);
-      this.uniformsLiquid.uFitContain.value = prevFit;
-      this.uniformsDither.uResolution.value.copy(prevRes);
-      this.uniformsDither.uDpr.value = prevDpr;
-      this.uniformsDither.uSource.value = prevSource;
-      rtLiquid.dispose();
-      rtDither.dispose();
-
-      // Flip rows (WebGL origin is bottom-left, canvas is top-left)
-      const canvas = document.createElement('canvas');
-      canvas.width  = imgW;
-      canvas.height = imgH;
-      const ctx = canvas.getContext('2d');
-      const imageData = ctx.createImageData(imgW, imgH);
-      for (let row = 0; row < imgH; row++) {
-        const srcRow = imgH - 1 - row;
-        imageData.data.set(
-          pixels.subarray(srcRow * imgW * 4, (srcRow + 1) * imgW * 4),
-          row * imgW * 4
-        );
-      }
-      ctx.putImageData(imageData, 0, 0);
-
-      canvas.toBlob((blob) => {
+      // Capture the live canvas — preserveDrawingBuffer:true guarantees pixels are
+      // still available after the last frame. This matches exactly what the user sees,
+      // including the correct DPR, cell density, image scale, and fit mode.
+      // Composite over white to match the CSS background: #fff on .pattern-tool-canvas,
+      // which shows through the alpha-transparent WebGL canvas on screen.
+      const src = this.renderer.domElement;
+      const out = document.createElement('canvas');
+      out.width  = src.width;
+      out.height = src.height;
+      const ctx = out.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, out.width, out.height);
+      ctx.drawImage(src, 0, 0);
+      out.toBlob((blob) => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -1371,8 +1310,6 @@ class LiquidGradientEffect {
         btn.textContent = 'Downloaded!';
         setTimeout(() => { btn.textContent = orig; }, 1500);
       }, 'image/png');
-
-      console.log(`Output downloaded at ${imgW}×${imgH} (native image size)`);
     } catch (error) {
       console.error('Failed to download output image:', error);
       alert('Failed to download output image: ' + error.message);

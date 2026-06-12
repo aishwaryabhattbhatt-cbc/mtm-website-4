@@ -5,7 +5,8 @@ import ProductsHeroSection from '../../../components/products/ProductsHeroSectio
 import Mtm18PlusFeaturesSection from '../../../components/products/Mtm18PlusFeaturesSection.astro';
 import Mtm18PlusToolsSection from '../../../components/products/Mtm18PlusToolsSection.astro';
 import Mtm18PlusReportsSection from '../../../components/products/Mtm18PlusReportsSection.astro';
-import Mtm18PlusMethodologySection from '../../../components/products/Mtm18PlusMethodologySection.astro';
+import ProductMethodologySection from '../../../components/products/ProductMethodologySection.astro';
+import Mtm18PlusExploreMoreSection from '../../../components/products/Mtm18PlusExploreMoreSection.astro';
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import type { Locale } from '../../../lib/cms/types';
@@ -65,7 +66,13 @@ const pageDescription =
 
         <Mtm18PlusReportsSection locale={locale} copy={copy} />
 
-        <Mtm18PlusMethodologySection locale={locale} copy={copy} />
+        <ProductMethodologySection
+            locale={locale}
+            copy={copy}
+            providerLogoSrc={`${base}images/products/mtm-18-plus/forum_research_logo.png`}
+        />
+
+        <Mtm18PlusExploreMoreSection locale={locale} copy={copy} />
 
         <HomeFooterSection locale={locale} copy={copy} />
     </main>

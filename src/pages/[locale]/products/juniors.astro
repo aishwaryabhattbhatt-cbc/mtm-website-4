@@ -1,14 +1,18 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Navbar from '../../../components/shared/Navbar.astro';
+import ProductsHeroSection from '../../../components/products/ProductsHeroSection.astro';
+import JuniorsFeaturesSection from '../../../components/products/JuniorsFeaturesSection.astro';
+import JuniorsToolsSection from '../../../components/products/JuniorsToolsSection.astro';
+import JuniorsReportsSection from '../../../components/products/JuniorsReportsSection.astro';
+import ProductMethodologySection from '../../../components/products/ProductMethodologySection.astro';
+import JuniorsExploreMoreSection from '../../../components/products/JuniorsExploreMoreSection.astro';
+import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import type { Locale } from '../../../lib/cms/types';
 
 export function getStaticPaths() {
-  return [
-    { params: { locale: 'en' } },
-    { params: { locale: 'fr' } },
-  ];
+    return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
 }
 
 const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
@@ -16,47 +20,81 @@ const pageId = 'juniors';
 const copy = await getPageDictionary(pageId);
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;
-const resolvedCmsCsvUrl = cmsConfig.csvUrl ?? (cmsConfig.sheetId && cmsConfig.gid
-  ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
-  : '');
+const resolvedCmsCsvUrl =
+    cmsConfig.csvUrl ??
+    (cmsConfig.sheetId && cmsConfig.gid
+        ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
+        : '');
 
 const localeSwitchUrls = {
-  en: `${base}en/products/juniors/`,
-  fr: `${base}fr/products/juniors/`,
+    en: `${base}en/products/juniors/`,
+    fr: `${base}fr/products/juniors/`,
 };
 
 const pageTitle = locale === 'fr' ? 'MTM | Juniors' : 'MTM | Juniors';
-const pageDescription = locale === 'fr'
-  ? 'Données sur les habitudes médiatiques et technologiques des jeunes Canadiens.'
-  : 'Data on media and technology habits of young Canadians.';
+const pageDescription =
+    locale === 'fr'
+        ? 'Données sur les habitudes médiatiques et technologiques des jeunes Canadiens.'
+        : 'Data on media and technology habits of young Canadians.';
 ---
 
-<Layout title={pageTitle} description={pageDescription} locale={locale} alternates={localeSwitchUrls}>
-  <main
-    data-locale={locale}
-    data-cms-page-id={pageId}
-    data-cms-csv-url={resolvedCmsCsvUrl}
-    data-cms-sheet-id={cmsConfig.sheetId ?? ''}
-    data-cms-tab-gid={cmsConfig.gid ?? ''}
-    data-cms-refresh-ms={String(cmsConfig.refreshMs)}
-  >
-    <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+>
+    <main
+        data-locale={locale}
+        data-cms-page-id={pageId}
+        data-cms-csv-url={resolvedCmsCsvUrl}
+        data-cms-sheet-id={cmsConfig.sheetId ?? ''}
+        data-cms-tab-gid={cmsConfig.gid ?? ''}
+        data-cms-refresh-ms={String(cmsConfig.refreshMs)}
+    >
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-    <!-- Juniors page content goes here -->
+        <ProductsHeroSection
+            locale={locale}
+            copy={copy}
+            ctaHref={`${base}${locale}/request-demo/`}
+            heroImageSrc={`${base}images/products/mtm-junior/hero-banner.png`}
+        />
 
-  </main>
+        <JuniorsFeaturesSection locale={locale} copy={copy} />
 
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      name: pageTitle,
-      url: localeSwitchUrls[locale],
-    })} />
-  </Fragment>
+        <JuniorsToolsSection locale={locale} copy={copy} />
 
-  <Fragment slot="scripts">
-    <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script is:inline src={`${base}js/runtime/script.js`}></script>
-  </Fragment>
+        <JuniorsReportsSection locale={locale} copy={copy} />
+
+        <ProductMethodologySection
+            locale={locale}
+            copy={copy}
+            showComposition={false}
+            providerLogoSrc={`${base}images/products/mtm-junior/adhoc_research_logo.png`}
+        />
+
+        <JuniorsExploreMoreSection locale={locale} copy={copy} />
+
+        <HomeFooterSection locale={locale} copy={copy} />
+    </main>
+
+    <Fragment slot="head">
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebPage',
+                name: pageTitle,
+                url: localeSwitchUrls[locale],
+            })}
+        />
+    </Fragment>
+
+    <Fragment slot="scripts">
+        <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
+        ></script>
+        <script is:inline src={`${base}js/runtime/script.js`}></script>
+    </Fragment>
 </Layout>

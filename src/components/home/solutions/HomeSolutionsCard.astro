@@ -28,12 +28,23 @@ const forceHover = state === 'hover';
 
 <article class={`solutions-card${forceHover ? ' is-hover' : ''}`} data-state={state}>
     <div class="solutions-card__image-wrap">
-        <img class="solutions-card__image" src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
+        <img
+            class="solutions-card__image"
+            src={imageSrc}
+            alt={imageAlt}
+            loading="lazy"
+            decoding="async"
+        />
     </div>
 
     <div class="solutions-card__content">
         <div class="solutions-card__header">
-            <img class="solutions-card__icon icon icon-l" src={iconPath} alt="" aria-hidden="true" />
+            <img
+                class="solutions-card__icon icon icon-l"
+                src={iconPath}
+                alt=""
+                aria-hidden="true"
+            />
             <h3 class="product-name text-body-p2" data-copy-key={titleKey}>{title}</h3>
         </div>
 
@@ -46,7 +57,7 @@ const forceHover = state === 'hover';
 <style>
     .solutions-card {
         background: var(--surface-white);
-        border-radius: var(--radius-m);
+        border-radius: var(--layout-card-radius);
         box-shadow: var(--shadow-e1);
         overflow: hidden;
         width: 100%;
@@ -79,7 +90,9 @@ const forceHover = state === 'hover';
         padding: var(--space-4);
         background: var(--surface-white);
         height: calc(100% - var(--card-image-height-default));
-        transition: height 220ms ease, gap 200ms ease;
+        transition:
+            height 220ms ease,
+            gap 200ms ease;
     }
 
     .solutions-card__header {
@@ -120,7 +133,10 @@ const forceHover = state === 'hover';
         max-height: 0;
         overflow: hidden;
         pointer-events: none;
-        transition: opacity 200ms ease, max-height 200ms ease, margin-top 200ms ease;
+        transition:
+            opacity 200ms ease,
+            max-height 200ms ease,
+            margin-top 200ms ease;
     }
 
     .solutions-card__cta.btn-tertiary {
@@ -172,7 +188,8 @@ const forceHover = state === 'hover';
                 const styles = window.getComputedStyle(title);
                 const lineHeight = Number.parseFloat(styles.lineHeight);
                 const titleHeight = title.getBoundingClientRect().height;
-                const isSingleLine = Number.isFinite(lineHeight) && titleHeight <= lineHeight * 1.35;
+                const isSingleLine =
+                    Number.isFinite(lineHeight) && titleHeight <= lineHeight * 1.35;
 
                 header.classList.toggle('is-single-line', isSingleLine);
             });

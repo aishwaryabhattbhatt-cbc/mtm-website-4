@@ -20,8 +20,10 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
     home: '',
     'mtm-18-plus':
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=7615361&single=true&output=csv',
-    juniors: '',
-    newcomers: '',
+    juniors:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=1128385549&single=true&output=csv',
+    newcomers:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=1277962868&single=true&output=csv',
     census: '',
     'analytic-tools': '',
     'census-tool': '',

@@ -1,0 +1,307 @@
+{
+  "hero_title": {
+    "key": "hero_title",
+    "en": "",
+    "fr": ""
+  },
+  "hero_description": {
+    "key": "hero_description",
+    "en": "Our newest Analytic product, MTM Newcomers focuses on those who have come to Canada within the last 5 years. Get all you need to understand the media and tech habits of this growing demographic.",
+    "fr": ""
+  },
+  "hero_cta": {
+    "key": "hero_cta",
+    "en": "Request a Demo",
+    "fr": ""
+  },
+  "Features": {
+    "key": "Features",
+    "en": "",
+    "fr": ""
+  },
+  "feature_1_title": {
+    "key": "feature_1_title",
+    "en": "5+ Years Of Data",
+    "fr": ""
+  },
+  "feature_1_description": {
+    "key": "feature_1_description",
+    "en": "Our full data set, readily available for clients.",
+    "fr": ""
+  },
+  "feature_2_title": {
+    "key": "feature_2_title",
+    "en": "Newcomers, New Audiences",
+    "fr": ""
+  },
+  "feature_2_description": {
+    "key": "feature_2_description",
+    "en": "Newcomers represent one of the fastest growing segments of the Canadian population, and MTM Newcomers is your ticket to reaching them.",
+    "fr": ""
+  },
+  "feature_3_title": {
+    "key": "feature_3_title",
+    "en": "A Large, Diverse Sample",
+    "fr": ""
+  },
+  "feature_3_description": {
+    "key": "feature_3_description",
+    "en": "We survey more than 4,000 newcomers annually and an additional 1,000 Canadian-born respondents as a control sample.",
+    "fr": ""
+  },
+  "feature_4_title": {
+    "key": "feature_4_title",
+    "en": "A Survey Conducted In 12 Languages",
+    "fr": ""
+  },
+  "feature_4_description": {
+    "key": "feature_4_description",
+    "en": "Tagalog, Cantonese, Mandarin, French and English and more, ensuring all newcomers can participate.",
+    "fr": ""
+  },
+  "feature_5_title": {
+    "key": "feature_5_title",
+    "en": "Interviewing Online And In-Person Across Canada",
+    "fr": ""
+  },
+  "feature_5_description": {
+    "key": "feature_5_description",
+    "en": "A national online study paired with in-person interviews across 6 major Canadian cities.",
+    "fr": ""
+  },
+  "tools_title": {
+    "key": "tools_title",
+    "en": "Tools",
+    "fr": ""
+  },
+  "tools_description": {
+    "key": "tools_description",
+    "en": "Dive deep into MTM Newcomers data with our easy-to-use web-based tools.",
+    "fr": ""
+  },
+  "dat_title": {
+    "key": "dat_title",
+    "en": "Data Analysis Tool",
+    "fr": ""
+  },
+  "dat_description": {
+    "key": "dat_description",
+    "en": "The Data Analysis Tool (DAT) allows clients to examine both newcomer and Canadian-born respondents, and drill down to the groups that matter to them the most.",
+    "fr": ""
+  },
+  "dat_cta": {
+    "key": "dat_cta",
+    "en": "Learn More",
+    "fr": ""
+  },
+  "dat_callout": {
+    "key": "dat_callout",
+    "en": "Are newcomers spending more time than Canadian-born individuals on social media? See the whole social media landscape with the DAT.",
+    "fr": ""
+  },
+  "???(Key Insights text?)": {
+    "key": "???(Key Insights text?)",
+    "en": "Key Insights\nNewcomers spend almost twice as much time using social media as Canadian-born individuals in a typical week.",
+    "fr": ""
+  },
+  "report_title": {
+    "key": "report_title",
+    "en": "Top Trends Report",
+    "fr": ""
+  },
+  "report_description": {
+    "key": "report_description",
+    "en": "Your guide to newcomers starts here, with the latest data you need to know.",
+    "fr": ""
+  },
+  "graph_name": {
+    "key": "graph_name",
+    "en": "Consuming Content In Non-Official Languages",
+    "fr": ""
+  },
+  "graph_detail": {
+    "key": "graph_detail",
+    "en": "Newcomers 18+",
+    "fr": ""
+  },
+  "stat_1_value": {
+    "key": "stat_1_value",
+    "en": "48%",
+    "fr": ""
+  },
+  "stat_1_description": {
+    "key": "stat_1_description",
+    "en": "Almost half of newcomers watch TV or video content in a language other than English or French.",
+    "fr": ""
+  },
+  "stat_2_value": {
+    "key": "stat_2_value",
+    "en": "33%",
+    "fr": ""
+  },
+  "stat_2_description": {
+    "key": "stat_2_description",
+    "en": "One-third access news content in a language other than English or French.",
+    "fr": ""
+  },
+  "methodology_title": {
+    "key": "methodology_title",
+    "en": "Research Methodology",
+    "fr": ""
+  },
+  "methodology_description": {
+    "key": "methodology_description",
+    "en": "MTM Newcomers employs a mixed approach, employing an online panel to survey across Canada as well as in-person interviews in 6 major cities. Newcomers are defined as those who have come to Canada within the past 5 years.",
+    "fr": ""
+  },
+  "methodology_cta": {
+    "key": "methodology_cta",
+    "en": "Download Methodology Data",
+    "fr": ""
+  },
+  "sample_title": {
+    "key": "sample_title",
+    "en": "Sample Coverage",
+    "fr": ""
+  },
+  "sample_stat_1": {
+    "key": "sample_stat_1",
+    "en": "4,000+",
+    "fr": ""
+  },
+  "sample_stat_1_label": {
+    "key": "sample_stat_1_label",
+    "en": "Newcomers surveyed",
+    "fr": ""
+  },
+  "sample_stat_1_description": {
+    "key": "sample_stat_1_description",
+    "en": "A large, wide ranging sample.",
+    "fr": ""
+  },
+  "sample_stat_2": {
+    "key": "sample_stat_2",
+    "en": "1,000+",
+    "fr": ""
+  },
+  "sample_stat_2_label": {
+    "key": "sample_stat_2_label",
+    "en": "Canadian-born individuals surveyed",
+    "fr": ""
+  },
+  "sample_stat_2_description": {
+    "key": "sample_stat_2_description",
+    "en": "A control sample to understand how newcomers differ.",
+    "fr": ""
+  },
+  "sample_stat_3": {
+    "key": "sample_stat_3",
+    "en": "5",
+    "fr": ""
+  },
+  "sample_stat_3_label": {
+    "key": "sample_stat_3_label",
+    "en": "Regions Of Origin",
+    "fr": ""
+  },
+  "sample_stat_3_description": {
+    "key": "sample_stat_3_description",
+    "en": "Viable newcomer samples from Asia, Africa, Europe and the Americas.",
+    "fr": ""
+  },
+  "survey_title": {
+    "key": "survey_title",
+    "en": "Survey Design",
+    "fr": ""
+  },
+  "survey_stat_1": {
+    "key": "survey_stat_1",
+    "en": "5+",
+    "fr": ""
+  },
+  "survey_stat_1_label": {
+    "key": "survey_stat_1_label",
+    "en": "Years of data collection",
+    "fr": ""
+  },
+  "survey_stat_1_description": {
+    "key": "survey_stat_1_description",
+    "en": "Industry standard level tracking",
+    "fr": ""
+  },
+  "survey_stat_2": {
+    "key": "survey_stat_2",
+    "en": "Always refining",
+    "fr": ""
+  },
+  "survey_stat_2_label": {
+    "key": "survey_stat_2_label",
+    "en": "Survey is updated annually",
+    "fr": ""
+  },
+  "survey_stat_2_description": {
+    "key": "survey_stat_2_description",
+    "en": "Ensuring new data on emergent technologies",
+    "fr": ""
+  },
+  "survey_stat_3_label": {
+    "key": "survey_stat_3_label",
+    "en": "12 Languages",
+    "fr": ""
+  },
+  "survey_stat_3_description": {
+    "key": "survey_stat_3_description",
+    "en": "Ensures the majority of the newcomer population can participate in the survey.",
+    "fr": ""
+  },
+  "data_collected_title": {
+    "key": "data_collected_title",
+    "en": "",
+    "fr": ""
+  },
+  "method_1": {
+    "key": "method_1",
+    "en": "Remove",
+    "fr": ""
+  },
+  "method_1_percentage": {
+    "key": "method_1_percentage",
+    "en": "Remove",
+    "fr": ""
+  },
+  "method_1_unit": {
+    "key": "method_1_unit",
+    "en": "Remove",
+    "fr": ""
+  },
+  "method_2": {
+    "key": "method_2",
+    "en": "Remove",
+    "fr": ""
+  },
+  "method_2_percentage": {
+    "key": "method_2_percentage",
+    "en": "Remove",
+    "fr": ""
+  },
+  "method_2_unit": {
+    "key": "method_2_unit",
+    "en": "Remove",
+    "fr": ""
+  },
+  "provider_title": {
+    "key": "provider_title",
+    "en": "Research Provider",
+    "fr": ""
+  },
+  "provider_label": {
+    "key": "provider_label",
+    "en": "Leger Research",
+    "fr": ""
+  },
+  "provider_description": {
+    "key": "provider_description",
+    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. The research was conducted by Léger during the Summer of 2025.\r\n\nLéger is the largest Canadian-owned market research and analytics company, with more than 600 employees in Canada and the United States.",
+    "fr": ""
+  }
+}

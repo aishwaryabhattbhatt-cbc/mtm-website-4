@@ -1,0 +1,91 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Reports from '../shared/Reports.astro';
+
+interface StatItem {
+    iconSrc: string;
+    metric: string;
+    description: string;
+}
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    imageSrc: string;
+    imageAlt?: string;
+    graphIconSrc: string;
+    graphTitle: string;
+    graphDetail: string;
+    chartSrc: string;
+    chartAlt?: string;
+    ctaLabel: string;
+    ctaHref: string;
+    insightsHref: string;
+    sampleReportHref: string;
+    stats: StatItem[];
+}
+
+const {
+    locale,
+    copy,
+    imageSrc,
+    imageAlt = '',
+    graphIconSrc,
+    graphTitle,
+    graphDetail,
+    chartSrc,
+    chartAlt = '',
+    ctaLabel,
+    ctaHref,
+    insightsHref,
+    sampleReportHref,
+    stats,
+} = Astro.props as Props;
+---
+
+<section class="product-reports-section">
+    <div class="product-reports-headline">
+        <h2 data-copy-key="report_title">
+            {t(copy, 'report_title', locale, 'Reports')}
+        </h2>
+        <p class="text-body-p1 product-reports-description" data-copy-key="report_description">
+            {t(copy, 'report_description', locale, '')}
+        </p>
+    </div>
+
+    <Reports
+        imageSrc={imageSrc}
+        imageAlt={imageAlt}
+        graphIconSrc={graphIconSrc}
+        graphTitle={graphTitle}
+        graphDetail={graphDetail}
+        chartSrc={chartSrc}
+        chartAlt={chartAlt}
+        ctaHref={ctaHref}
+        insightsHref={insightsHref}
+        sampleReportHref={sampleReportHref}
+        ctaLabel={ctaLabel}
+        stats={stats}
+    />
+</section>
+
+<style>
+    .product-reports-section {
+        width: 100%;
+        padding: var(--space-13) var(--content-margin-inline);
+        background-color: var(--surface-blue);
+    }
+
+    .product-reports-headline {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        margin-bottom: var(--space-9);
+    }
+
+    .product-reports-description {
+        color: var(--text-primary);
+        margin: 0;
+    }
+</style>

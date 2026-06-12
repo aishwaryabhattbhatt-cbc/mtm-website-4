@@ -1,0 +1,513 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Product {
+    id: string;
+    name: string;
+    desc: string;
+    href: string;
+    bg: ImageMetadata;
+    people: ImageMetadata;
+    chartSrc: string;
+    chevronFill: string;
+}
+
+interface Props {
+    heading: string;
+    products: Product[];
+}
+
+const { heading, products } = Astro.props as Props;
+---
+
+<section class="explore-more-section">
+    <div class="explore-header">
+        <h2>{heading}</h2>
+        <div class="explore-nav">
+            <button
+                class="explore-nav-btn explore-nav-prev"
+                aria-label="Previous product"
+                type="button"
+            >
+                <svg
+                    width="8"
+                    height="13"
+                    viewBox="0 0 8 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M7 1L1 6.5L7 12"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </button>
+            <button
+                class="explore-nav-btn explore-nav-next"
+                aria-label="Next product"
+                type="button"
+            >
+                <svg
+                    width="8"
+                    height="13"
+                    viewBox="0 0 8 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M1 1L7 6.5L1 12"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Desktop: 3-column grid -->
+    <div class="explore-cards-desktop">
+        {
+            products.map((product) => (
+                <a class="explore-card" href={product.href}>
+                    <div class="explore-card-image">
+                        <Image class="explore-card-bg" src={product.bg} alt="" loading="lazy" />
+                        <img
+                            class="explore-card-chart"
+                            src={product.chartSrc}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <Image
+                            class="explore-card-people"
+                            src={product.people}
+                            alt={product.name}
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="explore-card-info">
+                        <div class="explore-card-text">
+                            <p class="explore-card-name text-body-p1-bold">{product.name}</p>
+                            <p class="explore-card-desc text-body-p3">{product.desc}</p>
+                        </div>
+                        <span class="explore-card-chevron" aria-hidden="true">
+                            <svg
+                                width="100%"
+                                height="100%"
+                                viewBox="0 0 15 22"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g clip-path={`url(#clip-dt-${product.id})`}>
+                                    <path
+                                        d="M3.86782 5.53252C4.79584 5.53252 5.54815 4.78021 5.54815 3.8522C5.54815 2.92418 4.79584 2.17188 3.86782 2.17188C2.93981 2.17188 2.1875 2.92418 2.1875 3.8522C2.1875 4.78021 2.93981 5.53252 3.86782 5.53252Z"
+                                        fill={product.chevronFill}
+                                    />
+                                    <path
+                                        d="M7.64712 9.31231C8.57514 9.31231 9.32744 8.56 9.32744 7.63198C9.32744 6.70397 8.57514 5.95166 7.64712 5.95166C6.7191 5.95166 5.9668 6.70397 5.9668 7.63198C5.9668 8.56 6.7191 9.31231 7.64712 9.31231Z"
+                                        fill={product.chevronFill}
+                                    />
+                                    <path
+                                        d="M3.86782 20.6502C4.79584 20.6502 5.54815 19.8979 5.54815 18.9699C5.54815 18.0419 4.79584 17.2896 3.86782 17.2896C2.93981 17.2896 2.1875 18.0419 2.1875 18.9699C2.1875 19.8979 2.93981 20.6502 3.86782 20.6502Z"
+                                        fill={product.chevronFill}
+                                    />
+                                    <path
+                                        d="M7.64712 16.8714C8.57514 16.8714 9.32744 16.1191 9.32744 15.1911C9.32744 14.263 8.57514 13.5107 7.64712 13.5107C6.7191 13.5107 5.9668 14.263 5.9668 15.1911C5.9668 16.8714 7.64712 16.8714Z"
+                                        fill={product.chevronFill}
+                                    />
+                                    <path
+                                        d="M11.4284 13.0921C12.3564 13.0921 13.1087 12.3398 13.1087 11.4118C13.1087 10.4838 12.3564 9.73145 11.4284 9.73145C10.5004 9.73145 9.74805 10.4838 9.74805 11.4118C9.74805 12.3398 10.5004 13.0921 11.4284 13.0921Z"
+                                        fill={product.chevronFill}
+                                    />
+                                </g>
+                                <defs>
+                                    <clipPath id={`clip-dt-${product.id}`}>
+                                        <rect width="14.2353" height="22" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            ))
+        }
+    </div>
+
+    <!-- Mobile: horizontal scroll -->
+    <div class="explore-cards-mobile" id="exploreMobileScroll">
+        {
+            products.map((product) => (
+                <a class="explore-mobile-card" href={product.href}>
+                    <div class="explore-mobile-image">
+                        <Image class="explore-mobile-bg" src={product.bg} alt="" loading="lazy" />
+                        <img
+                            class="explore-mobile-chart"
+                            src={product.chartSrc}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <Image
+                            class="explore-mobile-people"
+                            src={product.people}
+                            alt={product.name}
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="explore-mobile-info">
+                        <div class="explore-mobile-text">
+                            <span class="explore-mobile-name text-body-p1-bold">
+                                {product.name}
+                            </span>
+                            <span class="explore-mobile-desc text-body-p3">{product.desc}</span>
+                        </div>
+                        <span class="explore-mobile-chevron" aria-hidden="true">
+                            <svg
+                                width="100%"
+                                height="100%"
+                                viewBox="0 0 15 22"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g clip-path={`url(#clip-em-${product.id})`}>
+                                    <path
+                                        d="M3.86782 5.53252C4.79584 5.53252 5.54815 4.78021 5.54815 3.8522C5.54815 2.92418 4.79584 2.17188 3.86782 2.17188C2.93981 2.17188 2.1875 2.92418 2.1875 3.8522C2.1875 4.78021 2.93981 5.53252 3.86782 5.53252Z"
+                                        fill={product.chevronFill}
+                                    />
+                                    <path
+                                        d="M7.64712 9.31231C8.57514 9.31231 9.32744 8.56 9.32744 7.63198C9.32744 6.70397 8.57514 5.95166 7.64712 5.95166C6.7191 5.95166 5.9668 6.70397 5.9668 7.63198C5.9668 8.56 6.7191 9.31231 7.64712 9.31231Z"
+                                        fill={product.chevronFill}
+                                    />
+                                    <path
+                                        d="M3.86782 20.6502C4.79584 20.6502 5.54815 19.8979 5.54815 18.9699C5.54815 18.0419 4.79584 17.2896 3.86782 17.2896C2.93981 17.2896 2.1875 18.0419 2.1875 18.9699C2.1875 19.8979 2.93981 20.6502 3.86782 20.6502Z"
+                                        fill={product.chevronFill}
+                                    />
+                                    <path
+                                        d="M7.64712 16.8714C8.57514 16.8714 9.32744 16.1191 9.32744 15.1911C9.32744 14.263 8.57514 13.5107 7.64712 13.5107C6.7191 13.5107 5.9668 14.263 5.9668 15.1911C5.9668 16.8714 7.64712 16.8714Z"
+                                        fill={product.chevronFill}
+                                    />
+                                    <path
+                                        d="M11.4284 13.0921C12.3564 13.0921 13.1087 12.3398 13.1087 11.4118C13.1087 10.4838 12.3564 9.73145 11.4284 9.73145C10.5004 9.73145 9.74805 10.4838 9.74805 11.4118C9.74805 12.3398 10.5004 13.0921 11.4284 13.0921Z"
+                                        fill={product.chevronFill}
+                                    />
+                                </g>
+                                <defs>
+                                    <clipPath id={`clip-em-${product.id}`}>
+                                        <rect width="14.2353" height="22" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .explore-more-section {
+        width: 100%;
+        padding: var(--space-12) var(--content-margin-inline);
+        background: var(--surface-white);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .explore-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .explore-header h2 {
+        margin: 0;
+    }
+
+    .explore-nav {
+        display: none;
+        gap: var(--space-2);
+    }
+
+    .explore-nav-btn {
+        width: 1.375rem;
+        height: 1.375rem;
+        border-radius: var(--radius-full);
+        border: var(--stroke-1) solid var(--border-primary);
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+        transition: background-color 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    .explore-nav-btn:hover {
+        background: var(--surface-primary);
+    }
+
+    .explore-cards-desktop {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--layout-card-gap);
+    }
+
+    .explore-card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        text-decoration: none;
+        color: inherit;
+        border-radius: var(--radius-s);
+    }
+
+    .explore-card-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 5 / 3;
+        border-radius: var(--radius-s);
+        overflow: hidden;
+    }
+
+    .explore-card-image .explore-card-bg,
+    .explore-card-image .explore-card-people {
+        transition: transform 0.4s ease;
+    }
+
+    .explore-card:hover .explore-card-image .explore-card-bg,
+    .explore-card:hover .explore-card-image .explore-card-people {
+        transform: scale(1.05);
+    }
+
+    .explore-card-bg {
+        position: absolute;
+        inset: 0;
+        width: 110%;
+        height: 100%;
+        object-fit: cover;
+        left: -1.125rem;
+    }
+
+    .explore-card-chart {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .explore-card-people {
+        position: absolute;
+        inset: 0;
+        width: 110%;
+        height: 100%;
+        object-fit: cover;
+        left: -1.125rem;
+        z-index: 3;
+    }
+
+    .explore-card-info {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-6);
+    }
+
+    .explore-card-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        min-width: 0;
+    }
+
+    .explore-card-name {
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .explore-card-desc {
+        color: var(--text-secondary);
+        margin: 0;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .explore-card-chevron {
+        flex-shrink: 0;
+        width: 0.875rem;
+        height: 1.375rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .explore-card:hover .explore-card-desc,
+    .explore-card:hover .explore-card-chevron {
+        opacity: 1;
+    }
+
+    .explore-cards-mobile {
+        display: none;
+        gap: var(--layout-card-gap);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        margin-right: calc(-1 * var(--content-margin-inline));
+        padding-right: var(--content-margin-inline);
+        padding-bottom: var(--space-1);
+    }
+
+    .explore-cards-mobile::-webkit-scrollbar {
+        display: none;
+    }
+
+    .explore-mobile-card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        width: 17.1875rem;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .explore-mobile-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 5 / 3;
+        border-radius: var(--radius-s);
+        overflow: hidden;
+    }
+
+    .explore-mobile-bg {
+        position: absolute;
+        inset: 0;
+        width: 110%;
+        height: 100%;
+        object-fit: cover;
+        left: -1.125rem;
+    }
+
+    .explore-mobile-chart {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .explore-mobile-people {
+        position: absolute;
+        inset: 0;
+        width: 110%;
+        height: 100%;
+        object-fit: cover;
+        left: -1.125rem;
+        z-index: 3;
+    }
+
+    .explore-mobile-info {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-6);
+    }
+
+    .explore-mobile-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        min-width: 0;
+    }
+
+    .explore-mobile-name {
+        color: var(--text-primary);
+    }
+
+    .explore-mobile-desc {
+        color: var(--text-secondary);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .explore-mobile-chevron {
+        flex-shrink: 0;
+        width: 0.875rem;
+        height: 1.375rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 1023px) {
+        .explore-cards-desktop {
+            display: none;
+        }
+
+        .explore-cards-mobile {
+            display: flex;
+        }
+
+        .explore-nav {
+            display: flex;
+        }
+
+        .explore-more-section {
+            padding-top: var(--space-8);
+            padding-bottom: var(--space-8);
+        }
+    }
+</style>
+
+<script>
+    const scroll = document.getElementById('exploreMobileScroll');
+    const nav = document.querySelector<HTMLElement>('.explore-nav');
+    const prev = document.querySelector<HTMLButtonElement>('.explore-nav-prev');
+    const next = document.querySelector<HTMLButtonElement>('.explore-nav-next');
+
+    if (scroll && nav && prev && next) {
+        const updateNavVisibility = () => {
+            const hasOverflow = scroll.scrollWidth > scroll.clientWidth;
+            nav.style.display = hasOverflow ? 'flex' : 'none';
+        };
+
+        const getScrollAmount = () => {
+            const card = scroll.firstElementChild as HTMLElement | null;
+            if (!card) return 0;
+            const gap = parseFloat(getComputedStyle(scroll).gap) || 0;
+            return card.offsetWidth + gap;
+        };
+
+        prev.addEventListener('click', () => {
+            scroll.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+
+        next.addEventListener('click', () => {
+            scroll.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+
+        updateNavVisibility();
+        window.addEventListener('resize', updateNavVisibility);
+    }
+</script>

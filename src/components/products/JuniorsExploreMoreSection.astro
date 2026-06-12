@@ -1,0 +1,75 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import bg18 from '../../assets/images/home/mtm-suite/home-products-bg-18.webp';
+import people18 from '../../assets/images/home/mtm-suite/home-products-people-18.webp';
+import bgNc from '../../assets/images/home/mtm-suite/home-products-bg-nc.webp';
+import peopleNc from '../../assets/images/home/mtm-suite/home-products-people-nc.webp';
+import bgCs from '../../assets/images/home/mtm-suite/home-products-bg-cs.webp';
+import peopleCs from '../../assets/images/home/mtm-suite/home-products-people-cs.webp';
+import chart18 from '../../assets/svg/home/data-products/mtm18plus.svg?url';
+import chartNc from '../../assets/svg/home/data-products/newcomers.svg?url';
+import chartCs from '../../assets/svg/home/data-products/census.svg?url';
+import ProductExploreMoreSection from './ProductExploreMoreSection.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const products = [
+    {
+        id: 'mtm18',
+        name: t(copy, 'product_1_title', locale, 'MTM 18+'),
+        desc: t(
+            copy,
+            'product_1_description',
+            locale,
+            'Media and technology data for Canadians aged 18 and older.'
+        ),
+        href: `${base}${locale}/products/mtm-18-plus/`,
+        bg: bg18,
+        people: people18,
+        chartSrc: chart18,
+        chevronFill: 'var(--badge-18plus)',
+    },
+    {
+        id: 'newcomer',
+        name: t(copy, 'product_3_title', locale, 'MTM Newcomers'),
+        desc: t(
+            copy,
+            'product_3_description',
+            locale,
+            'Research focused on Canadians who have arrived within the past five years'
+        ),
+        href: `${base}${locale}/products/newcomers/`,
+        bg: bgNc,
+        people: peopleNc,
+        chartSrc: chartNc,
+        chevronFill: 'var(--badge-newcomers)',
+    },
+    {
+        id: 'census',
+        name: t(copy, 'product_4_title', locale, 'MTM Census Tool'),
+        desc: t(
+            copy,
+            'product_4_description',
+            locale,
+            'Comprehensive demographic and population data for enhanced analysis and targeting'
+        ),
+        href: `${base}${locale}/products/census/`,
+        bg: bgCs,
+        people: peopleCs,
+        chartSrc: chartCs,
+        chevronFill: 'var(--badge-census)',
+    },
+];
+---
+
+<ProductExploreMoreSection
+    heading={t(copy, 'explore_title', locale, 'Explore More Data')}
+    products={products}
+/>
