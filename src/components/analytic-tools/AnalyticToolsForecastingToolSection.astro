@@ -1,0 +1,311 @@
+---
+// src/components/analytic-tools/AnalyticToolsForecastingToolSection.astro
+// Duplicated from TrendingToolSection — Forecasting Tool variant
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
+import ProductPill from '../shared/ProductPill.astro';
+import Button from '../shared/Button.astro';
+import Eyebrow from '../shared/Eyebrow.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    ctaHref?: string;
+}
+
+const { locale, copy, ctaHref = '#' } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="forecasting-tool-section" id="forecasting-tool">
+    <!-- row 1: image (8 cols) + content (4 cols) -->
+    <div class="forecasting-tool__visual">
+        <img
+            class="forecasting-tool__screen"
+            src={`${base}images/tools/forecasting-tool.png`}
+            alt={locale === 'fr' ? "Aperçu de l'outil Prévisions" : 'Forecasting Tool preview'}
+            loading="lazy"
+        />
+    </div>
+
+    <div class="forecasting-tool__content">
+        <div class="forecasting-tool__header">
+            <div class="forecasting-tool__title-row">
+                <img
+                    class="icon-3xl forecasting-tool__title-icon"
+                    src={`${base}${icons.tool.forecast}`}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                />
+                <h2 data-copy-key="tool_3_title">
+                    {t(copy, 'tool_3_title', locale, 'Forecasting Tool')}
+                </h2>
+            </div>
+            <div class="forecasting-tool__pills">
+                <ProductPill variant="mtm18plus" size="big" />
+            </div>
+            <p
+                class="text-body-p1 forecasting-tool__description"
+                data-copy-key="tool_3_description"
+            >
+                {
+                    t(
+                        copy,
+                        'tool_3_description',
+                        locale,
+                        'Project future technology adoption and model scenarios. Know where things are headed in the next 1 to 5 years.'
+                    )
+                }
+            </p>
+        </div>
+        <div class="forecasting-tool__cta">
+            <Button variant="secondary" size="md" href={ctaHref}>
+                {t(copy, 'tool_3_cta', locale, 'View Demo')}
+            </Button>
+        </div>
+    </div>
+
+    <!-- row 2: 3 feature cards (4 cols each) -->
+    <div class="forecasting-tool__feature forecasting-tool__feature--blue">
+        <Eyebrow>{t(copy, 'forecasting_feature_1_eyebrow', locale, 'What You Project')}</Eyebrow>
+        <div class="forecasting-tool__feature-content">
+            <p
+                class="text-body-p1 forecasting-tool__feature-title"
+                data-copy-key="forecasting_feature_1_title"
+            >
+                {
+                    t(
+                        copy,
+                        'forecasting_feature_1_title',
+                        locale,
+                        'Where technology adoption is heading and when'
+                    )
+                }
+            </p>
+            <p
+                class="text-body-p2 forecasting-tool__feature-desc"
+                data-copy-key="forecasting_feature_1_description"
+            >
+                {
+                    t(
+                        copy,
+                        'forecasting_feature_1_description',
+                        locale,
+                        "Multi-year projections built on MTM's nationally representative dataset and refined by industry experts."
+                    )
+                }
+            </p>
+        </div>
+    </div>
+
+    <div class="forecasting-tool__feature forecasting-tool__feature--teal">
+        <Eyebrow>{t(copy, 'forecasting_feature_2_eyebrow', locale, 'What You Model')}</Eyebrow>
+        <div class="forecasting-tool__feature-content">
+            <p
+                class="text-body-p1 forecasting-tool__feature-title"
+                data-copy-key="forecasting_feature_2_title"
+            >
+                {
+                    t(
+                        copy,
+                        'forecasting_feature_2_title',
+                        locale,
+                        'Key technologies like podcasts, AI tool usage, paid TV subscriptions and more'
+                    )
+                }
+            </p>
+            <p
+                class="text-body-p2 forecasting-tool__feature-desc"
+                data-copy-key="forecasting_feature_2_description"
+            >
+                {
+                    t(
+                        copy,
+                        'forecasting_feature_2_description',
+                        locale,
+                        'Explore a variety of different media and technology within a few clicks.'
+                    )
+                }
+            </p>
+        </div>
+    </div>
+
+    <div class="forecasting-tool__feature forecasting-tool__feature--purple">
+        <Eyebrow>{t(copy, 'forecasting_feature_3_eyebrow', locale, 'What You Compare')}</Eyebrow>
+        <div class="forecasting-tool__feature-content">
+            <p
+                class="text-body-p1 forecasting-tool__feature-title"
+                data-copy-key="forecasting_feature_3_title"
+            >
+                {
+                    t(
+                        copy,
+                        'forecasting_feature_3_title',
+                        locale,
+                        'National, Anglophone and Francophone markets'
+                    )
+                }
+            </p>
+            <p
+                class="text-body-p2 forecasting-tool__feature-desc"
+                data-copy-key="forecasting_feature_3_description"
+            >
+                {
+                    t(
+                        copy,
+                        'forecasting_feature_3_description',
+                        locale,
+                        'Find out how these markets align or differ with an eye toward the future.'
+                    )
+                }
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .forecasting-tool-section {
+        width: 100%;
+        background: var(--surface-white);
+        padding: var(--space-6) var(--content-margin-inline);
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: var(--layout-card-gap);
+        row-gap: var(--space-8);
+        align-items: start;
+    }
+
+    .forecasting-tool__visual {
+        grid-column: span 8;
+        background: var(--surface-blue);
+        border-radius: var(--radius-m);
+        padding: var(--space-10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .forecasting-tool__content {
+        grid-column: span 4;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+    }
+
+    .forecasting-tool__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .forecasting-tool__title-row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .forecasting-tool__pills {
+        display: flex;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+    }
+
+    .forecasting-tool__description {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .forecasting-tool__cta {
+        width: fit-content;
+    }
+
+    .forecasting-tool__screen {
+        width: 85%;
+        border-radius: var(--radius-s);
+        box-shadow: var(--shadow-card);
+        display: block;
+    }
+
+    .forecasting-tool__feature {
+        grid-column: span 4;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+        padding: var(--space-6);
+        border-radius: var(--radius-m);
+    }
+
+    .forecasting-tool__feature--blue {
+        background: #e8f3fd;
+    }
+    .forecasting-tool__feature--teal {
+        background: #e8f7f5;
+    }
+    .forecasting-tool__feature--purple {
+        background: #f7f4ff;
+    }
+
+    .forecasting-tool__feature-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .forecasting-tool__feature-title {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .forecasting-tool__feature-desc {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    @media (max-width: 1125px) {
+        .forecasting-tool-section {
+            grid-template-columns: 1fr;
+        }
+
+        .forecasting-tool__visual,
+        .forecasting-tool__content,
+        .forecasting-tool__feature {
+            grid-column: auto;
+        }
+
+        .forecasting-tool__visual {
+            margin-inline: calc(-1 * var(--content-margin-inline));
+            border-radius: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .forecasting-tool-section {
+            padding: var(--space-5) var(--content-margin-inline);
+        }
+
+        .forecasting-tool__content {
+            gap: var(--space-6);
+        }
+
+        .forecasting-tool__visual {
+            padding: var(--space-9) var(--space-4);
+        }
+
+        .forecasting-tool__feature {
+            padding: var(--space-4);
+        }
+    }
+</style>
+
+<style is:global>
+    /* Switch big pills to small size at mobile — crosses component boundary */
+    @media (max-width: 767px) {
+        .forecasting-tool__pills .product-pill--big {
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--fs-label-xs);
+        }
+    }
+</style>

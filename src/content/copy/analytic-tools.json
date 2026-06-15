@@ -1,0 +1,302 @@
+{
+  "hero_title": {
+    "key": "hero_title",
+    "en": "Data-Driven Decisions with Ease",
+    "fr": ""
+  },
+  "hero_description": {
+    "key": "hero_description",
+    "en": "Our analytic tools offer all you need understand of your desired audiences. Use the Data Analysis Tool (DAT) for thousands of variables and filters (MTM 18+, Juniors, Newcomers), the Trending Tool for identifying key trends, and the Forecasting Tool for reliable, accurate projections.",
+    "fr": ""
+  },
+  "hero_cta_1": {
+    "key": "hero_cta_1",
+    "en": "Request a Demo",
+    "fr": ""
+  },
+  "tool_1_title": {
+    "key": "tool_1_title",
+    "en": "Data Analysis Tool",
+    "fr": ""
+  },
+  "tool_1_tags": {
+    "key": "tool_1_tags",
+    "en": "MTM 18+, MTM Junior, MTM Newcomer",
+    "fr": ""
+  },
+  "tool_1_description": {
+    "key": "tool_1_description",
+    "en": "The Data Analysis Tool (DAT) offers subscribers easy access to MTM 18+, Junior and Newcomers data. Select data, filter results and get answers to burning questions.",
+    "fr": ""
+  },
+  "tool_1_cta": {
+    "key": "tool_1_cta",
+    "en": "View Demo",
+    "fr": ""
+  },
+  "dat_features_heading": {
+    "key": "dat_features_heading",
+    "en": "Tool Features",
+    "fr": ""
+  },
+  "dat_features_tagline": {
+    "key": "dat_features_tagline",
+    "en": "Unlock insights with precision",
+    "fr": ""
+  },
+  "dat_feature_1_title": {
+    "key": "dat_feature_1_title",
+    "en": "QUERY BUILDING",
+    "fr": ""
+  },
+  "dat_feature_1_label": {
+    "key": "dat_feature_1_label",
+    "en": "Easily create a custom query",
+    "fr": ""
+  },
+  "dat_feature_1_description": {
+    "key": "dat_feature_1_description",
+    "en": "Select query parameters, drag variables from the master list into output rows and columns. What you arrange is exactly what you get. No SQL or python, no analyst handoff, no waiting. Go from brief to cross-tab in minutes.",
+    "fr": ""
+  },
+  "dat_feature_2_title": {
+    "key": "dat_feature_2_title",
+    "en": "VARIABLES",
+    "fr": ""
+  },
+  "dat_feature_2_label": {
+    "key": "dat_feature_2_label",
+    "en": "Large, robust data sets at your fingertips",
+    "fr": ""
+  },
+  "dat_feature_2_description": {
+    "key": "dat_feature_2_description",
+    "en": "Thousands of variables covering demographics, device ownership, media habits, platform usage — all in a single searchable list by categories. When a client asks an unexpected question mid-meeting, you have the variables to answer it on the spot.",
+    "fr": ""
+  },
+  "dat_feature_3_title": {
+    "key": "dat_feature_3_title",
+    "en": "FILTERS",
+    "fr": ""
+  },
+  "dat_feature_3_label": {
+    "key": "dat_feature_3_label",
+    "en": "Refine your query with Quick or Additional Filters",
+    "fr": ""
+  },
+  "dat_feature_3_description": {
+    "key": "dat_feature_3_description",
+    "en": "Narrow your results by age gender or region with Quick Filters or apply any variables in the tool as filter using Additional Filters.",
+    "fr": ""
+  },
+  "dat_feature_4_title": {
+    "key": "dat_feature_4_title",
+    "en": "CUSTOM TABLES",
+    "fr": ""
+  },
+  "dat_feature_4_label": {
+    "key": "dat_feature_4_label",
+    "en": "Our data, your way",
+    "fr": ""
+  },
+  "dat_feature_4_description": {
+    "key": "dat_feature_4_description",
+    "en": "Easily adjust or refine your query with drag and drop functionality. No headaches, just a new table with new results in seconds.",
+    "fr": ""
+  },
+  "dat_feature_5_title": {
+    "key": "dat_feature_5_title",
+    "en": "OUTPUT FORMATS",
+    "fr": ""
+  },
+  "dat_feature_5_label": {
+    "key": "dat_feature_5_label",
+    "en": "Results in multiple formats",
+    "fr": ""
+  },
+  "dat_feature_5_description": {
+    "key": "dat_feature_5_description",
+    "en": "Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required. Use the YourData features (hyperlink to bottom of page) for even more display options.",
+    "fr": ""
+  },
+  "tool_2_title": {
+    "key": "tool_2_title",
+    "en": "Trending Tool",
+    "fr": ""
+  },
+  "tool_2_tags": {
+    "key": "tool_2_tags",
+    "en": "MTM 18+, MTM Junior",
+    "fr": ""
+  },
+  "tool_2_description": {
+    "key": "tool_2_description",
+    "en": "20+ years of data all in one place. Find all you need to know about past and present media technology with the Forecasting Tool.",
+    "fr": ""
+  },
+  "tool_2_cta": {
+    "key": "tool_2_cta",
+    "en": "View Demo",
+    "fr": ""
+  },
+  "trending_feature_1_eyebrow": {
+    "key": "trending_feature_1_eyebrow",
+    "en": "What You See",
+    "fr": ""
+  },
+  "trending_feature_1_title": {
+    "key": "trending_feature_1_title",
+    "en": "Which technologies are rising or losing ground",
+    "fr": ""
+  },
+  "trending_feature_1_description": {
+    "key": "trending_feature_1_description",
+    "en": "Track adoption curves across media types. Know which platforms are winning the streaming wars when it comes to your target audiences.",
+    "fr": ""
+  },
+  "trending_feature_2_eyebrow": {
+    "key": "trending_feature_2_eyebrow",
+    "en": "What You Track",
+    "fr": ""
+  },
+  "trending_feature_2_title": {
+    "key": "trending_feature_2_title",
+    "en": "Where your audiences are heading towards",
+    "fr": ""
+  },
+  "trending_feature_2_description": {
+    "key": "trending_feature_2_description",
+    "en": "Multiple years of seasonal updates means you can show momentum, not just a snapshot. Bring a clear trajectory and focus to your next client meeting.",
+    "fr": ""
+  },
+  "trending_feature_3_eyebrow": {
+    "key": "trending_feature_3_eyebrow",
+    "en": "What You Compare",
+    "fr": ""
+  },
+  "trending_feature_3_title": {
+    "key": "trending_feature_3_title",
+    "en": "Exhaustive filter options",
+    "fr": ""
+  },
+  "trending_feature_3_description": {
+    "key": "trending_feature_3_description",
+    "en": "See results by age, gender, region, education, income, household composition community size and more.",
+    "fr": ""
+  },
+  "tool_3_title": {
+    "key": "tool_3_title",
+    "en": "Forecasting Tool",
+    "fr": ""
+  },
+  "tool_3_tags": {
+    "key": "tool_3_tags",
+    "en": "MTM 18+",
+    "fr": ""
+  },
+  "tool_3_description": {
+    "key": "tool_3_description",
+    "en": "Project future technology adoption and model scenarios. Know where things are headed in the next 1 to 5 years.",
+    "fr": ""
+  },
+  "tool_3_cta": {
+    "key": "tool_3_cta",
+    "en": "View Demo",
+    "fr": ""
+  },
+  "forecasting_feature_1_eyebrow": {
+    "key": "forecasting_feature_1_eyebrow",
+    "en": "What You Project",
+    "fr": ""
+  },
+  "forecasting_feature_1_title": {
+    "key": "forecasting_feature_1_title",
+    "en": "Where technology adoption is heading and when",
+    "fr": ""
+  },
+  "forecasting_feature_1_description": {
+    "key": "forecasting_feature_1_description",
+    "en": "Multi-year projections built on MTM's nationally representative dataset and refined by industry experts. Not a guess — a model grounded in years of observed behaviour and perfected by talented minds.",
+    "fr": ""
+  },
+  "forecasting_feature_2_eyebrow": {
+    "key": "forecasting_feature_2_eyebrow",
+    "en": "What You Model",
+    "fr": ""
+  },
+  "forecasting_feature_2_title": {
+    "key": "forecasting_feature_2_title",
+    "en": "Key technologies like podcasts, AI tool usage, paid TV subscriptions and more",
+    "fr": ""
+  },
+  "forecasting_feature_2_description": {
+    "key": "forecasting_feature_2_description",
+    "en": "Explore a variety of different media and technology within a few clicks.",
+    "fr": ""
+  },
+  "forecasting_feature_3_eyebrow": {
+    "key": "forecasting_feature_3_eyebrow",
+    "en": "What You Compare",
+    "fr": ""
+  },
+  "forecasting_feature_3_title": {
+    "key": "forecasting_feature_3_title",
+    "en": "National, Anglophone and Francophone markets",
+    "fr": ""
+  },
+  "forecasting_feature_3_description": {
+    "key": "forecasting_feature_3_description",
+    "en": "Find out how these markets allign or don't with an eye toward the future.",
+    "fr": ""
+  },
+  "yourdata_title": {
+    "key": "yourdata_title",
+    "en": "",
+    "fr": ""
+  },
+  "yourdata_description": {
+    "key": "yourdata_description",
+    "en": "YourData is your personalized hub to save, organize, and export data queries across MTM tools. Build once, reuse, refine and easily export.",
+    "fr": ""
+  },
+  "yourdata_feature_1_title": {
+    "key": "yourdata_feature_1_title",
+    "en": "Smart Storage",
+    "fr": ""
+  },
+  "yourdata_feature_1_description": {
+    "key": "yourdata_feature_1_description",
+    "en": "Save all your DAT, Trending, and Forecasting queries in one place.",
+    "fr": ""
+  },
+  "yourdata_feature_2_title": {
+    "key": "yourdata_feature_2_title",
+    "en": "Custom Visualization",
+    "fr": ""
+  },
+  "yourdata_feature_2_description": {
+    "key": "yourdata_feature_2_description",
+    "en": "Modify colours, chart labels, legends and more, no extra software required.",
+    "fr": ""
+  },
+  "yourdata_feature_3_title": {
+    "key": "yourdata_feature_3_title",
+    "en": "Detailed Options",
+    "fr": ""
+  },
+  "yourdata_feature_3_description": {
+    "key": "yourdata_feature_3_description",
+    "en": "Create pie charts, bar charts or tables and have full control over labelling.",
+    "fr": ""
+  },
+  "yourdata_feature_4_title": {
+    "key": "yourdata_feature_4_title",
+    "en": "Flexible Exporting",
+    "fr": ""
+  },
+  "yourdata_feature_4_description": {
+    "key": "yourdata_feature_4_description",
+    "en": "Download report or presentation ready data, built your way.",
+    "fr": ""
+  }
+}

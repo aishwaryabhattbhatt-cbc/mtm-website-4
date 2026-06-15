@@ -1,0 +1,150 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    ctaHref: string;
+    heroImageSrc: string;
+    heroImageAlt?: string;
+    bgPatternSrc?: string;
+}
+
+const { locale, copy, ctaHref, heroImageSrc, heroImageAlt, bgPatternSrc } = Astro.props as Props;
+---
+
+<section class="tools-hero">
+    {
+        bgPatternSrc && (
+            <div class="tools-hero__pattern" aria-hidden="true">
+                <img src={bgPatternSrc} alt="" class="tools-hero__pattern-img" />
+            </div>
+        )
+    }
+
+    <div class="tools-hero__content">
+        <div class="tools-hero__text">
+            <h1 data-copy-key="hero_title">
+                {t(copy, 'hero_title', locale, 'Data-Driven Decisions with Ease')}
+            </h1>
+            <p class="text-body-p1 tools-hero__description" data-copy-key="hero_description">
+                {
+                    t(
+                        copy,
+                        'hero_description',
+                        locale,
+                        'Our analytic tools deliver targeted insights for media research. Use the Data Analysis Tool (DAT) for custom audience segment exploration (MTM 18+, Junior, Newcomers), the Trending Tool for identifying key trends, and the Forecasting Tool for reliable projections.'
+                    )
+                }
+            </p>
+        </div>
+        <Button variant="primary" size="lg" href={ctaHref}>
+            {t(copy, 'hero_cta_1', locale, 'Request a Demo')}
+        </Button>
+    </div>
+
+    <div class="tools-hero__mockup">
+        <img
+            class="tools-hero__screenshot"
+            src={heroImageSrc}
+            alt={heroImageAlt ?? 'MTM analytic tool dashboard'}
+            loading="eager"
+            decoding="async"
+        />
+    </div>
+</section>
+
+<style>
+    .tools-hero {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-7);
+        padding: var(--space-12) var(--content-margin-inline);
+        background: var(--surface-white);
+        overflow: hidden;
+        margin-top: var(--navbar-height);
+    }
+
+    .tools-hero__pattern {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120rem;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .tools-hero__pattern-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .tools-hero__content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-7);
+        width: 100%;
+        max-width: 89.75rem;
+    }
+
+    .tools-hero__text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        text-align: center;
+    }
+
+    .tools-hero__description {
+        max-width: 73.5rem;
+        color: var(--text-primary);
+        margin: 0;
+        text-align: center;
+    }
+
+    .tools-hero__mockup {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 61.5rem;
+    }
+
+    .tools-hero__screenshot {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: var(--radius-m);
+    }
+
+    @media (max-width: 1023px) {
+        .tools-hero {
+            margin-top: 0;
+        }
+
+        .tools-hero__pattern {
+            width: 100%;
+            left: 0;
+            transform: none;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .tools-hero {
+            gap: var(--space-9);
+            padding: var(--space-9) var(--content-margin-inline);
+        }
+
+        .tools-hero__text {
+            gap: var(--space-3);
+        }
+    }
+</style>

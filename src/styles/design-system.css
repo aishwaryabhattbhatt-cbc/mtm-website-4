@@ -390,6 +390,42 @@ h3,
     letter-spacing: var(--ls-body-lg);
 }
 
+.text-body-p1-upper {
+    font-family: var(--font-body);
+    font-size: var(--fs-body-l);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-relaxed);
+    letter-spacing: var(--ls-body-lg);
+    text-transform: uppercase;
+}
+
+.text-body-p1-bold-upper {
+    font-family: var(--font-body);
+    font-size: var(--fs-body-l);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-relaxed);
+    letter-spacing: var(--ls-body-lg);
+    text-transform: uppercase;
+}
+
+.text-body-p2-upper {
+    font-family: var(--font-body);
+    font-size: var(--fs-body-m);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-relaxed);
+    letter-spacing: var(--ls-body-md);
+    text-transform: uppercase;
+}
+
+.text-body-p2-bold-upper {
+    font-family: var(--font-body);
+    font-size: var(--fs-body-m);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-relaxed);
+    letter-spacing: var(--ls-body-md);
+    text-transform: uppercase;
+}
+
 .text-body-p2 {
     font-family: var(--font-body);
     font-size: var(--fs-body-m);
@@ -629,4 +665,30 @@ h3,
     font-weight: var(--fw-semibold);
     line-height: var(--lh-relaxed);
     letter-spacing: var(--ls-none);
+}
+
+/* ============================================
+   Component-specific responsive font overrides
+   (font-size only — all other properties stay from the text class)
+   ============================================ */
+
+/* DAT features card: title p1→p2, desc p2→p3 at mobile */
+@media (max-width: 767px) {
+    .dat-features__card-title {
+        font-size: var(--fs-body-m);
+    }
+    .dat-features__card-desc {
+        font-size: var(--fs-body-s);
+    }
+}
+
+/* Section title icons and YourData benefit icons: icon-3xl (4rem) → icon-2xl (3rem) at mobile */
+@media (max-width: 767px) {
+    .dat-section__title-icon,
+    .trending-tool__title-icon,
+    .forecasting-tool__title-icon,
+    .yourdata-section__benefit-icon {
+        width: 3rem;
+        height: 3rem;
+    }
 }

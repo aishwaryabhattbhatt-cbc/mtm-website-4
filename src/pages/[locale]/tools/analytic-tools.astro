@@ -1,14 +1,19 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Navbar from '../../../components/shared/Navbar.astro';
+import ToolsHeroSection from '../../../components/tools/ToolsHeroSection.astro';
+import ToolsPushDownNavSection from '../../../components/tools/ToolsPushDownNavSection.astro';
+import ToolsDataAnalysisSection from '../../../components/tools/ToolsDataAnalysisSection.astro';
+import ToolsDatFeaturesSection from '../../../components/tools/ToolsDatFeaturesSection.astro';
+import AnalyticToolsTrendingToolSection from '../../../components/analytic-tools/AnalyticToolsTrendingToolSection.astro';
+import AnalyticToolsForecastingToolSection from '../../../components/analytic-tools/AnalyticToolsForecastingToolSection.astro';
+import AnalyticToolsYourDataSection from '../../../components/analytic-tools/AnalyticToolsYourDataSection.astro';
+import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import type { Locale } from '../../../lib/cms/types';
 
 export function getStaticPaths() {
-  return [
-    { params: { locale: 'en' } },
-    { params: { locale: 'fr' } },
-  ];
+    return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
 }
 
 const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
@@ -16,47 +21,97 @@ const pageId = 'analytic-tools';
 const copy = await getPageDictionary(pageId);
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;
-const resolvedCmsCsvUrl = cmsConfig.csvUrl ?? (cmsConfig.sheetId && cmsConfig.gid
-  ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
-  : '');
+const resolvedCmsCsvUrl =
+    cmsConfig.csvUrl ??
+    (cmsConfig.sheetId && cmsConfig.gid
+        ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
+        : '');
 
 const localeSwitchUrls = {
-  en: `${base}en/tools/analytic-tools/`,
-  fr: `${base}fr/tools/analytic-tools/`,
+    en: `${base}en/tools/analytic-tools/`,
+    fr: `${base}fr/tools/analytic-tools/`,
 };
 
 const pageTitle = locale === 'fr' ? 'MTM | Outils analytiques' : 'MTM | Analytic Tools';
-const pageDescription = locale === 'fr'
-  ? 'Explorez les outils analytiques MTM pour des perspectives médiatiques approfondies.'
-  : 'Explore MTM analytic tools for in-depth media insights.';
+const pageDescription =
+    locale === 'fr'
+        ? 'Explorez les outils analytiques MTM pour des perspectives médiatiques approfondies.'
+        : 'Explore MTM analytic tools for in-depth media insights.';
 ---
 
-<Layout title={pageTitle} description={pageDescription} locale={locale} alternates={localeSwitchUrls}>
-  <main
-    data-locale={locale}
-    data-cms-page-id={pageId}
-    data-cms-csv-url={resolvedCmsCsvUrl}
-    data-cms-sheet-id={cmsConfig.sheetId ?? ''}
-    data-cms-tab-gid={cmsConfig.gid ?? ''}
-    data-cms-refresh-ms={String(cmsConfig.refreshMs)}
-  >
-    <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+>
+    <main
+        data-locale={locale}
+        data-cms-page-id={pageId}
+        data-cms-csv-url={resolvedCmsCsvUrl}
+        data-cms-sheet-id={cmsConfig.sheetId ?? ''}
+        data-cms-tab-gid={cmsConfig.gid ?? ''}
+        data-cms-refresh-ms={String(cmsConfig.refreshMs)}
+    >
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-    <!-- Analytic Tools page content goes here -->
+        <ToolsHeroSection
+            locale={locale}
+            copy={copy}
+            ctaHref={`${base}${locale}/request-demo/`}
+            heroImageSrc={`${base}images/tools/tool-analytic-hero.png`}
+            bgPatternSrc={`${base}images/tools/tools-hero-bg.png`}
+        />
 
-  </main>
+        <ToolsPushDownNavSection locale={locale} copy={copy} />
 
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      name: pageTitle,
-      url: localeSwitchUrls[locale],
-    })} />
-  </Fragment>
+        <ToolsDataAnalysisSection
+            locale={locale}
+            copy={copy}
+            ctaHref={`${base}${locale}/request-demo/`}
+        />
 
-  <Fragment slot="scripts">
-    <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script is:inline src={`${base}js/runtime/script.js`}></script>
-  </Fragment>
+        <ToolsDatFeaturesSection locale={locale} copy={copy} />
+
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+
+        <AnalyticToolsTrendingToolSection
+            locale={locale}
+            copy={copy}
+            ctaHref={`${base}${locale}/request-demo/`}
+        />
+
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+
+        <AnalyticToolsForecastingToolSection
+            locale={locale}
+            copy={copy}
+            ctaHref={`${base}${locale}/request-demo/`}
+        />
+
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+
+        <AnalyticToolsYourDataSection locale={locale} copy={copy} />
+
+        <HomeFooterSection locale={locale} copy={copy} />
+    </main>
+
+    <Fragment slot="head">
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebPage',
+                name: pageTitle,
+                url: localeSwitchUrls[locale],
+            })}
+        />
+    </Fragment>
+
+    <Fragment slot="scripts">
+        <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
+        ></script>
+        <script is:inline src={`${base}js/runtime/script.js`}></script>
+    </Fragment>
 </Layout>

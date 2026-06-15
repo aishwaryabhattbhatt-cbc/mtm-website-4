@@ -1,0 +1,201 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props;
+
+const tabs = [
+    { number: '01', key: 'tool_1_title', fallback: 'Data Analysis Tool', id: 'data-analysis-tool' },
+    { number: '02', key: 'tool_2_title', fallback: 'Trending Tool', id: 'trending-tool' },
+    { number: '03', key: 'tool_3_title', fallback: 'Forecasting Tool', id: 'forecasting-tool' },
+];
+---
+
+<nav
+    class="push-down-nav"
+    aria-label={locale === 'fr' ? 'Navigation des outils' : 'Tool navigation'}
+>
+    <div class="push-down-nav__tabs">
+        {
+            tabs.map((tab, i) => (
+                <button
+                    class={`push-down-nav__tab ${i === 0 ? 'text-body-p2-bold-upper push-down-nav__tab--active' : 'text-body-p2-upper'}`}
+                    data-tab-id={tab.id}
+                    aria-pressed={i === 0 ? 'true' : 'false'}
+                >
+                    <span class="push-down-nav__number">{tab.number}</span>
+                    <span class="push-down-nav__label">
+                        {t(copy, tab.key, locale, tab.fallback)}
+                    </span>
+                </button>
+            ))
+        }
+    </div>
+</nav>
+
+<style>
+    .push-down-nav {
+        position: sticky;
+        top: var(--navbar-height);
+        z-index: 10;
+        width: 100%;
+        background: var(--surface-white);
+        box-shadow: var(--shadow-e1);
+        padding: var(--space-4) var(--content-margin-inline) 0;
+        transition:
+            opacity 0.2s,
+            visibility 0.2s;
+    }
+
+    .push-down-nav--hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .push-down-nav__tabs {
+        display: flex;
+        align-items: center;
+    }
+
+    .push-down-nav__tab {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: var(--space-3) var(--space-6);
+        background: transparent;
+        border: none;
+        border-bottom: var(--stroke-2) solid transparent;
+        cursor: pointer;
+        color: var(--neutral-grey-2);
+        transition:
+            color 0.2s,
+            border-bottom-color 0.2s;
+    }
+
+    .push-down-nav__tab--active {
+        border-bottom-color: var(--text-primary);
+        color: var(--text-primary);
+    }
+
+    .push-down-nav__tab:focus-visible {
+        outline: var(--stroke-2) solid var(--border-primary);
+        outline-offset: var(--space-1);
+    }
+
+    .push-down-nav__number,
+    .push-down-nav__label {
+        white-space: nowrap;
+    }
+
+    @media (max-width: 767px) {
+        .push-down-nav__tabs {
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .push-down-nav__tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .push-down-nav__tab {
+            padding: var(--space-3) var(--space-4);
+        }
+    }
+</style>
+
+<script>
+    const nav = document.querySelector('.push-down-nav');
+    if (nav) {
+        const buttons = nav.querySelectorAll<HTMLButtonElement>('.push-down-nav__tab');
+        const sectionIds = ['data-analysis-tool', 'trending-tool', 'forecasting-tool'];
+        const yourDataSection = document.getElementById('yourdata');
+
+        const setActiveTab = (index: number) => {
+            buttons.forEach((b, i) => {
+                const isActive = i === index;
+                b.classList.toggle('push-down-nav__tab--active', isActive);
+                b.classList.toggle('text-body-p2-bold-upper', isActive);
+                b.classList.toggle('text-body-p2-upper', !isActive);
+                b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+        };
+
+        let clickScrolling = false;
+        let clickScrollTimer = 0;
+
+        const onScroll = () => {
+            const navBottom = nav.getBoundingClientRect().bottom;
+
+            // Hide nav when yourdata (and everything below) reaches the nav bar
+            if (yourDataSection) {
+                nav.classList.toggle(
+                    'push-down-nav--hidden',
+                    yourDataSection.getBoundingClientRect().top <= navBottom
+                );
+            }
+
+            // Skip scroll-spy while a click-triggered scroll is in flight
+            if (clickScrolling) return;
+
+            // Activate the tab whose section is closest to (and at/past) the nav bar
+            let activeIndex = 0;
+            sectionIds.forEach((id, i) => {
+                const el = document.getElementById(id);
+                if (el && el.getBoundingClientRect().top <= navBottom) {
+                    activeIndex = i;
+                }
+            });
+            setActiveTab(activeIndex);
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // Clear the flag when the browser finishes a smooth scroll
+        window.addEventListener(
+            'scrollend',
+            () => {
+                clickScrolling = false;
+            },
+            { passive: true }
+        );
+        onScroll();
+
+        buttons.forEach((btn, clickedIndex) => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-tab-id');
+                if (targetId) {
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        // Set active state immediately on click, before scroll moves anything
+                        setActiveTab(clickedIndex);
+
+                        // Pause scroll-spy until scroll finishes
+                        clickScrolling = true;
+                        clearTimeout(clickScrollTimer);
+                        clickScrollTimer = window.setTimeout(() => {
+                            clickScrolling = false;
+                        }, 1000);
+
+                        const navbarHeight = parseFloat(
+                            getComputedStyle(document.documentElement).getPropertyValue(
+                                '--navbar-height'
+                            )
+                        );
+                        const tabNavHeight = nav.getBoundingClientRect().height;
+                        const targetTop =
+                            target.getBoundingClientRect().top +
+                            window.scrollY -
+                            navbarHeight -
+                            tabNavHeight;
+                        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    }
+</script>
