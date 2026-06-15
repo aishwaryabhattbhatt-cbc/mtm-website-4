@@ -1,0 +1,181 @@
+---
+// src/components/analytic-tools/AnalyticToolsYourDataSection.astro
+// Figma node: 629:46583 — "YourData section"
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const benefits = [
+    {
+        icon: icons.gen.smartStorage,
+        titleKey: 'yourdata_feature_1_title',
+        titleFallback: 'Smart Storage',
+        descKey: 'yourdata_feature_1_description',
+        descFallback: 'Save all your DAT, Trending, and Forecasting queries in one place.',
+    },
+    {
+        icon: icons.gen.exportCharts,
+        titleKey: 'yourdata_feature_2_title',
+        titleFallback: 'Custom Visualization',
+        descKey: 'yourdata_feature_2_description',
+        descFallback: 'Modify colours, chart labels, legends and more, no extra software required.',
+    },
+    {
+        icon: icons.gen.multipleOutputs,
+        titleKey: 'yourdata_feature_3_title',
+        titleFallback: 'Detailed Options',
+        descKey: 'yourdata_feature_3_description',
+        descFallback:
+            'Create pie charts, bar charts or tables and have full control over labelling.',
+    },
+    {
+        icon: icons.gen.exportData,
+        titleKey: 'yourdata_feature_4_title',
+        titleFallback: 'Flexible Exporting',
+        descKey: 'yourdata_feature_4_description',
+        descFallback: 'Download report or presentation ready data, built your way.',
+    },
+];
+---
+
+<section class="yourdata-section" id="yourdata">
+    <div class="yourdata-section__card">
+        <div class="yourdata-section__left">
+            <h2 data-copy-key="yourdata_title">
+                {t(copy, 'yourdata_title', locale, 'Your Data')}
+            </h2>
+            <p
+                class="text-body-p1 yourdata-section__description"
+                data-copy-key="yourdata_description"
+            >
+                {
+                    t(
+                        copy,
+                        'yourdata_description',
+                        locale,
+                        'YourData is your personalized hub to save, organize, and export data queries across MTM tools. Build once, reuse, refine and easily export.'
+                    )
+                }
+            </p>
+        </div>
+
+        <div class="yourdata-section__grid">
+            {
+                benefits.map((b) => (
+                    <div class="yourdata-section__benefit">
+                        <img
+                            class="icon-3xl yourdata-section__benefit-icon"
+                            src={`${base}${b.icon}`}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                        />
+                        <div class="yourdata-section__benefit-text">
+                            <p
+                                class="text-body-p0 yourdata-section__benefit-title"
+                                data-copy-key={b.titleKey}
+                            >
+                                {t(copy, b.titleKey, locale, b.titleFallback)}
+                            </p>
+                            <p
+                                class="text-body-p1 yourdata-section__benefit-desc"
+                                data-copy-key={b.descKey}
+                            >
+                                {t(copy, b.descKey, locale, b.descFallback)}
+                            </p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .yourdata-section {
+        width: 100%;
+        background: var(--surface-blue);
+        padding: var(--space-12) var(--content-margin-inline);
+    }
+
+    .yourdata-section__card {
+        background: var(--surface-white);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-e2);
+        padding: var(--space-12);
+        display: grid;
+        grid-template-columns: 4fr 8fr;
+        gap: var(--space-12);
+        align-items: start;
+    }
+
+    .yourdata-section__left {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .yourdata-section__description {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .yourdata-section__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-10);
+    }
+
+    .yourdata-section__benefit {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .yourdata-section__benefit-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .yourdata-section__benefit-title {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .yourdata-section__benefit-desc {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    @media (max-width: 1023px) {
+        .yourdata-section__card {
+            grid-template-columns: 1fr;
+            gap: var(--space-8);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .yourdata-section {
+            padding: var(--space-10) var(--content-margin-inline);
+        }
+
+        .yourdata-section__card {
+            padding: var(--space-8) var(--space-4);
+            gap: var(--space-8);
+        }
+
+        .yourdata-section__grid {
+            grid-template-columns: 1fr;
+            gap: var(--space-8);
+        }
+    }
+</style>

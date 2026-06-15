@@ -1,0 +1,309 @@
+---
+// src/components/analytic-tools/AnalyticToolsTrendingToolSection.astro
+// Figma node: 2:27512 — "Trending Tool section"
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
+import ProductPill from '../shared/ProductPill.astro';
+import Button from '../shared/Button.astro';
+import Eyebrow from '../shared/Eyebrow.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    ctaHref?: string;
+}
+
+const { locale, copy, ctaHref = '#' } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="trending-tool-section" id="trending-tool">
+    <!-- row 1: content (4 cols) + image (8 cols) -->
+    <div class="trending-tool__content">
+        <div class="trending-tool__header">
+            <div class="trending-tool__title-row">
+                <img
+                    class="icon-3xl trending-tool__title-icon"
+                    src={`${base}${icons.tool.trending}`}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                />
+                <h2 data-copy-key="tool_2_title">
+                    {t(copy, 'tool_2_title', locale, 'Trending Tool')}
+                </h2>
+            </div>
+            <div class="trending-tool__pills">
+                <ProductPill variant="mtm18plus" size="big" />
+                <ProductPill variant="junior" size="big" />
+            </div>
+            <p class="text-body-p1 trending-tool__description" data-copy-key="tool_2_description">
+                {
+                    t(
+                        copy,
+                        'tool_2_description',
+                        locale,
+                        '20+ years of data all in one place. Find all you need to know about past and present media technology with the Trending Tool.'
+                    )
+                }
+            </p>
+        </div>
+        <div class="trending-tool__cta">
+            <Button variant="secondary" size="md" href={ctaHref}>
+                {t(copy, 'tool_2_cta', locale, 'View Demo')}
+            </Button>
+        </div>
+    </div>
+
+    <div class="trending-tool__visual">
+        <img
+            class="trending-tool__screen"
+            src={`${base}images/tools/trending-tool.png`}
+            alt={locale === 'fr' ? "Aperçu de l'outil Tendances" : 'Trending Tool preview'}
+            loading="lazy"
+        />
+    </div>
+
+    <!-- row 2: 3 feature cards (4 cols each) -->
+    <div class="trending-tool__feature trending-tool__feature--blue">
+        <Eyebrow>{t(copy, 'trending_feature_1_eyebrow', locale, 'What You See')}</Eyebrow>
+        <div class="trending-tool__feature-content">
+            <p
+                class="text-body-p1 trending-tool__feature-title"
+                data-copy-key="trending_feature_1_title"
+            >
+                {
+                    t(
+                        copy,
+                        'trending_feature_1_title',
+                        locale,
+                        'Which technologies are rising or losing ground'
+                    )
+                }
+            </p>
+            <p
+                class="text-body-p2 trending-tool__feature-desc"
+                data-copy-key="trending_feature_1_description"
+            >
+                {
+                    t(
+                        copy,
+                        'trending_feature_1_description',
+                        locale,
+                        'Track adoption curves across media types. Know which platforms are winning the streaming wars when it comes to your target audiences.'
+                    )
+                }
+            </p>
+        </div>
+    </div>
+
+    <div class="trending-tool__feature trending-tool__feature--teal">
+        <Eyebrow>{t(copy, 'trending_feature_2_eyebrow', locale, 'What You Track')}</Eyebrow>
+        <div class="trending-tool__feature-content">
+            <p
+                class="text-body-p1 trending-tool__feature-title"
+                data-copy-key="trending_feature_2_title"
+            >
+                {
+                    t(
+                        copy,
+                        'trending_feature_2_title',
+                        locale,
+                        'Where your audiences are heading towards'
+                    )
+                }
+            </p>
+            <p
+                class="text-body-p2 trending-tool__feature-desc"
+                data-copy-key="trending_feature_2_description"
+            >
+                {
+                    t(
+                        copy,
+                        'trending_feature_2_description',
+                        locale,
+                        'Multiple years of quarterly data means you can show momentum, not just a snapshot. Bring a trajectory to the next client meeting.'
+                    )
+                }
+            </p>
+        </div>
+    </div>
+
+    <div class="trending-tool__feature trending-tool__feature--purple">
+        <Eyebrow>{t(copy, 'trending_feature_3_eyebrow', locale, 'What You Compare')}</Eyebrow>
+        <div class="trending-tool__feature-content">
+            <p
+                class="text-body-p1 trending-tool__feature-title"
+                data-copy-key="trending_feature_3_title"
+            >
+                {
+                    t(
+                        copy,
+                        'trending_feature_3_title',
+                        locale,
+                        'How different regions and languages are moving'
+                    )
+                }
+            </p>
+            <p
+                class="text-body-p2 trending-tool__feature-desc"
+                data-copy-key="trending_feature_3_description"
+            >
+                {
+                    t(
+                        copy,
+                        'trending_feature_3_description',
+                        locale,
+                        "Quebec and Ontario don't always move together. Compare Anglophone and Francophone audiences side by side across any trend."
+                    )
+                }
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .trending-tool-section {
+        width: 100%;
+        background: var(--surface-white);
+        padding: var(--space-6) var(--content-margin-inline);
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: var(--layout-card-gap);
+        row-gap: var(--space-8);
+        align-items: start;
+    }
+
+    .trending-tool__content {
+        grid-column: span 4;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+    }
+
+    .trending-tool__visual {
+        grid-column: span 8;
+        background: var(--surface-blue);
+        border-radius: var(--radius-m);
+        padding: var(--space-10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .trending-tool__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .trending-tool__title-row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .trending-tool__pills {
+        display: flex;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+    }
+
+    .trending-tool__description {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .trending-tool__cta {
+        width: fit-content;
+    }
+
+    .trending-tool__screen {
+        width: 85%;
+        border-radius: var(--radius-s);
+        box-shadow: var(--shadow-card);
+        display: block;
+    }
+
+    .trending-tool__feature {
+        grid-column: span 4;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+        padding: var(--space-6);
+        border-radius: var(--radius-m);
+    }
+
+    .trending-tool__feature--blue {
+        background: #e8f3fd;
+    }
+    .trending-tool__feature--teal {
+        background: #e8f7f5;
+    }
+    .trending-tool__feature--purple {
+        background: #f7f4ff;
+    }
+
+    .trending-tool__feature-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .trending-tool__feature-title {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .trending-tool__feature-desc {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    @media (max-width: 1125px) {
+        .trending-tool-section {
+            grid-template-columns: 1fr;
+        }
+
+        .trending-tool__content,
+        .trending-tool__visual,
+        .trending-tool__feature {
+            grid-column: auto;
+        }
+
+        .trending-tool__visual {
+            margin-inline: calc(-1 * var(--content-margin-inline));
+            border-radius: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .trending-tool-section {
+            padding: var(--space-5) var(--content-margin-inline);
+        }
+
+        .trending-tool__content {
+            gap: var(--space-6);
+        }
+
+        .trending-tool__visual {
+            padding: var(--space-9) var(--space-4);
+        }
+
+        .trending-tool__feature {
+            padding: var(--space-4);
+        }
+    }
+</style>
+
+<style is:global>
+    /* Switch big pills to small size at mobile — crosses component boundary */
+    @media (max-width: 767px) {
+        .trending-tool__pills .product-pill--big {
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--fs-label-xs);
+        }
+    }
+</style>
