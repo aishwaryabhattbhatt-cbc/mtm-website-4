@@ -1,14 +1,17 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Navbar from '../../../components/shared/Navbar.astro';
+import ToolsHeroSection from '../../../components/tools/ToolsHeroSection.astro';
+import CensusHighlightsSection from '../../../components/census/CensusHighlightsSection.astro';
+import CensusFeaturesTitleSection from '../../../components/census/CensusFeaturesTitleSection.astro';
+import CensusPushDownNavSection from '../../../components/census/CensusPushDownNavSection.astro';
+import CensusToolFeaturesSection from '../../../components/census/CensusToolFeaturesSection.astro';
+import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import type { Locale } from '../../../lib/cms/types';
 
 export function getStaticPaths() {
-  return [
-    { params: { locale: 'en' } },
-    { params: { locale: 'fr' } },
-  ];
+    return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
 }
 
 const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
@@ -16,47 +19,82 @@ const pageId = 'census-tool';
 const copy = await getPageDictionary(pageId);
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;
-const resolvedCmsCsvUrl = cmsConfig.csvUrl ?? (cmsConfig.sheetId && cmsConfig.gid
-  ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
-  : '');
+const resolvedCmsCsvUrl =
+    cmsConfig.csvUrl ??
+    (cmsConfig.sheetId && cmsConfig.gid
+        ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
+        : '');
 
 const localeSwitchUrls = {
-  en: `${base}en/tools/census-tool/`,
-  fr: `${base}fr/tools/census-tool/`,
+    en: `${base}en/tools/census-tool/`,
+    fr: `${base}fr/tools/census-tool/`,
 };
 
 const pageTitle = locale === 'fr' ? 'MTM | Outil de recensement' : 'MTM | Census Tool';
-const pageDescription = locale === 'fr'
-  ? 'Explorez l\'outil de recensement MTM pour des données démographiques détaillées.'
-  : 'Explore the MTM Census Tool for detailed demographic data.';
+const pageDescription =
+    locale === 'fr'
+        ? "Explorez l'outil de recensement MTM pour des données démographiques détaillées."
+        : 'Explore the MTM Census Tool for detailed demographic data.';
 ---
 
-<Layout title={pageTitle} description={pageDescription} locale={locale} alternates={localeSwitchUrls}>
-  <main
-    data-locale={locale}
-    data-cms-page-id={pageId}
-    data-cms-csv-url={resolvedCmsCsvUrl}
-    data-cms-sheet-id={cmsConfig.sheetId ?? ''}
-    data-cms-tab-gid={cmsConfig.gid ?? ''}
-    data-cms-refresh-ms={String(cmsConfig.refreshMs)}
-  >
-    <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+>
+    <main
+        data-locale={locale}
+        data-cms-page-id={pageId}
+        data-cms-csv-url={resolvedCmsCsvUrl}
+        data-cms-sheet-id={cmsConfig.sheetId ?? ''}
+        data-cms-tab-gid={cmsConfig.gid ?? ''}
+        data-cms-refresh-ms={String(cmsConfig.refreshMs)}
+    >
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-    <!-- Census Tool page content goes here -->
+        <ToolsHeroSection
+            locale={locale}
+            copy={copy}
+            ctaHref={`${base}${locale}/request-demo/`}
+            heroImageSrc={`${base}images/tools/census/census-tool-hero.png`}
+            bgPatternSrc={`${base}images/tools/tools-hero-bg.png`}
+            secondaryCtaHref={`${base}${locale}/census-tool/demo/`}
+            secondaryCtaLabel="Watch Video"
+        />
 
-  </main>
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+        <CensusHighlightsSection locale={locale} copy={copy} />
 
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      name: pageTitle,
-      url: localeSwitchUrls[locale],
-    })} />
-  </Fragment>
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+        <CensusFeaturesTitleSection locale={locale} copy={copy} />
 
-  <Fragment slot="scripts">
-    <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script is:inline src={`${base}js/runtime/script.js`}></script>
-  </Fragment>
+        <div class="section-gap section-gap-sm" aria-hidden="true"></div>
+        <CensusPushDownNavSection locale={locale} copy={copy} />
+
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+        <CensusToolFeaturesSection locale={locale} copy={copy} />
+
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+        <HomeFooterSection locale={locale} copy={copy} />
+    </main>
+
+    <Fragment slot="head">
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebPage',
+                name: pageTitle,
+                url: localeSwitchUrls[locale],
+            })}
+        />
+    </Fragment>
+
+    <Fragment slot="scripts">
+        <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
+        ></script>
+        <script is:inline src={`${base}js/runtime/script.js`}></script>
+    </Fragment>
 </Layout>
