@@ -89,15 +89,17 @@ const faqs = [
                         />
                     </button>
 
-                    <div
-                        class={`home-faqs__content${idx === 0 ? ' is-open' : ''}`}
-                        id={`home-faqs-content-${faq.id}`}
-                        role="region"
-                        aria-labelledby={`home-faqs-trigger-${faq.id}`}
-                    >
-                        <p class="home-faqs__answer text-body-p1" data-copy-key={faq.answerKey}>
-                            {t(copy, faq.answerKey, locale, faq.answerFallback)}
-                        </p>
+                    <div class={`home-faqs__content-clip${idx === 0 ? ' is-open' : ''}`}>
+                        <div
+                            class="home-faqs__content"
+                            id={`home-faqs-content-${faq.id}`}
+                            role="region"
+                            aria-labelledby={`home-faqs-trigger-${faq.id}`}
+                        >
+                            <p class="home-faqs__answer text-body-p1" data-copy-key={faq.answerKey}>
+                                {t(copy, faq.answerKey, locale, faq.answerFallback)}
+                            </p>
+                        </div>
                     </div>
                 </div>
             ))
@@ -211,14 +213,14 @@ const faqs = [
         transform: rotate(180deg);
     }
 
-    .home-faqs__content {
-        display: none;
-        padding: 0 var(--space-7) var(--space-7) var(--space-7);
+    .home-faqs__content-clip {
         overflow: hidden;
+        height: 0;
+        transition: height 450ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .home-faqs__content.is-open {
-        display: block;
+    .home-faqs__content {
+        padding: 0 var(--space-7) var(--space-7) var(--space-7);
     }
 
     .home-faqs__answer {
@@ -304,10 +306,19 @@ const faqs = [
     if (faqsSection) {
         const triggers = faqsSection.querySelectorAll('.home-faqs__trigger');
 
+        // Set initial height for the first open item
+        const firstOpenClip = faqsSection.querySelector(
+            '.home-faqs__content-clip.is-open'
+        ) as HTMLElement | null;
+        if (firstOpenClip) {
+            const inner = firstOpenClip.querySelector('.home-faqs__content') as HTMLElement;
+            firstOpenClip.style.height = inner.scrollHeight + 'px';
+        }
+
         triggers.forEach((trigger) => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.home-faqs__item');
-                const content = item?.querySelector('.home-faqs__content');
+                const contentClip = item?.querySelector('.home-faqs__content-clip');
                 const isOpen = trigger.classList.contains('is-open');
 
                 // Close all items
@@ -316,16 +327,17 @@ const faqs = [
                     t.setAttribute('aria-expanded', 'false');
                     t.closest('.home-faqs__item')?.classList.remove('is-open');
                 });
-                faqsSection.querySelectorAll('.home-faqs__content').forEach((c) => {
-                    c.classList.remove('is-open');
+                faqsSection.querySelectorAll('.home-faqs__content-clip').forEach((c) => {
+                    (c as HTMLElement).style.height = '0';
                 });
 
                 // Open clicked item if it was closed
-                if (!isOpen) {
+                if (!isOpen && contentClip) {
                     trigger.classList.add('is-open');
                     trigger.setAttribute('aria-expanded', 'true');
-                    content?.classList.add('is-open');
                     item?.classList.add('is-open');
+                    const inner = contentClip.querySelector('.home-faqs__content') as HTMLElement;
+                    (contentClip as HTMLElement).style.height = inner.scrollHeight + 'px';
                 }
             });
         });
