@@ -129,6 +129,10 @@ const tabs = [
         let clickScrolling = false;
         let clickScrollTimer = 0;
 
+        const spaceS =
+            parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--space-5')) *
+            16;
+
         const onScroll = () => {
             const navBottom = nav.getBoundingClientRect().bottom;
 
@@ -143,11 +147,13 @@ const tabs = [
             // Skip scroll-spy while a click-triggered scroll is in flight
             if (clickScrolling) return;
 
-            // Activate the tab whose section is closest to (and at/past) the nav bar
+            // Activate the tab whose section is closest to (and at/past) the nav bar.
+            // The +spaceS lookahead matches the scroll-margin-top buffer on the sections
+            // so anchor navigation from the main nav always lands on the correct tab.
             let activeIndex = 0;
             sectionIds.forEach((id, i) => {
                 const el = document.getElementById(id);
-                if (el && el.getBoundingClientRect().top <= navBottom) {
+                if (el && el.getBoundingClientRect().top <= navBottom + spaceS) {
                     activeIndex = i;
                 }
             });
@@ -165,34 +171,37 @@ const tabs = [
         );
         onScroll();
 
+        // If the page loaded with a hash matching one of the sections, activate
+        // that tab directly — scroll-spy runs before the browser anchor-scrolls
+        // so it always defaults to tab 01 on initial load.
+        const hashIndex = sectionIds.indexOf(window.location.hash.slice(1));
+        if (hashIndex !== -1) setActiveTab(hashIndex);
+
+        const scrollToSection = (target: HTMLElement, behavior: ScrollBehavior) => {
+            const navbarHeight = parseFloat(
+                getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')
+            );
+            const tabNavHeight = nav.getBoundingClientRect().height;
+            const targetTop =
+                target.getBoundingClientRect().top + window.scrollY - navbarHeight - tabNavHeight;
+            window.scrollTo({ top: targetTop, behavior });
+        };
+
         buttons.forEach((btn, clickedIndex) => {
             btn.addEventListener('click', () => {
                 const targetId = btn.getAttribute('data-tab-id');
                 if (targetId) {
                     const target = document.getElementById(targetId);
                     if (target) {
-                        // Set active state immediately on click, before scroll moves anything
                         setActiveTab(clickedIndex);
 
-                        // Pause scroll-spy until scroll finishes
                         clickScrolling = true;
                         clearTimeout(clickScrollTimer);
                         clickScrollTimer = window.setTimeout(() => {
                             clickScrolling = false;
                         }, 1000);
 
-                        const navbarHeight = parseFloat(
-                            getComputedStyle(document.documentElement).getPropertyValue(
-                                '--navbar-height'
-                            )
-                        );
-                        const tabNavHeight = nav.getBoundingClientRect().height;
-                        const targetTop =
-                            target.getBoundingClientRect().top +
-                            window.scrollY -
-                            navbarHeight -
-                            tabNavHeight;
-                        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                        scrollToSection(target, 'smooth');
                     }
                 }
             });

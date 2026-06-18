@@ -87,7 +87,7 @@ const toolsDropdown = {
             description: isFrench
                 ? 'Suivez les tendances clés dans le temps.'
                 : 'Track key trends over time with confidence.',
-            href: `${base}${locale}/tools/analytic-tools/`,
+            href: `${base}${locale}/tools/analytic-tools/#trending-tool`,
             iconPath: `${base}${icons.tool.trending}`,
         },
         {
@@ -95,7 +95,7 @@ const toolsDropdown = {
             description: isFrench
                 ? 'Projetez les évolutions futures selon vos segments.'
                 : 'Project future shifts across your target segments.',
-            href: `${base}${locale}/tools/analytic-tools/`,
+            href: `${base}${locale}/tools/analytic-tools/#forecasting-tool`,
             iconPath: `${base}${icons.tool.forecast}`,
         },
     ],
@@ -282,27 +282,25 @@ const solutionsDropdown = {
                                 <p class="dropdown-panel-heading text-button-small">
                                     {toolsDropdown.mainLabel}
                                 </p>
-                                <div class="dropdown-items-wrapper">
-                                    <div class="dropdown-items dropdown-items--three">
-                                        {
-                                            toolsDropdown.mainItems.map((item) => (
-                                                <a class="dropdown-card" href={item.href}>
-                                                    <img
-                                                        class="dropdown-card-icon"
-                                                        src={item.iconPath}
-                                                        alt=""
-                                                        loading="lazy"
-                                                    />
-                                                    <p class="dropdown-card-title text-body-p1-bold">
-                                                        {item.title}
-                                                    </p>
-                                                    <p class="dropdown-card-description text-body-p2">
-                                                        {item.description}
-                                                    </p>
-                                                </a>
-                                            ))
-                                        }
-                                    </div>
+                                <div class="dropdown-items dropdown-items--three">
+                                    {
+                                        toolsDropdown.mainItems.map((item) => (
+                                            <a class="dropdown-card" href={item.href}>
+                                                <img
+                                                    class="dropdown-card-icon"
+                                                    src={item.iconPath}
+                                                    alt=""
+                                                    loading="lazy"
+                                                />
+                                                <p class="dropdown-card-title text-body-p1-bold">
+                                                    {item.title}
+                                                </p>
+                                                <p class="dropdown-card-description text-body-p2">
+                                                    {item.description}
+                                                </p>
+                                            </a>
+                                        ))
+                                    }
                                 </div>
                             </div>
                             <div class="nav-dropdown-column nav-dropdown-column--side">
@@ -655,35 +653,6 @@ const solutionsDropdown = {
     .dropdown-card:focus-visible {
         background-color: #f3f4f6;
         outline: none;
-    }
-
-    /* Grouped hover for analytic tools wrapper */
-    .dropdown-items-wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-3);
-        padding: var(--space-3);
-        border-radius: var(--radius-s);
-        transition: background-color 0.2s ease;
-    }
-
-    .dropdown-items-wrapper:hover {
-        background-color: #f3f4f6;
-    }
-
-    .dropdown-items-wrapper .dropdown-items {
-        display: contents;
-    }
-
-    .dropdown-items-wrapper .dropdown-card {
-        background-color: transparent;
-        border-radius: 0;
-        padding: 0;
-    }
-
-    .dropdown-items-wrapper .dropdown-card:hover,
-    .dropdown-items-wrapper .dropdown-card:focus-visible {
-        background-color: transparent;
     }
 
     .nav-dropdown-column--side .dropdown-card {
