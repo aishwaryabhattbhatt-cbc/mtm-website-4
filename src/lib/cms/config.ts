@@ -25,8 +25,10 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
     newcomers:
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=1277962868&single=true&output=csv',
     census: '',
-    'analytic-tools': '',
-    'census-tool': '',
+    'analytic-tools':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=1734378829&single=true&output=csv',
+    'census-tool':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=606257462&single=true&output=csv',
     insights: '',
     media: '',
     advertising: '',
