@@ -10,9 +10,20 @@ interface Props {
     heroImageSrc: string;
     heroImageAlt?: string;
     bgPatternSrc?: string;
+    secondaryCtaHref?: string;
+    secondaryCtaLabel?: string;
 }
 
-const { locale, copy, ctaHref, heroImageSrc, heroImageAlt, bgPatternSrc } = Astro.props as Props;
+const {
+    locale,
+    copy,
+    ctaHref,
+    heroImageSrc,
+    heroImageAlt,
+    bgPatternSrc,
+    secondaryCtaHref,
+    secondaryCtaLabel,
+} = Astro.props as Props;
 ---
 
 <section class="tools-hero">
@@ -54,6 +65,16 @@ const { locale, copy, ctaHref, heroImageSrc, heroImageAlt, bgPatternSrc } = Astr
             decoding="async"
         />
     </div>
+
+    {
+        secondaryCtaHref && (
+            <div class="tools-hero__secondary-cta">
+                <Button variant="secondary" size="lg" href={secondaryCtaHref}>
+                    {secondaryCtaLabel ?? t(copy, 'hero_cta_2', locale, 'Watch Video')}
+                </Button>
+            </div>
+        )
+    }
 </section>
 
 <style>
@@ -65,7 +86,7 @@ const { locale, copy, ctaHref, heroImageSrc, heroImageAlt, bgPatternSrc } = Astr
         gap: var(--space-7);
         padding: var(--space-12) var(--content-margin-inline);
         background: var(--surface-white);
-        overflow: hidden;
+        overflow: clip;
         margin-top: var(--navbar-height);
     }
 
@@ -114,15 +135,15 @@ const { locale, copy, ctaHref, heroImageSrc, heroImageAlt, bgPatternSrc } = Astr
     .tools-hero__mockup {
         position: relative;
         z-index: 1;
-        width: 100%;
-        max-width: 61.5rem;
+        width: min(100%, 61.5rem);
+        align-self: center;
+        margin-inline: auto;
     }
 
-    .tools-hero__screenshot {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: var(--radius-m);
+    .tools-hero__secondary-cta {
+        position: relative;
+        z-index: 1;
+        margin-top: calc(var(--space-7) * -1 + var(--space-3));
     }
 
     @media (max-width: 1023px) {
