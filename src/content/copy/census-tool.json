@@ -1,0 +1,352 @@
+{
+  "hero_title": {
+    "key": "hero_title",
+    "en": "Explore Canada Through the Census Tool",
+    "fr": ""
+  },
+  "hero_description": {
+    "key": "hero_description",
+    "en": "The MTM Census Tool gives you access to rich demographic data drawn from Statistics Canada. Filter by region, language, age, and more to understand the audiences that matter most to your research.",
+    "fr": ""
+  },
+  "hero_cta_1": {
+    "key": "hero_cta_1",
+    "en": "Request a Demo",
+    "fr": ""
+  },
+  "census_tool_features": {
+    "key": "census_tool_features",
+    "en": "Tool Features",
+    "fr": ""
+  },
+  "census_what_you_get": {
+    "key": "census_what_you_get",
+    "en": "What you get",
+    "fr": ""
+  },
+  "census_nav_snapshot": {
+    "key": "census_nav_snapshot",
+    "en": "Snapshot",
+    "fr": ""
+  },
+  "census_nav_drilldown": {
+    "key": "census_nav_drilldown",
+    "en": "Drilldown",
+    "fr": ""
+  },
+  "census_nav_ranker": {
+    "key": "census_nav_ranker",
+    "en": "Ranker",
+    "fr": ""
+  },
+  "census_nav_demographic_explorer": {
+    "key": "census_nav_demographic_explorer",
+    "en": "Demographic Explorer",
+    "fr": ""
+  },
+  "census_nav_compare": {
+    "key": "census_nav_compare",
+    "en": "Compare",
+    "fr": ""
+  },
+  "census_nav_canada_score": {
+    "key": "census_nav_canada_score",
+    "en": "Canada Score",
+    "fr": ""
+  },
+  "highlights_title": {
+    "key": "highlights_title",
+    "en": "Explore with Precision",
+    "fr": ""
+  },
+  "highlights_geo_stat": {
+    "key": "highlights_geo_stat",
+    "en": "70,000+ Geographic Areas",
+    "fr": ""
+  },
+  "highlights_geo_desc": {
+    "key": "highlights_geo_desc",
+    "en": "Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal area to pinpoint where media and tech trends emerge.",
+    "fr": ""
+  },
+  "highlights_demo_stat": {
+    "key": "highlights_demo_stat",
+    "en": "2,000+ Demographic Variables",
+    "fr": ""
+  },
+  "highlights_demo_desc": {
+    "key": "highlights_demo_desc",
+    "en": "Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who's driving adoption and change.",
+    "fr": ""
+  },
+  "highlights_geo_label": {
+    "key": "highlights_geo_label",
+    "en": "Geographic Filters",
+    "fr": ""
+  },
+  "highlights_demo_label": {
+    "key": "highlights_demo_label",
+    "en": "Demographic Filters",
+    "fr": ""
+  },
+  "snapshot_subtitle": {
+    "key": "snapshot_subtitle",
+    "en": "Understand any region at a glance",
+    "fr": ""
+  },
+  "snapshot_desc": {
+    "key": "snapshot_desc",
+    "en": "Population, age, income, language, immigration, indigenous identity. Any Canadian geography. In seconds.",
+    "fr": ""
+  },
+  "snapshot_feature_1_title": {
+    "key": "snapshot_feature_1_title",
+    "en": "Quick Insights",
+    "fr": ""
+  },
+  "snapshot_feature_1_desc": {
+    "key": "snapshot_feature_1_desc",
+    "en": "Generate instant \"Community Portraits\" for any Canadian geography.",
+    "fr": ""
+  },
+  "snapshot_feature_2_title": {
+    "key": "snapshot_feature_2_title",
+    "en": "Key Metrics",
+    "fr": ""
+  },
+  "snapshot_feature_2_desc": {
+    "key": "snapshot_feature_2_desc",
+    "en": "Analyze population, age, income, and language in seconds.",
+    "fr": ""
+  },
+  "snapshot_feature_3_title": {
+    "key": "snapshot_feature_3_title",
+    "en": "Data Exports",
+    "fr": ""
+  },
+  "snapshot_feature_3_desc": {
+    "key": "snapshot_feature_3_desc",
+    "en": "Easily export data tables for quick analysis and sharing.",
+    "fr": ""
+  },
+  "drilldown_subtitle": {
+    "key": "drilldown_subtitle",
+    "en": "Dig deeper into any demographic",
+    "fr": ""
+  },
+  "drilldown_desc": {
+    "key": "drilldown_desc",
+    "en": "Move beyond surface-level data. Explore nested demographic breakdowns across hundreds of variables for any Canadian geography.",
+    "fr": ""
+  },
+  "drilldown_feature_1_title": {
+    "key": "drilldown_feature_1_title",
+    "en": "Deep Filtering",
+    "fr": ""
+  },
+  "drilldown_feature_1_desc": {
+    "key": "drilldown_feature_1_desc",
+    "en": "Layer multiple filters to isolate the exact audience segment you need.",
+    "fr": ""
+  },
+  "drilldown_feature_2_title": {
+    "key": "drilldown_feature_2_title",
+    "en": "Cross-Tabulation",
+    "fr": ""
+  },
+  "drilldown_feature_2_desc": {
+    "key": "drilldown_feature_2_desc",
+    "en": "Compare demographic variables side by side with automatic breakdowns.",
+    "fr": ""
+  },
+  "drilldown_feature_3_title": {
+    "key": "drilldown_feature_3_title",
+    "en": "Trend Tracking",
+    "fr": ""
+  },
+  "drilldown_feature_3_desc": {
+    "key": "drilldown_feature_3_desc",
+    "en": "Trace how demographic patterns shift across census years.",
+    "fr": ""
+  },
+  "ranker_subtitle": {
+    "key": "ranker_subtitle",
+    "en": "Rank geographies by any metric",
+    "fr": ""
+  },
+  "ranker_desc": {
+    "key": "ranker_desc",
+    "en": "Find out which cities, regions, or postal areas lead on any demographic variable — instantly ranked and sortable.",
+    "fr": ""
+  },
+  "ranker_feature_1_title": {
+    "key": "ranker_feature_1_title",
+    "en": "Custom Rankings",
+    "fr": ""
+  },
+  "ranker_feature_1_desc": {
+    "key": "ranker_feature_1_desc",
+    "en": "Sort any geography by any variable to surface the top or bottom performers.",
+    "fr": ""
+  },
+  "ranker_feature_2_title": {
+    "key": "ranker_feature_2_title",
+    "en": "Benchmark Comparisons",
+    "fr": ""
+  },
+  "ranker_feature_2_desc": {
+    "key": "ranker_feature_2_desc",
+    "en": "Compare ranked geographies against the Canadian national average.",
+    "fr": ""
+  },
+  "ranker_feature_3_title": {
+    "key": "ranker_feature_3_title",
+    "en": "Export Results",
+    "fr": ""
+  },
+  "ranker_feature_3_desc": {
+    "key": "ranker_feature_3_desc",
+    "en": "Download ranked tables for reports and presentations.",
+    "fr": ""
+  },
+  "demographic_explorer_subtitle": {
+    "key": "demographic_explorer_subtitle",
+    "en": "Visualize demographic distribution",
+    "fr": ""
+  },
+  "demographic_explorer_desc": {
+    "key": "demographic_explorer_desc",
+    "en": "Map and visualize how age, language, income, and hundreds of other variables distribute across Canada's diverse regions.",
+    "fr": ""
+  },
+  "demographic_explorer_feature_1_title": {
+    "key": "demographic_explorer_feature_1_title",
+    "en": "Interactive Maps",
+    "fr": ""
+  },
+  "demographic_explorer_feature_1_desc": {
+    "key": "demographic_explorer_feature_1_desc",
+    "en": "Visualize demographic variables across Canada's geographic areas.",
+    "fr": ""
+  },
+  "demographic_explorer_feature_2_title": {
+    "key": "demographic_explorer_feature_2_title",
+    "en": "Variable Explorer",
+    "fr": ""
+  },
+  "demographic_explorer_feature_2_desc": {
+    "key": "demographic_explorer_feature_2_desc",
+    "en": "Browse and search 2,000+ demographic variables with instant previews.",
+    "fr": ""
+  },
+  "demographic_explorer_feature_3_title": {
+    "key": "demographic_explorer_feature_3_title",
+    "en": "Distribution Charts",
+    "fr": ""
+  },
+  "demographic_explorer_feature_3_desc": {
+    "key": "demographic_explorer_feature_3_desc",
+    "en": "See how a demographic breaks down across provinces and cities.",
+    "fr": ""
+  },
+  "compare_subtitle": {
+    "key": "compare_subtitle",
+    "en": "Compare regions side by side",
+    "fr": ""
+  },
+  "compare_desc": {
+    "key": "compare_desc",
+    "en": "Place two or more geographies next to each other and identify what makes each one unique — or where they converge.",
+    "fr": ""
+  },
+  "compare_feature_1_title": {
+    "key": "compare_feature_1_title",
+    "en": "Side-by-Side View",
+    "fr": ""
+  },
+  "compare_feature_1_desc": {
+    "key": "compare_feature_1_desc",
+    "en": "Compare up to five geographies on any demographic variable.",
+    "fr": ""
+  },
+  "compare_feature_2_title": {
+    "key": "compare_feature_2_title",
+    "en": "Difference Highlights",
+    "fr": ""
+  },
+  "compare_feature_2_desc": {
+    "key": "compare_feature_2_desc",
+    "en": "Automatically surface the most significant differences between regions.",
+    "fr": ""
+  },
+  "compare_feature_3_title": {
+    "key": "compare_feature_3_title",
+    "en": "Shareable Snapshots",
+    "fr": ""
+  },
+  "compare_feature_3_desc": {
+    "key": "compare_feature_3_desc",
+    "en": "Export comparison views as clean tables or visual summaries.",
+    "fr": ""
+  },
+  "canada_score_subtitle": {
+    "key": "canada_score_subtitle",
+    "en": "Benchmark against the national standard",
+    "fr": ""
+  },
+  "canada_score_desc": {
+    "key": "canada_score_desc",
+    "en": "Understand how any Canadian geography performs relative to the national average across key demographic indicators.",
+    "fr": ""
+  },
+  "canada_score_feature_1_title": {
+    "key": "canada_score_feature_1_title",
+    "en": "National Benchmarks",
+    "fr": ""
+  },
+  "canada_score_feature_1_desc": {
+    "key": "canada_score_feature_1_desc",
+    "en": "Instantly compare any region's metrics against Canada-wide averages.",
+    "fr": ""
+  },
+  "canada_score_feature_2_title": {
+    "key": "canada_score_feature_2_title",
+    "en": "Score Cards",
+    "fr": ""
+  },
+  "canada_score_feature_2_desc": {
+    "key": "canada_score_feature_2_desc",
+    "en": "Get a summarized score for how a region ranks on key indicators.",
+    "fr": ""
+  },
+  "canada_score_feature_3_title": {
+    "key": "canada_score_feature_3_title",
+    "en": "Historical Comparison",
+    "fr": ""
+  },
+  "canada_score_feature_3_desc": {
+    "key": "canada_score_feature_3_desc",
+    "en": "Track how a region's Canada Score has changed over census cycles.",
+    "fr": ""
+  },
+  "stat_callout_1_value": {
+    "key": "stat_callout_1_value",
+    "en": "63%",
+    "fr": "63%"
+  },
+  "stat_callout_1_description": {
+    "key": "stat_callout_1_description",
+    "en": "In Toronto, 63% of women aged 18-34 make less than $40,000/year",
+    "fr": "In Toronto, 63% of women aged 18-34 make less than $40,000/year"
+  },
+  "stat_callout_2_value": {
+    "key": "stat_callout_2_value",
+    "en": "",
+    "fr": ""
+  },
+  "stat_callout_2_description": {
+    "key": "stat_callout_2_description",
+    "en": "",
+    "fr": ""
+  }
+}

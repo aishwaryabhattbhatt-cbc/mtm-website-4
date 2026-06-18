@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #125;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-linecap: round;
+      }
+
+      .cls-2, .cls-4 {
+        stroke-width: 6px;
+      }
+
+      .cls-6 {
+        fill: #2e6af5;
+      }
+
+      .cls-3 {
+        stroke-width: 3px;
+      }
+
+      .cls-3, .cls-4, .cls-5 {
+        stroke: #2e6af5;
+      }
+
+      .cls-5 {
+        stroke-width: 4px;
+      }
+
+      .cls-7 {
+        fill: #125;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="uuid-6da12bf4-4e86-49cd-b695-de985962c163" data-name="Layer 1-2">
+      <g>
+        <g>
+          <polyline class="cls-2" points="93.41 64.68 93.41 51.59 51.59 51.59 51.59 93.41 62.91 93.41"/>
+          <line class="cls-4" x1="116.82" y1="27.85" x2="105.73" y2="38.94"/>
+          <path class="cls-6" d="M101.12,45.02l13.21-3.84c.94-.27,1.23-1.46.52-2.13l-9.93-9.52c-.71-.68-1.88-.34-2.11.61l-3.28,13.36c-.23.95.65,1.79,1.59,1.52Z"/>
+          <line class="cls-4" x1="27.85" y1="28.18" x2="38.94" y2="39.27"/>
+          <path class="cls-6" d="M45.02,43.88l-3.84-13.21c-.27-.94-1.46-1.23-2.13-.52l-9.52,9.93c-.68.71-.34,1.88.61,2.11l13.36,3.28c.95.23,1.79-.65,1.52-1.59Z"/>
+          <line class="cls-4" x1="28.18" y1="117.15" x2="39.27" y2="106.06"/>
+          <path class="cls-6" d="M43.88,99.98l-13.21,3.84c-.94.27-1.23,1.46-.52,2.13l9.93,9.52c.71.68,1.88.34,2.11-.61l3.28-13.36c.23-.95-.65-1.79-1.59-1.52Z"/>
+          <circle class="cls-7" cx="63.8" cy="64.68" r="4.68"/>
+          <circle class="cls-7" cx="63.8" cy="81.18" r="4.68"/>
+          <circle class="cls-7" cx="80.3" cy="64.68" r="4.68"/>
+          <g>
+            <circle class="cls-5" cx="92.73" cy="94.94" r="19.76"/>
+            <polyline class="cls-3" points="106.67 108.88 92.73 94.94 92.73 75.38"/>
+          </g>
+        </g>
+        <rect class="cls-1" width="145" height="145"/>
+      </g>
+    </g>
+  </g>
+</svg>

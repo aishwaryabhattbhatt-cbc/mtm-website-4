@@ -1,0 +1,274 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Eyebrow from '../shared/Eyebrow.astro';
+
+interface Feature {
+    titleKey: string;
+    titleFb: string;
+    descKey: string;
+    descFb: string;
+}
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    id: string;
+    titleKey: string;
+    titleFb: string;
+    subtitleKey: string;
+    subtitleFb: string;
+    descKey: string;
+    descFb: string;
+    features: Feature[];
+    iconSrc: string;
+    imageSrc?: string;
+    imageAlt?: string;
+    reversed?: boolean;
+}
+
+const {
+    locale,
+    copy,
+    id,
+    titleKey,
+    titleFb,
+    subtitleKey,
+    subtitleFb,
+    descKey,
+    descFb,
+    features,
+    iconSrc,
+    imageSrc,
+    imageAlt,
+    reversed = false,
+} = Astro.props;
+---
+
+<article class={`census-tool-card${reversed ? ' census-tool-card--reversed' : ''}`} id={id}>
+    <div class="census-tool-card__slot">
+        {
+            imageSrc ? (
+                <img
+                    class="census-tool-card__screenshot"
+                    src={imageSrc}
+                    alt={imageAlt ?? ''}
+                    loading="lazy"
+                />
+            ) : (
+                <div class="census-tool-card__placeholder" aria-hidden="true" />
+            )
+        }
+    </div>
+
+    <div class="census-tool-card__content">
+        <div class="census-tool-card__header">
+            <img
+                class="icon-3xl census-tool-card__icon"
+                src={iconSrc}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+            />
+            <h3 data-copy-key={titleKey}>{t(copy, titleKey, locale, titleFb)}</h3>
+        </div>
+
+        <div class="census-tool-card__text">
+            <p class="text-body-p0-bold census-tool-card__subtitle" data-copy-key={subtitleKey}>
+                {t(copy, subtitleKey, locale, subtitleFb)}
+            </p>
+            <p class="text-body-p1 census-tool-card__desc" data-copy-key={descKey}>
+                {t(copy, descKey, locale, descFb)}
+            </p>
+        </div>
+
+        <Eyebrow>
+            <span data-copy-key="census_what_you_get">
+                {t(copy, 'census_what_you_get', locale, 'What you get')}
+            </span>
+        </Eyebrow>
+
+        <ul class="census-tool-card__features">
+            {
+                features.map((f) => (
+                    <li class="census-tool-card__feature">
+                        <span class="census-tool-card__bullet" aria-hidden="true" />
+                        <div class="census-tool-card__feature-text">
+                            <p
+                                class="text-body-p1-bold census-tool-card__feature-title"
+                                data-copy-key={f.titleKey}
+                            >
+                                {t(copy, f.titleKey, locale, f.titleFb)}
+                            </p>
+                            <p
+                                class="text-body-p2 census-tool-card__feature-desc"
+                                data-copy-key={f.descKey}
+                            >
+                                {t(copy, f.descKey, locale, f.descFb)}
+                            </p>
+                        </div>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</article>
+
+<style>
+    .census-tool-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-10);
+        background: var(--surface-white);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-card);
+        padding: var(--space-3);
+        align-items: stretch;
+    }
+
+    /* ─── Left slot ──────────────────────────────────── */
+
+    .census-tool-card__slot {
+        background: var(--surface-blue);
+        border-radius: var(--radius-s);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-8);
+        min-height: 28rem;
+    }
+
+    /* ─── Reversed layout (image on right) ──────────── */
+
+    .census-tool-card--reversed .census-tool-card__slot {
+        order: 2;
+    }
+
+    .census-tool-card--reversed .census-tool-card__content {
+        order: 1;
+        padding: var(--space-6) 0 var(--space-6) var(--space-6);
+    }
+
+    .census-tool-card__screenshot {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .census-tool-card__placeholder {
+        width: 100%;
+        min-height: 20rem;
+    }
+
+    /* ─── Right content ──────────────────────────────── */
+
+    .census-tool-card__content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+        padding: var(--space-6) var(--space-6) var(--space-6) 0;
+    }
+
+    .census-tool-card__header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
+
+    .census-tool-card__icon {
+        flex-shrink: 0;
+    }
+
+    .census-tool-card__text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .census-tool-card__subtitle,
+    .census-tool-card__desc {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .census-tool-card__desc {
+        color: var(--text-secondary);
+    }
+
+    /* ─── Feature list ──────────────────────────────── */
+
+    .census-tool-card__features {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .census-tool-card__feature {
+        display: flex;
+        gap: var(--space-4);
+        align-items: flex-start;
+    }
+
+    .census-tool-card__bullet {
+        flex-shrink: 0;
+        width: var(--space-3);
+        height: var(--space-3);
+        border-radius: var(--radius-full);
+        background: var(--brand-blue-main);
+        margin-top: var(--space-2);
+    }
+
+    .census-tool-card__feature-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    .census-tool-card__feature-title,
+    .census-tool-card__feature-desc {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .census-tool-card__feature-desc {
+        color: var(--text-secondary);
+    }
+
+    /* ─── Responsive ────────────────────────────────── */
+
+    @media (max-width: 1023px) {
+        .census-tool-card {
+            grid-template-columns: 1fr;
+            gap: var(--space-6);
+        }
+
+        .census-tool-card__slot {
+            min-height: 20rem;
+            order: 0 !important;
+        }
+
+        .census-tool-card__content,
+        .census-tool-card--reversed .census-tool-card__content {
+            padding: var(--space-4);
+            gap: var(--space-4);
+            order: 1 !important;
+        }
+
+        .census-tool-card__header {
+            gap: var(--space-2);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .census-tool-card__slot {
+            min-height: 16rem;
+        }
+
+        .census-tool-card__content {
+            gap: var(--space-6);
+        }
+    }
+</style>

@@ -1,0 +1,24 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props;
+---
+
+<section class="census-features-title">
+    <h2 data-copy-key="census_tool_features">
+        {t(copy, 'census_tool_features', locale, 'Tool Features')}
+    </h2>
+</section>
+
+<style>
+    .census-features-title {
+        width: 100%;
+        padding: 0 var(--content-margin-inline);
+    }
+</style>

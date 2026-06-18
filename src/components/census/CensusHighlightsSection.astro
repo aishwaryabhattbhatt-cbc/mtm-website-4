@@ -1,0 +1,437 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const rows = [
+    {
+        id: 'geo',
+        iconSrc: `${base}icons/demographics/region.svg`,
+        statKey: 'highlights_geo_stat',
+        statFb: '70,000+ Geographic Areas',
+        descKey: 'highlights_geo_desc',
+        descFb: 'Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal area to pinpoint where media and tech trends emerge.',
+        labelKey: 'highlights_geo_label',
+        labelFb: 'Geographic Filters',
+        labelClass: 'census-highlights__filter-label--geo',
+        imgSrc: `${base}images/tools/census/census-geo-filters.png`,
+        imgAlt: locale === 'fr' ? 'Aperçu des filtres géographiques' : 'Geographic filters preview',
+    },
+    {
+        id: 'demo',
+        iconSrc: `${base}icons/gen/multiple-variables.svg`,
+        statKey: 'highlights_demo_stat',
+        statFb: '2,000+ Demographic Variables',
+        descKey: 'highlights_demo_desc',
+        descFb: "Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who's driving adoption and change.",
+        labelKey: 'highlights_demo_label',
+        labelFb: 'Demographic Filters',
+        labelClass: 'census-highlights__filter-label--demo',
+        imgSrc: `${base}images/tools/census/census-demo-filters.png`,
+        imgAlt:
+            locale === 'fr' ? 'Aperçu des filtres démographiques' : 'Demographic filters preview',
+    },
+];
+---
+
+<!-- Driver: tall container whose extra height creates the scroll budget -->
+<div class="census-highlights-driver">
+    <!-- Sticky shell: pins inside the driver while scrolling -->
+    <div class="census-highlights-sticky">
+        <section class="census-highlights">
+            <h2 class="census-highlights__title" data-copy-key="highlights_title">
+                {t(copy, 'highlights_title', locale, 'Explore with Precision')}
+            </h2>
+            <div class="census-highlights__layout">
+                <div class="census-highlights__nav">
+                    {
+                        rows.map((row, i) => (
+                            <div
+                                class={`census-highlights__row${i === 0 ? ' census-highlights__row--active' : ''}`}
+                                data-index={i}
+                            >
+                                <img
+                                    class="icon-2xl census-highlights__row-icon"
+                                    src={row.iconSrc}
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                />
+                                <div class="census-highlights__stat-row">
+                                    <img
+                                        class="icon-l census-highlights__badge"
+                                        src={`${base}icons/gen/census-badge.svg`}
+                                        alt=""
+                                        aria-hidden="true"
+                                        loading="lazy"
+                                    />
+                                    <p
+                                        class="text-h4 census-highlights__stat"
+                                        data-copy-key={row.statKey}
+                                    >
+                                        {t(copy, row.statKey, locale, row.statFb)}
+                                    </p>
+                                </div>
+                                <p
+                                    class="text-body-p1 census-highlights__desc"
+                                    data-copy-key={row.descKey}
+                                >
+                                    {t(copy, row.descKey, locale, row.descFb)}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <div class="census-highlights__preview">
+                    {
+                        rows.map((row, i) => (
+                            <div
+                                class={`census-highlights__panel${i === 0 ? ' is-active' : ''}`}
+                                id={`census-panel-${row.id}`}
+                            >
+                                <p
+                                    class={`text-body-p1-bold-upper census-highlights__filter-label ${row.labelClass}`}
+                                    data-copy-key={row.labelKey}
+                                >
+                                    {t(copy, row.labelKey, locale, row.labelFb)}
+                                </p>
+                                <div class="census-highlights__screenshot-frame">
+                                    <img
+                                        class="census-highlights__screenshot"
+                                        src={row.imgSrc}
+                                        alt={row.imgAlt}
+                                        loading="lazy"
+                                    />
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+    /* ─── Scroll driver ───────────────────────────────── */
+
+    .census-highlights-driver {
+        position: relative;
+        /* height is set by JS: sticky-height + SCROLL_PER_STATE * (states - 1) */
+    }
+
+    .census-highlights-sticky {
+        position: sticky;
+        top: var(--navbar-height);
+    }
+
+    /* ─── Section shell ───────────────────────────────── */
+
+    .census-highlights {
+        width: 100%;
+        padding: 0 var(--content-margin-inline);
+    }
+
+    .census-highlights__title {
+        margin-bottom: var(--space-8);
+    }
+
+    .census-highlights__layout {
+        display: grid;
+        grid-template-columns: 1fr 1.75fr;
+        gap: var(--space-10);
+        align-items: start;
+    }
+
+    /* ─── Nav (left panel) ───────────────────────────── */
+
+    .census-highlights__nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .census-highlights__row {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        padding: var(--space-6) 0;
+        border-bottom: var(--stroke-1) solid var(--border-tertiary);
+    }
+
+    .census-highlights__row:last-child {
+        border-bottom: none;
+    }
+
+    .census-highlights__row-icon,
+    .census-highlights__stat,
+    .census-highlights__desc {
+        transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Inactive rows: fade content */
+    .census-highlights__row:not(.census-highlights__row--active) .census-highlights__row-icon,
+    .census-highlights__row:not(.census-highlights__row--active) .census-highlights__stat,
+    .census-highlights__row:not(.census-highlights__row--active) .census-highlights__desc {
+        opacity: 0.3;
+    }
+
+    /* Badge: collapses to zero width when inactive, slides in when active */
+    .census-highlights__badge {
+        flex-shrink: 0;
+        overflow: hidden;
+        max-width: 0;
+        margin-right: 0;
+        opacity: 0;
+        transform: translateX(calc(-1 * var(--space-2)));
+        transition:
+            max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            margin-right 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .census-highlights__row--active .census-highlights__badge {
+        max-width: 2rem; /* matches icon-l */
+        margin-right: var(--space-3);
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .census-highlights__stat-row {
+        display: flex;
+        align-items: center;
+    }
+
+    .census-highlights__stat {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .census-highlights__desc {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    /* ─── Preview (right panel) ──────────────────────── */
+
+    .census-highlights__preview {
+        background: var(--surface-blue);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-card);
+        padding: var(--space-11) var(--space-12);
+        display: grid;
+        min-height: 32rem;
+    }
+
+    /* Stack all panels in the same grid cell so they cross-fade */
+    .census-highlights__panel {
+        grid-area: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        opacity: 0;
+        transform: translateY(var(--space-2));
+        pointer-events: none;
+        transition:
+            opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .census-highlights__panel.is-active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .census-highlights__filter-label {
+        margin: 0;
+    }
+
+    /* census-specific brand colors — no semantic token covers these */
+    .census-highlights__filter-label--geo {
+        color: #0e7fde;
+    }
+
+    .census-highlights__filter-label--demo {
+        color: #229e8e;
+    }
+
+    .census-highlights__screenshot-frame {
+        flex: 1;
+        min-height: 0;
+        background: var(--surface-white);
+        border-radius: var(--radius-s);
+        padding: var(--space-6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .census-highlights__screenshot {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* ─── Responsive ─────────────────────────────────── */
+
+    @media (max-width: 1023px) {
+        .census-highlights__title {
+            margin-bottom: var(--space-5);
+        }
+
+        .census-highlights__layout {
+            grid-template-columns: 1fr;
+            gap: var(--space-4);
+        }
+
+        /* Cross-fade rows one-at-a-time, mirroring how panels work */
+        .census-highlights__nav {
+            display: grid;
+        }
+
+        .census-highlights__row {
+            grid-area: 1 / 1;
+            border-bottom: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Icon left of title */
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-areas:
+                'icon stat'
+                '. desc';
+            column-gap: var(--space-4);
+            row-gap: var(--space-3);
+        }
+
+        .census-highlights__row-icon {
+            grid-area: icon;
+            align-self: center;
+        }
+
+        .census-highlights__stat-row {
+            grid-area: stat;
+        }
+
+        .census-highlights__desc {
+            grid-area: desc;
+            grid-column: 1 / -1;
+        }
+
+        .census-highlights__row--active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Row fades as a whole — reset per-element fading */
+        .census-highlights__row:not(.census-highlights__row--active) .census-highlights__row-icon,
+        .census-highlights__row:not(.census-highlights__row--active) .census-highlights__stat,
+        .census-highlights__row:not(.census-highlights__row--active) .census-highlights__desc {
+            opacity: 1;
+            transition: none;
+        }
+
+        /* Hide badge on mobile */
+        .census-highlights__badge {
+            display: none;
+        }
+
+        .census-highlights__preview {
+            min-height: 24rem;
+            padding: var(--space-7) var(--space-8);
+        }
+
+        .census-highlights__screenshot-frame {
+            padding: var(--space-4);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .census-highlights__preview {
+            min-height: 18rem;
+            padding: var(--space-5) var(--space-6);
+        }
+
+        .census-highlights__screenshot-frame {
+            padding: var(--space-3);
+        }
+    }
+</style>
+
+<script>
+    const driver = document.querySelector<HTMLElement>('.census-highlights-driver');
+    const sticky = document.querySelector<HTMLElement>('.census-highlights-sticky');
+    const rows = document.querySelectorAll<HTMLElement>('.census-highlights__row');
+    const panels = document.querySelectorAll<HTMLElement>('.census-highlights__panel');
+
+    if (driver && sticky) {
+        // Bind to const so closures below retain the narrowed non-null type
+        const d = driver;
+        const s = sticky;
+
+        const NUM_STATES = rows.length;
+        const SCROLL_PER_STATE = 300; // px of scroll to trigger each state change (~2 scrolls)
+        const SCROLL_DWELL = 300; // px to stay on the last state before releasing (~2 scrolls)
+
+        function getNavbarHeight(): number {
+            return (
+                parseFloat(
+                    getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')
+                ) || 80
+            );
+        }
+
+        function setActive(index: number) {
+            rows.forEach((r, i) => {
+                r.classList.toggle('census-highlights__row--active', i === index);
+            });
+            panels.forEach((p, i) => {
+                p.classList.toggle('is-active', i === index);
+            });
+        }
+
+        function setDriverHeight() {
+            d.style.height = `${s.offsetHeight + SCROLL_PER_STATE * (NUM_STATES - 1) + SCROLL_DWELL}px`;
+        }
+
+        function onScroll() {
+            const navbarH = getNavbarHeight();
+
+            // Absolute top of the driver from the document origin
+            const driverDocTop = d.getBoundingClientRect().top + window.scrollY;
+
+            // Sticky phase begins when the driver's top reaches the navbar bottom
+            const stickyStart = driverDocTop - navbarH;
+
+            // How far past the sticky trigger we have scrolled
+            const scrolledIn = window.scrollY - stickyStart;
+
+            if (scrolledIn <= 0) {
+                setActive(0);
+                return;
+            }
+
+            const idx = Math.min(NUM_STATES - 1, Math.floor(scrolledIn / SCROLL_PER_STATE));
+            setActive(idx);
+        }
+
+        setDriverHeight();
+        onScroll();
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', () => {
+            setDriverHeight();
+            onScroll();
+        });
+    }
+</script>
