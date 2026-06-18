@@ -19,8 +19,8 @@
     "en": "Tool Features",
     "fr": ""
   },
-  "census_what_you_get": {
-    "key": "census_what_you_get",
+  "benefit_label": {
+    "key": "benefit_label",
     "en": "What you get",
     "fr": ""
   },
@@ -59,23 +59,23 @@
     "en": "Explore with Precision",
     "fr": ""
   },
-  "highlights_geo_stat": {
-    "key": "highlights_geo_stat",
+  "highlights_stat_1_value": {
+    "key": "highlights_stat_1_value",
     "en": "70,000+ Geographic Areas",
     "fr": ""
   },
-  "highlights_geo_desc": {
-    "key": "highlights_geo_desc",
+  "highlights_stat_1_description": {
+    "key": "highlights_stat_1_description",
     "en": "Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal area to pinpoint where media and tech trends emerge.",
     "fr": ""
   },
-  "highlights_demo_stat": {
-    "key": "highlights_demo_stat",
+  "highlights_stat_2_value": {
+    "key": "highlights_stat_2_value",
     "en": "2,000+ Demographic Variables",
     "fr": ""
   },
-  "highlights_demo_desc": {
-    "key": "highlights_demo_desc",
+  "highlights_stat_2_description": {
+    "key": "highlights_stat_2_description",
     "en": "Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who's driving adoption and change.",
     "fr": ""
   },
@@ -89,246 +89,60 @@
     "en": "Demographic Filters",
     "fr": ""
   },
-  "snapshot_subtitle": {
-    "key": "snapshot_subtitle",
-    "en": "Understand any region at a glance",
-    "fr": ""
-  },
-  "snapshot_desc": {
-    "key": "snapshot_desc",
-    "en": "Population, age, income, language, immigration, indigenous identity. Any Canadian geography. In seconds.",
-    "fr": ""
-  },
-  "snapshot_feature_1_title": {
-    "key": "snapshot_feature_1_title",
-    "en": "Quick Insights",
-    "fr": ""
-  },
-  "snapshot_feature_1_desc": {
-    "key": "snapshot_feature_1_desc",
-    "en": "Generate instant \"Community Portraits\" for any Canadian geography.",
-    "fr": ""
-  },
-  "snapshot_feature_2_title": {
-    "key": "snapshot_feature_2_title",
-    "en": "Key Metrics",
-    "fr": ""
-  },
-  "snapshot_feature_2_desc": {
-    "key": "snapshot_feature_2_desc",
-    "en": "Analyze population, age, income, and language in seconds.",
-    "fr": ""
-  },
-  "snapshot_feature_3_title": {
-    "key": "snapshot_feature_3_title",
-    "en": "Data Exports",
-    "fr": ""
-  },
-  "snapshot_feature_3_desc": {
-    "key": "snapshot_feature_3_desc",
-    "en": "Easily export data tables for quick analysis and sharing.",
-    "fr": ""
-  },
-  "drilldown_subtitle": {
-    "key": "drilldown_subtitle",
-    "en": "Dig deeper into any demographic",
-    "fr": ""
-  },
-  "drilldown_desc": {
-    "key": "drilldown_desc",
-    "en": "Move beyond surface-level data. Explore nested demographic breakdowns across hundreds of variables for any Canadian geography.",
-    "fr": ""
-  },
-  "drilldown_feature_1_title": {
-    "key": "drilldown_feature_1_title",
-    "en": "Deep Filtering",
-    "fr": ""
-  },
-  "drilldown_feature_1_desc": {
-    "key": "drilldown_feature_1_desc",
-    "en": "Layer multiple filters to isolate the exact audience segment you need.",
-    "fr": ""
-  },
-  "drilldown_feature_2_title": {
-    "key": "drilldown_feature_2_title",
-    "en": "Cross-Tabulation",
-    "fr": ""
-  },
-  "drilldown_feature_2_desc": {
-    "key": "drilldown_feature_2_desc",
-    "en": "Compare demographic variables side by side with automatic breakdowns.",
-    "fr": ""
-  },
-  "drilldown_feature_3_title": {
-    "key": "drilldown_feature_3_title",
-    "en": "Trend Tracking",
-    "fr": ""
-  },
-  "drilldown_feature_3_desc": {
-    "key": "drilldown_feature_3_desc",
-    "en": "Trace how demographic patterns shift across census years.",
-    "fr": ""
-  },
-  "ranker_subtitle": {
-    "key": "ranker_subtitle",
-    "en": "Rank geographies by any metric",
-    "fr": ""
-  },
-  "ranker_desc": {
-    "key": "ranker_desc",
-    "en": "Find out which cities, regions, or postal areas lead on any demographic variable — instantly ranked and sortable.",
-    "fr": ""
-  },
-  "ranker_feature_1_title": {
-    "key": "ranker_feature_1_title",
-    "en": "Custom Rankings",
-    "fr": ""
-  },
-  "ranker_feature_1_desc": {
-    "key": "ranker_feature_1_desc",
-    "en": "Sort any geography by any variable to surface the top or bottom performers.",
-    "fr": ""
-  },
-  "ranker_feature_2_title": {
-    "key": "ranker_feature_2_title",
-    "en": "Benchmark Comparisons",
-    "fr": ""
-  },
-  "ranker_feature_2_desc": {
-    "key": "ranker_feature_2_desc",
-    "en": "Compare ranked geographies against the Canadian national average.",
-    "fr": ""
-  },
-  "ranker_feature_3_title": {
-    "key": "ranker_feature_3_title",
-    "en": "Export Results",
-    "fr": ""
-  },
-  "ranker_feature_3_desc": {
-    "key": "ranker_feature_3_desc",
-    "en": "Download ranked tables for reports and presentations.",
-    "fr": ""
-  },
-  "demographic_explorer_subtitle": {
-    "key": "demographic_explorer_subtitle",
-    "en": "Visualize demographic distribution",
-    "fr": ""
-  },
-  "demographic_explorer_desc": {
-    "key": "demographic_explorer_desc",
-    "en": "Map and visualize how age, language, income, and hundreds of other variables distribute across Canada's diverse regions.",
-    "fr": ""
-  },
-  "demographic_explorer_feature_1_title": {
-    "key": "demographic_explorer_feature_1_title",
-    "en": "Interactive Maps",
-    "fr": ""
-  },
-  "demographic_explorer_feature_1_desc": {
-    "key": "demographic_explorer_feature_1_desc",
-    "en": "Visualize demographic variables across Canada's geographic areas.",
-    "fr": ""
-  },
-  "demographic_explorer_feature_2_title": {
-    "key": "demographic_explorer_feature_2_title",
-    "en": "Variable Explorer",
-    "fr": ""
-  },
-  "demographic_explorer_feature_2_desc": {
-    "key": "demographic_explorer_feature_2_desc",
-    "en": "Browse and search 2,000+ demographic variables with instant previews.",
-    "fr": ""
-  },
-  "demographic_explorer_feature_3_title": {
-    "key": "demographic_explorer_feature_3_title",
-    "en": "Distribution Charts",
-    "fr": ""
-  },
-  "demographic_explorer_feature_3_desc": {
-    "key": "demographic_explorer_feature_3_desc",
-    "en": "See how a demographic breaks down across provinces and cities.",
-    "fr": ""
-  },
-  "compare_subtitle": {
-    "key": "compare_subtitle",
-    "en": "Compare regions side by side",
-    "fr": ""
-  },
-  "compare_desc": {
-    "key": "compare_desc",
-    "en": "Place two or more geographies next to each other and identify what makes each one unique — or where they converge.",
-    "fr": ""
-  },
-  "compare_feature_1_title": {
-    "key": "compare_feature_1_title",
-    "en": "Side-by-Side View",
-    "fr": ""
-  },
-  "compare_feature_1_desc": {
-    "key": "compare_feature_1_desc",
-    "en": "Compare up to five geographies on any demographic variable.",
-    "fr": ""
-  },
-  "compare_feature_2_title": {
-    "key": "compare_feature_2_title",
-    "en": "Difference Highlights",
-    "fr": ""
-  },
-  "compare_feature_2_desc": {
-    "key": "compare_feature_2_desc",
-    "en": "Automatically surface the most significant differences between regions.",
-    "fr": ""
-  },
-  "compare_feature_3_title": {
-    "key": "compare_feature_3_title",
-    "en": "Shareable Snapshots",
-    "fr": ""
-  },
-  "compare_feature_3_desc": {
-    "key": "compare_feature_3_desc",
-    "en": "Export comparison views as clean tables or visual summaries.",
-    "fr": ""
-  },
-  "canada_score_subtitle": {
-    "key": "canada_score_subtitle",
-    "en": "Benchmark against the national standard",
-    "fr": ""
-  },
-  "canada_score_desc": {
-    "key": "canada_score_desc",
-    "en": "Understand how any Canadian geography performs relative to the national average across key demographic indicators.",
-    "fr": ""
-  },
-  "canada_score_feature_1_title": {
-    "key": "canada_score_feature_1_title",
-    "en": "National Benchmarks",
-    "fr": ""
-  },
-  "canada_score_feature_1_desc": {
-    "key": "canada_score_feature_1_desc",
-    "en": "Instantly compare any region's metrics against Canada-wide averages.",
-    "fr": ""
-  },
-  "canada_score_feature_2_title": {
-    "key": "canada_score_feature_2_title",
-    "en": "Score Cards",
-    "fr": ""
-  },
-  "canada_score_feature_2_desc": {
-    "key": "canada_score_feature_2_desc",
-    "en": "Get a summarized score for how a region ranks on key indicators.",
-    "fr": ""
-  },
-  "canada_score_feature_3_title": {
-    "key": "canada_score_feature_3_title",
-    "en": "Historical Comparison",
-    "fr": ""
-  },
-  "canada_score_feature_3_desc": {
-    "key": "canada_score_feature_3_desc",
-    "en": "Track how a region's Canada Score has changed over census cycles.",
-    "fr": ""
-  },
+  "tool_1_title": { "key": "tool_1_title", "en": "Snapshot", "fr": "" },
+  "tool_1_subtitle": { "key": "tool_1_subtitle", "en": "Understand any region at a glance", "fr": "" },
+  "tool_1_description": { "key": "tool_1_description", "en": "Population, age, income, language, immigration, indigenous identity. Any Canadian geography. In seconds.", "fr": "" },
+  "tool_1_benefit_1": { "key": "tool_1_benefit_1", "en": "Quick Insights", "fr": "" },
+  "tool_1_benefit_1_des": { "key": "tool_1_benefit_1_des", "en": "Generate instant \"Community Portraits\" for any Canadian geography.", "fr": "" },
+  "tool_1_benefit_2": { "key": "tool_1_benefit_2", "en": "Key Metrics", "fr": "" },
+  "tool_1_benefit_2_des": { "key": "tool_1_benefit_2_des", "en": "Analyze population, age, income, and language in seconds.", "fr": "" },
+  "tool_1_benefit_3": { "key": "tool_1_benefit_3", "en": "Data Exports", "fr": "" },
+  "tool_1_benefit_3_des": { "key": "tool_1_benefit_3_des", "en": "Easily export data tables for quick analysis and sharing.", "fr": "" },
+  "tool_2_title": { "key": "tool_2_title", "en": "Drilldown", "fr": "" },
+  "tool_2_subtitle": { "key": "tool_2_subtitle", "en": "Dig deeper into any demographic", "fr": "" },
+  "tool_2_description": { "key": "tool_2_description", "en": "Move beyond surface-level data. Explore nested demographic breakdowns across hundreds of variables for any Canadian geography.", "fr": "" },
+  "tool_2_benefit_1": { "key": "tool_2_benefit_1", "en": "Deep Filtering", "fr": "" },
+  "tool_2_benefit_1_des": { "key": "tool_2_benefit_1_des", "en": "Layer multiple filters to isolate the exact audience segment you need.", "fr": "" },
+  "tool_2_benefit_2": { "key": "tool_2_benefit_2", "en": "Cross-Tabulation", "fr": "" },
+  "tool_2_benefit_2_des": { "key": "tool_2_benefit_2_des", "en": "Compare demographic variables side by side with automatic breakdowns.", "fr": "" },
+  "tool_2_benefit_3": { "key": "tool_2_benefit_3", "en": "Trend Tracking", "fr": "" },
+  "tool_2_benefit_3_des": { "key": "tool_2_benefit_3_des", "en": "Trace how demographic patterns shift across census years.", "fr": "" },
+  "tool_3_title": { "key": "tool_3_title", "en": "Ranker", "fr": "" },
+  "tool_3_subtitle": { "key": "tool_3_subtitle", "en": "Rank geographies by any metric", "fr": "" },
+  "tool_3_description": { "key": "tool_3_description", "en": "Find out which cities, regions, or postal areas lead on any demographic variable — instantly ranked and sortable.", "fr": "" },
+  "tool_3_benefit_1": { "key": "tool_3_benefit_1", "en": "Custom Rankings", "fr": "" },
+  "tool_3_benefit_1_des": { "key": "tool_3_benefit_1_des", "en": "Sort any geography by any variable to surface the top or bottom performers.", "fr": "" },
+  "tool_3_benefit_2": { "key": "tool_3_benefit_2", "en": "Benchmark Comparisons", "fr": "" },
+  "tool_3_benefit_2_des": { "key": "tool_3_benefit_2_des", "en": "Compare ranked geographies against the Canadian national average.", "fr": "" },
+  "tool_3_benefit_3": { "key": "tool_3_benefit_3", "en": "Export Results", "fr": "" },
+  "tool_3_benefit_3_des": { "key": "tool_3_benefit_3_des", "en": "Download ranked tables for reports and presentations.", "fr": "" },
+  "tool_4_title": { "key": "tool_4_title", "en": "Demographic Explorer", "fr": "" },
+  "tool_4_subtitle": { "key": "tool_4_subtitle", "en": "Visualize demographic distribution", "fr": "" },
+  "tool_4_description": { "key": "tool_4_description", "en": "Map and visualize how age, language, income, and hundreds of other variables distribute across Canada's diverse regions.", "fr": "" },
+  "tool_4_benefit_1": { "key": "tool_4_benefit_1", "en": "Interactive Maps", "fr": "" },
+  "tool_4_benefit_1_des": { "key": "tool_4_benefit_1_des", "en": "Visualize demographic variables across Canada's geographic areas.", "fr": "" },
+  "tool_4_benefit_2": { "key": "tool_4_benefit_2", "en": "Variable Explorer", "fr": "" },
+  "tool_4_benefit_2_des": { "key": "tool_4_benefit_2_des", "en": "Browse and search 2,000+ demographic variables with instant previews.", "fr": "" },
+  "tool_4_benefit_3": { "key": "tool_4_benefit_3", "en": "Distribution Charts", "fr": "" },
+  "tool_4_benefit_3_des": { "key": "tool_4_benefit_3_des", "en": "See how a demographic breaks down across provinces and cities.", "fr": "" },
+  "tool_5_title": { "key": "tool_5_title", "en": "Compare", "fr": "" },
+  "tool_5_subtitle": { "key": "tool_5_subtitle", "en": "Compare regions side by side", "fr": "" },
+  "tool_5_description": { "key": "tool_5_description", "en": "Place two or more geographies next to each other and identify what makes each one unique — or where they converge.", "fr": "" },
+  "tool_5_benefit_1": { "key": "tool_5_benefit_1", "en": "Side-by-Side View", "fr": "" },
+  "tool_5_benefit_1_des": { "key": "tool_5_benefit_1_des", "en": "Compare up to five geographies on any demographic variable.", "fr": "" },
+  "tool_5_benefit_2": { "key": "tool_5_benefit_2", "en": "Difference Highlights", "fr": "" },
+  "tool_5_benefit_2_des": { "key": "tool_5_benefit_2_des", "en": "Automatically surface the most significant differences between regions.", "fr": "" },
+  "tool_5_benefit_3": { "key": "tool_5_benefit_3", "en": "Shareable Snapshots", "fr": "" },
+  "tool_5_benefit_3_des": { "key": "tool_5_benefit_3_des", "en": "Export comparison views as clean tables or visual summaries.", "fr": "" },
+  "tool_6_title": { "key": "tool_6_title", "en": "Canada Score", "fr": "" },
+  "tool_6_subtitle": { "key": "tool_6_subtitle", "en": "Benchmark against the national standard", "fr": "" },
+  "tool_6_description": { "key": "tool_6_description", "en": "Understand how any Canadian geography performs relative to the national average across key demographic indicators.", "fr": "" },
+  "tool_6_benefit_1": { "key": "tool_6_benefit_1", "en": "National Benchmarks", "fr": "" },
+  "tool_6_benefit_1_des": { "key": "tool_6_benefit_1_des", "en": "Instantly compare any region's metrics against Canada-wide averages.", "fr": "" },
+  "tool_6_benefit_2": { "key": "tool_6_benefit_2", "en": "Score Cards", "fr": "" },
+  "tool_6_benefit_2_des": { "key": "tool_6_benefit_2_des", "en": "Get a summarized score for how a region ranks on key indicators.", "fr": "" },
+  "tool_6_benefit_3": { "key": "tool_6_benefit_3", "en": "Historical Comparison", "fr": "" },
+  "tool_6_benefit_3_des": { "key": "tool_6_benefit_3_des", "en": "Track how a region's Canada Score has changed over census cycles.", "fr": "" },
   "stat_callout_1_value": {
     "key": "stat_callout_1_value",
     "en": "63%",

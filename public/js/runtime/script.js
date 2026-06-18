@@ -388,28 +388,39 @@ function applyCmsDictionary(dictionary, locale) {
     });
 }
 
+function buildCsvUrl(url) {
+    return `${url}${url.includes('?') ? '&' : '?'}_ts=${Date.now()}`;
+}
+
+async function fetchCsvDictionary(url) {
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) {
+        console.warn(`[CMS] Runtime fetch failed with status ${response.status}: ${url}`);
+        return null;
+    }
+    return parseCmsDictionaryFromCsv(await response.text());
+}
+
 async function fetchAndApplyRuntimeCmsCopy() {
     const cmsRoot = document.querySelector('main[data-cms-page-id]') || document.body;
     const locale = cmsRoot?.dataset?.locale || document.documentElement.lang || 'en';
     const directCsvUrl = cmsRoot?.dataset?.cmsCsvUrl;
     const sheetId = cmsRoot?.dataset?.cmsSheetId;
     const gid = cmsRoot?.dataset?.cmsTabGid;
+    const secondaryCsvUrl = cmsRoot?.dataset?.cmsSecondaryCsvUrl;
 
     if (!directCsvUrl && (!sheetId || !gid)) return;
 
-    const csvUrl = directCsvUrl
-        ? `${directCsvUrl}${directCsvUrl.includes('?') ? '&' : '?'}_ts=${Date.now()}`
-        : `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}&_ts=${Date.now()}`;
+    const primaryUrl = directCsvUrl
+        ? buildCsvUrl(directCsvUrl)
+        : buildCsvUrl(`https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`);
 
     try {
-        const response = await fetch(csvUrl, { cache: 'no-store' });
-        if (!response.ok) {
-            console.warn(`[CMS] Runtime fetch failed with status ${response.status}`);
-            return;
-        }
+        const fetches = [fetchCsvDictionary(primaryUrl)];
+        if (secondaryCsvUrl) fetches.push(fetchCsvDictionary(buildCsvUrl(secondaryCsvUrl)));
 
-        const csvText = await response.text();
-        const dictionary = parseCmsDictionaryFromCsv(csvText);
+        const results = await Promise.all(fetches);
+        const dictionary = Object.assign({}, ...results.filter(Boolean));
         applyCmsDictionary(dictionary, locale);
     } catch (error) {
         console.warn('[CMS] Runtime fetch failed. Keeping prerendered copy.', error);
