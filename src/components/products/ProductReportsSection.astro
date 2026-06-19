@@ -19,8 +19,6 @@ interface Props {
     graphDetail: string;
     chartSrc: string;
     chartAlt?: string;
-    ctaLabel: string;
-    ctaHref: string;
     insightsHref: string;
     sampleReportHref: string;
     stats: StatItem[];
@@ -36,8 +34,6 @@ const {
     graphDetail,
     chartSrc,
     chartAlt = '',
-    ctaLabel,
-    ctaHref,
     insightsHref,
     sampleReportHref,
     stats,
@@ -62,10 +58,8 @@ const {
         graphDetail={graphDetail}
         chartSrc={chartSrc}
         chartAlt={chartAlt}
-        ctaHref={ctaHref}
         insightsHref={insightsHref}
         sampleReportHref={sampleReportHref}
-        ctaLabel={ctaLabel}
         stats={stats}
     />
 </section>
