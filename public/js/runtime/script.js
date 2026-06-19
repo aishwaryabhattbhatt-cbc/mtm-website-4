@@ -335,22 +335,29 @@ function parseCmsDictionaryFromCsv(csvText) {
         return headerRow.findIndex(h => candidates.some(c => h.includes(c)));
     }
 
+    // Each candidate is checked separately in priority order so that
+    // 'updated text (french)' cannot be mistakenly matched by the
+    // 'updated text' substring when searching for the English column.
     const enIdx = (() => {
-        const u = findCol(['updated text (english)', 'updated text', 'english']);
-        if (u !== -1) return u;
-        const t = findCol(['current text', 'text']);
-        return t !== -1 ? t : 1;
+        const specific = findCol(['updated text (english)']);
+        if (specific !== -1) return specific;
+        const english = findCol(['english']);
+        if (english !== -1) return english;
+        const current = findCol(['current text', 'text']);
+        return current !== -1 ? current : 1;
     })();
-    const frIdx = findCol(['updated text (french)', 'french']);
-    const currentTextIdx = findCol(['current text', 'text']);
+    const frIdx = (() => {
+        const specific = findCol(['updated text (french)']);
+        if (specific !== -1) return specific;
+        return findCol(['french', 'fr']);
+    })();
 
     const dictionary = {};
     for (let i = 1; i < rows.length; i++) {
         const row = rows[i];
         const key = normalizeCmsCell(row[0]);
         if (!key) continue;
-        const currentText = currentTextIdx >= 0 ? normalizeCmsCell(row[currentTextIdx]) : '';
-        const en = normalizeCmsCell(row[enIdx]) || currentText;
+        const en = normalizeCmsCell(row[enIdx]);
         const fr = frIdx >= 0 ? normalizeCmsCell(row[frIdx]) : '';
         dictionary[key] = { en, fr };
     }
@@ -420,7 +427,9 @@ async function fetchAndApplyRuntimeCmsCopy() {
         if (secondaryCsvUrl) fetches.push(fetchCsvDictionary(buildCsvUrl(secondaryCsvUrl)));
 
         const results = await Promise.all(fetches);
-        const dictionary = Object.assign({}, ...results.filter(Boolean));
+        // Secondary (home) is merged first so primary (page-specific) keys win,
+        // matching the build-time merge order in getPageDictionary.
+        const dictionary = Object.assign({}, ...results.filter(Boolean).reverse());
         applyCmsDictionary(dictionary, locale);
     } catch (error) {
         console.warn('[CMS] Runtime fetch failed. Keeping prerendered copy.', error);

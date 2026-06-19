@@ -13,53 +13,81 @@ interface Props {
 
 const { locale, copy } = Astro.props as Props;
 const chevronIconSrc = chevronIconAsset;
+const base = import.meta.env.BASE_URL;
+const logoBase = `${base}images/home/solutions/logos`;
 
 const logoSets = {
     industry: [
-        { id: 'telefilm', width: '42%' },
-        { id: 'ebu', width: '30%' },
-        { id: 'moffettnathanson', width: '58%' },
-        { id: 'numeris', width: '40%' },
-        { id: 'cmf', width: '34%' },
+        { src: `${logoBase}/industry/EBU-European_Broadcasting_Union.svg`, alt: 'EBU' },
+        { src: `${logoBase}/industry/Shaw-Rocket-Fund.svg`, alt: 'Shaw Rocket Fund' },
+        { src: `${logoBase}/industry/cmf-blk.svg`, alt: 'Canada Media Fund' },
+        { src: `${logoBase}/industry/nfb.svg`, alt: 'NFB' },
+        { src: `${logoBase}/industry/numeris.svg`, alt: 'Numeris' },
     ],
     media: [
-        { id: 'cbc', width: '36%' },
-        { id: 'bell', width: '30%' },
-        { id: 'rogers', width: '42%' },
-        { id: 'corus', width: '36%' },
-        { id: 'quebecor', width: '44%' },
+        { src: `${logoBase}/media/abc.svg`, alt: 'ABC' },
+        { src: `${logoBase}/media/ami-tv.svg`, alt: 'AMI-tv' },
+        { src: `${logoBase}/media/aqpm.svg`, alt: 'AQPM' },
+        { src: `${logoBase}/media/bbc.svg`, alt: 'BBC' },
+        { src: `${logoBase}/media/bell.svg`, alt: 'Bell' },
+        { src: `${logoBase}/media/nexxen.svg`, alt: 'Nexxen' },
+        { src: `${logoBase}/media/pelmorex.svg`, alt: 'Pelmorex' },
+        { src: `${logoBase}/media/quebecor.svg`, alt: 'Quebecor' },
+        { src: `${logoBase}/media/rogers.svg`, alt: 'Rogers' },
+        { src: `${logoBase}/media/tele-quebec.svg`, alt: 'Télé-Québec' },
+        { src: `${logoBase}/media/telus.svg`, alt: 'TELUS' },
+        { src: `${logoBase}/media/tfo.svg`, alt: 'TFO' },
+        { src: `${logoBase}/media/tv5.svg`, alt: 'TV5' },
+        { src: `${logoBase}/media/tva.svg`, alt: 'TVA' },
+        { src: `${logoBase}/media/tvo.svg`, alt: 'TVO' },
+        { src: `${logoBase}/media/videotron.svg`, alt: 'Vidéotron' },
+        { src: `${logoBase}/media/wildbrain-television.svg`, alt: 'WildBrain Television' },
     ],
     advertising: [
-        { id: 'iab', width: '26%' },
-        { id: 'comscore', width: '46%' },
-        { id: 'nielsen', width: '38%' },
-        { id: 'dentsu', width: '34%' },
-        { id: 'publicis', width: '40%' },
+        { src: `${logoBase}/advertising/cosette.svg`, alt: 'Cosette' },
+        { src: `${logoBase}/advertising/essencemediacom.svg`, alt: 'EssenceMediacom' },
+        { src: `${logoBase}/advertising/group-m.svg`, alt: 'GroupM' },
+        { src: `${logoBase}/advertising/hearts-and-science.png`, alt: 'Hearts & Science' },
+        { src: `${logoBase}/advertising/initiative.png`, alt: 'Initiative' },
+        { src: `${logoBase}/advertising/jungle.svg`, alt: 'Jungle Media' },
+        { src: `${logoBase}/advertising/media-experts.svg`, alt: 'Media Experts' },
+        { src: `${logoBase}/advertising/mindshare.svg`, alt: 'Mindshare' },
+        { src: `${logoBase}/advertising/omnicom.svg`, alt: 'Omnicom' },
+        { src: `${logoBase}/advertising/phd.svg`, alt: 'PHD' },
+        { src: `${logoBase}/advertising/time-space-media.png`, alt: 'Time & Space Media' },
+        { src: `${logoBase}/advertising/touche.SVG`, alt: 'Touché!' },
+        { src: `${logoBase}/advertising/um-worldwide.svg`, alt: 'UM Worldwide' },
     ],
     education: [
-        { id: 'universities', width: '54%' },
-        { id: 'colleges', width: '44%' },
-        { id: 'boards', width: '34%' },
-        { id: 'institutes', width: '44%' },
-        { id: 'libraries', width: '38%' },
+        { src: `${logoBase}/education/HEC_Montreal.svg`, alt: 'HEC Montréal' },
+        { src: `${logoBase}/education/Mount-Royal-University.svg`, alt: 'Mount Royal University' },
+        { src: `${logoBase}/education/humber-polytechnic.svg`, alt: 'Humber Polytechnic' },
+        {
+            src: `${logoBase}/education/toronto-metro-univerity-logo.svg`,
+            alt: 'Toronto Metropolitan University',
+        },
+        { src: `${logoBase}/education/uOttawa.svg`, alt: 'University of Ottawa' },
+        { src: `${logoBase}/education/universite-de-montreal.svg`, alt: 'Université de Montréal' },
+        { src: `${logoBase}/education/university-of-manitoba.svg`, alt: 'University of Manitoba' },
     ],
     govngo: [
-        { id: 'federal', width: '40%' },
-        { id: 'provincial', width: '46%' },
-        { id: 'municipal', width: '42%' },
-        { id: 'associations', width: '52%' },
-        { id: 'foundations', width: '46%' },
+        { src: `${logoBase}/gov-ngo/R613-EN-RGB-Colour.svg`, alt: 'Radio 613' },
+        { src: `${logoBase}/gov-ngo/Telefilm_Canada.svg`, alt: 'Telefilm Canada' },
+        { src: `${logoBase}/gov-ngo/canada.svg`, alt: 'Government of Canada' },
+        { src: `${logoBase}/gov-ngo/crtc.svg`, alt: 'CRTC' },
+        { src: `${logoBase}/gov-ngo/first-nation-market.svg`, alt: 'First Nations Market' },
+        { src: `${logoBase}/gov-ngo/quebec.svg`, alt: 'Gouvernement du Québec' },
     ],
-} as const;
+};
 
 const cards = [
     {
         solutionId: 'industry',
         titleKey: 'solutions_item_1',
         title: t(copy, 'solutions_item_1', locale, 'Industry'),
-        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/industry.png`,
+        imageSrc: `${base}images/home/solutions/industry.png`,
         imageAlt: t(copy, 'solutions_item_1_image_alt', locale, 'Professional using a laptop'),
-        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.industry}`,
+        iconPath: `${base}${icons.solutions.industry}`,
         href: `/${locale}/solutions/industry`,
         ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
     },
@@ -67,9 +95,9 @@ const cards = [
         solutionId: 'media',
         titleKey: 'solutions_item_2',
         title: t(copy, 'solutions_item_2', locale, 'Media'),
-        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/media.png`,
+        imageSrc: `${base}images/home/solutions/media.png`,
         imageAlt: t(copy, 'solutions_item_2_image_alt', locale, 'Professional using a laptop'),
-        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.media}`,
+        iconPath: `${base}${icons.solutions.media}`,
         href: `/${locale}/solutions/media`,
         ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
     },
@@ -77,9 +105,9 @@ const cards = [
         solutionId: 'advertising',
         titleKey: 'solutions_item_3',
         title: t(copy, 'solutions_item_3', locale, 'Advertising'),
-        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/advertising.png`,
+        imageSrc: `${base}images/home/solutions/advertising.png`,
         imageAlt: t(copy, 'solutions_item_3_image_alt', locale, 'Professional using a laptop'),
-        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.advertising}`,
+        iconPath: `${base}${icons.solutions.advertising}`,
         href: `/${locale}/solutions/advertising`,
         ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
     },
@@ -87,9 +115,9 @@ const cards = [
         solutionId: 'education',
         titleKey: 'solutions_item_4',
         title: t(copy, 'solutions_item_4', locale, 'Education'),
-        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/education.png`,
+        imageSrc: `${base}images/home/solutions/education.png`,
         imageAlt: t(copy, 'solutions_item_4_image_alt', locale, 'Professional using a laptop'),
-        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.education}`,
+        iconPath: `${base}${icons.solutions.education}`,
         href: `/${locale}/solutions/education`,
         ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
     },
@@ -97,9 +125,9 @@ const cards = [
         solutionId: 'govngo',
         titleKey: 'solutions_item_5',
         title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
-        imageSrc: `${import.meta.env.BASE_URL}images/home/solutions/govn&ngo.png`,
+        imageSrc: `${base}images/home/solutions/govn&ngo.png`,
         imageAlt: t(copy, 'solutions_item_5_image_alt', locale, 'Professional using a laptop'),
-        iconPath: `${import.meta.env.BASE_URL}${icons.solutions.govNgo}`,
+        iconPath: `${base}${icons.solutions.govNgo}`,
         href: `/${locale}/solutions/government-ngos`,
         ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
     },
@@ -153,13 +181,17 @@ const cards = [
                     <div
                         class={`home-solutions__logos-grid${idx === 0 ? ' is-active' : ''}`}
                         data-solution-logos={solutionId}
+                        data-logos={JSON.stringify(logos)}
                         aria-hidden={idx === 0 ? 'false' : 'true'}
                     >
-                        {logos.map((logo) => (
-                            <div class="home-solutions__logo-placeholder" data-logo={logo.id}>
-                                <div
-                                    class="home-solutions__logo-mark"
-                                    style={`--logo-width: ${logo.width};`}
+                        {logos.slice(0, 5).map((logo) => (
+                            <div class="home-solutions__logo-placeholder">
+                                <img
+                                    class="home-solutions__logo-img"
+                                    src={logo.src}
+                                    alt={logo.alt}
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                         ))}
@@ -205,55 +237,59 @@ const cards = [
 
         <div class="home-solutions__mobile-panels">
             {
-                cards.map((card, idx) => (
-                    <div
-                        class={`home-solutions__mobile-panel${idx === 0 ? ' is-active' : ''}`}
-                        data-solution-panel={card.solutionId}
-                        id={`home-solutions-panel-${card.solutionId}`}
-                        role="tabpanel"
-                        aria-hidden={idx === 0 ? 'false' : 'true'}
-                    >
-                        <div class="home-solutions__mobile-image-wrap">
-                            <img
-                                class="home-solutions__mobile-image"
-                                src={card.imageSrc}
-                                alt={card.imageAlt}
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        </div>
-
-                        <div class="home-solutions__mobile-clients">
-                            <div class="home-solutions__mobile-clients-header">
-                                <p class="home-solutions__mobile-clients-label text-label-xs">
-                                    {`${card.title.toUpperCase()} CLIENTS`}
-                                </p>
-                                <Button
-                                    variant="tertiary"
-                                    href={card.href}
-                                    class="home-solutions__mobile-clients-cta"
-                                >
-                                    {t(copy, 'solutions_cta', locale, 'Learn more')}
-                                </Button>
+                cards.map((card, idx) => {
+                    const logos = logoSets[card.solutionId as keyof typeof logoSets];
+                    return (
+                        <div
+                            class={`home-solutions__mobile-panel${idx === 0 ? ' is-active' : ''}`}
+                            data-solution-panel={card.solutionId}
+                            id={`home-solutions-panel-${card.solutionId}`}
+                            role="tabpanel"
+                            aria-hidden={idx === 0 ? 'false' : 'true'}
+                        >
+                            <div class="home-solutions__mobile-image-wrap">
+                                <img
+                                    class="home-solutions__mobile-image"
+                                    src={card.imageSrc}
+                                    alt={card.imageAlt}
+                                    loading="lazy"
+                                    decoding="async"
+                                />
                             </div>
-                            <div class="home-solutions__mobile-logos">
-                                {logoSets[card.solutionId as keyof typeof logoSets]
-                                    .slice(0, 3)
-                                    .map((logo) => (
-                                        <div
-                                            class="home-solutions__mobile-logo-placeholder"
-                                            data-logo={logo.id}
-                                        >
-                                            <div
-                                                class="home-solutions__mobile-logo-mark"
-                                                style={`--logo-width: ${logo.width};`}
+
+                            <div class="home-solutions__mobile-clients">
+                                <div class="home-solutions__mobile-clients-header">
+                                    <p class="home-solutions__mobile-clients-label text-label-xs">
+                                        {`${card.title.toUpperCase()} CLIENTS`}
+                                    </p>
+                                    <Button
+                                        variant="tertiary"
+                                        href={card.href}
+                                        class="home-solutions__mobile-clients-cta"
+                                    >
+                                        {t(copy, 'solutions_cta', locale, 'Learn more')}
+                                    </Button>
+                                </div>
+                                <div
+                                    class="home-solutions__mobile-logos"
+                                    data-logos={JSON.stringify(logos)}
+                                >
+                                    {logos.slice(0, 3).map((logo) => (
+                                        <div class="home-solutions__mobile-logo-placeholder">
+                                            <img
+                                                class="home-solutions__logo-img"
+                                                src={logo.src}
+                                                alt={logo.alt}
+                                                loading="lazy"
+                                                decoding="async"
                                             />
                                         </div>
                                     ))}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))
+                    );
+                })
             }
         </div>
     </div>
@@ -350,27 +386,20 @@ const cards = [
     }
 
     .home-solutions__logo-placeholder {
-        background: var(--surface-white);
         border-radius: var(--radius-s);
         min-height: var(--space-10);
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0 var(--space-3);
+        padding: var(--space-7) var(--space-3);
     }
 
-    .home-solutions__logo-mark {
-        width: var(--logo-width, 40%);
-        height: var(--space-3);
-        border-radius: var(--radius-xs);
-        background: var(--border-primary);
-        opacity: 0.25;
-    }
-
-    .home-solutions__logos-image {
+    .home-solutions__logo-img {
         width: 100%;
-        height: auto;
+        height: var(--space-7);
+        object-fit: contain;
+        object-position: center;
         display: block;
     }
 
@@ -509,22 +538,13 @@ const cards = [
         }
 
         .home-solutions__mobile-logo-placeholder {
-            background: var(--surface-white);
             border-radius: var(--radius-s);
             min-height: var(--space-9);
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 var(--space-2);
-        }
-
-        .home-solutions__mobile-logo-mark {
-            width: var(--logo-width, 40%);
-            height: var(--space-2);
-            border-radius: var(--radius-xs);
-            background: var(--border-primary);
-            opacity: 0.25;
+            padding: var(--space-5) var(--space-2);
         }
     }
 
@@ -571,6 +591,23 @@ const cards = [
         );
         const defaultSolution = 'industry';
 
+        type LogoItem = { src: string; alt: string };
+
+        const rotateLogos = (container: Element | null, count: number) => {
+            if (!container) return;
+            const all: LogoItem[] = JSON.parse((container as HTMLElement).dataset.logos ?? '[]');
+            if (all.length <= count) return;
+            const picked = [...all].sort(() => Math.random() - 0.5).slice(0, count);
+            container
+                .querySelectorAll<HTMLImageElement>('.home-solutions__logo-img')
+                .forEach((img, i) => {
+                    if (picked[i]) {
+                        img.src = picked[i].src;
+                        img.alt = picked[i].alt;
+                    }
+                });
+        };
+
         const setActiveSolution = (solutionId: string) => {
             logoGrids.forEach((grid) => {
                 const isActive = grid.getAttribute('data-solution-logos') === solutionId;
@@ -595,6 +632,15 @@ const cards = [
                 panel.classList.toggle('is-active', isActive);
                 panel.setAttribute('aria-hidden', String(!isActive));
             });
+
+            // Rotate desktop logo row for this solution
+            rotateLogos(solutionsSection.querySelector(`[data-solution-logos="${solutionId}"]`), 5);
+
+            // Rotate mobile logo row for this solution
+            const mobilePanel = solutionsSection.querySelector(
+                `[data-solution-panel="${solutionId}"]`
+            );
+            rotateLogos(mobilePanel?.querySelector('.home-solutions__mobile-logos') ?? null, 3);
         };
 
         solutionItems.forEach((item) => {
