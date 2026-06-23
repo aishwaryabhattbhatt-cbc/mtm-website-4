@@ -136,7 +136,7 @@ const cards = [
 
 <section class="home-solutions" aria-label={t(copy, 'solutions_title', locale, 'Solutions')}>
     <div class="home-solutions__heading">
-        <h2 class="home-solutions__title" data-copy-key="solutions_title">
+        <h2 class="home-solutions__title solutions-fly-in" data-copy-key="solutions_title">
             {t(copy, 'solutions_title', locale, 'Solutions for Every Decision-Maker')}
         </h2>
     </div>
@@ -144,7 +144,10 @@ const cards = [
         <div class="home-solutions__inner">
             {
                 cards.map((card) => (
-                    <div class="home-solutions__item" data-solution={card.solutionId}>
+                    <div
+                        class="home-solutions__item solutions-card-fly-in"
+                        data-solution={card.solutionId}
+                    >
                         <HomeSolutionsCard
                             titleKey={card.titleKey}
                             title={card.title}
@@ -338,11 +341,47 @@ const cards = [
         min-width: 0;
     }
 
+    .solutions-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 1.1s ease,
+            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .solutions-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .solutions-card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.9s,
+            transform 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.9s;
+    }
+
+    .solutions-card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     .home-solutions__logos {
         width: 100%;
         border-top: var(--stroke-1) solid var(--border-tertiary);
         border-bottom: var(--stroke-1) solid var(--border-tertiary);
         padding: var(--space-4) 0;
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .home-solutions__logos.is-visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .home-solutions__indicator {
@@ -350,6 +389,16 @@ const cards = [
         display: grid;
         grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: var(--space-6);
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .home-solutions__indicator.is-visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .home-solutions__indicator-cell {
@@ -573,6 +622,38 @@ const cards = [
 </style>
 
 <script>
+    // Fly-in: heading + staggered cards
+    const solutionsFlyInSection = document.querySelector('.home-solutions');
+    if (solutionsFlyInSection) {
+        const heading = solutionsFlyInSection.querySelector<HTMLElement>('.solutions-fly-in');
+        const cards = solutionsFlyInSection.querySelectorAll<HTMLElement>('.solutions-card-fly-in');
+        const logos = solutionsFlyInSection.querySelector<HTMLElement>('.home-solutions__logos');
+        const indicator = solutionsFlyInSection.querySelector<HTMLElement>(
+            '.home-solutions__indicator'
+        );
+        const flyObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        flyObserver.unobserve(entry.target);
+                        if (heading) heading.classList.add('is-visible');
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        // stagger end + cards' 0.9s CSS delay + 600ms into spring settle
+                        const sweepDelay = (cards.length - 1) * 140 + 900 + 600;
+                        setTimeout(() => {
+                            logos?.classList.add('is-visible');
+                            indicator?.classList.add('is-visible');
+                        }, sweepDelay);
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+        flyObserver.observe(solutionsFlyInSection);
+    }
+
     const solutionsSection = document.querySelector('.home-solutions');
 
     if (solutionsSection) {

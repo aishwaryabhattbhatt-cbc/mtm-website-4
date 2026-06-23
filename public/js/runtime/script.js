@@ -705,10 +705,7 @@ function initViewportObserver() {
 // ============================================
 
 function initHeroTitleAnimation() {
-    // Wait a brief moment for page to fully render before starting animations
-    setTimeout(() => {
-        runTitleAnimation();
-    }, 100);
+    requestAnimationFrame(() => runTitleAnimation());
 }
 
 function runTitleAnimation() {
@@ -721,7 +718,10 @@ function runTitleAnimation() {
     heroTitles.forEach(title => {
         const text = title.textContent;
         const words = text.split(' ');
-        
+
+        // Prevent CMS runtime refresh from overwriting the animated spans
+        title.removeAttribute('data-copy-key');
+
         // Clear the original text
         title.textContent = '';
         

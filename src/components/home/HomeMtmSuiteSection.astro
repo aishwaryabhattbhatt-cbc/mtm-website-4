@@ -84,10 +84,10 @@ const products = [
 ---
 
 <section class="mtm-suite-section">
-    <h2 class="suite-section-heading" data-copy-key="package_title">
+    <h2 class="suite-section-heading suite-fly-in" data-copy-key="package_title">
         {t(copy, 'package_title', locale, 'The MTM Suite')}
     </h2>
-    <div class="data-products row">
+    <div class="data-products row suite-fly-in">
         <!-- LEFT: Heading + product tabs -->
         <div class="products-left col col-12 col-lg-5">
             <Eyebrow>{t(copy, 'package_1_eyebrow', locale, 'Data Products')}</Eyebrow>
@@ -201,7 +201,7 @@ const products = [
     </div>
 
     <!-- MOBILE: Data Products — vertical card stack, hidden on desktop -->
-    <div class="data-products-mobile">
+    <div class="data-products-mobile suite-fly-in">
         <div class="mobile-products-header">
             <Eyebrow>{t(copy, 'package_1_eyebrow', locale, 'Data Products')}</Eyebrow>
             <h3>
@@ -288,7 +288,7 @@ const products = [
         </div>
     </div>
 
-    <div class="reports-library-bg">
+    <div class="reports-library-bg suite-fly-in">
         <div class="reports-library row">
             <!-- LEFT: Heading + description -->
             <div class="products-left col col-12 col-lg-5 reports-content">
@@ -311,18 +311,37 @@ const products = [
 
                 <div class="reports-ctas reports-ctas-desktop">
                     <Button
-                        variant="tertiary"
-                        href={`/${locale}/reports`}
-                        data-copy-key="package_2_cta_1"
-                    >
-                        {t(copy, 'package_2_cta_1', locale, 'LEARN MORE ABOUT REPORTS')}
-                    </Button>
-                    <Button
-                        variant="tertiary"
+                        variant="primary"
+                        size="md"
                         href={`/${locale}/reports#sneak-peek`}
                         data-copy-key="package_2_cta_2"
                     >
-                        {t(copy, 'package_2_cta_2', locale, 'DOWNLOAD SNEAK PEEK REPORT')}
+                        <span class="reports-cta-btn-inner">
+                            {t(copy, 'package_2_cta_2', locale, 'SNEAK PEEK REPORT')}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </span>
+                    </Button>
+                    <Button
+                        variant="tertiary"
+                        href={`/${locale}/insights`}
+                        data-copy-key="package_2_cta_1"
+                    >
+                        {t(copy, 'package_2_cta_1', locale, 'GO TO INSIGHTS')}
                     </Button>
                 </div>
             </div>
@@ -355,24 +374,43 @@ const products = [
             <div class="col col-12 reports-ctas-row reports-ctas-mobile-row">
                 <div class="reports-ctas">
                     <Button
-                        variant="tertiary"
-                        href={`/${locale}/reports`}
-                        data-copy-key="package_2_cta_1"
-                    >
-                        {t(copy, 'package_2_cta_1', locale, 'LEARN MORE ABOUT REPORTS')}
-                    </Button>
-                    <Button
-                        variant="tertiary"
+                        variant="primary"
+                        size="md"
                         href={`/${locale}/reports#sneak-peek`}
                         data-copy-key="package_2_cta_2"
                     >
-                        {t(copy, 'package_2_cta_2', locale, 'DOWNLOAD SNEAK PEEK REPORT')}
+                        <span class="reports-cta-btn-inner">
+                            {t(copy, 'package_2_cta_2', locale, 'SNEAK PEEK REPORT')}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </span>
+                    </Button>
+                    <Button
+                        variant="tertiary"
+                        href={`/${locale}/insights`}
+                        data-copy-key="package_2_cta_1"
+                    >
+                        {t(copy, 'package_2_cta_1', locale, 'GO TO INSIGHTS')}
                     </Button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="tools-suite row">
+    <div class="tools-suite row suite-fly-in">
         <!-- LEFT: Heading + tool items -->
         <div class="products-left col col-12 col-lg-5">
             <Eyebrow>{t(copy, 'package_3_eyebrow', locale, 'Tools Suite')}</Eyebrow>
@@ -469,7 +507,6 @@ const products = [
                 {/* TODO: Connect video asset when available */}
                 <video
                     class="tools-video"
-                    autoplay
                     loop
                     muted
                     playsinline
@@ -519,6 +556,27 @@ const products = [
     .suite-section-heading {
         color: var(--text-primary);
         margin: 0;
+    }
+
+    .suite-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 1.1s ease,
+            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .suite-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Pause after h2 before data products appears */
+    .data-products.suite-fly-in,
+    .data-products-mobile.suite-fly-in {
+        transition:
+            opacity 1.1s ease 0.9s,
+            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s;
     }
 
     .mtm-suite-section {
@@ -609,6 +667,12 @@ const products = [
         flex-direction: column;
         align-items: start;
         gap: var(--space-3);
+    }
+
+    .reports-cta-btn-inner {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
     }
 
     .reports-ctas-row {
@@ -1127,6 +1191,44 @@ const products = [
 </style>
 
 <script>
+    // h2 + data products fly in together; CSS transition-delay on data products creates the pause
+    const suiteSection = document.querySelector<HTMLElement>('.mtm-suite-section');
+    const suiteHeading = suiteSection?.querySelector<HTMLElement>('.suite-section-heading');
+    const dataProductsEls = suiteSection?.querySelectorAll<HTMLElement>(
+        '.data-products, .data-products-mobile'
+    );
+
+    if (suiteHeading) {
+        const headingObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    suiteHeading.classList.add('is-visible');
+                    dataProductsEls?.forEach((el) => el.classList.add('is-visible'));
+                    headingObserver.disconnect();
+                }
+            },
+            { threshold: 0.5 }
+        );
+        headingObserver.observe(suiteHeading);
+    }
+
+    // Reports library and tools suite each trigger independently on scroll
+    const remainingFlyIns = suiteSection?.querySelectorAll<HTMLElement>(
+        '.reports-library-bg.suite-fly-in, .tools-suite.suite-fly-in'
+    );
+    const flyInObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    flyInObserver.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
+    remainingFlyIns?.forEach((el) => flyInObserver.observe(el));
+
     // Tools video play/pause control
     const toolsVideoContainers = document.querySelectorAll<HTMLElement>('.tools-video-container');
     toolsVideoContainers.forEach((container) => {
@@ -1136,6 +1238,8 @@ const products = [
         const pauseIcon = playBtn?.querySelector<SVGElement>('.pause-icon');
 
         if (video && playBtn && playIcon && pauseIcon) {
+            let manuallyPaused = false;
+
             const updateButton = () => {
                 if (video.paused) {
                     playIcon.style.display = 'block';
@@ -1148,8 +1252,10 @@ const products = [
 
             playBtn.addEventListener('click', () => {
                 if (video.paused) {
+                    manuallyPaused = false;
                     video.play();
                 } else {
+                    manuallyPaused = true;
                     video.pause();
                 }
             });
@@ -1157,9 +1263,22 @@ const products = [
             video.addEventListener('play', updateButton);
             video.addEventListener('pause', updateButton);
             video.addEventListener('ended', updateButton);
-
-            // Set initial state
             updateButton();
+
+            // Play when video container is fully in view; pause when it leaves
+            const videoObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && !manuallyPaused) {
+                            video.play();
+                        } else if (!entry.isIntersecting) {
+                            video.pause();
+                        }
+                    });
+                },
+                { threshold: 1.0 }
+            );
+            videoObserver.observe(container);
         }
     });
 

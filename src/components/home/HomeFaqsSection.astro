@@ -61,7 +61,7 @@ const faqs = [
     aria-label={t(copy, 'faq_section_title', locale, 'Frequently Asked Questions')}
 >
     <div class="home-faqs__heading">
-        <h2 class="home-faqs__title" data-copy-key="faq_section_title">
+        <h2 class="home-faqs__title faq-fly-in" data-copy-key="faq_section_title">
             {t(copy, 'faq_section_title', locale, 'Frequently Asked Questions')}
         </h2>
     </div>
@@ -70,7 +70,7 @@ const faqs = [
         {
             faqs.map((faq, idx) => (
                 <div
-                    class={`home-faqs__item${idx === 0 ? ' is-open' : ''}`}
+                    class={`home-faqs__item faq-fly-in${idx === 0 ? ' is-open' : ''}`}
                     data-faq-id={faq.id}
                     style={`--faq-color: ${faq.color}`}
                 >
@@ -162,6 +162,26 @@ const faqs = [
     .home-faqs__title {
         margin: 0;
         color: var(--text-primary);
+    }
+
+    .faq-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 0.65s ease,
+            transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .faq-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Pause after heading before FAQ items appear */
+    .home-faqs__item.faq-fly-in {
+        transition:
+            opacity 0.65s ease 0.9s,
+            transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s;
     }
 
     .home-faqs__accordion {
@@ -309,6 +329,26 @@ const faqs = [
 </style>
 
 <script>
+    // Fly-in: heading + staggered cards
+    const faqsFlySection = document.querySelector('.home-faqs');
+    if (faqsFlySection) {
+        const faqFlyEls = faqsFlySection.querySelectorAll<HTMLElement>('.faq-fly-in');
+        const faqFlyObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        faqFlyObserver.unobserve(entry.target);
+                        faqFlyEls.forEach((el, i) => {
+                            setTimeout(() => el.classList.add('is-visible'), i * 80);
+                        });
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+        faqFlyObserver.observe(faqsFlySection);
+    }
+
     const faqsSection = document.querySelector('.home-faqs');
 
     if (faqsSection) {
