@@ -39,11 +39,6 @@
     "en": "Tool Features",
     "fr": ""
   },
-  "dat_features_tagline": {
-    "key": "dat_features_tagline",
-    "en": "Unlock insights with precision",
-    "fr": ""
-  },
   "dat_feature_1_title": {
     "key": "dat_feature_1_title",
     "en": "QUERY BUILDING",
@@ -251,7 +246,7 @@
   },
   "yourdata_title": {
     "key": "yourdata_title",
-    "en": "",
+    "en": "YourData",
     "fr": ""
   },
   "yourdata_description": {

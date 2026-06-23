@@ -93,9 +93,8 @@ const {
     .tools-hero__pattern {
         position: absolute;
         bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 120rem;
+        left: 0;
+        width: 100%;
         pointer-events: none;
         z-index: 0;
     }
@@ -135,9 +134,14 @@ const {
     .tools-hero__mockup {
         position: relative;
         z-index: 1;
-        width: min(100%, 61.5rem);
-        align-self: center;
-        margin-inline: auto;
+        width: 100%;
+        max-width: 61.5rem;
+    }
+
+    .tools-hero__screenshot {
+        width: 100%;
+        height: auto;
+        display: block;
     }
 
     .tools-hero__secondary-cta {
@@ -149,12 +153,6 @@ const {
     @media (max-width: 1023px) {
         .tools-hero {
             margin-top: 0;
-        }
-
-        .tools-hero__pattern {
-            width: 100%;
-            left: 0;
-            transform: none;
         }
     }
 

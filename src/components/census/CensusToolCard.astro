@@ -64,7 +64,7 @@ const {
     <div class="census-tool-card__content">
         <div class="census-tool-card__header">
             <img
-                class="icon-3xl census-tool-card__icon"
+                class="icon-2xl census-tool-card__icon"
                 src={iconSrc}
                 alt=""
                 aria-hidden="true"
@@ -74,10 +74,10 @@ const {
         </div>
 
         <div class="census-tool-card__text">
-            <p class="text-body-p0-bold census-tool-card__subtitle" data-copy-key={subtitleKey}>
+            <p class="text-body-p1-bold census-tool-card__subtitle" data-copy-key={subtitleKey}>
                 {t(copy, subtitleKey, locale, subtitleFb)}
             </p>
-            <p class="text-body-p1 census-tool-card__desc" data-copy-key={descKey}>
+            <p class="text-body-p2 census-tool-card__desc" data-copy-key={descKey}>
                 {t(copy, descKey, locale, descFb)}
             </p>
         </div>
@@ -95,13 +95,13 @@ const {
                         <span class="census-tool-card__bullet" aria-hidden="true" />
                         <div class="census-tool-card__feature-text">
                             <p
-                                class="text-body-p1-bold census-tool-card__feature-title"
+                                class="text-body-p2-bold census-tool-card__feature-title"
                                 data-copy-key={f.titleKey}
                             >
                                 {t(copy, f.titleKey, locale, f.titleFb)}
                             </p>
                             <p
-                                class="text-body-p2 census-tool-card__feature-desc"
+                                class="text-body-p3 census-tool-card__feature-desc"
                                 data-copy-key={f.descKey}
                             >
                                 {t(copy, f.descKey, locale, f.descFb)}
@@ -165,7 +165,7 @@ const {
     .census-tool-card__content {
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--space-5);
         padding: var(--space-6) var(--space-6) var(--space-6) 0;
     }
 
@@ -200,7 +200,7 @@ const {
     .census-tool-card__features {
         display: flex;
         flex-direction: column;
-        gap: var(--space-6);
+        gap: var(--space-4);
         list-style: none;
         margin: 0;
         padding: 0;

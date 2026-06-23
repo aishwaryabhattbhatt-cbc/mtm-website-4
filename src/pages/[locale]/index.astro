@@ -11,7 +11,7 @@ import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageCon
 import { resolveLocale, SUPPORTED_LOCALES, getLocaleSwitchUrls } from '../../lib/i18n/routing';
 
 export function getStaticPaths() {
-  return SUPPORTED_LOCALES.map((locale) => ({ params: { locale } }));
+    return SUPPORTED_LOCALES.map((locale) => ({ params: { locale } }));
 }
 
 const locale = resolveLocale(Astro.params.locale);
@@ -19,73 +19,85 @@ const pageId = 'home';
 const copy = await getPageDictionary(pageId);
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;
-const resolvedCmsCsvUrl = cmsConfig.csvUrl ?? (cmsConfig.sheetId && cmsConfig.gid
-  ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
-  : '');
+const resolvedCmsCsvUrl =
+    cmsConfig.csvUrl ??
+    (cmsConfig.sheetId && cmsConfig.gid
+        ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
+        : '');
 
 const localeSwitchUrls = getLocaleSwitchUrls(base);
 
 const pageTitle = locale === 'fr' ? 'MTM | Accueil' : 'MTM | Home';
-const pageDescription = locale === 'fr'
-  ? 'Données et perspectives sur la façon dont les Canadiens utilisent la technologie, le contenu et les médias.'
-  : 'Data and insights on how Canadians use technology, content, and media.';
+const pageDescription =
+    locale === 'fr'
+        ? 'Données et perspectives sur la façon dont les Canadiens utilisent la technologie, le contenu et les médias.'
+        : 'Data and insights on how Canadians use technology, content, and media.';
 ---
 
-<Layout title={pageTitle} description={pageDescription} locale={locale} alternates={localeSwitchUrls}>
-  <main
-    data-locale={locale}
-    data-cms-page-id={pageId}
-    data-cms-csv-url={resolvedCmsCsvUrl}
-    data-cms-sheet-id={cmsConfig.sheetId ?? ''}
-    data-cms-tab-gid={cmsConfig.gid ?? ''}
-    data-cms-refresh-ms={String(cmsConfig.refreshMs)}
-  >
-    <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+>
+    <main
+        data-locale={locale}
+        data-cms-page-id={pageId}
+        data-cms-csv-url={resolvedCmsCsvUrl}
+        data-cms-sheet-id={cmsConfig.sheetId ?? ''}
+        data-cms-tab-gid={cmsConfig.gid ?? ''}
+        data-cms-refresh-ms={String(cmsConfig.refreshMs)}
+    >
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-    <HomeHeroSection locale={locale} copy={copy} />
+        <HomeHeroSection locale={locale} copy={copy} />
 
-    <div class="section-gap section-gap-sm" aria-hidden="true"></div>
+        <div class="section-gap section-gap-sm" aria-hidden="true"></div>
 
-    <HomeIntroductionSection locale={locale} copy={copy} />
+        <HomeIntroductionSection locale={locale} copy={copy} />
 
-    <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+        <HomeMtmSuiteSection locale={locale} copy={copy} />
 
-    <HomeMtmSuiteSection locale={locale} copy={copy} />
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
 
-    <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+        <HomeSolutions locale={locale} copy={copy} />
 
-    <HomeSolutions locale={locale} copy={copy} />
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
 
-    <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+        <HomeFaqsSection locale={locale} copy={copy} />
 
-    <HomeFaqsSection locale={locale} copy={copy} />
+        <HomeFooterSection locale={locale} copy={copy} />
+    </main>
 
-    <HomeFooterSection locale={locale} copy={copy} />
+    <Fragment slot="head">
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'MTM',
+                url: localeSwitchUrls[locale],
+            })}
+        />
+    </Fragment>
 
-  </main>
+    <Fragment slot="scripts">
+        <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
+        ></script>
+        <script is:inline src={`${base}js/runtime/script.js`}></script>
 
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: 'MTM',
-      url: localeSwitchUrls[locale],
-    })} />
-  </Fragment>
+        <script is:inline type="importmap">
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js"
+                }
+            }
+        </script>
 
-  <Fragment slot="scripts">
-    <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script is:inline src={`${base}js/runtime/script.js`}></script>
-
-    <script is:inline type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js"
-      }
-    }
-    </script>
-
-    <script is:inline type="module" src={`${base}js/backgrounds/home-hero-background.js`}></script>
-    <script is:inline type="module" src={`${base}js/backgrounds/research-hero-background.js`}></script>
-  </Fragment>
+        <script is:inline type="module" src={`${base}js/backgrounds/home-hero-background.js`}
+        ></script>
+        <script is:inline type="module" src={`${base}js/backgrounds/research-hero-background.js`}
+        ></script>
+    </Fragment>
 </Layout>
