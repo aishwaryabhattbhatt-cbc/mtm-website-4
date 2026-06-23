@@ -20,7 +20,7 @@ const features = [
         titleFb: 'Easily create a custom query',
         descFb: 'Select query parameters, drag variables from the master list into output rows and columns. What you arrange is exactly what you get. No SQL or python, no analyst handoff, no waiting. Go from brief to cross-tab in minutes.',
         icon: icons.tool.queryParameters,
-        image: 'images/tools/dat/query.png',
+        image: 'images/tools/dat/dat-query.webp',
     },
     {
         pillKey: 'dat_feature_2_title',
@@ -30,7 +30,7 @@ const features = [
         titleFb: 'Large, robust data sets at your fingertips',
         descFb: 'Thousands of variables covering demographics, device ownership, media habits, platform usage — all in a single searchable list by categories.',
         icon: icons.gen.multipleVariables,
-        image: 'images/tools/dat/variables.png',
+        image: 'images/tools/dat/dat-select-variables.webp',
     },
     {
         pillKey: 'dat_feature_3_title',
@@ -40,6 +40,7 @@ const features = [
         titleFb: 'Refine your query with Quick or Additional Filters',
         descFb: 'Narrow your results by age, gender or region with Quick Filters or apply any variable in the tool as a filter using Additional Filters.',
         icon: icons.tool.datFiltersQuickFilters,
+        image: 'images/tools/dat/dat-quick-filters.webp',
     },
     {
         pillKey: 'dat_feature_4_title',
@@ -49,7 +50,7 @@ const features = [
         titleFb: 'Our data, your way',
         descFb: 'Easily adjust or refine your query with drag and drop functionality. No headaches, just a new table with new results in seconds.',
         icon: icons.gen.clickDrag,
-        image: 'images/tools/dat/custom-tables.png',
+        image: 'images/tools/dat/dat-drag-drop.webp',
     },
     {
         pillKey: 'dat_feature_5_title',
@@ -59,7 +60,7 @@ const features = [
         titleFb: 'Results in multiple formats',
         descFb: 'Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required.',
         icon: icons.gen.multipleOutputs,
-        image: 'images/tools/dat/output-format.png',
+        image: 'images/tools/dat/dat-export.webp',
     },
 ];
 ---
@@ -251,21 +252,19 @@ const features = [
     }
 
     .dat-features__card-slot {
-        aspect-ratio: 488 / 266;
+        aspect-ratio: 11 / 5;
         background: var(--surface-blue);
         border-radius: var(--radius-s);
         flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: var(--space-4);
+        overflow: hidden;
         margin: var(--space-2) var(--space-2) 0;
     }
 
     .dat-features__card-slot-img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        display: block;
     }
 
     .dat-features__card-body {
