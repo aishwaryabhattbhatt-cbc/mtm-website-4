@@ -20,43 +20,47 @@ interface Props {
 const { class: className = '' } = Astro.props;
 
 const BASE = import.meta.env.BASE_URL;
-const THUMB_A = `${BASE}images/home/mtm-suite/reports-thumb-a.webp`;
-const THUMB_B = `${BASE}images/home/mtm-suite/reports-thumb-b.webp`;
+const THUMBS = (n: number) => `${BASE}images/home/reports-thumbnails/report-${n}.png`;
 
 const allReports: ReportItem[] = [
     {
         title: 'Canadian Viewing Profiles',
         date: 'Feb 3, 2026',
         products: 'mtm18plus',
-        thumbnail: THUMB_B,
+        thumbnail: THUMBS(1),
     },
     {
         title: 'Indigenous Respondents and Media Technology',
         date: 'Jan 22, 2026',
         products: 'mtm18plus',
-        thumbnail: THUMB_B,
+        thumbnail: THUMBS(2),
     },
     {
         title: 'Zipping Through Content',
         date: 'Jan 10, 2026',
         products: ['mtm18plus', 'junior'],
-        thumbnail: THUMB_A,
+        thumbnail: THUMBS(3),
     },
     {
         title: 'From Arrival to Integration',
         date: 'Dec 11, 2025',
         products: 'newcomers',
-        thumbnail: THUMB_A,
+        thumbnail: THUMBS(4),
     },
-    { title: 'Co-viewing with Kids', date: 'Dec 04, 2025', products: 'junior', thumbnail: THUMB_B },
+    {
+        title: 'Co-viewing with Kids',
+        date: 'Dec 04, 2025',
+        products: 'junior',
+        thumbnail: THUMBS(5),
+    },
     {
         title: 'A.I. Tool Usage Among Online Canadians',
         date: 'Nov 27, 2025',
         products: 'mtm18plus',
-        thumbnail: THUMB_B,
+        thumbnail: THUMBS(6),
     },
-    { title: 'Kids and News', date: 'Nov 20, 2025', products: 'junior', thumbnail: THUMB_B },
-    { title: 'FAST Channels', date: 'Nov 13, 2025', products: 'newcomers', thumbnail: THUMB_B },
+    { title: 'Kids and News', date: 'Nov 20, 2025', products: 'junior', thumbnail: THUMBS(7) },
+    { title: 'FAST Channels', date: 'Nov 13, 2025', products: 'newcomers', thumbnail: THUMBS(8) },
 ];
 
 // Duplicate for seamless looping
