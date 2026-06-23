@@ -119,16 +119,22 @@ const footerMenus = [
     <div class="home-footer__cta">
         <div class="home-footer__cta-card">
             <div class="home-footer__cta-copy">
-                <p class="home-footer__cta-eyebrow text-body-p1" data-copy-key="cta_subtitle">
+                <p
+                    class="home-footer__cta-eyebrow text-body-p1 footer-eyebrow-fly-in"
+                    data-copy-key="cta_subtitle"
+                >
                     {t(copy, 'cta_subtitle', locale, 'Ready to Get Started?')}
                 </p>
-                <h2 class="home-footer__cta-title text-subsection-h2" data-copy-key="cta_title">
+                <h2
+                    class="home-footer__cta-title text-subsection-h2 footer-title-fly-in"
+                    data-copy-key="cta_title"
+                >
                     {t(copy, 'cta_title', locale, 'Request a Demo Now.')}
                 </h2>
             </div>
 
             <form
-                class="home-footer__cta-form"
+                class="home-footer__cta-form footer-form-fly-in"
                 onsubmit="event.preventDefault()"
                 aria-label="Request a demo"
             >
@@ -222,6 +228,11 @@ const footerMenus = [
                                 labelKey: 'solutions_item_4',
                             },
                             { value: 'industry', label: 'Industry', labelKey: 'solutions_item_1' },
+                            {
+                                value: 'other',
+                                label: 'Other',
+                                labelKey: 'newsletter_industry_other',
+                            },
                         ]}
                     />
                     <Button variant="primary" type="submit" class="home-footer__newsletter-submit">
@@ -766,4 +777,104 @@ const footerMenus = [
             gap: var(--space-3);
         }
     }
+
+    .footer-eyebrow-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 1.1s ease,
+            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .footer-eyebrow-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .footer-title-fly-in {
+        opacity: 0;
+    }
+
+    :global(.footer-title-word) {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(8px);
+        animation: footerWordAppear 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        animation-play-state: paused;
+    }
+
+    @keyframes footerWordAppear {
+        0% {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .footer-form-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity 1.1s ease,
+            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .footer-form-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    const ctaCard = document.querySelector<HTMLElement>('.home-footer__cta-card');
+    const eyebrow = ctaCard?.querySelector<HTMLElement>('.footer-eyebrow-fly-in');
+    const title = ctaCard?.querySelector<HTMLElement>('.footer-title-fly-in');
+    const form = ctaCard?.querySelector<HTMLElement>('.footer-form-fly-in');
+
+    const WORD_DELAY = 0.12;
+    const WORD_DURATION = 1.4;
+
+    if (ctaCard && eyebrow && title && form) {
+        const ctaObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    ctaObserver.disconnect();
+
+                    // Split title into word spans immediately so plain text never flashes
+                    title.removeAttribute('data-copy-key');
+                    const words = (title.textContent ?? '').trim().split(/\s+/);
+                    title.textContent = '';
+                    words.forEach((word, i) => {
+                        const span = document.createElement('span');
+                        span.className = 'footer-title-word';
+                        span.textContent = word;
+                        span.style.animationDelay = `${i * WORD_DELAY}s`;
+                        title.appendChild(span);
+                        if (i < words.length - 1) title.appendChild(document.createTextNode(' '));
+                    });
+                    const totalTitleDuration = (words.length - 1) * WORD_DELAY + WORD_DURATION;
+
+                    // 1. Eyebrow flies in and title typing start together
+                    eyebrow.classList.add('is-visible');
+                    (title as HTMLElement).style.opacity = '1';
+                    setTimeout(() => {
+                        title.querySelectorAll<HTMLElement>('.footer-title-word').forEach((el) => {
+                            el.style.animationPlayState = 'running';
+                        });
+
+                        // 2. Form appears as last word lands (subtract drift buffer)
+                        setTimeout(
+                            () => form.classList.add('is-visible'),
+                            totalTitleDuration * 1000 - 990
+                        );
+                    }, 10);
+                }
+            },
+            { threshold: 0.3 }
+        );
+        ctaObserver.observe(ctaCard);
+    }
+</script>
