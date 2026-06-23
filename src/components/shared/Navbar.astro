@@ -113,14 +113,6 @@ const solutionsDropdown = {
     label: isFrench ? 'Solutions par secteur' : 'Solutions by Industry',
     items: [
         {
-            title: t(copy, 'solutions_item_3', locale, 'Advertising'),
-            description: isFrench
-                ? 'Soutenez vos décisions média et marketing.'
-                : 'Support media and marketing decisions with confidence.',
-            href: `${base}${locale}/solutions/advertising/`,
-            iconPath: `${base}${icons.solutions.advertising}`,
-        },
-        {
             title: t(copy, 'solutions_item_2', locale, 'Media'),
             description: isFrench
                 ? 'Comprenez les audiences et usages multiplateformes.'
@@ -129,12 +121,20 @@ const solutionsDropdown = {
             iconPath: `${base}${icons.solutions.media}`,
         },
         {
-            title: t(copy, 'solutions_item_1', locale, 'Industry'),
+            title: t(copy, 'solutions_item_3', locale, 'Advertising'),
             description: isFrench
-                ? 'Mesurez la portée et la performance de votre secteur.'
-                : 'Measure sector reach and performance more precisely.',
-            href: `${base}${locale}/solutions/industry/`,
-            iconPath: `${base}${icons.solutions.industry}`,
+                ? 'Soutenez vos décisions média et marketing.'
+                : 'Support media and marketing decisions with confidence.',
+            href: `${base}${locale}/solutions/advertising/`,
+            iconPath: `${base}${icons.solutions.advertising}`,
+        },
+        {
+            title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
+            description: isFrench
+                ? 'Planifiez des services fondés sur des données fiables.'
+                : 'Plan services and policies with reliable evidence.',
+            href: `${base}${locale}/solutions/gov-ngos/`,
+            iconPath: `${base}${icons.solutions.govNgo}`,
         },
         {
             title: t(copy, 'solutions_item_4', locale, 'Education'),
@@ -145,12 +145,12 @@ const solutionsDropdown = {
             iconPath: `${base}${icons.solutions.education}`,
         },
         {
-            title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
+            title: t(copy, 'solutions_item_1', locale, 'Industry'),
             description: isFrench
-                ? 'Planifiez des services fondés sur des données fiables.'
-                : 'Plan services and policies with reliable evidence.',
-            href: `${base}${locale}/solutions/gov-ngos/`,
-            iconPath: `${base}${icons.solutions.govNgo}`,
+                ? 'Mesurez la portée et la performance de votre secteur.'
+                : 'Measure sector reach and performance more precisely.',
+            href: `${base}${locale}/solutions/industry/`,
+            iconPath: `${base}${icons.solutions.industry}`,
         },
     ],
 };

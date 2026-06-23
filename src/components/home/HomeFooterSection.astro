@@ -63,10 +63,6 @@ const footerMenus = [
         title: locale === 'fr' ? 'Solutions' : 'Solutions',
         items: [
             {
-                label: t(copy, 'solutions_item_1', locale, 'Industry'),
-                href: `${base}${locale}/solutions/industry/`,
-            },
-            {
                 label: t(copy, 'solutions_item_2', locale, 'Media'),
                 href: `${base}${locale}/solutions/media/`,
             },
@@ -75,12 +71,16 @@ const footerMenus = [
                 href: `${base}${locale}/solutions/advertising/`,
             },
             {
+                label: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
+                href: `${base}${locale}/solutions/government-ngos/`,
+            },
+            {
                 label: t(copy, 'solutions_item_4', locale, 'Education'),
                 href: `${base}${locale}/solutions/education/`,
             },
             {
-                label: t(copy, 'solutions_item_5', locale, 'Government'),
-                href: `${base}${locale}/solutions/government-ngos/`,
+                label: t(copy, 'solutions_item_1', locale, 'Industry'),
+                href: `${base}${locale}/solutions/industry/`,
             },
         ],
     },
@@ -209,19 +209,19 @@ const footerMenus = [
                                 label: 'Select your industry',
                                 labelKey: 'newsletter_industry_placeholder',
                             },
-                            { value: 'industry', label: 'Industry', labelKey: 'solutions_item_1' },
                             { value: 'media', label: 'Media', labelKey: 'solutions_item_2' },
                             {
                                 value: 'advertising',
                                 label: 'Advertising',
                                 labelKey: 'solutions_item_3',
                             },
+                            { value: 'govngo', label: 'Gov & NGOs', labelKey: 'solutions_item_5' },
                             {
                                 value: 'education',
                                 label: 'Education',
                                 labelKey: 'solutions_item_4',
                             },
-                            { value: 'govngo', label: 'Gov & NGOs', labelKey: 'solutions_item_5' },
+                            { value: 'industry', label: 'Industry', labelKey: 'solutions_item_1' },
                         ]}
                     />
                     <Button variant="primary" type="submit" class="home-footer__newsletter-submit">

@@ -17,13 +17,6 @@ const base = import.meta.env.BASE_URL;
 const logoBase = `${base}images/home/solutions/logos`;
 
 const logoSets = {
-    industry: [
-        { src: `${logoBase}/industry/EBU-European_Broadcasting_Union.svg`, alt: 'EBU' },
-        { src: `${logoBase}/industry/Shaw-Rocket-Fund.svg`, alt: 'Shaw Rocket Fund' },
-        { src: `${logoBase}/industry/cmf-blk.svg`, alt: 'Canada Media Fund' },
-        { src: `${logoBase}/industry/nfb.svg`, alt: 'NFB' },
-        { src: `${logoBase}/industry/numeris.svg`, alt: 'Numeris' },
-    ],
     media: [
         { src: `${logoBase}/media/abc.svg`, alt: 'ABC' },
         { src: `${logoBase}/media/ami-tv.svg`, alt: 'AMI-tv' },
@@ -58,6 +51,14 @@ const logoSets = {
         { src: `${logoBase}/advertising/touche.SVG`, alt: 'Touché!' },
         { src: `${logoBase}/advertising/um-worldwide.svg`, alt: 'UM Worldwide' },
     ],
+    govngo: [
+        { src: `${logoBase}/gov-ngo/R613-EN-RGB-Colour.svg`, alt: 'Radio 613' },
+        { src: `${logoBase}/gov-ngo/Telefilm_Canada.svg`, alt: 'Telefilm Canada' },
+        { src: `${logoBase}/gov-ngo/canada.svg`, alt: 'Government of Canada' },
+        { src: `${logoBase}/gov-ngo/crtc.svg`, alt: 'CRTC' },
+        { src: `${logoBase}/gov-ngo/first-nation-market.svg`, alt: 'First Nations Market' },
+        { src: `${logoBase}/gov-ngo/quebec.svg`, alt: 'Gouvernement du Québec' },
+    ],
     education: [
         { src: `${logoBase}/education/HEC_Montreal.svg`, alt: 'HEC Montréal' },
         { src: `${logoBase}/education/Mount-Royal-University.svg`, alt: 'Mount Royal University' },
@@ -70,27 +71,16 @@ const logoSets = {
         { src: `${logoBase}/education/universite-de-montreal.svg`, alt: 'Université de Montréal' },
         { src: `${logoBase}/education/university-of-manitoba.svg`, alt: 'University of Manitoba' },
     ],
-    govngo: [
-        { src: `${logoBase}/gov-ngo/R613-EN-RGB-Colour.svg`, alt: 'Radio 613' },
-        { src: `${logoBase}/gov-ngo/Telefilm_Canada.svg`, alt: 'Telefilm Canada' },
-        { src: `${logoBase}/gov-ngo/canada.svg`, alt: 'Government of Canada' },
-        { src: `${logoBase}/gov-ngo/crtc.svg`, alt: 'CRTC' },
-        { src: `${logoBase}/gov-ngo/first-nation-market.svg`, alt: 'First Nations Market' },
-        { src: `${logoBase}/gov-ngo/quebec.svg`, alt: 'Gouvernement du Québec' },
+    industry: [
+        { src: `${logoBase}/industry/EBU-European_Broadcasting_Union.svg`, alt: 'EBU' },
+        { src: `${logoBase}/industry/Shaw-Rocket-Fund.svg`, alt: 'Shaw Rocket Fund' },
+        { src: `${logoBase}/industry/cmf-blk.svg`, alt: 'Canada Media Fund' },
+        { src: `${logoBase}/industry/nfb.svg`, alt: 'NFB' },
+        { src: `${logoBase}/industry/numeris.svg`, alt: 'Numeris' },
     ],
 };
 
 const cards = [
-    {
-        solutionId: 'industry',
-        titleKey: 'solutions_item_1',
-        title: t(copy, 'solutions_item_1', locale, 'Industry'),
-        imageSrc: `${base}images/home/solutions/industry.png`,
-        imageAlt: t(copy, 'solutions_item_1_image_alt', locale, 'Professional using a laptop'),
-        iconPath: `${base}${icons.solutions.industry}`,
-        href: `/${locale}/solutions/industry`,
-        ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
-    },
     {
         solutionId: 'media',
         titleKey: 'solutions_item_2',
@@ -112,6 +102,16 @@ const cards = [
         ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
     },
     {
+        solutionId: 'govngo',
+        titleKey: 'solutions_item_5',
+        title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
+        imageSrc: `${base}images/home/solutions/govn&ngo.png`,
+        imageAlt: t(copy, 'solutions_item_5_image_alt', locale, 'Professional using a laptop'),
+        iconPath: `${base}${icons.solutions.govNgo}`,
+        href: `/${locale}/solutions/government-ngos`,
+        ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
+    },
+    {
         solutionId: 'education',
         titleKey: 'solutions_item_4',
         title: t(copy, 'solutions_item_4', locale, 'Education'),
@@ -122,13 +122,13 @@ const cards = [
         ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
     },
     {
-        solutionId: 'govngo',
-        titleKey: 'solutions_item_5',
-        title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
-        imageSrc: `${base}images/home/solutions/govn&ngo.png`,
-        imageAlt: t(copy, 'solutions_item_5_image_alt', locale, 'Professional using a laptop'),
-        iconPath: `${base}${icons.solutions.govNgo}`,
-        href: `/${locale}/solutions/government-ngos`,
+        solutionId: 'industry',
+        titleKey: 'solutions_item_1',
+        title: t(copy, 'solutions_item_1', locale, 'Industry'),
+        imageSrc: `${base}images/home/solutions/industry.png`,
+        imageAlt: t(copy, 'solutions_item_1_image_alt', locale, 'Professional using a laptop'),
+        iconPath: `${base}${icons.solutions.industry}`,
+        href: `/${locale}/solutions/industry`,
         ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
     },
 ];
@@ -397,7 +397,7 @@ const cards = [
 
     .home-solutions__logo-img {
         width: 100%;
-        height: var(--space-7);
+        height: calc(var(--space-7) * 1.15);
         object-fit: contain;
         object-position: center;
         display: block;
@@ -589,7 +589,7 @@ const cards = [
         const mobilePanels = solutionsSection.querySelectorAll(
             '.home-solutions__mobile-panel[data-solution-panel]'
         );
-        const defaultSolution = 'industry';
+        const defaultSolution = 'media';
 
         type LogoItem = { src: string; alt: string };
 

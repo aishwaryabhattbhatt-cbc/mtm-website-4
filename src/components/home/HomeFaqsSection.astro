@@ -23,6 +23,7 @@ const faqs = [
             'Can MTM data be customized for specific funding, research, or measurement projects?',
         answerFallback:
             "Yes. MTM's DAT Tool and Census platform allow for flexible data querying by demographic group, platform type, or region. For organizations requiring deeper or comparative analysis, MTM provides custom cross-tabulations and export support, ensuring that the data aligns with each partner's reporting framework, whether for funding applications, program evaluation, or strategic benchmarking.",
+        color: '#e8f3fd',
     },
     {
         id: 'faq_2',
@@ -31,6 +32,7 @@ const faqs = [
         questionFallback: 'What are the turnaround times for high-volume or complex data requests?',
         answerFallback:
             'Turnaround times vary based on complexity. Standard queries through our tools are instant. Custom requests typically take 5–10 business days. For urgent requests, expedited processing is available.',
+        color: '#e8f7f5',
     },
     {
         id: 'faq_3',
@@ -40,6 +42,7 @@ const faqs = [
             'Is MTM data accepted as a source for funding justification and policy submissions?',
         answerFallback:
             'Yes. MTM data is recognized and cited by funding bodies, policy makers, and research institutions across Canada. Our datasets meet rigorous quality standards and are suitable for policy submissions and funding applications.',
+        color: '#f7f4ff',
     },
     {
         id: 'faq_4',
@@ -48,6 +51,7 @@ const faqs = [
         questionFallback: 'How does MTM ensure the validity and reliability of its datasets?',
         answerFallback:
             'MTM employs rigorous methodology, continuous validation, peer review, and partnerships with industry experts to ensure data accuracy and relevance. Our processes comply with international research standards.',
+        color: '#fae8fc',
     },
 ];
 ---
@@ -65,7 +69,11 @@ const faqs = [
     <div class="home-faqs__accordion">
         {
             faqs.map((faq, idx) => (
-                <div class={`home-faqs__item${idx === 0 ? ' is-open' : ''}`} data-faq-id={faq.id}>
+                <div
+                    class={`home-faqs__item${idx === 0 ? ' is-open' : ''}`}
+                    data-faq-id={faq.id}
+                    style={`--faq-color: ${faq.color}`}
+                >
                     <button
                         type="button"
                         class={`home-faqs__trigger${idx === 0 ? ' is-open' : ''}`}
@@ -164,13 +172,13 @@ const faqs = [
     }
 
     .home-faqs__item {
-        border: var(--stroke-1) solid var(--border-tertiary);
         border-radius: var(--layout-card-radius);
-        transition: box-shadow 220ms ease;
+        background: var(--surface-white);
+        box-shadow: var(--shadow-card);
     }
 
     .home-faqs__item.is-open {
-        box-shadow: var(--shadow-beautiful);
+        box-shadow: var(--shadow-card);
     }
 
     .home-faqs__trigger {
