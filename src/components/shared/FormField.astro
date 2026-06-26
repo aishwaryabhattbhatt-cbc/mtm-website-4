@@ -24,6 +24,7 @@ interface Props {
     value?: string;
     class?: string;
     ariaLabel?: string;
+    emailValidation?: 'live' | 'submit-only' | 'none';
 }
 
 const {
@@ -42,17 +43,25 @@ const {
     value,
     class: className,
     ariaLabel,
+    emailValidation = 'live',
 } = Astro.props as Props;
 
 const fieldId = id || `${name}-${Math.random().toString(36).substr(2, 9)}`;
 const showLabel = variant === 'field-with-label' || variant === 'dropdown';
 const isSelect = type === 'select' || variant === 'dropdown';
+const isEmail = type === 'email';
+const shouldRenderEmailError = isEmail && emailValidation !== 'none';
+const emailErrorId = `${fieldId}-error`;
 
 const resolvedPlaceholder = placeholderKey
     ? t(copy, placeholderKey, locale, placeholder || '')
     : placeholder;
 
 const resolvedLabel = labelKey ? t(copy, labelKey, locale, label || '') : label;
+const emailErrorMessage =
+    locale === 'fr'
+        ? 'Veuillez saisir une adresse courriel valide.'
+        : 'Please enter a valid email address.';
 ---
 
 <div class={`form-field form-field--${variant} ${className || ''}`}>
@@ -95,8 +104,26 @@ const resolvedLabel = labelKey ? t(copy, labelKey, locale, label || '') : label;
                 placeholder={resolvedPlaceholder}
                 value={value}
                 aria-label={ariaLabel || resolvedPlaceholder}
+                aria-invalid="false"
+                aria-describedby={shouldRenderEmailError ? emailErrorId : undefined}
+                data-email-field={isEmail ? 'true' : undefined}
+                data-error-id={shouldRenderEmailError ? emailErrorId : undefined}
+                data-email-validation={isEmail ? emailValidation : undefined}
                 {...(required && { required })}
             />
+        )
+    }
+
+    {
+        shouldRenderEmailError && (
+            <p
+                id={emailErrorId}
+                class="form-field__error text-body-p3-small"
+                aria-live="polite"
+                aria-hidden="true"
+            >
+                {emailErrorMessage}
+            </p>
         )
     }
 </div>
@@ -139,6 +166,20 @@ const resolvedLabel = labelKey ? t(copy, labelKey, locale, label || '') : label;
 
     .form-field__input::placeholder {
         color: var(--neutral-grey-3);
+    }
+
+    .form-field__error {
+        margin: 0;
+        color: var(--feedback-error);
+        min-height: 1.4em;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 180ms ease;
+    }
+
+    .form-field__error.is-visible {
+        visibility: visible;
+        opacity: 1;
     }
 
     .form-field__input:focus {
@@ -207,6 +248,46 @@ const resolvedLabel = labelKey ? t(copy, labelKey, locale, label || '') : label;
     document.querySelectorAll<HTMLSelectElement>('[data-select]').forEach((select) => {
         select.addEventListener('change', () => {
             select.classList.toggle('is-placeholder', select.value === '');
+        });
+    });
+
+    function syncEmailErrorState(input: HTMLInputElement) {
+        const errorId = input.dataset.errorId;
+        if (!errorId) return;
+
+        const errorNode = document.getElementById(errorId);
+        if (!errorNode) return;
+
+        const shouldShow = input.value.trim().length > 0 && !input.checkValidity();
+        input.setAttribute('aria-invalid', shouldShow ? 'true' : 'false');
+        errorNode.classList.toggle('is-visible', shouldShow);
+        errorNode.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+    }
+
+    document.querySelectorAll<HTMLInputElement>('[data-email-field="true"]').forEach((input) => {
+        const mode = input.dataset.emailValidation;
+
+        if (mode === 'none') {
+            return;
+        }
+
+        if (mode === 'live') {
+            input.addEventListener('input', () => syncEmailErrorState(input));
+            input.addEventListener('blur', () => syncEmailErrorState(input));
+        }
+
+        input.addEventListener('invalid', (event) => {
+            event.preventDefault();
+
+            const errorId = input.dataset.errorId;
+            if (!errorId) return;
+
+            const errorNode = document.getElementById(errorId);
+            if (!errorNode) return;
+
+            input.setAttribute('aria-invalid', 'true');
+            errorNode.classList.add('is-visible');
+            errorNode.setAttribute('aria-hidden', 'false');
         });
     });
 </script>

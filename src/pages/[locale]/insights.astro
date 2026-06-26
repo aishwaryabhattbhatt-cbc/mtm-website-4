@@ -4,6 +4,7 @@ import Navbar from '../../components/shared/Navbar.astro';
 import InsightsHeroSection from '../../components/insights/InsightsHeroSection.astro';
 import InsightsFeaturedReportCard from '../../components/insights/InsightsFeaturedReportCard.astro';
 import InsightsReportsLibrarySection from '../../components/insights/InsightsReportsLibrarySection.astro';
+import InsightsFreeReportsSection from '../../components/insights/InsightsFreeReportsSection.astro';
 import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
 import type { Locale } from '../../lib/cms/types';
@@ -69,11 +70,9 @@ const pageDescription =
             </div>
         </div>
 
-        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
-
         <InsightsReportsLibrarySection locale={locale} copy={copy} />
 
-        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+        <InsightsFreeReportsSection locale={locale} copy={copy} />
 
         <HomeFooterSection locale={locale} copy={copy} />
     </main>
@@ -101,9 +100,12 @@ const pageDescription =
                 const bleed = document.getElementById('insights-card-bleed');
                 const card = bleed && bleed.querySelector('.featured-report-card');
                 if (!hero || !bleed || !card) return;
-                const half = card.offsetHeight / 2;
-                hero.style.setProperty('--hero-bleed-pad', half + 'px');
-                bleed.style.marginTop = '-' + half + 'px';
+                // Overlap by 15% of card height on mobile, 50% on desktop
+                const isMobile = window.innerWidth < 768;
+                const overlapPercent = isMobile ? 0.15 : 0.5;
+                const overlap = card.offsetHeight * overlapPercent;
+                hero.style.setProperty('--hero-bleed-pad', overlap + 'px');
+                bleed.style.marginTop = '-' + overlap + 'px';
             }
             updateHeroBleed();
             window.addEventListener('resize', updateHeroBleed);

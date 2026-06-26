@@ -145,13 +145,14 @@ const activeValue = defaultValue ?? tabs[0]?.value ?? '';
     .tabs-bar__tab {
         position: relative;
         z-index: 1;
-        padding: var(--space-2) var(--space-6);
+        padding: var(--space-2) var(--space-4);
         border-radius: var(--radius-xs);
         color: var(--text-secondary);
         background: transparent;
         border: none;
         cursor: pointer;
         white-space: nowrap;
+        font-size: 0.875rem;
         transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -200,7 +201,7 @@ const activeValue = defaultValue ?? tabs[0]?.value ?? '';
 
     @media (max-width: 767px) {
         .tabs-bar__tab {
-            padding: var(--space-2) var(--space-4);
+            padding: var(--space-2) var(--space-2);
         }
     }
 </style>

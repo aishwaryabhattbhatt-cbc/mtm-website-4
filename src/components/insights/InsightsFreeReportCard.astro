@@ -1,0 +1,520 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import ProductPill from '../shared/ProductPill.astro';
+import type { ProductVariant } from '../shared/ProductPill.astro';
+import DatePill from '../shared/DatePill.astro';
+import Button from '../shared/Button.astro';
+import FormField from '../shared/FormField.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    ctaHref: string;
+    imageSrc?: string;
+    imageAlt?: string;
+    tagKey: string;
+    dateKey: string;
+    titleKey: string;
+    descriptionKey: string;
+    ctaKey?: string;
+}
+
+const {
+    locale,
+    copy,
+    ctaHref,
+    imageSrc,
+    imageAlt,
+    tagKey,
+    dateKey,
+    titleKey,
+    descriptionKey,
+    ctaKey = 'free_report_cta',
+} = Astro.props as Props;
+
+function tagToVariant(tag: string): ProductVariant | null {
+    const n = tag.toLowerCase().replace(/\s+/g, '');
+    if (n.includes('18+') || n.includes('18plus')) return 'mtm18plus';
+    if (n.includes('junior')) return 'junior';
+    if (n.includes('newcomer')) return 'newcomers';
+    if (n.includes('census')) return 'census';
+    return null;
+}
+
+const tagText = tagKey in copy ? t(copy, tagKey, locale, '') : '';
+const tagVariant = tagText ? tagToVariant(tagText) : null;
+const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
+---
+
+<article class="free-report-card">
+    <div class="free-report-card__image-wrap">
+        {
+            imageSrc ? (
+                <img
+                    class="free-report-card__image"
+                    src={imageSrc}
+                    alt={imageAlt ?? ''}
+                    loading="lazy"
+                    decoding="async"
+                />
+            ) : (
+                <div class="free-report-card__image-placeholder" aria-hidden="true" />
+            )
+        }
+    </div>
+
+    <div class="free-report-card__body">
+        <div class="free-report-card__meta">
+            {
+                tagVariant ? (
+                    <ProductPill variant={tagVariant} size="small" />
+                ) : tagText ? (
+                    <span class="free-report-card__tag text-label-small">{tagText}</span>
+                ) : null
+            }
+            {dateText && <DatePill date={dateText} />}
+        </div>
+
+        <div class="free-report-card__text">
+            <p class="text-body-p1-bold free-report-card__title" data-copy-key={titleKey}>
+                {t(copy, titleKey, locale, '')}
+            </p>
+            <p class="text-body-p2 free-report-card__description" data-copy-key={descriptionKey}>
+                {t(copy, descriptionKey, locale, '')}
+            </p>
+        </div>
+
+        <div class="free-report-card__cta">
+            <Button
+                variant="primary"
+                size="md"
+                class="free-report-card__download-trigger"
+                data-copy-key={ctaKey}
+                data-free-report-download-trigger
+            >
+                <span class="free-report-card__download-btn">
+                    {t(copy, ctaKey, locale, 'Download')}
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </span>
+            </Button>
+
+            <form
+                class="free-report-card__download-form"
+                data-free-report-download-form
+                data-download-href={ctaHref}
+                novalidate
+            >
+                <FormField
+                    locale={locale}
+                    copy={copy}
+                    variant="field-only"
+                    type="email"
+                    name="email"
+                    placeholderKey="newsletter_email_placeholder"
+                    placeholder="Enter your work email"
+                    ariaLabel={t(copy, 'newsletter_email_label', locale, 'Work email')}
+                    emailValidation="none"
+                    required
+                />
+                <div class="free-report-card__submit-row">
+                    <Button
+                        variant="primary"
+                        size="md"
+                        type="submit"
+                        data-copy-key="free_report_submit_cta"
+                    >
+                        {t(copy, 'free_report_submit_cta', locale, 'Submit')}
+                    </Button>
+                    <p
+                        class="free-report-card__submit-error text-body-p3-small"
+                        data-free-report-submit-error
+                        aria-live="polite"
+                        aria-hidden="true"
+                    >
+                        {
+                            locale === 'fr'
+                                ? 'Veuillez saisir une adresse courriel valide.'
+                                : 'Please enter a valid email address.'
+                        }
+                    </p>
+                </div>
+            </form>
+
+            <div
+                class="free-report-card__success-message"
+                data-free-report-success-message
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+                tabindex="-1"
+            >
+                <span class="free-report-card__success-icon" aria-hidden="true">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </span>
+                <div class="free-report-card__success-copy">
+                    <p
+                        class="text-body-p1-bold free-report-card__success-title"
+                        data-copy-key="free_report_success_title"
+                    >
+                        {t(copy, 'free_report_success_title', locale, 'Success!')}
+                    </p>
+                    <p
+                        class="text-body-p3 free-report-card__success-body"
+                        data-copy-key="free_report_success_message"
+                    >
+                        {
+                            t(
+                                copy,
+                                'free_report_success_message',
+                                locale,
+                                'A download link has been sent to your email. Please check your inbox.'
+                            )
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<style>
+    .free-report-card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .free-report-card__image-wrap {
+        width: 100%;
+        aspect-ratio: 400 / 217;
+        overflow: hidden;
+        border-radius: var(--radius-s);
+    }
+
+    .free-report-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .free-report-card__image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: var(--surface-blue);
+    }
+
+    .free-report-card__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        padding: 0;
+    }
+
+    .free-report-card__meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+    }
+
+    .free-report-card__tag {
+        background: var(--badge-juniors);
+        border-radius: var(--radius-full);
+        padding: var(--space-2) var(--space-4);
+        color: var(--text-white);
+        white-space: nowrap;
+    }
+
+    .free-report-card__text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .free-report-card__title {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .free-report-card__description {
+        margin: 0;
+        color: var(--neutral-grey-1);
+        min-height: calc(1.4em * 4);
+        max-height: calc(1.4em * 4);
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
+
+    .free-report-card__cta {
+        display: block;
+        width: 100%;
+        position: relative;
+        min-height: calc(var(--space-13) + var(--space-6));
+    }
+
+    .free-report-card :global(.free-report-card__download-trigger),
+    .free-report-card__download-form {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+        overflow: hidden;
+        transition:
+            opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
+            transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+            max-height 640ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .free-report-card__success-message {
+        width: fit-content;
+        max-width: 100%;
+        margin: 0;
+        border: var(--stroke-1) solid var(--badge-newcomers);
+        border-radius: var(--radius-s);
+        background: var(--surface-white);
+        padding: var(--space-4);
+        gap: var(--space-3);
+        align-items: flex-start;
+        align-self: flex-start;
+        overflow: hidden;
+        transition:
+            opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
+            transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+            max-height 640ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .free-report-card__success-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--space-6);
+        height: var(--space-6);
+        border-radius: var(--radius-full);
+        background: var(--badge-newcomers);
+        color: var(--text-white);
+        flex-shrink: 0;
+    }
+
+    .free-report-card__success-copy {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    .free-report-card__success-title,
+    .free-report-card__success-body {
+        margin: 0;
+    }
+
+    .free-report-card__success-body {
+        color: var(--text-secondary);
+    }
+
+    .free-report-card :global(.free-report-card__download-trigger) {
+        position: relative;
+        left: 0;
+        top: 0;
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 5rem;
+        pointer-events: auto;
+    }
+
+    .free-report-card__download-form {
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: visible;
+        opacity: 0;
+        transform: translateY(var(--space-2));
+        max-height: 0;
+        pointer-events: none;
+    }
+
+    .free-report-card__success-message {
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transform: translateY(var(--space-2));
+        max-height: 0;
+        pointer-events: none;
+    }
+
+    .free-report-card.is-download-open :global(.free-report-card__download-trigger) {
+        position: absolute;
+        opacity: 0;
+        transform: translateY(calc(-1 * var(--space-2)));
+        max-height: 0;
+        pointer-events: none;
+    }
+
+    .free-report-card.is-download-open .free-report-card__download-form {
+        position: relative;
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 18rem;
+        pointer-events: auto;
+    }
+
+    .free-report-card.is-download-success .free-report-card__download-form {
+        position: absolute;
+        opacity: 0;
+        transform: translateY(calc(-1 * var(--space-2)));
+        max-height: 0;
+        pointer-events: none;
+    }
+
+    .free-report-card.is-download-success .free-report-card__success-message {
+        position: relative;
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 10rem;
+        pointer-events: auto;
+    }
+
+    .free-report-card :global(.btn) {
+        width: fit-content;
+        align-self: flex-start;
+    }
+
+    .free-report-card :global(.free-report-card__download-form .form-field) {
+        width: 100%;
+    }
+
+    .free-report-card__submit-row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        width: 100%;
+    }
+
+    .free-report-card__submit-error {
+        margin: 0;
+        color: var(--feedback-error);
+        min-height: 1.4em;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 180ms ease;
+    }
+
+    .free-report-card__submit-error.is-visible {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .free-report-card__download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    @media (max-width: 1023px) {
+        .free-report-card__cta {
+            min-height: calc(var(--space-13) + var(--space-11));
+        }
+    }
+
+    @media (max-width: 767px) {
+        .free-report-card__body {
+            gap: var(--space-5);
+            padding: 0;
+        }
+
+        .free-report-card__cta {
+            min-height: calc(var(--space-13) + var(--space-11));
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .free-report-card :global(.free-report-card__download-trigger),
+        .free-report-card__download-form,
+        .free-report-card__success-message {
+            transition: none;
+        }
+    }
+</style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.free-report-card').forEach((card) => {
+        const trigger = card.querySelector<HTMLElement>('[data-free-report-download-trigger]');
+        const form = card.querySelector<HTMLFormElement>('[data-free-report-download-form]');
+        const submitError = card.querySelector<HTMLElement>('[data-free-report-submit-error]');
+
+        if (!trigger || !form) return;
+
+        trigger.addEventListener('click', () => {
+            card.classList.add('is-download-open');
+            if (submitError) {
+                submitError.classList.remove('is-visible');
+                submitError.setAttribute('aria-hidden', 'true');
+            }
+
+            const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
+            emailInput?.focus();
+            emailInput?.setCustomValidity('');
+        });
+
+        const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
+        emailInput?.addEventListener('input', () => {
+            if (submitError && emailInput.checkValidity()) {
+                submitError.classList.remove('is-visible');
+                submitError.setAttribute('aria-hidden', 'true');
+            }
+            emailInput.setCustomValidity('');
+        });
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (emailInput?.checkValidity()) {
+                card.classList.add('is-download-success');
+                if (submitError) {
+                    submitError.classList.remove('is-visible');
+                    submitError.setAttribute('aria-hidden', 'true');
+                }
+                const successMessage = card.querySelector<HTMLElement>(
+                    '[data-free-report-success-message]'
+                );
+                successMessage?.focus();
+            } else {
+                if (submitError) {
+                    submitError.classList.add('is-visible');
+                    submitError.setAttribute('aria-hidden', 'false');
+                }
+            }
+        });
+    });
+</script>

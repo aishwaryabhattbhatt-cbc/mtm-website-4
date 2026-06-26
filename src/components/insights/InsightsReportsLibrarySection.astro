@@ -22,31 +22,69 @@ const filterTabs = [
 
 <section class="reports-library-section">
     <div class="reports-library-section__header">
-        <Eyebrow>{t(copy, 'section_2_eyebrow', locale, 'Reports Library')}</Eyebrow>
-        <h2 data-copy-key="section_2_title">
-            {
-                t(
-                    copy,
-                    'section_2_title',
-                    locale,
-                    'Research Across Every Corner of Canadian Media Behaviour'
-                )
-            }
-        </h2>
-        <p
-            class="text-body-p1 reports-library-section__description"
-            data-copy-key="section_2_description"
-        >
-            {
-                t(
-                    copy,
-                    'section_2_description',
-                    locale,
-                    'From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.'
-                )
-            }
-        </p>
-        <Tabs tabs={filterTabs} showArrows={true} id="reports-filter" />
+        <div class="reports-library-section__eyebrow-wrap">
+            <Eyebrow>{t(copy, 'section_2_eyebrow', locale, 'Reports Library')}</Eyebrow>
+        </div>
+
+        <div class="reports-library-section__content-wrap">
+            <h2 data-copy-key="section_2_title">
+                {
+                    t(
+                        copy,
+                        'section_2_title',
+                        locale,
+                        'Research Across Every Corner of Canadian Media Behaviour'
+                    )
+                }
+            </h2>
+            <p
+                class="text-body-p1 reports-library-section__description"
+                data-copy-key="section_2_description"
+            >
+                {
+                    t(
+                        copy,
+                        'section_2_description',
+                        locale,
+                        'From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.'
+                    )
+                }
+            </p>
+        </div>
+
+        <div class="reports-library-section__controls-wrap">
+            <Tabs tabs={filterTabs} showArrows={false} id="reports-filter" />
+            <div class="reports-library-section__arrows" aria-hidden="true">
+                <button
+                    class="reports-library-section__arrow"
+                    aria-label="Previous"
+                    data-arrow="prev"
+                >
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
+                        <path
+                            d="M7.5 1.5L1.5 7.5L7.5 13.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <button
+                    class="reports-library-section__arrow reports-library-section__arrow--filled"
+                    aria-label="Next"
+                    data-arrow="next"
+                >
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
+                        <path
+                            d="M1.5 1.5L7.5 7.5L1.5 13.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
 
     <div class="reports-library-section__carousel">
@@ -63,19 +101,83 @@ const filterTabs = [
 <style>
     .reports-library-section {
         width: 100%;
-        padding: 0 var(--content-margin-inline);
+        padding: var(--space-12) var(--content-margin-inline) var(--space-12);
     }
 
     .reports-library-section__header {
         display: flex;
         flex-direction: column;
-        gap: var(--space-7);
+        gap: var(--space-6);
+    }
+
+    .reports-library-section__eyebrow-wrap {
+        display: flex;
+    }
+
+    .reports-library-section__content-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .reports-library-section__content-wrap h2 {
+        margin: 0;
+    }
+
+    .reports-library-section__controls-wrap {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-3);
+    }
+
+    .reports-library-section__controls-wrap :global(.tabs-bar) {
+        width: fit-content;
+        max-width: 100%;
+        margin-right: auto;
     }
 
     .reports-library-section__description {
         color: var(--text-secondary);
         margin: 0;
         max-width: 52rem;
+    }
+
+    .reports-library-section__arrows {
+        display: flex;
+        gap: var(--space-3);
+        flex-shrink: 0;
+    }
+
+    .reports-library-section__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--space-8);
+        height: var(--space-8);
+        border-radius: var(--radius-full);
+        border: var(--stroke-1) solid var(--border-secondary);
+        background: transparent;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0;
+        transition:
+            background 0.15s,
+            color 0.15s,
+            border-color 0.15s;
+    }
+
+    .reports-library-section__arrow--filled {
+        background: var(--text-primary);
+        color: var(--text-white);
+        border-color: var(--text-primary);
+    }
+
+    .reports-library-section__arrow:hover:not(.reports-library-section__arrow--filled) {
+        background: var(--surface-blue);
+        color: var(--text-primary);
+        border-color: var(--border-primary);
     }
 
     .reports-library-section__carousel {
@@ -100,6 +202,14 @@ const filterTabs = [
     }
 
     @media (max-width: 1023px) {
+        .reports-library-section {
+            gap: var(--space-4);
+        }
+
+        .reports-library-section__controls-wrap {
+            display: flex;
+        }
+
         .reports-library-section__description {
             max-width: 100%;
         }
@@ -107,11 +217,43 @@ const filterTabs = [
 
     @media (max-width: 767px) {
         .reports-library-section__header {
-            gap: var(--space-4);
+            gap: var(--space-7);
         }
 
         .reports-library-section__card-wrap {
             width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
         }
+
+        .reports-library-section__content-wrap {
+            gap: var(--space-4);
+        }
     }
 </style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.reports-library-section').forEach((section) => {
+        const carousel = section.querySelector<HTMLElement>('.reports-library-section__carousel');
+        const prevBtn = section.querySelector<HTMLButtonElement>('[data-arrow="prev"]');
+        const nextBtn = section.querySelector<HTMLButtonElement>('[data-arrow="next"]');
+
+        if (!carousel || !prevBtn || !nextBtn) return;
+
+        const cardWrap = section.querySelector<HTMLElement>('.reports-library-section__card-wrap');
+        if (!cardWrap) return;
+
+        const cardWidth = cardWrap.offsetWidth;
+        const gap = parseInt(window.getComputedStyle(carousel).gap);
+
+        const scroll = (direction: 'prev' | 'next') => {
+            const scrollAmount = cardWidth + gap;
+            if (direction === 'prev') {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        };
+
+        prevBtn.addEventListener('click', () => scroll('prev'));
+        nextBtn.addEventListener('click', () => scroll('next'));
+    });
+</script>

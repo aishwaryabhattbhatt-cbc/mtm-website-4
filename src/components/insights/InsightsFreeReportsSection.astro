@@ -1,0 +1,300 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Eyebrow from '../shared/Eyebrow.astro';
+import InsightsFreeReportCard from './InsightsFreeReportCard.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const freeReports = [
+    {
+        tagKey: 'free_report_1_tag',
+        dateKey: 'free_report_1_date',
+        titleKey: 'free_report_1_title',
+        descriptionKey: 'free_report_1_description',
+        imageSrc: `${base}images/insights/latest-report.png`,
+    },
+    {
+        tagKey: 'free_report_2_tag',
+        dateKey: 'free_report_2_date',
+        titleKey: 'free_report_2_title',
+        descriptionKey: 'free_report_2_description',
+        imageSrc: `${base}images/insights/latest-report.png`,
+    },
+    {
+        tagKey: 'free_report_3_tag',
+        dateKey: 'free_report_3_date',
+        titleKey: 'free_report_3_title',
+        descriptionKey: 'free_report_3_description',
+        imageSrc: `${base}images/insights/latest-report.png`,
+    },
+];
+---
+
+<section class="free-reports-section">
+    <div class="free-reports-section__header">
+        <div class="free-reports-section__eyebrow-wrap">
+            <Eyebrow>
+                <span data-copy-key="Free Reports"
+                    >{t(copy, 'Free Reports', locale, 'Free Reports')}</span
+                >
+            </Eyebrow>
+        </div>
+
+        <div class="free-reports-section__content-wrap">
+            <h2 data-copy-key="section_3_title">
+                {t(copy, 'section_3_title', locale, 'Insights Across Key Canadian Audiences')}
+            </h2>
+
+            <p
+                class="text-body-p1 free-reports-section__description"
+                data-copy-key="section_3_description"
+            >
+                {
+                    t(
+                        copy,
+                        'section_3_description',
+                        locale,
+                        'MTM reporting helps organizations better understand the behaviours, attitudes, and technology adoption patterns of Canadians across distinct demographic and cultural segments.'
+                    )
+                }
+            </p>
+        </div>
+
+        <div class="free-reports-section__controls-wrap" aria-hidden="true">
+            <div class="free-reports-section__arrows">
+                <button class="free-reports-section__arrow" aria-label="Previous" data-arrow="prev">
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
+                        <path
+                            d="M7.5 1.5L1.5 7.5L7.5 13.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <button
+                    class="free-reports-section__arrow free-reports-section__arrow--filled"
+                    aria-label="Next"
+                    data-arrow="next"
+                >
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
+                        <path
+                            d="M1.5 1.5L7.5 7.5L1.5 13.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="free-reports-section__grid">
+        {
+            freeReports.map((report) => (
+                <div class="free-reports-section__card-wrap">
+                    <InsightsFreeReportCard
+                        locale={locale}
+                        copy={copy}
+                        ctaHref={`${base}${locale}/insights/`}
+                        imageSrc={report.imageSrc}
+                        tagKey={report.tagKey}
+                        dateKey={report.dateKey}
+                        titleKey={report.titleKey}
+                        descriptionKey={report.descriptionKey}
+                    />
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .free-reports-section {
+        width: 100%;
+        background: var(--surface-blue);
+        padding: var(--space-13) var(--content-margin-inline) var(--space-12);
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .free-reports-section__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        max-width: 56rem;
+    }
+
+    .free-reports-section__eyebrow-wrap {
+        display: flex;
+    }
+
+    .free-reports-section__content-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .free-reports-section__content-wrap h2 {
+        margin: 0;
+    }
+
+    .free-reports-section__controls-wrap {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-3);
+    }
+
+    .free-reports-section__description-with-arrows {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        align-items: flex-start;
+    }
+
+    .free-reports-section__arrows {
+        display: none;
+        gap: var(--space-3);
+        flex-shrink: 0;
+    }
+
+    .free-reports-section__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--space-8);
+        height: var(--space-8);
+        border-radius: var(--radius-full);
+        border: var(--stroke-1) solid var(--border-secondary);
+        background: transparent;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0;
+        transition:
+            background 0.15s,
+            color 0.15s,
+            border-color 0.15s;
+    }
+
+    .free-reports-section__arrow--filled {
+        background: var(--text-primary);
+        color: var(--text-white);
+        border-color: var(--text-primary);
+    }
+
+    .free-reports-section__arrow:hover:not(.free-reports-section__arrow--filled) {
+        background: var(--surface-blue);
+        color: var(--text-primary);
+        border-color: var(--border-primary);
+    }
+
+    .free-reports-section__description {
+        color: var(--text-secondary);
+        margin: 0;
+    }
+
+    .free-reports-section__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--layout-card-gap);
+    }
+
+    .free-reports-section__card-wrap {
+        min-width: 0;
+    }
+
+    @media (max-width: 1023px) {
+        .free-reports-section {
+            padding: var(--space-12) var(--content-margin-inline) var(--space-9);
+            gap: 0;
+        }
+
+        .free-reports-section__header {
+            max-width: 100%;
+        }
+
+        .free-reports-section__controls-wrap {
+            display: flex;
+        }
+
+        .free-reports-section__arrows {
+            display: flex;
+        }
+
+        .free-reports-section__grid {
+            display: flex;
+            gap: var(--layout-card-gap);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            margin-inline: calc(-1 * var(--content-margin-inline));
+            padding: var(--space-8) var(--content-margin-inline) var(--space-13);
+            scroll-padding-inline-start: var(--content-margin-inline);
+            grid-template-columns: unset;
+        }
+
+        .free-reports-section__grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .free-reports-section__card-wrap {
+            flex-shrink: 0;
+            width: 24rem;
+            scroll-snap-align: start;
+            min-width: unset;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .free-reports-section__header {
+            gap: var(--space-7);
+        }
+
+        .free-reports-section__content-wrap {
+            gap: var(--space-4);
+        }
+
+        .free-reports-section__card-wrap {
+            width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
+        }
+    }
+</style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.free-reports-section').forEach((section) => {
+        const carousel = section.querySelector<HTMLElement>('.free-reports-section__grid');
+        const prevBtn = section.querySelector<HTMLButtonElement>('[data-arrow="prev"]');
+        const nextBtn = section.querySelector<HTMLButtonElement>('[data-arrow="next"]');
+
+        if (!carousel || !prevBtn || !nextBtn) return;
+
+        const cardWrap = section.querySelector<HTMLElement>('.free-reports-section__card-wrap');
+        if (!cardWrap) return;
+
+        const cardWidth = cardWrap.offsetWidth;
+        const gap = parseInt(window.getComputedStyle(carousel).gap);
+
+        const scroll = (direction: 'prev' | 'next') => {
+            const scrollAmount = cardWidth + gap;
+            if (direction === 'prev') {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        };
+
+        prevBtn.addEventListener('click', () => scroll('prev'));
+        nextBtn.addEventListener('click', () => scroll('next'));
+    });
+</script>

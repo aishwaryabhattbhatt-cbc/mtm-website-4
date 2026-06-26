@@ -136,8 +136,8 @@ const footerMenus = [
 
             <form
                 class="home-footer__cta-form footer-form-fly-in"
-                onsubmit="event.preventDefault()"
                 aria-label="Request a demo"
+                data-submit-href={`${base}${locale}/contact/`}
             >
                 <FormField
                     locale={locale}
@@ -148,12 +148,11 @@ const footerMenus = [
                     placeholderKey="footer_cta_email_placeholder"
                     placeholder="Enter your work email"
                     ariaLabel={t(copy, 'footer_cta_email_label', locale, 'Work email')}
+                    emailValidation="submit-only"
+                    required
+                    class="home-footer__cta-email-field"
                 />
-                <Button
-                    variant="primary"
-                    href={`/${locale}/contact`}
-                    class="home-footer__cta-button"
-                >
+                <Button variant="primary" type="submit" class="home-footer__cta-button">
                     {t(copy, 'cta_button', locale, 'Request a demo')}
                 </Button>
             </form>
@@ -184,11 +183,7 @@ const footerMenus = [
                 </p>
             </div>
 
-            <form
-                class="home-footer__newsletter-form"
-                onsubmit="event.preventDefault()"
-                aria-label="Newsletter signup"
-            >
+            <form class="home-footer__newsletter-form" novalidate aria-label="Newsletter signup">
                 <FormField
                     locale={locale}
                     copy={copy}
@@ -199,6 +194,7 @@ const footerMenus = [
                     label="Work Email"
                     placeholderKey="newsletter_email_placeholder"
                     placeholder="Enter your work email"
+                    emailValidation="none"
                     required
                 />
 
@@ -239,6 +235,19 @@ const footerMenus = [
                     <Button variant="primary" type="submit" class="home-footer__newsletter-submit">
                         {t(copy, 'newsletter_submit', locale, 'Submit')}
                     </Button>
+
+                    <p
+                        class="home-footer__newsletter-email-error text-body-p3-small"
+                        data-newsletter-email-error
+                        aria-live="polite"
+                        aria-hidden="true"
+                    >
+                        {
+                            locale === 'fr'
+                                ? 'Veuillez saisir une adresse courriel valide.'
+                                : 'Please enter a valid email address.'
+                        }
+                    </p>
                 </div>
             </form>
         </div>
@@ -413,11 +422,16 @@ const footerMenus = [
 
     .home-footer__cta-form {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         gap: var(--space-5);
         width: 100%;
         max-width: 38rem;
+    }
+
+    .home-footer__cta-email-field {
+        flex: 1;
+        min-width: 0;
     }
 
     .home-footer__cta-button {
@@ -425,6 +439,7 @@ const footerMenus = [
         align-items: center;
         justify-content: center;
         white-space: nowrap;
+        align-self: flex-start;
     }
 
     .home-footer__newsletter {
@@ -471,8 +486,10 @@ const footerMenus = [
     }
 
     .home-footer__newsletter-controls {
-        display: flex;
-        gap: var(--space-3);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        column-gap: var(--space-5);
+        row-gap: var(--space-2);
         align-items: center;
     }
 
@@ -487,6 +504,22 @@ const footerMenus = [
         justify-content: center;
         white-space: nowrap;
         align-self: flex-end;
+    }
+
+    .home-footer__newsletter-email-error {
+        grid-column: 1 / -1;
+        margin: 0;
+        padding: 0;
+        color: var(--feedback-error);
+        min-height: 1.4em;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 180ms ease;
+    }
+
+    .home-footer__newsletter-email-error.is-visible {
+        visibility: visible;
+        opacity: 1;
     }
 
     .home-footer__footer {
@@ -746,11 +779,12 @@ const footerMenus = [
 
         .home-footer__newsletter-form {
             max-width: 100%;
+            gap: var(--space-4);
         }
 
         .home-footer__newsletter-controls {
-            flex-direction: column;
-            gap: var(--space-5);
+            grid-template-columns: 1fr;
+            row-gap: var(--space-6);
         }
 
         .home-footer__newsletter-submit {
@@ -875,5 +909,54 @@ const footerMenus = [
             { threshold: 0.3 }
         );
         ctaObserver.observe(ctaCard);
+    }
+
+    const ctaForm = document.querySelector<HTMLFormElement>('.home-footer__cta-form');
+    if (ctaForm) {
+        ctaForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const emailInput = ctaForm.querySelector<HTMLInputElement>('input[type="email"]');
+            if (emailInput?.checkValidity()) {
+                const submitHref = ctaForm.dataset.submitHref;
+                if (submitHref) {
+                    window.location.href = submitHref;
+                }
+            } else {
+                emailInput?.reportValidity();
+            }
+        });
+    }
+
+    const newsletterForm = document.querySelector<HTMLFormElement>('.home-footer__newsletter-form');
+    if (newsletterForm) {
+        const newsletterEmailInput =
+            newsletterForm.querySelector<HTMLInputElement>('input[type="email"]');
+        const newsletterEmailError = newsletterForm.querySelector<HTMLElement>(
+            '[data-newsletter-email-error]'
+        );
+
+        function setNewsletterEmailError(visible: boolean) {
+            if (!newsletterEmailError) return;
+            newsletterEmailError.classList.toggle('is-visible', visible);
+            newsletterEmailError.setAttribute('aria-hidden', visible ? 'false' : 'true');
+        }
+
+        newsletterForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (!newsletterEmailInput) return;
+
+            if (newsletterEmailInput.checkValidity()) {
+                setNewsletterEmailError(false);
+            } else {
+                setNewsletterEmailError(true);
+            }
+        });
+
+        newsletterEmailInput?.addEventListener('input', () => {
+            if (newsletterEmailInput.checkValidity()) {
+                setNewsletterEmailError(false);
+            }
+        });
     }
 </script>
