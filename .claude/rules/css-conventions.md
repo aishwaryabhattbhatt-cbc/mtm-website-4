@@ -40,13 +40,45 @@ No exact match → use the closest by font-size first, then weight. If a genuine
 
 ## Spacing tokens
 
-`--space-1` (0.25rem) through `--space-13` (7.5rem). Never use raw `px` or `rem` values for spacing.
+Never use raw `px` or `rem` values for spacing. Always use a token.
 
-Exceptions: `1px` / `2px` borders → use `--stroke-1` / `--stroke-2`.
+Exceptions: `1px` / `2px` borders → `--stroke-1` / `--stroke-2`.
+
+### Token reference
+
+| Token | Value | Purpose |
+|---|---|---|
+| `--space-1` | 0.25rem (4px) | Micro gaps — icon-to-label, dot separators |
+| `--space-2` | 0.5rem (8px) | Tight inline gaps — tags, pill rows, icon+text pairs |
+| `--space-3` | 0.75rem (12px) | Small element gaps — stacked labels, button icon gap |
+| `--space-4` | 1rem (16px) | Default element gap — list rows, inline groups |
+| `--space-5` | 1.25rem (20px) | Slightly loose element gap — nav items, form fields |
+| `--space-6` | 1.5rem (24px) | Component internal padding — cards, small sections |
+| `--space-7` | 2rem (32px) | Comfortable component gap — between text blocks |
+| `--space-8` | 2.5rem (40px) | Section sub-group spacing — between heading and content |
+| `--space-9` | 3rem (48px) | Section vertical padding — top/bottom of content sections |
+| `--space-10` | 3.5rem (56px) | Generous section padding |
+| `--space-11` | 4rem (64px) | Large section padding |
+| `--space-12` | 5rem (80px) | Hero / feature section vertical padding |
+| `--space-13` | 7.5rem (120px) | Maximum page-level vertical spacing (scales to 3rem on mobile) |
+
+### Usage by context
+
+**Micro (--space-1 to --space-3)** — gaps inside a single UI element: icon-to-text, tag-to-tag, dot separators, chevron gaps.
+
+**Element (--space-3 to --space-6)** — spacing between sibling elements within a component: label+value stacks, button rows, form field gaps, card internal padding.
+
+**Component (--space-6 to --space-9)** — spacing within a section between its sub-groups: heading+body, body+CTA, feature rows. Also use for card internal padding on larger cards.
+
+**Section (--space-9 to --space-13)** — vertical padding on `<section>` elements and major layout blocks. Use `--space-12` or `--space-13` for hero and full-bleed feature sections.
+
+### Consistency rule
+
+Pick the token that matches the context tier above and use it consistently across all components for that same context. For example, if the gap between a card heading and its body copy is `--space-4`, every card on the page should use `--space-4` for that relationship — not `--space-3` in one card and `--space-5` in another.
 
 ### Card gaps
 
-Always use `--layout-card-gap` for the gap between cards in any grid, flex row, or horizontal scroll container. Never use a raw `--space-*` token for inter-card spacing — this token has responsive overrides built in (desktop: 2.5rem, ≤1023px: 1rem).
+Always use `--layout-card-gap` for the gap between cards in any grid, flex row, or horizontal scroll container. Never substitute a `--space-*` token — `--layout-card-gap` has responsive overrides built in (desktop: 2.5rem, ≤1023px: 1rem).
 
 ## Color tokens
 
