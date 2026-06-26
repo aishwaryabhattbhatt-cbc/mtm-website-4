@@ -125,22 +125,28 @@ const faqs = [
                 )
             }
         </div>
-        <Button
-            variant="secondary-icon"
-            href={`/${locale}/tools`}
-            class="home-faqs__ask-mtm-button"
-            aria-label={t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
-            iconSrc={askMtmIconPath}
-            iconAlt="Ask MTM"
-        >
-            {t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
-        </Button>
-        <span class="home-faqs__footer-or text-body-p1">
-            {t(copy, 'faq_footer_text_after', locale, 'or')}
-        </span>
-        <Button variant="secondary" href={`/${locale}/contact`} class="home-faqs__footer-button">
-            {t(copy, 'faq_contact_button', locale, 'Contact us')}
-        </Button>
+        <div class="home-faqs__footer-actions">
+            <Button
+                variant="secondary-icon"
+                href={`/${locale}/tools`}
+                class="home-faqs__ask-mtm-button"
+                aria-label={t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
+                iconSrc={askMtmIconPath}
+                iconAlt="Ask MTM"
+            >
+                {t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
+            </Button>
+            <span class="home-faqs__footer-or text-body-p1">
+                {t(copy, 'faq_footer_text_after', locale, 'or')}
+            </span>
+            <Button
+                variant="secondary"
+                href={`/${locale}/contact`}
+                class="home-faqs__footer-button"
+            >
+                {t(copy, 'faq_contact_button', locale, 'Contact us')}
+            </Button>
+        </div>
     </div>
 </section>
 
@@ -205,7 +211,7 @@ const faqs = [
         appearance: none;
         background: transparent;
         border: 0;
-        padding: var(--space-7);
+        padding: var(--space-8);
         width: 100%;
         display: flex;
         align-items: center;
@@ -248,7 +254,7 @@ const faqs = [
     }
 
     .home-faqs__content {
-        padding: 0 var(--space-7) var(--space-7) var(--space-7);
+        padding: 0 var(--space-8) var(--space-8) var(--space-8);
     }
 
     .home-faqs__answer {
@@ -296,6 +302,12 @@ const faqs = [
         object-fit: contain;
     }
 
+    .home-faqs__footer-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
+
     .home-faqs__footer-or {
         color: var(--text-primary);
     }
@@ -307,12 +319,16 @@ const faqs = [
             gap: var(--space-8);
         }
 
+        .home-faqs__heading {
+            text-align: left;
+        }
+
         .home-faqs__trigger {
-            padding: var(--space-5);
+            padding: var(--space-6);
         }
 
         .home-faqs__content {
-            padding: 0 var(--space-5) var(--space-5) var(--space-5);
+            padding: 0 var(--space-6) var(--space-6) var(--space-6);
         }
 
         .home-faqs__chevron {
@@ -324,6 +340,10 @@ const faqs = [
             flex-direction: column;
             align-items: flex-start;
             gap: var(--space-3);
+        }
+
+        .home-faqs__footer-actions {
+            flex-wrap: wrap;
         }
     }
 </style>

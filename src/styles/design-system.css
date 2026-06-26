@@ -450,6 +450,14 @@ h3,
     letter-spacing: var(--ls-body-md);
 }
 
+.text-body-p3-small {
+    font-family: var(--font-body);
+    font-size: var(--fs-label-small);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-body);
+    letter-spacing: var(--ls-body-md);
+}
+
 /* --- UI Text (Inter) --- */
 
 .text-ui-h1-bold {

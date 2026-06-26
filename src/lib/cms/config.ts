@@ -29,7 +29,8 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=1734378829&single=true&output=csv',
     'census-tool':
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=606257462&single=true&output=csv',
-    insights: '',
+    insights:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=1724411017&single=true&output=csv',
     media: '',
     advertising: '',
     industry: '',

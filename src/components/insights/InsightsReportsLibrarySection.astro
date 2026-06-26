@@ -1,0 +1,117 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Eyebrow from '../shared/Eyebrow.astro';
+import Tabs from '../shared/Tabs.astro';
+import InsightsReportCard from './InsightsReportCard.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+
+const filterTabs = [
+    { label: t(copy, 'filter_all', locale, 'All'), value: 'all' },
+    { label: t(copy, 'filter_mtm18plus', locale, 'MTM 18+'), value: 'mtm18plus' },
+    { label: t(copy, 'filter_junior', locale, 'Junior'), value: 'junior' },
+    { label: t(copy, 'filter_newcomers', locale, 'Newcomers'), value: 'newcomers' },
+];
+---
+
+<section class="reports-library-section">
+    <div class="reports-library-section__header">
+        <Eyebrow>{t(copy, 'section_2_eyebrow', locale, 'Reports Library')}</Eyebrow>
+        <h2 data-copy-key="section_2_title">
+            {
+                t(
+                    copy,
+                    'section_2_title',
+                    locale,
+                    'Research Across Every Corner of Canadian Media Behaviour'
+                )
+            }
+        </h2>
+        <p
+            class="text-body-p1 reports-library-section__description"
+            data-copy-key="section_2_description"
+        >
+            {
+                t(
+                    copy,
+                    'section_2_description',
+                    locale,
+                    'From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.'
+                )
+            }
+        </p>
+        <Tabs tabs={filterTabs} showArrows={true} id="reports-filter" />
+    </div>
+
+    <div class="reports-library-section__carousel">
+        {
+            Array.from({ length: 6 }).map(() => (
+                <div class="reports-library-section__card-wrap">
+                    <InsightsReportCard locale={locale} copy={copy} ctaHref="#" />
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .reports-library-section {
+        width: 100%;
+        padding: 0 var(--content-margin-inline);
+    }
+
+    .reports-library-section__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-7);
+    }
+
+    .reports-library-section__description {
+        color: var(--text-secondary);
+        margin: 0;
+        max-width: 52rem;
+    }
+
+    .reports-library-section__carousel {
+        display: flex;
+        gap: var(--layout-card-gap);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        margin-inline: calc(-1 * var(--content-margin-inline));
+        padding: var(--space-8) var(--content-margin-inline) var(--space-13);
+        scroll-padding-inline-start: var(--content-margin-inline);
+    }
+
+    .reports-library-section__carousel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .reports-library-section__card-wrap {
+        flex-shrink: 0;
+        width: 24rem;
+        scroll-snap-align: start;
+    }
+
+    @media (max-width: 1023px) {
+        .reports-library-section__description {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .reports-library-section__header {
+            gap: var(--space-4);
+        }
+
+        .reports-library-section__card-wrap {
+            width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
+        }
+    }
+</style>

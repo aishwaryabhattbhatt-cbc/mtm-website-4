@@ -463,7 +463,7 @@ const products = [
                                 <img
                                     src={`${import.meta.env.BASE_URL}${tool.iconPath}`}
                                     alt=""
-                                    class="icon icon-3xl"
+                                    class="icon icon-4xl"
                                 />
                             </div>
                             <div class="tool-content">
@@ -585,7 +585,7 @@ const products = [
         background: var(--surface-white);
         display: flex;
         flex-direction: column;
-        gap: var(--space-12);
+        gap: var(--space-10);
     }
 
     .data-products {
@@ -985,6 +985,13 @@ const products = [
             display: block;
         }
 
+        .reports-library .reports-ctas-mobile-row .reports-ctas {
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-5);
+        }
+
         .reports-library .reports-ctas-desktop {
             display: none;
         }
@@ -996,12 +1003,18 @@ const products = [
         .card-desc {
             width: 15rem;
         }
+
+        .reports-desc,
+        .tools-description {
+            margin-top: 0;
+        }
     }
 
     @media (max-width: 767px) {
         .mtm-suite-section {
             padding-top: var(--space-9);
             padding-bottom: var(--space-9);
+            gap: var(--space-8);
         }
 
         .reports-library .products-right {
@@ -1011,6 +1024,11 @@ const products = [
 
         .products-left {
             gap: var(--space-6);
+        }
+
+        .reports-desc,
+        .tools-description {
+            margin-top: 0;
         }
 
         .products-right {
@@ -1036,7 +1054,12 @@ const products = [
     .tools-description {
         color: var(--text-primary);
         margin: 0;
-        margin-top: calc(-1 * var(--space-5));
+    }
+
+    @media (min-width: 1024px) {
+        .tools-description {
+            margin-top: calc(-1 * var(--space-5));
+        }
     }
 
     .tools-items {
@@ -1166,16 +1189,18 @@ const products = [
     @media (max-width: 1023px) {
         .tools-suite .products-right {
             height: auto;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 3 / 2;
             min-height: 20rem;
+            max-width: 100%;
         }
     }
 
     @media (max-width: 767px) {
         .tools-suite .products-right {
             height: auto;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 3 / 2;
             min-height: 18rem;
+            max-width: 100%;
         }
 
         .tools-video-play-btn {
@@ -1186,6 +1211,36 @@ const products = [
         .tools-video-play-btn svg {
             width: 1.25rem;
             height: 1.25rem;
+        }
+
+        .tool-icon .icon-4xl {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        .tool-icon {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        .tool-item {
+            padding-top: var(--space-3);
+            padding-bottom: var(--space-3);
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .tool-icon {
+            background: none;
+            border-radius: 0;
+            width: auto;
+            height: auto;
+            justify-content: flex-start;
+        }
+
+        .tool-tags :global(.product-pill--small) {
+            font-size: var(--fs-body-s);
+            padding: var(--space-2) var(--space-4);
         }
     }
 </style>
