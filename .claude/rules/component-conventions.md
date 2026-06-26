@@ -24,6 +24,10 @@ src/components/
 
 Never put section markup directly in a page file. Always extract to a component in the matching folder, then import and render it in the page.
 
+**Always use existing shared components.** Before writing markup for a button, chevron, pill, card, eyebrow, or nav element — check `src/components/shared/`. If a component covers it, use it. Never inline a re-implementation.
+
+**Changes to a component go in the component file.** If asked to change how a shared element looks or behaves, edit the component — not a single usage site. Patching one location leaves every other instance inconsistent.
+
 ## Component structure
 
 Every section component follows this template:
