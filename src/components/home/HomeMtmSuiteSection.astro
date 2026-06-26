@@ -231,12 +231,31 @@ const products = [
                         </div>
                         <div class="mobile-card-info">
                             <div class="mobile-card-text">
-                                <span
-                                    class="mobile-card-name text-body-p0"
-                                    data-copy-key={product.nameKey}
-                                >
-                                    {t(copy, product.nameKey, locale, product.nameFallback)}
-                                </span>
+                                <div class="mobile-card-title-row">
+                                    <span
+                                        class="mobile-card-name text-body-p0"
+                                        data-copy-key={product.nameKey}
+                                    >
+                                        {t(copy, product.nameKey, locale, product.nameFallback)}
+                                    </span>
+                                    <span class="mobile-card-arrow" aria-hidden="true">
+                                        <svg
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 20 20"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M3 10H17M12 5L17 10L12 15"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </span>
+                                </div>
                                 <span
                                     class="mobile-card-desc text-body-p3"
                                     data-copy-key={product.descKey}
@@ -244,43 +263,6 @@ const products = [
                                     {t(copy, product.descKey, locale, product.descFallback)}
                                 </span>
                             </div>
-                            <span class="mobile-card-chevron" aria-hidden="true">
-                                <svg
-                                    width="100%"
-                                    height="100%"
-                                    viewBox="0 0 15 22"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <g clip-path={`url(#clip-mobile-${product.id})`}>
-                                        <path
-                                            d="M3.86782 5.53252C4.79584 5.53252 5.54815 4.78021 5.54815 3.8522C5.54815 2.92418 4.79584 2.17188 3.86782 2.17188C2.93981 2.17188 2.1875 2.92418 2.1875 3.8522C2.1875 4.78021 2.93981 5.53252 3.86782 5.53252Z"
-                                            fill={product.chevronFill ?? '#026BC4'}
-                                        />
-                                        <path
-                                            d="M7.64712 9.31231C8.57514 9.31231 9.32744 8.56 9.32744 7.63198C9.32744 6.70397 8.57514 5.95166 7.64712 5.95166C6.7191 5.95166 5.9668 6.70397 5.9668 7.63198C5.9668 8.56 6.7191 9.31231 7.64712 9.31231Z"
-                                            fill={product.chevronFill ?? '#026BC4'}
-                                        />
-                                        <path
-                                            d="M3.86782 20.6502C4.79584 20.6502 5.54815 19.8979 5.54815 18.9699C5.54815 18.0419 4.79584 17.2896 3.86782 17.2896C2.93981 17.2896 2.1875 18.0419 2.1875 18.9699C2.1875 19.8979 2.93981 20.6502 3.86782 20.6502Z"
-                                            fill={product.chevronFill ?? '#026BC4'}
-                                        />
-                                        <path
-                                            d="M7.64712 16.8714C8.57514 16.8714 9.32744 16.1191 9.32744 15.1911C9.32744 14.263 8.57514 13.5107 7.64712 13.5107C6.7191 13.5107 5.9668 14.263 5.9668 15.1911C5.9668 16.8714 7.64712 16.8714Z"
-                                            fill={product.chevronFill ?? '#026BC4'}
-                                        />
-                                        <path
-                                            d="M11.4284 13.0921C12.3564 13.0921 13.1087 12.3398 13.1087 11.4118C13.1087 10.4838 12.3564 9.73145 11.4284 9.73145C10.5004 9.73145 9.74805 10.4838 9.74805 11.4118C9.74805 12.3398 10.5004 13.0921 11.4284 13.0921Z"
-                                            fill={product.chevronFill ?? '#026BC4'}
-                                        />
-                                    </g>
-                                    <defs>
-                                        <clipPath id={`clip-mobile-${product.id}`}>
-                                            <rect width="14.2353" height="22" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </span>
                         </div>
                     </a>
                 ))
@@ -886,6 +868,12 @@ const products = [
         color: inherit;
     }
 
+    @media (max-width: 1023px) {
+        .mobile-product-card:last-child {
+            margin-bottom: var(--space-15);
+        }
+    }
+
     .mobile-card-image {
         position: relative;
         width: 100%;
@@ -925,19 +913,32 @@ const products = [
 
     .mobile-card-info {
         display: flex;
-        align-items: center;
-        gap: var(--space-6);
     }
 
     .mobile-card-text {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: var(--space-1);
+        gap: var(--space-2);
         min-width: 0;
     }
 
+    .mobile-card-title-row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+    }
+
     .mobile-card-name {
+        color: var(--text-primary);
+        flex: 1;
+        min-width: 0;
+    }
+
+    .mobile-card-arrow {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
         color: var(--text-primary);
     }
 
@@ -948,15 +949,6 @@ const products = [
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-    }
-
-    .mobile-card-chevron {
-        flex-shrink: 0;
-        width: 1.125rem;
-        height: 1.75rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     /* ── RESPONSIVE ── */
