@@ -224,8 +224,8 @@ html {
         --fs-hero: 2.5rem; /* 84px → ~35px (40px at 14px root) */
         --fs-section-h1: 2rem; /* 56px → ~28px */
         --fs-metrics: 1.75rem; /* 48px → ~24px */
-        --fs-subsection-h2: 1.75rem; /* 44px → ~24.5px */
-        --fs-tertiary-h3: 1.5rem; /* 40px → ~21px */
+        --fs-subsection-h2: 2rem; /* 44px → ~28px */
+        --fs-tertiary-h3: 1.75rem; /* 40px → ~24.5px */
         --fs-h4: 1.25rem; /* 32px → ~18px */
         --fs-body-xl: 1.125rem; /* 24px → ~16px */
         --fs-body-l: 1.25rem;
