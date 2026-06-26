@@ -292,8 +292,24 @@ const copyKeys = {
     /* Desktop scaling: both columns scale via --hero-scale so proportions are preserved.
        Title uses clamp() only to cap growth above 1555px; everywhere else it tracks the scale. */
 
-    /* Scale-up: 1555px and wider — collage grows faster, title grows gently */
-    @media (min-width: 1555px) {
+    /* At 1920px: root font jumps to 18px AND margins jump to 240px (inner width = 1440px).
+       Without this cap, hero-content reaches 720px and zoomed collage hits 846px → 126px overflow.
+       Fix: set a scale that keeps total items comfortably within 1440px. */
+    @media (min-width: 1920px) {
+        .home-section-1 .hero-container {
+            --collage-scale: 1.1;
+        }
+        .home-section-1 .hero-content {
+            width: 36rem; /* 648px at 18px root ≈ 45% of 1440px inner width */
+        }
+        .hero-image-collage {
+            zoom: var(--collage-scale);
+            flex-shrink: 0;
+        }
+    }
+
+    /* Scale-up: 1555px → 1919px — collage grows faster, title grows gently */
+    @media (min-width: 1555px) and (max-width: 1919px) {
         .home-section-1 .hero-container {
             --collage-scale: min(1.45, calc(1 + (100vw - 1555px) / 1000px));
         }
