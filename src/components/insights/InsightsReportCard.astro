@@ -2,7 +2,6 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import ProductPill from '../shared/ProductPill.astro';
-import type { ProductVariant } from '../shared/ProductPill.astro';
 import DatePill from '../shared/DatePill.astro';
 import Button from '../shared/Button.astro';
 
@@ -12,7 +11,6 @@ interface Props {
     ctaHref: string;
     imageSrc?: string;
     imageAlt?: string;
-    tagKey?: string;
     dateKey?: string;
     titleKey?: string;
     descriptionKey?: string;
@@ -27,7 +25,6 @@ const {
     ctaHref,
     imageSrc,
     imageAlt,
-    tagKey = 'report_card_tag',
     dateKey = 'report_card_date',
     titleKey = 'report_card_title',
     descriptionKey = 'report_card_description',
@@ -36,17 +33,6 @@ const {
     ctaKey = 'report_card_cta',
 } = Astro.props as Props;
 
-function tagToVariant(tag: string): ProductVariant | null {
-    const n = tag.toLowerCase().replace(/\s+/g, '');
-    if (n.includes('18+') || n.includes('18plus')) return 'mtm18plus';
-    if (n.includes('junior')) return 'junior';
-    if (n.includes('newcomer')) return 'newcomers';
-    if (n.includes('census')) return 'census';
-    return null;
-}
-
-const tagText = tagKey in copy ? t(copy, tagKey, locale, '') : '';
-const tagVariant = tagText ? tagToVariant(tagText) : null;
 const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
 const variable1 = variable1Key in copy ? t(copy, variable1Key, locale, '') : '';
 const variable2 = variable2Key in copy ? t(copy, variable2Key, locale, '') : '';
@@ -73,13 +59,13 @@ const variables = [variable1, variable2].filter(Boolean);
     <div class="report-card__body">
         <div class="report-card__top">
             <div class="report-card__meta">
-                {
-                    tagVariant ? (
-                        <ProductPill variant={tagVariant} size="big" />
-                    ) : tagText ? (
-                        <span class="report-card__tag text-label-small">{tagText}</span>
-                    ) : null
-                }
+                <span data-pill-variant="junior"><ProductPill variant="junior" size="big" /></span>
+                <span data-pill-variant="mtm18plus"
+                    ><ProductPill variant="mtm18plus" size="big" /></span
+                >
+                <span data-pill-variant="newcomers"
+                    ><ProductPill variant="newcomers" size="big" /></span
+                >
                 {dateText && <DatePill date={dateText} />}
             </div>
 
@@ -96,7 +82,7 @@ const variables = [variable1, variable2].filter(Boolean);
                 variables.length > 0 && (
                     <div class="report-card__tags">
                         {variables.map((v) => (
-                            <span class="report-card__var-pill text-body-p2">{v}</span>
+                            <span class="report-card__var-pill text-body-p3">{v}</span>
                         ))}
                     </div>
                 )
@@ -207,7 +193,7 @@ const variables = [variable1, variable2].filter(Boolean);
     .report-card__var-pill {
         background: var(--surface-blue);
         border-radius: var(--radius-full);
-        padding: var(--space-1) var(--space-6);
+        padding: var(--space-1) var(--space-4);
         color: var(--text-primary);
         white-space: nowrap;
     }
