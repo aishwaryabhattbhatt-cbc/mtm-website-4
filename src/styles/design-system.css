@@ -222,7 +222,7 @@ html {
     :root {
         /* Scale down large heading sizes by ~40-50% on mobile */
         --fs-hero: 2.5rem; /* 84px → ~35px (40px at 14px root) */
-        --fs-section-h1: 2rem; /* 56px → ~28px */
+        --fs-section-h1: 2.25rem; /* 56px → ~31.5px */
         --fs-metrics: 1.75rem; /* 48px → ~24px */
         --fs-subsection-h2: 2rem; /* 44px → ~28px */
         --fs-tertiary-h3: 1.75rem; /* 40px → ~24.5px */
