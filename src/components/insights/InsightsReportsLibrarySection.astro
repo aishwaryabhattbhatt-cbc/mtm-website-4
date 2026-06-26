@@ -11,6 +11,14 @@ interface Props {
 }
 
 const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const libraryImages = [
+    `${base}images/insights/report-library/Picture.png`,
+    `${base}images/insights/report-library/Picture-1.png`,
+    `${base}images/insights/report-library/Picture-2.png`,
+    `${base}images/insights/report-library/Picture-3.png`,
+];
 
 const filterTabs = [
     { label: t(copy, 'filter_all', locale, 'All'), value: 'all' },
@@ -20,7 +28,7 @@ const filterTabs = [
 ];
 ---
 
-<section class="reports-library-section">
+<section class="reports-library-section" data-filter="all">
     <div class="reports-library-section__header">
         <div class="reports-library-section__eyebrow-wrap">
             <Eyebrow>{t(copy, 'section_2_eyebrow', locale, 'Reports Library')}</Eyebrow>
@@ -85,11 +93,18 @@ const filterTabs = [
 
     <div class="reports-library-section__carousel">
         {
-            Array.from({ length: 6 }).map(() => (
-                <div class="reports-library-section__card-wrap">
-                    <InsightsReportCard locale={locale} copy={copy} ctaHref="#" />
-                </div>
-            ))
+            (['junior', 'mtm18plus', 'newcomers', 'junior', 'mtm18plus', 'newcomers'] as const).map(
+                (variant, i) => (
+                    <div class="reports-library-section__card-wrap" data-card-variant={variant}>
+                        <InsightsReportCard
+                            locale={locale}
+                            copy={copy}
+                            ctaHref="#"
+                            imageSrc={libraryImages[i % libraryImages.length]}
+                        />
+                    </div>
+                )
+            )
         }
     </div>
 </section>
@@ -229,6 +244,39 @@ const filterTabs = [
             gap: var(--space-4);
         }
     }
+
+    /* Hide all pills inside report cards by default */
+    .reports-library-section :global([data-pill-variant]) {
+        display: none;
+    }
+
+    /* All: show each card's assigned pill */
+    .reports-library-section[data-filter='all']
+        [data-card-variant='junior']
+        :global([data-pill-variant='junior']),
+    .reports-library-section[data-filter='all']
+        [data-card-variant='mtm18plus']
+        :global([data-pill-variant='mtm18plus']),
+    .reports-library-section[data-filter='all']
+        [data-card-variant='newcomers']
+        :global([data-pill-variant='newcomers']) {
+        display: inline-flex;
+    }
+
+    /* MTM 18+: show mtm18plus pill on all cards */
+    .reports-library-section[data-filter='mtm18plus'] :global([data-pill-variant='mtm18plus']) {
+        display: inline-flex;
+    }
+
+    /* Junior: show junior pill on all cards */
+    .reports-library-section[data-filter='junior'] :global([data-pill-variant='junior']) {
+        display: inline-flex;
+    }
+
+    /* Newcomers: show newcomers pill on all cards */
+    .reports-library-section[data-filter='newcomers'] :global([data-pill-variant='newcomers']) {
+        display: inline-flex;
+    }
 </style>
 
 <script>
@@ -256,5 +304,9 @@ const filterTabs = [
 
         prevBtn.addEventListener('click', () => scroll('prev'));
         nextBtn.addEventListener('click', () => scroll('next'));
+
+        section.addEventListener('tabs:change', ((e: CustomEvent) => {
+            section.dataset.filter = e.detail.value;
+        }) as EventListener);
     });
 </script>
