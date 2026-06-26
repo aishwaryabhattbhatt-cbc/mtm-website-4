@@ -228,7 +228,7 @@ html {
         --fs-tertiary-h3: 1.4rem; /* 40px → ~20px */
         --fs-h4: 1.25rem; /* 32px → ~18px */
         --fs-body-xl: 1.125rem; /* 24px → ~16px */
-        --fs-body-l: 1rem; /* 20px → ~14px */
+        --fs-body-l: 1.125rem; /* match --fs-button-small/regular at this breakpoint */
         --fs-body-m: 0.875rem; /* 18px → ~12px */
         --fs-body-s: 0.875rem; /* 16px → ~12px */
         --fs-button-regular: 1.125rem;
