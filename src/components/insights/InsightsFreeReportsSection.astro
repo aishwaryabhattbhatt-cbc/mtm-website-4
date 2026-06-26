@@ -79,11 +79,7 @@ const freeReports = [
                             stroke-linejoin="round"></path>
                     </svg>
                 </button>
-                <button
-                    class="free-reports-section__arrow free-reports-section__arrow--filled"
-                    aria-label="Next"
-                    data-arrow="next"
-                >
+                <button class="free-reports-section__arrow" aria-label="Next" data-arrow="next">
                     <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
                         <path
                             d="M1.5 1.5L7.5 7.5L1.5 13.5"
@@ -121,7 +117,7 @@ const freeReports = [
     .free-reports-section {
         width: 100%;
         background: var(--surface-blue);
-        padding: var(--space-13) var(--content-margin-inline) var(--space-12);
+        padding: var(--space-12) var(--content-margin-inline) var(--space-5);
         display: flex;
         flex-direction: column;
         gap: 0;
@@ -216,7 +212,7 @@ const freeReports = [
 
     @media (max-width: 1023px) {
         .free-reports-section {
-            padding: var(--space-12) var(--content-margin-inline) var(--space-9);
+            padding: var(--space-9) var(--content-margin-inline) var(--space-4);
             gap: 0;
         }
 

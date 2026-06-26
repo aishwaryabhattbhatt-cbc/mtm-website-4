@@ -1,262 +1,427 @@
 {
-  "hero_title": {
-    "key": "hero_title",
-    "en": "Research Built for Faster Decisions",
-    "fr": ""
-  },
-  "hero_description": {
-    "key": "hero_description",
-    "en": "MTM delivers more than 70 executive-level reports and infographics each year, covering the trends, platforms, behaviours, and audiences shaping Canadian media and technology. Available in both official languages, our research helps organizations quickly understand what’s changing — and what matters next.",
-    "fr": ""
-  },
-  "hero_cta_1": {
-    "key": "hero_cta_1",
-    "en": "Request a Demo",
-    "fr": ""
-  },
-  "featured_report_tag": {
-    "key": "featured_report_tag",
-    "en": "Junior",
-    "fr": ""
-  },
-  "featured_report_label": {
-    "key": "featured_report_label",
-    "en": "Featured Reports (or Latest)",
-    "fr": ""
-  },
-  "featured_report_title": {
-    "key": "featured_report_title",
-    "en": "YouTube Is The New Cable",
-    "fr": ""
-  },
-  "featured_report_description": {
-    "key": "featured_report_description",
-    "en": "Learn about the accellerating shift of Canadian audiences - inlcuding Junior - away from traditional broadcast toward YouTube as a primary viewing destination, with breakdowns by lanuage market , age group, and region.",
-    "fr": ""
-  },
-  "variable_1": {
-    "key": "variable_1",
-    "en": "Streaming",
-    "fr": ""
-  },
-  "variable_2": {
-    "key": "variable_2",
-    "en": "Online Video",
-    "fr": ""
-  },
-  "featured_report_cta": {
-    "key": "featured_report_cta",
-    "en": "View Press Release",
-    "fr": ""
-  },
-  "section_2_title": {
-    "key": "section_2_title",
-    "en": "Research Across Every Corner of Canadian Media Behaviour",
-    "fr": ""
-  },
-  "section_2_description": {
-    "key": "section_2_description",
-    "en": "From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.",
-    "fr": ""
-  },
-  "Reports (to be auto-filled)": {
-    "key": "Reports (to be auto-filled)",
-    "en": "AUTO-FILLED",
-    "fr": ""
-  },
-  "report_card_tag": {
-    "key": "report_card_tag",
-    "en": "Juniors",
-    "fr": ""
-  },
-  "report_card_date": {
-    "key": "report_card_date",
-    "en": "Dec 12, 2025",
-    "fr": ""
-  },
-  "report_card_title": {
-    "key": "report_card_title",
-    "en": "Kids and their Reliance on the media and their portable devices",
-    "fr": ""
-  },
-  "report_card_description": {
-    "key": "report_card_description",
-    "en": "This report looks at the demographics of children that access news and the most used sources for news content.",
-    "fr": ""
-  },
-  "report_card_variable_1": {
-    "key": "report_card_variable_1",
-    "en": "News",
-    "fr": ""
-  },
-  "report_card_variable_2": {
-    "key": "report_card_variable_2",
-    "en": "Podcast",
-    "fr": ""
-  },
-  "report_card_cta": {
-    "key": "report_card_cta",
-    "en": "View Press Release",
-    "fr": ""
-  },
-  "Free Reports": {
-    "key": "Free Reports",
-    "en": "",
-    "fr": ""
-  },
-  "section_3_title": {
-    "key": "section_3_title",
-    "en": "Insights Across Key Canadian Audiences",
-    "fr": ""
-  },
-  "section_3_description": {
-    "key": "section_3_description",
-    "en": "MTM reporting helps organizations better understand the behaviours, attitudes, and technology adoption patterns of Canadians across distinct demographic and cultural segments.",
-    "fr": ""
-  },
-  "free_report_1_tag": {
-    "key": "free_report_1_tag",
-    "en": "MTM 18+",
-    "fr": ""
-  },
-  "free_report_1_date": {
-    "key": "free_report_1_date",
-    "en": "Dec 11, 2025",
-    "fr": ""
-  },
-  "free_report_1_title": {
-    "key": "free_report_1_title",
-    "en": "Adoption Report",
-    "fr": ""
-  },
-  "free_report_1_description": {
-    "key": "free_report_1_description",
-    "en": "Explore the latest shifts in platform adoption, connected devices, subscription services, and digital behaviours among Canadian adults.",
-    "fr": ""
-  },
-  "free_report_2_tag": {
-    "key": "free_report_2_tag",
-    "en": "MTM Junior",
-    "fr": ""
-  },
-  "free_report_2_date": {
-    "key": "free_report_2_date",
-    "en": "TBD",
-    "fr": ""
-  },
-  "free_report_2_title": {
-    "key": "free_report_2_title",
-    "en": "Futures Report",
-    "fr": ""
-  },
-  "free_report_2_description": {
-    "key": "free_report_2_description",
-    "en": "Understand how younger audiences are shaping the future of media through evolving viewing habits, gaming behaviours, and digital engagement.",
-    "fr": ""
-  },
-  "free_report_3_tag": {
-    "key": "free_report_3_tag",
-    "en": "MTM Newcomers",
-    "fr": ""
-  },
-  "free_report_3_date": {
-    "key": "free_report_3_date",
-    "en": "TBD",
-    "fr": ""
-  },
-  "free_report_3_title": {
-    "key": "free_report_3_title",
-    "en": "Arrivals Report",
-    "fr": ""
-  },
-  "free_report_3_description": {
-    "key": "free_report_3_description",
-    "en": "Gain insight into the media preferences, platform usage, and technology adoption patterns of Canadians who have arrived within the past five years.",
-    "fr": ""
-  },
-  "Free Infographics": {
-    "key": "Free Infographics",
-    "en": "",
-    "fr": ""
-  },
-  "section_4_title": {
-    "key": "section_4_title",
-    "en": "Gain Insights from Our Infographics",
-    "fr": ""
-  },
-  "(to be auto-filled)": {
-    "key": "(to be auto-filled)",
-    "en": "",
-    "fr": ""
-  },
-  "section_4_description": {
-    "key": "section_4_description",
-    "en": "MTM infographics translate complex research into concise, visual storytelling designed for presentations, strategy sessions, and quick decision-making.",
-    "fr": ""
-  },
-  "infographic_tag": {
-    "key": "infographic_tag",
-    "en": "MTM JR",
-    "fr": ""
-  },
-  "infographic_title": {
-    "key": "infographic_title",
-    "en": "Kids and their ever growing Virtual World",
-    "fr": ""
-  },
-  "infographic_description": {
-    "key": "infographic_description",
-    "en": "Explore how children are spending more time across gaming, streaming, social video, and connected platforms — and what those shifts mean for parents, educators, and media organizations.",
-    "fr": ""
-  },
-  "infographic_cta_1": {
-    "key": "infographic_cta_1",
-    "en": "Download Free Report",
-    "fr": ""
-  },
-  "infographic_graph": {
-    "key": "infographic_graph",
-    "en": "Name of Graph",
-    "fr": ""
-  },
-  "infographic_graph_detail": {
-    "key": "infographic_graph_detail",
-    "en": "Support Detail",
-    "fr": ""
-  },
-  "infographic_graph_cta": {
-    "key": "infographic_graph_cta",
-    "en": "Explore Graph",
-    "fr": ""
-  },
-  "section_5_title": {
-    "key": "section_5_title",
-    "en": "In The News",
-    "fr": ""
-  },
-  "news_card_tag": {
-    "key": "news_card_tag",
-    "en": "MTM JR",
-    "fr": ""
-  },
-  "news_card_tag_date": {
-    "key": "news_card_tag_date",
-    "en": "TBD",
-    "fr": ""
-  },
-  "news_card_title": {
-    "key": "news_card_title",
-    "en": "Kids are increasingly hooked in",
-    "fr": ""
-  },
-  "news_card_description": {
-    "key": "news_card_description",
-    "en": "New MTM findings reveal growing engagement with digital media among Canadian children, including rising usage of streaming, social video, and mobile-first content platforms.",
-    "fr": ""
-  },
-  "news_card_cta": {
-    "key": "news_card_cta",
-    "en": "Readf More",
-    "fr": ""
-  }
+    "hero_title": {
+        "key": "hero_title",
+        "en": "Research Built for Faster Decisions",
+        "fr": ""
+    },
+    "hero_description": {
+        "key": "hero_description",
+        "en": "MTM delivers more than 70 executive-level reports and infographics each year, covering the trends, platforms, behaviours, and audiences shaping Canadian media and technology. Available in both official languages, our research helps organizations quickly understand what’s changing — and what matters next.",
+        "fr": ""
+    },
+    "hero_cta_1": {
+        "key": "hero_cta_1",
+        "en": "Request a Demo",
+        "fr": ""
+    },
+    "featured_report_tag": {
+        "key": "featured_report_tag",
+        "en": "Junior",
+        "fr": ""
+    },
+    "featured_report_label": {
+        "key": "featured_report_label",
+        "en": "Featured Reports (or Latest)",
+        "fr": ""
+    },
+    "featured_report_title": {
+        "key": "featured_report_title",
+        "en": "YouTube Is The New Cable",
+        "fr": ""
+    },
+    "featured_report_description": {
+        "key": "featured_report_description",
+        "en": "Learn about the accellerating shift of Canadian audiences - inlcuding Junior - away from traditional broadcast toward YouTube as a primary viewing destination, with breakdowns by lanuage market , age group, and region.",
+        "fr": ""
+    },
+    "variable_1": {
+        "key": "variable_1",
+        "en": "Streaming",
+        "fr": ""
+    },
+    "variable_2": {
+        "key": "variable_2",
+        "en": "Online Video",
+        "fr": ""
+    },
+    "featured_report_cta": {
+        "key": "featured_report_cta",
+        "en": "View Press Release",
+        "fr": ""
+    },
+    "section_2_title": {
+        "key": "section_2_title",
+        "en": "Research Across Every Corner of Canadian Media Behaviour",
+        "fr": ""
+    },
+    "section_2_description": {
+        "key": "section_2_description",
+        "en": "From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.",
+        "fr": ""
+    },
+    "Reports (to be auto-filled)": {
+        "key": "Reports (to be auto-filled)",
+        "en": "AUTO-FILLED",
+        "fr": ""
+    },
+    "report_card_tag": {
+        "key": "report_card_tag",
+        "en": "Juniors",
+        "fr": ""
+    },
+    "report_card_date": {
+        "key": "report_card_date",
+        "en": "Dec 12, 2025",
+        "fr": ""
+    },
+    "report_card_title": {
+        "key": "report_card_title",
+        "en": "Kids and their Reliance on the media and their portable devices",
+        "fr": ""
+    },
+    "report_card_description": {
+        "key": "report_card_description",
+        "en": "This report looks at the demographics of children that access news and the most used sources for news content.",
+        "fr": ""
+    },
+    "report_card_variable_1": {
+        "key": "report_card_variable_1",
+        "en": "News",
+        "fr": ""
+    },
+    "report_card_variable_2": {
+        "key": "report_card_variable_2",
+        "en": "Podcast",
+        "fr": ""
+    },
+    "report_card_cta": {
+        "key": "report_card_cta",
+        "en": "View Press Release",
+        "fr": ""
+    },
+    "Free Reports": {
+        "key": "Free Reports",
+        "en": "",
+        "fr": ""
+    },
+    "section_3_title": {
+        "key": "section_3_title",
+        "en": "Insights Across Key Canadian Audiences",
+        "fr": ""
+    },
+    "section_3_description": {
+        "key": "section_3_description",
+        "en": "MTM reporting helps organizations better understand the behaviours, attitudes, and technology adoption patterns of Canadians across distinct demographic and cultural segments.",
+        "fr": ""
+    },
+    "free_report_1_tag": {
+        "key": "free_report_1_tag",
+        "en": "MTM 18+",
+        "fr": ""
+    },
+    "free_report_1_date": {
+        "key": "free_report_1_date",
+        "en": "Dec 11, 2025",
+        "fr": ""
+    },
+    "free_report_1_title": {
+        "key": "free_report_1_title",
+        "en": "Adoption Report",
+        "fr": ""
+    },
+    "free_report_1_description": {
+        "key": "free_report_1_description",
+        "en": "Explore the latest shifts in platform adoption, connected devices, subscription services, and digital behaviours among Canadian adults.",
+        "fr": ""
+    },
+    "free_report_2_tag": {
+        "key": "free_report_2_tag",
+        "en": "MTM Junior",
+        "fr": ""
+    },
+    "free_report_2_date": {
+        "key": "free_report_2_date",
+        "en": "TBD",
+        "fr": ""
+    },
+    "free_report_2_title": {
+        "key": "free_report_2_title",
+        "en": "Futures Report",
+        "fr": ""
+    },
+    "free_report_2_description": {
+        "key": "free_report_2_description",
+        "en": "Understand how younger audiences are shaping the future of media through evolving viewing habits, gaming behaviours, and digital engagement.",
+        "fr": ""
+    },
+    "free_report_3_tag": {
+        "key": "free_report_3_tag",
+        "en": "MTM Newcomers",
+        "fr": ""
+    },
+    "free_report_3_date": {
+        "key": "free_report_3_date",
+        "en": "TBD",
+        "fr": ""
+    },
+    "free_report_3_title": {
+        "key": "free_report_3_title",
+        "en": "Arrivals Report",
+        "fr": ""
+    },
+    "free_report_3_description": {
+        "key": "free_report_3_description",
+        "en": "Gain insight into the media preferences, platform usage, and technology adoption patterns of Canadians who have arrived within the past five years.",
+        "fr": ""
+    },
+    "Free Infographics": {
+        "key": "Free Infographics",
+        "en": "",
+        "fr": ""
+    },
+    "section_4_title": {
+        "key": "section_4_title",
+        "en": "Gain Insights from Our Infographics",
+        "fr": ""
+    },
+    "(to be auto-filled)": {
+        "key": "(to be auto-filled)",
+        "en": "",
+        "fr": ""
+    },
+    "section_4_description": {
+        "key": "section_4_description",
+        "en": "MTM infographics translate complex research into concise, visual storytelling designed for presentations, strategy sessions, and quick decision-making.",
+        "fr": ""
+    },
+    "infographic_tag": {
+        "key": "infographic_tag",
+        "en": "MTM JR",
+        "fr": ""
+    },
+    "infographic_title": {
+        "key": "infographic_title",
+        "en": "Kids and their ever growing Virtual World",
+        "fr": ""
+    },
+    "infographic_description": {
+        "key": "infographic_description",
+        "en": "Explore how children are spending more time across gaming, streaming, social video, and connected platforms — and what those shifts mean for parents, educators, and media organizations.",
+        "fr": ""
+    },
+    "infographic_cta_1": {
+        "key": "infographic_cta_1",
+        "en": "Download Free Report",
+        "fr": ""
+    },
+    "infographic_graph": {
+        "key": "infographic_graph",
+        "en": "Name of Graph",
+        "fr": ""
+    },
+    "infographic_graph_detail": {
+        "key": "infographic_graph_detail",
+        "en": "Support Detail",
+        "fr": ""
+    },
+    "infographic_graph_cta": {
+        "key": "infographic_graph_cta",
+        "en": "Explore Graph",
+        "fr": ""
+    },
+    "section_5_title": {
+        "key": "section_5_title",
+        "en": "In The News",
+        "fr": ""
+    },
+    "news_card_tag": {
+        "key": "news_card_tag",
+        "en": "MTM JR",
+        "fr": ""
+    },
+    "news_card_tag_date": {
+        "key": "news_card_tag_date",
+        "en": "TBD",
+        "fr": ""
+    },
+    "news_card_title": {
+        "key": "news_card_title",
+        "en": "Kids are increasingly hooked in",
+        "fr": ""
+    },
+    "news_card_description": {
+        "key": "news_card_description",
+        "en": "New MTM findings reveal growing engagement with digital media among Canadian children, including rising usage of streaming, social video, and mobile-first content platforms.",
+        "fr": ""
+    },
+    "news_card_cta": {
+        "key": "news_card_cta",
+        "en": "Readf More",
+        "fr": ""
+    },
+    "news_cta": {
+        "key": "news_cta",
+        "en": "Read",
+        "fr": ""
+    },
+    "news_1_tag": {
+        "key": "news_1_tag",
+        "en": "Junior",
+        "fr": ""
+    },
+    "news_1_date": {
+        "key": "news_1_date",
+        "en": "Dec 11, 2025",
+        "fr": ""
+    },
+    "news_1_title": {
+        "key": "news_1_title",
+        "en": "Kids and their Reliance on the media and their portable devices",
+        "fr": ""
+    },
+    "news_1_description": {
+        "key": "news_1_description",
+        "en": "This report looks at key demographics of children that access news and the most used sources for news content.",
+        "fr": ""
+    },
+    "news_2_tag": {
+        "key": "news_2_tag",
+        "en": "Newcomers",
+        "fr": ""
+    },
+    "news_2_date": {
+        "key": "news_2_date",
+        "en": "Dec 11, 2025",
+        "fr": ""
+    },
+    "news_2_title": {
+        "key": "news_2_title",
+        "en": "Audio Streamers Can Now Listen to Their Favourite Podcasts No Matter Where They Live",
+        "fr": ""
+    },
+    "news_2_description": {
+        "key": "news_2_description",
+        "en": "This report looks at key demographics of children that access news and the most used sources for news content.",
+        "fr": ""
+    },
+    "news_3_tag": {
+        "key": "news_3_tag",
+        "en": "MTM 18+",
+        "fr": ""
+    },
+    "news_3_date": {
+        "key": "news_3_date",
+        "en": "Dec 11, 2025",
+        "fr": ""
+    },
+    "news_3_title": {
+        "key": "news_3_title",
+        "en": "The Next Generation of News Consumers",
+        "fr": ""
+    },
+    "news_3_description": {
+        "key": "news_3_description",
+        "en": "This report looks at key demographics of children that access news and the most used sources for news content.",
+        "fr": ""
+    },
+    "news_4_tag": {
+        "key": "news_4_tag",
+        "en": "MTM 18+",
+        "fr": ""
+    },
+    "news_4_date": {
+        "key": "news_4_date",
+        "en": "Dec 11, 2025",
+        "fr": ""
+    },
+    "news_4_title": {
+        "key": "news_4_title",
+        "en": "Youtube Is The New Cable",
+        "fr": ""
+    },
+    "news_4_description": {
+        "key": "news_4_description",
+        "en": "This report looks at key demographics of children that access news and the most used sources for news content.",
+        "fr": ""
+    },
+    "news_5_tag": {
+        "key": "news_5_tag",
+        "en": "Junior",
+        "fr": ""
+    },
+    "news_5_date": {
+        "key": "news_5_date",
+        "en": "Jan 15, 2026",
+        "fr": ""
+    },
+    "news_5_title": {
+        "key": "news_5_title",
+        "en": "Kids and their Reliance on the media and their portable devices",
+        "fr": ""
+    },
+    "news_5_description": {
+        "key": "news_5_description",
+        "en": "This report looks at key demographics of children that access news and the most used sources for news content.",
+        "fr": ""
+    },
+    "news_6_tag": {
+        "key": "news_6_tag",
+        "en": "Newcomers",
+        "fr": ""
+    },
+    "news_6_date": {
+        "key": "news_6_date",
+        "en": "Jan 15, 2026",
+        "fr": ""
+    },
+    "news_6_title": {
+        "key": "news_6_title",
+        "en": "Audio Streamers Can Now Listen to Their Favourite Podcasts No Matter Where They Live",
+        "fr": ""
+    },
+    "news_6_description": {
+        "key": "news_6_description",
+        "en": "This report looks at key demographics of children that access news and the most used sources for news content.",
+        "fr": ""
+    },
+    "news_7_tag": {
+        "key": "news_7_tag",
+        "en": "MTM 18+",
+        "fr": ""
+    },
+    "news_7_date": {
+        "key": "news_7_date",
+        "en": "Jan 15, 2026",
+        "fr": ""
+    },
+    "news_7_title": {
+        "key": "news_7_title",
+        "en": "The Next Generation of News Consumers",
+        "fr": ""
+    },
+    "news_7_description": {
+        "key": "news_7_description",
+        "en": "This report looks at key demographics of children that access news and the most used sources for news content.",
+        "fr": ""
+    },
+    "news_8_tag": {
+        "key": "news_8_tag",
+        "en": "Census",
+        "fr": ""
+    },
+    "news_8_date": {
+        "key": "news_8_date",
+        "en": "Jan 15, 2026",
+        "fr": ""
+    },
+    "news_8_title": {
+        "key": "news_8_title",
+        "en": "Youtube Is The New Cable",
+        "fr": ""
+    },
+    "news_8_description": {
+        "key": "news_8_description",
+        "en": "This report looks at key demographics of children that access news and the most used sources for news content.",
+        "fr": ""
+    }
 }

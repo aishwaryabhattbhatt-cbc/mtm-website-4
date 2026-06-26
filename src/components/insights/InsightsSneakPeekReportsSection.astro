@@ -1,0 +1,124 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Eyebrow from '../shared/Eyebrow.astro';
+import SneakPeekReportCard from './SneakPeekReportCard.astro';
+import { icons } from '../../lib/icons/registry';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="sneak-peek-reports-section">
+    <div class="sneak-peek-reports-section__header">
+        <div class="sneak-peek-reports-section__eyebrow-wrap">
+            <Eyebrow>
+                <span>Free infographic</span>
+            </Eyebrow>
+        </div>
+
+        <div class="sneak-peek-reports-section__content-wrap">
+            <h2 data-copy-key="section_4_title">
+                {
+                    t(
+                        copy,
+                        'section_4_title',
+                        locale,
+                        locale === 'fr' ? 'Infographie gratuite' : 'Free infographic'
+                    )
+                }
+            </h2>
+
+            <p
+                class="text-body-p1 sneak-peek-reports-section__description"
+                data-copy-key="section_4_description"
+            >
+                {
+                    t(
+                        copy,
+                        'section_4_description',
+                        locale,
+                        locale === 'fr'
+                            ? 'Découvrez un aperçu rapide des rapports MTM les plus récents.'
+                            : 'Take a quick look at the latest MTM reports.'
+                    )
+                }
+            </p>
+        </div>
+    </div>
+
+    <SneakPeekReportCard
+        locale={locale}
+        copy={copy}
+        imageSrc={`${base}images/products/mtm-18-plus/report-image.png`}
+        imageAlt=""
+        graphIconSrc={`${base}${icons['service-video-svod'].gaming}`}
+        graphIconAlt=""
+        chartSrc={`${base}images/products/mtm-18-plus/report-graph.svg`}
+        chartAlt=""
+        downloadHref={`${base}${locale}/insights/`}
+    />
+</section>
+
+<style>
+    .sneak-peek-reports-section {
+        width: 100%;
+        background: var(--surface-blue);
+        padding-top: 0;
+        padding-right: var(--content-margin-inline);
+        padding-bottom: var(--space-13);
+        padding-left: var(--content-margin-inline);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .sneak-peek-reports-section__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        max-width: 56rem;
+    }
+
+    .sneak-peek-reports-section__content-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .sneak-peek-reports-section__eyebrow-wrap {
+        display: flex;
+    }
+
+    .sneak-peek-reports-section__content-wrap h2 {
+        margin: 0;
+    }
+
+    .sneak-peek-reports-section__description {
+        color: var(--text-secondary);
+        margin: 0;
+    }
+
+    @media (max-width: 767px) {
+        .sneak-peek-reports-section {
+            padding-top: 0;
+            padding-right: var(--content-margin-inline);
+            padding-bottom: var(--space-9);
+            padding-left: var(--content-margin-inline);
+            gap: var(--space-7);
+        }
+
+        .sneak-peek-reports-section__header {
+            gap: var(--space-7);
+        }
+
+        .sneak-peek-reports-section__content-wrap {
+            gap: var(--space-4);
+        }
+    }
+</style>

@@ -1,0 +1,374 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import ProductPill from '../shared/ProductPill.astro';
+import type { ProductVariant } from '../shared/ProductPill.astro';
+import DatePill from '../shared/DatePill.astro';
+import Button from '../shared/Button.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    imageSrc: string;
+    imageAlt?: string;
+    graphIconSrc?: string;
+    graphIconAlt?: string;
+    chartSrc: string;
+    chartAlt?: string;
+    downloadHref: string;
+}
+
+const {
+    locale,
+    copy,
+    imageSrc,
+    imageAlt = '',
+    graphIconSrc,
+    graphIconAlt = '',
+    chartSrc,
+    chartAlt = '',
+    downloadHref,
+} = Astro.props as Props;
+
+function tagToVariant(tag: string): ProductVariant {
+    const n = tag.toLowerCase().replace(/\s+/g, '');
+    if (n.includes('18+') || n.includes('18plus')) return 'mtm18plus';
+    if (n.includes('junior') || n.includes('jr')) return 'junior';
+    if (n.includes('newcomer')) return 'newcomers';
+    if (n.includes('census')) return 'census';
+    return 'junior';
+}
+
+const graphTitle = t(copy, 'infographic_graph', locale, 'Name of Graph');
+const graphDetail = t(copy, 'infographic_graph_detail', locale, 'Support Detail');
+const tagText = t(copy, 'infographic_tag', locale, 'Junior');
+const tagVariant = tagToVariant(tagText);
+const cardTitle = t(copy, 'infographic_title', locale, 'Kids and their ever growing Virtual World');
+const cardDescription = t(
+    copy,
+    'infographic_description',
+    locale,
+    'Explore how children are spending more time across gaming, streaming, social video, and connected platforms — and what those shifts mean for parents, educators, and media organizations.'
+);
+const downloadLabel = t(copy, 'infographic_cta_1', locale, 'Download Free Report');
+const dateText = t(copy, 'free_report_1_date', locale, 'Dec 11, 2025');
+---
+
+<div class="sneak-peek-report-card">
+    <div class="sneak-peek-report-card__top-content">
+        <div class="sneak-peek-report-card__meta-row">
+            <ProductPill variant={tagVariant} size="big" />
+            {
+                dateText && (
+                    <div class="sneak-peek-report-card__date-wrap">
+                        <DatePill date={dateText} />
+                    </div>
+                )
+            }
+        </div>
+
+        <div class="sneak-peek-report-card__headline-row">
+            <div class="sneak-peek-report-card__text">
+                <p
+                    class="text-body-p1-bold sneak-peek-report-card__title"
+                    data-copy-key="infographic_title"
+                >
+                    {cardTitle}
+                </p>
+                <p
+                    class="text-body-p3 sneak-peek-report-card__description"
+                    data-copy-key="infographic_description"
+                >
+                    {cardDescription}
+                </p>
+            </div>
+
+            <div class="sneak-peek-report-card__download-wrap">
+                <Button variant="primary" size="md" href={downloadHref}>
+                    <span class="sneak-peek-report-card__download-btn">
+                        <span data-copy-key="infographic_cta_1">{downloadLabel}</span>
+                        <span class="sneak-peek-report-card__download-icon" aria-hidden="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </span>
+                    </span>
+                </Button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sneak-peek-report-card__divider" aria-hidden="true"></div>
+
+    <div class="sneak-peek-report-card__bottom-content">
+        <div class="sneak-peek-report-card__image-wrap">
+            <img
+                class="sneak-peek-report-card__image"
+                src={imageSrc}
+                alt={imageAlt}
+                loading="lazy"
+                decoding="async"
+            />
+        </div>
+
+        <div class="sneak-peek-report-card__body">
+            <div class="sneak-peek-report-card__graph-top">
+                <div class="sneak-peek-report-card__graph-header">
+                    {
+                        graphIconSrc && (
+                            <img
+                                src={graphIconSrc}
+                                alt={graphIconAlt}
+                                class="icon-3xl sneak-peek-report-card__graph-icon"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        )
+                    }
+                    <div class="sneak-peek-report-card__graph-title-group">
+                        <p class="text-body-p1-bold sneak-peek-report-card__graph-name">
+                            {graphTitle}
+                        </p>
+                        <p class="text-body-p3 sneak-peek-report-card__graph-detail">
+                            {graphDetail}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <img
+                class="sneak-peek-report-card__chart"
+                src={chartSrc}
+                alt={chartAlt}
+                loading="lazy"
+                decoding="async"
+            />
+        </div>
+    </div>
+</div>
+
+<style>
+    .sneak-peek-report-card {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--surface-white);
+        border-radius: var(--layout-card-radius);
+        padding: var(--space-6);
+        gap: var(--space-6);
+        box-shadow: var(--shadow-card);
+    }
+
+    .sneak-peek-report-card__top-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        width: 100%;
+    }
+
+    .sneak-peek-report-card__meta-row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        width: 100%;
+    }
+
+    .sneak-peek-report-card__date-wrap {
+        margin-left: auto;
+    }
+
+    .sneak-peek-report-card__headline-row {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: var(--space-8);
+        width: 100%;
+    }
+
+    .sneak-peek-report-card__download-wrap {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        flex: 0 0 auto;
+        margin-left: auto;
+    }
+
+    .sneak-peek-report-card__download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .sneak-peek-report-card__download-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: inherit;
+    }
+
+    .sneak-peek-report-card__download-icon svg {
+        width: 1rem;
+        height: 1rem;
+        display: block;
+        stroke: currentColor;
+    }
+
+    .sneak-peek-report-card__divider {
+        width: 100%;
+        height: 1px;
+        background: var(--neutral-grey-4, #d9d9d9);
+    }
+
+    .sneak-peek-report-card__bottom-content {
+        display: flex;
+        align-items: center;
+        gap: var(--space-6);
+        width: 100%;
+    }
+
+    .sneak-peek-report-card__image-wrap {
+        flex: 0 0 52%;
+        border-radius: var(--radius-s);
+        overflow: hidden;
+        align-self: stretch;
+    }
+
+    .sneak-peek-report-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .sneak-peek-report-card__body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-self: stretch;
+        padding: var(--space-3) 0;
+        gap: var(--space-5);
+    }
+
+    .sneak-peek-report-card__graph-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-4);
+        width: 100%;
+    }
+
+    .sneak-peek-report-card__graph-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        overflow: hidden;
+    }
+
+    .sneak-peek-report-card__graph-icon {
+        flex-shrink: 0;
+    }
+
+    .sneak-peek-report-card__graph-title-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .sneak-peek-report-card__graph-name,
+    .sneak-peek-report-card__graph-detail,
+    .sneak-peek-report-card__title,
+    .sneak-peek-report-card__description {
+        margin: 0;
+    }
+
+    .sneak-peek-report-card__graph-name {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .sneak-peek-report-card__graph-detail {
+        color: var(--text-secondary);
+    }
+
+    .sneak-peek-report-card__text {
+        display: flex;
+        flex: 1;
+        min-width: 0;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .sneak-peek-report-card__title {
+        color: var(--text-primary);
+    }
+
+    .sneak-peek-report-card__description {
+        color: var(--text-secondary);
+    }
+
+    .sneak-peek-report-card__chart {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    @media (max-width: 1023px) {
+        .sneak-peek-report-card__meta-row {
+            align-items: flex-start;
+        }
+
+        .sneak-peek-report-card__headline-row {
+            flex-direction: column;
+            align-items: start;
+            gap: var(--space-4);
+        }
+
+        .sneak-peek-report-card__download-wrap {
+            width: 100%;
+            justify-content: flex-start;
+            margin-left: 0;
+        }
+
+        .sneak-peek-report-card__bottom-content {
+            flex-direction: column;
+        }
+
+        .sneak-peek-report-card__image-wrap {
+            flex: none;
+            width: 100%;
+            height: auto;
+        }
+
+        .sneak-peek-report-card__image {
+            height: auto;
+        }
+
+        .sneak-peek-report-card__body {
+            width: 100%;
+            padding: 0;
+        }
+
+        .sneak-peek-report-card__graph-top {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>

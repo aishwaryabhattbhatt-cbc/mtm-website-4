@@ -90,11 +90,10 @@ const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
                 variant="primary"
                 size="md"
                 class="free-report-card__download-trigger"
-                data-copy-key={ctaKey}
                 data-free-report-download-trigger
             >
                 <span class="free-report-card__download-btn">
-                    {t(copy, ctaKey, locale, 'Download')}
+                    <span>{t(copy, ctaKey, locale, 'Download')}</span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
