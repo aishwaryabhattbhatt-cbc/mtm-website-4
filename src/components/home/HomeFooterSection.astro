@@ -12,6 +12,7 @@ interface Props {
 
 const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
+const currentYear = new Date().getFullYear();
 
 const footerMenus = [
     {
@@ -308,8 +309,7 @@ const footerMenus = [
 
         <div class="home-footer__footer-meta">
             <p class="home-footer__footer-copyright text-body-p2">
-                © 2025 Media Technology Monitor. All Rights Reserved. A division of
-                CBC/Radio-Canada.
+                © {currentYear} Media Technology Monitor. All Rights Reserved. A division of CBC/Radio-Canada.
             </p>
 
             <div class="home-footer__footer-policies text-body-p2">
