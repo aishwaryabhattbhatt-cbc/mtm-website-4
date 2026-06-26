@@ -231,8 +231,8 @@ html {
         --fs-body-l: 1rem; /* 20px → ~14px */
         --fs-body-m: 0.875rem; /* 18px → ~12px */
         --fs-body-s: 0.875rem; /* 16px → ~12px */
-        --fs-button-regular: 0.875rem;
-        --fs-button-small: 0.75rem;
+        --fs-button-regular: 1.125rem;
+        --fs-button-small: 1.125rem;
         --fs-label-small: 0.75rem;
         --fs-label-xs: 0.625rem;
 
@@ -275,6 +275,14 @@ html {
         --fs-metrics: 2.5rem; /* 48px → 40px */
         --fs-subsection-h2: 2.25rem; /* 44px → 36px */
         --fs-tertiary-h3: 2.125rem; /* 40px → 34px */
+    }
+}
+
+/* Button tokens: scale up on mobile for readable tap targets */
+@media (max-width: 1023px) {
+    :root {
+        --fs-button-small: 1rem;
+        --fs-button-regular: 1rem;
     }
 }
 
@@ -698,5 +706,14 @@ h3,
     .yourdata-section__benefit-icon {
         width: 3rem;
         height: 3rem;
+    }
+}
+
+/* Mobile nav: nav items use body-l size and drop uppercase for readability */
+@media (max-width: 1023px) {
+    .navbar-menu .nav-link {
+        font-size: var(--fs-body-l);
+        text-transform: none;
+        letter-spacing: 0;
     }
 }

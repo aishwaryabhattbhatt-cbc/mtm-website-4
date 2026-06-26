@@ -382,8 +382,6 @@ const copyKeys = {
         }
 
         .hero-buttons .btn-size-lg {
-            padding: var(--space-4) var(--space-5);
-            min-height: 2.75rem;
             text-align: center;
             justify-content: center;
         }
@@ -398,6 +396,12 @@ const copyKeys = {
     @media (max-width: 1023px) {
         .hero-image-collage {
             zoom: min(1, calc((100vw - 2 * var(--content-margin-inline)) / 620px));
+        }
+    }
+
+    @media (max-width: 767px) {
+        .home-section-1 .hero-container {
+            padding-top: var(--space-7);
         }
     }
 

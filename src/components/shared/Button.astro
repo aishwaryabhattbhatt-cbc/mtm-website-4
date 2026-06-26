@@ -308,4 +308,12 @@ const classes = ['btn', variantClass, `btn-size-${size}`, textClass, className]
         padding-left: 0;
         padding-right: 0;
     }
+
+    @media (max-width: 1023px) {
+        .btn-size-md,
+        .btn-size-lg {
+            padding: var(--space-4) var(--space-5);
+            min-height: 2.75rem;
+        }
+    }
 </style>
