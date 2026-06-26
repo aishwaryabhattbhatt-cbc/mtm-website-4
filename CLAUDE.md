@@ -75,10 +75,6 @@ Icons live as static SVGs in `public/icons/{category}/`. Registry categories: `d
 
 **Never put section markup in page files.** Always extract to a component.
 
-**Always use existing components.** Before writing any markup for a button, chevron, pill, card, eyebrow, or nav element — check `src/components/shared/` and the relevant page component folder. If a component covers it, use it. Never inline a re-implementation.
-
-**Changes to a component go in the component file.** If asked to change how a button, icon, or card element looks or behaves, edit the shared component — not a single usage site. Patching one location leaves every other instance inconsistent.
-
 **Template every section component follows:**
 
 ```astro
