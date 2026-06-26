@@ -221,7 +221,7 @@ const solutionsDropdown = {
                                                 <p class="dropdown-card-title text-body-p1-bold">
                                                     {item.title}
                                                 </p>
-                                                <p class="dropdown-card-description text-body-p2">
+                                                <p class="dropdown-card-description text-body-p3">
                                                     {item.description}
                                                 </p>
                                             </a>
@@ -243,7 +243,7 @@ const solutionsDropdown = {
                                     <p class="dropdown-card-title text-body-p1-bold">
                                         {productsDropdown.sideItem.title}
                                     </p>
-                                    <p class="dropdown-card-description text-body-p2">
+                                    <p class="dropdown-card-description text-body-p3">
                                         {productsDropdown.sideItem.description}
                                     </p>
                                 </a>
@@ -295,7 +295,7 @@ const solutionsDropdown = {
                                                 <p class="dropdown-card-title text-body-p1-bold">
                                                     {item.title}
                                                 </p>
-                                                <p class="dropdown-card-description text-body-p2">
+                                                <p class="dropdown-card-description text-body-p3">
                                                     {item.description}
                                                 </p>
                                             </a>
@@ -317,7 +317,7 @@ const solutionsDropdown = {
                                     <p class="dropdown-card-title text-body-p1-bold">
                                         {toolsDropdown.sideItem.title}
                                     </p>
-                                    <p class="dropdown-card-description text-body-p2">
+                                    <p class="dropdown-card-description text-body-p3">
                                         {toolsDropdown.sideItem.description}
                                     </p>
                                 </a>
@@ -351,9 +351,6 @@ const solutionsDropdown = {
                         class="nav-dropdown-panel nav-dropdown-panel--solutions"
                         aria-label={solutionsDropdown.label}
                     >
-                        <p class="dropdown-panel-heading text-button-small">
-                            {solutionsDropdown.label}
-                        </p>
                         <div class="dropdown-items dropdown-items--five">
                             {
                                 solutionsDropdown.items.map((item) => (
@@ -367,7 +364,7 @@ const solutionsDropdown = {
                                         <p class="dropdown-card-title text-body-p1-bold">
                                             {item.title}
                                         </p>
-                                        <p class="dropdown-card-description text-body-p2">
+                                        <p class="dropdown-card-description text-body-p3">
                                             {item.description}
                                         </p>
                                     </a>
@@ -392,7 +389,7 @@ const solutionsDropdown = {
                 <!-- Language Selector (FR/EN) -->
                 <div class="navbar-language">
                     <a
-                        class={`lang-btn text-label-xs ${locale === 'fr' ? 'active' : ''}`}
+                        class={`lang-btn text-button-small ${locale === 'fr' ? 'active' : ''}`}
                         data-lang="fr"
                         href={frUrl}
                         hreflang="fr"
@@ -415,7 +412,7 @@ const solutionsDropdown = {
                         FR
                     </a>
                     <a
-                        class={`lang-btn text-label-xs ${locale === 'en' ? 'active' : ''}`}
+                        class={`lang-btn text-button-small ${locale === 'en' ? 'active' : ''}`}
                         data-lang="en"
                         href={enUrl}
                         hreflang="en"
@@ -744,7 +741,7 @@ const solutionsDropdown = {
     }
 
     .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(0.5rem, 0.5rem);
+        transform: translateY(0.5625rem) rotate(45deg);
     }
 
     .hamburger.active span:nth-child(2) {
@@ -752,7 +749,7 @@ const solutionsDropdown = {
     }
 
     .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(0.4375rem, -0.4375rem);
+        transform: translateY(-0.5625rem) rotate(-45deg);
     }
 
     @media (min-width: 1024px) and (max-width: 1200px) {
@@ -833,7 +830,8 @@ const solutionsDropdown = {
         }
 
         .navbar-menu.active {
-            max-height: 600px;
+            max-height: calc(100dvh - 4.375rem);
+            overflow-y: auto;
         }
 
         .navbar-nav {
@@ -848,17 +846,103 @@ const solutionsDropdown = {
             border-bottom: var(--stroke-1) solid var(--neutral-grey-4);
         }
 
+        .nav-item--dropdown {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0;
+        }
+
         .nav-link {
+            padding: var(--space-4) var(--content-margin-inline);
+            width: 100%;
+            height: auto;
+            justify-content: flex-start;
+        }
+
+        .nav-item--dropdown > .nav-link {
+            padding: var(--space-4) var(--content-margin-inline);
+        }
+
+        .nav-item {
             padding: 0;
         }
 
         .dropdown-arrow {
             margin-left: auto;
             margin-right: 0;
+            flex-shrink: 0;
         }
 
         .nav-dropdown-panel {
-            display: none;
+            position: static;
+            width: 100%;
+            background: var(--surface-white);
+            border-top: none;
+            box-shadow: none;
+            padding: 0 var(--content-margin-inline);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: none;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: auto;
+        }
+
+        .nav-dropdown-columns {
+            grid-template-columns: 1fr;
+            gap: 0;
+            padding: var(--space-3) 0 var(--space-4);
+        }
+
+        .nav-dropdown-column--main {
+            padding-bottom: var(--space-3);
+        }
+
+        .nav-dropdown-column--side {
+            border-left: none;
+            border-top: var(--stroke-1) solid var(--neutral-grey-4);
+            padding-left: 0;
+            padding-top: var(--space-3);
+        }
+
+        .dropdown-items--three {
+            grid-template-columns: 1fr;
+            gap: var(--space-2);
+        }
+
+        .dropdown-items--five {
+            grid-template-columns: 1fr;
+            gap: var(--space-2);
+        }
+
+        .nav-dropdown-panel--solutions .dropdown-items--five {
+            padding-bottom: var(--space-4);
+        }
+
+        .dropdown-card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto;
+            align-items: center;
+            gap: var(--space-1);
+            height: auto;
+        }
+
+        .dropdown-card-icon {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .dropdown-card-title {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .dropdown-card-description {
+            grid-column: 1 / -1;
+            grid-row: 2;
         }
 
         .navbar-language {
@@ -883,6 +967,16 @@ const solutionsDropdown = {
             padding: var(--space-3) var(--space-4);
         }
 
+        .lang-btn {
+            padding: var(--space-3) var(--space-4);
+            min-height: 2.75rem;
+        }
+
+        .lang-btn svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
         body {
             padding-top: 4.375rem;
         }
@@ -895,10 +989,6 @@ const solutionsDropdown = {
 
         .navbar-logo {
             margin-right: auto;
-        }
-
-        .navbar-menu.active {
-            max-height: 500px;
         }
     }
 </style>

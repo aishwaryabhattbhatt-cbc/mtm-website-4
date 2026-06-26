@@ -16,6 +16,8 @@ interface Props {
 
 const { locale, copy } = Astro.props as Props;
 
+const base = import.meta.env.BASE_URL;
+
 const copyKeys = {
     title: 'hero_title',
     subtitle: 'hero_description',
@@ -55,10 +57,18 @@ const copyKeys = {
                 }
             </p>
             <div class="hero-buttons">
-                <Button variant="primary" size="lg" data-copy-key={copyKeys.ctaPrimary}
+                <Button
+                    variant="primary"
+                    size="lg"
+                    href={`${base}${locale}/request-demo/`}
+                    data-copy-key={copyKeys.ctaPrimary}
                     >{t(copy, copyKeys.ctaPrimary, locale, 'REQUEST A DEMO')}</Button
                 >
-                <Button variant="scroll" size="lg" data-copy-key={copyKeys.ctaSecondary}
+                <Button
+                    variant="scroll"
+                    size="lg"
+                    id="hero-scroll-btn"
+                    data-copy-key={copyKeys.ctaSecondary}
                     >{t(copy, copyKeys.ctaSecondary, locale, 'EXPLORE MORE')}</Button
                 >
             </div>
@@ -110,6 +120,7 @@ const copyKeys = {
     .hero-section.home-section-1 {
         position: relative;
         margin-bottom: 0 !important;
+        overflow: hidden;
     }
 
     .hero11-gradient-gui {
@@ -131,7 +142,7 @@ const copyKeys = {
         left: 0;
         right: 0;
         bottom: 0;
-        width: 100vw;
+        width: 100%;
         height: 10vh;
         pointer-events: none;
         z-index: 10;
@@ -154,10 +165,11 @@ const copyKeys = {
     }
 
     .home-section-1 .hero-content {
-        max-width: min(43.75rem, calc(100% - 43.75rem));
+        width: clamp(32rem, 38vw, 40rem);
+        flex-shrink: 0;
         display: flex;
         flex-direction: column;
-        align-self: flex-start;
+        align-self: center;
         gap: var(--space-6);
     }
 
@@ -277,18 +289,34 @@ const copyKeys = {
         }
     }
 
-    /* Proportional scale-down: 1555px → 1440px
-       Both columns shrink at the same rate (ratio of available content widths: 1200÷1315 = 0.913)
-       --hero-scale interpolates linearly between 1.0 and 0.913 across this range */
+    /* Desktop scaling: both columns scale via --hero-scale so proportions are preserved.
+       Title uses clamp() only to cap growth above 1555px; everywhere else it tracks the scale. */
+
+    /* Scale-up: 1555px and wider — collage grows faster, title grows gently */
+    @media (min-width: 1555px) {
+        .home-section-1 .hero-container {
+            --collage-scale: min(1.45, calc(1 + (100vw - 1555px) / 1000px));
+        }
+
+        .hero-title {
+            /* stays at 4.5rem baseline, grows to 5.25rem max at 1920px */
+            font-size: clamp(var(--fs-hero), calc(4.5rem + (100vw - 1555px) * 0.00211), 5.25rem);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(var(--fs-body-xl), calc(1.5rem + (100vw - 1555px) * 0.00068), 1.75rem);
+        }
+
+        .hero-image-collage {
+            zoom: var(--collage-scale);
+            flex-shrink: 0;
+        }
+    }
+
+    /* Scale-down: 1555px → 1440px */
     @media (min-width: 1440px) and (max-width: 1554px) {
         .home-section-1 .hero-container {
             --hero-scale: calc(0.913 + (100vw - 1440px) / 1321px);
-        }
-
-        .home-section-1 .hero-content {
-            /* reserve collage width + 5rem gap — text narrows instead of the gap collapsing */
-            max-width: calc(100% - 38.75rem * var(--hero-scale) - 5rem);
-            gap: calc(var(--space-6) * var(--hero-scale));
         }
 
         .hero-title {
@@ -299,24 +327,16 @@ const copyKeys = {
             font-size: calc(var(--fs-body-xl) * var(--hero-scale));
         }
 
-        /* zoom shrinks the collage AND its layout footprint — all absolute-positioned
-           images inside scale correctly without any position recalculation */
         .hero-image-collage {
             zoom: var(--hero-scale);
             flex-shrink: 0;
         }
     }
 
-    /* Proportional scale-down: 1439px → 1024px
-       Continuous with the 1440–1554px range: scale = 0.913 at both shared boundaries */
+    /* Scale-down: 1439px → 1024px */
     @media (min-width: 1024px) and (max-width: 1439px) {
         .home-section-1 .hero-container {
             --hero-scale: calc(0.7 + (100vw - 1024px) / 1949px);
-        }
-
-        .home-section-1 .hero-content {
-            max-width: calc(100% - 38.75rem * var(--hero-scale) - 5rem);
-            gap: calc(var(--space-6) * var(--hero-scale));
         }
 
         .hero-title {
@@ -343,6 +363,7 @@ const copyKeys = {
             top: 0;
             transform: none;
             padding-top: var(--space-12);
+            overflow: hidden;
         }
 
         .home-section-1 .hero-content {
@@ -373,10 +394,10 @@ const copyKeys = {
         }
     }
 
-    /* Scale collage to fit within viewport once it exceeds available width (<668px) */
-    @media (max-width: 767px) {
+    /* Scale collage to fit within the content width in column layout */
+    @media (max-width: 1023px) {
         .hero-image-collage {
-            zoom: min(1, calc((100vw - 48px) / 620px));
+            zoom: min(1, calc((100vw - 2 * var(--content-margin-inline)) / 620px));
         }
     }
 
@@ -387,3 +408,13 @@ const copyKeys = {
         }
     }
 </style>
+
+<script>
+    const btn = document.getElementById('hero-scroll-btn');
+    if (btn) {
+        btn.addEventListener('click', () => {
+            const target = document.querySelector('.home-section-2') as HTMLElement | null;
+            target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+</script>

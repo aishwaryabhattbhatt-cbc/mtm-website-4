@@ -1,0 +1,236 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import ProductPill from '../shared/ProductPill.astro';
+import type { ProductVariant } from '../shared/ProductPill.astro';
+import DatePill from '../shared/DatePill.astro';
+import Button from '../shared/Button.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    ctaHref: string;
+    imageSrc: string;
+    imageAlt?: string;
+}
+
+const { locale, copy, ctaHref, imageSrc, imageAlt } = Astro.props as Props;
+
+function tagToVariant(tag: string): ProductVariant | null {
+    const n = tag.toLowerCase().replace(/\s+/g, '');
+    if (n.includes('18+') || n.includes('18plus')) return 'mtm18plus';
+    if (n.includes('junior')) return 'junior';
+    if (n.includes('newcomer')) return 'newcomers';
+    if (n.includes('census')) return 'census';
+    return null;
+}
+
+// Use existence check before t() — t() returns '[key]' (truthy) when key is missing
+const tagText = 'featured_report_tag' in copy ? t(copy, 'featured_report_tag', locale, '') : '';
+const tagVariant = tagText ? tagToVariant(tagText) : null;
+const dateText = 'featured_report_date' in copy ? t(copy, 'featured_report_date', locale, '') : '';
+const labelText = t(copy, 'featured_report_label', locale, 'Latest Report');
+const variable1 = 'variable_1' in copy ? t(copy, 'variable_1', locale, '') : '';
+const variable2 = 'variable_2' in copy ? t(copy, 'variable_2', locale, '') : '';
+const variables = [variable1, variable2].filter(Boolean);
+---
+
+<div class="featured-report-card">
+    <div class="featured-report-card__content">
+        <div class="featured-report-card__top">
+            <div class="featured-report-card__meta">
+                {
+                    tagVariant ? (
+                        <ProductPill variant={tagVariant} size="big" />
+                    ) : tagText ? (
+                        <span class="featured-report-card__tag text-body-p2-bold">{tagText}</span>
+                    ) : null
+                }
+                {dateText && <DatePill date={dateText} />}
+            </div>
+
+            <div class="featured-report-card__headline">
+                <h2 data-copy-key="featured_report_title">
+                    {t(copy, 'featured_report_title', locale, 'Featured Report')}
+                </h2>
+                <p
+                    class="text-body-p1 featured-report-card__description"
+                    data-copy-key="featured_report_description"
+                >
+                    {t(copy, 'featured_report_description', locale, '')}
+                </p>
+            </div>
+
+            {
+                variables.length > 0 && (
+                    <div class="featured-report-card__tags">
+                        {variables.map((v) => (
+                            <span class="featured-report-card__var-pill text-body-p3">{v}</span>
+                        ))}
+                    </div>
+                )
+            }
+        </div>
+
+        <div class="featured-report-card__cta">
+            <Button variant="secondary" size="lg" href={ctaHref}>
+                {t(copy, 'featured_report_cta', locale, 'View Press Release')}
+            </Button>
+        </div>
+    </div>
+
+    <div class="featured-report-card__image-wrap">
+        <img
+            class="featured-report-card__image"
+            src={imageSrc}
+            alt={imageAlt ?? ''}
+            loading="eager"
+            decoding="async"
+        />
+        <span
+            class="featured-report-card__label text-body-p3-small"
+            data-copy-key="featured_report_label"
+        >
+            {labelText}
+        </span>
+    </div>
+</div>
+
+<style>
+    .featured-report-card {
+        display: flex;
+        gap: var(--space-5);
+        align-items: stretch;
+        background: var(--surface-white);
+        border-radius: var(--layout-card-radius);
+        box-shadow: var(--shadow-beautiful);
+        overflow: hidden;
+        padding: var(--space-6);
+        width: 100%;
+    }
+
+    .featured-report-card__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: var(--space-8);
+        padding: var(--space-5);
+        flex: 0 0 46%;
+        min-width: 0;
+    }
+
+    .featured-report-card__top {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-7);
+    }
+
+    .featured-report-card__meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .featured-report-card__tag {
+        background: var(--surface-blue);
+        border-radius: var(--radius-full);
+        padding: var(--space-2) var(--space-6);
+        color: var(--text-primary);
+        white-space: nowrap;
+    }
+
+    .featured-report-card__headline {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .featured-report-card__description {
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .featured-report-card__tags {
+        display: flex;
+        gap: var(--space-4);
+        overflow: hidden;
+        flex-wrap: wrap;
+    }
+
+    .featured-report-card__cta {
+        align-self: flex-start;
+    }
+
+    .featured-report-card__var-pill {
+        background: var(--surface-blue);
+        border-radius: var(--radius-full);
+        padding: var(--space-1) var(--space-4);
+        color: var(--text-primary);
+        white-space: nowrap;
+    }
+
+    .featured-report-card__image-wrap {
+        position: relative;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        border-radius: var(--radius-s);
+    }
+
+    .featured-report-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .featured-report-card__label {
+        position: absolute;
+        top: var(--space-5);
+        left: var(--space-5);
+        background: var(--surface-white);
+        border-radius: var(--radius-full);
+        padding: var(--space-2) var(--space-4);
+        line-height: 1.1;
+        color: var(--text-primary);
+        white-space: nowrap;
+    }
+
+    @media (max-width: 1023px) {
+        .featured-report-card {
+            flex-direction: column;
+            padding: var(--space-5);
+        }
+
+        .featured-report-card__content {
+            flex: none;
+            padding: var(--space-3);
+        }
+
+        .featured-report-card__image-wrap {
+            order: -1;
+            aspect-ratio: 16 / 9;
+            flex: none;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .featured-report-card {
+            gap: var(--space-5);
+            padding: var(--space-4);
+        }
+
+        .featured-report-card__content {
+            gap: var(--space-6);
+            padding: var(--space-2);
+        }
+
+        .featured-report-card__top {
+            gap: var(--space-5);
+        }
+
+        .featured-report-card__image-wrap {
+            aspect-ratio: 4 / 3;
+        }
+    }
+</style>

@@ -1,6 +1,11 @@
 ---
 import Button from '../../shared/Button.astro';
 
+interface LogoItem {
+    src: string;
+    alt: string;
+}
+
 interface Props {
     titleKey?: string;
     title: string;
@@ -9,7 +14,8 @@ interface Props {
     iconPath: string;
     href?: string;
     ctaLabel?: string;
-    state?: 'default' | 'hover';
+    state?: 'default' | 'hover' | 'carousel';
+    logos?: LogoItem[];
 }
 
 const {
@@ -21,12 +27,17 @@ const {
     href = '#',
     ctaLabel = 'LEARN MORE',
     state = 'default',
+    logos,
 } = Astro.props as Props;
 
 const forceHover = state === 'hover';
+const isCarousel = state === 'carousel';
 ---
 
-<article class={`solutions-card${forceHover ? ' is-hover' : ''}`} data-state={state}>
+<article
+    class={`solutions-card${forceHover ? ' is-hover' : ''}${isCarousel ? ' is-carousel' : ''}`}
+    data-state={state}
+>
     <div class="solutions-card__image-wrap">
         <img
             class="solutions-card__image"
@@ -48,6 +59,24 @@ const forceHover = state === 'hover';
             <h3 class="product-name text-body-p2" data-copy-key={titleKey}>{title}</h3>
         </div>
 
+        {
+            logos && logos.length > 0 && (
+                <div class="solutions-card__logos">
+                    {logos.map((logo) => (
+                        <div class="solutions-card__logo-item">
+                            <img
+                                class="solutions-card__logo-img"
+                                src={logo.src}
+                                alt={logo.alt}
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </div>
+                    ))}
+                </div>
+            )
+        }
+
         <Button variant="tertiary" href={href} class="solutions-card__cta">
             {ctaLabel}
         </Button>
@@ -59,20 +88,54 @@ const forceHover = state === 'hover';
         background: var(--surface-white);
         border-radius: var(--layout-card-radius);
         box-shadow: var(--shadow-e1);
-        overflow: hidden;
         width: 100%;
         min-width: 0;
         display: flex;
         flex-direction: column;
         height: 24.625rem;
         --card-image-height-default: 80%;
-        --card-image-height-hover: 72%;
+        --card-image-height-hover: 70%;
+    }
+
+    .solutions-card.is-hover {
+        height: auto;
+    }
+
+    .solutions-card.is-carousel {
+        height: 100%;
+        width: 100%;
+    }
+
+    .solutions-card.is-carousel .solutions-card__image-wrap {
+        flex: 1;
+        height: unset;
+        transition: none;
+    }
+
+    .solutions-card.is-carousel .solutions-card__content {
+        flex: 0 0 auto;
+        height: auto;
+        gap: var(--space-2);
+        transition: none;
+    }
+
+    .solutions-card.is-carousel .solutions-card__cta {
+        opacity: 1;
+        max-height: none;
+        overflow: visible;
+        margin-top: 0;
+        pointer-events: auto;
     }
 
     .solutions-card__image-wrap {
         height: var(--card-image-height-default);
         overflow: hidden;
+        border-radius: var(--layout-card-radius) var(--layout-card-radius) 0 0;
         transition: height 220ms ease;
+    }
+
+    .solutions-card.is-hover .solutions-card__image-wrap {
+        height: var(--card-image-height-hover);
     }
 
     .solutions-card__image {
@@ -90,9 +153,15 @@ const forceHover = state === 'hover';
         padding: var(--space-4);
         background: var(--surface-white);
         height: calc(100% - var(--card-image-height-default));
+        border-radius: 0 0 var(--layout-card-radius) var(--layout-card-radius);
         transition:
             height 220ms ease,
             gap 200ms ease;
+    }
+
+    .solutions-card.is-hover .solutions-card__content {
+        height: calc(100% - var(--card-image-height-hover));
+        gap: var(--space-2);
     }
 
     .solutions-card__header {
@@ -121,6 +190,48 @@ const forceHover = state === 'hover';
         word-break: normal;
     }
 
+    .solutions-card__logos {
+        display: flex;
+        gap: var(--space-3);
+        border-top: var(--stroke-1) solid var(--border-tertiary);
+        padding-top: var(--space-2);
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition:
+            opacity 200ms ease,
+            max-height 200ms ease,
+            padding-top 200ms ease;
+    }
+
+    .solutions-card:not(.is-carousel):hover .solutions-card__logos {
+        opacity: 1;
+        max-height: 3rem;
+        padding-top: var(--space-2);
+    }
+
+    .solutions-card.is-hover .solutions-card__logos {
+        opacity: 1;
+        max-height: 3rem;
+        padding-top: var(--space-2);
+        overflow: visible;
+    }
+
+    .solutions-card__logo-item {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .solutions-card__logo-img {
+        width: 100%;
+        height: var(--space-6);
+        object-fit: contain;
+        object-position: center;
+        display: block;
+    }
+
     .solutions-card__cta {
         align-self: flex-start;
         margin-top: var(--space-0);
@@ -143,30 +254,31 @@ const forceHover = state === 'hover';
         justify-content: flex-start;
     }
 
-    .solutions-card:hover .solutions-card__image,
+    .solutions-card:not(.is-carousel):hover .solutions-card__image,
     .solutions-card.is-hover .solutions-card__image {
         transform: scale(1.1);
     }
 
-    .solutions-card:hover .solutions-card__image-wrap,
-    .solutions-card.is-hover .solutions-card__image-wrap {
+    .solutions-card:not(.is-carousel):hover .solutions-card__image-wrap {
         height: var(--card-image-height-hover);
     }
 
-    .solutions-card:hover .solutions-card__content,
-    .solutions-card.is-hover .solutions-card__content {
+    .solutions-card:not(.is-carousel):hover .solutions-card__content {
         height: calc(100% - var(--card-image-height-hover));
-    }
-
-    .solutions-card:hover .solutions-card__content,
-    .solutions-card.is-hover .solutions-card__content {
         gap: var(--space-2);
     }
 
-    .solutions-card:hover .solutions-card__cta,
-    .solutions-card.is-hover .solutions-card__cta {
+    .solutions-card:not(.is-carousel):hover .solutions-card__cta {
         opacity: 1;
         max-height: 1.5rem;
+        margin-top: var(--space-1);
+        pointer-events: auto;
+    }
+
+    .solutions-card.is-hover .solutions-card__cta {
+        opacity: 1;
+        max-height: none;
+        overflow: visible;
         margin-top: var(--space-1);
         pointer-events: auto;
     }

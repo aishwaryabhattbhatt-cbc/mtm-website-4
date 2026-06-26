@@ -1,14 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/shared/Navbar.astro';
+import InsightsHeroSection from '../../components/insights/InsightsHeroSection.astro';
+import InsightsFeaturedReportCard from '../../components/insights/InsightsFeaturedReportCard.astro';
+import InsightsReportsLibrarySection from '../../components/insights/InsightsReportsLibrarySection.astro';
+import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
 import type { Locale } from '../../lib/cms/types';
 
 export function getStaticPaths() {
-  return [
-    { params: { locale: 'en' } },
-    { params: { locale: 'fr' } },
-  ];
+    return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
 }
 
 const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
@@ -16,47 +17,108 @@ const pageId = 'insights';
 const copy = await getPageDictionary(pageId);
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;
-const resolvedCmsCsvUrl = cmsConfig.csvUrl ?? (cmsConfig.sheetId && cmsConfig.gid
-  ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
-  : '');
+const resolvedCmsCsvUrl =
+    cmsConfig.csvUrl ??
+    (cmsConfig.sheetId && cmsConfig.gid
+        ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
+        : '');
 
 const localeSwitchUrls: Record<Locale, string> = {
-  en: `${base}en/insights/`,
-  fr: `${base}fr/insights/`,
+    en: `${base}en/insights/`,
+    fr: `${base}fr/insights/`,
 };
 
 const pageTitle = locale === 'fr' ? 'MTM | Perspectives' : 'MTM | Insights';
-const pageDescription = locale === 'fr'
-  ? 'Perspectives et analyses sur les tendances médiatiques et technologiques canadiennes.'
-  : 'Insights and analysis on Canadian media and technology trends.';
+const pageDescription =
+    locale === 'fr'
+        ? 'Perspectives et analyses sur les tendances médiatiques et technologiques canadiennes.'
+        : 'Insights and analysis on Canadian media and technology trends.';
 ---
 
-<Layout title={pageTitle} description={pageDescription} locale={locale} alternates={localeSwitchUrls}>
-  <main
-    data-locale={locale}
-    data-cms-page-id={pageId}
-    data-cms-csv-url={resolvedCmsCsvUrl}
-    data-cms-sheet-id={cmsConfig.sheetId ?? ''}
-    data-cms-tab-gid={cmsConfig.gid ?? ''}
-    data-cms-refresh-ms={String(cmsConfig.refreshMs)}
-  >
-    <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+>
+    <main
+        data-locale={locale}
+        data-cms-page-id={pageId}
+        data-cms-csv-url={resolvedCmsCsvUrl}
+        data-cms-sheet-id={cmsConfig.sheetId ?? ''}
+        data-cms-tab-gid={cmsConfig.gid ?? ''}
+        data-cms-refresh-ms={String(cmsConfig.refreshMs)}
+    >
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-    <!-- Insights page content goes here -->
+        <InsightsHeroSection
+            locale={locale}
+            copy={copy}
+            ctaHref={`${base}${locale}/reports/`}
+            bgPatternSrc={`${base}images/tools/tools-hero-bg.png`}
+        />
 
-  </main>
+        <div class="insights-card-bleed" id="insights-card-bleed">
+            <div class="insights-card-bleed__inner">
+                <InsightsFeaturedReportCard
+                    locale={locale}
+                    copy={copy}
+                    ctaHref={`${base}${locale}/reports/`}
+                    imageSrc={`${base}images/insights/latest-report.png`}
+                />
+            </div>
+        </div>
 
-  <Fragment slot="head">
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      name: pageTitle,
-      url: localeSwitchUrls[locale],
-    })} />
-  </Fragment>
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
 
-  <Fragment slot="scripts">
-    <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script is:inline src={`${base}js/runtime/script.js`}></script>
-  </Fragment>
+        <InsightsReportsLibrarySection locale={locale} copy={copy} />
+
+        <div class="section-gap section-gap-lg" aria-hidden="true"></div>
+
+        <HomeFooterSection locale={locale} copy={copy} />
+    </main>
+
+    <Fragment slot="head">
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebPage',
+                name: pageTitle,
+                url: localeSwitchUrls[locale],
+            })}
+        />
+    </Fragment>
+
+    <Fragment slot="scripts">
+        <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
+        ></script>
+        <script is:inline src={`${base}js/runtime/script.js`}></script>
+        <script is:inline>
+            function updateHeroBleed() {
+                const hero = document.getElementById('insights-hero');
+                const bleed = document.getElementById('insights-card-bleed');
+                const card = bleed && bleed.querySelector('.featured-report-card');
+                if (!hero || !bleed || !card) return;
+                const half = card.offsetHeight / 2;
+                hero.style.setProperty('--hero-bleed-pad', half + 'px');
+                bleed.style.marginTop = '-' + half + 'px';
+            }
+            updateHeroBleed();
+            window.addEventListener('resize', updateHeroBleed);
+        </script>
+    </Fragment>
 </Layout>
+
+<style>
+    .insights-card-bleed {
+        position: relative;
+        z-index: 1;
+        padding: 0 var(--content-margin-inline);
+    }
+
+    .insights-card-bleed__inner {
+        width: 100%;
+    }
+</style>

@@ -221,12 +221,6 @@ const cards = [
                         tabindex={idx === 0 ? '0' : '-1'}
                         aria-controls={`home-solutions-panel-${card.solutionId}`}
                     >
-                        <img
-                            class="home-solutions__tab-icon"
-                            src={card.iconPath}
-                            alt=""
-                            aria-hidden="true"
-                        />
                         <span
                             class="home-solutions__tab-label text-body-p3"
                             data-copy-key={card.titleKey}
@@ -238,49 +232,124 @@ const cards = [
             }
         </div>
 
-        <div class="home-solutions__mobile-panels">
+        <div class="home-solutions__carousel" data-solutions-carousel>
             {
-                cards.map((card, idx) => {
-                    const logos = logoSets[card.solutionId as keyof typeof logoSets];
-                    return (
-                        <div
-                            class={`home-solutions__mobile-panel${idx === 0 ? ' is-active' : ''}`}
-                            data-solution-panel={card.solutionId}
-                            id={`home-solutions-panel-${card.solutionId}`}
-                            role="tabpanel"
-                            aria-hidden={idx === 0 ? 'false' : 'true'}
-                        >
-                            <div class="home-solutions__mobile-image-wrap">
+                cards.map((card, idx) => (
+                    <div
+                        class={`home-solutions__carousel-item${idx === 0 ? ' is-active' : ''}`}
+                        data-solution-panel={card.solutionId}
+                        id={`home-solutions-panel-${card.solutionId}`}
+                        role="tabpanel"
+                        aria-hidden={idx === 0 ? 'false' : 'true'}
+                    >
+                        <HomeSolutionsCard
+                            titleKey={card.titleKey}
+                            title={card.title}
+                            imageSrc={card.imageSrc}
+                            imageAlt={card.imageAlt}
+                            iconPath={card.iconPath}
+                            href={card.href}
+                            ctaLabel={card.ctaLabel}
+                            state="carousel"
+                        />
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="home-solutions__tablet-indicator" aria-hidden="true">
+            <span class="home-solutions__tablet-arrow icon-s">
+                <img src={chevronIconSrc} alt="" />
+            </span>
+        </div>
+
+        <div class="home-solutions__mobile-logos" aria-label="Client logos">
+            {
+                Object.entries(logoSets).map(([solutionId, logos], idx) => (
+                    <div
+                        class={`home-solutions__mobile-logos-grid${idx === 0 ? ' is-active' : ''}`}
+                        data-mobile-solution-logos={solutionId}
+                        aria-hidden={idx === 0 ? 'false' : 'true'}
+                    >
+                        {logos.slice(0, 3).map((logo) => (
+                            <div class="home-solutions__mobile-logo-item">
                                 <img
-                                    class="home-solutions__mobile-image"
+                                    class="home-solutions__mobile-logo-img"
+                                    src={logo.src}
+                                    alt={logo.alt}
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+
+    <div class="home-solutions__accordion" data-solutions-accordion>
+        {
+            cards.map((card, idx) => {
+                const logos = logoSets[card.solutionId as keyof typeof logoSets];
+                return (
+                    <div
+                        class={`home-solutions__accordion-item${idx === 0 ? ' is-open' : ''}`}
+                        data-accordion-item={card.solutionId}
+                    >
+                        <button
+                            type="button"
+                            class="home-solutions__accordion-trigger"
+                            aria-expanded={idx === 0 ? 'true' : 'false'}
+                            aria-controls={`home-solutions-accordion-body-${card.solutionId}`}
+                            data-accordion-trigger={card.solutionId}
+                        >
+                            <div class="home-solutions__accordion-trigger-inner">
+                                <img
+                                    class="home-solutions__accordion-icon icon-4xl"
+                                    src={card.iconPath}
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                                <span
+                                    class="home-solutions__accordion-title text-body-p1-bold"
+                                    data-copy-key={card.titleKey}
+                                >
+                                    {card.title}
+                                </span>
+                            </div>
+                            <img
+                                class="home-solutions__accordion-chevron icon-s"
+                                src={chevronIconSrc}
+                                alt=""
+                                aria-hidden="true"
+                            />
+                        </button>
+                        <div
+                            class="home-solutions__accordion-body"
+                            id={`home-solutions-accordion-body-${card.solutionId}`}
+                            data-accordion-body={card.solutionId}
+                        >
+                            <div class="home-solutions__accordion-body-inner">
+                                <img
+                                    class="home-solutions__accordion-image"
                                     src={card.imageSrc}
                                     alt={card.imageAlt}
                                     loading="lazy"
                                     decoding="async"
                                 />
-                            </div>
-
-                            <div class="home-solutions__mobile-clients">
-                                <div class="home-solutions__mobile-clients-header">
-                                    <p class="home-solutions__mobile-clients-label text-label-xs">
-                                        {`${card.title.toUpperCase()} CLIENTS`}
-                                    </p>
-                                    <Button
-                                        variant="tertiary"
-                                        href={card.href}
-                                        class="home-solutions__mobile-clients-cta"
-                                    >
-                                        {t(copy, 'solutions_cta', locale, 'Learn more')}
-                                    </Button>
-                                </div>
-                                <div
-                                    class="home-solutions__mobile-logos"
-                                    data-logos={JSON.stringify(logos)}
+                                <Button
+                                    variant="tertiary"
+                                    href={card.href}
+                                    class="home-solutions__accordion-cta"
                                 >
+                                    {card.ctaLabel}
+                                </Button>
+                                <div class="home-solutions__accordion-logos">
                                     {logos.slice(0, 3).map((logo) => (
-                                        <div class="home-solutions__mobile-logo-placeholder">
+                                        <div class="home-solutions__accordion-logo-item">
                                             <img
-                                                class="home-solutions__logo-img"
+                                                class="home-solutions__accordion-logo-img"
                                                 src={logo.src}
                                                 alt={logo.alt}
                                                 loading="lazy"
@@ -291,10 +360,10 @@ const cards = [
                                 </div>
                             </div>
                         </div>
-                    );
-                })
-            }
-        </div>
+                    </div>
+                );
+            })
+        }
     </div>
 </section>
 
@@ -317,6 +386,10 @@ const cards = [
     }
 
     .home-solutions__mobile {
+        display: none;
+    }
+
+    .home-solutions__accordion {
         display: none;
     }
 
@@ -456,12 +529,13 @@ const cards = [
         .home-solutions {
             padding-top: var(--space-9);
             padding-bottom: var(--space-9);
-            gap: var(--space-6);
+            gap: var(--space-9);
+            overflow-x: hidden;
         }
 
         .home-solutions__heading {
             width: 100%;
-            text-align: center;
+            text-align: left;
         }
 
         .home-solutions__content--desktop {
@@ -471,152 +545,188 @@ const cards = [
         .home-solutions__mobile {
             display: flex;
             flex-direction: column;
-            gap: var(--space-7);
-            width: 100%;
-        }
-
-        .home-solutions__tabs {
-            display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: var(--space-2);
-        }
-
-        .home-solutions__tab {
-            appearance: none;
-            background: transparent;
-            border: 0;
-            border-bottom: var(--stroke-1) solid var(--border-tertiary);
-            padding: 0 0 var(--space-2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            gap: var(--space-1);
-            cursor: pointer;
-        }
-
-        .home-solutions__tab.is-active {
-            border-bottom-color: var(--brand-blue-main);
-        }
-
-        .home-solutions__tab:focus-visible {
-            outline: var(--stroke-2) solid var(--border-primary);
-            outline-offset: var(--space-1);
-        }
-
-        .home-solutions__tab-icon {
-            width: var(--space-7);
-            height: var(--space-7);
-            display: block;
-            opacity: 0.55;
-            filter: grayscale(1);
-        }
-
-        .home-solutions__tab.is-active .home-solutions__tab-icon {
-            opacity: 1;
-            filter: none;
-        }
-
-        .home-solutions__tab-label {
-            color: var(--text-disabled);
-            text-align: center;
-            white-space: normal;
-            line-height: var(--lh-tight);
-        }
-
-        .home-solutions__tab.is-active .home-solutions__tab-label {
-            color: var(--text-primary);
-        }
-
-        .home-solutions__mobile-panel {
-            display: none;
-            flex-direction: column;
             gap: var(--space-6);
-        }
-
-        .home-solutions__mobile-panel.is-active {
-            display: flex;
-        }
-
-        .home-solutions__mobile-image-wrap {
             width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: var(--radius-tag);
-            background: var(--surface-white);
         }
 
-        .home-solutions__mobile-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        /* Pills hidden on tablet — carousel only */
+        .home-solutions__tabs {
+            display: none;
         }
 
-        .home-solutions__mobile-clients {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-4);
-        }
-
-        .home-solutions__mobile-clients-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--space-3);
-        }
-
-        .home-solutions__mobile-clients-label {
-            margin: 0;
-            color: var(--text-secondary);
-            text-align: left;
-        }
-
-        .home-solutions__mobile-clients-cta {
-            flex-shrink: 0;
-        }
-
-        .home-solutions__mobile-logos {
-            width: 100%;
-            border-top: var(--stroke-1) solid var(--border-tertiary);
-            border-bottom: var(--stroke-1) solid var(--border-tertiary);
-            padding: var(--space-4) 0;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: var(--space-3);
-        }
-
-        .home-solutions__mobile-logo-placeholder {
-            border-radius: var(--radius-s);
-            min-height: var(--space-9);
-            width: 100%;
+        .home-solutions__tablet-indicator {
+            width: min(75vw, 22rem);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--space-5) var(--space-2);
+            min-height: var(--space-5);
+        }
+
+        .home-solutions__tablet-arrow img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .home-solutions__carousel {
+            margin-inline: calc(-1 * var(--content-margin-inline));
+            padding-inline: var(--content-margin-inline);
+            scroll-padding-inline-start: var(--content-margin-inline);
+            display: flex;
+            gap: var(--layout-card-gap);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .home-solutions__carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Card is 75% of viewport width; height via aspect ratio 3:4 to match desktop proportions */
+        .home-solutions__carousel-item {
+            flex: 0 0 min(75vw, 22rem);
+            height: calc(min(75vw, 22rem) * 1.333);
+            scroll-snap-align: start;
+        }
+
+        /* Logos below carousel: 3 per row, no carousel */
+        .home-solutions__mobile-logos {
+            border-top: var(--stroke-1) solid var(--border-tertiary);
+            border-bottom: var(--stroke-1) solid var(--border-tertiary);
+            padding: var(--space-7) 0;
+        }
+
+        .home-solutions__mobile-logos-grid {
+            display: none;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--space-4);
+        }
+
+        .home-solutions__mobile-logos-grid.is-active {
+            display: grid;
+        }
+
+        .home-solutions__mobile-logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-4) var(--space-3);
+        }
+
+        .home-solutions__mobile-logo-img {
+            width: 100%;
+            height: var(--space-9);
+            object-fit: contain;
+            object-position: center;
+            display: block;
         }
     }
 
     @media (max-width: 767px) {
-        .home-solutions__tabs {
-            gap: var(--space-1);
-        }
-
-        .home-solutions__tab {
-            padding-bottom: var(--space-1);
-        }
-
         .home-solutions__mobile {
-            gap: var(--space-6);
+            display: none;
         }
 
-        .home-solutions__mobile-logos {
-            gap: var(--space-2);
-            padding: var(--space-3) 0;
+        .home-solutions__accordion {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border-top: var(--stroke-1) solid var(--border-tertiary);
         }
 
-        .home-solutions__mobile-logo-placeholder {
-            min-height: var(--space-8);
+        .home-solutions__accordion-item {
+            border-bottom: var(--stroke-1) solid var(--border-tertiary);
+        }
+
+        .home-solutions__accordion-trigger {
+            appearance: none;
+            background: none;
+            border: none;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-3);
+            padding: var(--space-4) 0;
+            cursor: pointer;
+        }
+
+        .home-solutions__accordion-trigger:focus-visible {
+            outline: var(--stroke-2) solid var(--border-primary);
+            outline-offset: var(--space-1);
+        }
+
+        .home-solutions__accordion-trigger-inner {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .home-solutions__accordion-icon {
+            flex-shrink: 0;
+        }
+
+        .home-solutions__accordion-title {
+            color: var(--text-primary);
+        }
+
+        .home-solutions__accordion-chevron {
+            flex-shrink: 0;
+            transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .home-solutions__accordion-item.is-open .home-solutions__accordion-chevron {
+            transform: rotate(180deg);
+        }
+
+        .home-solutions__accordion-body {
+            overflow: hidden;
+            height: 0;
+            transition: height 450ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .home-solutions__accordion-body-inner {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-5);
+            padding-bottom: var(--space-5);
+        }
+
+        .home-solutions__accordion-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: var(--radius-m);
+            display: block;
+        }
+
+        .home-solutions__accordion-cta {
+            align-self: flex-start;
+        }
+
+        .home-solutions__accordion-logos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--space-4);
+            border-top: var(--stroke-1) solid var(--border-tertiary);
+            padding: var(--space-5) 0 0;
+        }
+
+        .home-solutions__accordion-logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3) var(--space-2);
+        }
+
+        .home-solutions__accordion-logo-img {
+            width: 100%;
+            height: var(--space-6);
+            object-fit: contain;
+            object-position: center;
+            display: block;
         }
     }
 </style>
@@ -667,8 +777,12 @@ const cards = [
             '.home-solutions__indicator-icon[data-solution-arrow]'
         );
         const tabs = solutionsSection.querySelectorAll('.home-solutions__tab[data-solution-tab]');
-        const mobilePanels = solutionsSection.querySelectorAll(
-            '.home-solutions__mobile-panel[data-solution-panel]'
+        const carouselItems = solutionsSection.querySelectorAll<HTMLElement>(
+            '.home-solutions__carousel-item[data-solution-panel]'
+        );
+        const carousel = solutionsSection.querySelector<HTMLElement>('.home-solutions__carousel');
+        const mobileLogoGrids = solutionsSection.querySelectorAll(
+            '.home-solutions__mobile-logos-grid[data-mobile-solution-logos]'
         );
         const defaultSolution = 'media';
 
@@ -689,7 +803,7 @@ const cards = [
                 });
         };
 
-        const setActiveSolution = (solutionId: string) => {
+        const setActiveSolution = (solutionId: string, scrollCarousel = false) => {
             logoGrids.forEach((grid) => {
                 const isActive = grid.getAttribute('data-solution-logos') === solutionId;
                 grid.classList.toggle('is-active', isActive);
@@ -708,26 +822,35 @@ const cards = [
                 tab.setAttribute('tabindex', isActive ? '0' : '-1');
             });
 
-            mobilePanels.forEach((panel) => {
-                const isActive = panel.getAttribute('data-solution-panel') === solutionId;
-                panel.classList.toggle('is-active', isActive);
-                panel.setAttribute('aria-hidden', String(!isActive));
+            carouselItems.forEach((item) => {
+                const isActive = item.getAttribute('data-solution-panel') === solutionId;
+                item.classList.toggle('is-active', isActive);
+                item.setAttribute('aria-hidden', String(!isActive));
             });
 
-            // Rotate desktop logo row for this solution
+            mobileLogoGrids.forEach((grid) => {
+                const isActive = grid.getAttribute('data-mobile-solution-logos') === solutionId;
+                grid.classList.toggle('is-active', isActive);
+                grid.setAttribute('aria-hidden', String(!isActive));
+            });
+
+            // Rotate desktop logo row
             rotateLogos(solutionsSection.querySelector(`[data-solution-logos="${solutionId}"]`), 5);
 
-            // Rotate mobile logo row for this solution
-            const mobilePanel = solutionsSection.querySelector(
-                `[data-solution-panel="${solutionId}"]`
-            );
-            rotateLogos(mobilePanel?.querySelector('.home-solutions__mobile-logos') ?? null, 3);
+            // Scroll carousel to active card (snap to start, respecting scroll-padding)
+            if (scrollCarousel && carousel) {
+                const activeItem = carousel.querySelector<HTMLElement>(
+                    `[data-solution-panel="${solutionId}"]`
+                );
+                if (activeItem) {
+                    carousel.scrollTo({ left: activeItem.offsetLeft, behavior: 'smooth' });
+                }
+            }
         };
 
         solutionItems.forEach((item) => {
             const solutionId = item.getAttribute('data-solution');
             if (!solutionId) return;
-
             item.addEventListener('mouseenter', () => setActiveSolution(solutionId));
             item.addEventListener('focusin', () => setActiveSolution(solutionId));
         });
@@ -735,12 +858,104 @@ const cards = [
         tabs.forEach((tab) => {
             const solutionId = tab.getAttribute('data-solution-tab');
             if (!solutionId) return;
+            tab.addEventListener('click', () => setActiveSolution(solutionId, true));
+        });
 
-            tab.addEventListener('click', () => setActiveSolution(solutionId));
-            tab.addEventListener('focus', () => setActiveSolution(solutionId));
+        // Sync active pill + logos while user swipes carousel (rAF-throttled)
+        let rafPending = false;
+        let lastActiveSolution = defaultSolution;
+        carousel?.addEventListener('scroll', () => {
+            if (rafPending) return;
+            rafPending = true;
+            requestAnimationFrame(() => {
+                rafPending = false;
+                if (!carousel) return;
+                const carouselMid = carousel.scrollLeft + carousel.offsetWidth / 2;
+                let closest: HTMLElement | undefined;
+                let minDist = Infinity;
+                carouselItems.forEach((item) => {
+                    const itemMid = item.offsetLeft + item.offsetWidth / 2;
+                    const dist = Math.abs(itemMid - carouselMid);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        closest = item;
+                    }
+                });
+                const solutionId = closest ? closest.getAttribute('data-solution-panel') : null;
+                if (solutionId && solutionId !== lastActiveSolution) {
+                    lastActiveSolution = solutionId;
+                    setActiveSolution(solutionId, false);
+                }
+            });
         });
 
         solutionsSection.addEventListener('mouseleave', () => setActiveSolution(defaultSolution));
         setActiveSolution(defaultSolution);
+    }
+
+    // Accordion (mobile only)
+    const accordionEl = document.querySelector<HTMLElement>('[data-solutions-accordion]');
+    if (accordionEl) {
+        const measureHeight = (body: HTMLElement): number => {
+            // Temporarily remove height constraint to read true content height
+            const prev = body.style.height;
+            body.style.height = 'auto';
+            const h = body.offsetHeight;
+            body.style.height = prev;
+            return h;
+        };
+
+        const openItem = (item: HTMLElement) => {
+            const body = item.querySelector<HTMLElement>('[data-accordion-body]');
+            if (!body) return;
+            item.classList.add('is-open');
+            item.querySelector('[data-accordion-trigger]')?.setAttribute('aria-expanded', 'true');
+            const h = measureHeight(body);
+            body.style.height = '0';
+            requestAnimationFrame(() => {
+                body.style.height = `${h}px`;
+            });
+        };
+
+        const closeItem = (item: HTMLElement) => {
+            const body = item.querySelector<HTMLElement>('[data-accordion-body]');
+            if (!body) return;
+            // Lock to current rendered height before animating to 0
+            body.style.height = `${body.offsetHeight}px`;
+            item.classList.remove('is-open');
+            item.querySelector('[data-accordion-trigger]')?.setAttribute('aria-expanded', 'false');
+            requestAnimationFrame(() => {
+                body.style.height = '0';
+            });
+        };
+
+        // Open first item without animation on load
+        const firstItem = accordionEl.querySelector<HTMLElement>('[data-accordion-item]');
+        if (firstItem) {
+            const body = firstItem.querySelector<HTMLElement>('[data-accordion-body]');
+            firstItem.classList.add('is-open');
+            firstItem
+                .querySelector('[data-accordion-trigger]')
+                ?.setAttribute('aria-expanded', 'true');
+            if (body) body.style.height = 'auto';
+        }
+
+        accordionEl.querySelectorAll<HTMLElement>('[data-accordion-trigger]').forEach((trigger) => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest<HTMLElement>('[data-accordion-item]');
+                if (!item) return;
+                const isOpen = item.classList.contains('is-open');
+                accordionEl
+                    .querySelectorAll<HTMLElement>('[data-accordion-item]')
+                    .forEach(closeItem);
+                if (!isOpen) openItem(item);
+            });
+        });
+
+        accordionEl.querySelectorAll<HTMLElement>('[data-accordion-body]').forEach((body) => {
+            body.addEventListener('transitionend', () => {
+                if (body.style.height !== '0px') body.style.height = 'auto';
+            });
+        });
     }
 </script>

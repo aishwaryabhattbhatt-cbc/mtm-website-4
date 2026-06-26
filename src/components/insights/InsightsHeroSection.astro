@@ -1,0 +1,117 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    ctaHref: string;
+    bgPatternSrc?: string;
+}
+
+const { locale, copy, ctaHref, bgPatternSrc } = Astro.props as Props;
+---
+
+<section class="insights-hero" id="insights-hero">
+    {
+        bgPatternSrc && (
+            <div class="insights-hero__pattern" aria-hidden="true">
+                <img src={bgPatternSrc} alt="" class="insights-hero__pattern-img" />
+            </div>
+        )
+    }
+
+    <div class="insights-hero__content">
+        <div class="insights-hero__text">
+            <h1 data-copy-key="hero_title">
+                {t(copy, 'hero_title', locale, 'Insights & Analysis')}
+            </h1>
+            <p class="text-body-p1 insights-hero__description" data-copy-key="hero_description">
+                {
+                    t(
+                        copy,
+                        'hero_description',
+                        locale,
+                        'Stay informed with the latest research, reports, and analysis on Canadian media consumption trends.'
+                    )
+                }
+            </p>
+        </div>
+        <Button variant="primary" size="lg" href={ctaHref}>
+            {t(copy, 'hero_cta_1', locale, 'Explore Reports')}
+        </Button>
+    </div>
+</section>
+
+<style>
+    .insights-hero {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-7);
+        padding: var(--space-12) var(--content-margin-inline) var(--hero-bleed-pad, var(--space-12));
+        background: var(--surface-blue);
+        margin-top: var(--navbar-height);
+    }
+
+    .insights-hero__pattern {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .insights-hero__pattern-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .insights-hero__content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-7);
+        width: 100%;
+        max-width: 89.75rem;
+        margin-bottom: var(--space-12);
+    }
+
+    .insights-hero__text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        text-align: center;
+    }
+
+    .insights-hero__description {
+        max-width: 73.5rem;
+        color: var(--text-primary);
+        margin: 0;
+        text-align: center;
+    }
+
+    @media (max-width: 1023px) {
+        .insights-hero {
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .insights-hero {
+            gap: var(--space-9);
+            padding: var(--space-9) var(--content-margin-inline);
+        }
+
+        .insights-hero__text {
+            gap: var(--space-3);
+        }
+    }
+</style>

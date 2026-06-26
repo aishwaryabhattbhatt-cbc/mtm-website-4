@@ -839,95 +839,6 @@ const cards = [
 </style>
 
 <script>
-    const dashboardSrc =
-        (document.getElementById('research-assets') as HTMLElement | null)?.dataset.dashboard ?? '';
-
-    // Card positions per tab index
-    type CardPos = { top: string; left: string; visible: boolean };
-    type CardConfig = Record<string, CardPos>;
-    type TabState = {
-        dashboardSrc: string | null;
-        cards: CardConfig;
-    };
-
-    const tabStates: TabState[] = [
-        // Tab 0: Technology Trends
-        {
-            dashboardSrc,
-            cards: {
-                'card-ai-usage': { top: '25%', left: '83.5%', visible: true },
-                'card-fast': { top: '58%', left: '6.5%', visible: true },
-                'card-svod': { top: '20.5%', left: '4%', visible: true },
-                'card-avod': { top: '59.5%', left: '81.5%', visible: true },
-                'card-gaming': { top: '10%', left: '10%', visible: false },
-                'card-news': { top: '12%', left: '42%', visible: false },
-                'card-social': { top: '42%', left: '24%', visible: false },
-                'card-podcasts': { top: '66%', left: '30%', visible: false },
-                'card-mobile': { top: '68%', left: '62%', visible: false },
-                'card-ecommerce': { top: '36%', left: '84%', visible: false },
-            },
-        },
-        // Tab 1: Media Behaviour
-        {
-            dashboardSrc,
-            cards: {
-                'card-ai-usage': { top: '66%', left: '6%', visible: true },
-                'card-fast': { top: '0%', left: '19.5%', visible: true },
-                'card-svod': { top: '79.5%', left: '66%', visible: true },
-                'card-avod': { top: '56.5%', left: '84%', visible: true },
-                'card-gaming': { top: '32.5%', left: '3%', visible: true },
-                'card-news': { top: '18%', left: '81.5%', visible: true },
-                'card-social': { top: '22%', left: '28%', visible: false },
-                'card-podcasts': { top: '80%', left: '30%', visible: false },
-                'card-mobile': { top: '44%', left: '30%', visible: false },
-                'card-ecommerce': { top: '48%', left: '52%', visible: false },
-            },
-        },
-        // Tab 2: 5000+ variables
-        {
-            dashboardSrc: null,
-            cards: {
-                // 4 columns centered in frame:
-                // grid width = 460px (4*100 + 3*20), height = 340px
-                // origin = (50% - 230px, 50% - 170px)
-                // Col 1: x=0, y=60/180 (center-aligned to 3-card columns)
-                'card-ai-usage': {
-                    top: 'calc(50% - 110px)',
-                    left: 'calc(50% - 230px)',
-                    visible: true,
-                },
-                'card-gaming': {
-                    top: 'calc(50% + 10px)',
-                    left: 'calc(50% - 230px)',
-                    visible: true,
-                },
-                // Col 2: x=120, y=0/120/240
-                'card-avod': { top: 'calc(50% - 170px)', left: 'calc(50% - 110px)', visible: true },
-                'card-news': { top: 'calc(50% - 50px)', left: 'calc(50% - 110px)', visible: true },
-                'card-podcasts': {
-                    top: 'calc(50% + 70px)',
-                    left: 'calc(50% - 110px)',
-                    visible: true,
-                },
-                // Col 3: x=240, y=0/120/240
-                'card-svod': { top: 'calc(50% - 170px)', left: 'calc(50% + 10px)', visible: true },
-                'card-fast': { top: 'calc(50% - 50px)', left: 'calc(50% + 10px)', visible: true },
-                'card-mobile': { top: 'calc(50% + 70px)', left: 'calc(50% + 10px)', visible: true },
-                // Col 4: x=360, y=60/180 (center-aligned to 3-card columns)
-                'card-social': {
-                    top: 'calc(50% - 110px)',
-                    left: 'calc(50% + 130px)',
-                    visible: true,
-                },
-                'card-ecommerce': {
-                    top: 'calc(50% + 10px)',
-                    left: 'calc(50% + 130px)',
-                    visible: true,
-                },
-            },
-        },
-    ];
-
     let currentTab = -1;
     const TAB_DURATION_MS = 3000;
     const tabs = document.querySelectorAll<HTMLElement>('.tab-item');
@@ -935,14 +846,7 @@ const cards = [
     const heading = section?.querySelector<HTMLElement>('.heading-fly-in');
     const contentBlock = section?.querySelector<HTMLElement>('.content-fly-in');
     const leftText = section?.querySelector<HTMLElement>('.left-text');
-    const dashboardImage = section?.querySelector<HTMLImageElement>('#research-dashboard-image');
-    const dashboardFrame = section?.querySelector<HTMLElement>('.screen-wrapper');
     const iconCards = section?.querySelectorAll<HTMLElement>('.research-icon-card');
-
-    function parsePercentValue(value: string): number {
-        const parsed = Number.parseFloat(value.replace('%', ''));
-        return Number.isFinite(parsed) ? parsed : 0;
-    }
 
     function normalizeBoxVisual() {
         const boxVisual = document.getElementById('boxVisual') as HTMLElement | null;
@@ -961,44 +865,6 @@ const cards = [
 
         // 610px covers the tallest content (tab1 box4 bottom = 482+120 = 602px)
         container.style.height = Math.ceil(610 * scale) + 'px';
-    }
-
-    function applyConfig(idx: number, skipTransition = false) {
-        const state = tabStates[idx];
-        const config = state.cards;
-
-        if (dashboardImage) {
-            if (state.dashboardSrc) {
-                dashboardImage.src = state.dashboardSrc;
-                dashboardImage.classList.remove('is-hidden');
-                dashboardFrame?.classList.remove('is-empty');
-            } else {
-                dashboardImage.classList.add('is-hidden');
-                dashboardFrame?.classList.add('is-empty');
-            }
-        }
-
-        Object.entries(config).forEach(([id, pos]) => {
-            const card = document.getElementById(id);
-            if (!card) return;
-
-            if (skipTransition) {
-                card.style.transition = 'none';
-            }
-
-            card.style.top = pos.top;
-            card.style.left = pos.left;
-            card.classList.toggle('hidden', !pos.visible);
-
-            if (skipTransition) {
-                // Re-enable transitions after two frames
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        card.style.transition = '';
-                    });
-                });
-            }
-        });
     }
 
     function setTab(idx: number, progressDurationMs = TAB_DURATION_MS) {
@@ -1024,7 +890,7 @@ const cards = [
             );
 
             // Switch images based on tab with crossfade effect
-            ['box1', 'box2', 'box3', 'box4', 'box5'].forEach((id, i) => {
+            ['box1', 'box2', 'box3', 'box4', 'box5'].forEach((id) => {
                 const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
                 if (!box) return;
                 const img = box.querySelector<HTMLImageElement>('img');
@@ -1244,143 +1110,6 @@ const cards = [
 
         observer.observe(section);
     }
-
-    function initIconPositionGui() {
-        if (!section) return;
-
-        const editableTabIndexes = [0, 1];
-        const editableCardIds = Object.keys(tabStates[0].cards);
-
-        const gui = document.createElement('div');
-        gui.className = 'icon-pos-gui';
-        gui.innerHTML = `
-      <strong>Icon Position GUI</strong>
-      <label>
-        Tab
-        <select id="iconGuiTab">
-          <option value="0">Tab 1: Technology Trends</option>
-          <option value="1">Tab 2: Media Behaviour</option>
-        </select>
-      </label>
-      <label>
-        Icon
-        <select id="iconGuiCard">
-          ${editableCardIds.map((id) => `<option value="${id}">${id}</option>`).join('')}
-        </select>
-      </label>
-      <label>
-        Left (%)
-        <input id="iconGuiLeft" type="range" min="0" max="100" step="0.5" />
-      </label>
-      <div class="icon-pos-gui-row"><span>Left value</span><span id="iconGuiLeftValue"></span></div>
-      <label>
-        Top (%)
-        <input id="iconGuiTop" type="range" min="0" max="100" step="0.5" />
-      </label>
-      <div class="icon-pos-gui-row"><span>Top value</span><span id="iconGuiTopValue"></span></div>
-      <label class="icon-pos-gui-row">
-        <span>Visible</span>
-        <input id="iconGuiVisible" type="checkbox" checked />
-      </label>
-      <div class="icon-pos-gui-actions">
-        <button id="iconGuiCopy" type="button">Copy Tab JSON</button>
-      </div>
-    `;
-
-        const toggleButton = document.createElement('button');
-        toggleButton.className = 'icon-pos-gui-toggle';
-        toggleButton.type = 'button';
-        toggleButton.textContent = 'Icon GUI';
-
-        section.appendChild(gui);
-        section.appendChild(toggleButton);
-
-        const tabSelect = gui.querySelector<HTMLSelectElement>('#iconGuiTab');
-        const cardSelect = gui.querySelector<HTMLSelectElement>('#iconGuiCard');
-        const leftInput = gui.querySelector<HTMLInputElement>('#iconGuiLeft');
-        const topInput = gui.querySelector<HTMLInputElement>('#iconGuiTop');
-        const visibleInput = gui.querySelector<HTMLInputElement>('#iconGuiVisible');
-        const leftValue = gui.querySelector<HTMLSpanElement>('#iconGuiLeftValue');
-        const topValue = gui.querySelector<HTMLSpanElement>('#iconGuiTopValue');
-        const copyButton = gui.querySelector<HTMLButtonElement>('#iconGuiCopy');
-
-        if (
-            !tabSelect ||
-            !cardSelect ||
-            !leftInput ||
-            !topInput ||
-            !visibleInput ||
-            !leftValue ||
-            !topValue ||
-            !copyButton
-        ) {
-            return;
-        }
-
-        function syncGuiFromState() {
-            const tabIdx = Number(tabSelect?.value ?? 0);
-            const cardId = cardSelect?.value ?? '';
-            const cardState = tabStates[tabIdx]?.cards?.[cardId];
-            if (!cardState) return;
-            if (leftInput) leftInput.value = String(parsePercentValue(cardState.left));
-            if (topInput) topInput.value = String(parsePercentValue(cardState.top));
-            if (visibleInput) visibleInput.checked = cardState.visible;
-            if (leftValue && leftInput) leftValue.textContent = `${leftInput.value}%`;
-            if (topValue && topInput) topValue.textContent = `${topInput.value}%`;
-        }
-
-        function applyGuiToState() {
-            const tabIdx = Number(tabSelect?.value ?? 0);
-            if (!editableTabIndexes.includes(tabIdx)) return;
-            const cardId = cardSelect?.value ?? '';
-            const nextLeft = `${leftInput?.value ?? 0}%`;
-            const nextTop = `${topInput?.value ?? 0}%`;
-            if (tabStates[tabIdx]?.cards?.[cardId]) {
-                tabStates[tabIdx].cards[cardId].left = nextLeft;
-                tabStates[tabIdx].cards[cardId].top = nextTop;
-                tabStates[tabIdx].cards[cardId].visible = visibleInput?.checked ?? false;
-            }
-            if (leftValue) leftValue.textContent = nextLeft;
-            if (topValue) topValue.textContent = nextTop;
-
-            if (currentTab === tabIdx) {
-                applyConfig(currentTab);
-            }
-        }
-
-        tabSelect?.addEventListener('change', () => {
-            const selectedTabIdx = Number(tabSelect?.value ?? 0);
-            setTab(selectedTabIdx);
-            syncGuiFromState();
-        });
-        cardSelect?.addEventListener('change', syncGuiFromState);
-        leftInput?.addEventListener('input', applyGuiToState);
-        topInput?.addEventListener('input', applyGuiToState);
-        visibleInput.addEventListener('change', applyGuiToState);
-
-        copyButton.addEventListener('click', async () => {
-            const tabIdx = Number(tabSelect.value);
-            const payload = JSON.stringify(tabStates[tabIdx].cards, null, 2);
-            await navigator.clipboard.writeText(payload);
-            copyButton.textContent = 'Copied';
-            window.setTimeout(() => {
-                copyButton.textContent = 'Copy Tab JSON';
-            }, 1200);
-        });
-
-        toggleButton.addEventListener('click', () => {
-            gui.classList.toggle('is-open');
-            if (gui.classList.contains('is-open')) {
-                stopAutoRotate();
-                syncGuiFromState();
-            }
-        });
-
-        syncGuiFromState();
-    }
-
-    // GUI kept in code but hidden for now.
-    // initIconPositionGui();
 
     // Box position GUI for custom layout
     type BoxId = 'box1' | 'box2' | 'box3' | 'box4' | 'box5';
