@@ -69,11 +69,7 @@ const filterTabs = [
                             stroke-linejoin="round"></path>
                     </svg>
                 </button>
-                <button
-                    class="reports-library-section__arrow reports-library-section__arrow--filled"
-                    aria-label="Next"
-                    data-arrow="next"
-                >
+                <button class="reports-library-section__arrow" aria-label="Next" data-arrow="next">
                     <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
                         <path
                             d="M1.5 1.5L7.5 7.5L1.5 13.5"
@@ -101,7 +97,7 @@ const filterTabs = [
 <style>
     .reports-library-section {
         width: 100%;
-        padding: var(--space-12) var(--content-margin-inline) var(--space-12);
+        padding: var(--space-13) var(--content-margin-inline) var(--space-12);
     }
 
     .reports-library-section__header {
@@ -204,6 +200,7 @@ const filterTabs = [
     @media (max-width: 1023px) {
         .reports-library-section {
             gap: var(--space-4);
+            padding-top: var(--space-13);
         }
 
         .reports-library-section__controls-wrap {
@@ -216,6 +213,10 @@ const filterTabs = [
     }
 
     @media (max-width: 767px) {
+        .reports-library-section {
+            padding-top: var(--space-12);
+        }
+
         .reports-library-section__header {
             gap: var(--space-7);
         }

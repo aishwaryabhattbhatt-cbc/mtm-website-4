@@ -1,0 +1,256 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import InsightsNewsCard from './InsightsNewsCard.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const newsItems = [
+    {
+        tag: 'Junior',
+        date: 'Dec 11, 2025',
+        title: 'Kids and their Reliance on the media and their portable devices',
+        description:
+            'MTM Junior findings show Canadian children aged 2–11 are spending more time on tablets and smartphones than any previous generation, with screen time now exceeding three hours daily on average.',
+    },
+    {
+        tag: 'Newcomers',
+        date: 'Dec 11, 2025',
+        title: 'Audio Streamers Can Now Listen to Their Favourite Podcasts No Matter Where They Live',
+        description:
+            'New MTM data reveals newcomers to Canada are turning to on-demand audio at significantly higher rates than the general population, using podcasts as a primary tool for language learning and cultural integration.',
+    },
+    {
+        tag: 'MTM 18+',
+        date: 'Dec 11, 2025',
+        title: 'The Next Generation of News Consumers',
+        description:
+            'Canadians aged 18–34 are increasingly bypassing traditional broadcast news in favour of social video platforms, with MTM tracking a 22-point drop in nightly newscast viewership over five years.',
+    },
+    {
+        tag: 'MTM 18+',
+        date: 'Dec 11, 2025',
+        title: 'Youtube Is The New Cable',
+        description:
+            "MTM's latest wave finds YouTube now rivals conventional cable TV for total weekly viewing hours among English-speaking Canadians, driven largely by long-form content and live-stream events.",
+    },
+    {
+        tag: 'Junior',
+        date: 'Jan 15, 2026',
+        title: 'Gaming Platforms Are the New Social Networks for Canadian Kids',
+        description:
+            'More than half of Canadian children aged 6–11 now use gaming platforms as their primary way to communicate with friends, surpassing both messaging apps and in-person interaction, per MTM Junior.',
+    },
+    {
+        tag: 'Newcomers',
+        date: 'Jan 15, 2026',
+        title: 'Streaming Closes the Language Gap for Newcomer Families',
+        description:
+            'MTM research shows newcomer households subscribe to an average of 3.4 streaming services — above the national average — using multilingual content libraries to maintain cultural ties while adapting to Canadian media.',
+    },
+    {
+        tag: 'MTM 18+',
+        date: 'Jan 15, 2026',
+        title: 'Smart Speaker Adoption Plateaus as Canadians Reassess Voice Tech',
+        description:
+            'After years of rapid growth, MTM data shows smart speaker adoption has levelled off among Canadian adults, with privacy concerns and limited French-language support cited as the top barriers to expanded use.',
+    },
+    {
+        tag: 'Census',
+        date: 'Jan 15, 2026',
+        title: 'Rural Canadians Still Face Significant Streaming Access Gaps',
+        description:
+            "MTM's census-representative sample highlights a persistent divide in broadband quality, with rural households 40% less likely to report a seamless streaming experience compared to their urban counterparts.",
+    },
+];
+---
+
+<section class="news-section">
+    <div class="news-section__header">
+        <h2 data-copy-key="section_5_title">
+            {t(copy, 'section_5_title', locale, 'News')}
+        </h2>
+
+        <div class="news-section__controls-wrap" aria-hidden="true">
+            <div class="news-section__arrows">
+                <button class="news-section__arrow" aria-label="Previous" data-arrow="prev">
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
+                        <path
+                            d="M7.5 1.5L1.5 7.5L7.5 13.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <button class="news-section__arrow" aria-label="Next" data-arrow="next">
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
+                        <path
+                            d="M1.5 1.5L7.5 7.5L1.5 13.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="news-section__grid">
+        {
+            newsItems.map((item) => (
+                <div class="news-section__card-wrap">
+                    <InsightsNewsCard
+                        locale={locale}
+                        copy={copy}
+                        tag={item.tag}
+                        date={item.date}
+                        title={item.title}
+                        description={item.description}
+                        href={`${base}${locale}/insights/`}
+                    />
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .news-section {
+        width: 100%;
+        padding: var(--space-13) var(--content-margin-inline) var(--space-12);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .news-section__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-6);
+    }
+
+    .news-section__header h2 {
+        margin: 0;
+    }
+
+    .news-section__controls-wrap {
+        display: flex;
+        flex-shrink: 0;
+    }
+
+    .news-section__arrows {
+        display: flex;
+        gap: var(--space-3);
+    }
+
+    .news-section__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--space-8);
+        height: var(--space-8);
+        border-radius: var(--radius-full);
+        border: var(--stroke-1) solid var(--border-secondary);
+        background: transparent;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0;
+        transition:
+            background 0.15s,
+            color 0.15s,
+            border-color 0.15s;
+    }
+
+    .news-section__arrow--filled {
+        background: var(--text-primary);
+        color: var(--text-white);
+        border-color: var(--text-primary);
+    }
+
+    .news-section__arrow:hover:not(.news-section__arrow--filled) {
+        background: var(--surface-blue);
+        color: var(--text-primary);
+        border-color: var(--border-primary);
+    }
+
+    .news-section__grid {
+        display: flex;
+        gap: var(--layout-card-gap);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        margin-inline: calc(-1 * var(--content-margin-inline));
+        padding: var(--space-2) var(--content-margin-inline) var(--space-8);
+        scroll-padding-inline-start: var(--content-margin-inline);
+    }
+
+    .news-section__grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .news-section__card-wrap {
+        flex-shrink: 0;
+        width: 24rem;
+        scroll-snap-align: start;
+    }
+
+    @media (max-width: 1023px) {
+        .news-section {
+            padding: var(--space-12) var(--content-margin-inline) var(--space-9);
+        }
+
+        .news-section__card-wrap {
+            width: 24rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .news-section {
+            padding: var(--space-9) var(--content-margin-inline) var(--space-9);
+        }
+
+        .news-section__header {
+            gap: var(--space-4);
+        }
+
+        .news-section__card-wrap {
+            width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
+        }
+    }
+</style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.news-section').forEach((section) => {
+        const carousel = section.querySelector<HTMLElement>('.news-section__grid');
+        const prevBtn = section.querySelector<HTMLButtonElement>('[data-arrow="prev"]');
+        const nextBtn = section.querySelector<HTMLButtonElement>('[data-arrow="next"]');
+
+        if (!carousel || !prevBtn || !nextBtn) return;
+
+        const cardWrap = section.querySelector<HTMLElement>('.news-section__card-wrap');
+        if (!cardWrap) return;
+
+        const scroll = (direction: 'prev' | 'next') => {
+            const cardWidth = cardWrap.offsetWidth;
+            const gap = parseInt(window.getComputedStyle(carousel).gap);
+            const scrollAmount = cardWidth + gap;
+            carousel.scrollBy({
+                left: direction === 'prev' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth',
+            });
+        };
+
+        prevBtn.addEventListener('click', () => scroll('prev'));
+        nextBtn.addEventListener('click', () => scroll('next'));
+    });
+</script>
