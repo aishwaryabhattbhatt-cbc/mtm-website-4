@@ -1,0 +1,175 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface LogoItem {
+    src: string;
+    alt: string;
+}
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    logos: LogoItem[];
+}
+
+const { locale, copy, logos } = Astro.props as Props;
+---
+
+<section
+    class="solutions-trusted-by-section"
+    aria-label={t(copy, 'trusted_by_label', locale, 'Trusted by')}
+>
+    <p class="text-label-regular solutions-trusted-by-label" data-copy-key="trusted_by_label">
+        {t(copy, 'trusted_by_label', locale, 'Trusted by')}
+    </p>
+
+    <div class="solutions-trusted-by-strip">
+        <div class="solutions-trusted-by-track">
+            <div class="solutions-trusted-by-set">
+                {
+                    logos.map((logo) => (
+                        <div class="solutions-trusted-by-logo-item">
+                            <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+                        </div>
+                    ))
+                }
+            </div>
+            <div class="solutions-trusted-by-set" aria-hidden="true">
+                {
+                    logos.map((logo) => (
+                        <div class="solutions-trusted-by-logo-item" aria-hidden="true">
+                            <img src={logo.src} alt="" loading="lazy" decoding="async" />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .solutions-trusted-by-section {
+        width: 100%;
+        background: var(--surface-blue);
+        padding: 0 var(--content-margin-inline) var(--space-8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-5);
+    }
+
+    .solutions-trusted-by-label {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    .solutions-trusted-by-strip {
+        width: 100%;
+        background: color-mix(in srgb, var(--surface-white) 60%, transparent);
+        border-radius: var(--layout-card-radius);
+        padding: var(--space-6) 0;
+        min-height: 12rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    .solutions-trusted-by-track {
+        display: flex;
+        align-items: center;
+        will-change: transform;
+        animation: trusted-by-scroll 70s linear infinite;
+    }
+
+    .solutions-trusted-by-set {
+        display: flex;
+        align-items: center;
+        gap: var(--space-6);
+        flex-shrink: 0;
+        /* padding-right creates the inter-set gap that matches the intra-set gap */
+        padding-right: var(--space-6);
+    }
+
+    .solutions-trusted-by-logo-item {
+        width: 10rem;
+        min-height: var(--space-10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .solutions-trusted-by-logo-item img {
+        width: auto;
+        max-width: 100%;
+        max-height: var(--space-7);
+        display: block;
+        object-fit: contain;
+    }
+
+    .solutions-trusted-by-strip:hover .solutions-trusted-by-track {
+        animation-play-state: paused;
+    }
+
+    @keyframes trusted-by-scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(var(--scroll-distance, -50%));
+        }
+    }
+
+    @media (max-width: 767px) {
+        .solutions-trusted-by-section {
+            gap: var(--space-4);
+            padding-bottom: var(--space-6);
+        }
+
+        .solutions-trusted-by-strip {
+            padding: var(--space-5) 0;
+        }
+
+        .solutions-trusted-by-track {
+            animation-duration: 56s;
+        }
+
+        .solutions-trusted-by-set {
+            gap: var(--space-5);
+            padding-right: var(--space-5);
+        }
+
+        .solutions-trusted-by-logo-item {
+            width: 8rem;
+        }
+    }
+</style>
+
+<script>
+    function initMarquee(strip: HTMLElement) {
+        const track = strip.querySelector<HTMLElement>('.solutions-trusted-by-track');
+        const set = strip.querySelector<HTMLElement>('.solutions-trusted-by-set');
+        if (!track || !set) return;
+
+        function measure() {
+            track!.style.setProperty('--scroll-distance', `-${set!.offsetWidth}px`);
+        }
+
+        measure();
+
+        // Re-measure if viewport size changes (affects rem-based spacing tokens)
+        const ro = new ResizeObserver(measure);
+        ro.observe(set);
+    }
+
+    function initAll() {
+        document.querySelectorAll<HTMLElement>('.solutions-trusted-by-strip').forEach(initMarquee);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAll);
+    } else {
+        initAll();
+    }
+</script>

@@ -115,11 +115,11 @@ html {
     /* Desktop: 84px = 5.25rem */
     --fs-hero: 4.5rem;
     --fs-section-h1: 3.5rem;
-    --fs-metrics: 3rem;
+    --fs-metrics: 3.25rem;
     --fs-subsection-h2: 2.75rem;
-    --fs-tertiary-h3: 2.25rem;
-    --fs-h4: 2rem;
-    --fs-h5: 1.75rem;
+    --fs-tertiary-h3: 2rem;
+    --fs-h4: 1.5rem;
+    --fs-h5: 1.25rem;
     --fs-body-xl: 1.5rem;
     --fs-body-l: 1.25rem;
     --fs-body-m: 1.125rem;
@@ -214,50 +214,53 @@ html {
 
 /* ============================================
    RESPONSIVE TYPOGRAPHY OVERRIDES
-   Mobile-first: Start with mobile sizes, enhance for larger screens
    ============================================ */
 
-/* Mobile (max-width: 480px) - Reduced size scaling */
+/* Button tokens: declared first so the 480px block below can override for phones */
+@media (max-width: 1023px) {
+    :root {
+        --fs-button-small: 1rem;
+        --fs-button-regular: 1rem;
+    }
+}
+
+/* Mobile (max-width: 480px) */
 @media (max-width: 480px) {
     :root {
-        /* Scale down large heading sizes by ~40-50% on mobile */
-        --fs-hero: 2.5rem; /* 84px → ~35px (40px at 14px root) */
-        --fs-section-h1: 2.25rem; /* 56px → ~31.5px */
-        --fs-metrics: 1.75rem; /* 48px → ~24px */
-        --fs-subsection-h2: 2rem; /* 44px → ~28px */
-        --fs-tertiary-h3: 1.75rem; /* 40px → ~24.5px */
-        --fs-h4: 1.5rem; /* 32px → ~21px */
-        --fs-body-xl: 1.125rem; /* 24px → ~16px */
+        --fs-hero: 2.5rem;
+        --fs-section-h1: 2.25rem;
+        --fs-metrics: 2.25rem; /* kept above h2 (2rem) */
+        --fs-subsection-h2: 2rem;
+        --fs-tertiary-h3: 1.625rem; /* gap with h2 (2rem): 0.375rem */
+        --fs-h4: 1.25rem; /* gap with h3 (1.625rem): 0.375rem */
+        --fs-body-xl: 1.25rem; /* kept above body-m (1.125rem) */
         --fs-body-l: 1.25rem;
-        --fs-body-m: 1.125rem; /* 18px → ~15.75px */
-        --fs-body-s: 0.875rem; /* 16px → ~12px */
-        --fs-button-regular: 1.125rem;
+        --fs-body-m: 1.125rem;
+        --fs-body-s: 0.875rem;
+        --fs-button-regular: 1.125rem; /* overrides 1023px — larger tap targets on phones */
         --fs-button-small: 1.125rem;
         --fs-label-small: 0.75rem;
         --fs-label-xs: 0.625rem;
 
-        /* Scale letter-spacing ~50% to match font-size reduction — prevents over-tight tracking at small sizes */
         --ls-hero: -0.09375rem;
         --ls-heading-lg: -0.078125rem;
         --ls-heading-sm: -0.0625rem;
         --ls-subhead: -0.046875rem;
         --ls-body-lg: -0.03125rem;
-        --ls-body-md: 0; /* negative tracking hurts readability at body-m/s mobile sizes */
+        --ls-body-md: 0;
     }
 }
 
-/* Tablet (481px - 768px) - Medium scaling */
+/* Tablet (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
     :root {
-        /* Scale by ~60-70% on tablet */
-        --fs-hero: 3.5rem; /* 84px → 56px */
-        --fs-section-h1: 2.5rem; /* 56px → 40px */
-        --fs-metrics: 2.25rem; /* 48px → 36px */
-        --fs-subsection-h2: 2rem; /* 44px → 32px */
-        --fs-tertiary-h3: 1.75rem; /* 40px → 28px */
-        --fs-h4: 1.5rem; /* 32px → 24px */
+        --fs-hero: 3.5rem;
+        --fs-section-h1: 2.5rem;
+        --fs-metrics: 2.5rem; /* gap with h2 (2rem): 0.5rem */
+        --fs-subsection-h2: 2rem;
+        --fs-tertiary-h3: 1.625rem; /* gap with h2 (2rem): 0.375rem */
+        --fs-h4: 1.25rem; /* gap with h3 (1.625rem): 0.375rem */
 
-        /* Scale letter-spacing ~70% to match font-size reduction */
         --ls-hero: -0.125rem;
         --ls-heading-lg: -0.109375rem;
         --ls-heading-sm: -0.09375rem;
@@ -267,22 +270,15 @@ html {
     }
 }
 
-/* Small Laptop (769px - 1023px) - 80% of desktop */
+/* Small Laptop (769px - 1023px) */
 @media (min-width: 769px) and (max-width: 1023px) {
     :root {
-        --fs-hero: 4.5rem; /* 84px → 72px */
-        --fs-section-h1: 3rem; /* 56px → 48px */
-        --fs-metrics: 2.5rem; /* 48px → 40px */
-        --fs-subsection-h2: 2.25rem; /* 44px → 36px */
-        --fs-tertiary-h3: 2.125rem; /* 40px → 34px */
-    }
-}
-
-/* Button tokens: scale up on mobile for readable tap targets */
-@media (max-width: 1023px) {
-    :root {
-        --fs-button-small: 1rem;
-        --fs-button-regular: 1rem;
+        --fs-hero: 4.5rem;
+        --fs-section-h1: 3rem;
+        --fs-metrics: 2.75rem; /* gap with h2 (2.25rem): 0.5rem */
+        --fs-subsection-h2: 2.25rem;
+        --fs-tertiary-h3: 1.875rem; /* gap with h2 (2.25rem): 0.375rem */
+        --fs-h4: 1.375rem; /* gap with h3 (1.875rem): 0.5rem */
     }
 }
 
@@ -291,7 +287,7 @@ html {
     :root {
         /* Reduce spacing on mobile/tablet for better use of limited screen space */
         --layout-page-margin: 1rem;
-        --layout-card-gap: 1rem;
+        --layout-card-gap: 1.5rem;
         --space-13: 3rem; /* was 7.5rem */
         --space-25: 3rem; /* was 6.25rem */
     }
@@ -301,7 +297,7 @@ html {
     :root {
         /* Medium spacing for tablets */
         --layout-page-margin: 2rem;
-        --layout-card-gap: 1rem;
+        --layout-card-gap: 1.5rem;
     }
 }
 

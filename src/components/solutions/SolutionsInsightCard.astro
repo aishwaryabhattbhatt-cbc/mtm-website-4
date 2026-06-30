@@ -1,0 +1,168 @@
+---
+type AccentColor = 'blue' | 'indigo' | 'purple';
+
+interface Props {
+    iconSrc: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    imageSrc: string;
+    imageAlt: string;
+    imageTitle: string;
+    imageTitleColor?: AccentColor;
+}
+
+const {
+    iconSrc,
+    eyebrow,
+    title,
+    description,
+    imageSrc,
+    imageAlt,
+    imageTitle,
+    imageTitleColor = 'blue',
+} = Astro.props;
+---
+
+<div class="solutions-insight-card">
+    <div class="solutions-insight-card-body">
+        <div class="solutions-insight-tag">
+            <img src={iconSrc} alt="" class="icon-l" aria-hidden="true" />
+            <span class="text-label-small solutions-insight-tag-label">{eyebrow}</span>
+        </div>
+        <div class="solutions-insight-card-text">
+            <p class="text-body-p0 solutions-insight-card-title">{title}</p>
+            <p class="text-body-p2 solutions-insight-card-description">{description}</p>
+        </div>
+    </div>
+    <div class="solutions-insight-card-visual">
+        <p
+            class={`text-label-small solutions-insight-image-title solutions-insight-image-title--${imageTitleColor}`}
+        >
+            {imageTitle}
+        </p>
+        <img
+            src={imageSrc}
+            alt={imageAlt}
+            class="solutions-insight-card-chart"
+            loading="lazy"
+            decoding="async"
+        />
+    </div>
+</div>
+
+<style>
+    .solutions-insight-card {
+        background: var(--surface-white);
+        border-radius: var(--layout-card-radius);
+        padding: var(--space-3);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-7);
+        box-shadow: var(--shadow-card);
+        height: 100%;
+    }
+
+    .solutions-insight-card-body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-7);
+        padding: var(--space-5) var(--space-5) 0;
+    }
+
+    /* Tag */
+    .solutions-insight-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-3);
+        background: var(--surface-blue);
+        border-radius: var(--radius-s);
+        padding: var(--space-1) var(--space-3);
+        align-self: flex-start;
+    }
+
+    .solutions-insight-tag-label {
+        color: var(--text-secondary);
+        white-space: nowrap;
+    }
+
+    /* Card text */
+    .solutions-insight-card-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .solutions-insight-card-title {
+        margin: 0;
+        color: var(--text-primary);
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .solutions-insight-card-description {
+        margin: 0;
+        color: var(--text-secondary);
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* Visual expands to fill remaining card height */
+    .solutions-insight-card-visual {
+        background: var(--surface-blue);
+        border-radius: calc(var(--layout-card-radius) - var(--space-1));
+        overflow: hidden;
+        flex: 1;
+        min-height: 16rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--space-5);
+        gap: var(--space-4);
+    }
+
+    .solutions-insight-image-title {
+        margin: 0;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    .solutions-insight-image-title--blue {
+        color: var(--brand-blue-main);
+    }
+    .solutions-insight-image-title--indigo {
+        color: var(--brand-indigo);
+    }
+    .solutions-insight-image-title--purple {
+        color: var(--brand-purple);
+    }
+
+    .solutions-insight-card-chart {
+        width: 100%;
+        flex: 1;
+        min-height: 0;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+    }
+
+    @media (max-width: 767px) {
+        .solutions-insight-card-visual {
+            min-height: 12rem;
+        }
+
+        .solutions-insight-card-title {
+            -webkit-line-clamp: 2;
+        }
+
+        /* icon-l scales to 1rem globally at this breakpoint — keep it at desktop size in the tag pill */
+        .solutions-insight-tag :global(.icon-l) {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+</style>

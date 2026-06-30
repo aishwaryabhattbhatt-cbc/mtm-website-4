@@ -2,10 +2,18 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "Sync Copy",
+			"type": "shell",
+			"command": "npm run sync-copy",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
 			"label": "Start Dev Server",
 			"type": "shell",
 			"command": "npm run dev",
 			"isBackground": true,
+			"dependsOn": ["Sync Copy"],
 			"problemMatcher": []
 		}
 	]

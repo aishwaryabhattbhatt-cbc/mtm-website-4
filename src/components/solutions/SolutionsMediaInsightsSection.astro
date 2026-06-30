@@ -1,0 +1,128 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import SolutionsInsightCard from './SolutionsInsightCard.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    base: string;
+}
+
+const { locale, copy, base } = Astro.props as Props;
+---
+
+<section class="solutions-media-insights-section">
+    <div class="solutions-media-insights-header">
+        <h2>
+            {t(copy, 'problem_title', locale, "The shifts you don't see until it's too late.")}
+        </h2>
+        <p class="text-body-p1 solutions-media-insights-subtitle">
+            {
+                t(
+                    copy,
+                    'problem_description',
+                    locale,
+                    'Attention fragmentation is real – know where your audience is now, where it will be next and who you may not be reaching yet.'
+                )
+            }
+        </p>
+    </div>
+
+    <div class="solutions-media-insights-cards">
+        <SolutionsInsightCard
+            iconSrc={`${base}icons/tool/tool-dat.svg`}
+            eyebrow={t(copy, 'insight_1_eyebrow', locale, 'Platform Diversification')}
+            title={t(
+                copy,
+                'insight_1_title',
+                locale,
+                'Your audience is moving across platforms simultaneously.'
+            )}
+            description={t(
+                copy,
+                'insight_1_description',
+                locale,
+                "Canadians don't live on one platform. They stream on one device, podcast on another, and browse FAST channels in the evening. MTM tracks the full picture across every screen — so you know where attention is actually going."
+            )}
+            imageSrc={`${base}images/solutions/media/insight-1.png`}
+            imageAlt="Audience reach by platform visualization"
+            imageTitle={t(copy, 'insight_1_chart_title', locale, 'Platform reach over time')}
+            imageTitleColor="blue"
+        />
+        <SolutionsInsightCard
+            iconSrc={`${base}icons/tool/tool-dat.svg`}
+            eyebrow={t(copy, 'insight_2_eyebrow', locale, 'Market Intelligence')}
+            title={t(copy, 'insight_2_title', locale, "Stop marketing to the 'average' Canadian.")}
+            description={t(
+                copy,
+                'insight_2_description',
+                locale,
+                'The MTM allows you to see Canada in high definition. From streaming subscriptions to podcast habits to device ownership — not all Canadians have the same media behaviours.'
+            )}
+            imageSrc={`${base}images/solutions/media/insight-2.png`}
+            imageAlt="Market intelligence variable selection visualization"
+            imageTitle={t(copy, 'insight_2_chart_title', locale, 'Audience breakdown by segment')}
+            imageTitleColor="indigo"
+        />
+    </div>
+</section>
+
+<style>
+    .solutions-media-insights-section {
+        width: 100%;
+        background: var(--surface-blue);
+        padding: var(--space-11) var(--content-margin-inline) var(--space-13);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-12);
+    }
+
+    /* Header */
+    .solutions-media-insights-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        text-align: center;
+    }
+
+    .solutions-media-insights-header h2 {
+        margin: 0;
+        color: var(--text-primary);
+        max-width: 44rem;
+    }
+
+    .solutions-media-insights-subtitle {
+        margin: 0;
+        color: var(--text-secondary);
+        max-width: 44rem;
+    }
+
+    /* Cards grid — stretch keeps both cards at equal height */
+    .solutions-media-insights-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--layout-card-gap);
+        align-items: stretch;
+    }
+
+    @media (max-width: 1023px) {
+        .solutions-media-insights-section {
+            padding: var(--space-12) var(--content-margin-inline);
+            gap: var(--space-10);
+        }
+
+        .solutions-media-insights-cards {
+            grid-template-columns: 1fr;
+            row-gap: var(--space-9);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .solutions-media-insights-section {
+            padding: var(--space-10) var(--content-margin-inline);
+            gap: var(--space-8);
+        }
+    }
+</style>

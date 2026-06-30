@@ -1,0 +1,262 @@
+{
+  "hero_eyebrow": {
+    "key": "hero_eyebrow",
+    "en": "",
+    "fr": ""
+  },
+  "hero_title": {
+    "key": "hero_title",
+    "en": "",
+    "fr": ""
+  },
+  "hero_description": {
+    "key": "hero_description",
+    "en": "Your clients expect results and we provide the media and demographic intelligence to help you deliver. The MTM gives you precision targeting and pitch-winning insights.",
+    "fr": ""
+  },
+  "hero_cta": {
+    "key": "hero_cta",
+    "en": "",
+    "fr": ""
+  },
+  "Problem they face": {
+    "key": "Problem they face",
+    "en": "",
+    "fr": ""
+  },
+  "problem_title": {
+    "key": "problem_title",
+    "en": "Why trusted data changes everything",
+    "fr": ""
+  },
+  "problem_description": {
+    "key": "problem_description",
+    "en": "MTM gives your agency the competitive edge, transforming campaigns from speculation into pitches that guarantee client confidence",
+    "fr": ""
+  },
+  "insight_1_eyebrow": {
+    "key": "insight_1_eyebrow",
+    "en": "Trustworthy Data",
+    "fr": ""
+  },
+  "insight_1_title": {
+    "key": "insight_1_title",
+    "en": "With 20 years of data, and more than 300,000 Canadians surveyed to date, the MTM gives you a source you can measure against with confidence.",
+    "fr": ""
+  },
+  "insight_1_description": {
+    "key": "insight_1_description",
+    "en": "Our independent, nationally representative samples allow for detailed comparisons against your internal data and other sources. With the MTM, know where and how Canadians are engaged with an exhaustive array of media platforms and leave nothing up to chance.",
+    "fr": ""
+  },
+  "insight_2_eyebrow": {
+    "key": "insight_2_eyebrow",
+    "en": "",
+    "fr": ""
+  },
+  "insight_2_title": {
+    "key": "insight_2_title",
+    "en": "Stop marketing to the 'average' Canadian",
+    "fr": ""
+  },
+  "insight_2_description": {
+    "key": "insight_2_description",
+    "en": "The MTM allows you to see Canada in high definition. Let your clients benefit from the surgical precision of being able to filter data by specific racialized groups, families, age groups, income brackets and more!",
+    "fr": ""
+  },
+  "MTM Reports as the solution": {
+    "key": "MTM Reports as the solution",
+    "en": "",
+    "fr": ""
+  },
+  "reports_title": {
+    "key": "reports_title",
+    "en": "",
+    "fr": ""
+  },
+  "Reports cards (to be autofilled)": {
+    "key": "Reports cards (to be autofilled)",
+    "en": "",
+    "fr": ""
+  },
+  "How they would actually use it - combination of tools and reports used in different stages": {
+    "key": "How they would actually use it - combination of tools and reports used in different stages",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_title": {
+    "key": "workflow_title",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_description": {
+    "key": "workflow_description",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_step_1_number": {
+    "key": "workflow_step_1_number",
+    "en": "01 Plan",
+    "fr": ""
+  },
+  "workflow_step_1_title": {
+    "key": "workflow_step_1_title",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_step_1_description": {
+    "key": "workflow_step_1_description",
+    "en": "",
+    "fr": ""
+  },
+  "step1_tag1": {
+    "key": "step1_tag1",
+    "en": "",
+    "fr": ""
+  },
+  "step1_tag2": {
+    "key": "step1_tag2",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_step_2_number": {
+    "key": "workflow_step_2_number",
+    "en": "02 Pitch",
+    "fr": ""
+  },
+  "workflow_step_2_title": {
+    "key": "workflow_step_2_title",
+    "en": "Design your next pitch faster and smarter",
+    "fr": ""
+  },
+  "workflow_step_2_description": {
+    "key": "workflow_step_2_description",
+    "en": "Whether you’re planning a high-impact Out-of-Home campaign, a localized digital blitz, or a retail pop-up, we give you the power to defend your pitch every step of the way.",
+    "fr": ""
+  },
+  "step2_tag1": {
+    "key": "step2_tag1",
+    "en": "Census Tool",
+    "fr": ""
+  },
+  "step2_tag2": {
+    "key": "step2_tag2",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_step_3_number": {
+    "key": "workflow_step_3_number",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_step_3_title": {
+    "key": "workflow_step_3_title",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_step_3_description": {
+    "key": "workflow_step_3_description",
+    "en": "",
+    "fr": ""
+  },
+  "step3_tag1": {
+    "key": "step3_tag1",
+    "en": "",
+    "fr": ""
+  },
+  "step3_tag2": {
+    "key": "step3_tag2",
+    "en": "YourData",
+    "fr": ""
+  },
+  "Use case or Case study": {
+    "key": "Use case or Case study",
+    "en": "",
+    "fr": ""
+  },
+  "usecases_title": {
+    "key": "usecases_title",
+    "en": "What you can do with MTM",
+    "fr": ""
+  },
+  "usecases_description": {
+    "key": "usecases_description",
+    "en": "Use the MTM to sharpen your pitches, validate plans and win more business — then apply the same thinking to your clients.",
+    "fr": ""
+  },
+  "usecase_1_brand": {
+    "key": "usecase_1_brand",
+    "en": "",
+    "fr": ""
+  },
+  "usecase_1_description": {
+    "key": "usecase_1_description",
+    "en": "A client is interested in promoting a new line of microwavable meals, with a focus on newcomer populations.",
+    "fr": ""
+  },
+  "usecase_1_variables": {
+    "key": "usecase_1_variables",
+    "en": "Ad exposure, regions, devices used, income",
+    "fr": ""
+  },
+  "usecase_1_cta_title": {
+    "key": "usecase_1_cta_title",
+    "en": "How you can use it",
+    "fr": ""
+  },
+  "usecase_1_cta": {
+    "key": "usecase_1_cta",
+    "en": "Leverage the Data Analysis Tool to find the income levels, devices used to maximize exposure.",
+    "fr": ""
+  },
+  "usecase_2_brand": {
+    "key": "usecase_2_brand",
+    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
+    "fr": ""
+  },
+  "usecase_2_description": {
+    "key": "usecase_2_description",
+    "en": "A luxary whiskey brand is interested in reaching the most affluent households in Canada.",
+    "fr": ""
+  },
+  "usecase_2_variables": {
+    "key": "usecase_2_variables",
+    "en": "FSA, Postal Code, Income",
+    "fr": ""
+  },
+  "usecase_2_cta_title": {
+    "key": "usecase_2_cta_title",
+    "en": "",
+    "fr": ""
+  },
+  "usecase_2_cta": {
+    "key": "usecase_2_cta",
+    "en": "Leverage the Ranker feature in the census tool to find out where the wealthiest Canadians reside and target your campaign effectively.",
+    "fr": ""
+  },
+  "Testimonials": {
+    "key": "Testimonials",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_title": {
+    "key": "testimonial_title",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_logo": {
+    "key": "testimonial_logo",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_quote": {
+    "key": "testimonial_quote",
+    "en": "??",
+    "fr": ""
+  },
+  "testimonial_attribution": {
+    "key": "testimonial_attribution",
+    "en": "",
+    "fr": ""
+  }
+}

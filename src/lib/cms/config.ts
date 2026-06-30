@@ -9,11 +9,11 @@ const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
     'analytic-tools': '1734378829',
     'census-tool': '606257462',
     insights: '1724411017',
-    media: '0',
-    advertising: '0',
-    industry: '0',
-    education: '0',
-    'gov-ngos': '0',
+    media: '1361843616',
+    advertising: '769668628',
+    industry: '2038951837',
+    education: '682166038',
+    'gov-ngos': '611009991',
 };
 
 const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
@@ -31,11 +31,15 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=606257462&single=true&output=csv',
     insights:
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=1724411017&single=true&output=csv',
-    media: '',
-    advertising: '',
-    industry: '',
-    education: '',
-    'gov-ngos': '',
+    media: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=1361843616&single=true&output=csv',
+    advertising:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=769668628&single=true&output=csv',
+    industry:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=2038951837&single=true&output=csv',
+    education:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=682166038&single=true&output=csv',
+    'gov-ngos':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=611009991&single=true&output=csv',
 };
 
 const DEFAULT_REFRESH_MS = 30000;
