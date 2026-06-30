@@ -1,0 +1,171 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface LogoItem {
+    src: string;
+    alt: string;
+}
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const logos: LogoItem[] = [
+    { src: `${base}images/home/solutions/logos/media/quebecor.svg`, alt: 'Quebecor' },
+    { src: `${base}images/home/solutions/logos/media/ami-tv.svg`, alt: 'Accessible Media Inc.' },
+    { src: `${base}images/home/solutions/logos/media/videotron.svg`, alt: 'Videotron' },
+    { src: `${base}images/home/solutions/logos/media/rogers.svg`, alt: 'Rogers' },
+    { src: `${base}images/home/solutions/logos/media/bell.svg`, alt: 'Bell' },
+    { src: `${base}images/home/solutions/logos/media/telus.svg`, alt: 'Telus' },
+    { src: `${base}images/home/solutions/logos/media/tva.svg`, alt: 'TVA' },
+    { src: `${base}images/home/solutions/logos/media/tvo.svg`, alt: 'TVO' },
+    { src: `${base}images/home/solutions/logos/media/tv5.svg`, alt: 'TV5' },
+    { src: `${base}images/home/solutions/logos/media/tele-quebec.svg`, alt: 'Télé-Québec' },
+    { src: `${base}images/home/solutions/logos/media/tfo.svg`, alt: 'TFO' },
+    { src: `${base}images/home/solutions/logos/media/abc.svg`, alt: 'ABC' },
+    { src: `${base}images/home/solutions/logos/media/bbc.svg`, alt: 'BBC' },
+    {
+        src: `${base}images/home/solutions/logos/media/wildbrain-television.svg`,
+        alt: 'WildBrain Television',
+    },
+    { src: `${base}images/home/solutions/logos/media/aqpm.svg`, alt: 'AQPM' },
+    { src: `${base}images/home/solutions/logos/media/nexxen.svg`, alt: 'Nexxen' },
+    { src: `${base}images/home/solutions/logos/media/pelmorex.svg`, alt: 'Pelmorex' },
+    { src: `${base}images/home/solutions/logos/technology/samsung.svg`, alt: 'Samsung' },
+];
+---
+
+<section
+    class="solutions-media-trusted-by-section"
+    aria-label={t(copy, 'trusted_by_label', locale, 'Trusted by')}
+>
+    <p class="text-label-regular solutions-media-trusted-by-label" data-copy-key="trusted_by_label">
+        {t(copy, 'trusted_by_label', locale, 'Trusted by')}
+    </p>
+
+    <div class="solutions-media-trusted-by-strip">
+        <div class="solutions-media-trusted-by-track">
+            <div class="solutions-media-trusted-by-set">
+                {
+                    logos.map((logo) => (
+                        <div class="solutions-media-trusted-by-logo-item">
+                            <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="solutions-media-trusted-by-set" aria-hidden="true">
+                {
+                    logos.map((logo) => (
+                        <div class="solutions-media-trusted-by-logo-item" aria-hidden="true">
+                            <img src={logo.src} alt="" loading="lazy" decoding="async" />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .solutions-media-trusted-by-section {
+        width: 100%;
+        background: var(--surface-blue);
+        padding: 0 var(--content-margin-inline) var(--space-8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-5);
+    }
+
+    .solutions-media-trusted-by-label {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    .solutions-media-trusted-by-strip {
+        width: 100%;
+        background: color-mix(in srgb, var(--surface-white) 60%, transparent);
+        border-radius: var(--layout-card-radius);
+        padding: var(--space-6);
+        min-height: 12rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .solutions-media-trusted-by-track {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        animation: trusted-by-scroll 70s linear infinite;
+    }
+
+    .solutions-media-trusted-by-set {
+        display: flex;
+        align-items: center;
+        gap: var(--space-6);
+        padding-right: var(--space-6);
+    }
+
+    .solutions-media-trusted-by-logo-item {
+        width: 10rem;
+        min-height: var(--space-10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .solutions-media-trusted-by-logo-item img {
+        width: auto;
+        max-width: 100%;
+        max-height: var(--space-7);
+        display: block;
+        object-fit: contain;
+    }
+
+    .solutions-media-trusted-by-strip:hover .solutions-media-trusted-by-track {
+        animation-play-state: paused;
+    }
+
+    @keyframes trusted-by-scroll {
+        0% {
+            transform: translateX(-25%);
+        }
+
+        100% {
+            transform: translateX(-75%);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .solutions-media-trusted-by-section {
+            gap: var(--space-4);
+            padding-bottom: var(--space-6);
+        }
+
+        .solutions-media-trusted-by-strip {
+            padding: var(--space-5);
+        }
+
+        .solutions-media-trusted-by-track {
+            animation-duration: 55s;
+        }
+
+        .solutions-media-trusted-by-set {
+            gap: var(--space-5);
+            padding-right: var(--space-5);
+        }
+
+        .solutions-media-trusted-by-logo-item {
+            width: 8rem;
+        }
+    }
+</style>

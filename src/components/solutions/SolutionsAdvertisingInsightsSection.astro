@@ -1,0 +1,128 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import SolutionsInsightCard from './SolutionsInsightCard.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    base: string;
+}
+
+const { locale, copy, base } = Astro.props as Props;
+---
+
+<section class="solutions-advertising-insights-section">
+    <div class="solutions-advertising-insights-header">
+        <h2>
+            {t(copy, 'problem_title', locale, 'Why trusted data changes everything')}
+        </h2>
+        <p class="text-body-p1 solutions-advertising-insights-subtitle">
+            {
+                t(
+                    copy,
+                    'problem_description',
+                    locale,
+                    'MTM gives your agency the competitive edge, transforming campaigns from speculation into pitches that guarantee client confidence.'
+                )
+            }
+        </p>
+    </div>
+
+    <div class="solutions-advertising-insights-cards">
+        <SolutionsInsightCard
+            iconSrc={`${base}icons/tool/tool-dat.svg`}
+            eyebrow={t(copy, 'insight_1_eyebrow', locale, 'Trustworthy Data')}
+            title={t(
+                copy,
+                'insight_1_title',
+                locale,
+                'With 20 years of data, and more than 300,000 Canadians surveyed to date, the MTM gives you a source you can measure against with confidence.'
+            )}
+            description={t(
+                copy,
+                'insight_1_description',
+                locale,
+                'Our independent, nationally representative samples allow for detailed comparisons against your internal data and other sources. With the MTM, know where and how Canadians are engaged with an exhaustive array of media platforms and leave nothing up to chance.'
+            )}
+            imageSrc={`${base}images/solutions/advertising/insight-1.png`}
+            imageAlt="Trustworthy data visualization"
+            imageTitle={t(copy, 'insight_1_chart_title', locale, '300,000+ Canadians surveyed')}
+            imageTitleColor="blue"
+        />
+        <SolutionsInsightCard
+            iconSrc={`${base}icons/tool/tool-dat.svg`}
+            eyebrow={t(copy, 'insight_2_eyebrow', locale, 'Precision Targeting')}
+            title={t(copy, 'insight_2_title', locale, "Stop marketing to the 'average' Canadian.")}
+            description={t(
+                copy,
+                'insight_2_description',
+                locale,
+                'The MTM allows you to see Canada in high definition. Let your clients benefit from the surgical precision of being able to filter data by specific racialized groups, families, age groups, income brackets and more!'
+            )}
+            imageSrc={`${base}images/solutions/advertising/insight-2.png`}
+            imageAlt="Precision audience targeting visualization"
+            imageTitle={t(copy, 'insight_2_chart_title', locale, 'Audience breakdown by segment')}
+            imageTitleColor="purple"
+        />
+    </div>
+</section>
+
+<style>
+    .solutions-advertising-insights-section {
+        width: 100%;
+        background: var(--surface-blue);
+        padding: var(--space-13) var(--content-margin-inline);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-12);
+    }
+
+    /* Header */
+    .solutions-advertising-insights-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        text-align: center;
+    }
+
+    .solutions-advertising-insights-header h2 {
+        margin: 0;
+        color: var(--text-primary);
+        max-width: 44rem;
+    }
+
+    .solutions-advertising-insights-subtitle {
+        margin: 0;
+        color: var(--text-secondary);
+        max-width: 44rem;
+    }
+
+    /* Cards grid — stretch keeps both cards at equal height */
+    .solutions-advertising-insights-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--layout-card-gap);
+        align-items: stretch;
+    }
+
+    @media (max-width: 1023px) {
+        .solutions-advertising-insights-section {
+            padding: var(--space-12) var(--content-margin-inline);
+            gap: var(--space-10);
+        }
+
+        .solutions-advertising-insights-cards {
+            grid-template-columns: 1fr;
+            row-gap: var(--space-9);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .solutions-advertising-insights-section {
+            padding: var(--space-10) var(--content-margin-inline);
+            gap: var(--space-8);
+        }
+    }
+</style>

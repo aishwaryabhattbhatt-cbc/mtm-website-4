@@ -1,0 +1,313 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+import { icons } from '../../lib/icons/registry';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="solutions-tools-section">
+    <h2 class="solutions-tools-section__headline">
+        {t(copy, 'tools_title', locale, 'Tools that empower you to track those shifts')}
+    </h2>
+
+    <div class="solutions-tools-cards">
+        <article class="solutions-tools-card">
+            <div class="solutions-tools-card__content">
+                <div class="solutions-tools-card__text">
+                    <h3>{t(copy, 'tools_analytic_eyebrow', locale, 'Analytic Tools')}</h3>
+                    <p class="text-body-p2 solutions-tools-card__description">
+                        {
+                            t(
+                                copy,
+                                'tools_analytic_description',
+                                locale,
+                                "Access media usage and behaviour data across MTM's three datasets — MTM 18+, Juniors, and Newcomers. Query platform adoption, content consumption, device ownership, and service usage across hundreds of variables and filters to find exactly what your research needs."
+                            )
+                        }
+                    </p>
+                </div>
+                <div class="solutions-tools-card__features">
+                    <div class="solutions-tools-card__feature">
+                        <img
+                            class="icon-2xl"
+                            src={`${base}${icons.tool.dat}`}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <span class="text-body-p2-bold"
+                            >{t(copy, 'tools_analytic_feature_1', locale, 'Data Analysis')}</span
+                        >
+                    </div>
+                    <div class="solutions-tools-card__feature">
+                        <img
+                            class="icon-2xl"
+                            src={`${base}${icons.tool.trending}`}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <span class="text-body-p2-bold"
+                            >{t(copy, 'tools_analytic_feature_2', locale, 'Trending')}</span
+                        >
+                    </div>
+                    <div class="solutions-tools-card__feature">
+                        <img
+                            class="icon-2xl"
+                            src={`${base}${icons.tool.forecast}`}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <span class="text-body-p2-bold"
+                            >{t(copy, 'tools_analytic_feature_3', locale, 'Forecasting')}</span
+                        >
+                    </div>
+                </div>
+                <Button variant="tertiary" size="md" href={`${base}${locale}/analytic-tools/`}>
+                    {t(copy, 'tools_learn_more', locale, 'Learn more')}
+                </Button>
+            </div>
+            <div class="solutions-tools-card__preview">
+                <img
+                    src={`${base}images/tools/tool-analytic-hero.png`}
+                    alt=""
+                    class="solutions-tools-card__preview-img"
+                    loading="lazy"
+                    decoding="async"
+                />
+            </div>
+        </article>
+
+        <article class="solutions-tools-card">
+            <div class="solutions-tools-card__preview">
+                <img
+                    src={`${base}images/tools/census/census-tool-hero.png`}
+                    alt=""
+                    class="solutions-tools-card__preview-img"
+                    loading="lazy"
+                    decoding="async"
+                />
+            </div>
+            <div class="solutions-tools-card__content solutions-tools-card__content--flipped">
+                <div class="solutions-tools-card__text">
+                    <h3>{t(copy, 'tools_census_eyebrow', locale, 'Census Tools')}</h3>
+                    <p class="text-body-p2 solutions-tools-card__description">
+                        {
+                            t(
+                                copy,
+                                'tools_census_description',
+                                locale,
+                                'Map audience distribution at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — sourced directly from Statistics Canada.'
+                            )
+                        }
+                    </p>
+                </div>
+                <div class="solutions-tools-card__features">
+                    <div class="solutions-tools-card__feature">
+                        <img
+                            class="icon-2xl"
+                            src={`${base}${icons['census-tool'].snapshot}`}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <span class="text-body-p2-bold"
+                            >{t(copy, 'tools_census_feature_1', locale, 'Snapshot')}</span
+                        >
+                    </div>
+                    <div class="solutions-tools-card__feature">
+                        <img
+                            class="icon-2xl"
+                            src={`${base}${icons['census-tool'].demographicExplorer}`}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <span class="text-body-p2-bold"
+                            >{t(copy, 'tools_census_feature_2', locale, 'Explorer')}</span
+                        >
+                    </div>
+                    <div class="solutions-tools-card__feature">
+                        <img
+                            class="icon-2xl"
+                            src={`${base}${icons['census-tool'].compare}`}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <span class="text-body-p2-bold"
+                            >{t(copy, 'tools_census_feature_3', locale, 'Compare')}</span
+                        >
+                    </div>
+                    <div class="solutions-tools-card__feature solutions-tools-card__feature--more">
+                        <span class="text-body-p2-bold"
+                            >{t(copy, 'tools_census_more', locale, '+3 more')}</span
+                        >
+                    </div>
+                </div>
+                <Button variant="tertiary" size="md" href={`${base}${locale}/census/`}>
+                    {t(copy, 'tools_learn_more', locale, 'Learn more')}
+                </Button>
+            </div>
+        </article>
+    </div>
+</section>
+
+<style>
+    .solutions-tools-section {
+        width: 100%;
+        background: var(--surface-white);
+        padding: var(--space-13) var(--content-margin-inline) var(--space-12);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    /* Headline */
+    .solutions-tools-section__headline {
+        margin: 0;
+        max-width: 52rem;
+    }
+
+    /* Cards grid */
+    .solutions-tools-cards {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-card-gap);
+    }
+
+    /* Card */
+    .solutions-tools-card {
+        background: var(--surface-white);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-card);
+        padding: var(--space-3);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-8);
+        align-items: stretch;
+    }
+
+    /* Left: content column */
+    .solutions-tools-card__content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        padding: var(--space-6) 0 var(--space-6) var(--space-6);
+    }
+
+    .solutions-tools-card__text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .solutions-tools-card__content--flipped {
+        padding: var(--space-6) var(--space-6) var(--space-6) 0;
+    }
+
+    .solutions-tools-card__text h3 {
+        margin: 0;
+    }
+
+    .solutions-tools-card__content :global(.btn) {
+        align-self: flex-start;
+    }
+
+    /* Description */
+    .solutions-tools-card__description {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    /* Features row */
+    .solutions-tools-card__features {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+        margin-top: auto;
+    }
+
+    .solutions-tools-card__feature {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        flex-shrink: 0;
+    }
+
+    .solutions-tools-card__feature span {
+        color: var(--text-primary);
+        white-space: nowrap;
+    }
+
+    /* Right: preview placeholder */
+    .solutions-tools-card__preview {
+        background: var(--surface-blue);
+        border-radius: var(--radius-s);
+        min-height: 24rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-6);
+        overflow: hidden;
+    }
+
+    .solutions-tools-card__preview-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    /* Tablet */
+    @media (max-width: 1023px) {
+        .solutions-tools-section {
+            padding-top: var(--space-11);
+            padding-bottom: var(--space-11);
+        }
+
+        .solutions-tools-card {
+            grid-template-columns: 1fr;
+            gap: var(--space-6);
+        }
+
+        .solutions-tools-card__preview {
+            min-height: 16rem;
+            order: 0;
+        }
+
+        .solutions-tools-card__content {
+            padding: var(--space-4);
+            order: 1;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .solutions-tools-section {
+            padding-top: var(--space-10);
+            padding-bottom: var(--space-10);
+            gap: var(--space-7);
+        }
+
+        .solutions-tools-card__preview {
+            min-height: 12rem;
+        }
+    }
+</style>

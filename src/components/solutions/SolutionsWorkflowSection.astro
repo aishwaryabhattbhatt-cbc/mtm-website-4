@@ -1,0 +1,179 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Eyebrow from '../shared/Eyebrow.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+---
+
+<section class="solutions-workflow-section">
+    <div class="solutions-workflow-header">
+        <h2>{t(copy, 'workflow_title', locale, 'How MTM fits the way you already work')}</h2>
+        <p class="text-body-p1 solutions-workflow-description">
+            {
+                t(
+                    copy,
+                    'workflow_description',
+                    locale,
+                    "You don't open a research tool and start clicking. You have a business question. MTM is built to answer it, at every stage of your workflow."
+                )
+            }
+        </p>
+    </div>
+
+    <div class="solutions-workflow-cards">
+        <div class="solutions-workflow-card solutions-workflow-card--blue">
+            <Eyebrow>{t(copy, 'workflow_step_1_number', locale, '01 Query')}</Eyebrow>
+            <div class="solutions-workflow-card-content">
+                <p class="text-body-p1 solutions-workflow-step-title">
+                    {t(copy, 'workflow_step_1_title', locale, 'Select your variables')}
+                </p>
+                <p class="text-body-p2 solutions-workflow-step-desc">
+                    {
+                        t(
+                            copy,
+                            'workflow_step_1_description',
+                            locale,
+                            'Start with a question — platform reach, time spent, device ownership, service provider. Pull exactly the variables you need and the MTM lets you build your view in minutes.'
+                        )
+                    }
+                </p>
+            </div>
+        </div>
+
+        <div class="solutions-workflow-card solutions-workflow-card--teal">
+            <Eyebrow>{t(copy, 'workflow_step_2_number', locale, '02 Customize')}</Eyebrow>
+            <div class="solutions-workflow-card-content">
+                <p class="text-body-p1 solutions-workflow-step-title">
+                    {t(copy, 'workflow_step_2_title', locale, 'Build your cross-tab or chart')}
+                </p>
+                <p class="text-body-p2 solutions-workflow-step-desc">
+                    {
+                        t(
+                            copy,
+                            'workflow_step_2_description',
+                            locale,
+                            'Drag variables into rows and columns. Filter by region, language, age or strategic target group. Every output is yours to configure — no fixed tables, no waiting.'
+                        )
+                    }
+                </p>
+            </div>
+        </div>
+
+        <div class="solutions-workflow-card solutions-workflow-card--purple">
+            <Eyebrow>{t(copy, 'workflow_step_3_number', locale, '03 Export')}</Eyebrow>
+            <div class="solutions-workflow-card-content">
+                <p class="text-body-p1 solutions-workflow-step-title">
+                    {t(copy, 'workflow_step_3_title', locale, 'Export for your client')}
+                </p>
+                <p class="text-body-p2 solutions-workflow-step-desc">
+                    {
+                        t(
+                            copy,
+                            'workflow_step_3_description',
+                            locale,
+                            'Download your analysis in presentation-ready formats. Drop it straight into a deck, a brief, or a regulatory submission — formatted and ready to go.'
+                        )
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .solutions-workflow-section {
+        width: 100%;
+        background: var(--surface-white);
+        padding: var(--space-12) var(--content-margin-inline);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .solutions-workflow-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        max-width: 54rem;
+    }
+
+    .solutions-workflow-header h2 {
+        margin: 0;
+    }
+
+    .solutions-workflow-description {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    .solutions-workflow-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--layout-card-gap);
+    }
+
+    .solutions-workflow-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: var(--space-10);
+        padding: var(--space-6);
+        border-radius: var(--radius-m);
+        min-height: 18rem;
+    }
+
+    .solutions-workflow-card--blue {
+        background: #e8f3fd;
+    }
+    .solutions-workflow-card--teal {
+        background: #e8f7f5;
+    }
+    .solutions-workflow-card--purple {
+        background: #f7f4ff;
+    }
+
+    .solutions-workflow-card-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .solutions-workflow-step-title {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .solutions-workflow-step-desc {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    @media (max-width: 1023px) {
+        .solutions-workflow-section {
+            padding-top: var(--space-11);
+            padding-bottom: var(--space-11);
+        }
+
+        .solutions-workflow-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .solutions-workflow-card {
+            min-height: auto;
+            gap: var(--space-8);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .solutions-workflow-section {
+            padding-top: var(--space-10);
+            padding-bottom: var(--space-10);
+        }
+    }
+</style>

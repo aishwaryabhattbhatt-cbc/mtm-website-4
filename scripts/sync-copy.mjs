@@ -116,6 +116,15 @@ const DEFAULT_TAB_MAP = {
   insights: '1724411017',
 };
 
+// Solutions pages live on a separate spreadsheet — always use published CSV URLs directly.
+const SOLUTIONS_PUB_URL_MAP = {
+  media: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=1361843616&single=true&output=csv',
+  advertising: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=769668628&single=true&output=csv',
+  industry: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=2038951837&single=true&output=csv',
+  education: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=682166038&single=true&output=csv',
+  'gov-ngos': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=611009991&single=true&output=csv',
+};
+
 // ── Build the URL map from available env config ───────────────────────────────
 
 function buildCsvUrlMap(env) {
@@ -134,18 +143,22 @@ function buildCsvUrlMap(env) {
         urlMap[pageId] = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`;
       }
     }
-    return { urlMap, mode: 'export' };
+    // Solutions are on a separate spreadsheet — always merge pub URLs for them
+    return { urlMap: { ...urlMap, ...SOLUTIONS_PUB_URL_MAP }, mode: 'export' };
   }
 
   // Fall back to pub URLs — may lag 1-5 minutes after sheet edits due to Google CDN caching.
   // Add GOOGLE_SHEET_ID to .env to fix this permanently (see comment at top of file).
   const rawMap = env.GOOGLE_SHEET_CSV_URL_MAP_JSON ?? process.env.GOOGLE_SHEET_CSV_URL_MAP_JSON;
-  if (!rawMap) return { urlMap: null, mode: 'pub' };
+  if (!rawMap) {
+    // No main sheet configured — at minimum sync solutions pages
+    return { urlMap: { ...SOLUTIONS_PUB_URL_MAP }, mode: 'pub' };
+  }
 
   try {
-    return { urlMap: JSON.parse(rawMap), mode: 'pub' };
+    return { urlMap: { ...JSON.parse(rawMap), ...SOLUTIONS_PUB_URL_MAP }, mode: 'pub' };
   } catch {
-    return { urlMap: null, mode: 'pub' };
+    return { urlMap: { ...SOLUTIONS_PUB_URL_MAP }, mode: 'pub' };
   }
 }
 
@@ -155,7 +168,7 @@ async function main() {
   const env = loadEnv();
   const { urlMap: csvUrlMap, mode } = buildCsvUrlMap(env);
 
-  if (!csvUrlMap) {
+  if (!csvUrlMap || Object.keys(csvUrlMap).length === 0) {
     console.error('❌  No sheet config found. Set GOOGLE_SHEET_ID or GOOGLE_SHEET_CSV_URL_MAP_JSON in .env');
     process.exit(1);
   }

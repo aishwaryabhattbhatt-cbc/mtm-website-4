@@ -1,0 +1,352 @@
+{
+  "hero_eyebrow": {
+    "key": "hero_eyebrow",
+    "en": "",
+    "fr": ""
+  },
+  "hero_title": {
+    "key": "hero_title",
+    "en": "Fuel Academic Excellence with Real-World Media Intelligence",
+    "fr": ""
+  },
+  "hero_description": {
+    "key": "hero_description",
+    "en": "",
+    "fr": ""
+  },
+  "Topics and variables gallery using research questions - Emphasize discovery and research": {
+    "key": "Topics and variables gallery using research questions - Emphasize discovery and research",
+    "en": "",
+    "fr": ""
+  },
+  "dataset_title": {
+    "key": "dataset_title",
+    "en": "",
+    "fr": ""
+  },
+  "dataset_description": {
+    "key": "dataset_description",
+    "en": "",
+    "fr": ""
+  },
+  "topic_1_eyebrow": {
+    "key": "topic_1_eyebrow",
+    "en": "",
+    "fr": ""
+  },
+  "topic_1_example_question": {
+    "key": "topic_1_example_question",
+    "en": "",
+    "fr": ""
+  },
+  "topic_1_variables": {
+    "key": "topic_1_variables",
+    "en": "",
+    "fr": ""
+  },
+  "topic_2_eyebrow": {
+    "key": "topic_2_eyebrow",
+    "en": "",
+    "fr": ""
+  },
+  "topic_2_example_question": {
+    "key": "topic_2_example_question",
+    "en": "",
+    "fr": ""
+  },
+  "topic_2_variables": {
+    "key": "topic_2_variables",
+    "en": "",
+    "fr": ""
+  },
+  "topic_3_eyebrow": {
+    "key": "topic_3_eyebrow",
+    "en": "",
+    "fr": ""
+  },
+  "topic_3_example_question": {
+    "key": "topic_3_example_question",
+    "en": "",
+    "fr": ""
+  },
+  "topic_3_variables": {
+    "key": "topic_3_variables",
+    "en": "",
+    "fr": ""
+  },
+  "topic_4_eyebrow": {
+    "key": "topic_4_eyebrow",
+    "en": "",
+    "fr": ""
+  },
+  "topic_4_example_question": {
+    "key": "topic_4_example_question",
+    "en": "",
+    "fr": ""
+  },
+  "topic_4_variables": {
+    "key": "topic_4_variables",
+    "en": "",
+    "fr": ""
+  },
+  "topic_5_eyebrow": {
+    "key": "topic_5_eyebrow",
+    "en": "",
+    "fr": ""
+  },
+  "topic_5_example_question": {
+    "key": "topic_5_example_question",
+    "en": "",
+    "fr": ""
+  },
+  "topic_5_variables": {
+    "key": "topic_5_variables",
+    "en": "",
+    "fr": ""
+  },
+  "topic_6_eyebrow": {
+    "key": "topic_6_eyebrow",
+    "en": "",
+    "fr": ""
+  },
+  "topic_6_example_question": {
+    "key": "topic_6_example_question",
+    "en": "",
+    "fr": ""
+  },
+  "topic_6_variables": {
+    "key": "topic_6_variables",
+    "en": "",
+    "fr": ""
+  },
+  "dataset_footer": {
+    "key": "dataset_footer",
+    "en": "",
+    "fr": ""
+  },
+  "MTM Tools as the solution for answering research questions (Second highest tool users)": {
+    "key": "MTM Tools as the solution for answering research questions (Second highest tool users)",
+    "en": "(note : if census tool is also used by universities, change this section to analytic and census tools)",
+    "fr": ""
+  },
+  "tools_title": {
+    "key": "tools_title",
+    "en": "",
+    "fr": ""
+  },
+  "tool_1_title": {
+    "key": "tool_1_title",
+    "en": "",
+    "fr": ""
+  },
+  "tool_1_features_1": {
+    "key": "tool_1_features_1",
+    "en": "",
+    "fr": ""
+  },
+  "tool_1_features_2": {
+    "key": "tool_1_features_2",
+    "en": "",
+    "fr": ""
+  },
+  "tool_1_features_3": {
+    "key": "tool_1_features_3",
+    "en": "",
+    "fr": ""
+  },
+  "tool_2_title": {
+    "key": "tool_2_title",
+    "en": "",
+    "fr": ""
+  },
+  "tool_2_features_1": {
+    "key": "tool_2_features_1",
+    "en": "",
+    "fr": ""
+  },
+  "tool_2_features_2": {
+    "key": "tool_2_features_2",
+    "en": "",
+    "fr": ""
+  },
+  "tool_2_features_3": {
+    "key": "tool_2_features_3",
+    "en": "",
+    "fr": ""
+  },
+  "tool_3_title": {
+    "key": "tool_3_title",
+    "en": "",
+    "fr": ""
+  },
+  "tool_3_features_1": {
+    "key": "tool_3_features_1",
+    "en": "",
+    "fr": ""
+  },
+  "tool_3_features_2": {
+    "key": "tool_3_features_2",
+    "en": "Export data for ease of use no matter what your needs",
+    "fr": ""
+  },
+  "Stats about how many research studies have cited mtm (also works to add people imagery)": {
+    "key": "Stats about how many research studies have cited mtm (also works to add people imagery)",
+    "en": "",
+    "fr": ""
+  },
+  "stat_value": {
+    "key": "stat_value",
+    "en": "Unlimited seats",
+    "fr": ""
+  },
+  "stat_description": {
+    "key": "stat_description",
+    "en": "No extra charge for faculty, students and staff",
+    "fr": ""
+  },
+  "How MTM fits in their research process": {
+    "key": "How MTM fits in their research process",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_title": {
+    "key": "workflow_title",
+    "en": "Gold standard research in media and technology for all of your research needs",
+    "fr": ""
+  },
+  "workflow_description": {
+    "key": "workflow_description",
+    "en": "We provide universities and colleges with the insights needed to drive innovation and learning across every specialization and at every stage of their academic journey.",
+    "fr": ""
+  },
+  "workflow_step_1_number": {
+    "key": "workflow_step_1_number",
+    "en": "01 For Students",
+    "fr": ""
+  },
+  "workflow_step_1_title": {
+    "key": "workflow_step_1_title",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_step_1_description": {
+    "key": "workflow_step_1_description",
+    "en": "Ground assignments in the most up-to-date research and build market-ready skills by navigating the same metrics and trends used by Canada’s top media companies, ad agencies, media associations and governmental institutions.",
+    "fr": ""
+  },
+  "workflow_step_2_number": {
+    "key": "workflow_step_2_number",
+    "en": "02 For Faculty",
+    "fr": ""
+  },
+  "workflow_step_2_title": {
+    "key": "workflow_step_2_title",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_step_2_description": {
+    "key": "workflow_step_2_description",
+    "en": "Enhance your curriculum with authentic, up-to-date reports and datasets that turn abstract concepts into tangible lessons.",
+    "fr": ""
+  },
+  "workflow_step_3_number": {
+    "key": "workflow_step_3_number",
+    "en": "03 For Research Projects",
+    "fr": ""
+  },
+  "workflow_step_3_title": {
+    "key": "workflow_step_3_title",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_step_3_description": {
+    "key": "workflow_step_3_description",
+    "en": "Support your research in the country's most robust longitudinal media studies, ensuring your findings are both current and credible.",
+    "fr": ""
+  },
+  "usecases_title": {
+    "key": "usecases_title",
+    "en": "",
+    "fr": ""
+  },
+  "usecases_description": {
+    "key": "usecases_description",
+    "en": "Learn how the MTM offers essential content and tools for the professors and students alike",
+    "fr": ""
+  },
+  "usecase_1_brand": {
+    "key": "usecase_1_brand",
+    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
+    "fr": ""
+  },
+  "usecase_1_description": {
+    "key": "usecase_1_description",
+    "en": "A professor is looking for a historical and current data on the state of broadcast TV when developing a new curriculum.",
+    "fr": ""
+  },
+  "usecase_1_variables": {
+    "key": "usecase_1_variables",
+    "en": "TV viewership, TV hours, region, age",
+    "fr": ""
+  },
+  "usecase_1_cta_title": {
+    "key": "usecase_1_cta_title",
+    "en": "How you can use it",
+    "fr": ""
+  },
+  "usecase_1_cta": {
+    "key": "usecase_1_cta",
+    "en": "Examine usage of linear TV and channels across a wide range of demographics via the Data Analysis Tool, or read the TV distribution report for a broader overview.",
+    "fr": ""
+  },
+  "usecase_2_brand": {
+    "key": "usecase_2_brand",
+    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
+    "fr": ""
+  },
+  "usecase_2_description": {
+    "key": "usecase_2_description",
+    "en": "",
+    "fr": ""
+  },
+  "usecase_2_variables": {
+    "key": "usecase_2_variables",
+    "en": "",
+    "fr": ""
+  },
+  "usecase_2_cta_title": {
+    "key": "usecase_2_cta_title",
+    "en": "How you can use it",
+    "fr": ""
+  },
+  "usecase_2_cta": {
+    "key": "usecase_2_cta",
+    "en": "",
+    "fr": ""
+  },
+  "Testimonials": {
+    "key": "Testimonials",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_title": {
+    "key": "testimonial_title",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_logo": {
+    "key": "testimonial_logo",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_quote": {
+    "key": "testimonial_quote",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_attribution": {
+    "key": "testimonial_attribution",
+    "en": "",
+    "fr": ""
+  }
+}

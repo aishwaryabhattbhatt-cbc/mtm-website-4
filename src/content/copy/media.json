@@ -1,0 +1,267 @@
+{
+  "hero_eyebrow": {
+    "key": "hero_eyebrow",
+    "en": "Media",
+    "fr": ""
+  },
+  "hero_title": {
+    "key": "hero_title",
+    "en": "Know your audience",
+    "fr": ""
+  },
+  "hero_description": {
+    "key": "hero_description",
+    "en": "In a rapidly evolving media landscape, guesswork is a liability. The MTM is an investment in unparalleled evidence-based market intelligence that will sharpen your strategy, drive audience engagement and secure your competitive edge.",
+    "fr": ""
+  },
+  "hero_cta": {
+    "key": "hero_cta",
+    "en": "",
+    "fr": ""
+  },
+  "Problem they face": {
+    "key": "Problem they face",
+    "en": "",
+    "fr": ""
+  },
+  "problem_title": {
+    "key": "problem_title",
+    "en": "The shifts you don't see until it's too late",
+    "fr": ""
+  },
+  "problem_description": {
+    "key": "problem_description",
+    "en": "Attention fragmentation is real - know where your audience is now, where it will be next and who you may not be reaching yet.",
+    "fr": ""
+  },
+  "insight_1_eyebrow": {
+    "key": "insight_1_eyebrow",
+    "en": "Platform Diversification",
+    "fr": ""
+  },
+  "insight_1_title": {
+    "key": "insight_1_title",
+    "en": "Your audience is moving across platforms and services to get what they need, when the want it.",
+    "fr": ""
+  },
+  "insight_1_description": {
+    "key": "insight_1_description",
+    "en": "Canadians no longer live on just one platform. They stream on one service, scroll on another, and stay connect to the world around them on a third. MTM tracks the full media diet across every screen and with every platform and service, so you can capture real-world insights for any target audience",
+    "fr": ""
+  },
+  "insight_2_eyebrow": {
+    "key": "insight_2_eyebrow",
+    "en": "Market Intelligence",
+    "fr": ""
+  },
+  "insight_2_title": {
+    "key": "insight_2_title",
+    "en": "Stop marketing to the 'average' Canadian",
+    "fr": ""
+  },
+  "insight_2_description": {
+    "key": "insight_2_description",
+    "en": "The MTM allows you to see Canada in high definition. From streaming subscriptions to podcast habits to device ownership - not all Canadians have the same media behaviours. Filter data by specific racialized groups, families, age groups, income brackets and more so that you can connect when and how your audience needs you.",
+    "fr": ""
+  },
+  "value_prop_1_title": {
+    "key": "value_prop_1_title",
+    "en": "",
+    "fr": ""
+  },
+  "value_prop_2_title": {
+    "key": "value_prop_2_title",
+    "en": "",
+    "fr": ""
+  },
+  "value_prop_3_title": {
+    "key": "value_prop_3_title",
+    "en": "",
+    "fr": ""
+  },
+  "value_prop_4_title": {
+    "key": "value_prop_4_title",
+    "en": "",
+    "fr": ""
+  },
+  "MTM Tools as the solution": {
+    "key": "MTM Tools as the solution",
+    "en": "",
+    "fr": ""
+  },
+  "tools_title": {
+    "key": "tools_title",
+    "en": "Tools that empower you to track the shifts",
+    "fr": ""
+  },
+  "tools_analytic_eyebrow": {
+    "key": "tools_analytic_eyebrow",
+    "en": "Analytic Tools",
+    "fr": ""
+  },
+  "tools_analytic_description": {
+    "key": "tools_analytic_description",
+    "en": "Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.",
+    "fr": ""
+  },
+  "tools_census_eyebrow": {
+    "key": "tools_census_eyebrow",
+    "en": "Census Tools",
+    "fr": ""
+  },
+  "tools_census_description": {
+    "key": "tools_census_description",
+    "en": "Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.",
+    "fr": ""
+  },
+  "Fitting in their workflow": {
+    "key": "Fitting in their workflow",
+    "en": "",
+    "fr": ""
+  },
+  "workflow_title": {
+    "key": "workflow_title",
+    "en": "How MTM fits the way you already work",
+    "fr": ""
+  },
+  "workflow_description": {
+    "key": "workflow_description",
+    "en": "You don't open a research tool and start clicking. You have a business question. MTM is built to answer it, at every stage of your workflow.",
+    "fr": ""
+  },
+  "workflow_step_1_number": {
+    "key": "workflow_step_1_number",
+    "en": "01 Query",
+    "fr": ""
+  },
+  "workflow_step_1_title": {
+    "key": "workflow_step_1_title",
+    "en": "Select your variables",
+    "fr": ""
+  },
+  "workflow_step_1_description": {
+    "key": "workflow_step_1_description",
+    "en": "Start with a question — platform reach, time spent, device ownership, service provider. Pull exactly the variables you need from and the MTM lets you build your view in minutes.",
+    "fr": ""
+  },
+  "workflow_step_2_number": {
+    "key": "workflow_step_2_number",
+    "en": "02 Customize",
+    "fr": ""
+  },
+  "workflow_step_2_title": {
+    "key": "workflow_step_2_title",
+    "en": "Build your cross-tab or chart",
+    "fr": ""
+  },
+  "workflow_step_2_description": {
+    "key": "workflow_step_2_description",
+    "en": "Drag variables into rows and columns. Filter by region, language, age or strategic target group. Every output is yours to configure - no fixed tables, no waiting.",
+    "fr": ""
+  },
+  "workflow_step_3_number": {
+    "key": "workflow_step_3_number",
+    "en": "03 Export",
+    "fr": ""
+  },
+  "workflow_step_3_title": {
+    "key": "workflow_step_3_title",
+    "en": "Export for your client",
+    "fr": ""
+  },
+  "workflow_step_3_description": {
+    "key": "workflow_step_3_description",
+    "en": "Download your analysis in presentation-ready formats. Drop it straight into a deck, a brief, or a regulatory submission - formatted and ready to go.",
+    "fr": ""
+  },
+  "Use case or Case study": {
+    "key": "Use case or Case study",
+    "en": "",
+    "fr": ""
+  },
+  "usecases_title": {
+    "key": "usecases_title",
+    "en": "What you can do with MTM",
+    "fr": ""
+  },
+  "usecases_description": {
+    "key": "usecases_description",
+    "en": "Learn how your organization can use the MTM to grow or maintain your key audiences.",
+    "fr": ""
+  },
+  "usecase_1_brand": {
+    "key": "usecase_1_brand",
+    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
+    "fr": ""
+  },
+  "usecase_1_description": {
+    "key": "usecase_1_description",
+    "en": "Understanding the most effective way to promote a new TV show to affluent Baby Boomers.",
+    "fr": ""
+  },
+  "usecase_1_variables": {
+    "key": "usecase_1_variables",
+    "en": "Younger and Older Boomers, TV hours, Channel viewership, Income, Seeing ads on streaming services",
+    "fr": ""
+  },
+  "usecase_1_cta_title": {
+    "key": "usecase_1_cta_title",
+    "en": "How you can use it",
+    "fr": ""
+  },
+  "usecase_1_cta": {
+    "key": "usecase_1_cta",
+    "en": "Read our dedicated Baby Boomers report to learn where they are concentrating their current viewing, which are most exposed to advertising and whether traditional TV remains king for this audience.",
+    "fr": ""
+  },
+  "usecase_2_brand": {
+    "key": "usecase_2_brand",
+    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
+    "fr": ""
+  },
+  "usecase_2_description": {
+    "key": "usecase_2_description",
+    "en": "Gaining maximum exposure for a podcast aimed at men aged 18 to 35",
+    "fr": ""
+  },
+  "usecase_2_variables": {
+    "key": "usecase_2_variables",
+    "en": "Podcast listenership, podcast hours, streaming audio platforms, social media usage",
+    "fr": ""
+  },
+  "usecase_2_cta_title": {
+    "key": "usecase_2_cta_title",
+    "en": "How you can use it",
+    "fr": ""
+  },
+  "usecase_2_cta": {
+    "key": "usecase_2_cta",
+    "en": "Use our tools to take a deep dive on the platforms, time spent and online communities where this group is most active.",
+    "fr": ""
+  },
+  "Testimonials": {
+    "key": "Testimonials",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_title": {
+    "key": "testimonial_title",
+    "en": "What media and broadcasting companies are saying about us",
+    "fr": ""
+  },
+  "testimonial_logo": {
+    "key": "testimonial_logo",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_quote": {
+    "key": "testimonial_quote",
+    "en": "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
+    "fr": ""
+  },
+  "testimonial_attribution": {
+    "key": "testimonial_attribution",
+    "en": "Director of Business Strategy",
+    "fr": ""
+  }
+}
