@@ -3,6 +3,12 @@ import Layout from '../../../layouts/Layout.astro';
 import Navbar from '../../../components/shared/Navbar.astro';
 import SolutionsHeroSection from '../../../components/solutions/SolutionsHeroSection.astro';
 import SolutionsTrustedBySection from '../../../components/solutions/SolutionsTrustedBySection.astro';
+import SolutionsGovNgosInsightsSection from '../../../components/solutions/SolutionsGovNgosInsightsSection.astro';
+import SolutionsReportsLibrarySection from '../../../components/solutions/SolutionsReportsLibrarySection.astro';
+import SolutionsToolsSection from '../../../components/solutions/SolutionsToolsSection.astro';
+import SolutionsUseCasesSection from '../../../components/solutions/SolutionsUseCasesSection.astro';
+import SolutionsMediaTestimonialsSection from '../../../components/solutions/SolutionsMediaTestimonialsSection.astro';
+import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import type { Locale } from '../../../lib/cms/types';
 
@@ -13,6 +19,7 @@ export function getStaticPaths() {
 const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
 const pageId = 'gov-ngos';
 const copy = await getPageDictionary(pageId);
+const insightsCopy = await getPageDictionary('insights');
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;
 const resolvedCmsCsvUrl =
@@ -78,6 +85,24 @@ const trustedByLogos = [
         />
 
         <SolutionsTrustedBySection locale={locale} copy={copy} logos={trustedByLogos} />
+
+        <SolutionsGovNgosInsightsSection locale={locale} copy={copy} />
+
+        <SolutionsReportsLibrarySection locale={locale} copy={insightsCopy} />
+
+        <SolutionsToolsSection locale={locale} copy={copy} cards={['census', 'analytic-slim']} />
+
+        <SolutionsUseCasesSection locale={locale} copy={copy} />
+
+        <SolutionsMediaTestimonialsSection
+            locale={locale}
+            copy={copy}
+            base={base}
+            logoSrc={`${base}images/home/solutions/logos/gov-ngo/crtc.svg`}
+            logoAlt="CRTC"
+        />
+
+        <HomeFooterSection locale={locale} copy={copy} />
     </main>
 
     <Fragment slot="head">

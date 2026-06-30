@@ -1,0 +1,314 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Eyebrow from '../shared/Eyebrow.astro';
+import Tabs from '../shared/Tabs.astro';
+import InsightsReportCard from '../insights/InsightsReportCard.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const libraryImages = [
+    `${base}images/insights/report-library/Picture.png`,
+    `${base}images/insights/report-library/Picture-1.png`,
+    `${base}images/insights/report-library/Picture-2.png`,
+    `${base}images/insights/report-library/Picture-3.png`,
+];
+
+const filterTabs = [
+    { label: t(copy, 'filter_all', locale, 'All'), value: 'all' },
+    { label: t(copy, 'filter_mtm18plus', locale, 'MTM 18+'), value: 'mtm18plus' },
+    { label: t(copy, 'filter_junior', locale, 'Junior'), value: 'junior' },
+    { label: t(copy, 'filter_newcomers', locale, 'Newcomers'), value: 'newcomers' },
+];
+---
+
+<section class="solutions-reportslibrary" data-filter="all">
+    <div class="solutions-reportslibrary__header">
+        <div class="solutions-reportslibrary__eyebrow-wrap">
+            <Eyebrow>{t(copy, 'section_2_eyebrow', locale, 'Reports Library')}</Eyebrow>
+        </div>
+
+        <div class="solutions-reportslibrary__content-wrap">
+            <h2 data-copy-key="section_2_title">
+                {
+                    t(
+                        copy,
+                        'section_2_title',
+                        locale,
+                        'Research Across Every Corner of Canadian Media Behaviour'
+                    )
+                }
+            </h2>
+            <p
+                class="text-body-p1 solutions-reportslibrary__description"
+                data-copy-key="section_2_description"
+            >
+                {
+                    t(
+                        copy,
+                        'section_2_description',
+                        locale,
+                        'From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.'
+                    )
+                }
+            </p>
+        </div>
+
+        <div class="solutions-reportslibrary__controls-wrap">
+            <Tabs tabs={filterTabs} showArrows={false} id="solutions-reports-filter" />
+            <div class="solutions-reportslibrary__arrows" aria-hidden="true">
+                <button
+                    class="solutions-reportslibrary__arrow"
+                    aria-label="Previous"
+                    data-arrow="prev"
+                >
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
+                        <path
+                            d="M7.5 1.5L1.5 7.5L7.5 13.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+                <button class="solutions-reportslibrary__arrow" aria-label="Next" data-arrow="next">
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
+                        <path
+                            d="M1.5 1.5L7.5 7.5L1.5 13.5"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="solutions-reportslibrary__carousel">
+        {
+            (['junior', 'mtm18plus', 'newcomers', 'junior', 'mtm18plus', 'newcomers'] as const).map(
+                (variant, i) => (
+                    <div class="solutions-reportslibrary__card-wrap" data-card-variant={variant}>
+                        <InsightsReportCard
+                            locale={locale}
+                            copy={copy}
+                            ctaHref="#"
+                            imageSrc={libraryImages[i % libraryImages.length]}
+                        />
+                    </div>
+                )
+            )
+        }
+    </div>
+</section>
+
+<style>
+    .solutions-reportslibrary {
+        width: 100%;
+        padding: var(--space-13) var(--content-margin-inline) 0;
+    }
+
+    .solutions-reportslibrary__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .solutions-reportslibrary__eyebrow-wrap {
+        display: flex;
+    }
+
+    .solutions-reportslibrary__content-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .solutions-reportslibrary__content-wrap h2 {
+        margin: 0;
+    }
+
+    .solutions-reportslibrary__controls-wrap {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-3);
+    }
+
+    .solutions-reportslibrary__controls-wrap :global(.tabs-bar) {
+        width: fit-content;
+        max-width: 100%;
+        margin-right: auto;
+    }
+
+    .solutions-reportslibrary__description {
+        color: var(--text-secondary);
+        margin: 0;
+        max-width: 52rem;
+    }
+
+    .solutions-reportslibrary__arrows {
+        display: flex;
+        gap: var(--space-3);
+        flex-shrink: 0;
+    }
+
+    .solutions-reportslibrary__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--space-8);
+        height: var(--space-8);
+        border-radius: var(--radius-full);
+        border: var(--stroke-1) solid var(--border-secondary);
+        background: transparent;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0;
+        transition:
+            background 0.15s,
+            color 0.15s,
+            border-color 0.15s;
+    }
+
+    .solutions-reportslibrary__arrow--filled {
+        background: var(--text-primary);
+        color: var(--text-white);
+        border-color: var(--text-primary);
+    }
+
+    .solutions-reportslibrary__arrow:hover:not(.solutions-reportslibrary__arrow--filled) {
+        background: var(--surface-blue);
+        color: var(--text-primary);
+        border-color: var(--border-primary);
+    }
+
+    .solutions-reportslibrary__carousel {
+        display: flex;
+        gap: var(--layout-card-gap);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        margin-inline: calc(-1 * var(--content-margin-inline));
+        padding: var(--space-8) var(--content-margin-inline) var(--space-13);
+        scroll-padding-inline-start: var(--content-margin-inline);
+    }
+
+    .solutions-reportslibrary__carousel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .solutions-reportslibrary__card-wrap {
+        flex-shrink: 0;
+        width: 24rem;
+        scroll-snap-align: start;
+    }
+
+    @media (max-width: 1023px) {
+        .solutions-reportslibrary {
+            gap: var(--space-4);
+            padding-top: var(--space-13);
+            padding-bottom: 0;
+        }
+
+        .solutions-reportslibrary__controls-wrap {
+            display: flex;
+        }
+
+        .solutions-reportslibrary__description {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .solutions-reportslibrary {
+            padding-top: var(--space-12);
+            padding-bottom: 0;
+        }
+
+        .solutions-reportslibrary__header {
+            gap: var(--space-7);
+        }
+
+        .solutions-reportslibrary__card-wrap {
+            width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
+        }
+
+        .solutions-reportslibrary__content-wrap {
+            gap: var(--space-4);
+        }
+    }
+
+    /* Hide all pills inside report cards by default */
+    .solutions-reportslibrary :global([data-pill-variant]) {
+        display: none;
+    }
+
+    /* All: show each card's assigned pill */
+    .solutions-reportslibrary[data-filter='all']
+        [data-card-variant='junior']
+        :global([data-pill-variant='junior']),
+    .solutions-reportslibrary[data-filter='all']
+        [data-card-variant='mtm18plus']
+        :global([data-pill-variant='mtm18plus']),
+    .solutions-reportslibrary[data-filter='all']
+        [data-card-variant='newcomers']
+        :global([data-pill-variant='newcomers']) {
+        display: inline-flex;
+    }
+
+    /* MTM 18+: show mtm18plus pill on all cards */
+    .solutions-reportslibrary[data-filter='mtm18plus'] :global([data-pill-variant='mtm18plus']) {
+        display: inline-flex;
+    }
+
+    /* Junior: show junior pill on all cards */
+    .solutions-reportslibrary[data-filter='junior'] :global([data-pill-variant='junior']) {
+        display: inline-flex;
+    }
+
+    /* Newcomers: show newcomers pill on all cards */
+    .solutions-reportslibrary[data-filter='newcomers'] :global([data-pill-variant='newcomers']) {
+        display: inline-flex;
+    }
+</style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.solutions-reportslibrary').forEach((section) => {
+        const carousel = section.querySelector<HTMLElement>('.solutions-reportslibrary__carousel');
+        const prevBtn = section.querySelector<HTMLButtonElement>('[data-arrow="prev"]');
+        const nextBtn = section.querySelector<HTMLButtonElement>('[data-arrow="next"]');
+
+        if (!carousel || !prevBtn || !nextBtn) return;
+
+        const cardWrap = section.querySelector<HTMLElement>('.solutions-reportslibrary__card-wrap');
+        if (!cardWrap) return;
+
+        const cardWidth = cardWrap.offsetWidth;
+        const gap = parseInt(window.getComputedStyle(carousel).gap);
+
+        const scroll = (direction: 'prev' | 'next') => {
+            const scrollAmount = cardWidth + gap;
+            if (direction === 'prev') {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        };
+
+        prevBtn.addEventListener('click', () => scroll('prev'));
+        nextBtn.addEventListener('click', () => scroll('next'));
+
+        section.addEventListener('tabs:change', ((e: CustomEvent) => {
+            section.dataset.filter = e.detail.value;
+        }) as EventListener);
+    });
+</script>

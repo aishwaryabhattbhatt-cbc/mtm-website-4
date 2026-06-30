@@ -21,107 +21,107 @@
   },
   "dataset_title": {
     "key": "dataset_title",
-    "en": "",
+    "en": "Multiple datasets. Hundreds of research directions.",
     "fr": ""
   },
   "dataset_description": {
     "key": "dataset_description",
-    "en": "",
+    "en": "MTM tracks how Canadians consume media and technology across 5000+ variables — spanning platforms, behaviours, demographics, and devices. Browse by topic to find what your research needs.",
     "fr": ""
   },
   "topic_1_eyebrow": {
     "key": "topic_1_eyebrow",
-    "en": "",
+    "en": "Sports",
     "fr": ""
   },
   "topic_1_example_question": {
     "key": "topic_1_example_question",
-    "en": "",
+    "en": "What share of Canadians watched a live sporting event online last month?",
     "fr": ""
   },
   "topic_1_variables": {
     "key": "topic_1_variables",
-    "en": "",
+    "en": "Watched sport online, Sports, SVOD, ESPN+, TSN",
     "fr": ""
   },
   "topic_2_eyebrow": {
     "key": "topic_2_eyebrow",
-    "en": "",
+    "en": "Streaming",
     "fr": ""
   },
   "topic_2_example_question": {
     "key": "topic_2_example_question",
-    "en": "",
+    "en": "How does Twitch viewership differ between Teens and Gen Z Canadians?",
     "fr": ""
   },
   "topic_2_variables": {
     "key": "topic_2_variables",
-    "en": "",
+    "en": "Age 12-17, Age 18-24, Twitch",
     "fr": ""
   },
   "topic_3_eyebrow": {
     "key": "topic_3_eyebrow",
-    "en": "",
+    "en": "AI Tool Adoption",
     "fr": ""
   },
   "topic_3_example_question": {
     "key": "topic_3_example_question",
-    "en": "",
+    "en": "How rapidly has AI tool adoption grown among Canadians since 2023?",
     "fr": ""
   },
   "topic_3_variables": {
     "key": "topic_3_variables",
-    "en": "",
+    "en": "ChatGPT, Gemini, Claude, Age 18-24, Grok",
     "fr": ""
   },
   "topic_4_eyebrow": {
     "key": "topic_4_eyebrow",
-    "en": "",
+    "en": "Gaming & Consoles",
     "fr": ""
   },
   "topic_4_example_question": {
     "key": "topic_4_example_question",
-    "en": "",
+    "en": "How does gaming device ownership vary across income levels in Canada?",
     "fr": ""
   },
   "topic_4_variables": {
     "key": "topic_4_variables",
-    "en": "",
+    "en": "Game console owners, WiiU, Play Station, XBox, Income",
     "fr": ""
   },
   "topic_5_eyebrow": {
     "key": "topic_5_eyebrow",
-    "en": "",
+    "en": "Language & Culture",
     "fr": ""
   },
   "topic_5_example_question": {
     "key": "topic_5_example_question",
-    "en": "",
+    "en": "How do media consumption patterns differ between English- and French-speaking Canadians?",
     "fr": ""
   },
   "topic_5_variables": {
     "key": "topic_5_variables",
-    "en": "",
+    "en": "Anglophone, Francophone, Social Media, Language at Home, News, TV Hours",
     "fr": ""
   },
   "topic_6_eyebrow": {
     "key": "topic_6_eyebrow",
-    "en": "",
+    "en": "News Consumption",
     "fr": ""
   },
   "topic_6_example_question": {
     "key": "topic_6_example_question",
-    "en": "",
+    "en": "Are younger Canadians abandoning traditional news formats in favour of social media?",
     "fr": ""
   },
   "topic_6_variables": {
     "key": "topic_6_variables",
-    "en": "",
+    "en": "Read online news, News consumption platform, Social Media, CNN, YouTube",
     "fr": ""
   },
   "dataset_footer": {
     "key": "dataset_footer",
-    "en": "",
+    "en": "Over 5000+ variables available across 200+ topic areas, searchable and filterable in our tools.",
     "fr": ""
   },
   "MTM Tools as the solution for answering research questions (Second highest tool users)": {
@@ -131,57 +131,57 @@
   },
   "tools_title": {
     "key": "tools_title",
-    "en": "",
+    "en": "Powerful tools designed for serious inquiry",
     "fr": ""
   },
   "tool_1_title": {
     "key": "tool_1_title",
-    "en": "",
+    "en": "Data Analysis Tool",
     "fr": ""
   },
   "tool_1_features_1": {
     "key": "tool_1_features_1",
-    "en": "",
+    "en": "Build custom crosstabs by dragging variables into rows and columns",
     "fr": ""
   },
   "tool_1_features_2": {
     "key": "tool_1_features_2",
-    "en": "",
+    "en": "Filter results by age, gender, income, education, language and more",
     "fr": ""
   },
   "tool_1_features_3": {
     "key": "tool_1_features_3",
-    "en": "",
+    "en": "Export data in formats compatible with SPSS, Excel, and academic reporting",
     "fr": ""
   },
   "tool_2_title": {
     "key": "tool_2_title",
-    "en": "",
+    "en": "Trending Tool",
     "fr": ""
   },
   "tool_2_features_1": {
     "key": "tool_2_features_1",
-    "en": "",
+    "en": "Track how media and technology habits have shifted across multiple years of data",
     "fr": ""
   },
   "tool_2_features_2": {
     "key": "tool_2_features_2",
-    "en": "",
+    "en": "Compare trends by region, language market, and demographic group",
     "fr": ""
   },
   "tool_2_features_3": {
     "key": "tool_2_features_3",
-    "en": "",
+    "en": "Visualize adoption curves for platforms, devices, and content types over time",
     "fr": ""
   },
   "tool_3_title": {
     "key": "tool_3_title",
-    "en": "",
+    "en": "Forecasting Tool",
     "fr": ""
   },
   "tool_3_features_1": {
     "key": "tool_3_features_1",
-    "en": "",
+    "en": "Project future technology and media adoption based on observed behavioural trends",
     "fr": ""
   },
   "tool_3_features_2": {
@@ -331,7 +331,7 @@
   },
   "testimonial_title": {
     "key": "testimonial_title",
-    "en": "",
+    "en": "What academic institutions are saying about us",
     "fr": ""
   },
   "testimonial_logo": {
@@ -341,12 +341,12 @@
   },
   "testimonial_quote": {
     "key": "testimonial_quote",
-    "en": "",
+    "en": "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
     "fr": ""
   },
   "testimonial_attribution": {
     "key": "testimonial_attribution",
-    "en": "",
+    "en": "University student",
     "fr": ""
   }
 }

@@ -101,22 +101,22 @@
   },
   "workflow_step_1_title": {
     "key": "workflow_step_1_title",
-    "en": "",
+    "en": "Understand the audience before the strategy takes shape.",
     "fr": ""
   },
   "workflow_step_1_description": {
     "key": "workflow_step_1_description",
-    "en": "",
+    "en": "Use MTM to profile the client's target audience before the brief is written. Know what they watch, what they stream, and where they spend time — so your strategic recommendation starts from evidence, not assumption.",
     "fr": ""
   },
   "step1_tag1": {
     "key": "step1_tag1",
-    "en": "",
+    "en": "Trending Tool",
     "fr": ""
   },
   "step1_tag2": {
     "key": "step1_tag2",
-    "en": "",
+    "en": "MTM Reports",
     "fr": ""
   },
   "workflow_step_2_number": {
@@ -141,27 +141,27 @@
   },
   "step2_tag2": {
     "key": "step2_tag2",
-    "en": "",
+    "en": "Data Analysis Tool",
     "fr": ""
   },
   "workflow_step_3_number": {
     "key": "workflow_step_3_number",
-    "en": "",
+    "en": "03 Present",
     "fr": ""
   },
   "workflow_step_3_title": {
     "key": "workflow_step_3_title",
-    "en": "",
+    "en": "Turn the data into the slide that closes the room.",
     "fr": ""
   },
   "workflow_step_3_description": {
     "key": "workflow_step_3_description",
-    "en": "",
+    "en": "Export clean, presentation-ready charts and cross-tabs directly from the platform. When a client pushes back, you have the national dataset behind every number.",
     "fr": ""
   },
   "step3_tag1": {
     "key": "step3_tag1",
-    "en": "",
+    "en": "MTM Reports",
     "fr": ""
   },
   "step3_tag2": {
@@ -241,7 +241,7 @@
   },
   "testimonial_title": {
     "key": "testimonial_title",
-    "en": "",
+    "en": "What ad agencies are saying about us",
     "fr": ""
   },
   "testimonial_logo": {
@@ -251,12 +251,12 @@
   },
   "testimonial_quote": {
     "key": "testimonial_quote",
-    "en": "??",
+    "en": "MTM changed how we walk into a pitch. We're not citing platform numbers anymore. We're citing a national survey. Clients notice the difference immediately.",
     "fr": ""
   },
   "testimonial_attribution": {
     "key": "testimonial_attribution",
-    "en": "",
+    "en": "Senior Strategy Director",
     "fr": ""
   }
 }

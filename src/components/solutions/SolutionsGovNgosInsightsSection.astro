@@ -1,0 +1,297 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+
+function splitVars(value: string) {
+    return value
+        .split(',')
+        .map((v) => v.trim())
+        .filter(Boolean);
+}
+
+const cards = [
+    {
+        stat: t(copy, 'insight_1_stat', locale, '42%'),
+        description: t(
+            copy,
+            'insight_1_description',
+            locale,
+            'of newcomers aged 35 to 44 have used employment services since arriving in Canada'
+        ),
+        variables: splitVars(
+            t(
+                copy,
+                'insight_1_variables',
+                locale,
+                'Age Group, Employment services used, Other settlement services used'
+            )
+        ),
+        informs: t(
+            copy,
+            'insight_1_informs',
+            locale,
+            'Funding and resource allocation, awareness campaign targeting age specific approaches for federal programs.'
+        ),
+        accent: 'blue' as const,
+    },
+    {
+        stat: t(copy, 'insight_2_stat', locale, '45%'),
+        description: t(
+            copy,
+            'insight_2_description',
+            locale,
+            'of teens used TikTok in the past month'
+        ),
+        variables: splitVars(
+            t(
+                copy,
+                'insight_2_variables',
+                locale,
+                'TikTok, Instagram, Facebook, Snapchat, LinkedIn, WhatsApp'
+            )
+        ),
+        informs: t(
+            copy,
+            'insight_2_informs',
+            locale,
+            'Platform selection for public outreach, regulatory review of social media reach, and audience segmentation for government communications.'
+        ),
+        accent: 'teal' as const,
+    },
+    {
+        stat: t(copy, 'insight_3_stat', locale, '15% vs 30%'),
+        description: t(
+            copy,
+            'insight_3_description',
+            locale,
+            'Indigenous people are less likely to be using LinkedIn than other people living in Canada.'
+        ),
+        variables: splitVars(
+            t(copy, 'insight_3_variables', locale, 'Social Media, LinkedIn, Indigenous, Facebook')
+        ),
+        informs: t(
+            copy,
+            'insight_3_informs',
+            locale,
+            'Stop guessing where your future talent lives. Understanding what social platforms Canadians are using can ensure that your next campaign to find new employees has the greatest impact.'
+        ),
+        accent: 'purple' as const,
+    },
+];
+---
+
+<section class="solutions-govngos-insights-section">
+    <div class="solutions-govngos-insights-header">
+        <h2>
+            {t(copy, 'insights_title', locale, 'Insights That Support Better Public Decisions')}
+        </h2>
+        <p class="text-body-p1 solutions-govngos-insights-subtitle">
+            {
+                t(
+                    copy,
+                    'insights_description',
+                    locale,
+                    'Access current, nationally representative data on how Canadians consume media and technology. MTM helps governments and NGOs better understand audiences, evaluate communications strategies, and identify emerging behavioural shifts across demographic groups and regions.'
+                )
+            }
+        </p>
+    </div>
+
+    <div class="solutions-govngos-insights-cards">
+        {
+            cards.map((card) => (
+                <article class="solutions-govngos-insight-card">
+                    <div class="solutions-govngos-insight-card__body">
+                        <div class="solutions-govngos-insight-card__block">
+                            <span class="text-label-small solutions-govngos-insight-card__label">
+                                Insight
+                            </span>
+                            <div class="solutions-govngos-insight-card__stat-row">
+                                <p class="text-metrics solutions-govngos-insight-card__stat">
+                                    {card.stat}
+                                </p>
+                                <p class="text-body-p3 solutions-govngos-insight-card__description">
+                                    {card.description}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="solutions-govngos-insight-card__block">
+                            <div class="solutions-govngos-insight-card__pills">
+                                {card.variables.map((v) => (
+                                    <span class="text-body-p3 solutions-govngos-insight-card__pill">
+                                        {v}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class={`solutions-govngos-insight-card__informs solutions-govngos-insight-card__informs--${card.accent}`}
+                    >
+                        <span class="text-label-small solutions-govngos-insight-card__label">
+                            Informs decisions on
+                        </span>
+                        <p class="text-body-p3 solutions-govngos-insight-card__informs-text">
+                            {card.informs}
+                        </p>
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .solutions-govngos-insights-section {
+        width: 100%;
+        background: var(--surface-blue);
+        padding: var(--space-13) var(--content-margin-inline);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-9);
+    }
+
+    /* Header */
+    .solutions-govngos-insights-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        text-align: center;
+        max-width: 60rem;
+    }
+
+    .solutions-govngos-insights-header h2 {
+        margin: 0;
+    }
+
+    .solutions-govngos-insights-subtitle {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    /* Cards grid */
+    .solutions-govngos-insights-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--layout-card-gap);
+        align-items: stretch;
+        width: 100%;
+    }
+
+    /* Card */
+    .solutions-govngos-insight-card {
+        background: var(--surface-white);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-card);
+        padding: var(--space-3);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-7);
+    }
+
+    .solutions-govngos-insight-card__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        padding: var(--space-3) var(--space-3) 0;
+        flex: 1;
+    }
+
+    .solutions-govngos-insight-card__block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .solutions-govngos-insight-card__label {
+        color: var(--neutral-grey-2);
+    }
+
+    .solutions-govngos-insight-card__stat-row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+    }
+
+    .solutions-govngos-insight-card__stat {
+        margin: 0;
+        color: var(--text-primary);
+        flex-shrink: 0;
+    }
+
+    .solutions-govngos-insight-card__description {
+        margin: 0;
+        color: var(--text-secondary);
+        min-height: calc(var(--lh-body) * 2 * var(--fs-body-s));
+    }
+
+    .solutions-govngos-insight-card__pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-3);
+    }
+
+    .solutions-govngos-insight-card__pill {
+        background: var(--surface-blue);
+        border-radius: var(--radius-full);
+        padding: var(--space-1) var(--space-4);
+        color: var(--text-primary);
+    }
+
+    /* Informs box */
+    .solutions-govngos-insight-card__informs {
+        border-radius: var(--radius-s);
+        padding: var(--space-5);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .solutions-govngos-insight-card__informs--blue {
+        background: #e8f3fd;
+    }
+
+    .solutions-govngos-insight-card__informs--teal {
+        background: #e8f7f5;
+    }
+
+    .solutions-govngos-insight-card__informs--purple {
+        background: #f7f4ff;
+    }
+
+    .solutions-govngos-insight-card__informs-text {
+        margin: 0;
+        color: var(--text-secondary);
+        min-height: calc(var(--lh-body) * 4 * var(--fs-body-s));
+    }
+
+    /* Tablet */
+    @media (max-width: 1023px) {
+        .solutions-govngos-insights-section {
+            padding: var(--space-11) var(--content-margin-inline);
+            gap: var(--space-8);
+        }
+
+        .solutions-govngos-insights-cards {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .solutions-govngos-insights-section {
+            padding: var(--space-10) var(--content-margin-inline);
+            gap: var(--space-7);
+        }
+    }
+</style>

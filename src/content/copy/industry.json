@@ -241,7 +241,7 @@
   },
   "testimonial_title": {
     "key": "testimonial_title",
-    "en": "",
+    "en": "What the industry is saying about us",
     "fr": ""
   },
   "testimonial_logo": {
@@ -251,12 +251,12 @@
   },
   "testimonial_quote": {
     "key": "testimonial_quote",
-    "en": "",
+    "en": "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
     "fr": ""
   },
   "testimonial_attribution": {
     "key": "testimonial_attribution",
-    "en": "",
+    "en": "Director of Audience Strategy",
     "fr": ""
   }
 }

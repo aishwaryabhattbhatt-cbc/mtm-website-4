@@ -3,6 +3,9 @@ import Layout from '../../../layouts/Layout.astro';
 import Navbar from '../../../components/shared/Navbar.astro';
 import SolutionsHeroSection from '../../../components/solutions/SolutionsHeroSection.astro';
 import SolutionsTrustedBySection from '../../../components/solutions/SolutionsTrustedBySection.astro';
+import SolutionsUseCasesSection from '../../../components/solutions/SolutionsUseCasesSection.astro';
+import SolutionsMediaTestimonialsSection from '../../../components/solutions/SolutionsMediaTestimonialsSection.astro';
+import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import type { Locale } from '../../../lib/cms/types';
 
@@ -88,6 +91,18 @@ const trustedByLogos = [
         />
 
         <SolutionsTrustedBySection locale={locale} copy={copy} logos={trustedByLogos} />
+
+        <SolutionsUseCasesSection locale={locale} copy={copy} />
+
+        <SolutionsMediaTestimonialsSection
+            locale={locale}
+            copy={copy}
+            base={base}
+            logoSrc={`${base}images/home/solutions/logos/education/uOttawa.svg`}
+            logoAlt="University of Ottawa"
+        />
+
+        <HomeFooterSection locale={locale} copy={copy} />
     </main>
 
     <Fragment slot="head">
