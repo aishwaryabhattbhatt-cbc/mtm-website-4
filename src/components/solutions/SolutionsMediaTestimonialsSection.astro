@@ -6,9 +6,13 @@ interface Props {
     locale: Locale;
     copy: CMSDictionary;
     base: string;
+    logoSrc?: string;
+    logoAlt?: string;
 }
 
-const { locale, copy, base } = Astro.props as Props;
+const { locale, copy, base, logoSrc, logoAlt } = Astro.props as Props;
+const resolvedLogoSrc = logoSrc ?? `${base}images/home/solutions/logos/media/tvo.svg`;
+const resolvedLogoAlt = logoAlt ?? 'TVO';
 ---
 
 <section class="media-testimonials-section">
@@ -41,8 +45,8 @@ const { locale, copy, base } = Astro.props as Props;
             <div class="media-testimonials-content">
                 <div class="media-testimonials-logo-wrap">
                     <img
-                        src={`${base}images/home/solutions/logos/media/tvo.svg`}
-                        alt="TVO"
+                        src={resolvedLogoSrc}
+                        alt={resolvedLogoAlt}
                         class="media-testimonials-logo"
                     />
                 </div>

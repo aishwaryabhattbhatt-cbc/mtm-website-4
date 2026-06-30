@@ -7,10 +7,14 @@ import { icons } from '../../lib/icons/registry';
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
+    cards?: ('analytic' | 'analytic-slim' | 'census')[];
 }
 
-const { locale, copy } = Astro.props as Props;
+const { locale, copy, cards = ['analytic', 'census'] } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
+const showAnalytic = cards.includes('analytic');
+const showAnalyticSlim = cards.includes('analytic-slim');
+const showCensus = cards.includes('census');
 ---
 
 <section class="solutions-tools-section">
@@ -19,152 +23,205 @@ const base = import.meta.env.BASE_URL;
     </h2>
 
     <div class="solutions-tools-cards">
-        <article class="solutions-tools-card">
-            <div class="solutions-tools-card__content">
-                <div class="solutions-tools-card__text">
-                    <h3>{t(copy, 'tools_analytic_eyebrow', locale, 'Analytic Tools')}</h3>
-                    <p class="text-body-p2 solutions-tools-card__description">
-                        {
-                            t(
-                                copy,
-                                'tools_analytic_description',
-                                locale,
-                                "Access media usage and behaviour data across MTM's three datasets — MTM 18+, Juniors, and Newcomers. Query platform adoption, content consumption, device ownership, and service usage across hundreds of variables and filters to find exactly what your research needs."
-                            )
-                        }
-                    </p>
-                </div>
-                <div class="solutions-tools-card__features">
-                    <div class="solutions-tools-card__feature">
+        {
+            showAnalytic && (
+                <article class="solutions-tools-card">
+                    <div class="solutions-tools-card__content">
+                        <div class="solutions-tools-card__text">
+                            <div class="solutions-tools-card__title-row">
+                                <img
+                                    class="icon-2xl"
+                                    src={`${base}${icons.tool.dashboard}`}
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <h3>
+                                    {t(copy, 'tools_analytic_eyebrow', locale, 'Analytic Tools')}
+                                </h3>
+                            </div>
+                            <p class="text-body-p2 solutions-tools-card__description">
+                                {t(
+                                    copy,
+                                    'tools_analytic_description',
+                                    locale,
+                                    "Access media usage and behaviour data across MTM's three datasets — MTM 18+, Juniors, and Newcomers. Query platform adoption, content consumption, device ownership, and service usage across hundreds of variables and filters to find exactly what your research needs."
+                                )}
+                            </p>
+                        </div>
+                        <div class="solutions-tools-card__features">
+                            <div class="solutions-tools-card__feature">
+                                <img
+                                    class="icon-2xl"
+                                    src={`${base}${icons.tool.dat}`}
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <span class="text-body-p2-bold">
+                                    {t(copy, 'tools_analytic_feature_1', locale, 'Data Analysis')}
+                                </span>
+                            </div>
+                            <div class="solutions-tools-card__feature">
+                                <img
+                                    class="icon-2xl"
+                                    src={`${base}${icons.tool.trending}`}
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <span class="text-body-p2-bold">
+                                    {t(copy, 'tools_analytic_feature_2', locale, 'Trending')}
+                                </span>
+                            </div>
+                            <div class="solutions-tools-card__feature">
+                                <img
+                                    class="icon-2xl"
+                                    src={`${base}${icons.tool.forecast}`}
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <span class="text-body-p2-bold">
+                                    {t(copy, 'tools_analytic_feature_3', locale, 'Forecasting')}
+                                </span>
+                            </div>
+                        </div>
+                        <Button
+                            variant="tertiary"
+                            size="md"
+                            href={`${base}${locale}/analytic-tools/`}
+                        >
+                            {t(copy, 'tools_learn_more', locale, 'Learn more')}
+                        </Button>
+                    </div>
+                    <div class="solutions-tools-card__preview">
                         <img
-                            class="icon-2xl"
-                            src={`${base}${icons.tool.dat}`}
+                            src={`${base}images/tools/tool-analytic-hero.png`}
                             alt=""
-                            aria-hidden="true"
+                            class="solutions-tools-card__preview-img"
                             loading="lazy"
                             decoding="async"
                         />
-                        <span class="text-body-p2-bold"
-                            >{t(copy, 'tools_analytic_feature_1', locale, 'Data Analysis')}</span
-                        >
                     </div>
-                    <div class="solutions-tools-card__feature">
-                        <img
-                            class="icon-2xl"
-                            src={`${base}${icons.tool.trending}`}
-                            alt=""
-                            aria-hidden="true"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                        <span class="text-body-p2-bold"
-                            >{t(copy, 'tools_analytic_feature_2', locale, 'Trending')}</span
-                        >
-                    </div>
-                    <div class="solutions-tools-card__feature">
-                        <img
-                            class="icon-2xl"
-                            src={`${base}${icons.tool.forecast}`}
-                            alt=""
-                            aria-hidden="true"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                        <span class="text-body-p2-bold"
-                            >{t(copy, 'tools_analytic_feature_3', locale, 'Forecasting')}</span
-                        >
-                    </div>
-                </div>
-                <Button variant="tertiary" size="md" href={`${base}${locale}/analytic-tools/`}>
-                    {t(copy, 'tools_learn_more', locale, 'Learn more')}
-                </Button>
-            </div>
-            <div class="solutions-tools-card__preview">
-                <img
-                    src={`${base}images/tools/tool-analytic-hero.png`}
-                    alt=""
-                    class="solutions-tools-card__preview-img"
-                    loading="lazy"
-                    decoding="async"
-                />
-            </div>
-        </article>
+                </article>
+            )
+        }
 
-        <article class="solutions-tools-card">
-            <div class="solutions-tools-card__preview">
-                <img
-                    src={`${base}images/tools/census/census-tool-hero.png`}
-                    alt=""
-                    class="solutions-tools-card__preview-img"
-                    loading="lazy"
-                    decoding="async"
-                />
-            </div>
-            <div class="solutions-tools-card__content solutions-tools-card__content--flipped">
-                <div class="solutions-tools-card__text">
-                    <h3>{t(copy, 'tools_census_eyebrow', locale, 'Census Tools')}</h3>
-                    <p class="text-body-p2 solutions-tools-card__description">
-                        {
-                            t(
-                                copy,
-                                'tools_census_description',
-                                locale,
-                                'Map audience distribution at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — sourced directly from Statistics Canada.'
-                            )
-                        }
-                    </p>
-                </div>
-                <div class="solutions-tools-card__features">
-                    <div class="solutions-tools-card__feature">
+        {
+            showCensus && (
+                <article class="solutions-tools-card">
+                    <div class="solutions-tools-card__preview">
+                        <img
+                            src={`${base}images/tools/census/census-tool-hero.png`}
+                            alt=""
+                            class="solutions-tools-card__preview-img"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <div class="solutions-tools-card__content solutions-tools-card__content--flipped">
+                        <div class="solutions-tools-card__text">
+                            <div class="solutions-tools-card__title-row">
+                                <img
+                                    class="icon-2xl"
+                                    src={`${base}${icons.tool.census}`}
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <h3>{t(copy, 'tools_census_eyebrow', locale, 'Census Tools')}</h3>
+                            </div>
+                            <p class="text-body-p2 solutions-tools-card__description">
+                                {t(
+                                    copy,
+                                    'tools_census_description',
+                                    locale,
+                                    'Map audience distribution at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — sourced directly from Statistics Canada.'
+                                )}
+                            </p>
+                        </div>
+                        <div class="solutions-tools-card__features">
+                            <div class="solutions-tools-card__feature">
+                                <img
+                                    class="icon-2xl"
+                                    src={`${base}${icons['census-tool'].snapshot}`}
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <span class="text-body-p2-bold">
+                                    {t(copy, 'tools_census_feature_1', locale, 'Snapshot')}
+                                </span>
+                            </div>
+                            <div class="solutions-tools-card__feature">
+                                <img
+                                    class="icon-2xl"
+                                    src={`${base}${icons['census-tool'].demographicExplorer}`}
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <span class="text-body-p2-bold">
+                                    {t(copy, 'tools_census_feature_2', locale, 'Explorer')}
+                                </span>
+                            </div>
+                            <div class="solutions-tools-card__feature">
+                                <img
+                                    class="icon-2xl"
+                                    src={`${base}${icons['census-tool'].compare}`}
+                                    alt=""
+                                    aria-hidden="true"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <span class="text-body-p2-bold">
+                                    {t(copy, 'tools_census_feature_3', locale, 'Compare')}
+                                </span>
+                            </div>
+                            <div class="solutions-tools-card__feature solutions-tools-card__feature--more">
+                                <span class="text-body-p2-bold">
+                                    {t(copy, 'tools_census_more', locale, '+3 more')}
+                                </span>
+                            </div>
+                        </div>
+                        <Button variant="tertiary" size="md" href={`${base}${locale}/census/`}>
+                            {t(copy, 'tools_learn_more', locale, 'Learn more')}
+                        </Button>
+                    </div>
+                </article>
+            )
+        }
+
+        {
+            showAnalyticSlim && (
+                <article class="solutions-tools-card-slim">
+                    <div class="solutions-tools-card-slim__left">
                         <img
                             class="icon-2xl"
-                            src={`${base}${icons['census-tool'].snapshot}`}
+                            src={`${base}${icons.tool.dashboard}`}
                             alt=""
                             aria-hidden="true"
                             loading="lazy"
                             decoding="async"
                         />
-                        <span class="text-body-p2-bold"
-                            >{t(copy, 'tools_census_feature_1', locale, 'Snapshot')}</span
-                        >
+                        <h3 class="solutions-tools-card-slim__title">
+                            {t(copy, 'tools_analytic_eyebrow', locale, 'Analytic Tools')}
+                        </h3>
                     </div>
-                    <div class="solutions-tools-card__feature">
-                        <img
-                            class="icon-2xl"
-                            src={`${base}${icons['census-tool'].demographicExplorer}`}
-                            alt=""
-                            aria-hidden="true"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                        <span class="text-body-p2-bold"
-                            >{t(copy, 'tools_census_feature_2', locale, 'Explorer')}</span
-                        >
-                    </div>
-                    <div class="solutions-tools-card__feature">
-                        <img
-                            class="icon-2xl"
-                            src={`${base}${icons['census-tool'].compare}`}
-                            alt=""
-                            aria-hidden="true"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                        <span class="text-body-p2-bold"
-                            >{t(copy, 'tools_census_feature_3', locale, 'Compare')}</span
-                        >
-                    </div>
-                    <div class="solutions-tools-card__feature solutions-tools-card__feature--more">
-                        <span class="text-body-p2-bold"
-                            >{t(copy, 'tools_census_more', locale, '+3 more')}</span
-                        >
-                    </div>
-                </div>
-                <Button variant="tertiary" size="md" href={`${base}${locale}/census/`}>
-                    {t(copy, 'tools_learn_more', locale, 'Learn more')}
-                </Button>
-            </div>
-        </article>
+                    <Button variant="tertiary" size="md" href={`${base}${locale}/analytic-tools/`}>
+                        {t(copy, 'tools_learn_more', locale, 'Learn more')}
+                    </Button>
+                </article>
+            )
+        }
     </div>
 </section>
 
@@ -225,6 +282,12 @@ const base = import.meta.env.BASE_URL;
         margin: 0;
     }
 
+    .solutions-tools-card__title-row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+    }
+
     .solutions-tools-card__content :global(.btn) {
         align-self: flex-start;
     }
@@ -273,6 +336,30 @@ const base = import.meta.env.BASE_URL;
         height: 100%;
         object-fit: contain;
         display: block;
+    }
+
+    /* Slim secondary card */
+    .solutions-tools-card-slim {
+        background: var(--surface-white);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-card);
+        padding: var(--space-5) var(--space-6);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-4);
+    }
+
+    .solutions-tools-card-slim__left {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        min-width: 0;
+    }
+
+    .solutions-tools-card-slim__title {
+        margin: 0;
+        color: var(--text-primary);
     }
 
     /* Tablet */

@@ -1,6 +1,6 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
-import { t } from '../../lib/i18n/t';
+
 import ProductPill from '../shared/ProductPill.astro';
 import DatePill from '../shared/DatePill.astro';
 import Button from '../shared/Button.astro';
@@ -33,9 +33,18 @@ const {
     ctaKey = 'report_card_cta',
 } = Astro.props as Props;
 
-const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
-const variable1 = variable1Key in copy ? t(copy, variable1Key, locale, '') : '';
-const variable2 = variable2Key in copy ? t(copy, variable2Key, locale, '') : '';
+const getVal = (key: string): string => {
+    const row = copy[key];
+    if (!row) return '';
+    return (locale === 'fr' ? row.fr : row.en) || row.en || '';
+};
+
+const dateText = getVal(dateKey);
+const titleText = getVal(titleKey);
+const descText = getVal(descriptionKey);
+const variable1 = getVal(variable1Key);
+const variable2 = getVal(variable2Key);
+const ctaText = getVal(ctaKey);
 const variables = [variable1, variable2].filter(Boolean);
 ---
 
@@ -69,14 +78,28 @@ const variables = [variable1, variable2].filter(Boolean);
                 {dateText && <DatePill date={dateText} />}
             </div>
 
-            <div class="report-card__text">
-                <p class="text-body-p1-bold report-card__title" data-copy-key={titleKey}>
-                    {t(copy, titleKey, locale, '')}
-                </p>
-                <p class="text-body-p2 report-card__description" data-copy-key={descriptionKey}>
-                    {t(copy, descriptionKey, locale, '')}
-                </p>
-            </div>
+            {
+                (titleText || descText) && (
+                    <div class="report-card__text">
+                        {titleText && (
+                            <p
+                                class="text-body-p1-bold report-card__title"
+                                data-copy-key={titleKey}
+                            >
+                                {titleText}
+                            </p>
+                        )}
+                        {descText && (
+                            <p
+                                class="text-body-p2 report-card__description"
+                                data-copy-key={descriptionKey}
+                            >
+                                {descText}
+                            </p>
+                        )}
+                    </div>
+                )
+            }
 
             {
                 variables.length > 0 && (
@@ -90,7 +113,7 @@ const variables = [variable1, variable2].filter(Boolean);
         </div>
 
         <Button variant="tertiary" size="md" href={ctaHref}>
-            {t(copy, ctaKey, locale, 'View Press Release')}
+            {ctaText || 'View Press Release'}
         </Button>
     </div>
 </div>

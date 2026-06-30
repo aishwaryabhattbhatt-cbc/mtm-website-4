@@ -1,1 +1,202 @@
-{}
+{
+  "hero_eyebrow": {
+    "key": "hero_eyebrow",
+    "en": "Government and NGO's",
+    "fr": ""
+  },
+  "hero_title": {
+    "key": "hero_title",
+    "en": "Trusted Data for Serving Canadians",
+    "fr": ""
+  },
+  "hero_description": {
+    "key": "hero_description",
+    "en": "In the public and non-profit sectors, effective decisions depend on understanding the people you serve — how they access information, use technology, and engage with media. The Media Technology Monitor provides trusted Canadian data that helps organizations design better programs, improve communications, and make evidence-based decisions with confidence.",
+    "fr": ""
+  },
+  "Insights overview -topics directly relevant to government and what decisions it informs. (use cases but indirect)": {
+    "key": "Insights overview -topics directly relevant to government and what decisions it informs. (use cases but indirect)",
+    "en": "",
+    "fr": ""
+  },
+  "insights_title": {
+    "key": "insights_title",
+    "en": "Insights That Support Better Public Decisions",
+    "fr": ""
+  },
+  "insights_description": {
+    "key": "insights_description",
+    "en": "Access current, nationally representative data on how Canadians consume media and technology. MTM helps governments and NGOs better understand audiences, evaluate communications strategies, and identify emerging behavioural shifts across demographic groups and regions.",
+    "fr": ""
+  },
+  "insight_1_stat": {
+    "key": "insight_1_stat",
+    "en": "42%",
+    "fr": ""
+  },
+  "insight_1_description": {
+    "key": "insight_1_description",
+    "en": "of newcomers aged 35 to 44 have used employment services since arriving in Canada",
+    "fr": ""
+  },
+  "insight_1_variables": {
+    "key": "insight_1_variables",
+    "en": "Age Group, Employment services used, Other settlement services used",
+    "fr": ""
+  },
+  "insight_1_informs": {
+    "key": "insight_1_informs",
+    "en": "Funding and resource allocation, awareness campaign targeting age specific approaches for federal programs.",
+    "fr": ""
+  },
+  "insight_2_stat": {
+    "key": "insight_2_stat",
+    "en": "45%",
+    "fr": ""
+  },
+  "insight_2_description": {
+    "key": "insight_2_description",
+    "en": "of teens used TikTok in the past month",
+    "fr": ""
+  },
+  "insight_2_variables": {
+    "key": "insight_2_variables",
+    "en": "",
+    "fr": ""
+  },
+  "insight_2_informs": {
+    "key": "insight_2_informs",
+    "en": "",
+    "fr": ""
+  },
+  "insight_3_stat": {
+    "key": "insight_3_stat",
+    "en": "15% vs 30%",
+    "fr": ""
+  },
+  "insight_3_description": {
+    "key": "insight_3_description",
+    "en": "Indigenous people are less likely to be using LinkedIn than other people living in Canada.",
+    "fr": ""
+  },
+  "insight_3_variables": {
+    "key": "insight_3_variables",
+    "en": "Social Media, LinkedIn, Indigenous, Facebook",
+    "fr": ""
+  },
+  "insight_3_informs": {
+    "key": "insight_3_informs",
+    "en": "Stop guessing where your future talent lives. Understanding what social platforms Canadians are using can ensure that your next campaign to find new employees has the greatest impact.",
+    "fr": ""
+  },
+  "MTM Reports as the solution for how they can access those insights (second highest report users)": {
+    "key": "MTM Reports as the solution for how they can access those insights (second highest report users)",
+    "en": "",
+    "fr": ""
+  },
+  "reports_title": {
+    "key": "reports_title",
+    "en": "Ready-to-use reports on Canadians and media",
+    "fr": ""
+  },
+  "Reports cards (to be autofilled)": {
+    "key": "Reports cards (to be autofilled)",
+    "en": "",
+    "fr": ""
+  },
+  "Can be same as advertising and industry pages": {
+    "key": "Can be same as advertising and industry pages",
+    "en": "",
+    "fr": ""
+  },
+  "tools_title": {
+    "key": "tools_title",
+    "en": "",
+    "fr": ""
+  },
+  "Can be same as industry page": {
+    "key": "Can be same as industry page",
+    "en": "",
+    "fr": ""
+  },
+  "usecases_title": {
+    "key": "usecases_title",
+    "en": "",
+    "fr": ""
+  },
+  "usecases_description": {
+    "key": "usecases_description",
+    "en": "Learn how the MTM offers reports and content that can inform decisions based on robust, tried and true survey results.",
+    "fr": ""
+  },
+  "usecase_1_brand": {
+    "key": "usecase_1_brand",
+    "en": "",
+    "fr": ""
+  },
+  "usecase_1_description": {
+    "key": "usecase_1_description",
+    "en": "Bell used MTM's trending data to track the decline of traditional radio among 35–54 year olds — and reallocated their audio investment toward podcast and streaming audio before the shift hit their own listenership numbers.",
+    "fr": ""
+  },
+  "usecase_1_variables": {
+    "key": "usecase_1_variables",
+    "en": "Radio, Podcast, Audio Streaming, Age 35–54",
+    "fr": ""
+  },
+  "usecase_1_cta_title": {
+    "key": "usecase_1_cta_title",
+    "en": "How you can use it",
+    "fr": ""
+  },
+  "usecase_1_cta": {
+    "key": "usecase_1_cta",
+    "en": "Track platform adoption curves for your core demographic to catch audience migration before it shows up in your internal data.",
+    "fr": ""
+  },
+  "usecase_2_description": {
+    "key": "usecase_2_description",
+    "en": "Rogers used MTM to size the bilingual sports audience across streaming and linear — identifying an underserved Francophone segment that became the basis for a new strategy.",
+    "fr": ""
+  },
+  "usecase_2_variables": {
+    "key": "usecase_2_variables",
+    "en": "Sports, Linear TV, Streaming, Francophone",
+    "fr": ""
+  },
+  "usecase_2_cta_title": {
+    "key": "usecase_2_cta_title",
+    "en": "How you can use it",
+    "fr": ""
+  },
+  "usecase_2_cta": {
+    "key": "usecase_2_cta",
+    "en": "Cross-tab your content category against language market and platform data to find the audience gaps your current rights portfolio isn't reaching.",
+    "fr": ""
+  },
+  "Testimonials": {
+    "key": "Testimonials",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_title": {
+    "key": "testimonial_title",
+    "en": "What government and NGO partners are saying about us",
+    "fr": ""
+  },
+  "testimonial_logo": {
+    "key": "testimonial_logo",
+    "en": "",
+    "fr": ""
+  },
+  "testimonial_quote": {
+    "key": "testimonial_quote",
+    "en": "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
+    "fr": ""
+  },
+  "testimonial_attribution": {
+    "key": "testimonial_attribution",
+    "en": "Director of Audience Strategy",
+    "fr": ""
+  }
+}
