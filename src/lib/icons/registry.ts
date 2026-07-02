@@ -361,6 +361,7 @@ export const icons = {
         summaryExecutive: 'icons/gen/summary-executive.svg',
         summary: 'icons/gen/summary.svg',
         tech: 'icons/gen/tech.svg',
+        topicBars: 'icons/gen/topic-bars.svg',
         training: 'icons/gen/training.svg',
         trends: 'icons/gen/trends.svg',
         unlimitedAccess: 'icons/gen/unlimited-access.svg',

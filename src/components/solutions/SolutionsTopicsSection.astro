@@ -1,0 +1,281 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const cardColors = ['blue', 'teal', 'purple'] as const;
+
+const topicFallbacks = [
+    {
+        eyebrow: 'Sports',
+        question: 'What share of Canadians watched a live sporting event online last month?',
+        variables: 'Watched sport online, Sports, SVOD, ESPN+, TSN',
+    },
+    {
+        eyebrow: 'Streaming',
+        question: 'How does Twitch viewership differ between Teens and Gen Z Canadians?',
+        variables: 'Age 12-17, Age 18-24, Twitch',
+    },
+    {
+        eyebrow: 'AI Tool Adoption',
+        question: 'How rapidly has AI tool adoption grown among Canadians since 2023?',
+        variables: 'ChatGPT, Gemini, Claude, Age 18-24, Grok',
+    },
+    {
+        eyebrow: 'Gaming & Consoles',
+        question: 'How does gaming device ownership vary across income levels in Canada?',
+        variables: 'Game console owners, WiiU, Play Station, XBox, Income',
+    },
+    {
+        eyebrow: 'Language & Culture',
+        question:
+            'How do media consumption patterns differ between English- and French-speaking Canadians?',
+        variables: 'Anglophone, Francophone, Social Media, Language at Home, News, TV Hours',
+    },
+    {
+        eyebrow: 'News Consumption',
+        question:
+            'Are younger Canadians abandoning traditional news formats in favour of social media?',
+        variables: 'Read online news, News consumption platform, Social Media, CNN, YouTube',
+    },
+];
+
+const topics = topicFallbacks.map((fallback, i) => {
+    const n = i + 1;
+    return {
+        eyebrow: t(copy, `topic_${n}_eyebrow`, locale, fallback.eyebrow),
+        question: t(copy, `topic_${n}_example_question`, locale, fallback.question),
+        variables: t(copy, `topic_${n}_variables`, locale, fallback.variables)
+            .split(',')
+            .map((v) => v.trim())
+            .filter(Boolean),
+    };
+});
+---
+
+<section class="solutions-topics-section">
+    <div class="solutions-topics-header">
+        <h2>
+            {
+                t(
+                    copy,
+                    'dataset_title',
+                    locale,
+                    'Multiple datasets. Hundreds of research directions.'
+                )
+            }
+        </h2>
+        <p class="text-body-p1 solutions-topics-description">
+            {
+                t(
+                    copy,
+                    'dataset_description',
+                    locale,
+                    'MTM tracks how Canadians consume media and technology across 5000+ variables — spanning platforms, behaviours, demographics, and devices. Browse by topic to find what your research needs.'
+                )
+            }
+        </p>
+    </div>
+
+    <div class="solutions-topics-grid">
+        {
+            topics.map((topic, i) => (
+                <article class="solutions-topics-card">
+                    <div class="solutions-topics-card__body">
+                        <div
+                            class={`solutions-topics-card__eyebrow solutions-topics-card__eyebrow--${cardColors[i % cardColors.length]}`}
+                        >
+                            <img
+                                src={`${base}${icons.gen.topicBars}`}
+                                alt=""
+                                aria-hidden="true"
+                                class="icon-l"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                            <span class="text-label-small">{topic.eyebrow}</span>
+                        </div>
+                        <div class="solutions-topics-card__block">
+                            <span class="text-label-small solutions-topics-card__label">
+                                {t(copy, 'topic_example_label', locale, 'Example')}
+                            </span>
+                            <p class="text-body-p1-bold solutions-topics-card__question">
+                                “{topic.question}”
+                            </p>
+                        </div>
+                        <div class="solutions-topics-card__block">
+                            <span class="text-label-small solutions-topics-card__label">
+                                {t(copy, 'topic_variables_label', locale, 'Variables available')}
+                            </span>
+                            <div class="solutions-topics-card__tags">
+                                {topic.variables.map((v) => (
+                                    <span class="text-body-p3 solutions-topics-card__tag">{v}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+
+    <p class="text-h4 solutions-topics-footer">
+        {
+            t(
+                copy,
+                'dataset_footer',
+                locale,
+                'Over 5000+ variables available across 200+ topic areas, searchable and filterable in our tools.'
+            )
+        }
+    </p>
+</section>
+
+<style>
+    .solutions-topics-section {
+        width: 100%;
+        background: var(--surface-blue);
+        padding: var(--space-12) var(--content-margin-inline);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-8);
+    }
+
+    .solutions-topics-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        max-width: 54rem;
+        text-align: center;
+    }
+
+    .solutions-topics-header h2 {
+        margin: 0;
+    }
+
+    .solutions-topics-description {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    .solutions-topics-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--layout-card-gap);
+    }
+
+    .solutions-topics-card {
+        background: var(--surface-white);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-card);
+        padding: var(--stroke-2);
+    }
+
+    .solutions-topics-card__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        padding: var(--space-5);
+    }
+
+    .solutions-topics-card__eyebrow {
+        display: inline-flex;
+        align-self: flex-start;
+        align-items: center;
+        gap: var(--space-3);
+        padding: var(--space-1) var(--space-3);
+        border-radius: var(--radius-s);
+    }
+
+    .solutions-topics-card__eyebrow span {
+        color: var(--text-secondary);
+    }
+
+    .solutions-topics-card__eyebrow--blue {
+        background: #e8f3fd;
+    }
+    .solutions-topics-card__eyebrow--teal {
+        background: #e8f7f5;
+    }
+    .solutions-topics-card__eyebrow--purple {
+        background: #f7f4ff;
+    }
+
+    .solutions-topics-card__block {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .solutions-topics-card__label {
+        color: var(--text-secondary);
+    }
+
+    .solutions-topics-card__question {
+        margin: 0;
+        color: var(--text-primary);
+        min-height: calc(3 * 1lh);
+    }
+
+    .solutions-topics-card__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        overflow: hidden;
+        /* two pill rows: 2 * (line-height + vertical padding) + one row gap */
+        max-height: calc(2 * (1lh + 2 * var(--space-1)) + var(--space-2));
+    }
+
+    .solutions-topics-card__tag {
+        background: var(--surface-blue);
+        border-radius: var(--radius-full);
+        padding: var(--space-1) var(--space-4);
+        color: var(--text-primary);
+        white-space: nowrap;
+    }
+
+    .solutions-topics-footer {
+        margin: 0;
+        max-width: 60rem;
+        color: var(--text-primary);
+        text-align: center;
+    }
+
+    @media (max-width: 1023px) {
+        .solutions-topics-section {
+            padding-block: var(--space-11);
+        }
+
+        .solutions-topics-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .solutions-topics-section {
+            padding-block: var(--space-10);
+            gap: var(--space-7);
+        }
+
+        .solutions-topics-grid {
+            grid-template-columns: 1fr;
+        }
+
+        /* icon-l scales to 1rem globally at this breakpoint — keep it at desktop size in the tag pill */
+        .solutions-topics-card__eyebrow :global(.icon-l) {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+</style>

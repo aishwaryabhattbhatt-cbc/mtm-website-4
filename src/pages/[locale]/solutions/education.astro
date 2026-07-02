@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import Navbar from '../../../components/shared/Navbar.astro';
 import SolutionsHeroSection from '../../../components/solutions/SolutionsHeroSection.astro';
 import SolutionsTrustedBySection from '../../../components/solutions/SolutionsTrustedBySection.astro';
+import SolutionsTopicsSection from '../../../components/solutions/SolutionsTopicsSection.astro';
 import SolutionsToolsSection from '../../../components/solutions/SolutionsToolsSection.astro';
 import SolutionsWorkflowSection from '../../../components/solutions/SolutionsWorkflowSection.astro';
 import SolutionsUseCasesSection from '../../../components/solutions/SolutionsUseCasesSection.astro';
@@ -93,6 +94,8 @@ const trustedByLogos = [
         />
 
         <SolutionsTrustedBySection locale={locale} copy={copy} logos={trustedByLogos} />
+
+        <SolutionsTopicsSection locale={locale} copy={copy} />
 
         <SolutionsToolsSection locale={locale} copy={copy} cards={['analytic', 'census-slim']} />
 
