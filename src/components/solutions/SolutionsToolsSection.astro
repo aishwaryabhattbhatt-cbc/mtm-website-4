@@ -7,7 +7,7 @@ import { icons } from '../../lib/icons/registry';
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
-    cards?: ('analytic' | 'analytic-slim' | 'census')[];
+    cards?: ('analytic' | 'analytic-slim' | 'census' | 'census-slim')[];
 }
 
 const { locale, copy, cards = ['analytic', 'census'] } = Astro.props as Props;
@@ -15,6 +15,7 @@ const base = import.meta.env.BASE_URL;
 const showAnalytic = cards.includes('analytic');
 const showAnalyticSlim = cards.includes('analytic-slim');
 const showCensus = cards.includes('census');
+const showCensusSlim = cards.includes('census-slim');
 ---
 
 <section class="solutions-tools-section">
@@ -217,6 +218,29 @@ const showCensus = cards.includes('census');
                         </h3>
                     </div>
                     <Button variant="tertiary" size="md" href={`${base}${locale}/analytic-tools/`}>
+                        {t(copy, 'tools_learn_more', locale, 'Learn more')}
+                    </Button>
+                </article>
+            )
+        }
+
+        {
+            showCensusSlim && (
+                <article class="solutions-tools-card-slim">
+                    <div class="solutions-tools-card-slim__left">
+                        <img
+                            class="icon-2xl"
+                            src={`${base}${icons.tool.census}`}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <h3 class="solutions-tools-card-slim__title">
+                            {t(copy, 'tools_census_eyebrow', locale, 'Census Tools')}
+                        </h3>
+                    </div>
+                    <Button variant="tertiary" size="md" href={`${base}${locale}/census/`}>
                         {t(copy, 'tools_learn_more', locale, 'Learn more')}
                     </Button>
                 </article>
