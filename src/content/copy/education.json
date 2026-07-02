@@ -29,6 +29,16 @@
     "en": "MTM tracks how Canadians consume media and technology across 5000+ variables — spanning platforms, behaviours, demographics, and devices. Browse by topic to find what your research needs.",
     "fr": ""
   },
+  "topic_example_label": {
+    "key": "topic_example_label",
+    "en": "Example",
+    "fr": ""
+  },
+  "topic_variables_label": {
+    "key": "topic_variables_label",
+    "en": "Variables available",
+    "fr": ""
+  },
   "topic_1_eyebrow": {
     "key": "topic_1_eyebrow",
     "en": "Sports",
