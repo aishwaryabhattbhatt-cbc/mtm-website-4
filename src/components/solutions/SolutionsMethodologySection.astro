@@ -1,0 +1,214 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Eyebrow from '../shared/Eyebrow.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+
+const isBlank = (v: string) => !v.trim() || v.trim().toLowerCase() === '(blank)';
+
+const stepFallbacks = [
+    {
+        number: '01 Survey Design',
+        title: 'How questions are built and kept consistent',
+        description:
+            'New platforms are added as they emerge, but core questions tracking the same media behaviours remain unchanged.',
+        detail1: 'Landline + Cellphone + Online',
+        detail2: '5,000+ Variables covered',
+    },
+    {
+        number: '02 Field Collection',
+        title: 'How respondents are reached and surveyed',
+        description:
+            'Canadians surveyed annually across dual landline and cellphone frames. Each language market gets full national representativeness.',
+        detail1: '12,000 respondents each year',
+        detail2: '50% EN, 50% FR',
+    },
+    {
+        number: '03 Data Processing',
+        title: 'How the data is weighted and benchmarked',
+        description:
+            'Raw data is cleaned and weighted to Statistics Canada population estimates, applied consistently across every annual wave.',
+        detail1: 'StatsCan benchmarked',
+        detail2: 'Consistent weighting',
+    },
+    {
+        number: '04 Credibility',
+        title: 'How the data is made citable and defensible',
+        description:
+            'MTM meets the standards required for regulatory submissions, funded research citations, and international benchmarking.',
+        detail1: 'Citable by name',
+        detail2: 'Full methodology available',
+    },
+];
+
+const steps = stepFallbacks.map((fallback, i) => {
+    const n = i + 1;
+    const detail1 = t(copy, `method_step_${n}_detail_1`, locale, fallback.detail1);
+    const detail2 = t(copy, `method_step_${n}_detail_2`, locale, fallback.detail2);
+    return {
+        number: t(copy, `method_step_${n}_number`, locale, fallback.number),
+        title: t(copy, `method_step_${n}_title`, locale, fallback.title),
+        description: t(copy, `method_step_${n}_description`, locale, fallback.description),
+        details: [detail1, detail2].filter((d) => !isBlank(d)),
+    };
+});
+---
+
+<section class="solutions-methodology-section">
+    <div class="solutions-methodology-header">
+        <h2>{t(copy, 'methodology_title', locale, 'Research Methodology')}</h2>
+        <p class="text-body-p1 solutions-methodology-description">
+            {
+                t(
+                    copy,
+                    'methodology_description',
+                    locale,
+                    'Get data that holds up when it matters most. MTM is designed for organisations whose work gets scrutinised. Every number comes from a methodology built for citation, replication, and regulatory use.'
+                )
+            }
+        </p>
+    </div>
+
+    <div class="solutions-methodology-grid">
+        {
+            steps.map((step) => (
+                <div class="solutions-methodology-card">
+                    <Eyebrow>{step.number}</Eyebrow>
+                    <div class="solutions-methodology-card-content">
+                        <div class="solutions-methodology-card-text">
+                            <p class="text-body-p1 solutions-methodology-card-title">
+                                {step.title}
+                            </p>
+                            <p class="text-body-p2 solutions-methodology-card-desc">
+                                {step.description}
+                            </p>
+                        </div>
+                        {step.details.length > 0 && (
+                            <div class="solutions-methodology-card-tags">
+                                {step.details.map((d) => (
+                                    <span class="text-body-p2 solutions-methodology-card-tag">
+                                        {d}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .solutions-methodology-section {
+        width: 100%;
+        background: var(--surface-white);
+        padding: var(--space-12) var(--content-margin-inline) 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .solutions-methodology-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        max-width: 54rem;
+    }
+
+    .solutions-methodology-header h2 {
+        margin: 0;
+    }
+
+    .solutions-methodology-description {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    .solutions-methodology-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--layout-card-gap);
+    }
+
+    .solutions-methodology-card {
+        background: var(--surface-blue);
+        border-radius: var(--radius-m);
+        padding: var(--space-6);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-12);
+    }
+
+    .solutions-methodology-card-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-7);
+    }
+
+    .solutions-methodology-card-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .solutions-methodology-card-title {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .solutions-methodology-card-desc {
+        margin: 0;
+        color: var(--text-secondary);
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .solutions-methodology-card-tags {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+
+    .solutions-methodology-card-tag {
+        background: var(--surface-white);
+        border-radius: var(--radius-full);
+        padding: var(--space-2) var(--space-4);
+        color: var(--text-primary);
+        max-width: 100%;
+    }
+
+    @media (max-width: 1023px) {
+        .solutions-methodology-section {
+            padding-top: var(--space-11);
+        }
+
+        .solutions-methodology-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .solutions-methodology-card {
+            gap: var(--space-8);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .solutions-methodology-section {
+            padding-top: var(--space-10);
+            gap: var(--space-7);
+        }
+
+        .solutions-methodology-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
