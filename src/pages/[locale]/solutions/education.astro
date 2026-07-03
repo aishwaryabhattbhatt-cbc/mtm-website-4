@@ -5,6 +5,7 @@ import SolutionsHeroSection from '../../../components/solutions/SolutionsHeroSec
 import SolutionsTrustedBySection from '../../../components/solutions/SolutionsTrustedBySection.astro';
 import SolutionsTopicsSection from '../../../components/solutions/SolutionsTopicsSection.astro';
 import SolutionsToolsSection from '../../../components/solutions/SolutionsToolsSection.astro';
+import SolutionsStatDividerSection from '../../../components/solutions/SolutionsStatDividerSection.astro';
 import SolutionsWorkflowSection from '../../../components/solutions/SolutionsWorkflowSection.astro';
 import SolutionsUseCasesSection from '../../../components/solutions/SolutionsUseCasesSection.astro';
 import SolutionsMediaTestimonialsSection from '../../../components/solutions/SolutionsMediaTestimonialsSection.astro';
@@ -99,6 +100,14 @@ const trustedByLogos = [
         <SolutionsTopicsSection locale={locale} copy={copy} />
 
         <SolutionsToolsSection locale={locale} copy={copy} cards={['analytic', 'census-slim']} />
+
+        <SolutionsStatDividerSection
+            locale={locale}
+            copy={copy}
+            imageSrc={`${base}images/tools/census/split-frame-1.png`}
+            fallbackValue="Unlimited seats"
+            fallbackDescription="No extra charge for faculty, students and staff"
+        />
 
         <SolutionsWorkflowSection locale={locale} copy={copy} />
 

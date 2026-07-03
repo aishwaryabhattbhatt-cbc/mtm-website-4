@@ -1,0 +1,120 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    imageSrc: string;
+    imageAlt?: string;
+    align?: 'left' | 'right';
+    fallbackValue?: string;
+    fallbackDescription?: string;
+}
+
+const {
+    locale,
+    copy,
+    imageSrc,
+    imageAlt = '',
+    align = 'right',
+    fallbackValue = '',
+    fallbackDescription = '',
+} = Astro.props as Props;
+---
+
+<div class="solutions-stat-divider">
+    <img src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
+    <div class={`solutions-stat-divider__callout solutions-stat-divider__callout--${align}`}>
+        <span class="text-hero solutions-stat-divider__value solutions-stat-divider__value--lg">
+            {t(copy, 'stat_value', locale, fallbackValue)}
+        </span>
+        <span class="text-metrics solutions-stat-divider__value solutions-stat-divider__value--sm">
+            {t(copy, 'stat_value', locale, fallbackValue)}
+        </span>
+        <span class="text-body-p1 solutions-stat-divider__desc">
+            {t(copy, 'stat_description', locale, fallbackDescription)}
+        </span>
+    </div>
+</div>
+
+<style>
+    .solutions-stat-divider {
+        display: grid;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .solutions-stat-divider img {
+        grid-area: 1 / 1;
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .solutions-stat-divider__callout {
+        grid-area: 1 / 1;
+        align-self: center;
+        margin-top: var(--space-6);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        max-width: 22rem;
+    }
+
+    .solutions-stat-divider__callout--right {
+        justify-self: end;
+        margin-right: var(--content-margin-inline);
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .solutions-stat-divider__callout--left {
+        justify-self: start;
+        margin-left: var(--content-margin-inline);
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .solutions-stat-divider__value {
+        color: var(--text-primary);
+    }
+
+    .solutions-stat-divider__value--sm {
+        display: none;
+    }
+
+    .solutions-stat-divider__desc {
+        color: var(--text-secondary);
+    }
+
+    @media (max-width: 1023px) {
+        .solutions-stat-divider__value--lg {
+            display: none;
+        }
+
+        .solutions-stat-divider__value--sm {
+            display: block;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .solutions-stat-divider img {
+            height: 14rem;
+            object-fit: cover;
+        }
+
+        .solutions-stat-divider__desc {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+
+    @media (max-width: 599px) {
+        .solutions-stat-divider__callout {
+            max-width: 60%;
+        }
+    }
+</style>
