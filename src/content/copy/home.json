@@ -236,12 +236,12 @@
   },
   "faq_1_question": {
     "key": "faq_1_question",
-    "en": "When is the data released for MTM 18+/ MTM Jr./ MTM Newcomers/Census?",
+    "en": "When is data released for MTM 18+, MTM Jr., MTM Newcomers, and the MTM Census Tool?",
     "fr": ""
   },
   "faq_1_answer": {
     "key": "faq_1_answer",
-    "en": "",
+    "en": "Release schedules vary by product:\n\nMTM 18+: Released twice a year, with Fall data available in February and Spring data available in July.\nMTM Jr.: Released annually in May.\nMTM Newcomers: Released annually in November.\nMTM Census Tool: Updated with new Statistics Canada Census data following each national census. The next update, based on the 2026 Census, is expected in Spring/Summer 2027.",
     "fr": ""
   },
   "faq_2_question": {
@@ -276,12 +276,12 @@
   },
   "faq_5_question": {
     "key": "faq_5_question",
-    "en": "",
+    "en": "When is MTM 18+ data released?",
     "fr": ""
   },
   "faq_5_answer": {
     "key": "faq_5_answer",
-    "en": "",
+    "en": "MTM 18+ data is published twice annually, with Fall results released in February and Spring results released in July.",
     "fr": ""
   },
   "faq_contact_label": {
