@@ -29,16 +29,6 @@
     "en": "MTM tracks how Canadians consume media and technology across 5000+ variables — spanning platforms, behaviours, demographics, and devices. Browse by topic to find what your research needs.",
     "fr": ""
   },
-  "topic_example_label": {
-    "key": "topic_example_label",
-    "en": "Example",
-    "fr": ""
-  },
-  "topic_variables_label": {
-    "key": "topic_variables_label",
-    "en": "Variables available",
-    "fr": ""
-  },
   "topic_1_eyebrow": {
     "key": "topic_1_eyebrow",
     "en": "Sports",
@@ -316,12 +306,12 @@
   },
   "usecase_2_description": {
     "key": "usecase_2_description",
-    "en": "",
+    "en": "A student writing a masters thesis on different locations for data centres across different communities.",
     "fr": ""
   },
   "usecase_2_variables": {
     "key": "usecase_2_variables",
-    "en": "",
+    "en": "Municipalities, Postal Code, Age, Income",
     "fr": ""
   },
   "usecase_2_cta_title": {
@@ -331,7 +321,7 @@
   },
   "usecase_2_cta": {
     "key": "usecase_2_cta",
-    "en": "",
+    "en": "Leverage the Compare feature in the Census Tool for a granular look at different prospective locations.",
     "fr": ""
   },
   "Testimonials": {

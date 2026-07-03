@@ -1,7 +1,7 @@
 {
   "hero_eyebrow": {
     "key": "hero_eyebrow",
-    "en": "",
+    "en": "Government and NGO's",
     "fr": ""
   },
   "hero_title": {
@@ -61,12 +61,12 @@
   },
   "insight_2_variables": {
     "key": "insight_2_variables",
-    "en": "",
+    "en": "TikTok, Instagram, Facebook, Snapchat, Linkedin, Whatsapp",
     "fr": ""
   },
   "insight_2_informs": {
     "key": "insight_2_informs",
-    "en": "",
+    "en": "Platform selection for public outreach, regulatory review of social media reach, and audience segmentation for government communications.",
     "fr": ""
   },
   "insight_3_stat": {
@@ -136,12 +136,12 @@
   },
   "usecase_1_description": {
     "key": "usecase_1_description",
-    "en": "Bell used MTM's trending data to track the decline of traditional radio among 35–54 year olds — and reallocated their audio investment toward podcast and streaming audio before the shift hit their own listenership numbers.",
+    "en": "A committee needs information about the success of foreign versus domestic streaming services in Canada, and adoption across income levels.",
     "fr": ""
   },
   "usecase_1_variables": {
     "key": "usecase_1_variables",
-    "en": "Radio, Podcast, Audio Streaming, Age 35–54",
+    "en": "SVOD, Netflix, Music Streaming Services, Spotify, income",
     "fr": ""
   },
   "usecase_1_cta_title": {
@@ -151,17 +151,17 @@
   },
   "usecase_1_cta": {
     "key": "usecase_1_cta",
-    "en": "Track platform adoption curves for your core demographic to catch audience migration before it shows up in your internal data.",
+    "en": "Consult the Audio and SVOD reports which offer a detailed overview of the most popular video and music streaming services and their users.",
     "fr": ""
   },
   "usecase_2_description": {
     "key": "usecase_2_description",
-    "en": "Rogers used MTM to size the bilingual sports audience across streaming and linear — identifying an underserved Francophone segment that became the basis for a new strategy.",
+    "en": "A team is looking for information on the performance of different cellphone providers across different regions.",
     "fr": ""
   },
   "usecase_2_variables": {
     "key": "usecase_2_variables",
-    "en": "Sports, Linear TV, Streaming, Francophone",
+    "en": "cellphone service provider, region",
     "fr": ""
   },
   "usecase_2_cta_title": {
@@ -171,7 +171,7 @@
   },
   "usecase_2_cta": {
     "key": "usecase_2_cta",
-    "en": "Cross-tab your content category against language market and platform data to find the audience gaps your current rights portfolio isn't reaching.",
+    "en": "Find our latest cellphone report to begin, then go deeper with the data analysis tool to find actionable insights.",
     "fr": ""
   },
   "Testimonials": {
