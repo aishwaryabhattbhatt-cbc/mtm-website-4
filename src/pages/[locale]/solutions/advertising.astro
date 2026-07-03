@@ -10,6 +10,7 @@ import SolutionsUseCasesSection from '../../../components/solutions/SolutionsUse
 import SolutionsMediaTestimonialsSection from '../../../components/solutions/SolutionsMediaTestimonialsSection.astro';
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
+import { t } from '../../../lib/i18n/t';
 import type { Locale } from '../../../lib/cms/types';
 
 export function getStaticPaths() {
@@ -89,7 +90,7 @@ const trustedByLogos = [
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
             heroImageSrc={`${base}images/solutions/hero/Advertising.png`}
-            fallbackEyebrow="Advertising"
+            fallbackEyebrow={t(copy, 'solutions_item_3', locale, 'Advertising and Marketing')}
             fallbackTitle="Drive stronger campaign outcomes"
             fallbackDescription="Use trusted MTM data to plan, pitch, and optimize campaigns with confidence."
         />

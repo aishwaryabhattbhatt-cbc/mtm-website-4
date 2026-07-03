@@ -10,6 +10,7 @@ import SolutionsUseCasesSection from '../../../components/solutions/SolutionsUse
 import SolutionsMediaTestimonialsSection from '../../../components/solutions/SolutionsMediaTestimonialsSection.astro';
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
+import { t } from '../../../lib/i18n/t';
 import type { Locale } from '../../../lib/cms/types';
 
 export function getStaticPaths() {
@@ -88,7 +89,7 @@ const trustedByLogos = [
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
             heroImageSrc={`${base}images/solutions/hero/Education.png`}
-            fallbackEyebrow="Education"
+            fallbackEyebrow={t(copy, 'solutions_item_4', locale, 'Education and Research')}
             fallbackTitle="Bring media intelligence into the classroom"
             fallbackDescription="Give faculty and students access to credible, real-world media and technology data."
         />

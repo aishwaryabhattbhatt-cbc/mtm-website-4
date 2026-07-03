@@ -236,10 +236,10 @@ html {
         --fs-body-xl: 1.25rem; /* kept above body-m (1.125rem) */
         --fs-body-l: 1.25rem;
         --fs-body-m: 1.125rem;
-        --fs-body-s: 0.875rem;
+        --fs-body-s: 1rem; /* held steady — shrinking on top of the 14px mobile root made body copy read too small */
         --fs-button-regular: 1.125rem; /* overrides 1023px — larger tap targets on phones */
         --fs-button-small: 1.125rem;
-        --fs-label-small: 0.75rem;
+        --fs-label-small: 0.875rem; /* held steady — 0.75rem read as too small for eyebrow/tag labels on phones */
         --fs-label-xs: 0.625rem;
 
         --ls-hero: -0.09375rem;

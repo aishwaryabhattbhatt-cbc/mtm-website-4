@@ -9,6 +9,7 @@ import SolutionsUseCasesSection from '../../../components/solutions/SolutionsUse
 import SolutionsMediaTestimonialsSection from '../../../components/solutions/SolutionsMediaTestimonialsSection.astro';
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
+import { t } from '../../../lib/i18n/t';
 import type { Locale } from '../../../lib/cms/types';
 
 export function getStaticPaths() {
@@ -77,7 +78,7 @@ const trustedByLogos = [
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
             heroImageSrc={`${base}images/solutions/hero/Industry.png`}
-            fallbackEyebrow="Industry"
+            fallbackEyebrow={t(copy, 'solutions_item_1', locale, 'Industry')}
             fallbackTitle="Set the benchmark with trusted data"
             fallbackDescription="Support decisions with credible, longitudinal media and technology intelligence for Canada."
         />
@@ -94,8 +95,8 @@ const trustedByLogos = [
             locale={locale}
             copy={copy}
             base={base}
-            logoSrc={`${base}images/home/solutions/logos/industry/numeris.svg`}
-            logoAlt="Numeris"
+            logoSrc={`${base}images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg`}
+            logoAlt="European Broadcasting Union"
         />
 
         <HomeFooterSection locale={locale} copy={copy} />
