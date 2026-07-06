@@ -152,19 +152,19 @@ const sampleStats = [
         >
             <ProductMethodologyCard
                 pillLabel={t(copy, 'sample_title', locale, 'Sample Coverage')}
-                iconSrc={`${base}${icons.gen.largeSamples}`}
+                iconSrc={`${base}${icons.gen.sampleCoverage}`}
                 stats={sampleStats}
             />
             <ProductMethodologyCard
                 pillLabel={t(copy, 'survey_title', locale, 'Survey Design')}
-                iconSrc={`${base}${icons.gen.largeSamples}`}
+                iconSrc={`${base}${icons.gen.surveyDesign}`}
                 stats={surveyStats}
             />
             {
                 showComposition && (
                     <ProductSampleCompositionCard
                         pillLabel={t(copy, 'data_collected_title', locale, 'Sample Composition')}
-                        iconSrc={`${base}${icons.gen.largeSamples}`}
+                        iconSrc={`${base}${icons.gen.sampleComposition}`}
                         items={compositionItems}
                     />
                 )
@@ -174,7 +174,7 @@ const sampleStats = [
         <div class="product-methodology-provider-row">
             <ProductMethodologyCard
                 pillLabel={t(copy, 'provider_title', locale, 'Research Provider')}
-                iconSrc={`${base}${icons.gen.largeSamples}`}
+                iconSrc={`${base}${icons.gen.researchProvider}`}
                 stats={providerStats}
                 statLayout="row"
             />

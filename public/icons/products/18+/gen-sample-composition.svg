@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #2e6af5;
+      }
+
+      .cls-3 {
+        fill: #125;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <rect class="cls-1" x="0" y="0" width="145" height="145" transform="translate(145 145) rotate(-180)"/>
+        <g>
+          <circle class="cls-3" cx="72.64" cy="57.98" r="4.68"/>
+          <circle class="cls-3" cx="72.64" cy="57.98" r="4.68"/>
+          <circle class="cls-2" cx="72.64" cy="57.98" r="6.55"/>
+          <circle class="cls-2" cx="72.68" cy="28.83" r="4.68"/>
+          <circle class="cls-3" cx="101.58" cy="86.92" r="4.68"/>
+          <circle class="cls-3" cx="87.02" cy="72.36" r="4.68"/>
+          <circle class="cls-3" cx="87.02" cy="72.36" r="6.55"/>
+          <circle class="cls-3" cx="101.83" cy="28.8" r="3.74"/>
+          <circle class="cls-2" cx="116.21" cy="43.17" r="3.74"/>
+          <circle class="cls-3" cx="116.17" cy="72.32" r="4.68"/>
+          <circle class="cls-3" cx="57.99" cy="72.52" r="6.55"/>
+          <circle class="cls-2" cx="43.53" cy="28.87" r="3.74"/>
+          <circle class="cls-3" cx="28.88" cy="43.41" r="3.74"/>
+          <circle class="cls-3" cx="72.49" cy="87.02" r="6.55"/>
+          <circle class="cls-3" cx="28.8" cy="101.71" r="3.74"/>
+          <circle class="cls-3" cx="43.3" cy="116.2" r="3.74"/>
+          <circle class="cls-3" cx="115.85" cy="101.19" r="3.74"/>
+          <circle class="cls-2" cx="101.25" cy="115.78" r="3.74"/>
+          <circle class="cls-2" cx="28.9" cy="72.62" r="4.68"/>
+          <circle class="cls-3" cx="72.39" cy="116.11" r="4.68"/>
+        </g>
+      </g>
+      <g>
+        <circle class="cls-3" cx="87.23" cy="43.39" r="5.61"/>
+        <circle class="cls-3" cx="101.61" cy="57.77" r="5.61"/>
+        <circle class="cls-3" cx="58.08" cy="43.43" r="5.61"/>
+        <circle class="cls-3" cx="43.43" cy="57.96" r="5.61"/>
+        <circle class="cls-2" cx="86.98" cy="101.51" r="5.61"/>
+        <circle class="cls-3" cx="43.39" cy="87.11" r="5.61"/>
+        <circle class="cls-2" cx="57.89" cy="101.61" r="5.61"/>
+        <circle class="cls-3" cx="101.29" cy="86.63" r="5.61"/>
+      </g>
+    </g>
+  </g>
+</svg>
