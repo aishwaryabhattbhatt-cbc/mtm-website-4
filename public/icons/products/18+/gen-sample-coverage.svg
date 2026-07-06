@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #125;
+        stroke-linecap: round;
+        stroke-width: 6px;
+      }
+
+      .cls-3 {
+        fill: #2e6af5;
+      }
+
+      .cls-4 {
+        fill: #125;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <rect class="cls-4" x="60" y="60" width="25" height="25" rx="4.86" ry="4.86"/>
+        <path class="cls-4" d="M111.69,31.84l-13.21,3.84c-.94.27-1.23,1.46-.52,2.13l9.93,9.52c.71.68,1.88.34,2.11-.61l3.28-13.36c.23-.95-.65-1.79-1.59-1.52Z"/>
+        <g>
+          <circle class="cls-3" cx="110.71" cy="84.47" r="4.68"/>
+          <circle class="cls-3" cx="110.71" cy="60.53" r="4.68"/>
+          <circle class="cls-3" cx="98.74" cy="72.5" r="4.68"/>
+        </g>
+        <g>
+          <circle class="cls-3" cx="84.47" cy="34.29" r="4.68"/>
+          <circle class="cls-3" cx="60.53" cy="34.29" r="4.68"/>
+          <circle class="cls-3" cx="72.5" cy="46.26" r="4.68"/>
+        </g>
+        <g>
+          <circle class="cls-3" cx="34.29" cy="60.53" r="4.68"/>
+          <circle class="cls-3" cx="34.29" cy="84.47" r="4.68"/>
+          <circle class="cls-3" cx="46.26" cy="72.5" r="4.68"/>
+        </g>
+        <g>
+          <circle class="cls-3" cx="60.53" cy="110.71" r="4.68"/>
+          <circle class="cls-3" cx="84.47" cy="110.71" r="4.68"/>
+          <circle class="cls-3" cx="72.5" cy="98.74" r="4.68"/>
+        </g>
+        <line class="cls-2" x1="106.81" y1="38.19" x2="88.72" y2="56.28"/>
+        <path class="cls-4" d="M33.31,113.16l13.21-3.84c.94-.27,1.23-1.46.52-2.13l-9.93-9.52c-.71-.68-1.88-.34-2.11.61l-3.28,13.36c-.23.95.65,1.79,1.59,1.52Z"/>
+        <line class="cls-2" x1="38.19" y1="106.81" x2="56.28" y2="88.72"/>
+        <path class="cls-4" d="M113.16,111.69l-3.84-13.21c-.27-.94-1.46-1.23-2.13-.52l-9.52,9.93c-.68.71-.34,1.88.61,2.11l13.36,3.28c.95.23,1.79-.65,1.52-1.59Z"/>
+        <path class="cls-4" d="M31.84,33.31l3.84,13.21c.27.94,1.46,1.23,2.13.52l9.52-9.93c.68-.71.34-1.88-.61-2.11l-13.36-3.28c-.95-.23-1.79.65-1.52,1.59Z"/>
+        <line class="cls-2" x1="106.81" y1="106.81" x2="38.19" y2="38.19"/>
+      </g>
+      <rect class="cls-1" x="0" y="0" width="145" height="145" transform="translate(145 145) rotate(-180)"/>
+    </g>
+  </g>
+</svg>

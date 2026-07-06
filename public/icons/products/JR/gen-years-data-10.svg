@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #2e6af5;
+      }
+
+      .cls-3 {
+        fill: #125;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <circle class="cls-3" cx="112.27" cy="94.66" r="5.89"/>
+      <circle class="cls-2" cx="84.95" cy="116.29" r="7.36"/>
+      <circle class="cls-3" cx="50.34" cy="112.27" r="5.89"/>
+      <circle class="cls-2" cx="28.71" cy="84.95" r="7.36"/>
+      <circle class="cls-3" cx="32.73" cy="50.34" r="5.89"/>
+      <circle class="cls-2" cx="60.05" cy="28.71" r="7.36"/>
+      <circle class="cls-3" cx="94.66" cy="32.73" r="5.89"/>
+      <circle class="cls-2" cx="116.29" cy="60.05" r="7.36"/>
+      <circle class="cls-3" cx="106.28" cy="116.46" r="1.79"/>
+      <circle class="cls-2" cx="65.31" cy="127.47" r="2.24"/>
+      <circle class="cls-3" cx="28.55" cy="106.28" r="1.79"/>
+      <circle class="cls-2" cx="17.53" cy="65.31" r="2.24"/>
+      <circle class="cls-3" cx="38.72" cy="28.55" r="1.79"/>
+      <circle class="cls-2" cx="79.69" cy="17.53" r="2.24"/>
+      <circle class="cls-3" cx="116.45" cy="38.72" r="1.79"/>
+      <circle class="cls-2" cx="127.47" cy="79.69" r="2.24"/>
+      <circle class="cls-3" cx="89.02" cy="100.13" r="4.16"/>
+      <circle class="cls-2" cx="64.64" cy="103.72" r="5.21"/>
+      <circle class="cls-3" cx="44.87" cy="89.02" r="4.16"/>
+      <circle class="cls-2" cx="38.72" cy="69.11" r="2.6"/>
+      <circle class="cls-3" cx="55.98" cy="44.87" r="4.16"/>
+      <circle class="cls-2" cx="80.36" cy="41.28" r="5.21"/>
+      <circle class="cls-3" cx="100.13" cy="55.98" r="4.16"/>
+      <circle class="cls-2" cx="104.3" cy="75.6" r="2.6"/>
+      <g>
+        <path class="cls-3" d="M58.81,85.34v-20.18h-.12l-4.12,2.87c-.55.39-.96.53-1.56.53-1.19,0-2.07-.86-2.07-2.11,0-.9.35-1.56,1.27-2.21l5.59-3.87c1.37-.94,2.3-1.11,3.52-1.11,2.09,0,3.34,1.27,3.34,3.3v22.77c0,1.78-1.17,2.95-2.91,2.95s-2.93-1.17-2.93-2.95Z"/>
+        <path class="cls-3" d="M70.61,73.74c0-9.1,4.39-14.69,11.5-14.69s11.48,5.57,11.48,14.67-4.34,14.79-11.48,14.79-11.5-5.64-11.5-14.77ZM87.6,73.74c0-6.43-2.03-9.96-5.49-9.96s-5.51,3.55-5.51,9.96,2.03,10.04,5.51,10.04,5.49-3.57,5.49-10.04Z"/>
+      </g>
+      <rect class="cls-1" width="145" height="145"/>
+    </g>
+  </g>
+</svg>

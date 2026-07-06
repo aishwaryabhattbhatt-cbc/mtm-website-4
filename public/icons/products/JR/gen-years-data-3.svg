@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #2e6af5;
+      }
+
+      .cls-3 {
+        fill: #125;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <circle class="cls-3" cx="112.27" cy="94.66" r="5.89"/>
+      <circle class="cls-2" cx="84.95" cy="116.29" r="7.36"/>
+      <circle class="cls-3" cx="50.34" cy="112.27" r="5.89"/>
+      <circle class="cls-2" cx="28.71" cy="84.95" r="7.36"/>
+      <circle class="cls-3" cx="32.73" cy="50.34" r="5.89"/>
+      <circle class="cls-2" cx="60.05" cy="28.71" r="7.36"/>
+      <circle class="cls-3" cx="94.66" cy="32.73" r="5.89"/>
+      <circle class="cls-2" cx="116.29" cy="60.05" r="7.36"/>
+      <circle class="cls-3" cx="106.28" cy="116.46" r="1.79"/>
+      <circle class="cls-2" cx="65.31" cy="127.47" r="2.24"/>
+      <circle class="cls-3" cx="28.55" cy="106.28" r="1.79"/>
+      <circle class="cls-2" cx="17.53" cy="65.31" r="2.24"/>
+      <circle class="cls-3" cx="38.72" cy="28.55" r="1.79"/>
+      <circle class="cls-2" cx="79.69" cy="17.53" r="2.24"/>
+      <circle class="cls-3" cx="116.45" cy="38.72" r="1.79"/>
+      <circle class="cls-2" cx="127.47" cy="79.69" r="2.24"/>
+      <circle class="cls-3" cx="89.02" cy="100.13" r="4.16"/>
+      <circle class="cls-2" cx="64.64" cy="103.72" r="5.21"/>
+      <circle class="cls-3" cx="44.87" cy="89.02" r="4.16"/>
+      <circle class="cls-2" cx="38.72" cy="69.11" r="2.6"/>
+      <circle class="cls-3" cx="55.98" cy="44.87" r="4.16"/>
+      <circle class="cls-2" cx="80.36" cy="41.28" r="5.21"/>
+      <circle class="cls-3" cx="100.13" cy="55.98" r="4.16"/>
+      <circle class="cls-2" cx="104.3" cy="75.6" r="2.6"/>
+      <path class="cls-3" d="M62.37,83.41c-.31-.64-.45-1.27-.45-1.86,0-1.52.98-2.48,2.6-2.48,1.17,0,1.91.47,2.5,1.54,1,1.97,2.52,3.14,5.45,3.14s4.88-1.68,4.88-4.02c.02-2.73-1.99-4.26-5.41-4.26h-1.23c-1.43,0-2.25-.84-2.25-2.11s.82-2.09,2.25-2.09h1.15c2.95,0,4.86-1.6,4.86-3.91s-1.52-3.77-4.38-3.77c-2.38,0-3.83,1-4.75,2.99-.64,1.33-1.33,1.82-2.66,1.82-1.64,0-2.48-.96-2.48-2.38,0-.66.14-1.23.43-1.89,1.25-2.75,4.45-5.06,9.43-5.06,5.96,0,9.98,2.95,9.98,7.46,0,3.57-2.56,5.92-5.88,6.6v.12c4.2.39,6.91,2.85,6.91,6.74,0,5.12-4.43,8.52-10.98,8.52-5.37,0-8.67-2.32-10-5.1Z"/>
+      <rect class="cls-1" width="145" height="145"/>
+    </g>
+  </g>
+</svg>
