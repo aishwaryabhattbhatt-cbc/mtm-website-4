@@ -21,6 +21,8 @@ const features = [
         descFb: 'Select query parameters, drag variables from the master list into output rows and columns. What you arrange is exactly what you get. No SQL or python, no analyst handoff, no waiting. Go from brief to cross-tab in minutes.',
         icon: icons.tool.queryParameters,
         image: 'images/tools/dat/dat-query.webp',
+        videoSrc: 'videos/dat-compressed/tools-query.mp4',
+        coverSrc: 'videos/dat-compressed/tools-query-cover.jpg',
     },
     {
         pillKey: 'dat_feature_2_title',
@@ -31,6 +33,8 @@ const features = [
         descFb: 'Thousands of variables covering demographics, device ownership, media habits, platform usage — all in a single searchable list by categories.',
         icon: icons.gen.multipleVariables,
         image: 'images/tools/dat/dat-select-variables.webp',
+        videoSrc: 'videos/dat-compressed/tools-select-variables.mp4',
+        coverSrc: 'videos/dat-compressed/tools-select-variables-cover.jpg',
     },
     {
         pillKey: 'dat_feature_3_title',
@@ -41,6 +45,8 @@ const features = [
         descFb: 'Narrow your results by age, gender or region with Quick Filters or apply any variable in the tool as a filter using Additional Filters.',
         icon: icons.tool.datFiltersQuickFilters,
         image: 'images/tools/dat/dat-quick-filters.webp',
+        videoSrc: 'videos/dat-compressed/tools-quick-filters.mp4',
+        coverSrc: 'videos/dat-compressed/tools-quick-filters-cover.jpg',
     },
     {
         pillKey: 'dat_feature_4_title',
@@ -51,6 +57,8 @@ const features = [
         descFb: 'Easily adjust or refine your query with drag and drop functionality. No headaches, just a new table with new results in seconds.',
         icon: icons.gen.clickDrag,
         image: 'images/tools/dat/dat-drag-drop.webp',
+        videoSrc: 'videos/dat-compressed/tools-drag-drop.mp4',
+        coverSrc: 'videos/dat-compressed/tools-drag-drop-cover.jpg',
     },
     {
         pillKey: 'dat_feature_5_title',
@@ -61,6 +69,8 @@ const features = [
         descFb: 'Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required.',
         icon: icons.gen.multipleOutputs,
         image: 'images/tools/dat/dat-export.webp',
+        videoSrc: 'videos/dat-compressed/tools-export.mp4',
+        coverSrc: 'videos/dat-compressed/tools-export-cover.jpg',
     },
 ];
 ---
@@ -124,14 +134,23 @@ const features = [
             features.map((f) => (
                 <article class="dat-features__card">
                     <div class="dat-features__card-slot" aria-hidden="true">
-                        {f.image && (
-                            <img
-                                class="dat-features__card-slot-img"
-                                src={`${base}${f.image}`}
-                                alt=""
-                                loading="lazy"
-                            />
-                        )}
+                        <img
+                            class="dat-features__card-slot-img dat-features__card-cover"
+                            src={`${base}${f.coverSrc ?? f.image}`}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <video
+                            class="dat-features__card-slot-video"
+                            muted
+                            playsinline
+                            loop
+                            preload="metadata"
+                            aria-hidden="true"
+                        >
+                            <source src={`${base}${f.videoSrc}`} type="video/mp4" />
+                        </video>
                     </div>
                     <div class="dat-features__card-body">
                         <div class="dat-features__card-pill">
@@ -255,16 +274,39 @@ const features = [
         aspect-ratio: 11 / 5;
         background: var(--surface-blue);
         border-radius: var(--radius-s);
+        position: relative;
         flex-shrink: 0;
         overflow: hidden;
         margin: var(--space-2) var(--space-2) 0;
     }
 
     .dat-features__card-slot-img {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
+        transition: opacity 0.2s ease;
+    }
+
+    .dat-features__card-slot-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .dat-features__card.is-playing .dat-features__card-cover {
+        opacity: 0;
+    }
+
+    .dat-features__card.is-playing .dat-features__card-slot-video {
+        opacity: 1;
     }
 
     .dat-features__card-body {
@@ -338,6 +380,25 @@ const features = [
     const scroll = document.getElementById('datFeaturesScroll');
     const prev = document.querySelector<HTMLButtonElement>('.dat-features__nav-prev');
     const next = document.querySelector<HTMLButtonElement>('.dat-features__nav-next');
+    const cards = document.querySelectorAll<HTMLElement>('.dat-features__card');
+
+    const stopVideo = (card: HTMLElement) => {
+        const video = card.querySelector<HTMLVideoElement>('.dat-features__card-slot-video');
+        if (!video) return;
+
+        card.classList.remove('is-playing');
+        video.pause();
+        video.currentTime = 0;
+    };
+
+    const playVideo = (card: HTMLElement) => {
+        const video = card.querySelector<HTMLVideoElement>('.dat-features__card-slot-video');
+        if (!video) return;
+
+        card.classList.add('is-playing');
+        video.currentTime = 0;
+        void video.play();
+    };
 
     if (scroll && prev && next) {
         const getScrollAmount = () => {
@@ -355,4 +416,9 @@ const features = [
             scroll.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
         });
     }
+
+    cards.forEach((card) => {
+        card.addEventListener('mouseenter', () => playVideo(card));
+        card.addEventListener('mouseleave', () => stopVideo(card));
+    });
 </script>
