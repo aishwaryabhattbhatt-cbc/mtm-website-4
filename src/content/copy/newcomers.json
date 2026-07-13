@@ -244,14 +244,19 @@
     "en": "Ensuring new data on emergent technologies",
     "fr": ""
   },
+  "survey_stat_3": {
+    "key": "survey_stat_3",
+    "en": "12",
+    "fr": ""
+  },
   "survey_stat_3_label": {
     "key": "survey_stat_3_label",
-    "en": "12 Languages",
+    "en": "Languages",
     "fr": ""
   },
   "survey_stat_3_description": {
     "key": "survey_stat_3_description",
-    "en": "Ensures the majority of the newcomer population can participate in the survey.",
+    "en": "The survey is conducted in English, French, Tagalog, Cantonese, Mandarin, Punjabi, Arabic, Spanish, Amharic, Hindi, Ukrainian, and Swahili to ensure that the majority of the newcomer population can participate.",
     "fr": ""
   },
   "data_collected_title": {
