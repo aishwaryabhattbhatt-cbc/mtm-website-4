@@ -6,7 +6,7 @@ import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
 import ProductPill from '../shared/ProductPill.astro';
 import Button from '../shared/Button.astro';
-import Eyebrow from '../shared/Eyebrow.astro';
+import EyebrowIcon from '../shared/EyebrowIcon.astro';
 
 interface Props {
     locale: Locale;
@@ -67,7 +67,12 @@ const base = import.meta.env.BASE_URL;
 
     <!-- row 2: 3 feature cards (4 cols each) -->
     <div class="trending-tool__feature trending-tool__feature--blue">
-        <Eyebrow>{t(copy, 'trending_feature_1_eyebrow', locale, 'What You See')}</Eyebrow>
+        <EyebrowIcon
+            iconSrc={`${base}${icons.gen.sampleCoverage}`}
+            label={t(copy, 'trending_feature_1_eyebrow', locale, 'What You See')}
+            copyKey="trending_feature_1_eyebrow"
+            variant="white"
+        />
         <div class="trending-tool__feature-content">
             <p
                 class="text-body-p1 trending-tool__feature-title"
@@ -99,7 +104,12 @@ const base = import.meta.env.BASE_URL;
     </div>
 
     <div class="trending-tool__feature trending-tool__feature--teal">
-        <Eyebrow>{t(copy, 'trending_feature_2_eyebrow', locale, 'What You Track')}</Eyebrow>
+        <EyebrowIcon
+            iconSrc={`${base}${icons.gen.surveyDesign}`}
+            label={t(copy, 'trending_feature_2_eyebrow', locale, 'What You Track')}
+            copyKey="trending_feature_2_eyebrow"
+            variant="white"
+        />
         <div class="trending-tool__feature-content">
             <p
                 class="text-body-p1 trending-tool__feature-title"
@@ -131,7 +141,12 @@ const base = import.meta.env.BASE_URL;
     </div>
 
     <div class="trending-tool__feature trending-tool__feature--purple">
-        <Eyebrow>{t(copy, 'trending_feature_3_eyebrow', locale, 'What You Compare')}</Eyebrow>
+        <EyebrowIcon
+            iconSrc={`${base}${icons.gen.sampleComposition}`}
+            label={t(copy, 'trending_feature_3_eyebrow', locale, 'What You Compare')}
+            copyKey="trending_feature_3_eyebrow"
+            variant="white"
+        />
         <div class="trending-tool__feature-content">
             <p
                 class="text-body-p1 trending-tool__feature-title"
@@ -168,8 +183,9 @@ const base = import.meta.env.BASE_URL;
         width: 100%;
         scroll-margin-top: calc(var(--navbar-height) + 4.25rem + var(--space-3));
         background: var(--surface-white);
-        /* dense alternating tool rows — deliberately tighter than --section-pad-block */
-        padding: var(--space-6) var(--content-margin-inline);
+        padding-block-start: var(--section-pad-block);
+        padding-block-end: var(--space-8);
+        padding-inline: var(--content-margin-inline);
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         column-gap: var(--layout-card-gap);
@@ -283,7 +299,7 @@ const base = import.meta.env.BASE_URL;
 
     @media (max-width: 767px) {
         .trending-tool-section {
-            padding: var(--space-5) var(--content-margin-inline);
+            padding: var(--section-pad-block) var(--content-margin-inline);
         }
 
         .trending-tool__content {

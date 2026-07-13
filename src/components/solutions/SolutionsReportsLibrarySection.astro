@@ -144,8 +144,11 @@ const filterTabs = [
         scrollbar-width: none;
         margin-inline: calc(-1 * var(--content-margin-inline));
         /* top = header→content gap; bottom = section's own bottom boundary (see .solutions-reportslibrary padding note) */
-        padding: var(--section-header-gap) var(--content-margin-inline) var(--section-pad-block-lg);
+        padding: var(--space-6) var(--content-margin-inline) var(--section-pad-block-lg);
         scroll-padding-inline-start: var(--content-margin-inline);
+        transition:
+            opacity 180ms ease,
+            transform 180ms ease;
     }
 
     .solutions-reportslibrary__carousel::-webkit-scrollbar {
@@ -156,6 +159,23 @@ const filterTabs = [
         flex-shrink: 0;
         width: 24rem;
         scroll-snap-align: start;
+        transition:
+            opacity 180ms ease,
+            transform 180ms ease;
+    }
+
+    .solutions-reportslibrary.is-filter-transitioning .solutions-reportslibrary__carousel,
+    .solutions-reportslibrary.is-filter-transitioning .solutions-reportslibrary__card-wrap {
+        opacity: 0.9;
+        transform: translateY(0.125rem);
+    }
+
+    @media (min-width: 1024px) {
+        .solutions-reportslibrary__card-wrap {
+            width: calc(
+                (100vw - (2 * var(--content-margin-inline)) - (2 * var(--layout-card-gap))) / 3
+            );
+        }
     }
 
     @media (max-width: 1023px) {
@@ -233,12 +253,30 @@ const filterTabs = [
     .solutions-reportslibrary[data-filter='newcomers'] :global([data-pill-variant='newcomers']) {
         display: inline-flex;
     }
+
+    @media (prefers-reduced-motion: reduce) {
+        .solutions-reportslibrary__carousel,
+        .solutions-reportslibrary__card-wrap {
+            transition: none;
+        }
+    }
 </style>
 
 <script>
     document.querySelectorAll<HTMLElement>('.solutions-reportslibrary').forEach((section) => {
+        let filterAnimTimer: number | null = null;
+
         section.addEventListener('tabs:change', ((e: CustomEvent) => {
+            section.classList.add('is-filter-transitioning');
             section.dataset.filter = e.detail.value;
+
+            if (filterAnimTimer !== null) {
+                window.clearTimeout(filterAnimTimer);
+            }
+            filterAnimTimer = window.setTimeout(() => {
+                section.classList.remove('is-filter-transitioning');
+                filterAnimTimer = null;
+            }, 180);
         }) as EventListener);
     });
 </script>

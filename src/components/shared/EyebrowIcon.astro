@@ -3,13 +3,20 @@ interface Props {
     iconSrc: string;
     label: string;
     copyKey?: string;
+    variant?: 'default' | 'white';
     class?: string;
 }
 
-const { iconSrc, label, copyKey, class: className = '' } = Astro.props as Props;
+const {
+    iconSrc,
+    label,
+    copyKey,
+    variant = 'default',
+    class: className = '',
+} = Astro.props as Props;
 ---
 
-<div class={`eyebrow-icon${className ? ` ${className}` : ''}`}>
+<div class={`eyebrow-icon eyebrow-icon--${variant}${className ? ` ${className}` : ''}`}>
     <img
         src={iconSrc}
         alt=""
@@ -32,6 +39,10 @@ const { iconSrc, label, copyKey, class: className = '' } = Astro.props as Props;
         border-radius: var(--radius-tag);
         padding: var(--space-1) var(--space-4) var(--space-1) var(--space-3);
         align-self: flex-start;
+    }
+
+    .eyebrow-icon--white {
+        background: var(--surface-white);
     }
 
     .eyebrow-icon-image {

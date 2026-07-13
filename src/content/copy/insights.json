@@ -31,7 +31,7 @@
   },
   "featured_report_description": {
     "key": "featured_report_description",
-    "en": "Learn about the accelerating shift of Canadian audiences - including Junior - away from traditional broadcast toward YouTube as a primary viewing destination, with breakdowns by lanuage market , age group, and region.",
+    "en": "Learn about how YouTube became the primary viewing destination for Canadian youth, with key details across different language markets, age groups, regions, viewership of other content and more.",
     "fr": ""
   },
   "variable_1": {
@@ -196,37 +196,32 @@
   },
   "infographic_tag": {
     "key": "infographic_tag",
-    "en": "MTM JR",
+    "en": "MTM 18+",
     "fr": ""
   },
   "infographic_title": {
     "key": "infographic_title",
-    "en": "Kids and their ever growing Virtual World",
+    "en": "Who is coming out ahead in the streaming wars?",
     "fr": ""
   },
   "infographic_description": {
     "key": "infographic_description",
-    "en": "Explore how children are spending more time across gaming, streaming, social video, and connected platforms — and what those shifts mean for parents, educators, and media organizations.",
+    "en": "Learn how paid streaming services stack up against each other and other types of media.",
     "fr": ""
   },
   "infographic_cta_1": {
     "key": "infographic_cta_1",
-    "en": "Free Report",
+    "en": "Download",
     "fr": ""
   },
   "infographic_graph": {
     "key": "infographic_graph",
-    "en": "Name of Graph",
+    "en": "SVOD Subscriptions",
     "fr": ""
   },
   "infographic_graph_detail": {
     "key": "infographic_graph_detail",
-    "en": "Support Detail",
-    "fr": ""
-  },
-  "infographic_graph_cta": {
-    "key": "infographic_graph_cta",
-    "en": "Explore Graph",
+    "en": "Canadians 18+",
     "fr": ""
   },
   "section_5_title": {

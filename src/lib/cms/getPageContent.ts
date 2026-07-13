@@ -7,35 +7,21 @@ import type { CMSDictionary, PageCMSConfig } from './types';
 
 const inMemoryCache = new Map<string, CMSDictionary>();
 const SHARED_PAGE_ID = 'home';
+const useInMemoryCache = process.env.NODE_ENV === 'production';
 
 function getLocalCopyPath(pageId: string): string {
     const dir = dirname(fileURLToPath(import.meta.url));
     return resolve(dir, `../../content/copy/${pageId}.json`);
 }
 
-function mergeSharedDictionary(pageId: string, dictionary: CMSDictionary): CMSDictionary {
-    if (pageId === SHARED_PAGE_ID) {
-        return dictionary;
-    }
-
-    const sharedDictionary = inMemoryCache.get(SHARED_PAGE_ID);
-    if (!sharedDictionary) {
-        return dictionary;
-    }
-
-    return {
-        ...sharedDictionary,
-        ...dictionary,
-    };
-}
-
 export async function getPageDictionary(pageId: string): Promise<CMSDictionary> {
-    if (inMemoryCache.has(pageId)) {
+    if (useInMemoryCache && inMemoryCache.has(pageId)) {
         return inMemoryCache.get(pageId) ?? {};
     }
 
+    let sharedDictionary: CMSDictionary = {};
     if (pageId !== SHARED_PAGE_ID) {
-        await getPageDictionary(SHARED_PAGE_ID);
+        sharedDictionary = await getPageDictionary(SHARED_PAGE_ID);
     }
 
     // 1. Local copy file (written by `npm run sync-copy`) — fast, no network
@@ -43,8 +29,16 @@ export async function getPageDictionary(pageId: string): Promise<CMSDictionary> 
     if (existsSync(localPath)) {
         try {
             const dict = JSON.parse(readFileSync(localPath, 'utf-8')) as CMSDictionary;
-            const mergedDict = mergeSharedDictionary(pageId, dict);
-            inMemoryCache.set(pageId, mergedDict);
+            const mergedDict =
+                pageId === SHARED_PAGE_ID
+                    ? dict
+                    : {
+                          ...sharedDictionary,
+                          ...dict,
+                      };
+            if (useInMemoryCache) {
+                inMemoryCache.set(pageId, mergedDict);
+            }
             return mergedDict;
         } catch {
             console.warn(
@@ -68,8 +62,16 @@ export async function getPageDictionary(pageId: string): Promise<CMSDictionary> 
 
     try {
         const dictionary = await fetchSheetDictionary(csvUrl);
-        const mergedDictionary = mergeSharedDictionary(pageId, dictionary);
-        inMemoryCache.set(pageId, mergedDictionary);
+        const mergedDictionary =
+            pageId === SHARED_PAGE_ID
+                ? dictionary
+                : {
+                      ...sharedDictionary,
+                      ...dictionary,
+                  };
+        if (useInMemoryCache) {
+            inMemoryCache.set(pageId, mergedDictionary);
+        }
         return mergedDictionary;
     } catch (error) {
         console.warn(

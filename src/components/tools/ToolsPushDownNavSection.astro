@@ -98,6 +98,11 @@ const tabs = [
             visibility 0.2s;
     }
 
+    .push-down-nav--static {
+        position: static;
+        box-shadow: none;
+    }
+
     .push-down-nav--hidden {
         opacity: 0;
         visibility: hidden;
@@ -220,10 +225,26 @@ const tabs = [
     if (nav) {
         const buttons = nav.querySelectorAll<HTMLButtonElement>('.push-down-nav__tab');
         const sectionIds = ['data-analysis-tool', 'trending-tool', 'forecasting-tool'];
-        const yourDataSection = document.getElementById('yourdata');
+        // Support both V1 (#yourdata) and V2 (#yourdata-v2) id
+        const yourDataSection =
+            document.getElementById('yourdata-v2') || document.getElementById('yourdata');
         const tabsEl = nav.querySelector<HTMLElement>('.push-down-nav__tabs');
         const chevronLeft = nav.querySelector<HTMLButtonElement>('.push-down-nav__chevron--left');
         const chevronRight = nav.querySelector<HTMLButtonElement>('.push-down-nav__chevron--right');
+
+        // Pre-calculate the absolute scroll threshold at which yourdata reaches the nav.
+        // We use offsetTop (stable, not affected by sticky) so toggling --static
+        // never creates a measurement feedback loop.
+        let hideThreshold = Infinity;
+        const calcHideThreshold = () => {
+            if (!yourDataSection) return;
+            const navbarEl = document.querySelector<HTMLElement>('.navbar');
+            const navbarHeight = navbarEl ? navbarEl.getBoundingClientRect().height : 0;
+            const navHeight = nav.getBoundingClientRect().height;
+            hideThreshold = yourDataSection.offsetTop - navbarHeight - navHeight;
+        };
+        calcHideThreshold();
+        window.addEventListener('resize', calcHideThreshold);
 
         // Chevrons are hidden entirely when the tabs fit without scrolling, and
         // each one disables itself at the scroll boundary it points toward.
@@ -284,15 +305,11 @@ const tabs = [
             16;
 
         const onScroll = () => {
-            const navBottom = nav.getBoundingClientRect().bottom;
+            const pastThreshold = window.scrollY >= hideThreshold;
 
-            // Hide nav when yourdata (and everything below) reaches the nav bar
-            if (yourDataSection) {
-                nav.classList.toggle(
-                    'push-down-nav--hidden',
-                    yourDataSection.getBoundingClientRect().top <= navBottom
-                );
-            }
+            // Stop sticky and hide when the yourdata section reaches the nav
+            nav.classList.toggle('push-down-nav--static', pastThreshold);
+            nav.classList.toggle('push-down-nav--hidden', pastThreshold);
 
             // Skip scroll-spy while a click-triggered scroll is in flight
             if (clickScrolling) return;
@@ -300,6 +317,7 @@ const tabs = [
             // Activate the tab whose section is closest to (and at/past) the push-down nav's bottom.
             // Use the tab nav's bottom edge (not just navbar), and add spaceS lookahead to match
             // the scroll offset applied during click-to-section navigation.
+            const navBottom = nav.getBoundingClientRect().bottom;
             let activeIndex = 0;
             sectionIds.forEach((id, i) => {
                 const el = document.getElementById(id);

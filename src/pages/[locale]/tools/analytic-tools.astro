@@ -7,7 +7,7 @@ import ToolsDataAnalysisSection from '../../../components/tools/ToolsDataAnalysi
 import ToolsDatFeaturesSection from '../../../components/tools/ToolsDatFeaturesSection.astro';
 import AnalyticToolsTrendingToolSection from '../../../components/analytic-tools/AnalyticToolsTrendingToolSection.astro';
 import AnalyticToolsForecastingToolSection from '../../../components/analytic-tools/AnalyticToolsForecastingToolSection.astro';
-import AnalyticToolsYourDataSection from '../../../components/analytic-tools/AnalyticToolsYourDataSection.astro';
+import AnalyticToolsYourDataSectionV2 from '../../../components/analytic-tools/AnalyticToolsYourDataSectionV2.astro';
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import type { Locale } from '../../../lib/cms/types';
@@ -85,7 +85,7 @@ const pageDescription =
             ctaHref={`${base}${locale}/request-demo/`}
         />
 
-        <AnalyticToolsYourDataSection locale={locale} copy={copy} />
+        <AnalyticToolsYourDataSectionV2 locale={locale} copy={copy} />
 
         <HomeFooterSection locale={locale} copy={copy} />
     </main>

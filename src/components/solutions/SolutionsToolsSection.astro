@@ -203,24 +203,147 @@ const showCensusSlim = cards.includes('census-slim');
 
         {
             showAnalyticSlim && (
-                <article class="solutions-tools-card-slim">
-                    <div class="solutions-tools-card-slim__left">
-                        <img
-                            class="icon-2xl"
-                            src={`${base}${icons.tool.dashboard}`}
-                            alt=""
-                            aria-hidden="true"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                        <h3 class="solutions-tools-card-slim__title">
-                            {t(copy, 'tools_analytic_eyebrow', locale, 'Analytic Tools')}
-                        </h3>
+                <details class="solutions-tools-accordion">
+                    <summary class="solutions-tools-card-slim solutions-tools-card-slim--summary">
+                        <div class="solutions-tools-card-slim__left">
+                            <img
+                                class="icon-2xl"
+                                src={`${base}${icons.tool.dashboard}`}
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                            <h3 class="solutions-tools-card-slim__title">
+                                {t(copy, 'tools_analytic_eyebrow', locale, 'Analytic Tools')}
+                            </h3>
+                        </div>
+                        <span class="solutions-tools-card-slim__chevron icon-m" aria-hidden="true">
+                            <svg
+                                width="100%"
+                                height="100%"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M5 7.5L10 12.5L15 7.5"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </span>
+                    </summary>
+
+                    <div class="solutions-tools-accordion__content-clip">
+                        <article class="solutions-tools-card solutions-tools-card--accordion">
+                            <div class="solutions-tools-card__content">
+                                <div class="solutions-tools-card__text">
+                                    <div class="solutions-tools-card__title-row">
+                                        <img
+                                            class="icon-2xl"
+                                            src={`${base}${icons.tool.dashboard}`}
+                                            alt=""
+                                            aria-hidden="true"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+                                        <h3>
+                                            {t(
+                                                copy,
+                                                'tools_analytic_eyebrow',
+                                                locale,
+                                                'Analytic Tools'
+                                            )}
+                                        </h3>
+                                    </div>
+                                    <p class="text-body-p2 solutions-tools-card__description">
+                                        {t(
+                                            copy,
+                                            'tools_analytic_description',
+                                            locale,
+                                            "Access media usage and behaviour data across MTM's three datasets — MTM 18+, Juniors, and Newcomers. Query platform adoption, content consumption, device ownership, and service usage across hundreds of variables and filters to find exactly what your research needs."
+                                        )}
+                                    </p>
+                                </div>
+                                <div class="solutions-tools-card__features">
+                                    <div class="solutions-tools-card__feature">
+                                        <img
+                                            class="icon-2xl"
+                                            src={`${base}${icons.tool.dat}`}
+                                            alt=""
+                                            aria-hidden="true"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+                                        <span class="text-body-p2-bold">
+                                            {t(
+                                                copy,
+                                                'tools_analytic_feature_1',
+                                                locale,
+                                                'Data Analysis'
+                                            )}
+                                        </span>
+                                    </div>
+                                    <div class="solutions-tools-card__feature">
+                                        <img
+                                            class="icon-2xl"
+                                            src={`${base}${icons.tool.trending}`}
+                                            alt=""
+                                            aria-hidden="true"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+                                        <span class="text-body-p2-bold">
+                                            {t(
+                                                copy,
+                                                'tools_analytic_feature_2',
+                                                locale,
+                                                'Trending'
+                                            )}
+                                        </span>
+                                    </div>
+                                    <div class="solutions-tools-card__feature">
+                                        <img
+                                            class="icon-2xl"
+                                            src={`${base}${icons.tool.forecast}`}
+                                            alt=""
+                                            aria-hidden="true"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+                                        <span class="text-body-p2-bold">
+                                            {t(
+                                                copy,
+                                                'tools_analytic_feature_3',
+                                                locale,
+                                                'Forecasting'
+                                            )}
+                                        </span>
+                                    </div>
+                                </div>
+                                <Button
+                                    variant="tertiary"
+                                    size="md"
+                                    href={`${base}${locale}/analytic-tools/`}
+                                >
+                                    {t(copy, 'tools_learn_more', locale, 'Learn more')}
+                                </Button>
+                            </div>
+                            <div class="solutions-tools-card__preview">
+                                <img
+                                    src={`${base}images/tools/tool-analytic-hero.png`}
+                                    alt=""
+                                    class="solutions-tools-card__preview-img"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </div>
+                        </article>
                     </div>
-                    <Button variant="tertiary" size="md" href={`${base}${locale}/analytic-tools/`}>
-                        {t(copy, 'tools_learn_more', locale, 'Learn more')}
-                    </Button>
-                </article>
+                </details>
             )
         }
 
@@ -377,6 +500,84 @@ const showCensusSlim = cards.includes('census-slim');
         gap: var(--card-stack-gap);
     }
 
+    .solutions-tools-accordion {
+        position: relative;
+        --accordion-chevron-image-offset: calc(var(--card-pad-thin) + var(--space-3));
+    }
+
+    .solutions-tools-accordion > summary {
+        list-style: none;
+    }
+
+    .solutions-tools-accordion > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .solutions-tools-accordion__content-clip {
+        overflow: hidden;
+        height: 0;
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-card);
+        transition: height 450ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .solutions-tools-card--accordion {
+        box-shadow: none;
+    }
+
+    .solutions-tools-card-slim--summary {
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .solutions-tools-card-slim__chevron {
+        color: var(--brand-blue-main);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(0deg);
+        transition: transform var(--duration-fast) var(--ease-out);
+    }
+
+    .solutions-tools-accordion.is-expanded > .solutions-tools-card-slim--summary {
+        position: absolute;
+        top: var(--accordion-chevron-image-offset);
+        right: var(--accordion-chevron-image-offset);
+        z-index: 2;
+        width: var(--space-8);
+        height: var(--space-8);
+        min-width: var(--space-8);
+        display: grid;
+        place-items: center;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        border-radius: var(--radius-full);
+        box-shadow: var(--shadow-card);
+        background: color-mix(in srgb, var(--surface-white) 92%, transparent);
+        justify-content: center;
+    }
+
+    .solutions-tools-card-slim__left {
+        transition: opacity var(--duration-fast) var(--ease-out);
+    }
+
+    .solutions-tools-accordion.is-expanded .solutions-tools-card-slim__left {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .solutions-tools-accordion.is-expanded .solutions-tools-card-slim__chevron {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .solutions-tools-accordion.is-expanded .solutions-tools-card-slim__chevron {
+        transform: rotate(180deg);
+    }
+
     .solutions-tools-card-slim__left {
         display: flex;
         align-items: center;
@@ -428,5 +629,93 @@ const showCensusSlim = cards.includes('census-slim');
             flex-direction: column;
             align-items: flex-start;
         }
+
+        .solutions-tools-accordion.is-expanded > .solutions-tools-card-slim--summary {
+            width: var(--space-8);
+            height: var(--space-8);
+            min-width: var(--space-8);
+        }
     }
 </style>
+
+<script>
+    const toolsAccordions = document.querySelectorAll<HTMLDetailsElement>(
+        '.solutions-tools-accordion'
+    );
+
+    toolsAccordions.forEach((accordion) => {
+        const summary = accordion.querySelector<HTMLElement>('.solutions-tools-card-slim--summary');
+        const contentClip = accordion.querySelector<HTMLElement>(
+            '.solutions-tools-accordion__content-clip'
+        );
+        const contentCard = contentClip?.firstElementChild as HTMLElement | null;
+        if (!summary || !contentClip || !contentCard) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let isAnimating = false;
+
+        const getOpenHeight = () => contentCard.scrollHeight;
+
+        if (accordion.open) {
+            accordion.classList.add('is-expanded');
+            contentClip.style.height = `${getOpenHeight()}px`;
+        }
+
+        summary.addEventListener('click', (event: MouseEvent) => {
+            event.preventDefault();
+            if (isAnimating) return;
+
+            const isOpen = accordion.open;
+
+            if (prefersReducedMotion.matches) {
+                if (isOpen) {
+                    accordion.classList.remove('is-expanded');
+                    contentClip.style.height = '0px';
+                    accordion.open = false;
+                } else {
+                    accordion.open = true;
+                    accordion.classList.add('is-expanded');
+                    contentClip.style.height = `${getOpenHeight()}px`;
+                }
+                return;
+            }
+
+            isAnimating = true;
+
+            if (!isOpen) {
+                accordion.open = true;
+                accordion.classList.add('is-expanded');
+                contentClip.style.height = '0px';
+                void contentClip.offsetHeight;
+                contentClip.style.height = `${getOpenHeight()}px`;
+
+                const onExpandEnd = (e: TransitionEvent) => {
+                    if (e.propertyName !== 'height') return;
+                    contentClip.removeEventListener('transitionend', onExpandEnd);
+                    contentClip.style.height = 'auto';
+                    isAnimating = false;
+                };
+                contentClip.addEventListener('transitionend', onExpandEnd);
+                return;
+            }
+
+            accordion.classList.remove('is-expanded');
+            contentClip.style.height = `${contentClip.getBoundingClientRect().height}px`;
+            void contentClip.offsetHeight;
+            contentClip.style.height = '0px';
+
+            const onCollapseEnd = (e: TransitionEvent) => {
+                if (e.propertyName !== 'height') return;
+                contentClip.removeEventListener('transitionend', onCollapseEnd);
+                accordion.open = false;
+                isAnimating = false;
+            };
+            contentClip.addEventListener('transitionend', onCollapseEnd);
+        });
+
+        window.addEventListener('resize', () => {
+            if (!accordion.open || isAnimating) return;
+            contentClip.style.height = `${getOpenHeight()}px`;
+        });
+    });
+</script>

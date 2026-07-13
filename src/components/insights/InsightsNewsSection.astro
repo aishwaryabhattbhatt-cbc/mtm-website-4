@@ -112,7 +112,7 @@ const newsItems = [
         padding: var(--section-pad-block-lg) var(--content-margin-inline) var(--section-pad-block);
         display: flex;
         flex-direction: column;
-        gap: var(--section-header-gap);
+        gap: var(--space-6);
     }
 
     .news-section__header {
@@ -151,6 +151,14 @@ const newsItems = [
         flex-shrink: 0;
         width: 24rem;
         scroll-snap-align: start;
+    }
+
+    @media (min-width: 1024px) {
+        .news-section__card-wrap {
+            width: calc(
+                (100vw - (2 * var(--content-margin-inline)) - (2 * var(--layout-card-gap))) / 3
+            );
+        }
     }
 
     @media (max-width: 1023px) {

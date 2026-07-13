@@ -6,7 +6,7 @@
   },
   "hero_title": {
     "key": "hero_title",
-    "en": "Know your audience",
+    "en": "Know your audience.",
     "fr": ""
   },
   "hero_description": {
@@ -26,12 +26,12 @@
   },
   "problem_title": {
     "key": "problem_title",
-    "en": "The shifts you don't see until it's too late",
+    "en": "Get ahead of changes.",
     "fr": ""
   },
   "problem_description": {
     "key": "problem_description",
-    "en": "Attention fragmentation is real - know where your audience is now, where it will be next and who you may not be reaching yet.",
+    "en": "Attention fragmentation is real – know where your audience is now, where it will be next and who you may not be reaching yet.",
     "fr": ""
   },
   "insight_1_eyebrow": {
@@ -49,6 +49,11 @@
     "en": "Canadians no longer live on just one platform. They stream on one service, scroll on another, and stay connect to the world around them on a third. MTM tracks the full media diet across every screen and with every platform and service, so you can capture real-world insights for any target audience",
     "fr": ""
   },
+  "insight_1_chart_title": {
+    "key": "insight_1_chart_title",
+    "en": "Top Social Media Platforms",
+    "fr": ""
+  },
   "insight_2_eyebrow": {
     "key": "insight_2_eyebrow",
     "en": "Market Intelligence",
@@ -62,6 +67,11 @@
   "insight_2_description": {
     "key": "insight_2_description",
     "en": "The MTM allows you to see Canada in high definition. From streaming subscriptions to podcast habits to device ownership - not all Canadians have the same media behaviours. Filter data by specific racialized groups, families, age groups, income brackets and more so that you can connect when and how your audience needs you.",
+    "fr": ""
+  },
+  "insight_2_chart_title": {
+    "key": "insight_2_chart_title",
+    "en": "FAST Channel Viewership",
     "fr": ""
   },
   "value_prop_1_title": {
@@ -226,7 +236,7 @@
   },
   "usecase_2_variables": {
     "key": "usecase_2_variables",
-    "en": "Podcast listenership, podcast hours, streaming audio platforms, social media usage",
+    "en": "Podcast listenership, Podcast hours, Streaming audio platforms, Social media usage",
     "fr": ""
   },
   "usecase_2_cta_title": {

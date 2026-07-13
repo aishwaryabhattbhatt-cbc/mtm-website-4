@@ -56,7 +56,7 @@
   },
   "topic_2_variables": {
     "key": "topic_2_variables",
-    "en": "Age 12-17, Age 18-24, Twitch",
+    "en": "Age 12 to 17, Age 18 to 24, Twitch",
     "fr": ""
   },
   "topic_3_eyebrow": {
@@ -71,7 +71,7 @@
   },
   "topic_3_variables": {
     "key": "topic_3_variables",
-    "en": "ChatGPT, Gemini, Claude, Age 18-24, Grok",
+    "en": "ChatGPT, Gemini, Claude, Age 18 to 24, Grok",
     "fr": ""
   },
   "topic_4_eyebrow": {
@@ -86,7 +86,7 @@
   },
   "topic_4_variables": {
     "key": "topic_4_variables",
-    "en": "Game console owners, WiiU, Play Station, XBox, Income",
+    "en": "Game console owners, Nintendo Switch, PlayStation, XBox, Income",
     "fr": ""
   },
   "topic_5_eyebrow": {
@@ -101,7 +101,7 @@
   },
   "topic_5_variables": {
     "key": "topic_5_variables",
-    "en": "Anglophone, Francophone, Social Media, Language at Home, News, TV Hours",
+    "en": "Anglophone, Francophone, Social Media, Language spoken at Home, News, TV hours",
     "fr": ""
   },
   "topic_6_eyebrow": {
@@ -116,7 +116,7 @@
   },
   "topic_6_variables": {
     "key": "topic_6_variables",
-    "en": "Read online news, News consumption platform, Social Media, CNN, YouTube",
+    "en": "Read online news, News consumption platform, Social media, CTV, YouTube",
     "fr": ""
   },
   "dataset_footer": {
@@ -226,7 +226,7 @@
   },
   "workflow_step_1_title": {
     "key": "workflow_step_1_title",
-    "en": "",
+    "en": "Export for your audience",
     "fr": ""
   },
   "workflow_step_1_description": {
@@ -241,7 +241,7 @@
   },
   "workflow_step_2_title": {
     "key": "workflow_step_2_title",
-    "en": "",
+    "en": "Export for your audience",
     "fr": ""
   },
   "workflow_step_2_description": {
@@ -256,7 +256,7 @@
   },
   "workflow_step_3_title": {
     "key": "workflow_step_3_title",
-    "en": "",
+    "en": "Export for your audience",
     "fr": ""
   },
   "workflow_step_3_description": {
@@ -286,7 +286,7 @@
   },
   "usecase_1_variables": {
     "key": "usecase_1_variables",
-    "en": "TV viewership, TV hours, region, age",
+    "en": "TV viewership, TV hours, Region, Age",
     "fr": ""
   },
   "usecase_1_cta_title": {
