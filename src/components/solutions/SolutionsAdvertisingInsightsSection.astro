@@ -15,10 +15,13 @@ const { locale, copy, base } = Astro.props as Props;
 
 <section class="solutions-advertising-insights-section">
     <div class="solutions-advertising-insights-header">
-        <h2>
+        <h2 data-copy-key="problem_title">
             {t(copy, 'problem_title', locale, 'Why trusted data changes everything')}
         </h2>
-        <p class="text-body-p1 solutions-advertising-insights-subtitle">
+        <p
+            class="text-body-p1 solutions-advertising-insights-subtitle"
+            data-copy-key="problem_description"
+        >
             {
                 t(
                     copy,
@@ -34,36 +37,44 @@ const { locale, copy, base } = Astro.props as Props;
         <SolutionsInsightCard
             iconSrc={`${base}${icons.gen.reliableData}`}
             eyebrow={t(copy, 'insight_1_eyebrow', locale, 'Trustworthy Data')}
+            eyebrowKey="insight_1_eyebrow"
             title={t(
                 copy,
                 'insight_1_title',
                 locale,
                 'With 20 years of data, and more than 300,000 Canadians surveyed to date, the MTM gives you a source you can measure against with confidence.'
             )}
+            titleKey="insight_1_title"
             description={t(
                 copy,
                 'insight_1_description',
                 locale,
                 'Our independent, nationally representative samples allow for detailed comparisons against your internal data and other sources. With the MTM, know where and how Canadians are engaged with an exhaustive array of media platforms and leave nothing up to chance.'
             )}
+            descriptionKey="insight_1_description"
             imageSrc={`${base}images/solutions/advertising/insight-1.png`}
             imageAlt="Trustworthy data visualization"
             imageTitle={t(copy, 'insight_1_chart_title', locale, '300,000+ Canadians surveyed')}
+            imageTitleKey="insight_1_chart_title"
             imageTitleColor="blue"
         />
         <SolutionsInsightCard
             iconSrc={`${base}${icons.gen.focus}`}
             eyebrow={t(copy, 'insight_2_eyebrow', locale, 'Precision Targeting')}
+            eyebrowKey="insight_2_eyebrow"
             title={t(copy, 'insight_2_title', locale, "Stop marketing to the 'average' Canadian.")}
+            titleKey="insight_2_title"
             description={t(
                 copy,
                 'insight_2_description',
                 locale,
                 'The MTM allows you to see Canada in high definition. Let your clients benefit from the surgical precision of being able to filter data by specific racialized groups, families, age groups, income brackets and more!'
             )}
+            descriptionKey="insight_2_description"
             imageSrc={`${base}images/solutions/advertising/insight-2.png`}
             imageAlt="Precision audience targeting visualization"
             imageTitle={t(copy, 'insight_2_chart_title', locale, 'Audience breakdown by segment')}
+            imageTitleKey="insight_2_chart_title"
             imageTitleColor="purple"
         />
     </div>

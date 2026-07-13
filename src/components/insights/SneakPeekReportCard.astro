@@ -30,27 +30,27 @@ const {
     downloadHref,
 } = Astro.props as Props;
 
-function tagToVariant(tag: string): ProductVariant {
-    const n = tag.toLowerCase().replace(/\s+/g, '');
-    if (n.includes('18+') || n.includes('18plus')) return 'mtm18plus';
-    if (n.includes('junior') || n.includes('jr')) return 'junior';
-    if (n.includes('newcomer')) return 'newcomers';
-    if (n.includes('census')) return 'census';
-    return 'junior';
-}
+const normalizeGraphSeed = (value: string, fallback: string): string => {
+    const v = value.trim();
+    if (!v) return fallback;
+    if (/^\[.+\]$/.test(v)) return fallback;
+    if (v.toLowerCase() === 'name of graph') return fallback;
+    if (v.toLowerCase() === 'support detail') return fallback;
+    return v;
+};
 
-const graphTitle = t(copy, 'infographic_graph', locale, 'Name of Graph');
-const graphDetail = t(copy, 'infographic_graph_detail', locale, 'Support Detail');
-const tagText = t(copy, 'infographic_tag', locale, 'Junior');
-const tagVariant = tagToVariant(tagText);
-const cardTitle = t(copy, 'infographic_title', locale, 'Kids and their ever growing Virtual World');
-const cardDescription = t(
-    copy,
-    'infographic_description',
-    locale,
-    'Explore how children are spending more time across gaming, streaming, social video, and connected platforms — and what those shifts mean for parents, educators, and media organizations.'
+const graphTitle = normalizeGraphSeed(
+    t(copy, 'infographic_graph', locale, ''),
+    'SVOD Subscriptions'
 );
-const downloadLabel = t(copy, 'infographic_cta_1', locale, 'Download Free Report');
+const graphDetail = normalizeGraphSeed(
+    t(copy, 'infographic_graph_detail', locale, ''),
+    'Canadians 18+'
+);
+const tagVariant: ProductVariant = 'mtm18plus';
+const cardTitle = t(copy, 'infographic_title', locale, '');
+const cardDescription = t(copy, 'infographic_description', locale, '');
+const downloadLabel = locale === 'fr' ? 'Télécharger' : 'Download';
 const dateText = t(copy, 'free_report_1_date', locale, 'Dec 11, 2025');
 ---
 
@@ -86,7 +86,7 @@ const dateText = t(copy, 'free_report_1_date', locale, 'Dec 11, 2025');
             <div class="sneak-peek-report-card__download-wrap">
                 <Button variant="primary" size="md" href={downloadHref}>
                     <span class="sneak-peek-report-card__download-btn">
-                        <span data-copy-key="infographic_cta_1">{downloadLabel}</span>
+                        <span>{downloadLabel}</span>
                         <span class="sneak-peek-report-card__download-icon" aria-hidden="true">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -139,10 +139,16 @@ const dateText = t(copy, 'free_report_1_date', locale, 'Dec 11, 2025');
                         )
                     }
                     <div class="sneak-peek-report-card__graph-title-group">
-                        <p class="text-body-p1-bold sneak-peek-report-card__graph-name">
+                        <p
+                            class="text-body-p1-bold sneak-peek-report-card__graph-name"
+                            data-copy-key="infographic_graph"
+                        >
                             {graphTitle}
                         </p>
-                        <p class="text-body-p3 sneak-peek-report-card__graph-detail">
+                        <p
+                            class="text-body-p3 sneak-peek-report-card__graph-detail"
+                            data-copy-key="infographic_graph_detail"
+                        >
                             {graphDetail}
                         </p>
                     </div>

@@ -6,37 +6,53 @@ type AccentColor = 'blue' | 'indigo' | 'purple';
 interface Props {
     iconSrc: string;
     eyebrow: string;
+    eyebrowKey?: string;
     title: string;
+    titleKey?: string;
     description: string;
+    descriptionKey?: string;
     imageSrc: string;
     imageAlt: string;
     imageTitle: string;
+    imageTitleKey?: string;
     imageTitleColor?: AccentColor;
 }
 
 const {
     iconSrc,
     eyebrow,
+    eyebrowKey,
     title,
+    titleKey,
     description,
+    descriptionKey,
     imageSrc,
     imageAlt,
     imageTitle,
+    imageTitleKey,
     imageTitleColor = 'blue',
 } = Astro.props;
 ---
 
 <div class="solutions-insight-card">
     <div class="solutions-insight-card-body">
-        <EyebrowIcon iconSrc={iconSrc} label={eyebrow} />
+        <EyebrowIcon iconSrc={iconSrc} label={eyebrow} copyKey={eyebrowKey} />
         <div class="solutions-insight-card-text">
-            <p class="text-body-p0 solutions-insight-card-title">{title}</p>
-            <p class="text-body-p2 solutions-insight-card-description">{description}</p>
+            <p class="text-body-p0 solutions-insight-card-title" data-copy-key={titleKey}>
+                {title}
+            </p>
+            <p
+                class="text-body-p2 solutions-insight-card-description"
+                data-copy-key={descriptionKey}
+            >
+                {description}
+            </p>
         </div>
     </div>
     <div class="solutions-insight-card-visual">
         <p
             class={`text-label-small solutions-insight-image-title solutions-insight-image-title--${imageTitleColor}`}
+            data-copy-key={imageTitleKey}
         >
             {imageTitle}
         </p>
@@ -92,6 +108,8 @@ const {
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        min-height: calc(4 * 1lh);
+        max-height: calc(4 * 1lh);
     }
 
     /* Visual expands to fill remaining card height */

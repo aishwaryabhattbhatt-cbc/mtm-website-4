@@ -41,103 +41,75 @@ const rows = [
 ];
 ---
 
-<!-- Driver: tall container whose extra height creates the scroll budget -->
-<div class="census-highlights-driver">
-    <!-- Sticky shell: pins inside the driver while scrolling -->
-    <div class="census-highlights-sticky">
-        <section class="census-highlights">
-            <h2 class="census-highlights__title" data-copy-key="highlights_title">
-                {t(copy, 'highlights_title', locale, 'Explore with Precision')}
-            </h2>
-            <div class="census-highlights__layout">
-                <div class="census-highlights__nav">
-                    {
-                        rows.map((row, i) => (
-                            <div
-                                class={`census-highlights__row${i === 0 ? ' census-highlights__row--active' : ''}`}
-                                data-index={i}
-                            >
-                                <img
-                                    class="icon-2xl census-highlights__row-icon"
-                                    src={row.iconSrc}
-                                    alt=""
-                                    aria-hidden="true"
-                                    loading="lazy"
-                                />
-                                <div class="census-highlights__stat-row">
-                                    <img
-                                        class="icon-l census-highlights__badge"
-                                        src={`${base}icons/gen/census-badge.svg`}
-                                        alt=""
-                                        aria-hidden="true"
-                                        loading="lazy"
-                                    />
-                                    <p
-                                        class="text-h4 census-highlights__stat"
-                                        data-copy-key={row.statKey}
-                                    >
-                                        {t(copy, row.statKey, locale, row.statFb)}
-                                    </p>
-                                </div>
-                                <p
-                                    class="text-body-p1 census-highlights__desc"
-                                    data-copy-key={row.descKey}
-                                >
-                                    {t(copy, row.descKey, locale, row.descFb)}
-                                </p>
-                            </div>
-                        ))
-                    }
-                </div>
+<section class="census-highlights">
+    <h2 class="census-highlights__title" data-copy-key="highlights_title">
+        {t(copy, 'highlights_title', locale, 'Explore with Precision')}
+    </h2>
+    <div class="census-highlights__layout">
+        <div class="census-highlights__nav">
+            {
+                rows.map((row, i) => (
+                    <div
+                        class={`census-highlights__row${i === 0 ? ' census-highlights__row--active' : ''}`}
+                        data-index={i}
+                    >
+                        <div class="census-highlights__stat-row">
+                            <img
+                                class="icon-2xl census-highlights__row-icon"
+                                src={row.iconSrc}
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                            />
+                            <p class="text-h4 census-highlights__stat" data-copy-key={row.statKey}>
+                                {t(copy, row.statKey, locale, row.statFb)}
+                            </p>
+                        </div>
+                        <p class="text-body-p1 census-highlights__desc" data-copy-key={row.descKey}>
+                            {t(copy, row.descKey, locale, row.descFb)}
+                        </p>
+                        <div class="census-highlights__row-progress-divider" aria-hidden="true">
+                            <div class="census-highlights__row-progress-fill" aria-hidden="true" />
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
 
-                <div class="census-highlights__preview">
-                    {
-                        rows.map((row, i) => (
-                            <div
-                                class={`census-highlights__panel${i === 0 ? ' is-active' : ''}`}
-                                id={`census-panel-${row.id}`}
-                            >
-                                <p
-                                    class={`text-body-p1-bold-upper census-highlights__filter-label ${row.labelClass}`}
-                                    data-copy-key={row.labelKey}
-                                >
-                                    {t(copy, row.labelKey, locale, row.labelFb)}
-                                </p>
-                                <div class="census-highlights__screenshot-frame">
-                                    <img
-                                        class="census-highlights__screenshot"
-                                        src={row.imgSrc}
-                                        alt={row.imgAlt}
-                                        loading="lazy"
-                                    />
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
-        </section>
+        <div class="census-highlights__preview">
+            {
+                rows.map((row, i) => (
+                    <div
+                        class={`census-highlights__panel${i === 0 ? ' is-active' : ''}`}
+                        id={`census-panel-${row.id}`}
+                    >
+                        <p
+                            class={`text-body-p1-bold-upper census-highlights__filter-label ${row.labelClass}`}
+                            data-copy-key={row.labelKey}
+                        >
+                            {t(copy, row.labelKey, locale, row.labelFb)}
+                        </p>
+                        <div class="census-highlights__screenshot-frame">
+                            <img
+                                class="census-highlights__screenshot"
+                                src={row.imgSrc}
+                                alt={row.imgAlt}
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
     </div>
-</div>
+</section>
 
 <style>
-    /* ─── Scroll driver ───────────────────────────────── */
-
-    .census-highlights-driver {
-        position: relative;
-        /* height is set by JS: sticky-height + SCROLL_PER_STATE * (states - 1) */
-    }
-
-    .census-highlights-sticky {
-        position: sticky;
-        top: var(--navbar-height);
-    }
-
     /* ─── Section shell ───────────────────────────────── */
 
     .census-highlights {
         width: 100%;
-        padding: var(--space-7) var(--content-margin-inline) 0;
+        padding: var(--section-pad-block) var(--content-margin-inline) 0;
     }
 
     .census-highlights__title {
@@ -163,11 +135,30 @@ const rows = [
         flex-direction: column;
         gap: var(--space-5);
         padding: var(--space-6) 0;
-        border-bottom: var(--stroke-1) solid var(--border-tertiary);
     }
 
-    .census-highlights__row:last-child {
-        border-bottom: none;
+    .census-highlights__row-progress-divider {
+        position: relative;
+        height: var(--stroke-2);
+        width: 100%;
+        border-radius: var(--radius-full);
+        background: rgba(211, 211, 211, 0.58);
+        overflow: hidden;
+    }
+
+    .census-highlights__row-progress-fill {
+        position: absolute;
+        inset: 0;
+        width: 0%;
+        border-radius: var(--radius-full);
+        background: linear-gradient(
+            to right,
+            var(--color-chart-teal) 0%,
+            var(--highcharts-color-5) 35%,
+            var(--brand-indigo) 65%,
+            var(--badge-juniors) 90%
+        );
+        transition: width 0ms linear;
     }
 
     .census-highlights__row-icon,
@@ -183,31 +174,10 @@ const rows = [
         opacity: 0.3;
     }
 
-    /* Badge: collapses to zero width when inactive, slides in when active */
-    .census-highlights__badge {
-        flex-shrink: 0;
-        overflow: hidden;
-        max-width: 0;
-        margin-right: 0;
-        opacity: 0;
-        transform: translateX(calc(-1 * var(--space-2)));
-        transition:
-            max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-            margin-right 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-            opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-            transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .census-highlights__row--active .census-highlights__badge {
-        max-width: var(--icon-l);
-        margin-right: var(--space-3);
-        opacity: 1;
-        transform: translateX(0);
-    }
-
     .census-highlights__stat-row {
         display: flex;
         align-items: center;
+        gap: var(--space-3);
     }
 
     .census-highlights__stat {
@@ -304,27 +274,12 @@ const rows = [
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-            /* Icon left of title */
-            display: grid;
-            grid-template-columns: auto 1fr;
-            grid-template-areas:
-                'icon stat'
-                '. desc';
-            column-gap: var(--space-4);
-            row-gap: var(--space-3);
-        }
-
-        .census-highlights__row-icon {
-            grid-area: icon;
-            align-self: center;
-        }
-
-        .census-highlights__stat-row {
-            grid-area: stat;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
         }
 
         .census-highlights__desc {
-            grid-area: desc;
             grid-column: 1 / -1;
         }
 
@@ -333,17 +288,16 @@ const rows = [
             pointer-events: auto;
         }
 
+        .census-highlights__row-progress-divider {
+            grid-column: 1 / -1;
+        }
+
         /* Row fades as a whole — reset per-element fading */
         .census-highlights__row:not(.census-highlights__row--active) .census-highlights__row-icon,
         .census-highlights__row:not(.census-highlights__row--active) .census-highlights__stat,
         .census-highlights__row:not(.census-highlights__row--active) .census-highlights__desc {
             opacity: 1;
             transition: none;
-        }
-
-        /* Hide badge on mobile */
-        .census-highlights__badge {
-            display: none;
         }
 
         .census-highlights__preview {
@@ -369,69 +323,93 @@ const rows = [
 </style>
 
 <script>
-    const driver = document.querySelector<HTMLElement>('.census-highlights-driver');
-    const sticky = document.querySelector<HTMLElement>('.census-highlights-sticky');
-    const rows = document.querySelectorAll<HTMLElement>('.census-highlights__row');
-    const panels = document.querySelectorAll<HTMLElement>('.census-highlights__panel');
+    const section = document.querySelector<HTMLElement>('.census-highlights');
+    const rows = section?.querySelectorAll<HTMLElement>('.census-highlights__row') ?? [];
+    const panels = section?.querySelectorAll<HTMLElement>('.census-highlights__panel') ?? [];
 
-    if (driver && sticky) {
-        // Bind to const so closures below retain the narrowed non-null type
-        const d = driver;
-        const s = sticky;
+    const AUTO_ADVANCE_DELAY = 5000;
 
-        const NUM_STATES = rows.length;
-        const SCROLL_PER_STATE = 300; // px of scroll to trigger each state change (~2 scrolls)
-        const SCROLL_DWELL = 300; // px to stay on the last state before releasing (~2 scrolls)
+    let autoTimer: ReturnType<typeof setTimeout> | null = null;
+    let autoLoopDone = false;
 
-        function getNavbarHeight(): number {
-            return (
-                parseFloat(
-                    getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')
-                ) || 80
-            );
-        }
-
-        function setActive(index: number) {
-            rows.forEach((r, i) => {
-                r.classList.toggle('census-highlights__row--active', i === index);
-            });
-            panels.forEach((p, i) => {
-                p.classList.toggle('is-active', i === index);
-            });
-        }
-
-        function setDriverHeight() {
-            d.style.height = `${s.offsetHeight + SCROLL_PER_STATE * (NUM_STATES - 1) + SCROLL_DWELL}px`;
-        }
-
-        function onScroll() {
-            const navbarH = getNavbarHeight();
-
-            // Absolute top of the driver from the document origin
-            const driverDocTop = d.getBoundingClientRect().top + window.scrollY;
-
-            // Sticky phase begins when the driver's top reaches the navbar bottom
-            const stickyStart = driverDocTop - navbarH;
-
-            // How far past the sticky trigger we have scrolled
-            const scrolledIn = window.scrollY - stickyStart;
-
-            if (scrolledIn <= 0) {
-                setActive(0);
-                return;
-            }
-
-            const idx = Math.min(NUM_STATES - 1, Math.floor(scrolledIn / SCROLL_PER_STATE));
-            setActive(idx);
-        }
-
-        setDriverHeight();
-        onScroll();
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', () => {
-            setDriverHeight();
-            onScroll();
+    function setActive(index: number) {
+        rows.forEach((r, i) => {
+            r.classList.toggle('census-highlights__row--active', i === index);
         });
+        panels.forEach((p, i) => {
+            p.classList.toggle('is-active', i === index);
+        });
+    }
+
+    function resetProgress() {
+        rows.forEach((row) => {
+            const bar = row.querySelector<HTMLElement>('.census-highlights__row-progress-fill');
+            if (!bar) return;
+            bar.style.transition = 'width 0ms linear';
+            bar.style.width = '0%';
+        });
+    }
+
+    function startProgress(idx: number) {
+        const bar = rows[idx]?.querySelector<HTMLElement>('.census-highlights__row-progress-fill');
+        if (!bar) return;
+        bar.getBoundingClientRect();
+        bar.style.transition = `width ${AUTO_ADVANCE_DELAY}ms linear`;
+        bar.style.width = '100%';
+    }
+
+    function scheduleNext(currentIdx: number) {
+        if (currentIdx >= rows.length - 1) {
+            setTimeout(() => {
+                autoLoopDone = true;
+            }, AUTO_ADVANCE_DELAY);
+            return;
+        }
+
+        autoTimer = setTimeout(() => {
+            const next = currentIdx + 1;
+            resetProgress();
+            setActive(next);
+            startProgress(next);
+            scheduleNext(next);
+        }, AUTO_ADVANCE_DELAY);
+    }
+
+    function stopAuto() {
+        if (autoTimer === null) return;
+        clearTimeout(autoTimer);
+        autoTimer = null;
+    }
+
+    rows.forEach((row, idx) => {
+        row.addEventListener('mouseenter', () => {
+            if (!autoLoopDone) return;
+            stopAuto();
+            resetProgress();
+            setActive(idx);
+        });
+    });
+
+    // Start auto-advance when section enters the viewport
+    if (section) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        if (autoTimer !== null || autoLoopDone) return;
+                        const current = [...rows].findIndex((r) =>
+                            r.classList.contains('census-highlights__row--active')
+                        );
+                        startProgress(current >= 0 ? current : 0);
+                        scheduleNext(current >= 0 ? current : 0);
+                    } else {
+                        stopAuto();
+                        resetProgress();
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+        observer.observe(section);
     }
 </script>

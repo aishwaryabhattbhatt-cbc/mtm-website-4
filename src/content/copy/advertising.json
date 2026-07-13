@@ -41,7 +41,7 @@
   },
   "insight_1_title": {
     "key": "insight_1_title",
-    "en": "With 20 years of data, and more than 300,000 Canadians surveyed to date, the MTM gives you a source you can measure against with confidence.",
+    "en": "More than 300,000 Canadians surveyed to date",
     "fr": ""
   },
   "insight_1_description": {
@@ -49,9 +49,14 @@
     "en": "Our independent, nationally representative samples allow for detailed comparisons against your internal data and other sources. With the MTM, know where and how Canadians are engaged with an exhaustive array of media platforms and leave nothing up to chance.",
     "fr": ""
   },
+  "insight_1_chart_title": {
+    "key": "insight_1_chart_title",
+    "en": "Instagram Usage",
+    "fr": ""
+  },
   "insight_2_eyebrow": {
     "key": "insight_2_eyebrow",
-    "en": "",
+    "en": "Precision Targeting",
     "fr": ""
   },
   "insight_2_title": {
@@ -62,6 +67,11 @@
   "insight_2_description": {
     "key": "insight_2_description",
     "en": "The MTM allows you to see Canada in high definition. Let your clients benefit from the surgical precision of being able to filter data by specific racialized groups, families, age groups, income brackets and more!",
+    "fr": ""
+  },
+  "insight_2_chart_title": {
+    "key": "insight_2_chart_title",
+    "en": "Learn about products/product reviews on YouTube",
     "fr": ""
   },
   "MTM Reports as the solution": {
@@ -196,7 +206,7 @@
   },
   "usecase_1_variables": {
     "key": "usecase_1_variables",
-    "en": "Ad exposure, regions, devices used, income",
+    "en": "Ad exposure, Regions, Devices used, Income",
     "fr": ""
   },
   "usecase_1_cta_title": {
