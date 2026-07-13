@@ -6,7 +6,7 @@
   },
   "hero_description": {
     "key": "hero_description",
-    "en": "Real data on how Canadians consume media, technology, and content - built for organizations that need evidence, not assumptions.",
+    "en": "Welcome to the Media Technology Monitor. We are your source for real data on how Canadians consume media, technology, and content - built for organizations that need evidence, not assumptions.",
     "fr": ""
   },
   "hero_cta_1": {
@@ -246,7 +246,7 @@
   },
   "faq_2_question": {
     "key": "faq_2_question",
-    "en": "How many seats come with a subscription?",
+    "en": "What are the turnaround times for high-volume or complex data exports?",
     "fr": ""
   },
   "faq_2_answer": {
