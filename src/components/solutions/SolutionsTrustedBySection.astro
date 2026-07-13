@@ -50,6 +50,7 @@ const { locale, copy, logos } = Astro.props as Props;
 
 <style>
     .solutions-trusted-by-section {
+        /* Logo-strip section — padding intentionally shallow, not --section-header-gap/--card-pad */
         width: 100%;
         background: var(--surface-blue);
         padding: 0 var(--content-margin-inline) var(--space-8);
@@ -68,6 +69,7 @@ const { locale, copy, logos } = Astro.props as Props;
         width: 100%;
         background: color-mix(in srgb, var(--surface-white) 60%, transparent);
         border-radius: var(--layout-card-radius);
+        /* Logo-strip padding intentionally shallow, not --card-pad */
         padding: var(--space-6) 0;
         min-height: 12rem;
         overflow: hidden;

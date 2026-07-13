@@ -23,18 +23,30 @@ These element selectors are defined in `design-system.css`. Never add a text cla
 | Class | Family | Size token | Weight |
 |---|---|---|---|
 | `.text-hero` | Source Serif 4 | `--fs-hero` (4.5rem) | semibold |
-| `.text-metrics` | Source Serif 4 | `--fs-metrics` (3rem) | semibold |
-| `.text-h4` | Roboto | `--fs-h4` (2rem) | regular |
-| `.text-body-p0` | Roboto | `--fs-body-xl` (1.5rem) | medium |
-| `.text-body-p0-bold` | Roboto | `--fs-body-xl` (1.5rem) | semibold |
+| `.text-metrics` | Source Serif 4 | `--fs-metrics` (3.25rem) | semibold |
+| `.text-h4` | Roboto | `--fs-h4` (1.5rem) | regular |
+| `.text-body-p0` | Roboto | `--fs-body-xl` (1.5rem) | regular |
+| `.text-body-p0-bold` | Roboto | `--fs-body-xl` (1.5rem) | medium |
 | `.text-body-p1` | Roboto | `--fs-body-l` (1.25rem) | regular |
 | `.text-body-p1-bold` | Roboto | `--fs-body-l` (1.25rem) | medium |
+| `.text-body-p1-upper` | Roboto | `--fs-body-l` (1.25rem) | regular, uppercase |
+| `.text-body-p1-bold-upper` | Roboto | `--fs-body-l` (1.25rem) | medium, uppercase |
 | `.text-body-p2` | Roboto | `--fs-body-m` (1.125rem) | regular |
+| `.text-body-p2-bold` | Roboto | `--fs-body-m` (1.125rem) | medium |
+| `.text-body-p2-upper` | Roboto | `--fs-body-m` (1.125rem) | regular, uppercase |
+| `.text-body-p2-bold-upper` | Roboto | `--fs-body-m` (1.125rem) | medium, uppercase |
 | `.text-body-p3` | Roboto | `--fs-body-s` (1rem) | regular |
+| `.text-body-p3-small` | Roboto | `--fs-label-small` (0.875rem) | regular |
 | `.text-button-regular` | Roboto | `--fs-button-regular` (1.125rem) | medium, uppercase |
 | `.text-button-small` | Roboto | `--fs-button-small` (0.875rem) | medium, uppercase |
 | `.text-label-regular` | Roboto | `--fs-body-m` (1.125rem) | medium, uppercase |
 | `.text-label-small` | Roboto | `--fs-label-small` (0.875rem) | medium, uppercase |
+
+Note: `.text-h4` and `.text-body-p0` coincide at 1.5rem regular on desktop but scale differently at breakpoints — h4 is a heading tier (steps down with the heading scale), p0 is the largest body tier. Pick by role, not by desktop appearance.
+
+Line-height is consistent within each role: all heading classes (hero, h1–h4, metrics, tertiary-h3) use `--lh-tight` (1.1); all `.text-body-p*` classes use `--lh-relaxed` (1.4); all button/label/pill classes use `--lh-tight` (1.1). Don't override `line-height` locally for paragraph-length text — only a genuinely single-line, non-paragraph use (a pill, a badge) may justify a commented exception.
+
+`.text-body-p0-bold` uses medium weight (500, matching `.text-body-p1-bold`/`.text-body-p2-bold` — not semibold) and `--ls-body-lg` letter-spacing (-1px), not `--ls-subhead` (-1.5px) like `.text-body-p0`/`.text-h4`. The heavier `--ls-subhead` pull (tuned for regular-weight h4) over-compresses bold glyphs at this size. Don't "fix" either of these back to match p0 — they're intentional.
 
 No exact match → use the closest by font-size first, then weight. If a genuinely new combination is needed, add a class to `design-system.css` following the existing pattern, then use that class.
 

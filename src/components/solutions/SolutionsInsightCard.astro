@@ -1,4 +1,6 @@
 ---
+import EyebrowIcon from '../shared/EyebrowIcon.astro';
+
 type AccentColor = 'blue' | 'indigo' | 'purple';
 
 interface Props {
@@ -26,10 +28,7 @@ const {
 
 <div class="solutions-insight-card">
     <div class="solutions-insight-card-body">
-        <div class="solutions-insight-tag">
-            <img src={iconSrc} alt="" class="icon-l" aria-hidden="true" />
-            <span class="text-label-small solutions-insight-tag-label">{eyebrow}</span>
-        </div>
+        <EyebrowIcon iconSrc={iconSrc} label={eyebrow} />
         <div class="solutions-insight-card-text">
             <p class="text-body-p0 solutions-insight-card-title">{title}</p>
             <p class="text-body-p2 solutions-insight-card-description">{description}</p>
@@ -55,7 +54,7 @@ const {
     .solutions-insight-card {
         background: var(--surface-white);
         border-radius: var(--layout-card-radius);
-        padding: var(--space-3);
+        padding: var(--card-pad-thin);
         display: flex;
         flex-direction: column;
         gap: var(--space-7);
@@ -68,22 +67,6 @@ const {
         flex-direction: column;
         gap: var(--space-7);
         padding: var(--space-5) var(--space-5) 0;
-    }
-
-    /* Tag */
-    .solutions-insight-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-3);
-        background: var(--surface-blue);
-        border-radius: var(--radius-s);
-        padding: var(--space-1) var(--space-3);
-        align-self: flex-start;
-    }
-
-    .solutions-insight-tag-label {
-        color: var(--text-secondary);
-        white-space: nowrap;
     }
 
     /* Card text */
@@ -122,7 +105,7 @@ const {
         flex-direction: column;
         align-items: center;
         padding: var(--space-5);
-        gap: var(--space-4);
+        gap: var(--card-stack-gap);
     }
 
     .solutions-insight-image-title {
@@ -157,12 +140,6 @@ const {
 
         .solutions-insight-card-title {
             -webkit-line-clamp: 2;
-        }
-
-        /* icon-l scales to 1rem globally at this breakpoint — keep it at desktop size in the tag pill */
-        .solutions-insight-tag :global(.icon-l) {
-            width: 2rem;
-            height: 2rem;
         }
     }
 </style>

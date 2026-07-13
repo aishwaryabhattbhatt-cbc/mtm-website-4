@@ -103,7 +103,7 @@ const benefits = [
     .yourdata-section {
         width: 100%;
         background: var(--surface-blue);
-        padding: var(--space-12) var(--content-margin-inline);
+        padding: var(--section-pad-block) var(--content-margin-inline);
     }
 
     .yourdata-section__card {
@@ -113,7 +113,8 @@ const benefits = [
         padding: var(--space-12);
         display: grid;
         grid-template-columns: 4fr 8fr;
-        gap: var(--space-12);
+        /* proximity: within-card gap stays below the __grid gap between cards */
+        gap: var(--section-header-gap);
         align-items: start;
     }
 
@@ -143,7 +144,7 @@ const benefits = [
     .yourdata-section__benefit-text {
         display: flex;
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--title-desc-gap);
     }
 
     .yourdata-section__benefit-title {
@@ -159,18 +160,18 @@ const benefits = [
     @media (max-width: 1023px) {
         .yourdata-section__card {
             grid-template-columns: 1fr;
-            gap: var(--space-8);
+            gap: var(--section-header-gap);
         }
     }
 
     @media (max-width: 767px) {
         .yourdata-section {
-            padding: var(--space-10) var(--content-margin-inline);
+            padding: var(--section-pad-block) var(--content-margin-inline);
         }
 
         .yourdata-section__card {
             padding: var(--space-8) var(--space-4);
-            gap: var(--space-8);
+            gap: var(--space-6);
         }
 
         .yourdata-section__grid {

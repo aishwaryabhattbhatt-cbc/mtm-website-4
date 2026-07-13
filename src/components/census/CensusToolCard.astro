@@ -122,7 +122,7 @@ const {
         background: var(--surface-white);
         border-radius: var(--radius-m);
         box-shadow: var(--shadow-card);
-        padding: var(--space-3);
+        padding: var(--card-pad-thin);
         align-items: stretch;
     }
 
@@ -146,7 +146,8 @@ const {
 
     .census-tool-card--reversed .census-tool-card__content {
         order: 1;
-        padding: var(--space-6) 0 var(--space-6) var(--space-6);
+        /* right side is 0 — the grid's own column gap already separates it from the slot */
+        padding: var(--card-pad) 0 var(--card-pad) var(--card-pad);
     }
 
     .census-tool-card__screenshot {
@@ -166,7 +167,8 @@ const {
         display: flex;
         flex-direction: column;
         gap: var(--space-5);
-        padding: var(--space-6) var(--space-6) var(--space-6) 0;
+        /* left side is 0 — the grid's own column gap already separates it from the slot */
+        padding: var(--card-pad) var(--card-pad) var(--card-pad) 0;
     }
 
     .census-tool-card__header {
@@ -182,7 +184,7 @@ const {
     .census-tool-card__text {
         display: flex;
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--title-desc-gap);
     }
 
     .census-tool-card__subtitle,
@@ -200,7 +202,7 @@ const {
     .census-tool-card__features {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--card-stack-gap);
         list-style: none;
         margin: 0;
         padding: 0;

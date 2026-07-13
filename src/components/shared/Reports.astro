@@ -157,7 +157,7 @@ const {
         align-items: center;
         background-color: var(--surface-white);
         border-radius: var(--layout-card-radius);
-        padding: var(--space-6);
+        padding: var(--card-pad);
         gap: var(--space-6);
         box-shadow: var(--shadow-card);
     }
@@ -289,7 +289,7 @@ const {
             display: grid;
             grid-template-columns: auto 1fr;
             align-items: center;
-            gap: var(--space-4);
+            gap: var(--card-stack-gap);
         }
 
         .report-stat-icon {
@@ -318,7 +318,14 @@ const {
         }
 
         .report-action-buttons {
+            flex-direction: column;
             justify-content: center;
+            width: 100%;
+        }
+
+        .report-action-buttons :global(.btn) {
+            width: 100%;
+            text-align: center;
         }
     }
 </style>

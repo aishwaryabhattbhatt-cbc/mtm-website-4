@@ -253,10 +253,10 @@ const showCensusSlim = cards.includes('census-slim');
     .solutions-tools-section {
         width: 100%;
         background: var(--surface-white);
-        padding: var(--space-13) var(--content-margin-inline) var(--space-12);
+        padding: var(--section-pad-block-lg) var(--content-margin-inline) var(--section-pad-block);
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--section-header-gap);
     }
 
     /* Headline */
@@ -277,7 +277,7 @@ const showCensusSlim = cards.includes('census-slim');
         background: var(--surface-white);
         border-radius: var(--radius-m);
         box-shadow: var(--shadow-card);
-        padding: var(--space-3);
+        padding: var(--card-pad-thin);
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--space-8);
@@ -288,8 +288,9 @@ const showCensusSlim = cards.includes('census-slim');
     .solutions-tools-card__content {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
-        padding: var(--space-6) 0 var(--space-6) var(--space-6);
+        gap: var(--card-stack-gap);
+        /* right 0 — flush against the preview image column */
+        padding: var(--card-pad) 0 var(--card-pad) var(--card-pad);
     }
 
     .solutions-tools-card__text {
@@ -299,7 +300,8 @@ const showCensusSlim = cards.includes('census-slim');
     }
 
     .solutions-tools-card__content--flipped {
-        padding: var(--space-6) var(--space-6) var(--space-6) 0;
+        /* left 0 — flush against the preview image column */
+        padding: var(--card-pad) var(--card-pad) var(--card-pad) 0;
     }
 
     .solutions-tools-card__text h3 {
@@ -351,7 +353,7 @@ const showCensusSlim = cards.includes('census-slim');
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: var(--space-6);
+        padding: var(--card-pad);
         overflow: hidden;
     }
 
@@ -367,11 +369,12 @@ const showCensusSlim = cards.includes('census-slim');
         background: var(--surface-white);
         border-radius: var(--radius-m);
         box-shadow: var(--shadow-card);
-        padding: var(--space-5) var(--space-6);
+        /* top/bottom space-5 — slim variant, deliberately shorter than --card-pad */
+        padding: var(--space-5) var(--card-pad);
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: var(--space-4);
+        gap: var(--card-stack-gap);
     }
 
     .solutions-tools-card-slim__left {
@@ -412,9 +415,9 @@ const showCensusSlim = cards.includes('census-slim');
     /* Mobile */
     @media (max-width: 767px) {
         .solutions-tools-section {
-            padding-top: var(--space-10);
-            padding-bottom: var(--space-10);
-            gap: var(--space-7);
+            padding-top: var(--section-pad-block);
+            padding-bottom: var(--section-pad-block);
+            gap: var(--section-header-gap);
         }
 
         .solutions-tools-card__preview {

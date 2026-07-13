@@ -1,6 +1,7 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
 import Eyebrow from '../shared/Eyebrow.astro';
 import InsightsFreeReportCard from './InsightsFreeReportCard.astro';
 
@@ -67,33 +68,16 @@ const freeReports = [
             </p>
         </div>
 
-        <div class="free-reports-section__controls-wrap" aria-hidden="true">
-            <div class="free-reports-section__arrows">
-                <button class="free-reports-section__arrow" aria-label="Previous" data-arrow="prev">
-                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
-                        <path
-                            d="M7.5 1.5L1.5 7.5L7.5 13.5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                    </svg>
-                </button>
-                <button class="free-reports-section__arrow" aria-label="Next" data-arrow="next">
-                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
-                        <path
-                            d="M1.5 1.5L7.5 7.5L1.5 13.5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                    </svg>
-                </button>
-            </div>
+        <div class="free-reports-section__controls-wrap">
+            <CarouselNavArrows
+                scrollTargetSelector="#freeReportsCarousel"
+                ariaLabel="Reports navigation"
+                class="free-reports-section__arrows"
+            />
         </div>
     </div>
 
-    <div class="free-reports-section__grid">
+    <div class="free-reports-section__grid" id="freeReportsCarousel">
         {
             freeReports.map((report) => (
                 <div class="free-reports-section__card-wrap">
@@ -117,7 +101,8 @@ const freeReports = [
     .free-reports-section {
         width: 100%;
         background: var(--surface-blue);
-        padding: var(--space-12) var(--content-margin-inline) var(--space-5);
+        /* bottom deliberately shallow — flows into the reports library below */
+        padding: var(--section-pad-block) var(--content-margin-inline) var(--space-5);
         display: flex;
         flex-direction: column;
         gap: 0;
@@ -126,7 +111,7 @@ const freeReports = [
     .free-reports-section__header {
         display: flex;
         flex-direction: column;
-        gap: var(--space-6);
+        gap: var(--header-stack-gap);
         max-width: 56rem;
     }
 
@@ -137,7 +122,7 @@ const freeReports = [
     .free-reports-section__content-wrap {
         display: flex;
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--title-desc-gap);
     }
 
     .free-reports-section__content-wrap h2 {
@@ -161,38 +146,6 @@ const freeReports = [
 
     .free-reports-section__arrows {
         display: none;
-        gap: var(--space-3);
-        flex-shrink: 0;
-    }
-
-    .free-reports-section__arrow {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: var(--space-8);
-        height: var(--space-8);
-        border-radius: var(--radius-full);
-        border: var(--stroke-1) solid var(--border-secondary);
-        background: transparent;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 0;
-        transition:
-            background 0.15s,
-            color 0.15s,
-            border-color 0.15s;
-    }
-
-    .free-reports-section__arrow--filled {
-        background: var(--text-primary);
-        color: var(--text-white);
-        border-color: var(--text-primary);
-    }
-
-    .free-reports-section__arrow:hover:not(.free-reports-section__arrow--filled) {
-        background: var(--surface-blue);
-        color: var(--text-primary);
-        border-color: var(--border-primary);
     }
 
     .free-reports-section__description {
@@ -235,7 +188,8 @@ const freeReports = [
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
             margin-inline: calc(-1 * var(--content-margin-inline));
-            padding: var(--space-8) var(--content-margin-inline) var(--space-13);
+            padding: var(--section-header-gap) var(--content-margin-inline)
+                var(--section-pad-block-lg);
             scroll-padding-inline-start: var(--content-margin-inline);
             grid-template-columns: unset;
         }
@@ -266,31 +220,3 @@ const freeReports = [
         }
     }
 </style>
-
-<script>
-    document.querySelectorAll<HTMLElement>('.free-reports-section').forEach((section) => {
-        const carousel = section.querySelector<HTMLElement>('.free-reports-section__grid');
-        const prevBtn = section.querySelector<HTMLButtonElement>('[data-arrow="prev"]');
-        const nextBtn = section.querySelector<HTMLButtonElement>('[data-arrow="next"]');
-
-        if (!carousel || !prevBtn || !nextBtn) return;
-
-        const cardWrap = section.querySelector<HTMLElement>('.free-reports-section__card-wrap');
-        if (!cardWrap) return;
-
-        const cardWidth = cardWrap.offsetWidth;
-        const gap = parseInt(window.getComputedStyle(carousel).gap);
-
-        const scroll = (direction: 'prev' | 'next') => {
-            const scrollAmount = cardWidth + gap;
-            if (direction === 'prev') {
-                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        };
-
-        prevBtn.addEventListener('click', () => scroll('prev'));
-        nextBtn.addEventListener('click', () => scroll('next'));
-    });
-</script>

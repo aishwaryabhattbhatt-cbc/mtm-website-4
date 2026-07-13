@@ -214,16 +214,16 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
     .solutions-workflow-section {
         width: 100%;
         background: var(--surface-white);
-        padding: var(--space-12) var(--content-margin-inline);
+        padding: var(--section-pad-block) var(--content-margin-inline);
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--section-header-gap);
     }
 
     .solutions-workflow-header {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--title-desc-gap);
         max-width: 54rem;
     }
 
@@ -246,8 +246,9 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: var(--space-10);
-        padding: var(--space-6);
+        /* proximity: within-card gap stays below --layout-card-gap */
+        gap: var(--space-7);
+        padding: var(--card-pad);
         border-radius: var(--radius-m);
         min-height: 18rem;
     }
@@ -327,14 +328,14 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
 
         .solutions-workflow-card {
             min-height: auto;
-            gap: var(--space-8);
+            gap: var(--space-5);
         }
     }
 
     @media (max-width: 767px) {
         .solutions-workflow-section {
-            padding-top: var(--space-10);
-            padding-bottom: var(--space-10);
+            padding-top: var(--section-pad-block);
+            padding-bottom: var(--section-pad-block);
         }
     }
 </style>

@@ -105,7 +105,7 @@ const variables = [variable1, variable2].filter(Boolean);
         border-radius: var(--layout-card-radius);
         box-shadow: var(--shadow-beautiful);
         overflow: hidden;
-        padding: var(--space-6);
+        padding: var(--card-pad);
         width: 100%;
     }
 
@@ -142,7 +142,7 @@ const variables = [variable1, variable2].filter(Boolean);
     .featured-report-card__headline {
         display: flex;
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--title-desc-gap);
     }
 
     .featured-report-card__description {
@@ -191,7 +191,8 @@ const variables = [variable1, variable2].filter(Boolean);
         background: var(--surface-white);
         border-radius: var(--radius-full);
         padding: var(--space-2) var(--space-4);
-        line-height: 1.1;
+        /* single-line pill: tight leading keeps the pill compact vs the class's lh-body */
+        line-height: var(--lh-tight);
         color: var(--text-primary);
         white-space: nowrap;
     }
@@ -204,7 +205,7 @@ const variables = [variable1, variable2].filter(Boolean);
 
         .featured-report-card__content {
             flex: none;
-            padding: var(--space-3);
+            padding: var(--card-pad-thin);
         }
 
         .featured-report-card__image-wrap {

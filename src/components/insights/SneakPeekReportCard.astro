@@ -166,7 +166,7 @@ const dateText = t(copy, 'free_report_1_date', locale, 'Dec 11, 2025');
         flex-direction: column;
         background-color: var(--surface-white);
         border-radius: var(--layout-card-radius);
-        padding: var(--space-6);
+        padding: var(--card-pad);
         gap: var(--space-6);
         box-shadow: var(--shadow-card);
     }
@@ -174,7 +174,7 @@ const dateText = t(copy, 'free_report_1_date', locale, 'Dec 11, 2025');
     .sneak-peek-report-card__top-content {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--card-stack-gap);
         width: 100%;
     }
 
@@ -259,7 +259,8 @@ const dateText = t(copy, 'free_report_1_date', locale, 'Dec 11, 2025');
         flex-direction: column;
         justify-content: space-between;
         align-self: stretch;
-        padding: var(--space-3) 0;
+        /* horizontal padding intentionally 0 — fills the remaining row width flush with the divider */
+        padding: var(--card-pad-thin) 0;
         gap: var(--space-5);
     }
 
@@ -313,7 +314,7 @@ const dateText = t(copy, 'free_report_1_date', locale, 'Dec 11, 2025');
         flex: 1;
         min-width: 0;
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--title-desc-gap);
     }
 
     .sneak-peek-report-card__title {

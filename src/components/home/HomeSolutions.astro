@@ -381,7 +381,7 @@ const cards = [
 <style>
     .home-solutions {
         background: var(--surface-blue);
-        padding: var(--space-12) var(--content-margin-inline);
+        padding: var(--section-pad-block) var(--content-margin-inline);
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -525,7 +525,8 @@ const cards = [
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: var(--space-7) var(--space-3);
+        /* horizontal matches --card-pad-thin; vertical stays --space-7 for a taller logo box */
+        padding: var(--space-7) var(--card-pad-thin);
     }
 
     .home-solutions__logo-img {
@@ -623,7 +624,8 @@ const cards = [
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--space-4) var(--space-3);
+            /* horizontal matches --card-pad-thin; vertical stays --space-4 for tablet logo box height */
+            padding: var(--space-4) var(--card-pad-thin);
         }
 
         .home-solutions__mobile-logo-img {
@@ -735,7 +737,8 @@ const cards = [
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--space-3) var(--space-2);
+            /* vertical matches --card-pad-thin; horizontal stays --space-2 for tighter mobile logo tiles */
+            padding: var(--card-pad-thin) var(--space-2);
         }
 
         .home-solutions__accordion-logo-img {

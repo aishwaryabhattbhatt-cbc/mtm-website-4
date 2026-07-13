@@ -51,7 +51,8 @@ const { locale, copy, ctaHref, bgPatternSrc } = Astro.props as Props;
         flex-direction: column;
         align-items: center;
         gap: var(--space-7);
-        padding: var(--space-12) var(--content-margin-inline) var(--hero-bleed-pad, var(--space-12));
+        padding: var(--section-pad-block) var(--content-margin-inline)
+            var(--hero-bleed-pad, var(--section-pad-block));
         background: var(--surface-blue);
         margin-top: var(--navbar-height);
     }
@@ -77,7 +78,7 @@ const { locale, copy, ctaHref, bgPatternSrc } = Astro.props as Props;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--space-7);
+        gap: var(--hero-stack-gap);
         width: 100%;
         max-width: 89.75rem;
         margin-bottom: var(--space-12);

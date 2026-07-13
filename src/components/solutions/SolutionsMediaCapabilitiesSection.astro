@@ -71,9 +71,9 @@ const cards = [
                         loading="lazy"
                         decoding="async"
                     />
-                    <h3 class="text-body-p0" data-copy-key={`media_capability_${index + 1}_title`}>
+                    <h4 class="text-body-p0" data-copy-key={`media_capability_${index + 1}_title`}>
                         {card.title}
-                    </h3>
+                    </h4>
                     <p
                         class="text-body-p2"
                         data-copy-key={`media_capability_${index + 1}_description`}
@@ -89,16 +89,16 @@ const cards = [
 <style>
     .solutions-media-capabilities-section {
         width: 100%;
-        padding: var(--space-10) var(--content-margin-inline);
+        padding: var(--section-pad-block) var(--content-margin-inline);
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--section-header-gap);
     }
 
     .solutions-media-capabilities-section__header {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--header-stack-gap);
         max-width: 56rem;
     }
 
@@ -119,14 +119,14 @@ const cards = [
         background: var(--surface-white);
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--card-stack-gap);
     }
 
     .solutions-media-capabilities-section__icon {
         flex-shrink: 0;
     }
 
-    .solutions-media-capabilities-section__card h3,
+    .solutions-media-capabilities-section__card h4,
     .solutions-media-capabilities-section__card p {
         margin: 0;
     }

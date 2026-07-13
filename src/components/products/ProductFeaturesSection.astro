@@ -50,13 +50,13 @@ const { locale, copy, features } = Astro.props as Props;
     .product-features-section {
         width: 100%;
         background-color: var(--surface-blue);
-        padding: var(--space-11) var(--content-margin-inline);
+        padding: var(--section-pad-block) var(--content-margin-inline);
     }
 
     /* grid-template-columns is set inline to match the feature count */
     .product-features-grid {
         display: grid;
-        column-gap: var(--space-8);
+        column-gap: var(--layout-card-gap);
         text-align: center;
         justify-items: center;
     }
@@ -67,10 +67,12 @@ const { locale, copy, features } = Astro.props as Props;
         display: contents;
     }
 
+    /* Intentionally off the icon-4xl ladder: this drops straight from 5rem to 2.5rem
+       at a single breakpoint below, more aggressive than icon-4xl's 3-tier curve. */
     .product-feature-icon {
         grid-row: 1;
-        width: var(--space-12);
-        height: var(--space-12);
+        width: 5rem;
+        height: 5rem;
         margin-bottom: var(--space-6);
         align-self: center;
     }
@@ -105,15 +107,15 @@ const { locale, copy, features } = Astro.props as Props;
             grid-template-columns: var(--space-8) 1fr;
             grid-template-rows: auto auto;
             column-gap: var(--space-2);
-            row-gap: 0;
+            row-gap: var(--title-desc-gap);
             align-items: center;
         }
 
         .product-feature-icon {
             grid-column: 1;
             grid-row: 1;
-            width: var(--space-8);
-            height: var(--space-8);
+            width: 2.5rem;
+            height: 2.5rem;
             margin-bottom: 0;
             align-self: center;
         }

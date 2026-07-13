@@ -1,7 +1,7 @@
 {
   "hero_eyebrow": {
     "key": "hero_eyebrow",
-    "en": "Government and NGO's",
+    "en": "Government and NGOs",
     "fr": ""
   },
   "hero_title": {
@@ -161,7 +161,7 @@
   },
   "usecase_2_variables": {
     "key": "usecase_2_variables",
-    "en": "cellphone service provider, region",
+    "en": "Cellphone service provider, Region",
     "fr": ""
   },
   "usecase_2_cta_title": {

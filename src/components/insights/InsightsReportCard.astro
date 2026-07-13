@@ -126,7 +126,7 @@ const variables = [variable1, variable2].filter(Boolean);
         background: var(--surface-white);
         border-radius: var(--layout-card-radius);
         box-shadow: var(--shadow-card);
-        padding: var(--space-3);
+        padding: var(--card-pad-thin);
         overflow: hidden;
     }
 
@@ -157,14 +157,14 @@ const variables = [variable1, variable2].filter(Boolean);
         align-items: flex-start;
         justify-content: space-between;
         flex: 1;
-        padding: var(--space-3);
+        padding: var(--card-pad-thin);
         gap: var(--space-8);
     }
 
     .report-card__top {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--card-stack-gap);
         width: 100%;
     }
 
@@ -185,7 +185,7 @@ const variables = [variable1, variable2].filter(Boolean);
     .report-card__text {
         display: flex;
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--title-desc-gap);
     }
 
     .report-card__title {

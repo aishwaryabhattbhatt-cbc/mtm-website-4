@@ -85,7 +85,7 @@ const faqs = [
                         >
                             {t(copy, faq.questionKey, locale, faq.questionFallback)}
                         </span>
-                        <span class="home-faqs__chevron" aria-hidden="true">
+                        <span class="home-faqs__chevron icon-m" aria-hidden="true">
                             <svg
                                 width="100%"
                                 height="100%"
@@ -160,7 +160,7 @@ const faqs = [
 <style>
     .home-faqs {
         background: var(--surface-white);
-        padding: var(--space-12) var(--content-margin-inline);
+        padding: var(--section-pad-block) var(--content-margin-inline);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -239,12 +239,9 @@ const faqs = [
         margin: 0;
         color: var(--text-primary);
         flex: 1;
-        font-weight: 600;
     }
 
     .home-faqs__chevron {
-        width: 1.5rem;
-        height: 1.5rem;
         flex-shrink: 0;
         display: flex;
         align-items: center;
@@ -339,11 +336,6 @@ const faqs = [
 
         .home-faqs__content {
             padding: 0 var(--space-6) var(--space-6) var(--space-6);
-        }
-
-        .home-faqs__chevron {
-            width: 1.5rem;
-            height: 1.5rem;
         }
 
         .home-faqs__footer {

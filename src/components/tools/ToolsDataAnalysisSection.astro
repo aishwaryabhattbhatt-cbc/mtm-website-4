@@ -58,7 +58,8 @@ const base = import.meta.env.BASE_URL;
     .dat-section {
         width: 100%;
         background: var(--surface-blue);
-        padding: var(--space-12) var(--content-margin-inline) var(--space-6);
+        /* bottom deliberately shallow — flows into the DAT features section below */
+        padding: var(--section-pad-block) var(--content-margin-inline) var(--space-6);
     }
 
     .dat-section__inner {
@@ -70,7 +71,7 @@ const base = import.meta.env.BASE_URL;
     .dat-section__header {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--title-desc-gap);
     }
 
     .dat-section__title-row {
