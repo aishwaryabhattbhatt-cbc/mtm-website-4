@@ -96,7 +96,8 @@ const labels: Record<ProductVariant, string> = {
     .product-pill--responsive.product-pill--big {
         padding: calc(var(--space-2) * var(--reports-scale, 1))
             calc(var(--space-6) * var(--reports-scale, 1));
-        font-size: calc(var(--fs-button-regular) * var(--reports-scale, 1));
+        /* body-m, not button-regular: pills must not inherit button tap-target inflation on mobile */
+        font-size: calc(var(--fs-body-m) * var(--reports-scale, 1));
         line-height: var(--lh-tight);
     }
 </style>

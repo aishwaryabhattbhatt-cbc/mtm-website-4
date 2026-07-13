@@ -1,0 +1,147 @@
+---
+interface Props {
+    scrollTargetSelector: string;
+    ariaLabel?: string;
+    prevLabel?: string;
+    nextLabel?: string;
+    class?: string;
+}
+
+const {
+    scrollTargetSelector,
+    ariaLabel = 'Carousel navigation',
+    prevLabel = 'Previous',
+    nextLabel = 'Next',
+    class: className = '',
+} = Astro.props as Props;
+---
+
+<div
+    class={`carousel-nav-arrows ${className}`}
+    data-carousel-nav
+    data-carousel-target={scrollTargetSelector}
+    aria-label={ariaLabel}
+>
+    <button
+        type="button"
+        class="carousel-nav-arrow"
+        data-carousel-prev
+        aria-label={prevLabel}
+        disabled
+    >
+        <svg class="icon-s" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path
+                d="M11 13.5L6.5 9L11 4.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+        </svg>
+    </button>
+    <button type="button" class="carousel-nav-arrow" data-carousel-next aria-label={nextLabel}>
+        <svg class="icon-s" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path
+                d="M7 4.5L11.5 9L7 13.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+        </svg>
+    </button>
+</div>
+
+<style>
+    .carousel-nav-arrows {
+        display: flex;
+        justify-content: flex-start;
+        gap: var(--space-3);
+        flex-shrink: 0;
+    }
+
+    .carousel-nav-arrow {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: var(--radius-full);
+        border: var(--stroke-1) solid var(--text-primary);
+        background: var(--surface-white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        cursor: pointer;
+        color: var(--text-primary);
+        flex-shrink: 0;
+        transition:
+            background 0.15s,
+            color 0.15s,
+            border-color 0.15s,
+            opacity 0.15s;
+    }
+
+    .carousel-nav-arrow:disabled {
+        opacity: 0.35;
+        cursor: default;
+    }
+
+    .carousel-nav-arrow--filled {
+        background: var(--text-primary);
+        color: var(--text-white);
+        border-color: var(--text-primary);
+    }
+
+    .carousel-nav-arrow--filled:disabled {
+        background: var(--text-primary);
+        color: var(--text-white);
+    }
+</style>
+
+<script>
+    function initCarouselNav(nav: HTMLElement) {
+        const targetSelector = nav.dataset.carouselTarget;
+        const scrollEl = targetSelector
+            ? document.querySelector<HTMLElement>(targetSelector)
+            : null;
+        const prevBtn = nav.querySelector<HTMLButtonElement>('[data-carousel-prev]');
+        const nextBtn = nav.querySelector<HTMLButtonElement>('[data-carousel-next]');
+        if (!scrollEl || !prevBtn || !nextBtn) return;
+
+        const getScrollAmount = () => {
+            const card = scrollEl.firstElementChild as HTMLElement | null;
+            if (!card) return 0;
+            const gap = parseFloat(getComputedStyle(scrollEl).gap) || 0;
+            return card.offsetWidth + gap;
+        };
+
+        const setFilled = (btn: HTMLButtonElement) => {
+            prevBtn.classList.remove('carousel-nav-arrow--filled');
+            nextBtn.classList.remove('carousel-nav-arrow--filled');
+            btn.classList.add('carousel-nav-arrow--filled');
+        };
+
+        const updateButtons = () => {
+            const hasOverflow = scrollEl.scrollWidth > scrollEl.clientWidth + 1;
+            nav.style.display = hasOverflow ? 'flex' : 'none';
+
+            const atStart = scrollEl.scrollLeft <= 4;
+            const atEnd = scrollEl.scrollLeft >= scrollEl.scrollWidth - scrollEl.clientWidth - 4;
+            prevBtn.disabled = !hasOverflow || atStart;
+            nextBtn.disabled = !hasOverflow || atEnd;
+        };
+
+        prevBtn.addEventListener('click', () => {
+            scrollEl.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+            setFilled(prevBtn);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            scrollEl.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+            setFilled(nextBtn);
+        });
+
+        scrollEl.addEventListener('scroll', updateButtons, { passive: true });
+        window.addEventListener('resize', updateButtons);
+        updateButtons();
+    }
+
+    document.querySelectorAll<HTMLElement>('[data-carousel-nav]').forEach(initCarouselNav);
+</script>

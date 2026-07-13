@@ -2,6 +2,8 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
+import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
+import EyebrowIcon from '../shared/EyebrowIcon.astro';
 
 interface Props {
     locale: Locale;
@@ -80,53 +82,13 @@ const features = [
         <h4 class="text-body-p0 dat-features__tagline" data-copy-key="dat_features_tagline">
             {t(copy, 'dat_features_tagline', locale, 'Unlock insights with precision')}
         </h4>
-        <div
+        <CarouselNavArrows
+            scrollTargetSelector="#datFeaturesScroll"
+            ariaLabel={locale === 'fr' ? 'Navigation des fonctionnalités' : 'Feature navigation'}
+            prevLabel={locale === 'fr' ? 'Fonctionnalité précédente' : 'Previous feature'}
+            nextLabel={locale === 'fr' ? 'Fonctionnalité suivante' : 'Next feature'}
             class="dat-features__nav"
-            aria-label={locale === 'fr' ? 'Navigation des fonctionnalités' : 'Feature navigation'}
-        >
-            <button
-                class="dat-features__nav-btn dat-features__nav-prev"
-                type="button"
-                aria-label={locale === 'fr' ? 'Fonctionnalité précédente' : 'Previous feature'}
-            >
-                <svg
-                    width="8"
-                    height="13"
-                    viewBox="0 0 8 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M7 1L1 6.5L7 12"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                </svg>
-            </button>
-            <button
-                class="dat-features__nav-btn dat-features__nav-next"
-                type="button"
-                aria-label={locale === 'fr' ? 'Fonctionnalité suivante' : 'Next feature'}
-            >
-                <svg
-                    width="8"
-                    height="13"
-                    viewBox="0 0 8 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M1 1L7 6.5L1 12"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
+        />
     </div>
 
     <div class="dat-features__cards" id="datFeaturesScroll">
@@ -153,21 +115,11 @@ const features = [
                         </video>
                     </div>
                     <div class="dat-features__card-body">
-                        <div class="dat-features__card-pill">
-                            <img
-                                class="icon-xl dat-features__card-icon"
-                                src={`${base}${f.icon}`}
-                                alt=""
-                                aria-hidden="true"
-                                loading="lazy"
-                            />
-                            <span
-                                class="text-label-small dat-features__card-pill-label"
-                                data-copy-key={f.pillKey}
-                            >
-                                {t(copy, f.pillKey, locale, f.pillFb)}
-                            </span>
-                        </div>
+                        <EyebrowIcon
+                            iconSrc={`${base}${f.icon}`}
+                            label={t(copy, f.pillKey, locale, f.pillFb)}
+                            copyKey={f.pillKey}
+                        />
                         <div class="dat-features__card-content">
                             <p
                                 class="text-body-p1 dat-features__card-title"
@@ -193,7 +145,8 @@ const features = [
     .dat-features {
         width: 100%;
         background: var(--surface-blue);
-        padding: var(--space-6) var(--content-margin-inline) var(--space-12);
+        /* top deliberately shallow — flows directly from the DAT section above */
+        padding: var(--space-6) var(--content-margin-inline) var(--section-pad-block);
         display: flex;
         flex-direction: column;
         gap: 0;
@@ -209,39 +162,6 @@ const features = [
 
     .dat-features__tagline {
         margin: 0;
-    }
-
-    .dat-features__nav {
-        display: flex;
-        gap: var(--space-2);
-        flex-shrink: 0;
-    }
-
-    .dat-features__nav-btn {
-        width: 2.625rem;
-        height: 2.625rem;
-        border-radius: var(--radius-full);
-        border: var(--stroke-1) solid var(--text-primary);
-        background: transparent;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-primary);
-        transition:
-            background-color 0.2s,
-            color 0.2s;
-        flex-shrink: 0;
-    }
-
-    .dat-features__nav-btn:hover {
-        background: var(--text-primary);
-        color: var(--text-white);
-    }
-
-    .dat-features__nav-btn:focus-visible {
-        outline: var(--stroke-2) solid var(--border-primary);
-        outline-offset: var(--space-1);
     }
 
     .dat-features__cards {
@@ -312,23 +232,8 @@ const features = [
     .dat-features__card-body {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
-        padding: var(--space-6);
-    }
-
-    .dat-features__card-pill {
-        display: flex;
-        align-items: center;
-        gap: var(--space-3);
-        background: var(--surface-blue);
-        border-radius: var(--radius-s);
-        padding: var(--space-1) var(--space-3);
-        width: fit-content;
-    }
-
-    .dat-features__card-pill-label {
-        color: var(--text-primary);
-        white-space: nowrap;
+        gap: var(--card-stack-gap);
+        padding: var(--card-pad);
     }
 
     .dat-features__card-content {
@@ -361,25 +266,10 @@ const features = [
             padding: var(--space-4);
             gap: var(--space-3);
         }
-
-        .dat-features__card-pill {
-            border-radius: var(--radius-xs);
-            gap: var(--space-2);
-            padding: var(--space-1) var(--space-2);
-        }
-
-        /* Downsize from icon-xl to icon-m at mobile; values match icon-sizes.css */
-        .dat-features__card-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-        }
     }
 </style>
 
 <script>
-    const scroll = document.getElementById('datFeaturesScroll');
-    const prev = document.querySelector<HTMLButtonElement>('.dat-features__nav-prev');
-    const next = document.querySelector<HTMLButtonElement>('.dat-features__nav-next');
     const cards = document.querySelectorAll<HTMLElement>('.dat-features__card');
 
     const stopVideo = (card: HTMLElement) => {
@@ -399,23 +289,6 @@ const features = [
         video.currentTime = 0;
         void video.play();
     };
-
-    if (scroll && prev && next) {
-        const getScrollAmount = () => {
-            const card = scroll.firstElementChild as HTMLElement | null;
-            if (!card) return 0;
-            const gap = parseFloat(getComputedStyle(scroll).gap) || 0;
-            return card.offsetWidth + gap;
-        };
-
-        prev.addEventListener('click', () => {
-            scroll.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-        });
-
-        next.addEventListener('click', () => {
-            scroll.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-        });
-    }
 
     cards.forEach((card) => {
         card.addEventListener('mouseenter', () => playVideo(card));

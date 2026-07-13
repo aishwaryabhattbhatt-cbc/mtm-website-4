@@ -260,9 +260,9 @@ const footerMenus = [
                     {
                         footerMenus.map((menu) => (
                             <nav class="home-footer__footer-menu" aria-label={menu.title}>
-                                <h3 class="home-footer__footer-menu-title text-body-p2">
+                                <h4 class="home-footer__footer-menu-title text-body-p2">
                                     {menu.title}
-                                </h3>
+                                </h4>
                                 <ul class="home-footer__footer-menu-list">
                                     {menu.items.map((item) => (
                                         <li>
@@ -382,7 +382,7 @@ const footerMenus = [
     .home-footer__cta {
         position: relative;
         z-index: 1;
-        padding: var(--space-12) var(--content-margin-inline);
+        padding: var(--section-pad-block) var(--content-margin-inline);
         display: flex;
         justify-content: center;
     }
@@ -394,7 +394,7 @@ const footerMenus = [
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: var(--space-15);
+        gap: var(--space-11);
         border-radius: var(--layout-card-radius);
         border: var(--stroke-1) solid rgba(255, 255, 255, 0.37);
         background: rgba(255, 255, 255, 0.39);
@@ -445,7 +445,7 @@ const footerMenus = [
     .home-footer__newsletter {
         position: relative;
         z-index: 1;
-        padding: var(--space-12) var(--content-margin-inline);
+        padding: var(--section-pad-block) var(--content-margin-inline);
         display: flex;
         justify-content: center;
     }
@@ -525,7 +525,8 @@ const footerMenus = [
     .home-footer__footer {
         position: relative;
         z-index: 1;
-        padding: var(--space-11) var(--content-margin-inline) var(--space-12);
+        /* top intentionally shallower than bottom — no alias covers --space-11 alone */
+        padding: var(--space-11) var(--content-margin-inline) var(--section-pad-block);
     }
 
     .home-footer__footer-container {

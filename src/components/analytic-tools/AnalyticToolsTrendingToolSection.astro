@@ -168,11 +168,12 @@ const base = import.meta.env.BASE_URL;
         width: 100%;
         scroll-margin-top: calc(var(--navbar-height) + 4.25rem + var(--space-3));
         background: var(--surface-white);
+        /* dense alternating tool rows — deliberately tighter than --section-pad-block */
         padding: var(--space-6) var(--content-margin-inline);
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         column-gap: var(--layout-card-gap);
-        row-gap: var(--space-8);
+        row-gap: var(--section-header-gap);
         align-items: start;
     }
 
@@ -233,7 +234,7 @@ const base = import.meta.env.BASE_URL;
         display: flex;
         flex-direction: column;
         gap: var(--space-8);
-        padding: var(--space-6);
+        padding: var(--card-pad);
         border-radius: var(--radius-m);
     }
 

@@ -51,6 +51,7 @@ const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner
     .products-hero-media {
         position: relative;
         width: 100%;
+        overflow: hidden;
         /* 770 / 1920 matches the Figma image proportion */
         aspect-ratio: 1920 / 770;
     }
@@ -83,9 +84,9 @@ const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 0 var(--content-margin-inline) var(--space-13);
+        padding: 0 var(--content-margin-inline) var(--section-pad-block-lg);
         margin-top: calc(-1 * var(--space-11));
-        gap: var(--space-6);
+        gap: var(--hero-stack-gap);
     }
 
     .products-hero-description {
@@ -104,6 +105,12 @@ const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner
         .products-hero-content {
             margin-top: calc(-1 * var(--space-6));
             gap: var(--space-5);
+        }
+
+        .products-hero-media {
+            /* 2x taller than the desktop ratio so object-fit: cover zooms in
+               by scaling to fill the extra height, cropping only the sides */
+            aspect-ratio: 1920 / 1540;
         }
     }
 </style>

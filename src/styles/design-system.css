@@ -130,7 +130,6 @@ html {
     --fs-label-xs: 0.75rem;
     --fs-input-text: 0.875rem;
     --fs-input-label: 0.625rem;
-    --fs-a11y-floor: 1.143rem; /* 16px at 14px root — mobile accessibility minimum */
 
     /* === Font Weights === */
     --fw-light: 300;
@@ -179,13 +178,38 @@ html {
     --space-11: 4rem;
     --space-12: 5rem;
     --space-13: 7.5rem;
-    --space-15: 3.75rem;
-    --space-25: 6.25rem;
 
     /* === Layout (rem-based) === */
     --layout-page-margin: 15rem;
     --layout-card-gap: 2.5rem;
     --layout-card-radius: var(--radius-m);
+
+    /* === Page chrome (moved from styles.css) === */
+    --navbar-height: 80px;
+    --section-height-100: calc(100vh - var(--navbar-height));
+    --section-height-80: calc(80vh - var(--navbar-height));
+
+    /* === Global content margins (full-bleed backgrounds + inset content) === */
+    --content-margin-sm: 24px;
+    --content-margin-md: 48px;
+    --content-margin-lg: 72px;
+    --content-margin-xl: 120px;
+    --content-margin-xxl: 240px;
+    --content-margin-inline: var(--content-margin-sm);
+
+    /* === Semantic spacing (relationship-level aliases) ===
+       Use these — not raw --space-* tokens — when the relationship matches.
+       Responsive behavior lives here, once; do not re-override per component.
+       See .planning/codebase/SPACING.md for the full contract. */
+    --section-pad-block: var(--space-12); /* default section top/bottom padding */
+    --section-pad-block-lg: var(--space-13); /* landmark/feature sections; ≤767px override below */
+    --section-header-gap: var(--space-8); /* header block → cards/content */
+    --header-stack-gap: var(--space-6); /* eyebrow → title group */
+    --title-desc-gap: var(--space-2); /* heading → its description */
+    --hero-stack-gap: var(--space-6); /* hero title → subtitle → CTA stack */
+    --card-pad: var(--space-6); /* default card padding */
+    --card-pad-thin: var(--space-3); /* image-dominant / report cards */
+    --card-stack-gap: var(--space-4); /* content stack inside a card */
 
     /* === Border Radius === */
     --radius-none: 0;
@@ -233,14 +257,14 @@ html {
         --fs-subsection-h2: 2rem;
         --fs-tertiary-h3: 1.625rem; /* gap with h2 (2rem): 0.375rem */
         --fs-h4: 1.25rem; /* gap with h3 (1.625rem): 0.375rem */
-        --fs-body-xl: 1.25rem; /* kept above body-m (1.125rem) */
+        --fs-body-xl: 1.375rem; /* kept above body-l (1.25rem) — preserves the p0 tier on phones */
         --fs-body-l: 1.25rem;
         --fs-body-m: 1.125rem;
         --fs-body-s: 1rem; /* held steady — shrinking on top of the 14px mobile root made body copy read too small */
         --fs-button-regular: 1.125rem; /* overrides 1023px — larger tap targets on phones */
         --fs-button-small: 1.125rem;
         --fs-label-small: 0.875rem; /* held steady — 0.75rem read as too small for eyebrow/tag labels on phones */
-        --fs-label-xs: 0.625rem;
+        --fs-label-xs: 0.9375rem; /* bumped up — 0.625rem compounded with the 14px mobile root read too small for pill/tag text on phones */
 
         --ls-hero: -0.09375rem;
         --ls-heading-lg: -0.078125rem;
@@ -260,6 +284,7 @@ html {
         --fs-subsection-h2: 2rem;
         --fs-tertiary-h3: 1.625rem; /* gap with h2 (2rem): 0.375rem */
         --fs-h4: 1.25rem; /* gap with h3 (1.625rem): 0.375rem */
+        --fs-body-xl: 1.375rem; /* steps down from 1.5rem — smooths the cliff into the 480px block */
 
         --ls-hero: -0.125rem;
         --ls-heading-lg: -0.109375rem;
@@ -282,18 +307,54 @@ html {
     }
 }
 
+/* Content margin + navbar responsive overrides (moved from styles.css) */
+@media (min-width: 768px) {
+    :root {
+        --content-margin-inline: var(--content-margin-md);
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --content-margin-inline: var(--content-margin-lg);
+    }
+}
+
+@media (min-width: 1440px) {
+    :root {
+        --content-margin-inline: var(--content-margin-xl);
+    }
+}
+
+@media (min-width: 1920px) {
+    :root {
+        --content-margin-inline: var(--content-margin-xxl);
+    }
+}
+
+@media (max-width: 1023px) {
+    :root {
+        --navbar-height: 4.375rem;
+    }
+}
+
 /* Spacing responsive overrides */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     :root {
         /* Reduce spacing on mobile/tablet for better use of limited screen space */
         --layout-page-margin: 1rem;
         --layout-card-gap: 1.5rem;
         --space-13: 3rem; /* was 7.5rem */
-        --space-25: 3rem; /* was 6.25rem */
+        --section-pad-block: var(--space-10);
+        /* Dedicated override so this doesn't silently inherit --space-13's mobile
+           redefinition above — that cut (120px→48px) was steeper than every other
+           section's mobile ratio and read as too tight on landmark sections. */
+        --section-pad-block-lg: var(--space-11);
+        --section-header-gap: var(--space-7);
     }
 }
 
-@media (min-width: 769px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
     :root {
         /* Medium spacing for tablets */
         --layout-page-margin: 2rem;
@@ -366,16 +427,17 @@ h3,
     font-family: var(--font-body);
     font-size: var(--fs-body-xl);
     font-weight: var(--fw-regular);
-    line-height: var(--lh-tight);
+    line-height: var(--lh-relaxed);
     letter-spacing: var(--ls-subhead);
 }
 
 .text-body-p0-bold {
     font-family: var(--font-body);
     font-size: var(--fs-body-xl);
-    font-weight: var(--fw-semibold);
-    line-height: var(--lh-tight);
-    letter-spacing: var(--ls-subhead);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-relaxed);
+    /* looser than p0's --ls-subhead: bold glyphs are wider, so the regular-weight h4 tracking over-compresses them */
+    letter-spacing: var(--ls-body-lg);
 }
 
 .text-body-p1 {
@@ -450,7 +512,7 @@ h3,
     font-family: var(--font-body);
     font-size: var(--fs-body-s);
     font-weight: var(--fw-regular);
-    line-height: var(--lh-body);
+    line-height: var(--lh-relaxed);
     letter-spacing: var(--ls-body-md);
 }
 
@@ -458,11 +520,11 @@ h3,
     font-family: var(--font-body);
     font-size: var(--fs-label-small);
     font-weight: var(--fw-regular);
-    line-height: var(--lh-body);
+    line-height: var(--lh-relaxed);
     letter-spacing: var(--ls-body-md);
 }
 
-/* --- UI Text (Inter) --- */
+/* --- UI Text (Roboto via --font-ui) --- */
 
 .text-ui-h1-bold {
     font-family: var(--font-ui);
@@ -611,7 +673,8 @@ h3,
 
 .text-pill-regular {
     font-family: var(--font-body);
-    font-size: var(--fs-button-regular);
+    /* body-m, not button-regular: pills aren't tappable — they must not inherit button tap-target inflation on mobile */
+    font-size: var(--fs-body-m);
     font-weight: var(--fw-regular);
     line-height: var(--lh-tight);
     letter-spacing: var(--ls-pill);
@@ -620,7 +683,8 @@ h3,
 
 .text-pill-small {
     font-family: var(--font-body);
-    font-size: var(--fs-button-small);
+    /* label-small, not button-small: see .text-pill-regular */
+    font-size: var(--fs-label-small);
     font-weight: var(--fw-regular);
     line-height: var(--lh-tight);
     letter-spacing: var(--ls-pill);
@@ -635,7 +699,7 @@ h3,
     letter-spacing: var(--ls-pill);
 }
 
-/* --- Inputs (Inter) --- */
+/* --- Inputs (Roboto via --font-ui) --- */
 
 .text-input-title {
     font-family: var(--font-ui);
@@ -661,7 +725,7 @@ h3,
     letter-spacing: var(--ls-none);
 }
 
-/* --- Content variants (Inter) --- */
+/* --- Content variants (Roboto via --font-ui) --- */
 
 .text-content-body-medium {
     font-family: var(--font-ui);
@@ -690,6 +754,13 @@ h3,
         font-size: var(--fs-body-m);
     }
     .dat-features__card-desc {
+        font-size: var(--fs-body-s);
+    }
+}
+
+/* MTM suite mobile tool list: small product pills read at body-s */
+@media (max-width: 767px) {
+    .mtm-suite-section .product-pill--small {
         font-size: var(--fs-body-s);
     }
 }

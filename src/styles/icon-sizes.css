@@ -2,101 +2,103 @@
  * Icon Size Utilities
  * Scalable rem-based icon sizing for consistent proportions across all breakpoints
  * Usage: <svg class="icon-xl"></svg>
+ *
+ * Sizes are exposed as --icon-* custom properties so the rare component that can't
+ * apply a class directly (e.g. animating a different property) can still read
+ * `var(--icon-l)` instead of hardcoding a number — this file stays the only place
+ * an icon dimension is ever defined.
  */
+
+:root {
+    --icon-xs: 0.75rem;
+    --icon-s: 1rem;
+    --icon-m: 1.5rem;
+    --icon-l: 2rem;
+    --icon-xl: 2.5rem;
+    --icon-2xl: 3rem;
+    --icon-3xl: 4rem;
+    --icon-4xl: 5rem;
+    /* Small CTA/arrow icons inside buttons & cards — not part of the t-shirt content-icon scale */
+    --icon-control: 1.25rem;
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
 /* ICON SIZES */
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
 .icon-xs {
-    width: 0.75rem;
-    height: 0.75rem;
+    width: var(--icon-xs);
+    height: var(--icon-xs);
 }
 
 .icon-s {
-    width: 1rem;
-    height: 1rem;
+    width: var(--icon-s);
+    height: var(--icon-s);
 }
 
 .icon-m {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: var(--icon-m);
+    height: var(--icon-m);
 }
 
 .icon-l {
-    width: 2rem;
-    height: 2rem;
+    width: var(--icon-l);
+    height: var(--icon-l);
 }
 
 .icon-xl {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: var(--icon-xl);
+    height: var(--icon-xl);
 }
 
 .icon-2xl {
-    width: 3rem;
-    height: 3rem;
+    width: var(--icon-2xl);
+    height: var(--icon-2xl);
 }
 
 .icon-3xl {
-    width: 4rem;
-    height: 4rem;
+    width: var(--icon-3xl);
+    height: var(--icon-3xl);
 }
 
 .icon-4xl {
-    width: 5rem;
-    height: 5rem;
+    width: var(--icon-4xl);
+    height: var(--icon-4xl);
+}
+
+.icon-control {
+    width: var(--icon-control);
+    height: var(--icon-control);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
 /* BREAKPOINT VARIANTS — each size steps down one level per breakpoint        */
-/* icon-xs / icon-s / icon-m are not scaled (already small)                  */
+/* icon-xs / icon-s / icon-m / icon-control are not scaled (already small)    */
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1023px) {
-    .icon-4xl {
-        width: 4rem;
-        height: 4rem;
-    } /* → 3xl */
-    .icon-3xl {
-        width: 3rem;
-        height: 3rem;
-    } /* → 2xl */
-    .icon-2xl {
-        width: 2.5rem;
-        height: 2.5rem;
-    } /* → xl */
-    .icon-xl {
-        width: 2rem;
-        height: 2rem;
-    } /* → l */
-    .icon-l {
-        width: 1.5rem;
-        height: 1.5rem;
-    } /* → m */
+    :root {
+        --icon-4xl: 4rem; /* → 3xl */
+        --icon-3xl: 3rem; /* → 2xl */
+        --icon-2xl: 2.5rem; /* → xl */
+        --icon-xl: 2rem; /* → l */
+        --icon-l: 1.5rem; /* → m */
+    }
 }
 
 @media (max-width: 767px) {
-    .icon-4xl {
-        width: 3rem;
-        height: 3rem;
-    } /* → 2xl */
-    .icon-3xl {
-        width: 2.5rem;
-        height: 2.5rem;
-    } /* → xl */
-    .icon-2xl {
-        width: 2rem;
-        height: 2rem;
-    } /* → l */
-    .icon-xl {
-        width: 1.5rem;
-        height: 1.5rem;
-    } /* → m */
-    .icon-l {
-        width: 1rem;
-        height: 1rem;
-    } /* → s */
+    /* Below 767px, content icons (l through 4xl) all collapse to one uniform
+       size instead of stepping independently — every "this represents a tool/
+       feature" icon reads as the same size on mobile, regardless of its desktop
+       tier. Icons inside buttons/arrows/chevrons use icon-xs/s/m/control, which
+       are untouched here, so UI-control icons keep their own sizing. */
+    :root {
+        --icon-4xl: 2.5rem;
+        --icon-3xl: 2.5rem;
+        --icon-2xl: 2.5rem;
+        --icon-xl: 2.5rem;
+        --icon-l: 2.5rem;
+    }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */

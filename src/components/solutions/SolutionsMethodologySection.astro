@@ -109,16 +109,16 @@ const steps = stepFallbacks.map((fallback, i) => {
     .solutions-methodology-section {
         width: 100%;
         background: var(--surface-white);
-        padding: var(--space-12) var(--content-margin-inline) 0;
+        padding: var(--section-pad-block) var(--content-margin-inline) 0;
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--section-header-gap);
     }
 
     .solutions-methodology-header {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--title-desc-gap);
         max-width: 54rem;
     }
 
@@ -140,10 +140,11 @@ const steps = stepFallbacks.map((fallback, i) => {
     .solutions-methodology-card {
         background: var(--surface-blue);
         border-radius: var(--radius-m);
-        padding: var(--space-6);
+        padding: var(--card-pad);
         display: flex;
         flex-direction: column;
-        gap: var(--space-12);
+        /* proximity: within-card gap stays below --layout-card-gap */
+        gap: var(--space-7);
     }
 
     .solutions-methodology-card-content {
@@ -197,14 +198,14 @@ const steps = stepFallbacks.map((fallback, i) => {
         }
 
         .solutions-methodology-card {
-            gap: var(--space-8);
+            gap: var(--space-5);
         }
     }
 
     @media (max-width: 767px) {
         .solutions-methodology-section {
-            padding-top: var(--space-10);
-            gap: var(--space-7);
+            padding-top: var(--section-pad-block);
+            gap: var(--section-header-gap);
         }
 
         .solutions-methodology-grid {

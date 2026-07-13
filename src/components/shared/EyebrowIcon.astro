@@ -1,0 +1,52 @@
+---
+interface Props {
+    iconSrc: string;
+    label: string;
+    copyKey?: string;
+    class?: string;
+}
+
+const { iconSrc, label, copyKey, class: className = '' } = Astro.props as Props;
+---
+
+<div class={`eyebrow-icon${className ? ` ${className}` : ''}`}>
+    <img
+        src={iconSrc}
+        alt=""
+        class="icon-xl eyebrow-icon-image"
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+    />
+    <span class="text-label-small eyebrow-icon-label" data-copy-key={copyKey}>
+        {label}
+    </span>
+</div>
+
+<style>
+    .eyebrow-icon {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-3);
+        background: var(--surface-blue);
+        border-radius: var(--radius-tag);
+        padding: var(--space-1) var(--space-4) var(--space-1) var(--space-3);
+        align-self: flex-start;
+    }
+
+    .eyebrow-icon-image {
+        flex-shrink: 0;
+    }
+
+    .eyebrow-icon-label {
+        color: var(--text-secondary);
+        white-space: nowrap;
+    }
+
+    @media (max-width: 767px) {
+        .eyebrow-icon {
+            gap: var(--space-2);
+            padding: var(--space-1) var(--space-3) var(--space-1) var(--space-2);
+        }
+    }
+</style>

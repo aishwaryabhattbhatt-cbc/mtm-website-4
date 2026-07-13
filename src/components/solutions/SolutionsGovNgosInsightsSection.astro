@@ -152,11 +152,11 @@ const cards = [
     .solutions-govngos-insights-section {
         width: 100%;
         background: var(--surface-blue);
-        padding: var(--space-13) var(--content-margin-inline);
+        padding: var(--section-pad-block-lg) var(--content-margin-inline);
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--space-9);
+        gap: var(--section-header-gap);
     }
 
     /* Header */
@@ -164,7 +164,7 @@ const cards = [
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--space-4);
+        gap: var(--title-desc-gap);
         text-align: center;
         max-width: 60rem;
     }
@@ -192,7 +192,7 @@ const cards = [
         background: var(--surface-white);
         border-radius: var(--radius-m);
         box-shadow: var(--shadow-card);
-        padding: var(--space-3);
+        padding: var(--card-pad-thin);
         display: flex;
         flex-direction: column;
         gap: var(--space-7);
@@ -220,7 +220,7 @@ const cards = [
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--space-2);
+        gap: var(--title-desc-gap);
     }
 
     .solutions-govngos-insight-card__stat {
@@ -279,7 +279,7 @@ const cards = [
     @media (max-width: 1023px) {
         .solutions-govngos-insights-section {
             padding: var(--space-11) var(--content-margin-inline);
-            gap: var(--space-8);
+            gap: var(--section-header-gap);
         }
 
         .solutions-govngos-insights-cards {
@@ -290,8 +290,8 @@ const cards = [
     /* Mobile */
     @media (max-width: 767px) {
         .solutions-govngos-insights-section {
-            padding: var(--space-10) var(--content-margin-inline);
-            gap: var(--space-7);
+            padding: var(--section-pad-block) var(--content-margin-inline);
+            gap: var(--section-header-gap);
         }
     }
 </style>

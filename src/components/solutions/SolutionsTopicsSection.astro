@@ -143,18 +143,18 @@ const topics = topicFallbacks.map((fallback, i) => {
     .solutions-topics-section {
         width: 100%;
         background: var(--surface-blue);
-        padding: var(--space-12) var(--content-margin-inline);
+        padding: var(--section-pad-block) var(--content-margin-inline);
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--space-8);
+        gap: var(--section-header-gap);
     }
 
     .solutions-topics-header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--space-4);
+        gap: var(--title-desc-gap);
         max-width: 54rem;
         text-align: center;
     }
@@ -264,8 +264,8 @@ const topics = topicFallbacks.map((fallback, i) => {
 
     @media (max-width: 767px) {
         .solutions-topics-section {
-            padding-block: var(--space-10);
-            gap: var(--space-7);
+            padding-block: var(--section-pad-block);
+            gap: var(--section-header-gap);
         }
 
         .solutions-topics-grid {

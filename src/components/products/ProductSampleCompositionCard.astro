@@ -1,4 +1,5 @@
 ---
+import EyebrowIcon from '../shared/EyebrowIcon.astro';
 import ProductDonutChart from './ProductDonutChart.astro';
 
 interface DonutItem {
@@ -16,17 +17,7 @@ const { pillLabel, iconSrc, items } = Astro.props as Props;
 ---
 
 <div class="composition-card">
-    <div class="composition-card-pill">
-        <img
-            src={iconSrc}
-            alt=""
-            aria-hidden="true"
-            class="icon-l composition-card-icon"
-            loading="lazy"
-            decoding="async"
-        />
-        <span class="text-label-small composition-card-pill-label">{pillLabel}</span>
-    </div>
+    <EyebrowIcon iconSrc={iconSrc} label={pillLabel} />
 
     <div class="composition-card-donuts">
         {
@@ -49,30 +40,11 @@ const { pillLabel, iconSrc, items } = Astro.props as Props;
         background-color: var(--surface-white);
         border-radius: var(--layout-card-radius);
         box-shadow: var(--shadow-card);
-        padding: var(--space-6);
+        padding: var(--card-pad);
         display: flex;
         flex-direction: column;
         gap: var(--space-6);
         min-width: 0;
-    }
-
-    .composition-card-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-3);
-        background-color: var(--surface-blue);
-        border-radius: var(--radius-s);
-        padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
-        align-self: flex-start;
-    }
-
-    .composition-card-icon {
-        flex-shrink: 0;
-    }
-
-    .composition-card-pill-label {
-        color: var(--text-secondary);
-        white-space: nowrap;
     }
 
     .composition-card-donuts {
@@ -90,5 +62,17 @@ const { pillLabel, iconSrc, items } = Astro.props as Props;
     .composition-card-description {
         color: var(--text-secondary);
         margin: 0;
+    }
+
+    @media (max-width: 767px) {
+        .composition-card-donuts {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .composition-card-donuts :global(.donut-chart) {
+            max-width: 6.5rem;
+        }
     }
 </style>

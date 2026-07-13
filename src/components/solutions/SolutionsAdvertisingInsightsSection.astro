@@ -1,6 +1,7 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
 import SolutionsInsightCard from './SolutionsInsightCard.astro';
 
 interface Props {
@@ -31,7 +32,7 @@ const { locale, copy, base } = Astro.props as Props;
 
     <div class="solutions-advertising-insights-cards">
         <SolutionsInsightCard
-            iconSrc={`${base}icons/tool/tool-dat.svg`}
+            iconSrc={`${base}${icons.gen.reliableData}`}
             eyebrow={t(copy, 'insight_1_eyebrow', locale, 'Trustworthy Data')}
             title={t(
                 copy,
@@ -51,7 +52,7 @@ const { locale, copy, base } = Astro.props as Props;
             imageTitleColor="blue"
         />
         <SolutionsInsightCard
-            iconSrc={`${base}icons/tool/tool-dat.svg`}
+            iconSrc={`${base}${icons.gen.focus}`}
             eyebrow={t(copy, 'insight_2_eyebrow', locale, 'Precision Targeting')}
             title={t(copy, 'insight_2_title', locale, "Stop marketing to the 'average' Canadian.")}
             description={t(
@@ -72,10 +73,10 @@ const { locale, copy, base } = Astro.props as Props;
     .solutions-advertising-insights-section {
         width: 100%;
         background: var(--surface-blue);
-        padding: var(--space-13) var(--content-margin-inline);
+        padding: var(--section-pad-block-lg) var(--content-margin-inline);
         display: flex;
         flex-direction: column;
-        gap: var(--space-12);
+        gap: var(--section-header-gap);
     }
 
     /* Header */
@@ -83,7 +84,7 @@ const { locale, copy, base } = Astro.props as Props;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--space-4);
+        gap: var(--title-desc-gap);
         text-align: center;
     }
 
@@ -108,21 +109,9 @@ const { locale, copy, base } = Astro.props as Props;
     }
 
     @media (max-width: 1023px) {
-        .solutions-advertising-insights-section {
-            padding: var(--space-12) var(--content-margin-inline);
-            gap: var(--space-10);
-        }
-
         .solutions-advertising-insights-cards {
             grid-template-columns: 1fr;
             row-gap: var(--space-9);
-        }
-    }
-
-    @media (max-width: 767px) {
-        .solutions-advertising-insights-section {
-            padding: var(--space-10) var(--content-margin-inline);
-            gap: var(--space-8);
         }
     }
 </style>

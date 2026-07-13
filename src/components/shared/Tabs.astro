@@ -23,7 +23,7 @@ const activeValue = defaultValue ?? tabs[0]?.value ?? '';
                 <button
                     class:list={[
                         'tabs-bar__tab',
-                        'text-label-regular',
+                        'text-label-small',
                         { 'tabs-bar__tab--active': tab.value === activeValue },
                     ]}
                     role="tab"
@@ -40,7 +40,14 @@ const activeValue = defaultValue ?? tabs[0]?.value ?? '';
         showArrows && (
             <div class="tabs-bar__arrows">
                 <button class="tabs-bar__arrow" aria-label="Previous" data-arrow="prev">
-                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true">
+                    <svg
+                        class="tabs-bar__arrow-icon"
+                        width="100%"
+                        height="100%"
+                        viewBox="0 0 9 15"
+                        fill="none"
+                        aria-hidden="true"
+                    >
                         <path
                             d="M7.5 1.5L1.5 7.5L7.5 13.5"
                             stroke="currentColor"
@@ -51,7 +58,14 @@ const activeValue = defaultValue ?? tabs[0]?.value ?? '';
                     </svg>
                 </button>
                 <button class="tabs-bar__arrow" aria-label="Next" data-arrow="next">
-                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true">
+                    <svg
+                        class="tabs-bar__arrow-icon"
+                        width="100%"
+                        height="100%"
+                        viewBox="0 0 9 15"
+                        fill="none"
+                        aria-hidden="true"
+                    >
                         <path
                             d="M1.5 1.5L7.5 7.5L1.5 13.5"
                             stroke="currentColor"
@@ -148,7 +162,6 @@ const activeValue = defaultValue ?? tabs[0]?.value ?? '';
         border: none;
         cursor: pointer;
         white-space: nowrap;
-        font-size: 0.875rem;
         transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -181,6 +194,12 @@ const activeValue = defaultValue ?? tabs[0]?.value ?? '';
             background 0.15s,
             color 0.15s,
             border-color 0.15s;
+    }
+
+    /* Non-square glyph — doesn't fit the icon-* square scale, so it's declared here in rem */
+    .tabs-bar__arrow-icon {
+        width: 0.5625rem;
+        height: 0.9375rem;
     }
 
     .tabs-bar__arrow--filled {

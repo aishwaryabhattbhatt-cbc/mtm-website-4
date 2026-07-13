@@ -1,6 +1,7 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
 import InsightsNewsCard from './InsightsNewsCard.astro';
 
 interface Props {
@@ -77,33 +78,16 @@ const newsItems = [
             {t(copy, 'section_5_title', locale, 'News')}
         </h2>
 
-        <div class="news-section__controls-wrap" aria-hidden="true">
-            <div class="news-section__arrows">
-                <button class="news-section__arrow" aria-label="Previous" data-arrow="prev">
-                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
-                        <path
-                            d="M7.5 1.5L1.5 7.5L7.5 13.5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                    </svg>
-                </button>
-                <button class="news-section__arrow" aria-label="Next" data-arrow="next">
-                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none">
-                        <path
-                            d="M1.5 1.5L7.5 7.5L1.5 13.5"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                    </svg>
-                </button>
-            </div>
+        <div class="news-section__controls-wrap">
+            <CarouselNavArrows
+                scrollTargetSelector="#newsSectionCarousel"
+                ariaLabel="News navigation"
+                class="news-section__arrows"
+            />
         </div>
     </div>
 
-    <div class="news-section__grid">
+    <div class="news-section__grid" id="newsSectionCarousel">
         {
             newsItems.map((item) => (
                 <div class="news-section__card-wrap">
@@ -125,10 +109,10 @@ const newsItems = [
 <style>
     .news-section {
         width: 100%;
-        padding: var(--space-13) var(--content-margin-inline) var(--space-12);
+        padding: var(--section-pad-block-lg) var(--content-margin-inline) var(--section-pad-block);
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--section-header-gap);
     }
 
     .news-section__header {
@@ -136,7 +120,7 @@ const newsItems = [
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        gap: var(--space-6);
+        gap: var(--header-stack-gap);
     }
 
     .news-section__header h2 {
@@ -146,41 +130,6 @@ const newsItems = [
     .news-section__controls-wrap {
         display: flex;
         flex-shrink: 0;
-    }
-
-    .news-section__arrows {
-        display: flex;
-        gap: var(--space-3);
-    }
-
-    .news-section__arrow {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: var(--space-8);
-        height: var(--space-8);
-        border-radius: var(--radius-full);
-        border: var(--stroke-1) solid var(--border-secondary);
-        background: transparent;
-        color: var(--text-secondary);
-        cursor: pointer;
-        padding: 0;
-        transition:
-            background 0.15s,
-            color 0.15s,
-            border-color 0.15s;
-    }
-
-    .news-section__arrow--filled {
-        background: var(--text-primary);
-        color: var(--text-white);
-        border-color: var(--text-primary);
-    }
-
-    .news-section__arrow:hover:not(.news-section__arrow--filled) {
-        background: var(--surface-blue);
-        color: var(--text-primary);
-        border-color: var(--border-primary);
     }
 
     .news-section__grid {
@@ -206,7 +155,8 @@ const newsItems = [
 
     @media (max-width: 1023px) {
         .news-section {
-            padding: var(--space-12) var(--content-margin-inline) var(--space-9);
+            /* bottom kept tighter than --section-pad-block — footer below carries its own top padding */
+            padding: var(--section-pad-block) var(--content-margin-inline) var(--space-9);
         }
 
         .news-section__card-wrap {
@@ -228,29 +178,3 @@ const newsItems = [
         }
     }
 </style>
-
-<script>
-    document.querySelectorAll<HTMLElement>('.news-section').forEach((section) => {
-        const carousel = section.querySelector<HTMLElement>('.news-section__grid');
-        const prevBtn = section.querySelector<HTMLButtonElement>('[data-arrow="prev"]');
-        const nextBtn = section.querySelector<HTMLButtonElement>('[data-arrow="next"]');
-
-        if (!carousel || !prevBtn || !nextBtn) return;
-
-        const cardWrap = section.querySelector<HTMLElement>('.news-section__card-wrap');
-        if (!cardWrap) return;
-
-        const scroll = (direction: 'prev' | 'next') => {
-            const cardWidth = cardWrap.offsetWidth;
-            const gap = parseInt(window.getComputedStyle(carousel).gap);
-            const scrollAmount = cardWidth + gap;
-            carousel.scrollBy({
-                left: direction === 'prev' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth',
-            });
-        };
-
-        prevBtn.addEventListener('click', () => scroll('prev'));
-        nextBtn.addEventListener('click', () => scroll('next'));
-    });
-</script>

@@ -170,7 +170,7 @@ const copyKeys = {
         display: flex;
         flex-direction: column;
         align-self: center;
-        gap: var(--space-6);
+        gap: var(--hero-stack-gap);
     }
 
     .hero-image-collage {
@@ -370,15 +370,23 @@ const copyKeys = {
     }
 
     @media (max-width: 1023px) {
+        /* screen height is a minimum, not a cap — the collage may extend past it */
+        .hero-section.home-section-1 {
+            height: auto;
+            min-height: var(--section-height-100);
+        }
+
         .home-section-1 .hero-container {
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
             gap: var(--space-8);
-            /* anchor to top of section instead of centering, then 5rem below navbar */
+            /* in normal flow so the content sizes the section instead of being clipped */
+            position: relative;
             top: 0;
             transform: none;
-            padding-top: var(--space-12);
+            padding-top: var(--section-pad-block);
+            padding-bottom: var(--space-9);
             overflow: hidden;
         }
 
@@ -418,13 +426,6 @@ const copyKeys = {
     @media (max-width: 767px) {
         .home-section-1 .hero-container {
             padding-top: var(--space-7);
-        }
-    }
-
-    /* ≤480px: design system drops html to 14px root — text tokens scale down automatically. */
-    @media (max-width: 480px) {
-        .hero-subtitle {
-            font-size: var(--fs-a11y-floor);
         }
     }
 </style>

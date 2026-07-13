@@ -240,8 +240,8 @@ const products = [
                                     </span>
                                     <span class="mobile-card-arrow" aria-hidden="true">
                                         <svg
-                                            width="20"
-                                            height="20"
+                                            width="100%"
+                                            height="100%"
                                             viewBox="0 0 20 20"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -450,7 +450,10 @@ const products = [
                             </div>
                             <div class="tool-content">
                                 <div class="tool-header">
-                                    <h4 class="tool-title" data-copy-key={tool.titleKey}>
+                                    <h4
+                                        class="tool-title text-body-p1-bold"
+                                        data-copy-key={tool.titleKey}
+                                    >
                                         {t(copy, tool.titleKey, locale, tool.titleFallback)}
                                     </h4>
                                 </div>
@@ -462,8 +465,8 @@ const products = [
                             </div>
                             <div class="tool-arrow" aria-hidden="true">
                                 <svg
-                                    width="20"
-                                    height="20"
+                                    width="100%"
+                                    height="100%"
                                     viewBox="0 0 20 20"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -531,6 +534,44 @@ const products = [
 </section>
 
 <style>
+    /* 12-column grid rows used by this section (moved from the deleted
+       styles.css grid system — this was its only consumer) */
+    .row {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--space-5);
+        margin-bottom: var(--space-6);
+    }
+
+    .col {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .col-12 {
+        grid-column: span 12;
+    }
+
+    @media (min-width: 768px) {
+        .row {
+            gap: var(--space-6);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .row {
+            gap: var(--space-7);
+        }
+
+        .col-lg-5 {
+            grid-column: span 5;
+        }
+
+        .col-lg-7 {
+            grid-column: span 7;
+        }
+    }
+
     .pause-icon {
         display: none;
     }
@@ -563,11 +604,14 @@ const products = [
 
     .mtm-suite-section {
         width: 100%;
-        padding: var(--space-5) var(--content-margin-inline) var(--space-12);
+        /* top deliberately shallow — sits directly under the hero's animated background */
+        padding: var(--space-5) var(--content-margin-inline) var(--section-pad-block);
         background: var(--surface-white);
         display: flex;
         flex-direction: column;
-        gap: var(--space-10);
+        /* references the same alias as reports-library-bg's own padding-block,
+           so the two can't drift out of sync */
+        gap: var(--section-pad-block);
     }
 
     .data-products {
@@ -579,7 +623,7 @@ const products = [
         background: var(--surface-blue);
         margin-inline: calc(-1 * var(--content-margin-inline));
         padding-inline: var(--content-margin-inline);
-        padding-block: var(--space-12);
+        padding-block: var(--section-pad-block);
     }
 
     .reports-library {
@@ -850,7 +894,7 @@ const products = [
     .mobile-products-header {
         display: flex;
         flex-direction: column;
-        gap: var(--space-6);
+        gap: var(--header-stack-gap);
     }
 
     .mobile-products-list {
@@ -866,12 +910,6 @@ const products = [
         gap: var(--space-5);
         text-decoration: none;
         color: inherit;
-    }
-
-    @media (max-width: 1023px) {
-        .mobile-product-card:last-child {
-            margin-bottom: var(--space-15);
-        }
     }
 
     .mobile-card-image {
@@ -919,7 +957,7 @@ const products = [
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--title-desc-gap);
         min-width: 0;
     }
 
@@ -937,9 +975,16 @@ const products = [
 
     .mobile-card-arrow {
         flex-shrink: 0;
+        width: var(--icon-control);
+        height: var(--icon-control);
         display: flex;
         align-items: center;
         color: var(--text-primary);
+    }
+
+    .mobile-card-arrow svg {
+        width: 100%;
+        height: 100%;
     }
 
     .mobile-card-desc {
@@ -1003,11 +1048,8 @@ const products = [
     }
 
     @media (max-width: 767px) {
-        .mtm-suite-section {
-            padding-top: var(--space-9);
-            padding-bottom: var(--space-9);
-            gap: var(--space-5);
-        }
+        /* bottom padding and gap now inherit --section-pad-block's own mobile
+           value (--space-10); top stays the base rule's shallow --space-5 */
 
         .reports-library .products-right {
             height: auto;
@@ -1036,6 +1078,10 @@ const products = [
 
     /* ── TOOLS SUITE ── */
     .tools-suite {
+        /* zero out the .row utility's default margin-bottom — data-products and
+           reports-library both reset this too; the section's own bottom padding
+           already governs the gap to whatever follows */
+        margin-bottom: 0;
         align-items: stretch;
     }
 
@@ -1093,7 +1139,7 @@ const products = [
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: var(--space-2);
+        gap: var(--title-desc-gap);
         min-width: 0;
     }
 
@@ -1107,10 +1153,6 @@ const products = [
         color: var(--text-primary);
         margin: 0;
         white-space: nowrap;
-        font-family: var(--font-body);
-        font-size: var(--fs-body-l);
-        font-weight: 500;
-        line-height: 1.1;
     }
 
     .tool-tags {
@@ -1121,8 +1163,8 @@ const products = [
 
     .tool-arrow {
         flex-shrink: 0;
-        width: 1.25rem;
-        height: 1.25rem;
+        width: var(--icon-control);
+        height: var(--icon-control);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1179,6 +1221,12 @@ const products = [
     }
 
     @media (max-width: 1023px) {
+        /* single column on mobile — the 12-col grid is desktop-only */
+        .tools-suite {
+            display: flex;
+            flex-direction: column;
+        }
+
         .tools-suite .products-right {
             height: auto;
             aspect-ratio: 3 / 2;
@@ -1188,10 +1236,6 @@ const products = [
     }
 
     @media (max-width: 767px) {
-        .tools-suite {
-            padding-top: var(--space-8);
-        }
-
         .tools-suite .products-right {
             height: auto;
             aspect-ratio: 3 / 2;
@@ -1220,8 +1264,8 @@ const products = [
         }
 
         .tool-item {
-            padding-top: var(--space-3);
-            padding-bottom: var(--space-3);
+            padding-top: var(--card-pad-thin);
+            padding-bottom: var(--card-pad-thin);
             padding-left: 0;
             padding-right: 0;
         }
@@ -1235,7 +1279,7 @@ const products = [
         }
 
         .tool-tags :global(.product-pill--small) {
-            font-size: var(--fs-body-s);
+            /* font-size handled by the sanctioned override in design-system.css */
             padding: var(--space-2) var(--space-4);
         }
     }

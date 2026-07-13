@@ -2,6 +2,7 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
+import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
 import ProductMethodologyCard from './ProductMethodologyCard.astro';
 import ProductSampleCompositionCard from './ProductSampleCompositionCard.astro';
 
@@ -105,46 +106,13 @@ const sampleStats = [
     </div>
 
     <div class="product-methodology-cards">
-        <div class="product-cards-nav" aria-label="Cards navigation">
-            <button
-                class="product-nav-btn product-nav-prev"
-                type="button"
-                aria-label="Previous card"
-            >
-                <svg
-                    width="8"
-                    height="13"
-                    viewBox="0 0 8 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M7 1L1 6.5L7 12"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                </svg>
-            </button>
-            <button class="product-nav-btn product-nav-next" type="button" aria-label="Next card">
-                <svg
-                    width="8"
-                    height="13"
-                    viewBox="0 0 8 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M1 1L7 6.5L1 12"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
+        <CarouselNavArrows
+            scrollTargetSelector="#productMethodologyCardsScroll"
+            ariaLabel="Cards navigation"
+            prevLabel="Previous card"
+            nextLabel="Next card"
+            class="product-cards-nav"
+        />
 
         <div
             class={`product-top-row${showComposition ? '' : ' product-top-row--two-col'}`}
@@ -185,10 +153,10 @@ const sampleStats = [
 <style>
     .product-methodology-section {
         width: 100%;
-        padding: var(--space-13) var(--content-margin-inline);
+        padding: var(--section-pad-block-lg) var(--content-margin-inline);
         display: flex;
         flex-direction: column;
-        gap: var(--space-10);
+        gap: var(--section-header-gap);
     }
 
     .product-methodology-headline {
@@ -206,38 +174,19 @@ const sampleStats = [
     .product-methodology-cards {
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--layout-card-gap);
     }
 
     .product-cards-nav {
         display: none;
-        gap: var(--space-2);
-        justify-content: flex-end;
-    }
-
-    .product-nav-btn {
-        width: 1.375rem;
-        height: 1.375rem;
-        border-radius: var(--radius-full);
-        border: var(--stroke-1) solid var(--border-primary);
-        background: transparent;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-primary);
-        transition: background-color 0.2s ease;
-        flex-shrink: 0;
-    }
-
-    .product-nav-btn:hover {
-        background: var(--surface-primary);
     }
 
     .product-top-row {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: var(--layout-card-gap);
+        position: relative;
+        z-index: 0;
     }
 
     .product-top-row--two-col {
@@ -246,26 +195,32 @@ const sampleStats = [
 
     .product-methodology-provider-row {
         width: 100%;
+        position: relative;
+        z-index: 1;
     }
 
     @media (max-width: 1439px) {
         .product-cards-nav {
             display: flex;
+            justify-content: flex-start;
         }
 
         .product-top-row {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
+            scroll-padding-inline-start: var(--content-margin-inline);
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             gap: var(--layout-card-gap);
             margin-right: calc(-1 * var(--content-margin-inline));
             padding-right: var(--content-margin-inline);
+            margin-left: calc(-1 * var(--content-margin-inline));
+            padding-left: var(--content-margin-inline);
             padding-top: var(--space-4);
-            padding-bottom: var(--space-9);
+            padding-bottom: var(--space-12);
             margin-top: calc(-1 * var(--space-4));
-            margin-bottom: calc(-1 * var(--space-9));
+            margin-bottom: calc(-1 * var(--space-12));
         }
 
         .product-top-row::-webkit-scrollbar {
@@ -279,35 +234,3 @@ const sampleStats = [
         }
     }
 </style>
-
-<script>
-    const scroll = document.getElementById('productMethodologyCardsScroll');
-    const nav = document.querySelector<HTMLElement>('.product-cards-nav');
-    const prev = document.querySelector<HTMLButtonElement>('.product-nav-prev');
-    const next = document.querySelector<HTMLButtonElement>('.product-nav-next');
-
-    if (scroll && nav && prev && next) {
-        const updateNavVisibility = () => {
-            const hasOverflow = scroll.scrollWidth > scroll.clientWidth;
-            nav.style.display = hasOverflow ? 'flex' : 'none';
-        };
-
-        const getScrollAmount = () => {
-            const card = scroll.firstElementChild as HTMLElement | null;
-            if (!card) return 0;
-            const gap = parseFloat(getComputedStyle(scroll).gap) || 0;
-            return card.offsetWidth + gap;
-        };
-
-        prev.addEventListener('click', () => {
-            scroll.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-        });
-
-        next.addEventListener('click', () => {
-            scroll.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-        });
-
-        updateNavVisibility();
-        window.addEventListener('resize', updateNavVisibility);
-    }
-</script>

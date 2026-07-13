@@ -33,22 +33,68 @@ const tabs = [
     class="census-push-down-nav"
     aria-label={locale === 'fr' ? "Navigation de l'outil Census" : 'Census tool navigation'}
 >
-    <div class="census-push-down-nav__tabs">
-        {
-            tabs.map((tab, i) => (
-                <button
-                    class={`census-push-down-nav__tab ${i === 0 ? 'text-body-p1-bold-upper census-push-down-nav__tab--active' : 'text-body-p1-upper'}`}
-                    data-tab-id={tab.id}
-                    aria-pressed={i === 0 ? 'true' : 'false'}
-                    type="button"
+    <div class="census-push-down-nav__row">
+        <button
+            class="census-push-down-nav__chevron census-push-down-nav__chevron--left"
+            type="button"
+            aria-label={locale === 'fr' ? 'Faire défiler vers la gauche' : 'Scroll tabs left'}
+        >
+            <span class="icon-control census-push-down-nav__chevron-icon" aria-hidden="true">
+                <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                 >
-                    <span class="census-push-down-nav__number">{tab.number}</span>
-                    <span class="census-push-down-nav__label" data-copy-key={tab.key}>
-                        {t(copy, tab.key, locale, tab.fallback)}
-                    </span>
-                </button>
-            ))
-        }
+                    <path
+                        d="M5 7.5L10 12.5L15 7.5"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </span>
+        </button>
+        <div class="census-push-down-nav__tabs">
+            {
+                tabs.map((tab, i) => (
+                    <button
+                        class={`census-push-down-nav__tab ${i === 0 ? 'text-body-p2-bold-upper census-push-down-nav__tab--active' : 'text-body-p2-upper'}`}
+                        data-tab-id={tab.id}
+                        aria-pressed={i === 0 ? 'true' : 'false'}
+                        type="button"
+                    >
+                        <span class="census-push-down-nav__number">{tab.number}</span>
+                        <span class="census-push-down-nav__label" data-copy-key={tab.key}>
+                            {t(copy, tab.key, locale, tab.fallback)}
+                        </span>
+                    </button>
+                ))
+            }
+        </div>
+        <button
+            class="census-push-down-nav__chevron census-push-down-nav__chevron--right"
+            type="button"
+            aria-label={locale === 'fr' ? 'Faire défiler vers la droite' : 'Scroll tabs right'}
+        >
+            <span class="icon-control census-push-down-nav__chevron-icon" aria-hidden="true">
+                <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M5 7.5L10 12.5L15 7.5"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </span>
+        </button>
     </div>
 </nav>
 
@@ -60,7 +106,7 @@ const tabs = [
         width: 100%;
         background: var(--surface-white);
         box-shadow: var(--shadow-e1);
-        padding: var(--space-4) var(--content-margin-inline) 0;
+        padding: var(--space-4) var(--space-3) 0;
         transition:
             opacity 0.2s,
             visibility 0.2s;
@@ -72,15 +118,68 @@ const tabs = [
         pointer-events: none;
     }
 
+    .census-push-down-nav__row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    /* Chevrons sit near the true edge (nav's own --space-3 padding above);
+       tabs keep their own inline padding so the first/last tab still aligns
+       with --content-margin-inline, matching the rest of the page's content. */
     .census-push-down-nav__tabs {
         display: flex;
         align-items: center;
+        min-width: 0;
+        padding-inline: calc(var(--content-margin-inline) - var(--space-3));
+        scroll-padding-inline-start: calc(var(--content-margin-inline) - var(--space-3));
         overflow-x: auto;
         scrollbar-width: none;
     }
 
     .census-push-down-nav__tabs::-webkit-scrollbar {
         display: none;
+    }
+
+    .census-push-down-nav__chevron {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        padding: 0;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        cursor: pointer;
+    }
+
+    .census-push-down-nav__chevron--visible {
+        display: inline-flex;
+    }
+
+    .census-push-down-nav__chevron-icon svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .census-push-down-nav__chevron--left .census-push-down-nav__chevron-icon {
+        transform: rotate(90deg);
+    }
+
+    .census-push-down-nav__chevron--right .census-push-down-nav__chevron-icon {
+        transform: rotate(-90deg);
+    }
+
+    .census-push-down-nav__chevron:disabled {
+        opacity: 0.3;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    .census-push-down-nav__chevron:focus-visible {
+        outline: var(--stroke-2) solid var(--border-primary);
+        outline-offset: var(--space-1);
     }
 
     .census-push-down-nav__tab {
@@ -114,21 +213,16 @@ const tabs = [
     .census-push-down-nav__label {
         white-space: nowrap;
     }
-
     @media (max-width: 480px) {
-        .census-push-down-nav {
-            padding-inline: 0;
-        }
-
-        .census-push-down-nav__tabs {
-            padding-inline: var(--content-margin-inline);
-            scroll-padding-inline-start: var(--content-margin-inline);
+        .census-push-down-nav__number {
+            display: none;
         }
     }
 
     @media (max-width: 767px) {
         .census-push-down-nav__tab {
             padding: var(--space-3) var(--space-4);
+            gap: var(--space-2);
         }
     }
 </style>
@@ -148,6 +242,36 @@ const tabs = [
         ];
 
         const tabsEl = nav.querySelector<HTMLElement>('.census-push-down-nav__tabs');
+        const chevronLeft = nav.querySelector<HTMLButtonElement>(
+            '.census-push-down-nav__chevron--left'
+        );
+        const chevronRight = nav.querySelector<HTMLButtonElement>(
+            '.census-push-down-nav__chevron--right'
+        );
+
+        // Chevrons are hidden entirely when the tabs fit without scrolling, and
+        // each one disables itself at the scroll boundary it points toward.
+        const updateChevrons = () => {
+            if (!tabsEl || !chevronLeft || !chevronRight) return;
+            const isScrollable = tabsEl.scrollWidth > tabsEl.clientWidth + 1;
+            chevronLeft.classList.toggle('census-push-down-nav__chevron--visible', isScrollable);
+            chevronRight.classList.toggle('census-push-down-nav__chevron--visible', isScrollable);
+            if (!isScrollable) return;
+            chevronLeft.disabled = tabsEl.scrollLeft <= 0;
+            chevronRight.disabled =
+                tabsEl.scrollLeft + tabsEl.clientWidth >= tabsEl.scrollWidth - 1;
+        };
+
+        const scrollTabsBy = (direction: 1 | -1) => {
+            if (!tabsEl) return;
+            tabsEl.scrollBy({ left: direction * tabsEl.clientWidth * 0.8, behavior: 'smooth' });
+        };
+
+        chevronLeft?.addEventListener('click', () => scrollTabsBy(-1));
+        chevronRight?.addEventListener('click', () => scrollTabsBy(1));
+        tabsEl?.addEventListener('scroll', updateChevrons, { passive: true });
+        window.addEventListener('resize', updateChevrons);
+        updateChevrons();
 
         const scrollTabIntoView = (btn: HTMLButtonElement) => {
             if (!tabsEl) return;
@@ -168,8 +292,8 @@ const tabs = [
             buttons.forEach((b, i) => {
                 const isActive = i === index;
                 b.classList.toggle('census-push-down-nav__tab--active', isActive);
-                b.classList.toggle('text-body-p1-bold-upper', isActive);
-                b.classList.toggle('text-body-p1-upper', !isActive);
+                b.classList.toggle('text-body-p2-bold-upper', isActive);
+                b.classList.toggle('text-body-p2-upper', !isActive);
                 b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
             });
             const activeBtn = buttons[index];
@@ -179,15 +303,22 @@ const tabs = [
         let clickScrolling = false;
         let clickScrollTimer = 0;
 
+        const spaceS =
+            parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--space-5')) *
+            16;
+
         const onScroll = () => {
             if (clickScrolling) return;
 
             const navBottom = nav.getBoundingClientRect().bottom;
             let activeIndex = 0;
 
+            // Activate the tab whose section is closest to (and at/past) the push-down nav's bottom.
+            // navBottom already includes the full tab nav height. The +spaceS lookahead matches
+            // the scroll offset applied during click-to-section navigation.
             sectionIds.forEach((id, i) => {
                 const el = document.getElementById(id);
-                if (el && el.getBoundingClientRect().top <= navBottom) {
+                if (el && el.getBoundingClientRect().top <= navBottom + spaceS) {
                     activeIndex = i;
                 }
             });
@@ -220,9 +351,12 @@ const tabs = [
                     clickScrolling = false;
                 }, 1000);
 
-                const navbarHeight = parseFloat(
-                    getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')
-                );
+                // Measure the rendered navbar directly rather than parsing the
+                // --navbar-height custom property: parseFloat() strips units, and
+                // that value switches from px (desktop) to rem (tablet/mobile),
+                // silently under-counting the offset below 1024px.
+                const navbarEl = document.querySelector<HTMLElement>('.navbar');
+                const navbarHeight = navbarEl ? navbarEl.getBoundingClientRect().height : 0;
                 const tabNavHeight = nav.getBoundingClientRect().height;
                 const targetTop =
                     target.getBoundingClientRect().top +

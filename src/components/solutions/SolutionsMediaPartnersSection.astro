@@ -26,19 +26,21 @@ const logos = [
 <section class="solutions-media-partners-section">
     <div class="solutions-media-partners-section__header">
         <Eyebrow>{t(copy, 'media_partners_eyebrow', locale, 'Trusted by media leaders')}</Eyebrow>
-        <h2 data-copy-key="media_partners_title">
-            {t(copy, 'media_partners_title', locale, 'Organizations Using MTM Intelligence')}
-        </h2>
-        <p class="text-body-p2" data-copy-key="media_partners_description">
-            {
-                t(
-                    copy,
-                    'media_partners_description',
-                    locale,
-                    'From broadcasters to digital publishers and telecom players, teams rely on MTM to validate strategy and monitor market change.'
-                )
-            }
-        </p>
+        <div class="solutions-media-partners-section__title-group">
+            <h2 data-copy-key="media_partners_title">
+                {t(copy, 'media_partners_title', locale, 'Organizations Using MTM Intelligence')}
+            </h2>
+            <p class="text-body-p2" data-copy-key="media_partners_description">
+                {
+                    t(
+                        copy,
+                        'media_partners_description',
+                        locale,
+                        'From broadcasters to digital publishers and telecom players, teams rely on MTM to validate strategy and monitor market change.'
+                    )
+                }
+            </p>
+        </div>
     </div>
 
     <ul
@@ -58,18 +60,24 @@ const logos = [
 <style>
     .solutions-media-partners-section {
         width: 100%;
-        padding: var(--space-10) var(--content-margin-inline) var(--space-12);
+        padding: var(--section-pad-block) var(--content-margin-inline);
         display: flex;
         flex-direction: column;
-        gap: var(--space-8);
+        gap: var(--section-header-gap);
         background: var(--surface-blue);
     }
 
     .solutions-media-partners-section__header {
         display: flex;
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--header-stack-gap);
         max-width: 56rem;
+    }
+
+    .solutions-media-partners-section__title-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--title-desc-gap);
     }
 
     .solutions-media-partners-section__header h2,
@@ -116,7 +124,7 @@ const logos = [
 
     @media (max-width: 767px) {
         .solutions-media-partners-section {
-            padding-bottom: var(--space-10);
+            padding-bottom: var(--section-pad-block);
         }
 
         .solutions-media-partners-section__logos {
