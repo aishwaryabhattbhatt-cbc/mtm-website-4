@@ -15,15 +15,6 @@ interface Props {
 const { locale, copy, localeSwitchUrls } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 
-const copyKeys = {
-    products: 'home.nav.products',
-    tools: 'home.nav.tools',
-    solutions: 'home.nav.solutions',
-    insights: 'home.nav.insights',
-    signIn: 'home.nav.signIn',
-    requestDemo: 'home.nav.requestDemo',
-};
-
 const frUrl = localeSwitchUrls?.fr ?? `${base}fr/`;
 const enUrl = localeSwitchUrls?.en ?? `${base}en/`;
 const homeUrl = `${base}${locale}/`;
@@ -38,34 +29,46 @@ const productsDropdown = {
     mainItems: [
         {
             title: 'MTM 18+',
-            description: isFrench
-                ? 'Données médias et technos des Canadiens de 18 ans et plus.'
-                : 'Media and technology data for Canadians aged 18 and older.',
+            description: t(
+                copy,
+                'nav_products_item_1_description',
+                locale,
+                'Media and technology data for Canadians aged 18 and older.'
+            ),
             href: `${base}${locale}/products/mtm-18-plus/`,
             iconPath: `${base}${icons['demographics-group'].adult}`,
         },
         {
             title: isFrench ? 'Junior' : 'Junior',
-            description: isFrench
-                ? 'Habitudes médias et technos des jeunes de 2 à 17 ans.'
-                : 'Media and technology behaviour insights for ages 2–17.',
+            description: t(
+                copy,
+                'nav_products_item_2_description',
+                locale,
+                'Media and technology behaviour insights for ages 2–17.'
+            ),
             href: `${base}${locale}/products/juniors/`,
             iconPath: `${base}${icons['demographics-group'].kid}`,
         },
         {
             title: isFrench ? 'Nouveaux arrivants' : 'Newcomers',
-            description: isFrench
-                ? 'Comportements médias et technos des nouveaux arrivants au Canada.'
-                : 'Media and technology behaviour insights for newcomers to Canada.',
+            description: t(
+                copy,
+                'nav_products_item_3_description',
+                locale,
+                'Media and technology behaviour insights for newcomers to Canada.'
+            ),
             href: `${base}${locale}/products/newcomers/`,
             iconPath: `${base}${icons['demographics-group'].newcomers}`,
         },
     ],
     sideItem: {
         title: isFrench ? 'Census' : 'Census',
-        description: isFrench
-            ? 'Données démographiques détaillées pour un ciblage plus précis.'
-            : 'Detailed demographic data for sharper targeting and planning.',
+        description: t(
+            copy,
+            'nav_products_side_description',
+            locale,
+            'Detailed demographic data for sharper targeting and planning.'
+        ),
         href: `${base}${locale}/products/census/`,
         iconPath: `${base}${icons.tool.census}`,
     },
@@ -77,34 +80,46 @@ const toolsDropdown = {
     mainItems: [
         {
             title: isFrench ? "Outils d'analyse de données" : 'Data Analysis Tool',
-            description: isFrench
-                ? 'Explorez, filtrez et comparez rapidement vos données.'
-                : 'Explore, filter, and compare data quickly and clearly.',
+            description: t(
+                copy,
+                'nav_tools_item_1_description',
+                locale,
+                'Explore, filter, and compare data quickly and clearly.'
+            ),
             href: `${base}${locale}/tools/analytic-tools/`,
             iconPath: `${base}${icons.tool.dat}`,
         },
         {
             title: isFrench ? 'Outil de tendances' : 'Trending Tool',
-            description: isFrench
-                ? 'Suivez les tendances clés dans le temps.'
-                : 'Track key trends over time with confidence.',
+            description: t(
+                copy,
+                'nav_tools_item_2_description',
+                locale,
+                'Track key trends over time with confidence.'
+            ),
             href: `${base}${locale}/tools/analytic-tools/#trending-tool`,
             iconPath: `${base}${icons.tool.trending}`,
         },
         {
             title: isFrench ? 'Outil de prévision' : 'Forecasting Tool',
-            description: isFrench
-                ? 'Projetez les évolutions futures selon vos segments.'
-                : 'Project future shifts across your target segments.',
+            description: t(
+                copy,
+                'nav_tools_item_3_description',
+                locale,
+                'Project future shifts across your target segments.'
+            ),
             href: `${base}${locale}/tools/analytic-tools/#forecasting-tool`,
             iconPath: `${base}${icons.tool.forecast}`,
         },
     ],
     sideItem: {
         title: isFrench ? 'Census' : 'Census',
-        description: isFrench
-            ? 'Outil spécialisé pour les analyses de recensement.'
-            : 'Specialized toolkit for census-based analysis.',
+        description: t(
+            copy,
+            'nav_tools_side_description',
+            locale,
+            'Specialized toolkit for census-based analysis.'
+        ),
         href: `${base}${locale}/tools/census-tool/`,
         iconPath: `${base}${icons.tool.census}`,
     },
@@ -115,41 +130,56 @@ const solutionsDropdown = {
     items: [
         {
             title: t(copy, 'solutions_item_2', locale, 'Media'),
-            description: isFrench
-                ? 'Comprenez les audiences et usages multiplateformes.'
-                : 'Understand audiences and cross-platform consumption.',
+            description: t(
+                copy,
+                'nav_solutions_item_2_description',
+                locale,
+                'Understand audiences and cross-platform consumption.'
+            ),
             href: `${base}${locale}/solutions/media/`,
             iconPath: `${base}${icons.solutions.media}`,
         },
         {
             title: t(copy, 'solutions_item_3', locale, 'Advertising'),
-            description: isFrench
-                ? 'Soutenez vos décisions média et marketing.'
-                : 'Support media and marketing decisions with confidence.',
+            description: t(
+                copy,
+                'nav_solutions_item_3_description',
+                locale,
+                'Support media and marketing decisions with confidence.'
+            ),
             href: `${base}${locale}/solutions/advertising/`,
             iconPath: `${base}${icons.solutions.advertising}`,
         },
         {
             title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
-            description: isFrench
-                ? 'Planifiez des services fondés sur des données fiables.'
-                : 'Plan services and policies with reliable evidence.',
+            description: t(
+                copy,
+                'nav_solutions_item_5_description',
+                locale,
+                'Plan services and policies with reliable evidence.'
+            ),
             href: `${base}${locale}/solutions/gov-ngos/`,
             iconPath: `${base}${icons.solutions.govNgo}`,
         },
         {
             title: t(copy, 'solutions_item_4', locale, 'Education'),
-            description: isFrench
-                ? "Accédez à des insights utiles pour l'apprentissage."
-                : 'Access insights that strengthen learning outcomes.',
+            description: t(
+                copy,
+                'nav_solutions_item_4_description',
+                locale,
+                'Access insights that strengthen learning outcomes.'
+            ),
             href: `${base}${locale}/solutions/education/`,
             iconPath: `${base}${icons.solutions.education}`,
         },
         {
             title: t(copy, 'solutions_item_1', locale, 'Industry'),
-            description: isFrench
-                ? 'Mesurez la portée et la performance de votre secteur.'
-                : 'Measure sector reach and performance more precisely.',
+            description: t(
+                copy,
+                'nav_solutions_item_1_description',
+                locale,
+                'Measure sector reach and performance more precisely.'
+            ),
             href: `${base}${locale}/solutions/industry/`,
             iconPath: `${base}${icons.solutions.industry}`,
         },
@@ -182,12 +212,11 @@ const solutionsDropdown = {
                     <button
                         type="button"
                         class="nav-link nav-link--has-dropdown text-button-small"
-                        data-copy-key={copyKeys.products}
                         aria-haspopup="true"
                         aria-expanded="false"
                         aria-controls="dropdown-products"
                     >
-                        {t(copy, copyKeys.products, locale, 'PRODUCTS')}
+                        PRODUCTS
                         <span class="dropdown-arrow" aria-hidden="true">
                             <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -256,12 +285,11 @@ const solutionsDropdown = {
                     <button
                         type="button"
                         class="nav-link nav-link--has-dropdown text-button-small"
-                        data-copy-key={copyKeys.tools}
                         aria-haspopup="true"
                         aria-expanded="false"
                         aria-controls="dropdown-tools"
                     >
-                        {t(copy, copyKeys.tools, locale, 'TOOLS')}
+                        TOOLS
                         <span class="dropdown-arrow" aria-hidden="true">
                             <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -330,12 +358,11 @@ const solutionsDropdown = {
                     <button
                         type="button"
                         class="nav-link nav-link--has-dropdown text-button-small"
-                        data-copy-key={copyKeys.solutions}
                         aria-haspopup="true"
                         aria-expanded="false"
                         aria-controls="dropdown-solutions"
                     >
-                        {t(copy, copyKeys.solutions, locale, 'SOLUTIONS')}
+                        SOLUTIONS
                         <span class="dropdown-arrow" aria-hidden="true">
                             <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -375,12 +402,8 @@ const solutionsDropdown = {
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a
-                        href={`${base}${locale}/insights/`}
-                        class="nav-link text-button-small"
-                        data-copy-key={copyKeys.insights}
-                    >
-                        {t(copy, copyKeys.insights, locale, 'INSIGHTS')}
+                    <a href={`${base}${locale}/insights/`} class="nav-link text-button-small">
+                        INSIGHTS
                     </a>
                 </li>
             </ul>
@@ -457,20 +480,8 @@ const solutionsDropdown = {
                     </svg>
                 </a>
 
-                <Button
-                    href={signInUrl}
-                    variant="secondary"
-                    size="md"
-                    data-copy-key={copyKeys.signIn}
-                    >{t(copy, copyKeys.signIn, locale, 'SIGN IN')}</Button
-                >
-                <Button
-                    href={requestDemoUrl}
-                    variant="primary"
-                    size="md"
-                    data-copy-key={copyKeys.requestDemo}
-                    >{t(copy, copyKeys.requestDemo, locale, 'REQUEST A DEMO')}</Button
-                >
+                <Button href={signInUrl} variant="secondary" size="md">SIGN IN</Button>
+                <Button href={requestDemoUrl} variant="primary" size="md">REQUEST A DEMO</Button>
             </div>
         </div>
     </div>

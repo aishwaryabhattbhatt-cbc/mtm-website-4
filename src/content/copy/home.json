@@ -16,22 +16,22 @@
   },
   "hero_cta_2": {
     "key": "hero_cta_2",
-    "en": "Scroll to Explore",
+    "en": "300,000 +",
     "fr": ""
   },
   "hero_stat_value": {
     "key": "hero_stat_value",
-    "en": "300,000 +",
+    "en": "Canadians 18+ Surveyed",
     "fr": ""
   },
   "hero_stat_label": {
     "key": "hero_stat_label",
-    "en": "Canadians 18+ Surveyed",
+    "en": "The Rise Of Shortform Video",
     "fr": ""
   },
   "hero_featured_report_title": {
     "key": "hero_featured_report_title",
-    "en": "The Rise Of Shortform Video",
+    "en": "",
     "fr": ""
   },
   "access_title": {
@@ -329,9 +329,89 @@
     "en": "Stay informed with the latest Canadian media and technology trends, new reports, research releases, and industry insights delivered directly to your inbox.",
     "fr": ""
   },
-  "nav": {
-    "key": "nav",
+  "Navigation bar dropdown descriptions": {
+    "key": "Navigation bar dropdown descriptions",
     "en": "",
+    "fr": ""
+  },
+  "Products dropdown": {
+    "key": "Products dropdown",
+    "en": "",
+    "fr": ""
+  },
+  "nav_products_item_1_description": {
+    "key": "nav_products_item_1_description",
+    "en": "Media and technology data for Canadians aged 18 and older.",
+    "fr": ""
+  },
+  "nav_products_item_2_description": {
+    "key": "nav_products_item_2_description",
+    "en": "Media and technology behaviour insights for ages 2–17.",
+    "fr": ""
+  },
+  "nav_products_item_3_description": {
+    "key": "nav_products_item_3_description",
+    "en": "Media and technology behaviour insights for newcomers to Canada.",
+    "fr": ""
+  },
+  "nav_products_side_description": {
+    "key": "nav_products_side_description",
+    "en": "Detailed demographic data for sharper targeting and planning.",
+    "fr": ""
+  },
+  "Tools dropdown": {
+    "key": "Tools dropdown",
+    "en": "",
+    "fr": ""
+  },
+  "nav_tools_item_1_description": {
+    "key": "nav_tools_item_1_description",
+    "en": "Explore, filter, and compare data quickly and clearly.",
+    "fr": ""
+  },
+  "nav_tools_item_2_description": {
+    "key": "nav_tools_item_2_description",
+    "en": "Track key trends over time with confidence.",
+    "fr": ""
+  },
+  "nav_tools_item_3_description": {
+    "key": "nav_tools_item_3_description",
+    "en": "Project future shifts across your target segments.",
+    "fr": ""
+  },
+  "nav_tools_side_description": {
+    "key": "nav_tools_side_description",
+    "en": "Specialized toolkit for census-based analysis.",
+    "fr": ""
+  },
+  "Solutions dropdown": {
+    "key": "Solutions dropdown",
+    "en": "",
+    "fr": ""
+  },
+  "nav_solutions_item_1_description": {
+    "key": "nav_solutions_item_1_description",
+    "en": "Measure sector reach and performance more precisely.",
+    "fr": ""
+  },
+  "nav_solutions_item_2_description": {
+    "key": "nav_solutions_item_2_description",
+    "en": "Understand audiences and cross-platform consumption.",
+    "fr": ""
+  },
+  "nav_solutions_item_3_description": {
+    "key": "nav_solutions_item_3_description",
+    "en": "Support media and marketing decisions with confidence.",
+    "fr": ""
+  },
+  "nav_solutions_item_4_description": {
+    "key": "nav_solutions_item_4_description",
+    "en": "Access insights that strengthen learning outcomes.",
+    "fr": ""
+  },
+  "nav_solutions_item_5_description": {
+    "key": "nav_solutions_item_5_description",
+    "en": "Plan services and policies with reliable evidence.",
     "fr": ""
   }
 }
