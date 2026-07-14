@@ -8,14 +8,30 @@ interface Props {
     locale: Locale;
     copy: CMSDictionary;
     cards?: ('analytic' | 'analytic-slim' | 'census' | 'census-slim')[];
+    /** Each page reads from its own CMS tab, so this shared component takes the
+        description keys as props — every page gets page-specific copy instead
+        of all pages sharing one generic key name. */
+    analyticDescriptionKey?: string;
+    censusDescriptionKey?: string;
 }
 
-const { locale, copy, cards = ['analytic', 'census'] } = Astro.props as Props;
+const {
+    locale,
+    copy,
+    cards = ['analytic', 'census'],
+    analyticDescriptionKey = 'tools_analytic_description',
+    censusDescriptionKey = 'tools_census_description',
+} = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 const showAnalytic = cards.includes('analytic');
 const showAnalyticSlim = cards.includes('analytic-slim');
 const showCensus = cards.includes('census');
 const showCensusSlim = cards.includes('census-slim');
+
+const analyticDescriptionFallback =
+    "Access media usage and behaviour data across MTM's three datasets — MTM 18+, Juniors, and Newcomers. Query platform adoption, content consumption, device ownership, and service usage across hundreds of variables and filters to find exactly what your research needs.";
+const censusDescriptionFallback =
+    'Map audience distribution at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — sourced directly from Statistics Canada.';
 ---
 
 <section class="solutions-tools-section">
@@ -45,9 +61,9 @@ const showCensusSlim = cards.includes('census-slim');
                             <p class="text-body-p2 solutions-tools-card__description">
                                 {t(
                                     copy,
-                                    'tools_analytic_description',
+                                    analyticDescriptionKey,
                                     locale,
-                                    "Access media usage and behaviour data across MTM's three datasets — MTM 18+, Juniors, and Newcomers. Query platform adoption, content consumption, device ownership, and service usage across hundreds of variables and filters to find exactly what your research needs."
+                                    analyticDescriptionFallback
                                 )}
                             </p>
                         </div>
@@ -139,12 +155,7 @@ const showCensusSlim = cards.includes('census-slim');
                                 <h3>{t(copy, 'tools_census_eyebrow', locale, 'Census Tools')}</h3>
                             </div>
                             <p class="text-body-p2 solutions-tools-card__description">
-                                {t(
-                                    copy,
-                                    'tools_census_description',
-                                    locale,
-                                    'Map audience distribution at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — sourced directly from Statistics Canada.'
-                                )}
+                                {t(copy, censusDescriptionKey, locale, censusDescriptionFallback)}
                             </p>
                         </div>
                         <div class="solutions-tools-card__features">
@@ -262,9 +273,9 @@ const showCensusSlim = cards.includes('census-slim');
                                     <p class="text-body-p2 solutions-tools-card__description">
                                         {t(
                                             copy,
-                                            'tools_analytic_description',
+                                            analyticDescriptionKey,
                                             locale,
-                                            "Access media usage and behaviour data across MTM's three datasets — MTM 18+, Juniors, and Newcomers. Query platform adoption, content consumption, device ownership, and service usage across hundreds of variables and filters to find exactly what your research needs."
+                                            analyticDescriptionFallback
                                         )}
                                     </p>
                                 </div>
@@ -417,9 +428,9 @@ const showCensusSlim = cards.includes('census-slim');
                                     <p class="text-body-p2 solutions-tools-card__description">
                                         {t(
                                             copy,
-                                            'tools_census_description',
+                                            censusDescriptionKey,
                                             locale,
-                                            'Map audience distribution at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — sourced directly from Statistics Canada.'
+                                            censusDescriptionFallback
                                         )}
                                     </p>
                                 </div>

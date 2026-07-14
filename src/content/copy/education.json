@@ -126,7 +126,7 @@
   },
   "MTM Tools as the solution for answering research questions (Second highest tool users)": {
     "key": "MTM Tools as the solution for answering research questions (Second highest tool users)",
-    "en": "(note : if census tool is also used by universities, change this section to analytic and census tools)",
+    "en": "",
     "fr": ""
   },
   "tools_title": {
@@ -134,59 +134,24 @@
     "en": "Powerful tools designed for serious inquiry",
     "fr": ""
   },
-  "tool_1_title": {
-    "key": "tool_1_title",
-    "en": "Data Analysis Tool",
+  "tools_analytic_eyebrow": {
+    "key": "tools_analytic_eyebrow",
+    "en": "Analytic Tools",
     "fr": ""
   },
-  "tool_1_features_1": {
-    "key": "tool_1_features_1",
-    "en": "Build custom crosstabs by dragging variables into rows and columns",
+  "education_tools_analytic_description": {
+    "key": "education_tools_analytic_description",
+    "en": "Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.",
     "fr": ""
   },
-  "tool_1_features_2": {
-    "key": "tool_1_features_2",
-    "en": "Filter results by age, gender, income, education, language and more",
+  "tools_census_eyebrow": {
+    "key": "tools_census_eyebrow",
+    "en": "Census Tools",
     "fr": ""
   },
-  "tool_1_features_3": {
-    "key": "tool_1_features_3",
-    "en": "Export data in formats compatible with SPSS, Excel, and academic reporting",
-    "fr": ""
-  },
-  "tool_2_title": {
-    "key": "tool_2_title",
-    "en": "Trending Tool",
-    "fr": ""
-  },
-  "tool_2_features_1": {
-    "key": "tool_2_features_1",
-    "en": "Track how media and technology habits have shifted across multiple years of data",
-    "fr": ""
-  },
-  "tool_2_features_2": {
-    "key": "tool_2_features_2",
-    "en": "Compare trends by region, language market, and demographic group",
-    "fr": ""
-  },
-  "tool_2_features_3": {
-    "key": "tool_2_features_3",
-    "en": "Visualize adoption curves for platforms, devices, and content types over time",
-    "fr": ""
-  },
-  "tool_3_title": {
-    "key": "tool_3_title",
-    "en": "Forecasting Tool",
-    "fr": ""
-  },
-  "tool_3_features_1": {
-    "key": "tool_3_features_1",
-    "en": "Project future technology and media adoption based on observed behavioural trends",
-    "fr": ""
-  },
-  "tool_3_features_2": {
-    "key": "tool_3_features_2",
-    "en": "Export data for ease of use no matter what your needs",
+  "education_tools_census_description": {
+    "key": "education_tools_census_description",
+    "en": "Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.",
     "fr": ""
   },
   "Stats about how many research studies have cited mtm (also works to add people imagery)": {
