@@ -120,6 +120,14 @@ const copyKeys = {
     .hero-section.home-section-1 {
         position: relative;
         margin-bottom: 0 !important;
+        /* Same height contract as home-section-2: fill the screen when the
+           viewport is ≥ 900px tall, hold a 900px floor below that. min-height
+           (not height) so content can still grow it rather than clip. */
+        height: auto;
+        min-height: calc(max(100vh, 900px) - var(--navbar-height));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         overflow: hidden;
     }
 
@@ -150,12 +158,8 @@ const copyKeys = {
     }
 
     .home-section-1 .hero-container {
-        position: absolute;
+        position: relative;
         z-index: 20;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 0;
-        right: 0;
         width: 100%;
         padding: 0 var(--content-margin-inline);
         display: flex;
@@ -372,6 +376,8 @@ const copyKeys = {
     @media (max-width: 1023px) {
         /* screen height is a minimum, not a cap — the collage may extend past it */
         .hero-section.home-section-1 {
+            /* column mode keeps top-down block flow, no 900px floor */
+            display: block;
             height: auto;
             min-height: var(--section-height-100);
         }
@@ -381,10 +387,6 @@ const copyKeys = {
             justify-content: flex-start;
             align-items: flex-start;
             gap: var(--space-8);
-            /* in normal flow so the content sizes the section instead of being clipped */
-            position: relative;
-            top: 0;
-            transform: none;
             padding-top: var(--section-pad-block);
             padding-bottom: var(--space-9);
             overflow: hidden;

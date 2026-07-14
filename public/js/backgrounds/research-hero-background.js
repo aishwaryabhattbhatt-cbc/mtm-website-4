@@ -244,15 +244,20 @@ class LiquidGradientEffect {
       alpha: false
     });
     
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    // Size to the container, not the window — the section can be taller than
+    // the viewport (short-screen height floor), and a window-sized canvas
+    // leaves the bottom of the section without a background.
+    const initW = this.container.clientWidth || window.innerWidth;
+    const initH = this.container.clientHeight || window.innerHeight;
+    this.renderer.setSize(initW, initH);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.container.appendChild(this.renderer.domElement);
     this.createMotionGuideOverlay();
 
     const dpr = Math.min(window.devicePixelRatio, 2);
     this.renderTargetLiquid = new THREE.WebGLRenderTarget(
-      Math.floor(window.innerWidth * dpr),
-      Math.floor(window.innerHeight * dpr),
+      Math.floor(initW * dpr),
+      Math.floor(initH * dpr),
       {
         minFilter: THREE.LinearFilter,
         magFilter: THREE.LinearFilter,
@@ -262,7 +267,7 @@ class LiquidGradientEffect {
 
     // Uniforms for liquid gradient shader
     this.uniformsLiquid = {
-      uRes: { value: new THREE.Vector2(window.innerWidth * dpr, window.innerHeight * dpr) },
+      uRes: { value: new THREE.Vector2(initW * dpr, initH * dpr) },
       uTime: { value: 0.0 },
       c0: { value: new THREE.Vector3(this.config.colorWhite.r, this.config.colorWhite.g, this.config.colorWhite.b) },
       c1: { value: new THREE.Vector3(this.config.colorBlue.r, this.config.colorBlue.g, this.config.colorBlue.b) },
@@ -299,7 +304,7 @@ class LiquidGradientEffect {
     // Uniforms for dither shader
     this.uniformsDither = {
       uSource: { value: this.renderTargetLiquid.texture },
-      uResolution: { value: new THREE.Vector2(window.innerWidth * dpr, window.innerHeight * dpr) },
+      uResolution: { value: new THREE.Vector2(initW * dpr, initH * dpr) },
       uCellPx: { value: this.config.cellPx },
       uContrast: { value: this.config.contrast },
       uGamma: { value: this.config.gamma },
@@ -559,12 +564,18 @@ class LiquidGradientEffect {
 
     this.createControls();
     window.addEventListener('resize', () => this.onWindowResize());
+    // The container's height can change without a window resize (the section
+    // has a min-height floor and grows with content), so track it directly.
+    if (typeof ResizeObserver !== 'undefined') {
+      this.containerResizeObserver = new ResizeObserver(() => this.onWindowResize());
+      this.containerResizeObserver.observe(this.container);
+    }
     this.animate();
   }
 
   onWindowResize() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
+    const w = this.container.clientWidth || window.innerWidth;
+    const h = this.container.clientHeight || window.innerHeight;
     this.renderer.setSize(w, h);
     const dpr = Math.min(window.devicePixelRatio, 2);
     this.renderTargetLiquid.setSize(Math.floor(w * dpr), Math.floor(h * dpr));

@@ -125,8 +125,10 @@ const cards = [
                         <span class="tab-label text-body-p0-bold" data-copy-key={tab.labelKey}>
                             {t(copy, tab.labelKey, locale, tab.labelFallback)}
                         </span>
-                        <span class="tab-body text-body-p1" data-copy-key={tab.bodyKey}>
-                            {t(copy, tab.bodyKey, locale, tab.bodyFallback)}
+                        <span class="tab-body-clip">
+                            <span class="tab-body text-body-p1" data-copy-key={tab.bodyKey}>
+                                {t(copy, tab.bodyKey, locale, tab.bodyFallback)}
+                            </span>
                         </span>
                     </div>
                 ))
@@ -208,27 +210,9 @@ const cards = [
 <style>
     .research-section {
         width: 100%;
-        padding: 0 var(--content-margin-inline);
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        padding: var(--space-9) var(--content-margin-inline);
+        position: relative;
         z-index: 20;
-    }
-
-    @media (min-width: 768px) {
-        .research-section {
-            padding-left: var(--content-margin-inline);
-            padding-right: var(--content-margin-inline);
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .research-section {
-            padding-left: var(--content-margin-inline);
-            padding-right: var(--content-margin-inline);
-        }
     }
 
     .heading {
@@ -285,7 +269,11 @@ const cards = [
 
     .content-fly-in.is-visible {
         opacity: 1;
-        transform: translateY(0);
+        /* `none` (not translateY(0)) and releasing will-change: a transformed
+           ancestor blocks the tabs card's backdrop-filter from sampling the
+           WebGL background behind it, so the glass blur silently stops working. */
+        transform: none;
+        will-change: auto;
     }
 
     .box-variables-6,
@@ -381,6 +369,32 @@ const cards = [
         transition: height var(--tab-progress-duration) linear;
     }
 
+    /* Row mode: glass card behind the tabs, matching the footer CTA card */
+    @media (min-width: 1024px) {
+        .left-text {
+            padding: var(--card-pad) var(--card-pad) var(--card-pad) calc(var(--card-pad) * 2);
+            border-radius: var(--layout-card-radius);
+            border: var(--stroke-1) solid color-mix(in srgb, var(--surface-white) 37%, transparent);
+            background: color-mix(in srgb, var(--surface-white) 39%, transparent);
+            backdrop-filter: blur(10px);
+        }
+
+        .left-text::before,
+        .left-text::after {
+            left: var(--card-pad);
+            top: var(--card-pad);
+            bottom: var(--card-pad);
+        }
+
+        .left-text::after {
+            /* Inside the padded card the track is inset, so the raw
+               percentage no longer maps to it — scale the fraction by the
+               inset track height. Animating height (not scaleY) keeps the
+               rounded end caps undistorted at every progress stage. */
+            height: calc(var(--tab-progress-scale, 0) * (100% - 2 * var(--card-pad)));
+        }
+    }
+
     .tab-item {
         color: var(--neutral-grey-3);
         cursor: pointer;
@@ -390,15 +404,28 @@ const cards = [
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.625rem;
+        /* label↔body spacing lives inside the clip (as .tab-body padding-top)
+           so collapsed tabs don't carry a phantom gap */
+        gap: 0;
     }
 
     .tab-label {
         white-space: nowrap;
     }
 
+    /* FAQ-accordion glide: clip animates height between 0 and the body's
+       measured height (set from JS in setTab) */
+    .tab-body-clip {
+        display: block;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        transition: height 450ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     .tab-body {
-        display: none;
+        display: block;
+        padding-top: 0.625rem;
         color: var(--text-secondary);
         max-width: none;
         width: 100%;
@@ -412,8 +439,18 @@ const cards = [
         color: var(--text-primary);
     }
 
-    .tab-item.active .tab-body {
-        display: block;
+    /* Row mode: pin every description to exactly 4 lines (pad shorter copy,
+       clamp longer) so the glass card height never changes between tabs.
+       border-box: min-height includes the label-gap padding-top. */
+    @media (min-width: 1024px) {
+        .tab-body {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            overflow: hidden;
+            min-height: calc(var(--fs-body-l) * var(--lh-relaxed) * 4 + 0.625rem);
+        }
     }
 
     .tab-item.is-disabled {
@@ -662,9 +699,6 @@ const cards = [
     /* ─── Column mode: ≤ 1023px ─── */
     @media (max-width: 1023px) {
         .research-section {
-            position: relative;
-            top: auto;
-            transform: none;
             padding-top: var(--section-pad-block);
             padding-bottom: var(--section-pad-block);
         }
@@ -786,10 +820,22 @@ const cards = [
         container.style.height = Math.ceil(610 * scale) + 'px';
     }
 
+    function syncTabBodyHeights(activeIdx: number) {
+        tabs.forEach((t, i) => {
+            const clip = t.querySelector<HTMLElement>('.tab-body-clip');
+            const body = t.querySelector<HTMLElement>('.tab-body');
+            if (!clip || !body) return;
+            // rect height (not scrollHeight): the line-clamped body reports
+            // its full unclamped text height via scrollHeight
+            clip.style.height = i === activeIdx ? body.getBoundingClientRect().height + 'px' : '0';
+        });
+    }
+
     function setTab(idx: number, progressDurationMs = TAB_DURATION_MS) {
         if (idx === currentTab) return;
         currentTab = idx;
         tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+        syncTabBodyHeights(idx);
 
         const boxVisual = document.getElementById('boxVisual');
         const extraBoxIds = ['box6', 'box7', 'box8', 'box9', 'box10', 'box11', 'box12', 'box13'];
@@ -930,6 +976,7 @@ const cards = [
         const progress = ((idx + 1) / 3) * 100;
         leftText.style.setProperty('--tab-progress-duration', `${immediate ? 0 : durationMs}ms`);
         leftText.style.setProperty('--tab-progress', `${progress}%`);
+        leftText.style.setProperty('--tab-progress-scale', String(progress / 100));
     }
 
     // Attach click listeners
@@ -1196,6 +1243,8 @@ const cards = [
 
         window.addEventListener('resize', () => {
             normalizeBoxVisual();
+            // re-measure the open body — line wrapping changes with width
+            if (currentTab >= 0) syncTabBodyHeights(currentTab);
         });
     });
 </script>
