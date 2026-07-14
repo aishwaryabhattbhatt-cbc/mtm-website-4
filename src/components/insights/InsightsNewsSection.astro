@@ -74,9 +74,22 @@ const newsItems = [
 
 <section class="news-section">
     <div class="news-section__header">
-        <h2 data-copy-key="section_5_title">
-            {t(copy, 'section_5_title', locale, 'News')}
-        </h2>
+        <div class="news-section__content-wrap">
+            <h2 data-copy-key="section_5_title">
+                {t(copy, 'section_5_title', locale, 'News')}
+            </h2>
+
+            <p class="text-body-p1 news-section__description" data-copy-key="section_5_description">
+                {
+                    t(
+                        copy,
+                        'section_5_description',
+                        locale,
+                        'Stay up to date with the latest MTM findings, product updates, and timely analysis on media and technology trends across Canada.'
+                    )
+                }
+            </p>
+        </div>
 
         <div class="news-section__controls-wrap">
             <CarouselNavArrows
@@ -116,20 +129,35 @@ const newsItems = [
     }
 
     .news-section__header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
         gap: var(--header-stack-gap);
     }
 
-    .news-section__header h2 {
+    .news-section__content-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: var(--title-desc-gap);
+        max-width: 56rem;
+        min-width: 0;
+    }
+
+    .news-section__content-wrap h2 {
         margin: 0;
+    }
+
+    .news-section__description {
+        color: var(--text-secondary);
+        margin: 0;
+        max-width: 56rem;
     }
 
     .news-section__controls-wrap {
         display: flex;
         flex-shrink: 0;
+        justify-self: end;
+        align-self: end;
     }
 
     .news-section__grid {
@@ -167,6 +195,15 @@ const newsItems = [
             padding: var(--section-pad-block) var(--content-margin-inline) var(--space-9);
         }
 
+        .news-section__header {
+            grid-template-columns: 1fr;
+        }
+
+        .news-section__controls-wrap {
+            justify-self: start;
+            align-self: start;
+        }
+
         .news-section__card-wrap {
             width: 24rem;
         }
@@ -177,8 +214,9 @@ const newsItems = [
             padding: var(--space-9) var(--content-margin-inline) var(--space-9);
         }
 
-        .news-section__header {
+        .news-section__content-wrap {
             gap: var(--space-4);
+            max-width: 100%;
         }
 
         .news-section__card-wrap {

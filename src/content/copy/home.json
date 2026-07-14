@@ -74,6 +74,11 @@
     "en": "The MTM Suite",
     "fr": ""
   },
+  "package_description": {
+    "key": "package_description",
+    "en": "Description about the MTM suite",
+    "fr": ""
+  },
   "package_1_eyebrow": {
     "key": "package_1_eyebrow",
     "en": "Data Products",
@@ -82,6 +87,11 @@
   "package_1_title": {
     "key": "package_1_title",
     "en": "41 Million Canadians Mapped",
+    "fr": ""
+  },
+  "package_1_description": {
+    "key": "package_1_description",
+    "en": "Description about the data products",
     "fr": ""
   },
   "product_1_title": {
@@ -317,6 +327,11 @@
   "newsletter_description": {
     "key": "newsletter_description",
     "en": "Stay informed with the latest Canadian media and technology trends, new reports, research releases, and industry insights delivered directly to your inbox.",
+    "fr": ""
+  },
+  "nav": {
+    "key": "nav",
+    "en": "",
     "fr": ""
   }
 }

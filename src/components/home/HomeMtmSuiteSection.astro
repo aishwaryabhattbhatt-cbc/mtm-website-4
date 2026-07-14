@@ -84,9 +84,14 @@ const products = [
 ---
 
 <section class="mtm-suite-section">
-    <h2 class="suite-section-heading suite-fly-in" data-copy-key="package_title">
-        {t(copy, 'package_title', locale, 'The MTM Suite')}
-    </h2>
+    <div class="suite-section-header">
+        <h2 class="suite-section-heading suite-fly-in" data-copy-key="package_title">
+            {t(copy, 'package_title', locale, 'The MTM Suite')}
+        </h2>
+        <p class="suite-section-desc text-body-p0 suite-fly-in" data-copy-key="package_description">
+            {t(copy, 'package_description', locale, 'Description about the MTM suite')}
+        </p>
+    </div>
     <div class="data-products row suite-fly-in">
         <!-- LEFT: Heading + product tabs -->
         <div class="products-left col col-12 col-lg-5">
@@ -95,6 +100,10 @@ const products = [
             <h3 class="suite-heading">
                 {t(copy, 'package_1_title', locale, '41 Million Canadians Mapped')}
             </h3>
+
+            <p class="products-desc text-body-p1" data-copy-key="package_1_description">
+                {t(copy, 'package_1_description', locale, 'Description about the data products')}
+            </p>
 
             <div class="suite-products" id="suiteProducts">
                 {
@@ -207,6 +216,9 @@ const products = [
             <h3>
                 {t(copy, 'package_1_title', locale, '41 Million Canadians Mapped')}
             </h3>
+            <p class="products-desc text-body-p1" data-copy-key="package_1_description">
+                {t(copy, 'package_1_description', locale, 'Description about the data products')}
+            </p>
         </div>
         <div class="mobile-products-list">
             {
@@ -576,7 +588,18 @@ const products = [
         display: none;
     }
 
+    .suite-section-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
     .suite-section-heading {
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .suite-section-desc {
         color: var(--text-primary);
         margin: 0;
     }
@@ -682,7 +705,8 @@ const products = [
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
     }
 
-    .reports-desc {
+    .reports-desc,
+    .products-desc {
         color: var(--text-primary);
         margin: 0;
         margin-top: calc(-1 * var(--space-5));
@@ -724,6 +748,9 @@ const products = [
         display: flex;
         flex-direction: column;
         width: 100%;
+        /* tighten the products-left flex gap between the description and the
+           product list, same pattern as .reports-desc under its heading */
+        margin-top: calc(-1 * var(--space-5));
         background: var(--surface-white);
     }
 
@@ -813,6 +840,13 @@ const products = [
         border-radius: var(--layout-card-radius);
         overflow: hidden;
         min-width: 0;
+    }
+
+    /* Data products only (desktop — .data-products is hidden ≤1023px):
+       the visual stretches to the full row height set by the left column */
+    .data-products .products-right {
+        height: auto;
+        align-self: stretch;
     }
 
     .card-panel {
@@ -1042,7 +1076,8 @@ const products = [
         }
 
         .reports-desc,
-        .tools-description {
+        .tools-description,
+        .products-desc {
             margin-top: 0;
         }
     }
@@ -1061,7 +1096,8 @@ const products = [
         }
 
         .reports-desc,
-        .tools-description {
+        .tools-description,
+        .products-desc {
             margin-top: 0;
         }
 
@@ -1289,6 +1325,7 @@ const products = [
     // h2 + data products fly in together; CSS transition-delay on data products creates the pause
     const suiteSection = document.querySelector<HTMLElement>('.mtm-suite-section');
     const suiteHeading = suiteSection?.querySelector<HTMLElement>('.suite-section-heading');
+    const suiteDesc = suiteSection?.querySelector<HTMLElement>('.suite-section-desc');
     const dataProductsEls = suiteSection?.querySelectorAll<HTMLElement>(
         '.data-products, .data-products-mobile'
     );
@@ -1298,6 +1335,7 @@ const products = [
             ([entry]) => {
                 if (entry.isIntersecting) {
                     suiteHeading.classList.add('is-visible');
+                    suiteDesc?.classList.add('is-visible');
                     dataProductsEls?.forEach((el) => el.classList.add('is-visible'));
                     headingObserver.disconnect();
                 }

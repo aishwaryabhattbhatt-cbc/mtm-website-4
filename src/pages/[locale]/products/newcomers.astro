@@ -10,6 +10,7 @@ import NewcomersExploreMoreSection from '../../../components/products/NewcomersE
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import type { Locale } from '../../../lib/cms/types';
+import { icons } from '../../../lib/icons/registry';
 
 export function getStaticPaths() {
     return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -59,6 +60,8 @@ const pageDescription =
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
             heroImageSrc={`${base}images/products/mtm-newcomers/hero-banner.png`}
+            heroIconSrc={`${base}${icons['demographics-group'].newcomers}`}
+            heroIconAlt=""
         />
 
         <NewcomersFeaturesSection locale={locale} copy={copy} />

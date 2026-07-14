@@ -29,6 +29,7 @@ const enUrl = localeSwitchUrls?.en ?? `${base}en/`;
 const homeUrl = `${base}${locale}/`;
 const signInUrl = `${base}${locale}/sign-in/`;
 const requestDemoUrl = `${base}${locale}/request-demo/`;
+const linkedInUrl = 'https://www.linkedin.com/company/media-technology-monitor/';
 const isFrench = locale === 'fr';
 
 const productsDropdown = {
@@ -436,6 +437,26 @@ const solutionsDropdown = {
                     </a>
                 </div>
 
+                <a
+                    class="btn btn-outline btn-size-md text-button-small navbar-linkedin-btn"
+                    href={linkedInUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                >
+                    <svg
+                        class="navbar-linkedin-btn__icon"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1 4.98 2.12 4.98 3.5ZM.5 8h4V23h-4V8ZM7.5 8h3.8v2.1h.1c.5-1 1.8-2.1 3.7-2.1C19 8 21 10.3 21 14.2V23h-4v-7.7c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4V23h-4V8Z"
+                        ></path>
+                    </svg>
+                </a>
+
                 <Button
                     href={signInUrl}
                     variant="secondary"
@@ -720,6 +741,21 @@ const solutionsDropdown = {
         align-items: center;
         margin-left: auto;
         flex-shrink: 0;
+    }
+
+    .navbar-linkedin-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        padding-inline: var(--space-3);
+    }
+
+    .navbar-linkedin-btn__icon {
+        width: var(--icon-s);
+        height: var(--icon-s);
+        display: block;
+        color: var(--text-primary);
     }
 
     .hamburger {

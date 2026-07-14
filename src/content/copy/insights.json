@@ -6,7 +6,7 @@
   },
   "hero_description": {
     "key": "hero_description",
-    "en": "MTM delivers more than 70 executive-level reports and infographics each year, covering the trends, platforms, behaviours, and audiences shaping Canadian media and technology. Available in both official languages, our research helps organizations quickly understand what’s changing — and what matters next.",
+    "en": "The Media Techology Monitor (MTM) delivers more than 70 executive-level reports and infographics each year, covering the trends, platforms, behaviours, and audiences shaping Canadian media and technology. Available in both official languages, our research helps organizations quickly understand what’s changing — and what matters next.",
     "fr": ""
   },
   "hero_cta_1": {
@@ -227,6 +227,11 @@
   "section_5_title": {
     "key": "section_5_title",
     "en": "In The News",
+    "fr": ""
+  },
+  "section_5_description": {
+    "key": "section_5_description",
+    "en": "Description about what this section is",
     "fr": ""
   },
   "news_card_tag": {

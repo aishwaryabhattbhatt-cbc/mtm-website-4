@@ -10,6 +10,7 @@ import Mtm18PlusExploreMoreSection from '../../../components/products/Mtm18PlusE
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import type { Locale } from '../../../lib/cms/types';
+import { icons } from '../../../lib/icons/registry';
 
 export function getStaticPaths() {
     return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -58,6 +59,8 @@ const pageDescription =
             locale={locale}
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
+            heroIconSrc={`${base}${icons['demographics-group'].adult}`}
+            heroIconAlt=""
         />
 
         <Mtm18PlusFeaturesSection locale={locale} copy={copy} />
