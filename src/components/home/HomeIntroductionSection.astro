@@ -67,7 +67,21 @@ const { locale, copy } = Astro.props as Props;
         position: relative;
         margin-top: 0 !important;
         width: 100%;
+        /* Fill the screen above 900px viewport height; below that, hold at a
+           900px floor instead of shrinking further. Still grows past either
+           if content ever needs more — a hard height would clip it. */
+        height: auto;
+        min-height: calc(max(100vh, 900px) - var(--navbar-height));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         overflow: hidden;
         scroll-margin-top: calc(var(--navbar-height) + 2rem);
+    }
+
+    @media (max-width: 1023px) {
+        .home-section-2 {
+            min-height: 0;
+        }
     }
 </style>
