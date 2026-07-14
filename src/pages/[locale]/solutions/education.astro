@@ -99,7 +99,13 @@ const trustedByLogos = [
 
         <SolutionsTopicsSection locale={locale} copy={copy} />
 
-        <SolutionsToolsSection locale={locale} copy={copy} cards={['analytic', 'census-slim']} />
+        <SolutionsToolsSection
+            locale={locale}
+            copy={copy}
+            cards={['analytic', 'census-slim']}
+            analyticDescriptionKey="education_tools_analytic_description"
+            censusDescriptionKey="education_tools_census_description"
+        />
 
         <SolutionsStatDividerSection
             locale={locale}

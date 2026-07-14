@@ -91,7 +91,13 @@ const trustedByLogos = [
 
         <SolutionsReportsLibrarySection locale={locale} copy={insightsCopy} />
 
-        <SolutionsToolsSection locale={locale} copy={copy} cards={['census', 'analytic-slim']} />
+        <SolutionsToolsSection
+            locale={locale}
+            copy={copy}
+            cards={['census', 'analytic-slim']}
+            analyticDescriptionKey="gov_ngos_tools_analytic_description"
+            censusDescriptionKey="gov_ngos_tools_census_description"
+        />
 
         <SolutionsUseCasesSection locale={locale} copy={copy} />
 
