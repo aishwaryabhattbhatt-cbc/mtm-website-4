@@ -58,12 +58,15 @@ const footerMenus = [
         items: [
             {
                 label: locale === 'fr' ? 'Analyse des données' : 'Data Analysis',
-                href: `${base}${locale}/tools/`,
+                href: `${base}${locale}/tools/analytic-tools/`,
             },
-            { label: locale === 'fr' ? 'Tendances' : 'Trending', href: `${base}${locale}/tools/` },
+            {
+                label: locale === 'fr' ? 'Tendances' : 'Trending',
+                href: `${base}${locale}/tools/analytic-tools/#trending-tool`,
+            },
             {
                 label: locale === 'fr' ? 'Prévisions' : 'Forecasting',
-                href: `${base}${locale}/tools/`,
+                href: `${base}${locale}/tools/analytic-tools/#forecasting-tool`,
             },
             {
                 label: locale === 'fr' ? 'Recensement' : 'Census',
@@ -84,7 +87,7 @@ const footerMenus = [
             },
             {
                 label: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
-                href: `${base}${locale}/solutions/government-ngos/`,
+                href: `${base}${locale}/solutions/gov-ngos/`,
             },
             {
                 label: t(copy, 'solutions_item_4', locale, 'Education'),
