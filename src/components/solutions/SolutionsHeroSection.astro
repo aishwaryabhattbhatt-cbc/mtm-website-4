@@ -125,8 +125,16 @@ const {
 
     @media (max-width: 767px) {
         .solutions-hero-content {
-            margin-top: calc(-1 * var(--space-6));
+            /* Mobile media is 1540/1920 ratio, so 35% upward shift = 28.0729vw
+               — same scaling as ProductsHeroSection's mobile treatment */
+            margin-top: -28.0729vw;
             gap: var(--space-5);
+        }
+
+        .solutions-hero-media {
+            /* 2x taller than the desktop ratio so object-fit: cover zooms in
+               by scaling to fill the extra height, cropping only the sides */
+            aspect-ratio: 1920 / 1540;
         }
     }
 </style>
