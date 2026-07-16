@@ -191,18 +191,29 @@ async function main() {
 
     process.stdout.write(`  Syncing ${pageId}… `);
 
-    try {
-      const res = await fetch(url, {
-        redirect: 'follow',
-        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' },
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const outPath = join(outputDir, `${pageId}.json`);
+    const hadExistingCopy = existsSync(outPath);
 
-      const csv = await res.text();
-      const dict = parseCSV(csv);
+    let lastErr;
+    let dict;
+    for (let attempt = 1; attempt <= 3 && !dict; attempt++) {
+      try {
+        const res = await fetch(url, {
+          redirect: 'follow',
+          headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' },
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const csv = await res.text();
+        dict = parseCSV(csv);
+      } catch (err) {
+        lastErr = err;
+        if (attempt < 3) await new Promise((r) => setTimeout(r, attempt * 500));
+      }
+    }
+
+    if (dict) {
       const keys = Object.keys(dict);
-
-      const outPath = join(outputDir, `${pageId}.json`);
       writeFileSync(outPath, JSON.stringify(dict, null, 2));
 
       console.log(`✓  ${keys.length} keys`);
@@ -210,8 +221,12 @@ async function main() {
         const en = dict[key].en.slice(0, 60) + (dict[key].en.length > 60 ? '…' : '');
         console.log(`      ${key.padEnd(35)} ${en}`);
       }
-    } catch (err) {
-      console.log(`❌  ${err.message}`);
+    } else if (hadExistingCopy) {
+      // A previously-synced copy is already committed — keep serving it rather
+      // than failing the whole build over one flaky Google Sheets fetch.
+      console.log(`⚠️   ${lastErr.message} — keeping existing src/content/copy/${pageId}.json`);
+    } else {
+      console.log(`❌  ${lastErr.message} — no existing copy to fall back on`);
       anyFailed = true;
     }
   }
