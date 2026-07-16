@@ -2,24 +2,79 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 
+interface TestimonialItem {
+    logoSrc: string;
+    logoAlt: string;
+    quoteKey: string;
+    quoteFallback: string;
+    attributionKey: string;
+    attributionFallback: string;
+}
+
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
     base: string;
     logoSrc?: string;
     logoAlt?: string;
+    testimonials?: TestimonialItem[];
+    rotationIntervalMs?: number;
+    topPadding?: boolean;
+    showTitle?: boolean;
 }
 
-const { locale, copy, base, logoSrc, logoAlt } = Astro.props as Props;
+const {
+    locale,
+    copy,
+    base,
+    logoSrc,
+    logoAlt,
+    testimonials,
+    rotationIntervalMs = 7000,
+    topPadding = true,
+    showTitle = true,
+} = Astro.props as Props;
+
 const resolvedLogoSrc = logoSrc ?? `${base}images/home/solutions/logos/media/tvo.svg`;
 const resolvedLogoAlt = logoAlt ?? 'TVO';
+
+const items: TestimonialItem[] =
+    testimonials && testimonials.length > 0
+        ? testimonials
+        : [
+              {
+                  logoSrc: resolvedLogoSrc,
+                  logoAlt: resolvedLogoAlt,
+                  quoteKey: 'testimonial_quote',
+                  quoteFallback:
+                      "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
+                  attributionKey: 'testimonial_attribution',
+                  attributionFallback: '— Director of Audience Strategy',
+              },
+          ];
+
+const isMulti = items.length > 1;
 ---
 
-<section class="media-testimonials-section">
+<section
+    class:list={[
+        'media-testimonials-section',
+        !topPadding && 'media-testimonials-section--no-top-padding',
+    ]}
+>
     <div class="media-testimonials-inner">
-        <h2 class="media-testimonials-heading">
-            {t(copy, 'testimonial_title', locale, 'What media companies are saying about us')}
-        </h2>
+        {
+            showTitle && (
+                <h2 class="media-testimonials-heading">
+                    {t(
+                        copy,
+                        'testimonial_title',
+                        locale,
+                        'What media companies are saying about us'
+                    )}
+                </h2>
+            )
+        }
 
         <div class="media-testimonials-card">
             <img
@@ -42,27 +97,35 @@ const resolvedLogoAlt = logoAlt ?? 'TVO';
                 aria-hidden="true"
             />
 
-            <div class="media-testimonials-content">
-                <div class="media-testimonials-logo-wrap">
-                    <img
-                        src={resolvedLogoSrc}
-                        alt={resolvedLogoAlt}
-                        class="media-testimonials-logo"
-                    />
-                </div>
-                <p class="text-body-p0 media-testimonials-quote">
-                    {
-                        t(
-                            copy,
-                            'testimonial_quote',
-                            locale,
-                            "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today."
-                        )
-                    }
-                </p>
-                <p class="text-body-p2 media-testimonials-attribution">
-                    {t(copy, 'testimonial_attribution', locale, '— Director of Audience Strategy')}
-                </p>
+            <div
+                class="media-testimonials-content"
+                data-testimonial-rotator={isMulti ? 'true' : undefined}
+                data-interval={isMulti ? rotationIntervalMs : undefined}
+                aria-live="off"
+            >
+                {
+                    items.map((item, i) => (
+                        <div
+                            class="media-testimonials-slide"
+                            data-active={i === 0 ? 'true' : 'false'}
+                            aria-hidden={i === 0 ? 'false' : 'true'}
+                        >
+                            <div class="media-testimonials-logo-wrap">
+                                <img
+                                    src={item.logoSrc}
+                                    alt={item.logoAlt}
+                                    class="media-testimonials-logo"
+                                />
+                            </div>
+                            <p class="text-body-p0 media-testimonials-quote">
+                                {t(copy, item.quoteKey, locale, item.quoteFallback)}
+                            </p>
+                            <p class="text-body-p2 media-testimonials-attribution">
+                                {t(copy, item.attributionKey, locale, item.attributionFallback)}
+                            </p>
+                        </div>
+                    ))
+                }
             </div>
 
             <img
@@ -80,6 +143,10 @@ const resolvedLogoAlt = logoAlt ?? 'TVO';
         width: 100%;
         background: var(--surface-blue);
         padding: var(--section-pad-block-lg) var(--content-margin-inline);
+    }
+
+    .media-testimonials-section--no-top-padding {
+        padding-top: 0;
     }
 
     .media-testimonials-inner {
@@ -143,14 +210,33 @@ const resolvedLogoAlt = logoAlt ?? 'TVO';
     /* Center content */
     .media-testimonials-content {
         flex: 1;
-        display: flex;
-        flex-direction: column;
+        display: grid;
         align-items: center;
-        gap: var(--space-8);
+        justify-items: center;
         text-align: center;
         position: relative;
         z-index: 1;
         min-width: 0;
+    }
+
+    .media-testimonials-slide {
+        grid-area: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-8);
+        opacity: 1;
+    }
+
+    [data-testimonial-rotator] .media-testimonials-slide {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 600ms ease;
+    }
+
+    [data-testimonial-rotator] .media-testimonials-slide[data-active='true'] {
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .media-testimonials-logo-wrap {
@@ -182,6 +268,10 @@ const resolvedLogoAlt = logoAlt ?? 'TVO';
             padding: var(--section-pad-block) var(--content-margin-inline);
         }
 
+        .media-testimonials-section--no-top-padding {
+            padding-top: 0;
+        }
+
         .media-testimonials-card {
             padding: var(--space-10) var(--space-9);
             gap: var(--space-6);
@@ -192,6 +282,10 @@ const resolvedLogoAlt = logoAlt ?? 'TVO';
     @media (max-width: 767px) {
         .media-testimonials-section {
             padding: var(--section-pad-block) var(--content-margin-inline);
+        }
+
+        .media-testimonials-section--no-top-padding {
+            padding-top: 0;
         }
 
         .media-testimonials-inner {
@@ -219,3 +313,51 @@ const resolvedLogoAlt = logoAlt ?? 'TVO';
         }
     }
 </style>
+
+<script>
+    function initRotator(rotator: HTMLElement) {
+        const slides = Array.from(
+            rotator.querySelectorAll<HTMLElement>('.media-testimonials-slide')
+        );
+        if (slides.length <= 1) return;
+
+        const interval = Number(rotator.dataset.interval) || 7000;
+        let index = Math.max(
+            0,
+            slides.findIndex((slide) => slide.dataset.active === 'true')
+        );
+        let timer: ReturnType<typeof setInterval> | undefined;
+
+        function show(next: number) {
+            slides[index].dataset.active = 'false';
+            slides[index].setAttribute('aria-hidden', 'true');
+            index = next;
+            slides[index].dataset.active = 'true';
+            slides[index].setAttribute('aria-hidden', 'false');
+        }
+
+        function start() {
+            timer = setInterval(() => show((index + 1) % slides.length), interval);
+        }
+
+        function stop() {
+            if (timer) clearInterval(timer);
+        }
+
+        start();
+
+        const card = rotator.closest<HTMLElement>('.media-testimonials-card');
+        card?.addEventListener('mouseenter', stop);
+        card?.addEventListener('mouseleave', start);
+    }
+
+    function initAll() {
+        document.querySelectorAll<HTMLElement>('[data-testimonial-rotator]').forEach(initRotator);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAll);
+    } else {
+        initAll();
+    }
+</script>

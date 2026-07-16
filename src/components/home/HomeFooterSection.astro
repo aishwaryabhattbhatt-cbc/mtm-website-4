@@ -8,9 +8,20 @@ import mtmLogo from '../../assets/svg/mtm-logo.svg?url';
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
+    showCta?: boolean;
+    showNewsletter?: boolean;
+    showBgLeftCenter?: boolean;
+    extraTopPadding?: boolean;
 }
 
-const { locale, copy } = Astro.props as Props;
+const {
+    locale,
+    copy,
+    showCta = true,
+    showNewsletter = true,
+    showBgLeftCenter = true,
+    extraTopPadding = false,
+} = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 const currentYear = new Date().getFullYear();
 
@@ -104,12 +115,16 @@ const footerMenus = [
         aria-hidden="true"
         alt=""
     />
-    <img
-        src={`${base}images/home/footer/footer-left-center.png`}
-        class="home-footer__bg-left-center"
-        aria-hidden="true"
-        alt=""
-    />
+    {
+        showBgLeftCenter && (
+            <img
+                src={`${base}images/home/footer/footer-left-center.png`}
+                class="home-footer__bg-left-center"
+                aria-hidden="true"
+                alt=""
+            />
+        )
+    }
     <img
         src={`${base}images/home/footer/footer-bottom-left.png`}
         class="home-footer__bg-bottom-left"
@@ -117,143 +132,172 @@ const footerMenus = [
         alt=""
     />
 
-    <div class="home-footer__cta">
-        <div class="home-footer__cta-card">
-            <div class="home-footer__cta-copy">
-                <p
-                    class="home-footer__cta-eyebrow text-body-p1 footer-eyebrow-fly-in"
-                    data-copy-key="cta_subtitle"
-                >
-                    {t(copy, 'cta_subtitle', locale, 'Ready to Get Started?')}
-                </p>
-                <h2
-                    class="home-footer__cta-title text-subsection-h2 footer-title-fly-in"
-                    data-copy-key="cta_title"
-                >
-                    {t(copy, 'cta_title', locale, 'Request a Demo Now.')}
-                </h2>
-            </div>
+    {
+        showCta && (
+            <div class="home-footer__cta">
+                <div class="home-footer__cta-card">
+                    <div class="home-footer__cta-copy">
+                        <p
+                            class="home-footer__cta-eyebrow text-body-p1 footer-eyebrow-fly-in"
+                            data-copy-key="cta_subtitle"
+                        >
+                            {t(copy, 'cta_subtitle', locale, 'Ready to Get Started?')}
+                        </p>
+                        <h2
+                            class="home-footer__cta-title text-subsection-h2 footer-title-fly-in"
+                            data-copy-key="cta_title"
+                        >
+                            {t(copy, 'cta_title', locale, 'Request a Demo Now.')}
+                        </h2>
+                    </div>
 
-            <form
-                class="home-footer__cta-form footer-form-fly-in"
-                aria-label="Request a demo"
-                data-submit-href={`${base}${locale}/contact/`}
-            >
-                <FormField
-                    locale={locale}
-                    copy={copy}
-                    variant="field-only"
-                    type="email"
-                    name="email"
-                    placeholderKey="footer_cta_email_placeholder"
-                    placeholder="Enter your work email"
-                    ariaLabel={t(copy, 'footer_cta_email_label', locale, 'Work email')}
-                    emailValidation="submit-only"
-                    required
-                    class="home-footer__cta-email-field"
-                />
-                <Button variant="primary" type="submit" class="home-footer__cta-button">
-                    {t(copy, 'cta_button', locale, 'Request a demo')}
-                </Button>
-            </form>
-        </div>
-    </div>
-
-    <div class="home-footer__newsletter">
-        <div class="home-footer__newsletter-container">
-            <div class="home-footer__newsletter-content">
-                <h2
-                    class="home-footer__newsletter-title text-tertiary-h3"
-                    data-copy-key="newsletter_title"
-                >
-                    {t(copy, 'newsletter_title', locale, 'Subscribe to our Newsletter')}
-                </h2>
-                <p
-                    class="home-footer__newsletter-description text-body-p1"
-                    data-copy-key="newsletter_description"
-                >
-                    {
-                        t(
-                            copy,
-                            'newsletter_description',
-                            locale,
-                            'Subscribe to receive our exclusive insights, reports, and analysis directly to your inbox. Join the community of industry leaders staying ahead with MTM.'
-                        )
-                    }
-                </p>
-            </div>
-
-            <form class="home-footer__newsletter-form" novalidate aria-label="Newsletter signup">
-                <FormField
-                    locale={locale}
-                    copy={copy}
-                    variant="field-with-label"
-                    type="email"
-                    name="email"
-                    labelKey="newsletter_email_label"
-                    label="Work Email"
-                    placeholderKey="newsletter_email_placeholder"
-                    placeholder="Enter your work email"
-                    emailValidation="none"
-                    required
-                />
-
-                <div class="home-footer__newsletter-controls">
-                    <FormField
-                        locale={locale}
-                        copy={copy}
-                        variant="field-only"
-                        type="select"
-                        name="industry"
-                        placeholder="Select your industry"
-                        options={[
-                            {
-                                value: '',
-                                label: 'Select your industry',
-                                labelKey: 'newsletter_industry_placeholder',
-                            },
-                            { value: 'media', label: 'Media', labelKey: 'solutions_item_2' },
-                            {
-                                value: 'advertising',
-                                label: 'Advertising',
-                                labelKey: 'solutions_item_3',
-                            },
-                            { value: 'govngo', label: 'Gov & NGOs', labelKey: 'solutions_item_5' },
-                            {
-                                value: 'education',
-                                label: 'Education',
-                                labelKey: 'solutions_item_4',
-                            },
-                            { value: 'industry', label: 'Industry', labelKey: 'solutions_item_1' },
-                            {
-                                value: 'other',
-                                label: 'Other',
-                                labelKey: 'newsletter_industry_other',
-                            },
-                        ]}
-                    />
-                    <Button variant="primary" type="submit" class="home-footer__newsletter-submit">
-                        {t(copy, 'newsletter_submit', locale, 'Submit')}
-                    </Button>
-
-                    <p
-                        class="home-footer__newsletter-email-error text-body-p3-small"
-                        data-newsletter-email-error
-                        aria-live="polite"
-                        aria-hidden="true"
+                    <form
+                        class="home-footer__cta-form footer-form-fly-in"
+                        aria-label="Request a demo"
+                        data-submit-href={`${base}${locale}/request-demo/`}
                     >
-                        {
-                            locale === 'fr'
-                                ? 'Veuillez saisir une adresse courriel valide.'
-                                : 'Please enter a valid email address.'
-                        }
-                    </p>
+                        <FormField
+                            locale={locale}
+                            copy={copy}
+                            variant="field-only"
+                            type="email"
+                            name="email"
+                            placeholderKey="footer_cta_email_placeholder"
+                            placeholder="Enter your work email"
+                            ariaLabel={t(copy, 'footer_cta_email_label', locale, 'Work email')}
+                            emailValidation="submit-only"
+                            required
+                            class="home-footer__cta-email-field"
+                        />
+                        <Button variant="primary" type="submit" class="home-footer__cta-button">
+                            {t(copy, 'cta_button', locale, 'Request a demo')}
+                        </Button>
+                    </form>
                 </div>
-            </form>
-        </div>
-    </div>
+            </div>
+        )
+    }
 
-    <div class="home-footer__footer">
+    {
+        showNewsletter && (
+            <div class="home-footer__newsletter">
+                <div class="home-footer__newsletter-container">
+                    <div class="home-footer__newsletter-content">
+                        <h2
+                            class="home-footer__newsletter-title text-tertiary-h3"
+                            data-copy-key="newsletter_title"
+                        >
+                            {t(copy, 'newsletter_title', locale, 'Subscribe to our Newsletter')}
+                        </h2>
+                        <p
+                            class="home-footer__newsletter-description text-body-p1"
+                            data-copy-key="newsletter_description"
+                        >
+                            {t(
+                                copy,
+                                'newsletter_description',
+                                locale,
+                                'Subscribe to receive our exclusive insights, reports, and analysis directly to your inbox. Join the community of industry leaders staying ahead with MTM.'
+                            )}
+                        </p>
+                    </div>
+
+                    <form
+                        class="home-footer__newsletter-form"
+                        novalidate
+                        aria-label="Newsletter signup"
+                    >
+                        <FormField
+                            locale={locale}
+                            copy={copy}
+                            variant="field-with-label"
+                            type="email"
+                            name="email"
+                            labelKey="newsletter_email_label"
+                            label="Work Email"
+                            placeholderKey="newsletter_email_placeholder"
+                            placeholder="Enter your work email"
+                            emailValidation="none"
+                            required
+                        />
+
+                        <div class="home-footer__newsletter-controls">
+                            <FormField
+                                locale={locale}
+                                copy={copy}
+                                variant="field-only"
+                                type="select"
+                                name="industry"
+                                placeholder="Select your industry"
+                                options={[
+                                    {
+                                        value: '',
+                                        label: 'Select your industry',
+                                        labelKey: 'newsletter_industry_placeholder',
+                                    },
+                                    {
+                                        value: 'media',
+                                        label: 'Media',
+                                        labelKey: 'solutions_item_2',
+                                    },
+                                    {
+                                        value: 'advertising',
+                                        label: 'Advertising',
+                                        labelKey: 'solutions_item_3',
+                                    },
+                                    {
+                                        value: 'govngo',
+                                        label: 'Gov & NGOs',
+                                        labelKey: 'solutions_item_5',
+                                    },
+                                    {
+                                        value: 'education',
+                                        label: 'Education',
+                                        labelKey: 'solutions_item_4',
+                                    },
+                                    {
+                                        value: 'industry',
+                                        label: 'Industry',
+                                        labelKey: 'solutions_item_1',
+                                    },
+                                    {
+                                        value: 'other',
+                                        label: 'Other',
+                                        labelKey: 'newsletter_industry_other',
+                                    },
+                                ]}
+                            />
+                            <Button
+                                variant="primary"
+                                type="submit"
+                                class="home-footer__newsletter-submit"
+                            >
+                                {t(copy, 'newsletter_submit', locale, 'Submit')}
+                            </Button>
+
+                            <p
+                                class="home-footer__newsletter-email-error text-body-p3-small"
+                                data-newsletter-email-error
+                                aria-live="polite"
+                                aria-hidden="true"
+                            >
+                                {locale === 'fr'
+                                    ? 'Veuillez saisir une adresse courriel valide.'
+                                    : 'Please enter a valid email address.'}
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        )
+    }
+
+    <div
+        class:list={[
+            'home-footer__footer',
+            extraTopPadding && 'home-footer__footer--extra-top-padding',
+        ]}
+    >
         <div class="home-footer__footer-container">
             <div class="home-footer__footer-left">
                 <div class="home-footer__footer-menus">
@@ -529,6 +573,10 @@ const footerMenus = [
         padding: var(--space-11) var(--content-margin-inline) var(--section-pad-block);
     }
 
+    .home-footer__footer--extra-top-padding {
+        padding-top: var(--section-pad-block-lg);
+    }
+
     .home-footer__footer-container {
         width: min(100%, 90rem);
         margin: 0 auto;
@@ -687,6 +735,10 @@ const footerMenus = [
         .home-footer__footer {
             padding-top: var(--space-9);
             padding-bottom: var(--space-8);
+        }
+
+        .home-footer__footer--extra-top-padding {
+            padding-top: var(--section-pad-block-lg);
         }
 
         .home-footer__footer-container {
@@ -921,7 +973,9 @@ const footerMenus = [
             if (emailInput?.checkValidity()) {
                 const submitHref = ctaForm.dataset.submitHref;
                 if (submitHref) {
-                    window.location.href = submitHref;
+                    const url = new URL(submitHref, window.location.origin);
+                    url.searchParams.set('email', emailInput.value);
+                    window.location.href = url.toString();
                 }
             } else {
                 emailInput?.reportValidity();

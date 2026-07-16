@@ -1,6 +1,5 @@
 import { readFileSync, existsSync } from 'fs';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve } from 'path';
 import { getPageCMSConfig, getPublishedCsvUrl } from './config';
 import { fetchSheetDictionary } from './sheets';
 import type { CMSDictionary, PageCMSConfig } from './types';
@@ -10,8 +9,10 @@ const SHARED_PAGE_ID = 'home';
 const useInMemoryCache = process.env.NODE_ENV === 'production';
 
 function getLocalCopyPath(pageId: string): string {
-    const dir = dirname(fileURLToPath(import.meta.url));
-    return resolve(dir, `../../content/copy/${pageId}.json`);
+    // Resolved from process.cwd() (the project root), not import.meta.url — the
+    // build bundles this module into dist/.prerender/chunks, which breaks any
+    // path resolved relative to the compiled module's own location.
+    return resolve(process.cwd(), 'src/content/copy', `${pageId}.json`);
 }
 
 export async function getPageDictionary(pageId: string): Promise<CMSDictionary> {

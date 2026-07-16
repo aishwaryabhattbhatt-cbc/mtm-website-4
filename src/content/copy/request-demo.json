@@ -1,0 +1,212 @@
+{
+  "hero_title": {
+    "key": "hero_title",
+    "en": "Book A Demo Today!",
+    "fr": ""
+  },
+  "hero_description": {
+    "key": "hero_description",
+    "en": "Interested to see what the MTM can do for you? Book a demo with one of our experts to walk you though the products and tools in more detail.",
+    "fr": ""
+  },
+  "hero_expect_eyebrow": {
+    "key": "hero_expect_eyebrow",
+    "en": "What You Can Expect",
+    "fr": ""
+  },
+  "hero_expect_item_1": {
+    "key": "hero_expect_item_1",
+    "en": "Personalized walk-through of the tools, reports and services",
+    "fr": ""
+  },
+  "hero_expect_item_2": {
+    "key": "hero_expect_item_2",
+    "en": "Q & A to understand how the MTM can support you",
+    "fr": ""
+  },
+  "hero_expect_item_3": {
+    "key": "hero_expect_item_3",
+    "en": "Expert advice on how MTM can fit in your workflow",
+    "fr": ""
+  },
+  "hero_form_title": {
+    "key": "hero_form_title",
+    "en": "Talk to our experts",
+    "fr": ""
+  },
+  "hero_form_first_name_label": {
+    "key": "hero_form_first_name_label",
+    "en": "First Name",
+    "fr": ""
+  },
+  "hero_form_first_name_placeholder": {
+    "key": "hero_form_first_name_placeholder",
+    "en": "John",
+    "fr": ""
+  },
+  "hero_form_last_name_label": {
+    "key": "hero_form_last_name_label",
+    "en": "Last Name",
+    "fr": ""
+  },
+  "hero_form_last_name_placeholder": {
+    "key": "hero_form_last_name_placeholder",
+    "en": "Doe",
+    "fr": ""
+  },
+  "hero_form_email_label": {
+    "key": "hero_form_email_label",
+    "en": "Work Email",
+    "fr": ""
+  },
+  "hero_form_email_placeholder": {
+    "key": "hero_form_email_placeholder",
+    "en": "john@workmail.com",
+    "fr": ""
+  },
+  "hero_form_org_label": {
+    "key": "hero_form_org_label",
+    "en": "Organisation",
+    "fr": ""
+  },
+  "hero_form_org_placeholder": {
+    "key": "hero_form_org_placeholder",
+    "en": "Organisation Name",
+    "fr": ""
+  },
+  "hero_form_language_label": {
+    "key": "hero_form_language_label",
+    "en": "Language Preference",
+    "fr": ""
+  },
+  "hero_form_language_en": {
+    "key": "hero_form_language_en",
+    "en": "English",
+    "fr": ""
+  },
+  "hero_form_language_fr": {
+    "key": "hero_form_language_fr",
+    "en": "French",
+    "fr": ""
+  },
+  "hero_form_interest_label": {
+    "key": "hero_form_interest_label",
+    "en": "What are you interested in?",
+    "fr": ""
+  },
+  "hero_form_interest_mtm18": {
+    "key": "hero_form_interest_mtm18",
+    "en": "MTM 18+",
+    "fr": ""
+  },
+  "hero_form_interest_junior": {
+    "key": "hero_form_interest_junior",
+    "en": "Junior",
+    "fr": ""
+  },
+  "hero_form_interest_newcomer": {
+    "key": "hero_form_interest_newcomer",
+    "en": "Newcomer",
+    "fr": ""
+  },
+  "hero_form_interest_reports": {
+    "key": "hero_form_interest_reports",
+    "en": "Reports",
+    "fr": ""
+  },
+  "hero_form_interest_tools": {
+    "key": "hero_form_interest_tools",
+    "en": "Tools",
+    "fr": ""
+  },
+  "hero_form_interest_services": {
+    "key": "hero_form_interest_services",
+    "en": "Services",
+    "fr": ""
+  },
+  "hero_form_interest_variables": {
+    "key": "hero_form_interest_variables",
+    "en": "Variables",
+    "fr": ""
+  },
+  "hero_form_message_label": {
+    "key": "hero_form_message_label",
+    "en": "Something else? Please enter below.",
+    "fr": ""
+  },
+  "hero_form_message_placeholder": {
+    "key": "hero_form_message_placeholder",
+    "en": "Write your message here...",
+    "fr": ""
+  },
+  "hero_form_newsletter_label": {
+    "key": "hero_form_newsletter_label",
+    "en": "Subscribe to our newsletter",
+    "fr": ""
+  },
+  "hero_form_submit": {
+    "key": "hero_form_submit",
+    "en": "Submit",
+    "fr": ""
+  },
+  "trusted_by_label": {
+    "key": "trusted_by_label",
+    "en": "Trusted by",
+    "fr": ""
+  },
+  "testimonial_title": {
+    "key": "testimonial_title",
+    "en": "What clients are saying about us",
+    "fr": ""
+  },
+  "testimonial_1_quote": {
+    "key": "testimonial_1_quote",
+    "en": "When it comes to technology ownership and usage in Canada, the MTM is THE go-to source of information. For our team, this resource is invaluable because it allows us to make informed decisions with confidence and stay one step ahead in an ever-changing media landscape. It is a fundamental tool for our strategic planning and innovation efforts.",
+    "fr": ""
+  },
+  "testimonial_1_attribution": {
+    "key": "testimonial_1_attribution",
+    "en": "Élise Roy-Pepin, The Weather Network",
+    "fr": ""
+  },
+  "testimonial_2_quote": {
+    "key": "testimonial_2_quote",
+    "en": "MTM is a valuable resource for effective media planning and research for our clients. The comprehensive data, forecasting and frequent reports give us deep insight into Canadian audience behaviors and media trends.",
+    "fr": ""
+  },
+  "testimonial_2_attribution": {
+    "key": "testimonial_2_attribution",
+    "en": "Ryan Casey, Director, Media Operations - Time & Space Media",
+    "fr": ""
+  },
+  "testimonial_3_quote": {
+    "key": "testimonial_3_quote",
+    "en": "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
+    "fr": ""
+  },
+  "testimonial_3_attribution": {
+    "key": "testimonial_3_attribution",
+    "en": "Director of Audience Strategy",
+    "fr": ""
+  },
+  "testimonial_4_quote": {
+    "key": "testimonial_4_quote",
+    "en": "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
+    "fr": ""
+  },
+  "testimonial_4_attribution": {
+    "key": "testimonial_4_attribution",
+    "en": "University student",
+    "fr": ""
+  },
+  "testimonial_5_quote": {
+    "key": "testimonial_5_quote",
+    "en": "Thanks to our subscription to MTM Newcomers, we have access to newcomer data insights and their settlement and integration journey in Manitoba. We particularly appreciate seeing information that is not available through any other sources, like newcomers' use of media, devices, and newcomer knowledge of services available through our sector. This information helps our members ensure that their services are well adapted to the needs and characteristics of the newcomers they serve.",
+    "fr": ""
+  },
+  "testimonial_5_attribution": {
+    "key": "testimonial_5_attribution",
+    "en": "Valeria Castellanos,  Language Support and Program Manager - MANSO",
+    "fr": ""
+  }
+}

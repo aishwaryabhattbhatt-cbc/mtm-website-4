@@ -10,41 +10,72 @@ interface LogoItem {
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
-    logos: LogoItem[];
+    logos?: LogoItem[];
+    logoSets?: LogoItem[][];
+    rotationIntervalMs?: number;
+    topPadding?: boolean;
 }
 
-const { locale, copy, logos } = Astro.props as Props;
+const {
+    locale,
+    copy,
+    logos,
+    logoSets,
+    rotationIntervalMs = 7000,
+    topPadding = false,
+} = Astro.props as Props;
+
+const sets: LogoItem[][] = logoSets && logoSets.length > 0 ? logoSets : [logos ?? []];
+const isMulti = sets.length > 1;
 ---
 
 <section
-    class="solutions-trusted-by-section"
+    class:list={[
+        'solutions-trusted-by-section',
+        topPadding && 'solutions-trusted-by-section--top-padding',
+    ]}
     aria-label={t(copy, 'trusted_by_label', locale, 'Trusted by')}
 >
     <p class="text-label-regular solutions-trusted-by-label" data-copy-key="trusted_by_label">
         {t(copy, 'trusted_by_label', locale, 'Trusted by')}
     </p>
 
-    <div class="solutions-trusted-by-strip">
-        <div class="solutions-trusted-by-track">
-            <div class="solutions-trusted-by-set">
-                {
-                    logos.map((logo) => (
-                        <div class="solutions-trusted-by-logo-item">
-                            <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+    <div
+        class="solutions-trusted-by-strip"
+        data-trusted-by-rotator={isMulti ? 'true' : undefined}
+        data-interval={isMulti ? rotationIntervalMs : undefined}
+    >
+        {
+            sets.map((setLogos, i) => (
+                <div
+                    class="solutions-trusted-by-marquee"
+                    data-active={i === 0 ? 'true' : 'false'}
+                    aria-hidden={i === 0 ? 'false' : 'true'}
+                >
+                    <div class="solutions-trusted-by-track">
+                        <div class="solutions-trusted-by-set">
+                            {setLogos.map((logo) => (
+                                <div class="solutions-trusted-by-logo-item">
+                                    <img
+                                        src={logo.src}
+                                        alt={logo.alt}
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </div>
+                            ))}
                         </div>
-                    ))
-                }
-            </div>
-            <div class="solutions-trusted-by-set" aria-hidden="true">
-                {
-                    logos.map((logo) => (
-                        <div class="solutions-trusted-by-logo-item" aria-hidden="true">
-                            <img src={logo.src} alt="" loading="lazy" decoding="async" />
+                        <div class="solutions-trusted-by-set" aria-hidden="true">
+                            {setLogos.map((logo) => (
+                                <div class="solutions-trusted-by-logo-item" aria-hidden="true">
+                                    <img src={logo.src} alt="" loading="lazy" decoding="async" />
+                                </div>
+                            ))}
                         </div>
-                    ))
-                }
-            </div>
-        </div>
+                    </div>
+                </div>
+            ))
+        }
     </div>
 </section>
 
@@ -60,6 +91,10 @@ const { locale, copy, logos } = Astro.props as Props;
         gap: var(--space-5);
     }
 
+    .solutions-trusted-by-section--top-padding {
+        padding-top: var(--section-pad-block);
+    }
+
     .solutions-trusted-by-label {
         margin: 0;
         color: var(--text-secondary);
@@ -73,8 +108,33 @@ const { locale, copy, logos } = Astro.props as Props;
         padding: var(--space-6) 0;
         min-height: 12rem;
         overflow: hidden;
+        display: grid;
+        align-items: center;
+    }
+
+    .solutions-trusted-by-marquee {
+        grid-area: 1 / 1;
+        width: 100%;
         display: flex;
         align-items: center;
+        opacity: 1;
+    }
+
+    [data-trusted-by-rotator] .solutions-trusted-by-marquee {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 600ms ease;
+    }
+
+    [data-trusted-by-rotator] .solutions-trusted-by-marquee[data-active='true'] {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    [data-trusted-by-rotator]
+        .solutions-trusted-by-marquee:not([data-active='true'])
+        .solutions-trusted-by-track {
+        animation-play-state: paused;
     }
 
     .solutions-trusted-by-track {
@@ -150,23 +210,62 @@ const { locale, copy, logos } = Astro.props as Props;
 
 <script>
     function initMarquee(strip: HTMLElement) {
-        const track = strip.querySelector<HTMLElement>('.solutions-trusted-by-track');
-        const set = strip.querySelector<HTMLElement>('.solutions-trusted-by-set');
-        if (!track || !set) return;
+        strip.querySelectorAll<HTMLElement>('.solutions-trusted-by-track').forEach((track) => {
+            const set = track.querySelector<HTMLElement>('.solutions-trusted-by-set');
+            if (!set) return;
 
-        function measure() {
-            track!.style.setProperty('--scroll-distance', `-${set!.offsetWidth}px`);
+            function measure() {
+                track.style.setProperty('--scroll-distance', `-${set!.offsetWidth}px`);
+            }
+
+            measure();
+
+            // Re-measure if viewport size changes (affects rem-based spacing tokens)
+            const ro = new ResizeObserver(measure);
+            ro.observe(set);
+        });
+    }
+
+    function initRotator(strip: HTMLElement) {
+        const marquees = Array.from(
+            strip.querySelectorAll<HTMLElement>('.solutions-trusted-by-marquee')
+        );
+        if (marquees.length <= 1) return;
+
+        const interval = Number(strip.dataset.interval) || 7000;
+        let index = Math.max(
+            0,
+            marquees.findIndex((marquee) => marquee.dataset.active === 'true')
+        );
+        let timer: ReturnType<typeof setInterval> | undefined;
+
+        function show(next: number) {
+            marquees[index].dataset.active = 'false';
+            marquees[index].setAttribute('aria-hidden', 'true');
+            index = next;
+            marquees[index].dataset.active = 'true';
+            marquees[index].setAttribute('aria-hidden', 'false');
         }
 
-        measure();
+        function start() {
+            timer = setInterval(() => show((index + 1) % marquees.length), interval);
+        }
 
-        // Re-measure if viewport size changes (affects rem-based spacing tokens)
-        const ro = new ResizeObserver(measure);
-        ro.observe(set);
+        function stop() {
+            if (timer) clearInterval(timer);
+        }
+
+        start();
+
+        strip.addEventListener('mouseenter', stop);
+        strip.addEventListener('mouseleave', start);
     }
 
     function initAll() {
-        document.querySelectorAll<HTMLElement>('.solutions-trusted-by-strip').forEach(initMarquee);
+        document.querySelectorAll<HTMLElement>('.solutions-trusted-by-strip').forEach((strip) => {
+            initMarquee(strip);
+            initRotator(strip);
+        });
     }
 
     if (document.readyState === 'loading') {
