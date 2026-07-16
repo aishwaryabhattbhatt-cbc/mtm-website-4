@@ -10,6 +10,8 @@ import HomeFaqsSection from '../../components/home/HomeFaqsSection.astro';
 import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
 import { resolveLocale, SUPPORTED_LOCALES, getLocaleSwitchUrls } from '../../lib/i18n/routing';
+import { t } from '../../lib/i18n/t';
+import { homeFaqs } from '../../lib/content/homeFaqs';
 
 export function getStaticPaths() {
     return SUPPORTED_LOCALES.map((locale) => ({ params: { locale } }));
@@ -33,6 +35,46 @@ const pageDescription =
     locale === 'fr'
         ? 'Données et perspectives sur la façon dont les Canadiens utilisent la technologie, le contenu et les médias.'
         : 'Data and insights on how Canadians use technology, content, and media.';
+
+const siteRoot = toAbsoluteUrl(Astro.site, base);
+const organizationId = `${siteRoot}#organization`;
+const websiteId = `${siteRoot}#website`;
+const logoUrl = toAbsoluteUrl(Astro.site, `${base}images/mtm-logo.svg`);
+const linkedInUrl = 'https://www.linkedin.com/company/media-technology-monitor/';
+
+const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: 'MTM',
+    url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
+    logo: logoUrl,
+    description: pageDescription,
+    sameAs: [linkedInUrl],
+};
+
+const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': websiteId,
+    name: 'MTM',
+    url: siteRoot,
+    inLanguage: ['en-CA', 'fr-CA'],
+    publisher: { '@id': organizationId },
+};
+
+const faqPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: homeFaqs.map((faq) => ({
+        '@type': 'Question',
+        name: t(copy, faq.questionKey, locale, faq.questionFallback),
+        acceptedAnswer: {
+            '@type': 'Answer',
+            text: t(copy, faq.answerKey, locale, faq.answerFallback),
+        },
+    })),
+};
 ---
 
 <Layout
@@ -70,13 +112,10 @@ const pageDescription =
         <script
             is:inline
             type="application/ld+json"
-            set:html={JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'Organization',
-                name: 'MTM',
-                url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
-            })}
+            set:html={JSON.stringify(organizationJsonLd)}
         />
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(faqPageJsonLd)} />
     </Fragment>
 
     <Fragment slot="scripts">

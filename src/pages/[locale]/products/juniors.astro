@@ -94,6 +94,20 @@ const pageDescription =
                 url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
             })}
         />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Service',
+                name: 'MTM Juniors',
+                url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
+                description: pageDescription,
+                provider: { '@id': `${toAbsoluteUrl(Astro.site, base)}#organization` },
+                areaServed: { '@type': 'Country', name: 'Canada' },
+                serviceType: 'Media and technology research data',
+            })}
+        />
     </Fragment>
 
     <Fragment slot="scripts">
