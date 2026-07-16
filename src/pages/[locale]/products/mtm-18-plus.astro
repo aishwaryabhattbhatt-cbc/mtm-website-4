@@ -34,7 +34,10 @@ const localeSwitchUrls = {
     fr: `${base}fr/products/mtm-18-plus/`,
 };
 
-const pageTitle = locale === 'fr' ? 'MTM | MTM 18+' : 'MTM | MTM 18+';
+const pageTitle =
+    locale === 'fr'
+        ? 'Données médiatiques des adultes canadiens | MTM 18+'
+        : 'Canadian Adult Media & Technology Data | MTM 18+';
 const pageDescription =
     locale === 'fr'
         ? 'Données sur les habitudes médiatiques et technologiques des Canadiens de 18 ans et plus.'
@@ -75,6 +78,8 @@ const pageDescription =
             locale={locale}
             copy={copy}
             providerLogoSrc={`${base}images/products/mtm-18-plus/forum_research_logo.png`}
+            dataAsOfEn="Data released twice yearly — Fall wave in February, Spring wave in July."
+            dataAsOfFr="Données publiées deux fois par année — vague d'automne en février, vague de printemps en juillet."
         />
 
         <Mtm18PlusExploreMoreSection locale={locale} copy={copy} />

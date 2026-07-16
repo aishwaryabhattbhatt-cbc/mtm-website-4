@@ -17,7 +17,9 @@ const base = import.meta.env.BASE_URL;
 const localeSwitchUrls = getLocaleSwitchUrls(base, 'about-us');
 const isFrench = locale === 'fr';
 
-const pageTitle = isFrench ? 'MTM | À propos' : 'MTM | About Us';
+const pageTitle = isFrench
+    ? 'À propos de MTM | Media Technology Monitor'
+    : 'About MTM | Media Technology Monitor';
 const pageDescription = isFrench
     ? 'Le Media Technology Monitor (MTM) est une initiative de recherche de CBC/Radio-Canada qui mesure les habitudes médiatiques et technologiques des Canadiens.'
     : 'Media Technology Monitor (MTM) is a CBC/Radio-Canada research initiative measuring how Canadians use media and technology.';
