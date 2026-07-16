@@ -11,9 +11,19 @@ interface Props {
     copy: CMSDictionary;
     showComposition?: boolean;
     providerLogoSrc?: string;
+    dataAsOfEn?: string;
+    dataAsOfFr?: string;
 }
 
-const { locale, copy, showComposition = true, providerLogoSrc } = Astro.props as Props;
+const {
+    locale,
+    copy,
+    showComposition = true,
+    providerLogoSrc,
+    dataAsOfEn,
+    dataAsOfFr,
+} = Astro.props as Props;
+const dataAsOf = locale === 'fr' ? dataAsOfFr : dataAsOfEn;
 const base = import.meta.env.BASE_URL;
 
 const surveyStats = [
@@ -103,6 +113,7 @@ const sampleStats = [
         >
             {t(copy, 'methodology_description', locale, '')}
         </p>
+        {dataAsOf && <p class="text-body-p3-small product-methodology-freshness">{dataAsOf}</p>}
     </div>
 
     <div class="product-methodology-cards">
@@ -168,6 +179,11 @@ const sampleStats = [
 
     .product-methodology-description {
         color: var(--text-primary);
+        margin: 0;
+    }
+
+    .product-methodology-freshness {
+        color: var(--text-disabled);
         margin: 0;
     }
 
