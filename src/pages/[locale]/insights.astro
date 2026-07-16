@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { toAbsoluteUrl } from '../../lib/i18n/routing';
+import { buildBreadcrumbList } from '../../lib/content/breadcrumbs';
 import Navbar from '../../components/shared/Navbar.astro';
 import InsightsHeroSection from '../../components/insights/InsightsHeroSection.astro';
 import InsightsFeaturedReportCard from '../../components/insights/InsightsFeaturedReportCard.astro';
@@ -94,6 +95,17 @@ const pageDescription =
                 name: pageTitle,
                 url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
             })}
+        />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(
+                buildBreadcrumbList(
+                    toAbsoluteUrl(Astro.site, base),
+                    'Insights',
+                    toAbsoluteUrl(Astro.site, localeSwitchUrls[locale])
+                )
+            )}
         />
     </Fragment>
 

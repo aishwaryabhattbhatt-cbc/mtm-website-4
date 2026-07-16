@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { toAbsoluteUrl } from '../../../lib/i18n/routing';
+import { buildBreadcrumbList } from '../../../lib/content/breadcrumbs';
 import Navbar from '../../../components/shared/Navbar.astro';
 import SolutionsHeroSection from '../../../components/solutions/SolutionsHeroSection.astro';
 import SolutionsTrustedBySection from '../../../components/solutions/SolutionsTrustedBySection.astro';
@@ -155,6 +156,17 @@ const trustedByLogos = [
                 audience: { '@type': 'BusinessAudience', audienceType: 'Educational institutions' },
                 areaServed: { '@type': 'Country', name: 'Canada' },
             })}
+        />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(
+                buildBreadcrumbList(
+                    toAbsoluteUrl(Astro.site, base),
+                    'Education',
+                    toAbsoluteUrl(Astro.site, localeSwitchUrls[locale])
+                )
+            )}
         />
     </Fragment>
 
