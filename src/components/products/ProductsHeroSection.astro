@@ -10,15 +10,11 @@ interface Props {
     heroImageSrc?: string;
     heroIconSrc?: string;
     heroIconAlt?: string;
-    dataAsOfEn?: string;
-    dataAsOfFr?: string;
 }
 
-const { locale, copy, ctaHref, heroImageSrc, heroIconSrc, heroIconAlt, dataAsOfEn, dataAsOfFr } =
-    Astro.props as Props;
+const { locale, copy, ctaHref, heroImageSrc, heroIconSrc, heroIconAlt } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner.webp`;
-const dataAsOf = locale === 'fr' ? dataAsOfFr : dataAsOfEn;
 ---
 
 <section class="products-hero-section">
@@ -53,11 +49,6 @@ const dataAsOf = locale === 'fr' ? dataAsOfFr : dataAsOfEn;
                 )
             }
         </p>
-        {
-            dataAsOf && (
-                <span class="products-hero-freshness-pill text-body-p3-small">{dataAsOf}</span>
-            )
-        }
         <Button variant="primary" size="lg" href={ctaHref} data-copy-key="hero_cta">
             {t(copy, 'hero_cta', locale, 'REQUEST A DEMO')}
         </Button>
@@ -136,15 +127,6 @@ const dataAsOf = locale === 'fr' ? dataAsOfFr : dataAsOfEn;
         max-width: 61.25rem;
         color: var(--text-primary);
         margin: 0;
-    }
-
-    .products-hero-freshness-pill {
-        display: inline-flex;
-        background: var(--surface-white);
-        border: var(--stroke-1) solid var(--border-secondary);
-        border-radius: var(--radius-full);
-        padding: var(--space-1) var(--space-4);
-        color: var(--text-secondary);
     }
 
     @media (max-width: 1023px) {
