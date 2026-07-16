@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { toAbsoluteUrl } from '../../../lib/i18n/routing';
 import Navbar from '../../../components/shared/Navbar.astro';
 import ProductsHeroSection from '../../../components/products/ProductsHeroSection.astro';
 import JuniorsFeaturesSection from '../../../components/products/JuniorsFeaturesSection.astro';
@@ -90,7 +91,7 @@ const pageDescription =
                 '@context': 'https://schema.org',
                 '@type': 'WebPage',
                 name: pageTitle,
-                url: localeSwitchUrls[locale],
+                url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
             })}
         />
     </Fragment>

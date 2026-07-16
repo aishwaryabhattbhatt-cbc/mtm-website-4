@@ -2,6 +2,7 @@
 import '../styles/styles.css';
 import '../styles/design-system.css';
 import '../styles/icon-sizes.css';
+import { toAbsoluteUrl } from '../lib/i18n/routing';
 
 interface AlternateLinks {
     en?: string;
@@ -34,6 +35,8 @@ const resolvedCanonical =
 const socialImage = siteUrl ? new URL('images/mtm-favicon.svg', siteUrl).toString() : undefined;
 const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
 const ogLocale = locale === 'fr' ? 'fr_CA' : 'en_CA';
+const resolvedAlternateEn = alternates.en ? toAbsoluteUrl(Astro.site, alternates.en) : undefined;
+const resolvedAlternateFr = alternates.fr ? toAbsoluteUrl(Astro.site, alternates.fr) : undefined;
 ---
 
 <!doctype html>
@@ -49,9 +52,13 @@ const ogLocale = locale === 'fr' ? 'fr_CA' : 'en_CA';
         <title>{title}</title>
 
         {resolvedCanonical && <link rel="canonical" href={resolvedCanonical} />}
-        {alternates.en && <link rel="alternate" hreflang="en" href={alternates.en} />}
-        {alternates.fr && <link rel="alternate" hreflang="fr" href={alternates.fr} />}
-        {alternates.en && <link rel="alternate" hreflang="x-default" href={alternates.en} />}
+        {resolvedAlternateEn && <link rel="alternate" hreflang="en" href={resolvedAlternateEn} />}
+        {resolvedAlternateFr && <link rel="alternate" hreflang="fr" href={resolvedAlternateFr} />}
+        {
+            resolvedAlternateEn && (
+                <link rel="alternate" hreflang="x-default" href={resolvedAlternateEn} />
+            )
+        }
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />

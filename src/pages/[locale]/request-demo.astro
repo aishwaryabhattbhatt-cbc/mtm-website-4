@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { toAbsoluteUrl } from '../../lib/i18n/routing';
 import Navbar from '../../components/shared/Navbar.astro';
 import RequestDemoHeroSection from '../../components/request-demo/RequestDemoHeroSection.astro';
 import SolutionsTrustedBySection from '../../components/solutions/SolutionsTrustedBySection.astro';
@@ -259,7 +260,7 @@ const testimonials = [
                 '@context': 'https://schema.org',
                 '@type': 'WebPage',
                 name: pageTitle,
-                url: localeSwitchUrls[locale],
+                url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
             })}
         />
     </Fragment>
