@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/shared/Navbar.astro';
+import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
+import { getPageDictionary } from '../../lib/cms/getPageContent';
+import { getLocaleSwitchUrls } from '../../lib/i18n/routing';
+import type { Locale } from '../../lib/cms/types';
+
+export function getStaticPaths() {
+    return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
+}
+
+const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
+const copy = await getPageDictionary('home');
+const base = import.meta.env.BASE_URL;
+const localeSwitchUrls = getLocaleSwitchUrls(base, 'contact');
+
+const pageTitle = locale === 'fr' ? 'MTM | Contactez-nous' : 'MTM | Contact Us';
+const pageDescription =
+    locale === 'fr'
+        ? 'Communiquez avec l’équipe Media Technology Monitor (MTM).'
+        : 'Get in touch with the Media Technology Monitor (MTM) team.';
+---
+
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+    noindex={true}
+>
+    <main class="contact-page">
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+
+        <!-- Contact Us content to be added -->
+
+        <HomeFooterSection locale={locale} copy={copy} />
+    </main>
+</Layout>
+
+<style>
+    .contact-page {
+        width: 100%;
+    }
+</style>
