@@ -22,3 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# agent/AI tooling — not needed to build or deploy the site
+.agents/
+.claude/
+.planning/
+CLAUDE.md
+SKILLS.md
+REVIEW.md
+skills-lock.json
