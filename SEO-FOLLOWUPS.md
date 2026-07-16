@@ -23,6 +23,16 @@ These are literal placeholder strings shipping as real body copy. Fix via the Go
 - Consider wiring a real CMS page id for it once there's copy to manage (currently reuses the `home` dictionary just for Navbar/Footer strings — no dedicated tab)
 - About Us content is hardcoded directly in `about-us.astro` (en/fr inline), not sheet-driven — there's no CMS tab for it yet. Fine for now, but if it needs frequent editing later, consider giving it a real Sheet tab like every other page.
 
+## 3. No freshness/"as of" labels on headline stats
+
+Audit finding: headline stats (sample size, response rate) have no date attached, so a claim like "MTM found X%" has nothing anchoring when that was measured. Tried adding a pill (`"Fielded Feb 2026"`, etc.) to the product-page heroes, next to the description — pulled it back out because it read as clutter next to the CTA. Real dates already exist in copy if this gets revisited:
+
+- MTM 18+: no single date — released twice yearly (Fall wave in Feb, Spring wave in July), per the homepage FAQ
+- Juniors: fielded Feb 2026 (`juniors.json` → `provider_description`)
+- Newcomers: fielded Summer 2025 (`newcomers.json` → `provider_description`)
+
+If picked up again, consider a quieter treatment than a hero pill — e.g. a small date inline within the `ProductMethodologySection` stat cards themselves rather than a standalone element competing with the CTA.
+
 ## Also noticed while in the footer (not yet fixed, adjacent to the above)
 
 - `src/components/home/HomeSolutions.astro` and `src/components/home/HomeFooterSection.astro` link to `/solutions/government-ngos/` — the real route is `/solutions/gov-ngos/`. This is a live broken link on the homepage and in the footer.
