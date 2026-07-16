@@ -34,7 +34,10 @@ const localeSwitchUrls = {
     fr: `${base}fr/products/newcomers/`,
 };
 
-const pageTitle = locale === 'fr' ? 'MTM | Nouveaux arrivants' : 'MTM | Newcomers';
+const pageTitle =
+    locale === 'fr'
+        ? 'Habitudes médiatiques des nouveaux arrivants | MTM'
+        : 'Newcomer Media & Technology Habits | MTM';
 const pageDescription =
     locale === 'fr'
         ? 'Données sur les habitudes médiatiques et technologiques des nouveaux arrivants au Canada.'
@@ -76,6 +79,8 @@ const pageDescription =
             locale={locale}
             copy={copy}
             showComposition={false}
+            dataAsOfEn="Fielded Summer 2025."
+            dataAsOfFr="Enquête menée à l'été 2025."
             providerLogoSrc={`${base}images/products/mtm-newcomers/leger_logo.png`}
         />
 

@@ -34,7 +34,10 @@ const localeSwitchUrls = {
     fr: `${base}fr/products/juniors/`,
 };
 
-const pageTitle = locale === 'fr' ? 'MTM | Juniors' : 'MTM | Juniors';
+const pageTitle =
+    locale === 'fr'
+        ? 'Habitudes médiatiques des jeunes (2 à 17 ans) | MTM'
+        : "Kids' Media & Technology Habits (Ages 2-17) | MTM";
 const pageDescription =
     locale === 'fr'
         ? 'Données sur les habitudes médiatiques et technologiques des jeunes Canadiens.'
@@ -76,6 +79,8 @@ const pageDescription =
             locale={locale}
             copy={copy}
             showComposition={false}
+            dataAsOfEn="Fielded February 2026."
+            dataAsOfFr="Enquête menée en février 2026."
             providerLogoSrc={`${base}images/products/mtm-junior/adhoc_research_logo.png`}
         />
 
