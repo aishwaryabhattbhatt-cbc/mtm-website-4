@@ -393,32 +393,46 @@ class LiquidGradientEffect {
         vec2 uv = (vUv - rectMin) / uImageScale;
         vec3 color = vec3(1.0);
 
+        // Coverage tracks real content vs. empty/transparent source pixels.
+        // Defaults to 1.0 (opaque) so the tool still shows its placeholder
+        // dot pattern before any image is uploaded.
+        float coverage = 1.0;
+
         bool inRect = uv.x >= 0.0 && uv.x <= 1.0 && uv.y >= 0.0 && uv.y <= 1.0;
 
-        // Contain mode: keep full image visible with white bars around.
-        // Cover mode: fill viewport and crop overflow.
-        if (uHasImage > 0.5 && (inRect || uFitContain < 0.5)) {
-          vec2 sampleUv = uv;
-          if (uFitContain < 0.5) {
-            sampleUv = clamp(sampleUv, 0.0, 1.0);
-          }
-          vec4 tex = texture2D(uImage, sampleUv);
-          color = mix(vec3(1.0), tex.rgb, tex.a);
+        if (uHasImage > 0.5) {
+          // Contain mode: keep full image visible, letterbox area outside
+          // the image bounds has no content. Cover mode: fill viewport and
+          // crop overflow, always sampling the image.
+          if (inRect || uFitContain < 0.5) {
+            vec2 sampleUv = uv;
+            if (uFitContain < 0.5) {
+              sampleUv = clamp(sampleUv, 0.0, 1.0);
+            }
+            vec4 tex = texture2D(uImage, sampleUv);
+            color = mix(vec3(1.0), tex.rgb, tex.a);
 
-          // For non-transparent assets (e.g. JPG/PNG with white bg),
-          // fade near-white pixels to white as if they were transparent.
-          float lumaTex = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
-          float maxC = max(tex.r, max(tex.g, tex.b));
-          float minC = min(tex.r, min(tex.g, tex.b));
-          float sat = maxC - minC;
-          float whiteByLuma = smoothstep(
-            uInputWhiteThreshold - uInputWhiteFeather,
-            uInputWhiteThreshold + uInputWhiteFeather,
-            lumaTex
-          );
-          float lowSatMask = 1.0 - smoothstep(uInputWhiteSatMax, uInputWhiteSatMax + 0.05, sat);
-          float bgMask = whiteByLuma * lowSatMask;
-          color = mix(color, vec3(1.0), bgMask);
+            // For non-transparent assets (e.g. JPG/PNG with white bg),
+            // fade near-white pixels to white as if they were transparent.
+            float lumaTex = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
+            float maxC = max(tex.r, max(tex.g, tex.b));
+            float minC = min(tex.r, min(tex.g, tex.b));
+            float sat = maxC - minC;
+            float whiteByLuma = smoothstep(
+              uInputWhiteThreshold - uInputWhiteFeather,
+              uInputWhiteThreshold + uInputWhiteFeather,
+              lumaTex
+            );
+            float lowSatMask = 1.0 - smoothstep(uInputWhiteSatMax, uInputWhiteSatMax + 0.05, sat);
+            float bgMask = whiteByLuma * lowSatMask;
+            color = mix(color, vec3(1.0), bgMask);
+
+            // Real content is the source pixel's own alpha, minus any
+            // near-white pixels just faded to background above.
+            coverage = tex.a * (1.0 - bgMask);
+          } else {
+            coverage = 0.0;
+          }
         }
 
         float luma = dot(color, vec3(0.299, 0.587, 0.114));
@@ -426,7 +440,7 @@ class LiquidGradientEffect {
         color *= uInputBrightness;
         color = clamp(color, 0.0, 1.0);
 
-        gl_FragColor = vec4(color, 1.0);
+        gl_FragColor = vec4(color, coverage);
       }
     `;
 
@@ -460,7 +474,9 @@ class LiquidGradientEffect {
 
         // Sample source at the centre of this cell
         vec2 cellCenterUV = clamp((cellCenter * cellPx + 0.5) / uResolution, 0.0, 1.0);
-        vec3 cellColor    = texture2D(uSource, cellCenterUV).rgb;
+        vec4 srcSample    = texture2D(uSource, cellCenterUV);
+        vec3 cellColor    = srcSample.rgb;
+        float coverage    = srcSample.a;
 
         // Luminance -> tone curve
         float lum = dot(cellColor, vec3(0.299, 0.587, 0.114));
@@ -475,6 +491,11 @@ class LiquidGradientEffect {
         float edge  = 1.0 / cellPx;
         float alpha = 1.0 - smoothstep(radius - edge, radius + edge, dist);
         if (uInvert > 0.5) alpha = 1.0 - alpha;
+
+        // Cells with no real source content (transparent PNG regions,
+        // letterboxed areas) fall back to the background color/opacity
+        // instead of drawing a dot derived from the placeholder white fill.
+        alpha *= coverage;
 
         vec3 finalColor  = mix(uBgColor, cellColor, alpha);
         float finalAlpha = mix(uBgAlpha, 1.0, alpha);
@@ -1287,17 +1308,8 @@ class LiquidGradientEffect {
       // Capture the live canvas — preserveDrawingBuffer:true guarantees pixels are
       // still available after the last frame. This matches exactly what the user sees,
       // including the correct DPR, cell density, image scale, and fit mode.
-      // Composite over white to match the CSS background: #fff on .pattern-tool-canvas,
-      // which shows through the alpha-transparent WebGL canvas on screen.
-      const src = this.renderer.domElement;
-      const out = document.createElement('canvas');
-      out.width  = src.width;
-      out.height = src.height;
-      const ctx = out.getContext('2d');
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, out.width, out.height);
-      ctx.drawImage(src, 0, 0);
-      out.toBlob((blob) => {
+      // Export the WebGL canvas directly so the alpha channel (uBgAlpha) is preserved.
+      this.renderer.domElement.toBlob((blob) => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
