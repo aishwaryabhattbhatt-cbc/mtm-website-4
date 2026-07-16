@@ -178,7 +178,7 @@ class LiquidGradientEffect {
       "lumThreshold": 0,
       "invertDots": true,
       "invert": false,
-        "bgColor": { "r": 0.741, "g": 0.741, "b": 0.741 },
+        "bgColor": { "r": 1.0, "g": 1.0, "b": 1.0 },
         "bgAlpha": 0.0,
       "showGlyphDither": true,
       "showMotionGuides": false
