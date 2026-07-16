@@ -6,7 +6,7 @@
   },
   "hero_title": {
     "key": "hero_title",
-    "en": "",
+    "en": "Win the pitch. Validate the plan.",
     "fr": ""
   },
   "hero_description": {
@@ -186,7 +186,7 @@
   },
   "usecases_title": {
     "key": "usecases_title",
-    "en": "What you can do with MTM",
+    "en": "MTM in Action for Ad Agencies",
     "fr": ""
   },
   "usecases_description": {
