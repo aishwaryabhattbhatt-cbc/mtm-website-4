@@ -1,0 +1,72 @@
+{
+  "success_title": {
+    "key": "success_title",
+    "en": "Thank You!",
+    "fr": ""
+  },
+  "success_description": {
+    "key": "success_description",
+    "en": "Your request has been submitted. One of our experts will be in touch with you shortly to schedule your demo.",
+    "fr": ""
+  },
+  "explore_title": {
+    "key": "explore_title",
+    "en": "Continue Exploring",
+    "fr": ""
+  },
+  "explore_description": {
+    "key": "explore_description",
+    "en": "Want to learn more about how the MTM tools and products can help to enrich your next project and amplify your outreach? Check out some of the short videos below.",
+    "fr": ""
+  },
+  "explore_dat_label": {
+    "key": "explore_dat_label",
+    "en": "Data Analysis Tool",
+    "fr": ""
+  },
+  "explore_dat_description": {
+    "key": "explore_dat_description",
+    "en": "Personalize your impact with data that's tailor made for you. Leverage thousands of variables across multiple years of data in this easy-to-use drag and drop tool.",
+    "fr": ""
+  },
+  "explore_trending_label": {
+    "key": "explore_trending_label",
+    "en": "Trending Tool",
+    "fr": ""
+  },
+  "explore_trending_description": {
+    "key": "explore_trending_description",
+    "en": "Understand the evolution of your business and where your clients interests are heading with the user-friendly Trending Tool. Filter over 25 years data to better understand where media consumption and technology adoption is heading.",
+    "fr": ""
+  },
+  "explore_census_label": {
+    "key": "explore_census_label",
+    "en": "Census",
+    "fr": ""
+  },
+  "explore_census_description": {
+    "key": "explore_census_description",
+    "en": "Explore your target audience through the unrivaled precision of population census data. This product brings complexity into focus with a state-of-the-art tool that marries the depth of census data with the simplicity of the MTM tools. A powerful pairing.",
+    "fr": ""
+  },
+  "explore_watch_video": {
+    "key": "explore_watch_video",
+    "en": "Watch Video",
+    "fr": ""
+  },
+  "explore_dat_cta": {
+    "key": "explore_dat_cta",
+    "en": "Go to Analysis Tool",
+    "fr": ""
+  },
+  "explore_trending_cta": {
+    "key": "explore_trending_cta",
+    "en": "Go to Analysis Tool",
+    "fr": ""
+  },
+  "explore_census_cta": {
+    "key": "explore_census_cta",
+    "en": "Go to Census",
+    "fr": ""
+  }
+}

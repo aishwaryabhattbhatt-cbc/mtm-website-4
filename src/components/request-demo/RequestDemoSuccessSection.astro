@@ -1,0 +1,119 @@
+---
+// src/components/request-demo/RequestDemoSuccessSection.astro
+// Figma node: 89:61406 — "Request a Demo success"
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="request-demo-success">
+    <div class="request-demo-success__pattern" aria-hidden="true">
+        <img
+            src={`${base}images/request-demo/hero-pattern.png`}
+            alt=""
+            class="request-demo-success__pattern-img"
+        />
+    </div>
+
+    <div class="request-demo-success__card">
+        <div class="request-demo-success__content">
+            <h2 data-copy-key="success_title">
+                {t(copy, 'success_title', locale, 'Thank You!')}
+            </h2>
+
+            <p
+                class="text-body-p1 request-demo-success__description"
+                data-copy-key="success_description"
+            >
+                {
+                    t(
+                        copy,
+                        'success_description',
+                        locale,
+                        'Your request has been submitted. One of our experts will be in touch with you shortly to schedule your demo.'
+                    )
+                }
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .request-demo-success {
+        position: relative;
+        width: 100%;
+        overflow: clip;
+        padding: var(--section-pad-block-lg) var(--content-margin-inline);
+        margin-top: var(--navbar-height);
+        background: var(--surface-white);
+    }
+
+    .request-demo-success__pattern {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .request-demo-success__pattern-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .request-demo-success__card {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 90rem);
+        margin: 0 auto;
+        padding: var(--space-12) var(--space-12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--layout-card-radius);
+        background: rgba(255, 255, 255, 0.39);
+        border: var(--stroke-1) solid rgba(255, 255, 255, 0.37);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-beautiful);
+    }
+
+    .request-demo-success__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--space-4);
+        max-width: 32rem;
+    }
+
+    .request-demo-success__content h2 {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .request-demo-success__description {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    @media (max-width: 1023px) {
+        .request-demo-success {
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .request-demo-success__card {
+            padding: var(--space-8) var(--space-5);
+        }
+    }
+</style>

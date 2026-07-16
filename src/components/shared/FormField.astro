@@ -25,6 +25,7 @@ interface Props {
     class?: string;
     ariaLabel?: string;
     emailValidation?: 'live' | 'submit-only' | 'none';
+    labelColor?: 'secondary' | 'primary';
 }
 
 const {
@@ -44,6 +45,7 @@ const {
     class: className,
     ariaLabel,
     emailValidation = 'live',
+    labelColor = 'secondary',
 } = Astro.props as Props;
 
 const fieldId = id || `${name}-${Math.random().toString(36).substr(2, 9)}`;
@@ -67,7 +69,14 @@ const emailErrorMessage =
 <div class={`form-field form-field--${variant} ${className || ''}`}>
     {
         showLabel && (
-            <label for={fieldId} class="form-field__label text-body-p3">
+            <label
+                for={fieldId}
+                class:list={[
+                    'form-field__label',
+                    'text-body-p3',
+                    labelColor === 'primary' && 'form-field__label--primary',
+                ]}
+            >
                 {resolvedLabel}
                 {required && <span class="form-field__required">*</span>}
             </label>
@@ -144,6 +153,10 @@ const emailErrorMessage =
         margin: 0;
         color: var(--neutral-grey-1);
         font-weight: 400;
+    }
+
+    .form-field__label--primary {
+        color: var(--text-primary);
     }
 
     .form-field__required {

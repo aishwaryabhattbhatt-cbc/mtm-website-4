@@ -1,0 +1,272 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/shared/Navbar.astro';
+import RequestDemoHeroSection from '../../components/request-demo/RequestDemoHeroSection.astro';
+import SolutionsTrustedBySection from '../../components/solutions/SolutionsTrustedBySection.astro';
+import SolutionsMediaTestimonialsSection from '../../components/solutions/SolutionsMediaTestimonialsSection.astro';
+import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
+import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
+import type { Locale } from '../../lib/cms/types';
+
+export function getStaticPaths() {
+    return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
+}
+
+const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
+const pageId = 'request-demo';
+const copy = await getPageDictionary(pageId);
+const cmsConfig = getRuntimeCMSConfig(pageId);
+const base = import.meta.env.BASE_URL;
+const resolvedCmsCsvUrl =
+    cmsConfig.csvUrl ??
+    (cmsConfig.sheetId && cmsConfig.gid
+        ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
+        : '');
+
+const localeSwitchUrls: Record<Locale, string> = {
+    en: `${base}en/request-demo/`,
+    fr: `${base}fr/request-demo/`,
+};
+
+const pageTitle = locale === 'fr' ? 'MTM | Demander une démo' : 'MTM | Request a Demo';
+const pageDescription =
+    locale === 'fr'
+        ? 'Réservez une démo avec un expert MTM pour découvrir nos produits et outils.'
+        : 'Book a demo with an MTM expert to see our products and tools in action.';
+
+const mediaTrustedByLogos = [
+    { src: `${base}images/home/solutions/logos/media/quebecor.svg`, alt: 'Quebecor' },
+    { src: `${base}images/home/solutions/logos/media/ami-tv.svg`, alt: 'Accessible Media Inc.' },
+    { src: `${base}images/home/solutions/logos/media/videotron.svg`, alt: 'Videotron' },
+    { src: `${base}images/home/solutions/logos/media/rogers.svg`, alt: 'Rogers' },
+    { src: `${base}images/home/solutions/logos/media/bell.svg`, alt: 'Bell' },
+    { src: `${base}images/home/solutions/logos/media/telus.svg`, alt: 'Telus' },
+    { src: `${base}images/home/solutions/logos/media/tva.svg`, alt: 'TVA' },
+    { src: `${base}images/home/solutions/logos/media/tvo.svg`, alt: 'TVO' },
+    { src: `${base}images/home/solutions/logos/media/tv5.svg`, alt: 'TV5' },
+    { src: `${base}images/home/solutions/logos/media/tele-quebec.svg`, alt: 'Télé-Québec' },
+    { src: `${base}images/home/solutions/logos/media/tfo.svg`, alt: 'TFO' },
+    { src: `${base}images/home/solutions/logos/media/abc.svg`, alt: 'ABC' },
+    { src: `${base}images/home/solutions/logos/media/bbc.svg`, alt: 'BBC' },
+    {
+        src: `${base}images/home/solutions/logos/media/wildbrain-television.svg`,
+        alt: 'WildBrain Television',
+    },
+    { src: `${base}images/home/solutions/logos/media/aqpm.svg`, alt: 'AQPM' },
+    { src: `${base}images/home/solutions/logos/media/nexxen.svg`, alt: 'Nexxen' },
+    { src: `${base}images/home/solutions/logos/media/pelmorex.svg`, alt: 'Pelmorex' },
+    { src: `${base}images/home/solutions/logos/technology/samsung.svg`, alt: 'Samsung' },
+];
+
+const advertisingTrustedByLogos = [
+    { src: `${base}images/home/solutions/logos/advertising/cosette.svg`, alt: 'Cossette' },
+    {
+        src: `${base}images/home/solutions/logos/advertising/essencemediacom.svg`,
+        alt: 'EssenceMediacom',
+    },
+    { src: `${base}images/home/solutions/logos/advertising/group-m.svg`, alt: 'GroupM' },
+    {
+        src: `${base}images/home/solutions/logos/advertising/hearts-and-science.png`,
+        alt: 'Hearts & Science',
+    },
+    { src: `${base}images/home/solutions/logos/advertising/initiative.png`, alt: 'Initiative' },
+    { src: `${base}images/home/solutions/logos/advertising/jungle.svg`, alt: 'Jungle' },
+    {
+        src: `${base}images/home/solutions/logos/advertising/media-experts.svg`,
+        alt: 'Media Experts',
+    },
+    { src: `${base}images/home/solutions/logos/advertising/mindshare.svg`, alt: 'Mindshare' },
+    { src: `${base}images/home/solutions/logos/advertising/omnicom.svg`, alt: 'Omnicom' },
+    { src: `${base}images/home/solutions/logos/advertising/phd.svg`, alt: 'PHD' },
+    {
+        src: `${base}images/home/solutions/logos/advertising/time-space-media.png`,
+        alt: 'Time & Space',
+    },
+    { src: `${base}images/home/solutions/logos/advertising/touche.SVG`, alt: 'Touché!' },
+    { src: `${base}images/home/solutions/logos/advertising/um-worldwide.svg`, alt: 'UM Worldwide' },
+];
+
+const industryTrustedByLogos = [
+    {
+        src: `${base}images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg`,
+        alt: 'European Broadcasting Union',
+    },
+    {
+        src: `${base}images/home/solutions/logos/industry/Shaw-Rocket-Fund.svg`,
+        alt: 'Shaw Rocket Fund',
+    },
+    { src: `${base}images/home/solutions/logos/industry/cmf-blk.svg`, alt: 'Canada Media Fund' },
+    {
+        src: `${base}images/home/solutions/logos/industry/nfb.svg`,
+        alt: 'National Film Board of Canada',
+    },
+    { src: `${base}images/home/solutions/logos/industry/numeris.svg`, alt: 'Numeris' },
+];
+
+const educationTrustedByLogos = [
+    { src: `${base}images/home/solutions/logos/education/HEC_Montreal.svg`, alt: 'HEC Montréal' },
+    {
+        src: `${base}images/home/solutions/logos/education/Mount-Royal-University.svg`,
+        alt: 'Mount Royal University',
+    },
+    {
+        src: `${base}images/home/solutions/logos/education/humber-polytechnic.svg`,
+        alt: 'Humber Polytechnic',
+    },
+    {
+        src: `${base}images/home/solutions/logos/education/toronto-metro-univerity-logo.svg`,
+        alt: 'Toronto Metropolitan University',
+    },
+    {
+        src: `${base}images/home/solutions/logos/education/uOttawa.svg`,
+        alt: 'University of Ottawa',
+    },
+    {
+        src: `${base}images/home/solutions/logos/education/universite-de-montreal.svg`,
+        alt: 'Université de Montréal',
+    },
+    {
+        src: `${base}images/home/solutions/logos/education/university-of-manitoba.svg`,
+        alt: 'University of Manitoba',
+    },
+];
+
+const govNgosTrustedByLogos = [
+    { src: `${base}images/home/solutions/logos/gov-ngo/canada.svg`, alt: 'Government of Canada' },
+    { src: `${base}images/home/solutions/logos/gov-ngo/crtc.svg`, alt: 'CRTC' },
+    {
+        src: `${base}images/home/solutions/logos/gov-ngo/first-nation-market.svg`,
+        alt: 'First Nations Market Housing Fund',
+    },
+    { src: `${base}images/home/solutions/logos/gov-ngo/quebec.svg`, alt: 'Québec' },
+    {
+        src: `${base}images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg`,
+        alt: 'Telefilm Canada',
+    },
+    {
+        src: `${base}images/home/solutions/logos/gov-ngo/R613-EN-RGB-Colour.svg`,
+        alt: 'Canadian Heritage',
+    },
+];
+
+const trustedByLogoSets = [
+    mediaTrustedByLogos,
+    advertisingTrustedByLogos,
+    industryTrustedByLogos,
+    govNgosTrustedByLogos,
+    educationTrustedByLogos,
+];
+
+const testimonials = [
+    {
+        logoSrc: `${base}images/home/solutions/logos/media/tvo.svg`,
+        logoAlt: 'TVO',
+        quoteKey: 'testimonial_1_quote',
+        quoteFallback:
+            'When it comes to technology ownership and usage in Canada, the MTM is THE go-to source of information. For our team, this resource is invaluable because it allows us to make informed decisions with confidence and stay one step ahead in an ever-changing media landscape. It is a fundamental tool for our strategic planning and innovation efforts.',
+        attributionKey: 'testimonial_1_attribution',
+        attributionFallback: 'Élise Roy-Pepin, The Weather Network',
+    },
+    {
+        logoSrc: `${base}images/home/solutions/logos/advertising/mindshare.svg`,
+        logoAlt: 'Mindshare',
+        quoteKey: 'testimonial_2_quote',
+        quoteFallback:
+            'MTM is a valuable resource for effective media planning and research for our clients. The comprehensive data, forecasting and frequent reports give us deep insight into Canadian audience behaviors and media trends.',
+        attributionKey: 'testimonial_2_attribution',
+        attributionFallback: 'Ryan Casey, Director, Media Operations - Time & Space Media',
+    },
+    {
+        logoSrc: `${base}images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg`,
+        logoAlt: 'European Broadcasting Union',
+        quoteKey: 'testimonial_3_quote',
+        quoteFallback:
+            "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
+        attributionKey: 'testimonial_3_attribution',
+        attributionFallback: 'Director of Audience Strategy',
+    },
+    {
+        logoSrc: `${base}images/home/solutions/logos/gov-ngo/crtc.svg`,
+        logoAlt: 'CRTC',
+        quoteKey: 'testimonial_5_quote',
+        quoteFallback:
+            "Thanks to our subscription to MTM Newcomers, we have access to newcomer data insights and their settlement and integration journey in Manitoba. We particularly appreciate seeing information that is not available through any other sources, like newcomers' use of media, devices, and newcomer knowledge of services available through our sector. This information helps our members ensure that their services are well adapted to the needs and characteristics of the newcomers they serve.",
+        attributionKey: 'testimonial_5_attribution',
+        attributionFallback: 'Valeria Castellanos,  Language Support and Program Manager - MANSO',
+    },
+    {
+        logoSrc: `${base}images/home/solutions/logos/education/uOttawa.svg`,
+        logoAlt: 'University of Ottawa',
+        quoteKey: 'testimonial_4_quote',
+        quoteFallback:
+            "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
+        attributionKey: 'testimonial_4_attribution',
+        attributionFallback: 'University student',
+    },
+];
+---
+
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+>
+    <main
+        data-locale={locale}
+        data-cms-page-id={pageId}
+        data-cms-csv-url={resolvedCmsCsvUrl}
+        data-cms-sheet-id={cmsConfig.sheetId ?? ''}
+        data-cms-tab-gid={cmsConfig.gid ?? ''}
+        data-cms-refresh-ms={String(cmsConfig.refreshMs)}
+    >
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+
+        <RequestDemoHeroSection locale={locale} copy={copy} />
+
+        <SolutionsTrustedBySection
+            locale={locale}
+            copy={copy}
+            logoSets={trustedByLogoSets}
+            rotationIntervalMs={45000}
+            topPadding={true}
+        />
+
+        <SolutionsMediaTestimonialsSection
+            locale={locale}
+            copy={copy}
+            base={base}
+            testimonials={testimonials}
+            rotationIntervalMs={45000}
+            topPadding={false}
+            showTitle={false}
+        />
+
+        <HomeFooterSection
+            locale={locale}
+            copy={copy}
+            showCta={false}
+            showNewsletter={false}
+            showBgLeftCenter={false}
+        />
+    </main>
+
+    <Fragment slot="head">
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebPage',
+                name: pageTitle,
+                url: localeSwitchUrls[locale],
+            })}
+        />
+    </Fragment>
+
+    <Fragment slot="scripts">
+        <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
+        ></script>
+        <script is:inline src={`${base}js/runtime/script.js`}></script>
+    </Fragment>
+</Layout>

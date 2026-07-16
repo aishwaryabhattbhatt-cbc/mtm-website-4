@@ -1,0 +1,506 @@
+---
+// src/components/request-demo/RequestDemoHeroSection.astro
+// Figma node: 82:57895 — "Request a Demo hero"
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+import Eyebrow from '../shared/Eyebrow.astro';
+import FormField from '../shared/FormField.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const expectItems = [
+    {
+        key: 'hero_expect_item_1',
+        fallback: 'Personalized walk-through of the tools, reports and services',
+    },
+    { key: 'hero_expect_item_2', fallback: 'Q & A to understand how the MTM can support you' },
+    { key: 'hero_expect_item_3', fallback: 'Expert advice on how MTM can fit in your workflow' },
+];
+
+const interestOptionRows = [
+    [
+        { key: 'hero_form_interest_mtm18', fallback: 'MTM 18+', value: 'mtm18' },
+        { key: 'hero_form_interest_junior', fallback: 'Junior', value: 'junior' },
+        { key: 'hero_form_interest_newcomer', fallback: 'Newcomer', value: 'newcomer' },
+    ],
+    [
+        { key: 'hero_form_interest_reports', fallback: 'Reports', value: 'reports' },
+        { key: 'hero_form_interest_tools', fallback: 'Tools', value: 'tools' },
+        { key: 'hero_form_interest_services', fallback: 'Services', value: 'services' },
+        { key: 'hero_form_interest_variables', fallback: 'Variables', value: 'variables' },
+    ],
+];
+---
+
+<section class="request-demo-hero">
+    <div class="request-demo-hero__pattern" aria-hidden="true">
+        <img
+            src={`${base}images/request-demo/hero-pattern.png`}
+            alt=""
+            class="request-demo-hero__pattern-img"
+        />
+    </div>
+
+    <div class="request-demo-hero__content">
+        <div class="request-demo-hero__text">
+            <h1 data-copy-key="hero_title">
+                {t(copy, 'hero_title', locale, 'Book A Demo Today!')}
+            </h1>
+
+            <p class="text-body-p1 request-demo-hero__description" data-copy-key="hero_description">
+                {
+                    t(
+                        copy,
+                        'hero_description',
+                        locale,
+                        'Interested to see what the MTM can do for you? Book a demo with one of our experts to walk you though the products and tools in more detail.'
+                    )
+                }
+            </p>
+
+            <div class="request-demo-hero__expect">
+                <Eyebrow>{t(copy, 'hero_expect_eyebrow', locale, 'What You Can Expect')}</Eyebrow>
+
+                <ul class="request-demo-hero__expect-list">
+                    {
+                        expectItems.map((item) => (
+                            <li class="request-demo-hero__expect-item text-body-p1">
+                                <span
+                                    class="request-demo-hero__bullet icon-xs"
+                                    aria-hidden="true"
+                                />
+                                {t(copy, item.key, locale, item.fallback)}
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="request-demo-hero__card">
+            <h2 class="request-demo-hero__card-title text-h4" data-copy-key="hero_form_title">
+                {t(copy, 'hero_form_title', locale, 'Talk to our experts')}
+            </h2>
+
+            <form
+                class="request-demo-hero__form"
+                aria-label="Request a demo"
+                data-submit-href={`${base}${locale}/request-demo-success/`}
+            >
+                <div class="request-demo-hero__row">
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="text"
+                        name="firstName"
+                        labelKey="hero_form_first_name_label"
+                        label="First Name"
+                        placeholderKey="hero_form_first_name_placeholder"
+                        placeholder="John"
+                        labelColor="primary"
+                        required
+                    />
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="text"
+                        name="lastName"
+                        labelKey="hero_form_last_name_label"
+                        label="Last Name"
+                        placeholderKey="hero_form_last_name_placeholder"
+                        placeholder="Doe"
+                        labelColor="primary"
+                        required
+                    />
+                </div>
+
+                <div class="request-demo-hero__row">
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="email"
+                        name="email"
+                        labelKey="hero_form_email_label"
+                        label="Work Email"
+                        placeholderKey="hero_form_email_placeholder"
+                        placeholder="john@workmail.com"
+                        emailValidation="none"
+                        labelColor="primary"
+                        required
+                    />
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="text"
+                        name="organisation"
+                        labelKey="hero_form_org_label"
+                        label="Organisation"
+                        placeholderKey="hero_form_org_placeholder"
+                        placeholder="Organisation Name"
+                        labelColor="primary"
+                        required
+                    />
+                </div>
+
+                <div class="request-demo-hero__group">
+                    <p
+                        class="text-body-p3 request-demo-hero__group-label"
+                        id="request-demo-language-label"
+                        data-copy-key="hero_form_language_label"
+                    >
+                        {t(copy, 'hero_form_language_label', locale, 'Language Preference')}
+                    </p>
+                    <div
+                        class="request-demo-hero__choice-grid"
+                        role="radiogroup"
+                        aria-labelledby="request-demo-language-label"
+                    >
+                        <label class="request-demo-hero__choice text-body-p3">
+                            <input type="radio" name="language" value="en" checked />
+                            {t(copy, 'hero_form_language_en', locale, 'English')}
+                        </label>
+                        <label class="request-demo-hero__choice text-body-p3">
+                            <input type="radio" name="language" value="fr" />
+                            {t(copy, 'hero_form_language_fr', locale, 'French')}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="request-demo-hero__group">
+                    <p
+                        class="text-body-p3 request-demo-hero__group-label"
+                        id="request-demo-interest-label"
+                        data-copy-key="hero_form_interest_label"
+                    >
+                        {t(copy, 'hero_form_interest_label', locale, 'What are you interested in?')}
+                    </p>
+                    <div
+                        class="request-demo-hero__choice-grid"
+                        role="group"
+                        aria-labelledby="request-demo-interest-label"
+                    >
+                        {
+                            interestOptionRows.map((row, rowIndex) => (
+                                <div class="request-demo-hero__choice-row">
+                                    {row.map((option, colIndex) => (
+                                        <label
+                                            class:list={[
+                                                'request-demo-hero__choice',
+                                                'text-body-p3',
+                                                rowIndex > 0 &&
+                                                    colIndex === 0 &&
+                                                    'request-demo-hero__choice--row-start',
+                                            ]}
+                                        >
+                                            <input
+                                                type="checkbox"
+                                                name="interests"
+                                                value={option.value}
+                                            />
+                                            {t(copy, option.key, locale, option.fallback)}
+                                        </label>
+                                    ))}
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <div class="request-demo-hero__message">
+                        <p
+                            class="text-body-p3 request-demo-hero__message-label"
+                            data-copy-key="hero_form_message_label"
+                        >
+                            {
+                                t(
+                                    copy,
+                                    'hero_form_message_label',
+                                    locale,
+                                    'Something else? Please enter below.'
+                                )
+                            }
+                        </p>
+                        <FormField
+                            locale={locale}
+                            copy={copy}
+                            variant="field-only"
+                            type="text"
+                            name="message"
+                            placeholderKey="hero_form_message_placeholder"
+                            placeholder="Write your message here..."
+                        />
+                    </div>
+                </div>
+
+                <label class="request-demo-hero__choice request-demo-hero__newsletter text-body-p3">
+                    <input type="checkbox" name="newsletter" checked />
+                    {t(copy, 'hero_form_newsletter_label', locale, 'Subscribe to our newsletter')}
+                </label>
+
+                <Button variant="primary" type="submit" class="request-demo-hero__submit">
+                    {t(copy, 'hero_form_submit', locale, 'Submit')}
+                </Button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    .request-demo-hero {
+        position: relative;
+        width: 100%;
+        overflow: clip;
+        background: var(--surface-white);
+        margin-top: var(--navbar-height);
+        padding: var(--section-pad-block) var(--content-margin-inline);
+    }
+
+    .request-demo-hero__pattern {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .request-demo-hero__pattern-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .request-demo-hero__content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        gap: var(--space-11);
+        max-width: 90rem;
+        margin: 0 auto;
+    }
+
+    .request-demo-hero__text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+        max-width: 34rem;
+    }
+
+    .request-demo-hero__text h1 {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .request-demo-hero__description {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .request-demo-hero__expect {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-7);
+        margin-top: var(--space-6);
+    }
+
+    .request-demo-hero__expect-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .request-demo-hero__expect-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-4);
+        color: var(--text-primary);
+    }
+
+    .request-demo-hero__bullet {
+        flex-shrink: 0;
+        margin-top: var(--space-1);
+        border-radius: var(--radius-full);
+        background: var(--badge-mtm-18);
+    }
+
+    .request-demo-hero__card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        width: 100%;
+        max-width: 37.5rem;
+        margin-left: auto;
+        padding: var(--space-9);
+        border-radius: var(--radius-m);
+        background: var(--surface-blue);
+        box-shadow: var(--shadow-card);
+    }
+
+    .request-demo-hero__card-title {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .request-demo-hero__form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+    }
+
+    .request-demo-hero__row {
+        display: flex;
+        gap: var(--space-5);
+    }
+
+    .request-demo-hero__row > :global(.form-field) {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .request-demo-hero__group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .request-demo-hero__group-label {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .request-demo-hero__choice-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: var(--space-6);
+        row-gap: var(--space-3);
+        align-items: center;
+    }
+
+    .request-demo-hero__choice-row {
+        display: contents;
+    }
+
+    .request-demo-hero__choice--row-start {
+        grid-column: 1;
+    }
+
+    .request-demo-hero__choice {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        color: var(--text-primary);
+        cursor: pointer;
+    }
+
+    .request-demo-hero__choice input {
+        width: var(--icon-s);
+        height: var(--icon-s);
+        flex-shrink: 0;
+        accent-color: var(--neutral-black);
+        cursor: pointer;
+    }
+
+    .request-demo-hero__message {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        margin-top: var(--space-5);
+    }
+
+    .request-demo-hero__message-label {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .request-demo-hero__newsletter {
+        color: var(--text-primary);
+    }
+
+    .request-demo-hero__submit {
+        align-self: flex-start;
+    }
+
+    @media (max-width: 1023px) {
+        .request-demo-hero {
+            margin-top: 0;
+        }
+
+        .request-demo-hero__content {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-9);
+        }
+
+        .request-demo-hero__text {
+            max-width: 100%;
+        }
+
+        .request-demo-hero__card {
+            max-width: 100%;
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .request-demo-hero {
+            padding: var(--space-9) var(--content-margin-inline);
+        }
+
+        .request-demo-hero__content {
+            gap: var(--space-7);
+        }
+
+        .request-demo-hero__row {
+            flex-direction: column;
+            gap: var(--space-5);
+        }
+
+        .request-demo-hero__card {
+            padding: var(--space-6);
+        }
+
+        .request-demo-hero__choice-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+</style>
+
+<script>
+    const form = document.querySelector<HTMLFormElement>('.request-demo-hero__form');
+    const emailInput = form?.querySelector<HTMLInputElement>('input[name="email"]');
+
+    const prefillEmail = new URLSearchParams(window.location.search).get('email');
+    if (emailInput && prefillEmail) {
+        emailInput.value = prefillEmail;
+    }
+
+    form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const submitHref = form.dataset.submitHref;
+        if (submitHref) {
+            window.location.href = submitHref;
+        }
+    });
+</script>

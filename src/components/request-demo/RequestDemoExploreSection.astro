@@ -1,0 +1,200 @@
+---
+// src/components/request-demo/RequestDemoExploreSection.astro
+// Figma node: 92:62181 — "Continue Exploring"
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
+import Button from '../shared/Button.astro';
+import EyebrowIcon from '../shared/EyebrowIcon.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const cards = [
+    {
+        iconSrc: `${base}${icons.tool.dat}`,
+        labelKey: 'explore_dat_label',
+        labelFallback: 'Data Analysis Tool',
+        descriptionKey: 'explore_dat_description',
+        descriptionFallback:
+            "Personalize your impact with data that's tailor made for you. Leverage thousands of variables across multiple years of data in this easy-to-use drag and drop tool.",
+        ctaKey: 'explore_dat_cta',
+        ctaFallback: 'Go to Analysis Tool',
+        href: `${base}${locale}/tools/analytic-tools/#data-analysis-tool`,
+    },
+    {
+        iconSrc: `${base}${icons.tool.trending}`,
+        labelKey: 'explore_trending_label',
+        labelFallback: 'Trending Tool',
+        descriptionKey: 'explore_trending_description',
+        descriptionFallback:
+            'Understand the evolution of your business and where your clients interests are heading with the user-friendly Trending Tool. Filter over 25 years data to better understand where media consumption and technology adoption is heading.',
+        ctaKey: 'explore_trending_cta',
+        ctaFallback: 'Go to Analysis Tool',
+        href: `${base}${locale}/tools/analytic-tools/#trending-tool`,
+    },
+    {
+        iconSrc: `${base}${icons.tool.census}`,
+        labelKey: 'explore_census_label',
+        labelFallback: 'Census',
+        descriptionKey: 'explore_census_description',
+        descriptionFallback:
+            'Explore your target audience through the unrivaled precision of population census data. This product brings complexity into focus with a state-of-the-art tool that marries the depth of census data with the simplicity of the MTM tools. A powerful pairing.',
+        ctaKey: 'explore_census_cta',
+        ctaFallback: 'Go to Census',
+        href: `${base}${locale}/tools/census-tool/`,
+    },
+];
+---
+
+<section class="request-demo-explore">
+    <div class="request-demo-explore__headline">
+        <h2 data-copy-key="explore_title">
+            {t(copy, 'explore_title', locale, 'Continue Exploring')}
+        </h2>
+        <p
+            class="text-body-p0 request-demo-explore__description"
+            data-copy-key="explore_description"
+        >
+            {
+                t(
+                    copy,
+                    'explore_description',
+                    locale,
+                    'Want to learn more about how the MTM tools and products can help to enrich your next project and amplify your outreach? Check out some of the short videos below.'
+                )
+            }
+        </p>
+    </div>
+
+    <div class="request-demo-explore__grid">
+        {
+            cards.map((card) => (
+                <div class="request-demo-explore-card">
+                    <div class="request-demo-explore-card__thumb" aria-hidden="true" />
+                    <div class="request-demo-explore-card__body">
+                        <EyebrowIcon
+                            iconSrc={card.iconSrc}
+                            label={t(copy, card.labelKey, locale, card.labelFallback)}
+                            copyKey={card.labelKey}
+                        />
+
+                        <p class="text-body-p2 request-demo-explore-card__desc">
+                            {t(copy, card.descriptionKey, locale, card.descriptionFallback)}
+                        </p>
+
+                        <div class="request-demo-explore-card__actions">
+                            <Button variant="secondary" size="md" type="button">
+                                {t(copy, 'explore_watch_video', locale, 'Watch Video')}
+                            </Button>
+                            <Button variant="tertiary" size="md" href={card.href}>
+                                {t(copy, card.ctaKey, locale, card.ctaFallback)}
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .request-demo-explore {
+        width: 100%;
+        background: var(--surface-blue);
+        padding: var(--section-pad-block-lg) var(--content-margin-inline);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-11);
+    }
+
+    .request-demo-explore__headline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        text-align: center;
+        max-width: 54rem;
+    }
+
+    .request-demo-explore__headline h2 {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .request-demo-explore__description {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .request-demo-explore__grid {
+        width: 100%;
+        max-width: 90rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--layout-card-gap);
+    }
+
+    .request-demo-explore-card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        background: var(--surface-white);
+        border-radius: var(--radius-m);
+        box-shadow: var(--shadow-card);
+        padding: var(--space-2);
+    }
+
+    .request-demo-explore-card__thumb {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: var(--radius-s);
+        background: var(--surface-blue);
+    }
+
+    .request-demo-explore-card__body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-6);
+        padding: 0 var(--space-5) var(--space-5);
+    }
+
+    .request-demo-explore-card__desc {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .request-demo-explore-card__actions {
+        display: flex;
+        align-items: center;
+        gap: var(--space-5);
+        margin-top: auto;
+    }
+
+    @media (max-width: 1023px) {
+        .request-demo-explore__grid {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .request-demo-explore {
+            padding: var(--section-pad-block) var(--content-margin-inline);
+            gap: var(--space-9);
+        }
+
+        .request-demo-explore-card__actions {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-3);
+        }
+    }
+</style>
