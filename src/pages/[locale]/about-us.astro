@@ -14,12 +14,47 @@ const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
 const copy = await getPageDictionary('home');
 const base = import.meta.env.BASE_URL;
 const localeSwitchUrls = getLocaleSwitchUrls(base, 'about-us');
+const isFrench = locale === 'fr';
 
-const pageTitle = locale === 'fr' ? 'MTM | À propos' : 'MTM | About Us';
-const pageDescription =
-    locale === 'fr'
-        ? 'En savoir plus sur Media Technology Monitor (MTM).'
-        : 'Learn more about Media Technology Monitor (MTM).';
+const pageTitle = isFrench ? 'MTM | À propos' : 'MTM | About Us';
+const pageDescription = isFrench
+    ? 'Le Media Technology Monitor (MTM) est une initiative de recherche de CBC/Radio-Canada qui mesure les habitudes médiatiques et technologiques des Canadiens.'
+    : 'Media Technology Monitor (MTM) is a CBC/Radio-Canada research initiative measuring how Canadians use media and technology.';
+
+const products = [
+    {
+        name: 'MTM 18+',
+        href: `${base}${locale}/products/mtm-18-plus/`,
+        vendorEn: 'Forum Research, established 1993',
+        vendorFr: 'Forum Research, fondée en 1993',
+        descEn: 'Media and technology habits of Canadians aged 18 and older.',
+        descFr: 'Habitudes médiatiques et technologiques des Canadiens de 18 ans et plus.',
+    },
+    {
+        name: 'MTM Juniors',
+        href: `${base}${locale}/products/juniors/`,
+        vendorEn: 'Ad Hoc Research, established 1984',
+        vendorFr: 'Ad Hoc Research, fondée en 1984',
+        descEn: 'Media and technology habits of Canadians aged 2 to 17.',
+        descFr: 'Habitudes médiatiques et technologiques des Canadiens de 2 à 17 ans.',
+    },
+    {
+        name: 'MTM Newcomers',
+        href: `${base}${locale}/products/newcomers/`,
+        vendorEn: 'Léger',
+        vendorFr: 'Léger',
+        descEn: 'Media and technology habits of newcomers to Canada.',
+        descFr: 'Habitudes médiatiques et technologiques des nouveaux arrivants au Canada.',
+    },
+    {
+        name: 'MTM Census Tool',
+        href: `${base}${locale}/tools/census-tool/`,
+        vendorEn: 'Statistics Canada census data',
+        vendorFr: 'Données du recensement de Statistique Canada',
+        descEn: 'Demographic data queryable down to the postal-code level.',
+        descFr: 'Données démographiques interrogeables jusqu’à l’échelle du code postal.',
+    },
+];
 ---
 
 <Layout
@@ -27,12 +62,66 @@ const pageDescription =
     description={pageDescription}
     locale={locale}
     alternates={localeSwitchUrls}
-    noindex={true}
 >
     <main class="about-us-page">
         <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-        <!-- About Us content to be added -->
+        <section class="about-us-hero">
+            <p class="text-label-regular about-us-eyebrow">{isFrench ? 'À propos' : 'About'}</p>
+            <h1>{isFrench ? 'À propos de MTM' : 'About MTM'}</h1>
+            <p class="text-body-p0 about-us-intro">
+                {
+                    isFrench
+                        ? 'Le Media Technology Monitor (MTM) est une initiative de recherche de CBC/Radio-Canada Recherche et analyse. Nous mesurons la façon dont les Canadiens utilisent les médias et la technologie, et nous publions des données nationalement représentatives et bilingues par l’entremise d’une famille de produits, chacun mené par un partenaire de recherche externe nommé.'
+                        : 'Media Technology Monitor (MTM) is a research initiative from CBC/Radio-Canada Research and Analysis. We measure how Canadians use media and technology, and publish nationally representative, bilingual data through a family of products, each fielded by a named third-party research partner.'
+                }
+            </p>
+        </section>
+
+        <div class="section-gap section-gap-sm" aria-hidden="true"></div>
+
+        <section class="about-us-section">
+            <h2>{isFrench ? 'Nos produits' : 'Our products'}</h2>
+            <ul class="about-us-products">
+                {
+                    products.map((product) => (
+                        <li class="about-us-product">
+                            <a class="text-h4 about-us-product-name" href={product.href}>
+                                {product.name}
+                            </a>
+                            <p class="text-body-p2 about-us-product-desc">
+                                {isFrench ? product.descFr : product.descEn}
+                            </p>
+                            <p class="text-body-p3-small about-us-product-vendor">
+                                {isFrench ? product.vendorFr : product.vendorEn}
+                            </p>
+                        </li>
+                    ))
+                }
+            </ul>
+        </section>
+
+        <div class="section-gap section-gap-sm" aria-hidden="true"></div>
+
+        <section class="about-us-section">
+            <h2>{isFrench ? 'Notre méthodologie' : 'Our methodology'}</h2>
+            <p class="text-body-p1 about-us-body">
+                {
+                    isFrench
+                        ? 'MTM 18+ recueille des données de façon continue depuis plus de 25 ans, avec plus de 12 000 adultes canadiens sondés chaque année (plus de 300 000 à ce jour) et un taux de réponse de 22 %. MTM applique une méthodologie rigoureuse, une validation continue et un examen par les pairs, en partenariat avec des experts de l’industrie, afin d’assurer l’exactitude et la pertinence des données. Nos processus sont conformes aux normes de recherche internationales.'
+                        : 'MTM 18+ has collected data continuously for 25+ years, surveying 12,000+ Canadian adults annually (300,000+ to date) at a 22% response rate. MTM applies a rigorous methodology, continuous validation, and peer review, in partnership with industry experts, to ensure data accuracy and relevance. Our processes comply with international research standards.'
+                }
+            </p>
+            <p class="text-body-p1 about-us-body">
+                {
+                    isFrench
+                        ? 'Les données de MTM sont reconnues et citées par des bailleurs de fonds, des décideurs publics et des établissements de recherche partout au Canada, et répondent aux normes de qualité requises pour les demandes de financement et les mémoires politiques.'
+                        : 'MTM data is recognized and cited by funding bodies, policy makers, and research institutions across Canada, and meets the quality standards required for funding applications and policy submissions.'
+                }
+            </p>
+        </section>
+
+        <div class="section-gap section-gap-sm" aria-hidden="true"></div>
 
         <HomeFooterSection locale={locale} copy={copy} />
     </main>
@@ -41,5 +130,75 @@ const pageDescription =
 <style>
     .about-us-page {
         width: 100%;
+    }
+
+    .about-us-hero {
+        max-width: 48rem;
+        margin: 0 auto;
+        padding: var(--space-12) var(--content-margin-inline) 0;
+        margin-top: var(--navbar-height);
+        text-align: center;
+    }
+
+    .about-us-eyebrow {
+        color: var(--text-accent);
+        margin-bottom: var(--space-3);
+    }
+
+    .about-us-intro {
+        color: var(--text-secondary);
+        margin-top: var(--space-5);
+    }
+
+    .about-us-section {
+        max-width: 48rem;
+        margin: 0 auto;
+        padding: 0 var(--content-margin-inline);
+    }
+
+    .about-us-body {
+        color: var(--text-secondary);
+        margin-top: var(--space-4);
+    }
+
+    .about-us-products {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--layout-card-gap);
+        margin-top: var(--space-6);
+        padding: 0;
+        list-style: none;
+    }
+
+    .about-us-product {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        padding: var(--space-6);
+        border: var(--stroke-1) solid var(--border-secondary);
+        border-radius: var(--radius-m);
+    }
+
+    .about-us-product-name {
+        color: var(--text-primary);
+        text-decoration: none;
+    }
+
+    .about-us-product-name:hover {
+        text-decoration: underline;
+    }
+
+    .about-us-product-desc {
+        color: var(--text-secondary);
+    }
+
+    .about-us-product-vendor {
+        color: var(--text-disabled);
+    }
+
+    @media (max-width: 767px) {
+        .about-us-products {
+            grid-template-columns: 1fr;
+        }
     }
 </style>

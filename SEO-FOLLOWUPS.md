@@ -16,11 +16,12 @@ These are literal placeholder strings shipping as real body copy. Fix via the Go
 
 ## 2. About Us / Contact Us content
 
-`src/pages/[locale]/about-us.astro` and `src/pages/[locale]/contact.astro` now exist (Navbar + Footer only, `noindex={true}`) so the footer links no longer 404. Still needed:
+`src/pages/[locale]/about-us.astro` now has real content (products, methodology, CBC/Radio-Canada tie — grounded in facts already published elsewhere on the site) and is indexable. `src/pages/[locale]/contact.astro` is still Navbar + Footer only, `noindex={true}` — so it no longer 404s, but still needs:
 
-- Real page content for both (methodology/entity info for About Us; a contact form or details for Contact Us)
-- Once content is in, remove `noindex={true}` from both `<Layout>` calls so they become indexable
-- Consider wiring a real CMS page id for these once there's copy to manage (currently they reuse the `home` dictionary just for Navbar/Footer strings — no dedicated tab)
+- A real contact form or contact details
+- Once content is in: remove `noindex={true}` from its `<Layout>` call, and remove its `/contact/` exclusion from the `isNoindexPath()` filter in `astro.config.mjs` so it rejoins the sitemap
+- Consider wiring a real CMS page id for it once there's copy to manage (currently reuses the `home` dictionary just for Navbar/Footer strings — no dedicated tab)
+- About Us content is hardcoded directly in `about-us.astro` (en/fr inline), not sheet-driven — there's no CMS tab for it yet. Fine for now, but if it needs frequent editing later, consider giving it a real Sheet tab like every other page.
 
 ## Also noticed while in the footer (not yet fixed, adjacent to the above)
 

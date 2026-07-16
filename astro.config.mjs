@@ -14,7 +14,6 @@ function isNoindexPath(pageUrl) {
     path === base ||
     path.endsWith('/sign-in/') ||
     path.endsWith('/request-demo-success/') ||
-    path.endsWith('/about-us/') ||
     path.endsWith('/contact/') ||
     path.startsWith(`${base}pattern-tool`)
   );
