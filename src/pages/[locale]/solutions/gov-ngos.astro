@@ -124,6 +124,23 @@ const trustedByLogos = [
                 url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
             })}
         />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Service',
+                name: 'MTM Solutions for Government & NGOs',
+                url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
+                description: pageDescription,
+                provider: { '@id': `${toAbsoluteUrl(Astro.site, base)}#organization` },
+                audience: {
+                    '@type': 'BusinessAudience',
+                    audienceType: 'Government and non-governmental organizations',
+                },
+                areaServed: { '@type': 'Country', name: 'Canada' },
+            })}
+        />
     </Fragment>
 
     <Fragment slot="scripts">
