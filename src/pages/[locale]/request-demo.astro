@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { toAbsoluteUrl } from '../../lib/i18n/routing';
+import { buildBreadcrumbList } from '../../lib/content/breadcrumbs';
 import Navbar from '../../components/shared/Navbar.astro';
 import RequestDemoHeroSection from '../../components/request-demo/RequestDemoHeroSection.astro';
 import SolutionsTrustedBySection from '../../components/solutions/SolutionsTrustedBySection.astro';
@@ -262,6 +263,17 @@ const testimonials = [
                 name: pageTitle,
                 url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
             })}
+        />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(
+                buildBreadcrumbList(
+                    toAbsoluteUrl(Astro.site, base),
+                    'Request a Demo',
+                    toAbsoluteUrl(Astro.site, localeSwitchUrls[locale])
+                )
+            )}
         />
     </Fragment>
 

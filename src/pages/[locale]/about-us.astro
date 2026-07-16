@@ -3,7 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/shared/Navbar.astro';
 import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
 import { getPageDictionary } from '../../lib/cms/getPageContent';
-import { getLocaleSwitchUrls } from '../../lib/i18n/routing';
+import { getLocaleSwitchUrls, toAbsoluteUrl } from '../../lib/i18n/routing';
+import { buildBreadcrumbList } from '../../lib/content/breadcrumbs';
 import type { Locale } from '../../lib/cms/types';
 
 export function getStaticPaths() {
@@ -20,6 +21,16 @@ const pageTitle = isFrench ? 'MTM | À propos' : 'MTM | About Us';
 const pageDescription = isFrench
     ? 'Le Media Technology Monitor (MTM) est une initiative de recherche de CBC/Radio-Canada qui mesure les habitudes médiatiques et technologiques des Canadiens.'
     : 'Media Technology Monitor (MTM) is a CBC/Radio-Canada research initiative measuring how Canadians use media and technology.';
+
+const pageUrl = toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]);
+const siteRoot = toAbsoluteUrl(Astro.site, base);
+const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: pageTitle,
+    url: pageUrl,
+};
+const breadcrumbJsonLd = buildBreadcrumbList(siteRoot, isFrench ? 'À propos' : 'About Us', pageUrl);
 
 const products = [
     {
@@ -125,6 +136,11 @@ const products = [
 
         <HomeFooterSection locale={locale} copy={copy} />
     </main>
+
+    <Fragment slot="head">
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(webPageJsonLd)} />
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+    </Fragment>
 </Layout>
 
 <style>

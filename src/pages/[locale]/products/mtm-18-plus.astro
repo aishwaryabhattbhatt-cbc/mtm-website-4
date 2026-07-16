@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { toAbsoluteUrl } from '../../../lib/i18n/routing';
+import { buildBreadcrumbList } from '../../../lib/content/breadcrumbs';
 import Navbar from '../../../components/shared/Navbar.astro';
 import ProductsHeroSection from '../../../components/products/ProductsHeroSection.astro';
 import Mtm18PlusFeaturesSection from '../../../components/products/Mtm18PlusFeaturesSection.astro';
@@ -105,6 +106,17 @@ const pageDescription =
                 areaServed: { '@type': 'Country', name: 'Canada' },
                 serviceType: 'Media and technology research data',
             })}
+        />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(
+                buildBreadcrumbList(
+                    toAbsoluteUrl(Astro.site, base),
+                    'MTM 18+',
+                    toAbsoluteUrl(Astro.site, localeSwitchUrls[locale])
+                )
+            )}
         />
     </Fragment>
 
