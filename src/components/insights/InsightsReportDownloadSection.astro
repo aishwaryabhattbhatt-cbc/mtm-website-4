@@ -1,0 +1,321 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Eyebrow from '../shared/Eyebrow.astro';
+import Button from '../shared/Button.astro';
+import FormField from '../shared/FormField.astro';
+import InsightsReportPreviewCard from './InsightsReportPreviewCard.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    imageSrc?: string;
+    tagKey: string;
+    dateKey: string;
+    titleKey: string;
+    descriptionKey: string;
+}
+
+const { locale, copy, imageSrc, tagKey, dateKey, titleKey, descriptionKey } = Astro.props as Props;
+---
+
+<section class="report-download-section" data-report-download-section>
+    <div class="report-download-section__content">
+        <div class="report-download-section__intro">
+            <Eyebrow>{t(copy, 'Free Reports', locale, 'Free Reports')}</Eyebrow>
+
+            <h1 data-copy-key="report_download_page_title">
+                {t(copy, 'report_download_page_title', locale, 'Download This Report')}
+            </h1>
+
+            <InsightsReportPreviewCard
+                locale={locale}
+                copy={copy}
+                imageSrc={imageSrc}
+                tagKey={tagKey}
+                dateKey={dateKey}
+                titleKey={titleKey}
+                descriptionKey={descriptionKey}
+            />
+        </div>
+
+        <div class="report-download-section__card">
+            <form class="report-download-section__form" data-report-download-form novalidate>
+                <div class="report-download-section__row">
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="text"
+                        name="firstName"
+                        labelKey="report_download_first_name_label"
+                        label="First Name"
+                        placeholderKey="report_download_first_name_placeholder"
+                        placeholder="John"
+                        labelColor="primary"
+                        required
+                    />
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="text"
+                        name="lastName"
+                        labelKey="report_download_last_name_label"
+                        label="Last Name"
+                        placeholderKey="report_download_last_name_placeholder"
+                        placeholder="Doe"
+                        labelColor="primary"
+                        required
+                    />
+                </div>
+
+                <FormField
+                    locale={locale}
+                    copy={copy}
+                    variant="field-with-label"
+                    type="email"
+                    name="email"
+                    labelKey="report_download_email_label"
+                    label="Work Email"
+                    placeholderKey="report_download_email_placeholder"
+                    placeholder="john@workmail.com"
+                    emailValidation="none"
+                    labelColor="primary"
+                    required
+                />
+
+                <div class="report-download-section__row">
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="text"
+                        name="organisation"
+                        labelKey="report_download_organisation_label"
+                        label="Organisation"
+                        placeholderKey="report_download_organisation_placeholder"
+                        placeholder="Organisation Name"
+                        labelColor="primary"
+                        required
+                    />
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="text"
+                        name="position"
+                        labelKey="report_download_position_label"
+                        label="Position"
+                        placeholderKey="report_download_position_placeholder"
+                        placeholder="Marketing Director"
+                        labelColor="primary"
+                        required
+                    />
+                </div>
+
+                <Button
+                    variant="primary"
+                    type="submit"
+                    class="report-download-section__submit"
+                    data-copy-key="free_report_submit_cta"
+                >
+                    {t(copy, 'free_report_submit_cta', locale, 'Submit')}
+                </Button>
+            </form>
+
+            <div
+                class="report-download-section__success"
+                data-report-download-success
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+                tabindex="-1"
+            >
+                <span class="report-download-section__success-icon" aria-hidden="true">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon-s"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </span>
+                <div class="report-download-section__success-copy">
+                    <p class="text-body-p1-bold" data-copy-key="free_report_success_title">
+                        {t(copy, 'free_report_success_title', locale, 'Success!')}
+                    </p>
+                    <p class="text-body-p3" data-copy-key="free_report_success_message">
+                        {
+                            t(
+                                copy,
+                                'free_report_success_message',
+                                locale,
+                                'A download link has been sent to your email. Please check your inbox.'
+                            )
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .report-download-section {
+        width: 100%;
+        margin-top: var(--navbar-height);
+        padding: var(--section-pad-block) var(--content-margin-inline);
+        background: var(--surface-white);
+    }
+
+    .report-download-section__content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        gap: var(--space-11);
+        max-width: 90rem;
+        margin: 0 auto;
+    }
+
+    .report-download-section__intro {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-6);
+        max-width: 34rem;
+    }
+
+    .report-download-section__intro h1 {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .report-download-section__card {
+        width: 100%;
+        max-width: 37.5rem;
+        margin-left: auto;
+        padding: var(--space-9);
+        border-radius: var(--radius-m);
+        background: var(--surface-blue);
+        box-shadow: var(--shadow-card);
+    }
+
+    .report-download-section__form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+    }
+
+    .report-download-section__row {
+        display: flex;
+        gap: var(--space-5);
+    }
+
+    .report-download-section__row > :global(.form-field) {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .report-download-section__submit {
+        align-self: flex-start;
+    }
+
+    .report-download-section__success {
+        display: none;
+        align-items: flex-start;
+        gap: var(--space-3);
+        border: var(--stroke-1) solid var(--badge-newcomers);
+        border-radius: var(--radius-s);
+        background: var(--surface-white);
+        padding: var(--space-4);
+    }
+
+    .report-download-section__success-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--space-6);
+        height: var(--space-6);
+        border-radius: var(--radius-full);
+        background: var(--badge-newcomers);
+        color: var(--text-white);
+        flex-shrink: 0;
+    }
+
+    .report-download-section__success-copy {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    .report-download-section__success-copy p {
+        margin: 0;
+    }
+
+    .report-download-section.is-success .report-download-section__form {
+        display: none;
+    }
+
+    .report-download-section.is-success .report-download-section__success {
+        display: flex;
+    }
+
+    @media (max-width: 1023px) {
+        .report-download-section {
+            margin-top: 0;
+        }
+
+        .report-download-section__content {
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-9);
+        }
+
+        .report-download-section__intro {
+            max-width: 100%;
+        }
+
+        .report-download-section__card {
+            max-width: 100%;
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .report-download-section {
+            padding: var(--space-9) var(--content-margin-inline);
+        }
+
+        .report-download-section__row {
+            flex-direction: column;
+            gap: var(--space-5);
+        }
+
+        .report-download-section__card {
+            padding: var(--space-6);
+        }
+    }
+</style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('[data-report-download-section]').forEach((section) => {
+        const form = section.querySelector<HTMLFormElement>('[data-report-download-form]');
+        const success = section.querySelector<HTMLElement>('[data-report-download-success]');
+        if (!form) return;
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            section.classList.add('is-success');
+            success?.focus();
+        });
+    });
+</script>
