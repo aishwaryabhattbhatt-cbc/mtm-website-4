@@ -173,7 +173,7 @@ class LiquidGradientEffect {
       "contrast": 1.1,
       "gamma": 1.2,
       "minR": 0.01,
-      "maxR": 0.7,
+      "maxR": 0.499,
       "dotSpacing": -0.1,
       "lumThreshold": 0,
       "invertDots": true,
@@ -1148,12 +1148,14 @@ class LiquidGradientEffect {
     }));
 
     const minRLabel = makeLabel('Min Radius');
-    minRLabel.appendChild(makeRange(0.0, 0.5, 0.01, this.config.minR, (v) => {
+    minRLabel.appendChild(makeRange(0.0, 0.499, 0.01, this.config.minR, (v) => {
+      this.config.minR = v;
       this.uniformsDither.uMinR.value = v;
     }));
 
     const maxRLabel = makeLabel('Max Radius');
-    maxRLabel.appendChild(makeRange(0.0, 0.7, 0.01, this.config.maxR, (v) => {
+    maxRLabel.appendChild(makeRange(0.0, 0.499, 0.01, this.config.maxR, (v) => {
+      this.config.maxR = v;
       this.uniformsDither.uMaxR.value = v;
     }));
 
