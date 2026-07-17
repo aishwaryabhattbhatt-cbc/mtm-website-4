@@ -258,5 +258,16 @@
     "key": "news_card_cta",
     "en": "Read More",
     "fr": ""
-  }
+  },
+  "report_download_page_title": { "key": "report_download_page_title", "en": "Download This Report", "fr": "" },
+  "report_download_first_name_label": { "key": "report_download_first_name_label", "en": "First Name", "fr": "" },
+  "report_download_first_name_placeholder": { "key": "report_download_first_name_placeholder", "en": "John", "fr": "" },
+  "report_download_last_name_label": { "key": "report_download_last_name_label", "en": "Last Name", "fr": "" },
+  "report_download_last_name_placeholder": { "key": "report_download_last_name_placeholder", "en": "Doe", "fr": "" },
+  "report_download_email_label": { "key": "report_download_email_label", "en": "Work Email", "fr": "" },
+  "report_download_email_placeholder": { "key": "report_download_email_placeholder", "en": "john@workmail.com", "fr": "" },
+  "report_download_organisation_label": { "key": "report_download_organisation_label", "en": "Organisation", "fr": "" },
+  "report_download_organisation_placeholder": { "key": "report_download_organisation_placeholder", "en": "Organisation Name", "fr": "" },
+  "report_download_position_label": { "key": "report_download_position_label", "en": "Position", "fr": "" },
+  "report_download_position_placeholder": { "key": "report_download_position_placeholder", "en": "Marketing Director", "fr": "" }
 }
