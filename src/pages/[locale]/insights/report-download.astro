@@ -1,0 +1,78 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/shared/Navbar.astro';
+import InsightsReportDownloadSection from '../../../components/insights/InsightsReportDownloadSection.astro';
+import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
+import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
+import type { Locale } from '../../../lib/cms/types';
+
+export function getStaticPaths() {
+    return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
+}
+
+const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
+// Shares the 'insights' CMS dictionary with /insights/. The report_download_*
+// copy keys this page depends on (added in Task 1) only exist in the local
+// insights.json today — they must be added as rows to the live Google Sheet's
+// insights tab, or the next `npm run sync-copy` will silently drop them.
+const pageId = 'insights';
+const copy = await getPageDictionary(pageId);
+const cmsConfig = getRuntimeCMSConfig(pageId);
+const base = import.meta.env.BASE_URL;
+const resolvedCmsCsvUrl =
+    cmsConfig.csvUrl ??
+    (cmsConfig.sheetId && cmsConfig.gid
+        ? `https://docs.google.com/spreadsheets/d/${cmsConfig.sheetId}/export?format=csv&gid=${cmsConfig.gid}`
+        : '');
+
+const localeSwitchUrls: Record<Locale, string> = {
+    en: `${base}en/insights/report-download/`,
+    fr: `${base}fr/insights/report-download/`,
+};
+
+const pageTitle = locale === 'fr' ? 'MTM | Téléchargement de rapport' : 'MTM | Report Download';
+const pageDescription =
+    locale === 'fr' ? 'Téléchargez ce rapport MTM.' : 'Download this MTM report.';
+---
+
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+    noindex={true}
+>
+    <main
+        data-locale={locale}
+        data-cms-page-id={pageId}
+        data-cms-csv-url={resolvedCmsCsvUrl}
+        data-cms-sheet-id={cmsConfig.sheetId ?? ''}
+        data-cms-tab-gid={cmsConfig.gid ?? ''}
+        data-cms-refresh-ms={String(cmsConfig.refreshMs)}
+    >
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+
+        {
+            /* TEMPLATE: report content below reuses the existing free_report_1_*
+               placeholder copy. Wiring this section to a real, individually
+               linkable report is a later phase — see plan's "out of scope". */
+        }
+        <InsightsReportDownloadSection
+            locale={locale}
+            copy={copy}
+            imageSrc={`${base}images/insights/free-reports/Picture.png`}
+            tagKey="free_report_1_tag"
+            dateKey="free_report_1_date"
+            titleKey="free_report_1_title"
+            descriptionKey="free_report_1_description"
+        />
+
+        <HomeFooterSection locale={locale} copy={copy} />
+    </main>
+
+    <Fragment slot="scripts">
+        <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
+        ></script>
+        <script is:inline src={`${base}js/runtime/script.js`}></script>
+    </Fragment>
+</Layout>
