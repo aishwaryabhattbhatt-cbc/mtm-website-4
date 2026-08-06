@@ -84,7 +84,7 @@ const freeReports = [
                     <InsightsFreeReportCard
                         locale={locale}
                         copy={copy}
-                        ctaHref={`${base}${locale}/insights/`}
+                        ctaHref={`${base}${locale}/insights/report-download/`}
                         imageSrc={report.imageSrc}
                         tagKey={report.tagKey}
                         dateKey={report.dateKey}
@@ -101,8 +101,10 @@ const freeReports = [
     .free-reports-section {
         width: 100%;
         background: var(--surface-blue);
-        /* bottom deliberately shallow — flows into the reports library below */
-        padding: var(--section-pad-block) var(--content-margin-inline) var(--space-5);
+        /* bottom matches this section's own top padding, so the gap before
+           the infographic section below (which has no top padding of its
+           own) reads the same as the gap above this section. */
+        padding: var(--section-pad-block) var(--content-margin-inline) var(--section-pad-block);
         display: flex;
         flex-direction: column;
         gap: 0;
@@ -167,7 +169,7 @@ const freeReports = [
 
     @media (max-width: 1023px) {
         .free-reports-section {
-            padding: var(--space-9) var(--content-margin-inline) var(--space-4);
+            padding: var(--space-9) var(--content-margin-inline) var(--space-9);
             gap: 0;
         }
 
