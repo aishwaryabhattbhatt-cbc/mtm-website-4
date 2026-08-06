@@ -1,0 +1,154 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import ProductPill from '../shared/ProductPill.astro';
+import type { ProductVariant } from '../shared/ProductPill.astro';
+import DatePill from '../shared/DatePill.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    imageSrc?: string;
+    imageAlt?: string;
+    tagKey: string;
+    dateKey: string;
+    titleKey: string;
+    descriptionKey: string;
+}
+
+const { locale, copy, imageSrc, imageAlt, tagKey, dateKey, titleKey, descriptionKey } =
+    Astro.props as Props;
+
+function tagToVariant(tag: string): ProductVariant | null {
+    const n = tag.toLowerCase().replace(/\s+/g, '');
+    if (n.includes('18+') || n.includes('18plus')) return 'mtm18plus';
+    if (n.includes('junior')) return 'junior';
+    if (n.includes('newcomer')) return 'newcomers';
+    if (n.includes('census')) return 'census';
+    return null;
+}
+
+const tagText = tagKey in copy ? t(copy, tagKey, locale, '') : '';
+const tagVariant = tagText ? tagToVariant(tagText) : null;
+const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
+---
+
+<article class="report-preview-card">
+    <div class="report-preview-card__image-wrap">
+        {
+            imageSrc ? (
+                <img
+                    class="report-preview-card__image"
+                    src={imageSrc}
+                    alt={imageAlt ?? ''}
+                    loading="lazy"
+                    decoding="async"
+                />
+            ) : (
+                <div class="report-preview-card__image-placeholder" aria-hidden="true" />
+            )
+        }
+    </div>
+
+    <div class="report-preview-card__body">
+        <div class="report-preview-card__meta">
+            {
+                tagVariant ? (
+                    <ProductPill variant={tagVariant} size="small" />
+                ) : tagText ? (
+                    <span class="report-preview-card__tag text-label-small">{tagText}</span>
+                ) : null
+            }
+            {dateText && <DatePill date={dateText} />}
+        </div>
+
+        <div class="report-preview-card__text">
+            <p class="text-body-p1-bold report-preview-card__title" data-copy-key={titleKey}>
+                {t(copy, titleKey, locale, '')}
+            </p>
+            <p class="text-body-p2 report-preview-card__description" data-copy-key={descriptionKey}>
+                {t(copy, descriptionKey, locale, '')}
+            </p>
+        </div>
+    </div>
+</article>
+
+<style>
+    .report-preview-card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        width: 100%;
+        max-width: 24rem;
+        padding: var(--card-pad-thin);
+        border-radius: var(--layout-card-radius);
+        background: var(--surface-white);
+        box-shadow: var(--shadow-card);
+    }
+
+    .report-preview-card__image-wrap {
+        width: 100%;
+        aspect-ratio: 400 / 217;
+        overflow: hidden;
+        border-radius: var(--radius-s);
+    }
+
+    .report-preview-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .report-preview-card__image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: var(--surface-blue);
+    }
+
+    .report-preview-card__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .report-preview-card__meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+    }
+
+    .report-preview-card__tag {
+        background: var(--badge-juniors);
+        border-radius: var(--radius-full);
+        padding: var(--space-2) var(--space-4);
+        color: var(--text-white);
+        white-space: nowrap;
+    }
+
+    .report-preview-card__text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--title-desc-gap);
+    }
+
+    .report-preview-card__title,
+    .report-preview-card__description {
+        margin: 0;
+    }
+
+    .report-preview-card__title {
+        color: var(--text-primary);
+    }
+
+    .report-preview-card__description {
+        color: var(--neutral-grey-1);
+    }
+
+    @media (max-width: 767px) {
+        .report-preview-card {
+            max-width: 100%;
+        }
+    }
+</style>
