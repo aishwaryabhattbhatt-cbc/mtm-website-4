@@ -6,17 +6,12 @@
   },
   "hero_description": {
     "key": "hero_description",
-    "en": "Welcome to the Media Technology Monitor. We are your source for real data on how Canadians consume media, technology, and content - built for organizations that need evidence, not assumptions.",
+    "en": "The Media Technology Monitor is Canada's national dataset on media, technology, and content consumption — used by broadcasters, advertisers, and government to support funding, policy, and strategic decisions with evidence, not assumptions.",
     "fr": ""
   },
   "hero_cta_1": {
     "key": "hero_cta_1",
     "en": "Request a Demo",
-    "fr": ""
-  },
-  "hero_cta_2": {
-    "key": "hero_cta_2",
-    "en": "Learn More",
     "fr": ""
   },
   "hero_stat_value": {
@@ -56,7 +51,7 @@
   },
   "access_item_2_description": {
     "key": "access_item_2_description",
-    "en": "Understand attention, viewing habits, engagement, and platform usage across audiences and channels.",
+    "en": "Understand attention, viewing habits, engagement, and platform usage across audiences and channels. See exactly where and how Canadians are spending their time.",
     "fr": ""
   },
   "access_item_3_title": {
@@ -66,7 +61,7 @@
   },
   "access_item_3_description": {
     "key": "access_item_3_description",
-    "en": "Explore one of Canada’s most comprehensive media and technology datasets. Connect demographics, behaviours, attitudes, and intent to uncover meaningful opportunities.",
+    "en": "Every insight above is backed by 5,000+ variables — demographics, attitudes, and intent, across Canada's most comprehensive media and technology dataset.",
     "fr": ""
   },
   "package_title": {
@@ -76,7 +71,7 @@
   },
   "package_description": {
     "key": "package_description",
-    "en": "Description about the MTM suite",
+    "en": "The MTM Suite brings together four powerful data products, in-depth library reports, and interactive analytics tools—all in one integrated platform",
     "fr": ""
   },
   "package_1_eyebrow": {
@@ -91,7 +86,7 @@
   },
   "package_1_description": {
     "key": "package_1_description",
-    "en": "Description about the data products",
+    "en": "Explore four specialized research products",
     "fr": ""
   },
   "product_1_title": {
@@ -101,7 +96,7 @@
   },
   "product_1_description": {
     "key": "product_1_description",
-    "en": "Everything you need on media consumption, technology adoption and digital behaviours for Canadians 18 and up",
+    "en": "Insights on media consumption, technology adoption and digital behaviours for Canadians 18 and up",
     "fr": ""
   },
   "product_2_title": {
@@ -256,12 +251,12 @@
   },
   "faq_2_question": {
     "key": "faq_2_question",
-    "en": "What are the turnaround times for high-volume or complex data exports?",
+    "en": "What are the turnaround times for data requests?",
     "fr": ""
   },
   "faq_2_answer": {
     "key": "faq_2_answer",
-    "en": "",
+    "en": "Turnaround times vary based on complexity. We respond to most queries within 2 business days and provide data for requests within 5 business days.",
     "fr": ""
   },
   "faq_3_question": {
