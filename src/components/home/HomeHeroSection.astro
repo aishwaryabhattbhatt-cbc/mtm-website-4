@@ -3,7 +3,6 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
-import Eyebrow from '../shared/Eyebrow.astro';
 import collage1 from '../../assets/svg/1.svg?url';
 import collage2 from '../../assets/svg/2.svg?url';
 import collage3 from '../../assets/svg/3.svg?url';
@@ -20,7 +19,6 @@ const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 
 const copyKeys = {
-    eyebrow: 'hero_eyebrow',
     title: 'hero_title',
     subtitle: 'hero_description',
     ctaPrimary: 'hero_cta_1',
@@ -45,9 +43,6 @@ const copyKeys = {
     <!-- Hero Content and Collage -->
     <div class="hero-container">
         <div class="hero-content">
-            <Eyebrow as="h2" data-copy-key={copyKeys.eyebrow}>
-                {t(copy, copyKeys.eyebrow, locale, 'Media Technology Monitor')}
-            </Eyebrow>
             <h1 class="hero-title" data-copy-key={copyKeys.title}>
                 {t(copy, copyKeys.title, locale, 'The Standard for Media & Tech Insights')}
             </h1>
@@ -264,13 +259,6 @@ const copyKeys = {
         opacity: 0;
         animation: fadeInUp 0.8s ease-out forwards;
         animation-play-state: paused;
-    }
-
-    /* Runs immediately on load, independent of the JS-driven title/subtitle/button
-       sequence in script.js — it's the first element shown, nothing to wait on. */
-    .home-section-1 .hero-content .eyebrow {
-        opacity: 0;
-        animation: fadeInUp 0.6s ease-out forwards;
     }
 
     .hero-buttons {
