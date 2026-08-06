@@ -10,7 +10,7 @@ import FormField from '../shared/FormField.astro';
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
-    ctaHref: string;
+    ctaHref?: string;
     imageSrc?: string;
     imageAlt?: string;
     tagKey: string;
@@ -18,6 +18,7 @@ interface Props {
     titleKey: string;
     descriptionKey: string;
     ctaKey?: string;
+    showCta?: boolean;
 }
 
 const {
@@ -31,6 +32,7 @@ const {
     titleKey,
     descriptionKey,
     ctaKey = 'free_report_cta',
+    showCta = true,
 } = Astro.props as Props;
 
 function tagToVariant(tag: string): ProductVariant | null {
@@ -85,120 +87,120 @@ const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
             </p>
         </div>
 
-        <div class="free-report-card__cta">
-            <Button
-                variant="primary"
-                size="md"
-                class="free-report-card__download-trigger"
-                data-free-report-download-trigger
-            >
-                <span class="free-report-card__download-btn">
-                    <span>{t(copy, ctaKey, locale, 'Download')}</span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon-s"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                </span>
-            </Button>
-
-            <form
-                class="free-report-card__download-form"
-                data-free-report-download-form
-                data-download-href={ctaHref}
-                novalidate
-            >
-                <FormField
-                    locale={locale}
-                    copy={copy}
-                    variant="field-only"
-                    type="email"
-                    name="email"
-                    placeholderKey="newsletter_email_placeholder"
-                    placeholder="Enter your work email"
-                    ariaLabel={t(copy, 'newsletter_email_label', locale, 'Work email')}
-                    emailValidation="none"
-                    required
-                />
-                <div class="free-report-card__submit-row">
+        {
+            showCta && (
+                <div class="free-report-card__cta">
                     <Button
                         variant="primary"
                         size="md"
-                        type="submit"
-                        data-copy-key="free_report_submit_cta"
+                        class="free-report-card__download-trigger"
+                        data-free-report-download-trigger
                     >
-                        {t(copy, 'free_report_submit_cta', locale, 'Submit')}
+                        <span class="free-report-card__download-btn">
+                            <span>{t(copy, ctaKey, locale, 'Download')}</span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="icon-s"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                        </span>
                     </Button>
-                    <p
-                        class="free-report-card__submit-error text-body-p3-small"
-                        data-free-report-submit-error
-                        aria-live="polite"
-                        aria-hidden="true"
-                    >
-                        {
-                            locale === 'fr'
-                                ? 'Veuillez saisir une adresse courriel valide.'
-                                : 'Please enter a valid email address.'
-                        }
-                    </p>
-                </div>
-            </form>
 
-            <div
-                class="free-report-card__success-message"
-                data-free-report-success-message
-                role="status"
-                aria-live="polite"
-                aria-atomic="true"
-                tabindex="-1"
-            >
-                <span class="free-report-card__success-icon" aria-hidden="true">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon-xs"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                    <form
+                        class="free-report-card__download-form"
+                        data-free-report-download-form
+                        data-download-href={ctaHref}
+                        novalidate
                     >
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                </span>
-                <div class="free-report-card__success-copy">
-                    <p
-                        class="text-body-p1-bold free-report-card__success-title"
-                        data-copy-key="free_report_success_title"
+                        <FormField
+                            locale={locale}
+                            copy={copy}
+                            variant="field-only"
+                            type="email"
+                            name="email"
+                            placeholderKey="newsletter_email_placeholder"
+                            placeholder="Enter your work email"
+                            ariaLabel={t(copy, 'newsletter_email_label', locale, 'Work email')}
+                            emailValidation="none"
+                            required
+                        />
+                        <div class="free-report-card__submit-row">
+                            <Button
+                                variant="primary"
+                                size="md"
+                                type="submit"
+                                data-copy-key="free_report_submit_cta"
+                            >
+                                {t(copy, 'free_report_submit_cta', locale, 'Submit')}
+                            </Button>
+                            <p
+                                class="free-report-card__submit-error text-body-p3-small"
+                                data-free-report-submit-error
+                                aria-live="polite"
+                                aria-hidden="true"
+                            >
+                                {locale === 'fr'
+                                    ? 'Veuillez saisir une adresse courriel valide.'
+                                    : 'Please enter a valid email address.'}
+                            </p>
+                        </div>
+                    </form>
+
+                    <div
+                        class="free-report-card__success-message"
+                        data-free-report-success-message
+                        role="status"
+                        aria-live="polite"
+                        aria-atomic="true"
+                        tabindex="-1"
                     >
-                        {t(copy, 'free_report_success_title', locale, 'Success!')}
-                    </p>
-                    <p
-                        class="text-body-p3 free-report-card__success-body"
-                        data-copy-key="free_report_success_message"
-                    >
-                        {
-                            t(
-                                copy,
-                                'free_report_success_message',
-                                locale,
-                                'A download link has been sent to your email. Please check your inbox.'
-                            )
-                        }
-                    </p>
+                        <span class="free-report-card__success-icon" aria-hidden="true">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="icon-xs"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </span>
+                        <div class="free-report-card__success-copy">
+                            <p
+                                class="text-body-p1-bold free-report-card__success-title"
+                                data-copy-key="free_report_success_title"
+                            >
+                                {t(copy, 'free_report_success_title', locale, 'Success!')}
+                            </p>
+                            <p
+                                class="text-body-p3 free-report-card__success-body"
+                                data-copy-key="free_report_success_message"
+                            >
+                                {t(
+                                    copy,
+                                    'free_report_success_message',
+                                    locale,
+                                    'A download link has been sent to your email. Please check your inbox.'
+                                )}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            )
+        }
     </div>
 </article>
 
