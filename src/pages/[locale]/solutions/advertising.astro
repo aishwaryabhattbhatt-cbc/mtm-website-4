@@ -14,6 +14,7 @@ import HomeFooterSection from '../../../components/home/HomeFooterSection.astro'
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import { t } from '../../../lib/i18n/t';
 import type { Locale } from '../../../lib/cms/types';
+import { icons } from '../../../lib/icons/registry';
 
 export function getStaticPaths() {
     return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -35,6 +36,16 @@ const localeSwitchUrls = {
     en: `${base}en/solutions/advertising/`,
     fr: `${base}fr/solutions/advertising/`,
 };
+
+// Icons shown on the hero panel grid — edit here to change them.
+const heroIcons = [
+    icons.gen.marketing,
+    icons.gen.trends,
+    icons.gen.strategicGrowth,
+    icons.gen.quickInsights,
+    icons.gen.uniqueSegments,
+    icons.gen.credibility,
+];
 
 const pageTitle =
     locale === 'fr'
@@ -94,7 +105,10 @@ const trustedByLogos = [
             locale={locale}
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
-            heroImageSrc={`${base}images/solutions/hero/Advertising.webp`}
+            heroImageSrc={`${base}images/solutions/advertising/hero/hero-solutions-advertising.webp`}
+            maskImageSrc={`${base}images/solutions/advertising/hero/hero-solutions-advertising-mask.webp`}
+            layoutId="advertising"
+            heroIcons={heroIcons}
             fallbackEyebrow={t(copy, 'solutions_item_3', locale, 'Advertising and Marketing')}
             fallbackTitle="Drive stronger campaign outcomes"
             fallbackDescription="Use trusted MTM data to plan, pitch, and optimize campaigns with confidence."

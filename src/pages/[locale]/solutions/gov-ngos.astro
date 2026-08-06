@@ -14,6 +14,7 @@ import HomeFooterSection from '../../../components/home/HomeFooterSection.astro'
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import { t } from '../../../lib/i18n/t';
 import type { Locale } from '../../../lib/cms/types';
+import { icons } from '../../../lib/icons/registry';
 
 export function getStaticPaths() {
     return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -35,6 +36,16 @@ const localeSwitchUrls = {
     en: `${base}en/solutions/gov-ngos/`,
     fr: `${base}fr/solutions/gov-ngos/`,
 };
+
+// Icons shown on the hero panel grid — edit here to change them.
+const heroIcons = [
+    icons.gen.coastToCoast,
+    icons.gen.bilingual,
+    icons.gen.reliableData,
+    icons.gen.backMajorDecisions,
+    icons.gen.methodologyRepresentation,
+    icons.gen.summaryExecutive,
+];
 
 const pageTitle =
     locale === 'fr'
@@ -84,7 +95,10 @@ const trustedByLogos = [
             locale={locale}
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
-            heroImageSrc={`${base}images/solutions/hero/Govn-NGO.webp`}
+            heroImageSrc={`${base}images/solutions/govngo/hero/hero-solutions-govngo.webp`}
+            maskImageSrc={`${base}images/solutions/govngo/hero/hero-solutions-govngo-mask.webp`}
+            layoutId="gov-ngos"
+            heroIcons={heroIcons}
             fallbackEyebrow={t(copy, 'solutions_item_5', locale, 'Government and NGOs')}
             fallbackTitle="Support policy and public outcomes with data"
             fallbackDescription="Use robust audience and technology insights to inform programs, policy, and public service strategy."
