@@ -1,0 +1,290 @@
+---
+// src/components/sign-in/SignInHeroSection.astro
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+import FormField from '../shared/FormField.astro';
+import SignInBackground from './SignInBackground.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="sign-in-hero section-height-100">
+    <SignInBackground id="webgl-background-sign-in" />
+
+    <div class="sign-in-hero__content">
+        <div class="sign-in-hero__stack">
+            <div class="sign-in-hero__intro">
+                <h1 class="sign-in-hero__title" data-copy-key="hero_title">
+                    {t(copy, 'hero_title', locale, 'Sign In')}
+                </h1>
+
+                <p class="text-body-p2 sign-in-hero__subtitle" data-copy-key="hero_subtitle">
+                    {
+                        t(
+                            copy,
+                            'hero_subtitle',
+                            locale,
+                            'Sign in to access your MTM dashboard, tools, and reports.'
+                        )
+                    }
+                </p>
+            </div>
+
+            <div class="sign-in-hero__card">
+                <form class="sign-in-hero__form" aria-label="Sign in">
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="email"
+                        name="email"
+                        labelKey="hero_form_email_label"
+                        label="Email"
+                        placeholderKey="hero_form_email_placeholder"
+                        placeholder="john@workmail.com"
+                        emailValidation="none"
+                        labelColor="primary"
+                        required
+                    />
+                    <div class="sign-in-hero__field-group">
+                        <div class="sign-in-hero__field-row">
+                            <label
+                                for="sign-in-password"
+                                class="form-field__label form-field__label--primary text-body-p3"
+                            >
+                                {t(copy, 'hero_form_password_label', locale, 'Password')}
+                                <span class="form-field__required">*</span>
+                            </label>
+
+                            <a
+                                href={`${base}${locale}/forgot-password/`}
+                                class="sign-in-hero__forgot text-body-p3-small"
+                                data-copy-key="hero_form_forgot_password"
+                            >
+                                {t(copy, 'hero_form_forgot_password', locale, 'Forgot Password?')}
+                            </a>
+                        </div>
+
+                        <FormField
+                            locale={locale}
+                            copy={copy}
+                            variant="field-only"
+                            type="password"
+                            id="sign-in-password"
+                            name="password"
+                            placeholderKey="hero_form_password_placeholder"
+                            placeholder="Enter your password"
+                            ariaLabel={t(copy, 'hero_form_password_label', locale, 'Password')}
+                            required
+                        />
+                    </div>
+
+                    <div class="sign-in-hero__actions">
+                        <Button
+                            variant="primary"
+                            size="lg"
+                            type="submit"
+                            class="sign-in-hero__submit"
+                        >
+                            {t(copy, 'hero_form_submit', locale, 'Log In')}
+                        </Button>
+                    </div>
+                </form>
+
+                <p class="text-body-p3 sign-in-hero__no-account">
+                    <span data-copy-key="hero_form_no_account_text">
+                        {t(copy, 'hero_form_no_account_text', locale, "Don't have an account?")}
+                    </span>{' '}
+                    <a
+                        href={`${base}${locale}/request-demo/`}
+                        data-copy-key="hero_form_no_account_cta"
+                    >
+                        {t(copy, 'hero_form_no_account_cta', locale, 'Request a Demo')}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .sign-in-hero {
+        position: relative;
+        width: 100%;
+        overflow: clip;
+        background: var(--surface-white);
+        margin-top: var(--navbar-height);
+        padding: var(--section-pad-block) var(--content-margin-inline);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sign-in-hero__content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .sign-in-hero__stack {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .sign-in-hero__card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        width: 100%;
+        max-width: 30rem;
+        padding: var(--space-9);
+        border-radius: var(--radius-m);
+        background: var(--surface-blue);
+        box-shadow: var(--shadow-card);
+    }
+
+    .sign-in-hero__intro {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: var(--space-8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        max-width: 40rem;
+        text-align: center;
+    }
+
+    .sign-in-hero__title {
+        margin: 0;
+        font-family: var(--font-heading);
+        font-size: var(--fs-subsection-h2);
+        font-weight: var(--fw-semibold);
+        line-height: var(--lh-tight);
+        letter-spacing: var(--ls-heading-lg);
+        color: var(--text-primary);
+    }
+
+    .sign-in-hero__subtitle {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    .sign-in-hero__form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+    }
+
+    .sign-in-hero__field-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    .sign-in-hero__field-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: var(--space-4);
+    }
+
+    .sign-in-hero__field-row .form-field__required {
+        color: var(--feedback-error);
+        margin-left: var(--space-1);
+    }
+
+    .sign-in-hero__actions {
+        display: flex;
+        margin-top: var(--space-3);
+    }
+
+    .sign-in-hero__submit {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sign-in-hero__forgot {
+        flex-shrink: 0;
+        color: var(--text-secondary);
+        text-decoration: none;
+    }
+
+    .sign-in-hero__forgot:hover {
+        text-decoration: underline;
+    }
+
+    .sign-in-hero__no-account {
+        margin: 0;
+        text-align: left;
+        color: var(--text-secondary);
+    }
+
+    .sign-in-hero__no-account a {
+        color: var(--text-primary);
+    }
+
+    @media (max-width: 1023px) {
+        .sign-in-hero {
+            height: auto;
+            min-height: var(--section-height-100);
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .sign-in-hero {
+            align-items: flex-start;
+            padding: var(--space-11) var(--content-margin-inline) var(--space-9);
+        }
+
+        .sign-in-hero__intro {
+            position: static;
+            transform: none;
+        }
+
+        .sign-in-hero__card {
+            padding: var(--space-6);
+        }
+    }
+</style>
+
+<script>
+    const form = document.querySelector<HTMLFormElement>('.sign-in-hero__form');
+
+    form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+        }
+    });
+
+    const emailInput = form?.querySelector<HTMLInputElement>('input[name="email"]');
+    const forgotLink = document.querySelector<HTMLAnchorElement>('.sign-in-hero__forgot');
+
+    if (emailInput && forgotLink) {
+        const baseHref = forgotLink.getAttribute('href') || '';
+        const syncForgotLink = () => {
+            const email = emailInput.value.trim();
+            forgotLink.href = email ? `${baseHref}?email=${encodeURIComponent(email)}` : baseHref;
+        };
+
+        emailInput.addEventListener('input', syncForgotLink);
+        syncForgotLink();
+    }
+</script>

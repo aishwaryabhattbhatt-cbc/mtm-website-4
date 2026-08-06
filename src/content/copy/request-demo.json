@@ -109,6 +109,11 @@
     "en": "Newcomer",
     "fr": ""
   },
+  "hero_form_interest_census": {
+    "key": "hero_form_interest_census",
+    "en": "Census",
+    "fr": ""
+  },
   "hero_form_interest_reports": {
     "key": "hero_form_interest_reports",
     "en": "Reports",

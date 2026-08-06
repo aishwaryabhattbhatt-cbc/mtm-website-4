@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/shared/Navbar.astro';
+import SignInHeroSection from '../../components/sign-in/SignInHeroSection.astro';
+import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
+import SignInBackgroundScripts from '../../components/sign-in/SignInBackgroundScripts.astro';
+import { getPageDictionary } from '../../lib/cms/getPageContent';
+import { getLocaleSwitchUrls } from '../../lib/i18n/routing';
+import type { Locale } from '../../lib/cms/types';
+
+export function getStaticPaths() {
+    return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
+}
+
+const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
+const copy = await getPageDictionary('sign-in');
+const base = import.meta.env.BASE_URL;
+const localeSwitchUrls = getLocaleSwitchUrls(base, 'sign-in');
+
+const pageTitle = locale === 'fr' ? 'MTM | Connexion' : 'MTM | Sign In';
+const pageDescription =
+    locale === 'fr'
+        ? 'Connectez-vous à votre compte Media Technology Monitor (MTM).'
+        : 'Sign in to your Media Technology Monitor (MTM) account.';
+---
+
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+    noindex={true}
+>
+    <main class="sign-in-page">
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+
+        <SignInHeroSection locale={locale} copy={copy} />
+
+        <HomeFooterSection
+            locale={locale}
+            copy={copy}
+            showCta={false}
+            showNewsletter={false}
+            showBgLeftCenter={false}
+        />
+    </main>
+
+    <Fragment slot="scripts">
+        <SignInBackgroundScripts />
+    </Fragment>
+</Layout>
+
+<style>
+    .sign-in-page {
+        width: 100%;
+    }
+</style>

@@ -29,11 +29,11 @@ const interestOptionRows = [
         { key: 'hero_form_interest_mtm18', fallback: 'MTM 18+', value: 'mtm18' },
         { key: 'hero_form_interest_junior', fallback: 'Junior', value: 'junior' },
         { key: 'hero_form_interest_newcomer', fallback: 'Newcomer', value: 'newcomer' },
+        { key: 'hero_form_interest_census', fallback: 'Census', value: 'census' },
     ],
     [
         { key: 'hero_form_interest_reports', fallback: 'Reports', value: 'reports' },
         { key: 'hero_form_interest_tools', fallback: 'Tools', value: 'tools' },
-        { key: 'hero_form_interest_services', fallback: 'Services', value: 'services' },
         { key: 'hero_form_interest_variables', fallback: 'Variables', value: 'variables' },
     ],
 ];
@@ -234,7 +234,7 @@ const interestOptionRows = [
                             locale={locale}
                             copy={copy}
                             variant="field-only"
-                            type="text"
+                            type="textarea"
                             name="message"
                             placeholderKey="hero_form_message_placeholder"
                             placeholder="Write your message here..."
@@ -377,7 +377,7 @@ const interestOptionRows = [
     .request-demo-hero__group {
         display: flex;
         flex-direction: column;
-        gap: var(--space-3);
+        gap: var(--space-1);
     }
 
     .request-demo-hero__group-label {
@@ -389,7 +389,7 @@ const interestOptionRows = [
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         column-gap: var(--space-6);
-        row-gap: var(--space-3);
+        row-gap: var(--space-1);
         align-items: center;
     }
 
@@ -405,7 +405,7 @@ const interestOptionRows = [
         display: inline-flex;
         align-items: center;
         gap: var(--space-2);
-        min-height: 2.75rem;
+        min-height: var(--space-7);
         color: var(--text-primary);
         cursor: pointer;
     }
@@ -435,7 +435,8 @@ const interestOptionRows = [
     }
 
     .request-demo-hero__submit {
-        align-self: flex-start;
+        width: 100%;
+        text-align: center;
     }
 
     @media (max-width: 1023px) {

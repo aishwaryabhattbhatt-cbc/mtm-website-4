@@ -1,0 +1,14 @@
+---
+// src/components/sign-in/SignInBackground.astro
+// WebGL liquid-gradient canvas container. Pair with <SignInBackgroundScripts />
+// in the page's `scripts` slot to initialize it
+// (public/js/backgrounds/sign-in-background.js — a dedicated copy of
+// research-hero-background.js so sign-in-specific tweaks never affect home).
+interface Props {
+    id: string;
+}
+
+const { id } = Astro.props as Props;
+---
+
+<div id={id} class="webgl-background" data-webgl-variant="sign-in" aria-hidden="true"></div>
