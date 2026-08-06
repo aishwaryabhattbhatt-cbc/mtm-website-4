@@ -11,7 +11,7 @@ interface Option {
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
-    type?: 'text' | 'email' | 'select';
+    type?: 'text' | 'email' | 'password' | 'select' | 'textarea';
     variant?: 'field-only' | 'field-with-label' | 'dropdown';
     name: string;
     id?: string;
@@ -52,6 +52,8 @@ const fieldId = id || `${name}-${Math.random().toString(36).substr(2, 9)}`;
 const showLabel = variant === 'field-with-label' || variant === 'dropdown';
 const isSelect = type === 'select' || variant === 'dropdown';
 const isEmail = type === 'email';
+const isPassword = type === 'password';
+const isTextarea = type === 'textarea';
 const shouldRenderEmailError = isEmail && emailValidation !== 'none';
 const emailErrorId = `${fieldId}-error`;
 
@@ -64,6 +66,10 @@ const emailErrorMessage =
     locale === 'fr'
         ? 'Veuillez saisir une adresse courriel valide.'
         : 'Please enter a valid email address.';
+const passwordToggleLabels =
+    locale === 'fr'
+        ? { show: 'Afficher le mot de passe', hide: 'Masquer le mot de passe' }
+        : { show: 'Show password', hide: 'Hide password' };
 ---
 
 <div class={`form-field form-field--${variant} ${className || ''}`}>
@@ -104,22 +110,100 @@ const emailErrorMessage =
                     ))}
                 </select>
             </div>
-        ) : (
-            <input
+        ) : isTextarea ? (
+            <textarea
                 id={fieldId}
-                type={type}
                 name={name}
-                class={`form-field__input text-body-p3 ${className || ''}`}
+                rows={1}
+                class:list={[
+                    'form-field__input',
+                    'form-field__textarea',
+                    'text-body-p3',
+                    className,
+                ]}
                 placeholder={resolvedPlaceholder}
-                value={value}
-                aria-label={ariaLabel || resolvedPlaceholder}
-                aria-invalid="false"
-                aria-describedby={shouldRenderEmailError ? emailErrorId : undefined}
-                data-email-field={isEmail ? 'true' : undefined}
-                data-error-id={shouldRenderEmailError ? emailErrorId : undefined}
-                data-email-validation={isEmail ? emailValidation : undefined}
+                aria-label={ariaLabel || resolvedLabel || resolvedPlaceholder}
                 {...(required && { required })}
             />
+        ) : (
+            <div class="form-field__input-wrapper">
+                <input
+                    id={fieldId}
+                    type={type}
+                    name={name}
+                    class:list={[
+                        'form-field__input',
+                        'text-body-p3',
+                        isPassword && 'form-field__input--with-toggle',
+                        className,
+                    ]}
+                    placeholder={resolvedPlaceholder}
+                    value={value}
+                    aria-label={ariaLabel || resolvedLabel || resolvedPlaceholder}
+                    aria-invalid="false"
+                    aria-describedby={shouldRenderEmailError ? emailErrorId : undefined}
+                    data-email-field={isEmail ? 'true' : undefined}
+                    data-error-id={shouldRenderEmailError ? emailErrorId : undefined}
+                    data-email-validation={isEmail ? emailValidation : undefined}
+                    {...(required && { required })}
+                />
+                {isPassword && (
+                    <button
+                        type="button"
+                        class="form-field__toggle"
+                        data-password-toggle
+                        data-label-show={passwordToggleLabels.show}
+                        data-label-hide={passwordToggleLabels.hide}
+                        aria-label={passwordToggleLabels.show}
+                        aria-pressed="false"
+                    >
+                        <svg
+                            class="form-field__toggle-icon form-field__toggle-icon--eye icon-s"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="3"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            />
+                        </svg>
+                        <svg
+                            class="form-field__toggle-icon form-field__toggle-icon--eye-off icon-s"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <line
+                                x1="1"
+                                y1="1"
+                                x2="23"
+                                y2="23"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+                )}
+            </div>
         )
     }
 
@@ -166,6 +250,7 @@ const emailErrorMessage =
 
     .form-field__input,
     .form-field__select {
+        width: 100%;
         height: var(--space-8);
         padding: var(--space-2) var(--space-4);
         border: var(--stroke-1) solid var(--neutral-grey-2);
@@ -179,6 +264,13 @@ const emailErrorMessage =
 
     .form-field__input::placeholder {
         color: var(--neutral-grey-3);
+    }
+
+    .form-field__textarea {
+        height: auto;
+        min-height: var(--space-8);
+        resize: vertical;
+        cursor: text;
     }
 
     .form-field__error {
@@ -199,6 +291,48 @@ const emailErrorMessage =
         outline: none;
         border-color: var(--border-primary);
         box-shadow: 0 0 0 3px rgba(85, 61, 204, 0.1);
+    }
+
+    .form-field__input-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    .form-field__input--with-toggle {
+        padding-right: var(--space-9);
+    }
+
+    .form-field__toggle {
+        position: absolute;
+        top: 50%;
+        right: var(--space-3);
+        transform: translateY(-50%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: var(--neutral-grey-1);
+        cursor: pointer;
+    }
+
+    .form-field__toggle:focus-visible {
+        outline: var(--stroke-2) solid var(--border-primary);
+        outline-offset: var(--stroke-2);
+        border-radius: var(--radius-xs);
+    }
+
+    .form-field__toggle-icon--eye-off {
+        display: none;
+    }
+
+    .form-field__toggle.is-visible .form-field__toggle-icon--eye {
+        display: none;
+    }
+
+    .form-field__toggle.is-visible .form-field__toggle-icon--eye-off {
+        display: block;
     }
 
     .form-field__select {
@@ -301,6 +435,24 @@ const emailErrorMessage =
             input.setAttribute('aria-invalid', 'true');
             errorNode.classList.add('is-visible');
             errorNode.setAttribute('aria-hidden', 'false');
+        });
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('[data-password-toggle]').forEach((button) => {
+        const input = button
+            .closest('.form-field__input-wrapper')
+            ?.querySelector<HTMLInputElement>('.form-field__input');
+        if (!input) return;
+
+        button.addEventListener('click', () => {
+            const willReveal = input.type === 'password';
+            input.type = willReveal ? 'text' : 'password';
+            button.classList.toggle('is-visible', willReveal);
+            button.setAttribute('aria-pressed', String(willReveal));
+            button.setAttribute(
+                'aria-label',
+                willReveal ? button.dataset.labelHide || '' : button.dataset.labelShow || ''
+            );
         });
     });
 </script>

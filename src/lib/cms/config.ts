@@ -16,6 +16,8 @@ const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
     'gov-ngos': '611009991',
     'request-demo': '0',
     'request-demo-success': '0',
+    'sign-in': '0',
+    'forgot-password': '0',
 };
 
 const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
@@ -44,6 +46,8 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=611009991&single=true&output=csv',
     'request-demo': '',
     'request-demo-success': '',
+    'sign-in': '',
+    'forgot-password': '',
 };
 
 const DEFAULT_REFRESH_MS = 30000;

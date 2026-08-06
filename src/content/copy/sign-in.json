@@ -1,0 +1,52 @@
+{
+  "hero_title": {
+    "key": "hero_title",
+    "en": "Sign In",
+    "fr": ""
+  },
+  "hero_subtitle": {
+    "key": "hero_subtitle",
+    "en": "Sign in to access your MTM dashboard, tools, and reports.",
+    "fr": ""
+  },
+  "hero_form_email_label": {
+    "key": "hero_form_email_label",
+    "en": "Email",
+    "fr": ""
+  },
+  "hero_form_email_placeholder": {
+    "key": "hero_form_email_placeholder",
+    "en": "john@workmail.com",
+    "fr": ""
+  },
+  "hero_form_password_label": {
+    "key": "hero_form_password_label",
+    "en": "Password",
+    "fr": ""
+  },
+  "hero_form_password_placeholder": {
+    "key": "hero_form_password_placeholder",
+    "en": "Enter your password",
+    "fr": ""
+  },
+  "hero_form_submit": {
+    "key": "hero_form_submit",
+    "en": "Log In",
+    "fr": ""
+  },
+  "hero_form_forgot_password": {
+    "key": "hero_form_forgot_password",
+    "en": "Forgot Password?",
+    "fr": ""
+  },
+  "hero_form_no_account_text": {
+    "key": "hero_form_no_account_text",
+    "en": "Don't have an account?",
+    "fr": ""
+  },
+  "hero_form_no_account_cta": {
+    "key": "hero_form_no_account_cta",
+    "en": "Request a Demo",
+    "fr": ""
+  }
+}
