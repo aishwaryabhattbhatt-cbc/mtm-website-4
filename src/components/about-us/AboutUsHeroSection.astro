@@ -1,0 +1,76 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import ToolsHeroSection from '../tools/ToolsHeroSection.astro';
+import AboutUsBackground from './AboutUsBackground.astro';
+import mtmLogo from '../../assets/svg/mtm-logo.svg?url';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+---
+
+<ToolsHeroSection
+    locale={locale}
+    copy={copy}
+    background="blue"
+    titleKey="about_hero_title"
+    titleFallback="About MTM"
+    descriptionKey="about_what_body"
+    descriptionFallback="MTM (Media Technology Monitor) is a continuous, bilingual research initiative that tracks how Canadians use media and technology — from streaming and social platforms to devices and emerging tech — across English and French Canada. Running since 2005, MTM exists so that understanding how Canadians actually use media doesn't require guesswork: broadcasters, advertisers, educators, and policymakers all plan around the same independent numbers."
+>
+    <Fragment slot="background">
+        <AboutUsBackground id="webgl-background-about-us" />
+    </Fragment>
+    <img
+        slot="logo"
+        src={mtmLogo}
+        alt="MTM - Media Technology Monitor"
+        class="about-us-hero-logo"
+    />
+</ToolsHeroSection>
+
+<style>
+    /* Overrides on ToolsHeroSection's shared markup — scoped here via
+       :global() so analytic-tools/census-tool (the other two callers)
+       are untouched; this stylesheet only ships on the About Us page. */
+    :global(.tools-hero--blue) {
+        min-height: 42rem;
+        padding-top: var(--section-pad-block-lg);
+        padding-bottom: var(--section-pad-block-lg);
+        justify-content: center;
+    }
+
+    :global(.tools-hero--blue .tools-hero__description) {
+        max-width: 42rem;
+    }
+
+    /* Mirrors AboutUsValuesSection's fadeTop — softens the hard edge where
+       this section hands off into the next one below. */
+    :global(.tools-hero--blue)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8rem;
+        background: linear-gradient(to top, var(--surface-white), transparent);
+        pointer-events: none;
+    }
+
+    @media (max-width: 767px) {
+        :global(.tools-hero--blue) {
+            min-height: 30rem;
+            padding-top: var(--space-9);
+            padding-bottom: var(--space-9);
+        }
+    }
+
+    .about-us-hero-logo {
+        height: var(--icon-4xl);
+        width: auto;
+        display: block;
+    }
+</style>

@@ -35,7 +35,7 @@ const variable2 = 'variable_2' in copy ? t(copy, 'variable_2', locale, '') : '';
 const variables = [variable1, variable2].filter(Boolean);
 ---
 
-<div class="featured-report-card">
+<div class="featured-report-card card-slide-in">
     <div class="featured-report-card__content">
         <div class="featured-report-card__top">
             <div class="featured-report-card__meta">
@@ -232,6 +232,40 @@ const variables = [variable1, variable2].filter(Boolean);
 
         .featured-report-card__image-wrap {
             aspect-ratio: 4 / 3;
+        }
+    }
+
+    /* Page-load cascade, following shortly after the hero's own text/CTA
+       (text at 0.1s, CTA at 0.2s) — this card bleeds up into the hero fold,
+       so it reveals on load rather than waiting for a scroll trigger.
+       Exception to the standard fly-in recipe: no opacity fade, transform
+       only — the card is already sitting on a white surface against the
+       hero's blue background, so a fade read as a slow flicker rather than
+       a motion; a pure slide reads clearly as "arriving" without it.
+       `visibility` (not opacity) keeps it fully out of sight during the
+       delay — it's a hard on/off switch, not a fade, so it doesn't
+       reintroduce the opacity transition. */
+    .card-slide-in {
+        visibility: hidden;
+        animation: card-slide-in-up 900ms var(--motion-ease-standard) forwards;
+        animation-delay: 0.5s;
+    }
+
+    @keyframes card-slide-in-up {
+        from {
+            visibility: visible;
+            transform: translateY(3rem);
+        }
+        to {
+            visibility: visible;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .card-slide-in {
+            visibility: visible;
+            animation: none;
         }
     }
 </style>

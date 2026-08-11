@@ -46,10 +46,12 @@ const heroIcons = [
     icons.gen.perceptionSearch,
 ];
 
-const pageTitle =
-    locale === 'fr'
-        ? "MTM | Données d'audience canadiennes pour médias"
-        : 'MTM | Canadian Audience Data for Media Companies';
+const pageTitle = t(
+    copy,
+    'media_page_title',
+    locale,
+    'MTM | Media Companies: Canadian Audience Data & Insights'
+);
 const pageDescription =
     locale === 'fr'
         ? 'Solutions MTM pour les entreprises médiatiques.'

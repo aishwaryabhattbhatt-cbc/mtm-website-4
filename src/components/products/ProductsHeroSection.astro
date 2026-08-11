@@ -3,24 +3,122 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
 
+export type HeroBadge = { left: number; top: number; size: string; icon: string };
+
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
     ctaHref: string;
-    heroImageSrc?: string;
+    heroImageSrc: string;
+    /** Black-on-white silhouette of heroImageSrc; cuts a person-shaped hole
+        in the effects layer so its content (the floating icon badges)
+        renders behind the subject (same pattern as SolutionsHeroSection). */
+    maskImageSrc?: string;
+    /** Positions/sizes/icons read off each page's own reference mock, as %
+        of the hero media box. Centered on (left, top) via translate(-50%,
+        -50%). Badges that sit in front of the subject in the mock (not
+        behind) belong in heroBadgesTop instead — it renders in a separate
+        unmasked layer above .products-hero-effects. */
+    heroBadgesMasked?: HeroBadge[];
+    heroBadgesTop?: HeroBadge[];
     heroIconSrc?: string;
     heroIconAlt?: string;
 }
 
-const { locale, copy, ctaHref, heroImageSrc, heroIconSrc, heroIconAlt } = Astro.props as Props;
+const {
+    locale,
+    copy,
+    ctaHref,
+    heroImageSrc,
+    maskImageSrc,
+    heroBadgesMasked = [],
+    heroBadgesTop = [],
+    heroIconSrc,
+    heroIconAlt,
+} = Astro.props as Props;
+
 const base = import.meta.env.BASE_URL;
-const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner.webp`;
+const maskUrl = maskImageSrc ? `url("${maskImageSrc}")` : 'none';
+
+/* Same panel tile as SolutionsHeroSection's grid — reused here as empty
+   floating badges (no icon yet), hand-positioned to match the reference
+   mock. Vector stays sharp at any badge size. */
+const panelSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91 91'><defs><radialGradient id='g' cx='50%' cy='42%' r='78%'><stop offset='0%' stop-color='#ffffff'/><stop offset='60%' stop-color='#fdfeff'/><stop offset='100%' stop-color='#f5f8fc'/></radialGradient></defs><rect x='4' y='4' width='83' height='83' rx='10' fill='url(#g)' stroke='#eef2f8' stroke-width='1'/></svg>`;
+const panelUrl = `url("data:image/svg+xml,${encodeURIComponent(panelSvg)}")`;
+
+// Sequencing (same media-in mark as SolutionsHeroSection): media flies in
+// first, badges fly in staggered starting at that mark, and each badge's
+// infinite float only starts once its own fly-in has finished — not before.
+const MEDIA_IN_SECONDS = 0.9;
+const BADGE_ENTRY_DURATION = 0.6; // keep in sync with .products-hero-badge's animation-duration below
+const BADGE_ENTRY_STEP = 0.15;
+
+function badgeEntryStyle(badge: HeroBadge, index: number) {
+    const entryDelay = MEDIA_IN_SECONDS + index * BADGE_ENTRY_STEP;
+    return `left: ${badge.left}%; top: ${badge.top}%; --badge-size: ${badge.size}; animation-delay: ${entryDelay}s;`;
+}
+
+// Same floating-orbit idea as mtm-website-1's hero icons: randomized
+// duration/direction per badge so they drift out of phase with each other
+// instead of bobbing in unison. Delay (not randomized) starts the float the
+// instant that badge's own fly-in finishes.
+function badgeFloatStyle(badge: HeroBadge, index: number) {
+    const entryDelay = MEDIA_IN_SECONDS + index * BADGE_ENTRY_STEP;
+    const floatDelay = (entryDelay + BADGE_ENTRY_DURATION).toFixed(2);
+    const duration = (Math.random() * (11 - 7) + 7).toFixed(2);
+    const direction = Math.random() < 0.5 ? 'normal' : 'reverse';
+    return `animation-duration: ${duration}s; animation-delay: ${floatDelay}s; animation-direction: ${direction};`;
+}
 ---
 
 <section class="products-hero-section">
     <div class="products-hero-media" aria-hidden="true">
-        <img src={imageSrc} alt="" class="products-hero-image" loading="eager" decoding="async" />
+        <img
+            src={heroImageSrc}
+            alt=""
+            class="products-hero-image"
+            loading="eager"
+            decoding="async"
+        />
+        {
+            maskImageSrc && (
+                <div class="products-hero-effects">
+                    <div class="products-hero-badges">
+                        {heroBadgesMasked.map((badge, i) => (
+                            <span class="products-hero-badge" style={badgeEntryStyle(badge, i)}>
+                                <span
+                                    class="products-hero-badge-float"
+                                    style={badgeFloatStyle(badge, i)}
+                                >
+                                    <img
+                                        src={`${base}${badge.icon}`}
+                                        alt=""
+                                        class="products-hero-badge-icon"
+                                    />
+                                </span>
+                            </span>
+                        ))}
+                    </div>
+                    <slot name="effects" />
+                </div>
+            )
+        }
         <div class="products-hero-fade"></div>
+        <div class="products-hero-badges-top">
+            {
+                heroBadgesTop.map((badge, i) => (
+                    <span class="products-hero-badge" style={badgeEntryStyle(badge, i)}>
+                        <span class="products-hero-badge-float" style={badgeFloatStyle(badge, i)}>
+                            <img
+                                src={`${base}${badge.icon}`}
+                                alt=""
+                                class="products-hero-badge-icon"
+                            />
+                        </span>
+                    </span>
+                ))
+            }
+        </div>
     </div>
     <div class="products-hero-content">
         {
@@ -55,7 +153,142 @@ const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner
     </div>
 </section>
 
-<style>
+<style define:vars={{ 'mask-url': maskUrl, 'panel-url': panelUrl }}>
+    /* Mimics .products-hero-image's object-fit:cover geometry instead of
+       just stretching inset:0 — height:100% + the image's native
+       aspect-ratio + centering makes this frame scale/crop exactly like
+       the photo at every breakpoint, so badge left/top percents (set
+       below) always land on the same photo content without needing
+       per-breakpoint math. .products-hero-badges also inherits the
+       silhouette mask from its parent .products-hero-effects, so those
+       badges duck behind the subject; .products-hero-badges-top sits after
+       both .products-hero-effects AND .products-hero-fade in the DOM, so
+       it's never masked and never dimmed by the fade-to-background
+       gradient (which would otherwise wash out badges low enough to sit
+       in the fade's colored zone). */
+    .products-hero-badges,
+    .products-hero-badges-top {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        height: 100%;
+        aspect-ratio: 1920 / 770;
+        transform: translateX(-50%);
+        pointer-events: none;
+    }
+
+    .products-hero-badge {
+        position: absolute;
+        width: var(--badge-size);
+        height: var(--badge-size);
+        opacity: 0;
+        /* Grow/appear (not a fly-in): position stays fixed at the centered
+           translate the whole time, only opacity+scale animate, so there's
+           no positional handoff to fight with .products-hero-badge-float's
+           orbit offset once that kicks in — a translateY fly-in ending
+           right as an 8px orbit offset appears was popping visibly.
+           Duration is literal here (not a var) because it also has to
+           match BADGE_ENTRY_DURATION in the frontmatter, which computes
+           when .products-hero-badge-float's delay should start. */
+        animation-name: products-hero-badge-grow-in;
+        animation-duration: 0.6s;
+        animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+        animation-fill-mode: forwards;
+        /* animation-delay set per-badge inline (see badgeEntryStyle). */
+    }
+
+    @keyframes products-hero-badge-grow-in {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+    .products-hero-badge-float {
+        position: absolute;
+        inset: 0;
+        background-image: var(--panel-url);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        /* filter (not box-shadow) so the shadow hugs the SVG's rounded
+           shape instead of the badge's square bounding box; matches
+           --shadow-e1's offset/blur/color since box-shadow values aren't
+           valid inside drop-shadow(). */
+        filter: drop-shadow(0 2px 4px rgba(27, 28, 29, 0.16));
+        /* Resting position matches the float keyframes' `from` value exactly
+           (translateY only, no rotate — rotate(0deg) is the identity), so
+           while this badge waits out its animation-delay it's already
+           sitting where the float animation's first frame would put it.
+           Without this, the badge sits at 0 offset until the animation
+           starts, then snaps to this same offset — a visible pop. */
+        transform: translateY(calc(-1 * var(--space-2)));
+        /* Duration/delay/direction set per-badge inline (see badgeFloatStyle);
+           delay is timed to start right as this badge's fly-in finishes. */
+        animation-name: products-hero-badge-float;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    /* Counter-rotation trick (same as mtm-website-1): the outer rotate()
+       carries the badge around a small circle via translateY, the inner
+       rotate() cancels that spin so the badge itself stays upright. No
+       centering translate needed here — .products-hero-badge-float fills
+       its already-centered parent via inset:0. */
+    @keyframes products-hero-badge-float {
+        from {
+            transform: rotate(0deg) translateY(calc(-1 * var(--space-2))) rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg) translateY(calc(-1 * var(--space-2))) rotate(-360deg);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .products-hero-badge {
+            animation: none;
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        .products-hero-badge-float {
+            animation: none;
+            transform: none;
+        }
+    }
+
+    .products-hero-badge-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* Sized off --badge-size (not an icon-sizes.css class) so it scales
+           continuously with each badge's own size on desktop/tablet — the
+           fixed-step classes can't track a dynamic per-instance size.
+           Fixed back to a flat size on mobile below, where badges are
+           already uniformly scaled down. */
+        width: calc(var(--badge-size) * 0.55);
+        height: calc(var(--badge-size) * 0.55);
+    }
+
+    .products-hero-effects {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        /* Luminance mask: white = show, black silhouette = hole, so
+           anything in this layer renders behind the photo's subject.
+           Must stay registered with .products-hero-image: same cover
+           sizing and center-top anchor. */
+        mask-image: var(--mask-url);
+        mask-mode: luminance;
+        mask-repeat: no-repeat;
+        mask-position: center top;
+        mask-size: cover;
+    }
+
     .products-hero-section {
         position: relative;
         background-color: var(--surface-blue);
@@ -69,6 +302,30 @@ const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner
         overflow: hidden;
         /* 770 / 1920 matches the Figma image proportion */
         aspect-ratio: 1920 / 770;
+        opacity: 0;
+        /* Home-section fly-in pattern (see SolutionsHeroSection): the whole
+           media block (photo + badges + mask) moves as one registered unit
+           so nothing drifts out of alignment while it settles. */
+        animation: products-hero-media-in var(--motion-duration-heading) var(--motion-ease-standard)
+            forwards;
+    }
+
+    @keyframes products-hero-media-in {
+        from {
+            opacity: 0;
+            transform: translateY(1.625rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .products-hero-media {
+            animation: none;
+            opacity: 1;
+        }
     }
 
     .products-hero-image {
@@ -106,6 +363,36 @@ const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner
         gap: var(--hero-stack-gap);
     }
 
+    /* Same cascade as SolutionsHeroSection: icon-glass -> h1 -> description
+       -> CTA, each flying in with an increasing delay. */
+    .products-hero-content > :global(*) {
+        opacity: 0;
+        animation: products-hero-media-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+
+    .products-hero-content > :global(:nth-child(1)) {
+        animation-delay: 0.1s;
+    }
+
+    .products-hero-content > :global(:nth-child(2)) {
+        animation-delay: 0.2s;
+    }
+
+    .products-hero-content > :global(:nth-child(3)) {
+        animation-delay: 0.3s;
+    }
+
+    .products-hero-content > :global(:nth-child(4)) {
+        animation-delay: 0.4s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .products-hero-content > :global(*) {
+            animation: none;
+            opacity: 1;
+        }
+    }
+
     .products-hero-icon-glass {
         display: inline-flex;
         align-items: center;
@@ -135,17 +422,57 @@ const imageSrc = heroImageSrc ?? `${base}images/products/mtm-18-plus/hero-banner
         }
     }
 
+    /* Tablet only (bounded so it can't also match mobile below): badges at
+       80% of their desktop --badge-size, icon at the same 0.55 desktop
+       ratio applied to that 80% (0.8 * 0.55 = 0.44). */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .products-hero-badge {
+            width: calc(var(--badge-size) * 0.8);
+            height: calc(var(--badge-size) * 0.8);
+        }
+
+        .products-hero-badge-icon {
+            width: calc(var(--badge-size) * 0.44);
+            height: calc(var(--badge-size) * 0.44);
+        }
+
+        .products-hero-content {
+            /* Base upward shift is 14.0365vw (see desktop comment); pulled
+               back down by 4vw so content sits lower on tablet. */
+            margin-top: -10.0365vw;
+        }
+    }
+
     @media (max-width: 767px) {
         .products-hero-content {
-            /* Mobile media is 1540/1920 ratio, so 35% upward shift = 28.0729vw */
-            margin-top: -28.0729vw;
+            /* Base upward shift is 22.7865vw (see desktop comment); pulled
+               back down by 8vw total so content sits lower on mobile. */
+            margin-top: -14.7865vw;
             gap: var(--space-5);
         }
 
         .products-hero-media {
-            /* 2x taller than the desktop ratio so object-fit: cover zooms in
-               by scaling to fill the extra height, cropping only the sides */
-            aspect-ratio: 1920 / 1540;
+            /* Taller than the desktop ratio so object-fit: cover zooms in,
+               cropping the sides — 1250 (not a full 2x/1540) keeps more of
+               the photo's width visible, a slighter crop. */
+            aspect-ratio: 1920 / 1250;
+        }
+
+        .products-hero-badge {
+            /* Slightly smaller than their desktop --badge-size; position
+               (left/top %) is untouched — the cover-frame already keeps
+               that aligned with the cropped photo. */
+            width: calc(var(--badge-size) * 0.6);
+            height: calc(var(--badge-size) * 0.6);
+        }
+
+        .products-hero-badge-icon {
+            /* Flat size, not proportional to --badge-size like desktop/
+               tablet — the desktop calc() is tuned against the full
+               --badge-size, which doesn't know about the 0.6x badge
+               shrink above, so it would overflow the now-smaller badge. */
+            width: 2.5rem;
+            height: 2.5rem;
         }
     }
 </style>

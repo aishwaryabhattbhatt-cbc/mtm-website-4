@@ -9,6 +9,7 @@ const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
     'analytic-tools': '1734378829',
     'census-tool': '606257462',
     insights: '1724411017',
+    'about-us': '550283014',
     media: '1361843616',
     advertising: '769668628',
     industry: '2038951837',
@@ -35,6 +36,8 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=606257462&single=true&output=csv',
     insights:
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=1724411017&single=true&output=csv',
+    'about-us':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=550283014&single=true&output=csv',
     media: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=1361843616&single=true&output=csv',
     advertising:
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=769668628&single=true&output=csv',

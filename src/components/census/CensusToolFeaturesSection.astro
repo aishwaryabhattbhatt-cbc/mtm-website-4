@@ -3,6 +3,7 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import CensusToolCard from './CensusToolCard.astro';
 import { icons } from '../../lib/icons/registry';
 import { t } from '../../lib/i18n/t';
+import CountUpValue from '../shared/CountUpValue.astro';
 
 interface Props {
     locale: Locale;
@@ -232,19 +233,21 @@ const tools = [
                     (i === 1 ? (
                         <>
                             <div class="section-gap section-gap-lg" aria-hidden="true" />
-                            <div class="split-frame">
+                            <div class="split-frame content-fly-in">
                                 <img
                                     src={`${base}images/tools/census/split-frame-1.webp`}
                                     alt=""
                                     loading="lazy"
                                 />
                                 <div class="split-frame-callout split-frame-callout--right">
-                                    <span class="text-hero split-callout-value split-callout-value--lg">
-                                        {t(copy, 'stat_callout_1_value', locale, '63%')}
-                                    </span>
-                                    <span class="text-metrics split-callout-value split-callout-value--sm">
-                                        {t(copy, 'stat_callout_1_value', locale, '63%')}
-                                    </span>
+                                    <CountUpValue
+                                        value={t(copy, 'stat_callout_1_value', locale, '63%')}
+                                        class="text-hero split-callout-value split-callout-value--lg"
+                                    />
+                                    <CountUpValue
+                                        value={t(copy, 'stat_callout_1_value', locale, '63%')}
+                                        class="text-metrics split-callout-value split-callout-value--sm"
+                                    />
                                     <span class="text-body-p1 split-callout-desc">
                                         {t(
                                             copy,
@@ -260,19 +263,21 @@ const tools = [
                     ) : i === 3 ? (
                         <>
                             <div class="section-gap section-gap-lg" aria-hidden="true" />
-                            <div class="split-frame">
+                            <div class="split-frame content-fly-in">
                                 <img
                                     src={`${base}images/tools/census/split-frame-2.webp`}
                                     alt=""
                                     loading="lazy"
                                 />
                                 <div class="split-frame-callout split-frame-callout--left">
-                                    <span class="text-hero split-callout-value split-callout-value--lg">
-                                        {t(copy, 'stat_callout_2_value', locale, '')}
-                                    </span>
-                                    <span class="text-metrics split-callout-value split-callout-value--sm">
-                                        {t(copy, 'stat_callout_2_value', locale, '')}
-                                    </span>
+                                    <CountUpValue
+                                        value={t(copy, 'stat_callout_2_value', locale, '')}
+                                        class="text-hero split-callout-value split-callout-value--lg"
+                                    />
+                                    <CountUpValue
+                                        value={t(copy, 'stat_callout_2_value', locale, '')}
+                                        class="text-metrics split-callout-value split-callout-value--sm"
+                                    />
                                     <span class="text-body-p1 split-callout-desc">
                                         {t(copy, 'stat_callout_2_description', locale, '')}
                                     </span>
@@ -334,11 +339,13 @@ const tools = [
         text-align: left;
     }
 
-    .split-callout-value {
+    /* :global — these target CountUpValue's own <span>, which doesn't carry
+       this component's scope attribute. */
+    :global(.split-callout-value) {
         color: var(--text-primary);
     }
 
-    .split-callout-value--sm {
+    :global(.split-callout-value--sm) {
         display: none;
     }
 
@@ -347,11 +354,11 @@ const tools = [
     }
 
     @media (max-width: 1023px) {
-        .split-callout-value--lg {
+        :global(.split-callout-value--lg) {
             display: none;
         }
 
-        .split-callout-value--sm {
+        :global(.split-callout-value--sm) {
             display: block;
         }
     }
@@ -375,4 +382,42 @@ const tools = [
             max-width: 60%;
         }
     }
+
+    .content-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .content-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // Each CensusToolCard observes and reveals itself (see its own script) —
+    // it also drives the stagger for its nested feature bullets, so that
+    // reveal can't land at a different scroll position than the card's own.
+    // Only the split-frame page-breakers are handled at this section level.
+    // The stat values inside them (CountUpValue) trigger their own count-up
+    // independently, on their own scroll-in observer.
+    document.querySelectorAll<HTMLElement>('.census-tool-features').forEach((section) => {
+        const contentObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        contentObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+        section.querySelectorAll<HTMLElement>('.content-fly-in').forEach((el) => {
+            contentObserver.observe(el);
+        });
+    });
+</script>

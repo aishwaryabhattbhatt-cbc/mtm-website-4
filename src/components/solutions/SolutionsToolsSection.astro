@@ -35,14 +35,14 @@ const censusDescriptionFallback =
 ---
 
 <section class="solutions-tools-section">
-    <h2 class="solutions-tools-section__headline">
+    <h2 class="solutions-tools-section__headline heading-fly-in">
         {t(copy, 'tools_title', locale, 'Tools that empower you to track those shifts')}
     </h2>
 
     <div class="solutions-tools-cards">
         {
             showAnalytic && (
-                <article class="solutions-tools-card">
+                <article class="solutions-tools-card card-fly-in">
                     <div class="solutions-tools-card__content">
                         <div class="solutions-tools-card__text">
                             <div class="solutions-tools-card__title-row">
@@ -131,7 +131,7 @@ const censusDescriptionFallback =
 
         {
             showCensus && (
-                <article class="solutions-tools-card">
+                <article class="solutions-tools-card card-fly-in">
                     <div class="solutions-tools-card__preview">
                         <img
                             src={`${base}images/tools/census/census-tool-hero.webp`}
@@ -214,7 +214,7 @@ const censusDescriptionFallback =
 
         {
             showAnalyticSlim && (
-                <details class="solutions-tools-accordion">
+                <details class="solutions-tools-accordion card-fly-in">
                     <summary class="solutions-tools-card-slim solutions-tools-card-slim--summary">
                         <div class="solutions-tools-card-slim__left">
                             <img
@@ -360,7 +360,7 @@ const censusDescriptionFallback =
 
         {
             showCensusSlim && (
-                <details class="solutions-tools-accordion">
+                <details class="solutions-tools-accordion card-fly-in">
                     <summary class="solutions-tools-card-slim solutions-tools-card-slim--summary">
                         <div class="solutions-tools-card-slim__left">
                             <img
@@ -758,7 +758,71 @@ const censusDescriptionFallback =
             min-width: var(--space-8);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // Cards (and the collapsed accordion bars) stack vertically at
+    // different scroll positions, so each observes itself. They're also
+    // unusually tall (preview image + full feature row), so the threshold
+    // is raised past the 0.2 default — same fix as the Census tool cards,
+    // which fired on just a sliver of a tall card poking into view.
+    document.querySelectorAll<HTMLElement>('.solutions-tools-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        const cardObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        cardObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.35 }
+        );
+        section.querySelectorAll<HTMLElement>('.card-fly-in').forEach((card) => {
+            cardObserver.observe(card);
+        });
+    });
+</script>
 
 <script>
     const toolsAccordions = document.querySelectorAll<HTMLDetailsElement>(

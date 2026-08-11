@@ -22,7 +22,7 @@ const base = import.meta.env.BASE_URL;
     <!-- row 1: content (4 cols) + image (8 cols) -->
     <div class="trending-tool__content">
         <div class="trending-tool__header">
-            <div class="trending-tool__title-row">
+            <div class="trending-tool__title-row heading-fly-in">
                 <img
                     class="icon-3xl trending-tool__title-icon"
                     src={`${base}${icons.tool.trending}`}
@@ -34,11 +34,14 @@ const base = import.meta.env.BASE_URL;
                     {t(copy, 'tool_2_title', locale, 'Trending Tool')}
                 </h2>
             </div>
-            <div class="trending-tool__pills">
+            <div class="trending-tool__pills content-fly-in">
                 <ProductPill variant="mtm18plus" size="big" />
                 <ProductPill variant="junior" size="big" />
             </div>
-            <p class="text-body-p1 trending-tool__description" data-copy-key="tool_2_description">
+            <p
+                class="text-body-p1 trending-tool__description content-fly-in"
+                data-copy-key="tool_2_description"
+            >
                 {
                     t(
                         copy,
@@ -49,14 +52,14 @@ const base = import.meta.env.BASE_URL;
                 }
             </p>
         </div>
-        <div class="trending-tool__cta">
+        <div class="trending-tool__cta content-fly-in">
             <Button variant="secondary" size="md" href={ctaHref}>
                 {t(copy, 'tool_2_cta', locale, 'View Demo')}
             </Button>
         </div>
     </div>
 
-    <div class="trending-tool__visual">
+    <div class="trending-tool__visual content-fly-in">
         <img
             class="trending-tool__screen"
             src={`${base}images/tools/trending-tool.webp`}
@@ -66,7 +69,7 @@ const base = import.meta.env.BASE_URL;
     </div>
 
     <!-- row 2: 3 feature cards (4 cols each) -->
-    <div class="trending-tool__feature trending-tool__feature--blue">
+    <div class="trending-tool__feature trending-tool__feature--blue card-fly-in">
         <EyebrowIcon
             iconSrc={`${base}${icons.gen.sampleCoverage}`}
             label={t(copy, 'trending_feature_1_eyebrow', locale, 'What You See')}
@@ -103,7 +106,7 @@ const base = import.meta.env.BASE_URL;
         </div>
     </div>
 
-    <div class="trending-tool__feature trending-tool__feature--teal">
+    <div class="trending-tool__feature trending-tool__feature--teal card-fly-in">
         <EyebrowIcon
             iconSrc={`${base}${icons.gen.surveyDesign}`}
             label={t(copy, 'trending_feature_2_eyebrow', locale, 'What You Track')}
@@ -140,7 +143,7 @@ const base = import.meta.env.BASE_URL;
         </div>
     </div>
 
-    <div class="trending-tool__feature trending-tool__feature--purple">
+    <div class="trending-tool__feature trending-tool__feature--purple card-fly-in">
         <EyebrowIcon
             iconSrc={`${base}${icons.gen.sampleComposition}`}
             label={t(copy, 'trending_feature_3_eyebrow', locale, 'What You Compare')}
@@ -314,7 +317,105 @@ const base = import.meta.env.BASE_URL;
             padding: var(--space-4);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .content-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease 0.9s,
+            transform var(--motion-duration-heading) var(--motion-ease-standard) 0.9s;
+    }
+
+    .content-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Per-card entrance, staggered — same spring/duration/delay as the
+       homepage Solutions cards (.solutions-card-fly-in). */
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // Every fly-in element observes itself, not the (much larger) section —
+    // an IntersectionObserver threshold is a fraction of the target's own
+    // area, so watching the whole tall section skews the trigger point for
+    // elements that don't span its full height (the heading could end up
+    // firing later than the cards below it, since 15% of a big section is a
+    // lot more scroll than 20% of one small card).
+    document.querySelectorAll<HTMLElement>('.trending-tool-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        const contentObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        contentObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+        section.querySelectorAll<HTMLElement>('.content-fly-in').forEach((el) => {
+            contentObserver.observe(el);
+        });
+
+        // The section is tall (heading + visual + 3 cards stacked), so a
+        // single section-level trigger would fire the cards before they've
+        // actually scrolled into view. Observe each card on its own instead.
+        const cardObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        cardObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
+        section.querySelectorAll<HTMLElement>('.card-fly-in').forEach((card) => {
+            cardObserver.observe(card);
+        });
+    });
+</script>
 
 <style is:global>
     /* Switch big pills to small size at mobile — crosses component boundary */

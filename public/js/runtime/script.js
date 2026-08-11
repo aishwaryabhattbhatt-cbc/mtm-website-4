@@ -755,8 +755,8 @@ function runTitleAnimation() {
     const heroTitles = document.querySelectorAll('.hero-title');
     const wordDelay = 0.15; // Delay between each word (seconds)
     const wordAnimationDuration = 0.6; // Duration of each word animation (seconds)
-    const collageImageAnimationDuration = 0.5; // Slightly faster animation for collage images
-    const collageImageGap = 0.09; // Slightly shorter gap between each collage image appearance
+    const collageImageAnimationDuration = 0.4; // Faster fly-in animation for collage images
+    const collageImageGap = 0.0; // Gap between each collage image appearance
     
     heroTitles.forEach(title => {
         const text = title.textContent;
@@ -813,12 +813,15 @@ function runTitleAnimation() {
             // Set animation delays for collage images
             const collageImages = heroSection.querySelectorAll('.collage-image');
             if (collageImages.length > 0) {
-                // Buttons finish at: totalTitleDuration + 0.1 + 0.8 (button animation duration)
-                const buttonsFinishTime = totalTitleDuration + 0.1 + 0.8;
-                
+                // Collage starts while the buttons are still settling in (overlap),
+                // not after their full 1.1s entrance finishes — waiting for the full
+                // duration made the gap between the left content and the collage
+                // read as a dead pause.
+                const buttonsStartTime = totalTitleDuration + 0.1;
+                const collageStartTime = buttonsStartTime + 0.5;
+
                 collageImages.forEach((img, index) => {
-                    // Image delay: when buttons finish + small buffer + sequential delay for each image
-                    const delay = buttonsFinishTime + 0.1 + (index * (collageImageAnimationDuration + collageImageGap));
+                    const delay = collageStartTime + (index * (collageImageAnimationDuration + collageImageGap));
                     img.style.animationDelay = `${delay}s`;
                     img.style.animationDuration = `${collageImageAnimationDuration}s`;
                 });

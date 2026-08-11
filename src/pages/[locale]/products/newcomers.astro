@@ -3,7 +3,9 @@ import Layout from '../../../layouts/Layout.astro';
 import { toAbsoluteUrl } from '../../../lib/i18n/routing';
 import { buildBreadcrumbList } from '../../../lib/content/breadcrumbs';
 import Navbar from '../../../components/shared/Navbar.astro';
-import ProductsHeroSection from '../../../components/products/ProductsHeroSection.astro';
+import ProductsHeroSection, {
+    type HeroBadge,
+} from '../../../components/products/ProductsHeroSection.astro';
 import NewcomersFeaturesSection from '../../../components/products/NewcomersFeaturesSection.astro';
 import NewcomersToolsSection from '../../../components/products/NewcomersToolsSection.astro';
 import NewcomersReportsSection from '../../../components/products/NewcomersReportsSection.astro';
@@ -11,6 +13,7 @@ import ProductMethodologySection from '../../../components/products/ProductMetho
 import NewcomersExploreMoreSection from '../../../components/products/NewcomersExploreMoreSection.astro';
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
+import { t } from '../../../lib/i18n/t';
 import type { Locale } from '../../../lib/cms/types';
 import { icons } from '../../../lib/icons/registry';
 
@@ -34,10 +37,29 @@ const localeSwitchUrls = {
     fr: `${base}fr/products/newcomers/`,
 };
 
-const pageTitle =
-    locale === 'fr'
-        ? 'MTM | Habitudes médiatiques des nouveaux arrivants'
-        : 'MTM | Newcomer Media & Technology Habits';
+// Positions/sizes read off the reference mock
+// (public/images/products/mtm-newcomers/nc.png), as % of the hero media
+// box — approximate, to be fine-tuned later. The 2 lower badges sit in
+// front of the subjects in the mock (not behind), so they go in
+// heroBadgesTop instead of heroBadgesMasked. Icons are placeholders — swap
+// any `icon` value for a different registry entry whenever the real set is
+// decided.
+const heroBadgesMasked: HeroBadge[] = [
+    { left: 30, top: 29, size: '5rem', icon: icons['device-cellphone'].data },
+    { left: 50, top: 19, size: '5.5rem', icon: icons['device-tv'].cable },
+    { left: 72, top: 37, size: '6.5rem', icon: icons['demographics-household'].online },
+];
+const heroBadgesTop: HeroBadge[] = [
+    { left: 23, top: 62, size: '6rem', icon: icons['device-tv'].paid },
+    { left: 78, top: 62, size: '5rem', icon: icons.gen.coastToCoast },
+];
+
+const pageTitle = t(
+    copy,
+    'newcomers_page_title',
+    locale,
+    'MTM Newcomers | Newcomer Media & Technology Data'
+);
 const pageDescription =
     locale === 'fr'
         ? 'Données sur les habitudes médiatiques et technologiques des nouveaux arrivants au Canada.'
@@ -64,7 +86,10 @@ const pageDescription =
             locale={locale}
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
-            heroImageSrc={`${base}images/products/mtm-newcomers/hero-banner.webp`}
+            heroImageSrc={`${base}images/products/mtm-newcomers/hero/hero-product-nc.webp`}
+            maskImageSrc={`${base}images/products/mtm-newcomers/hero/hero-product-nc-mask.webp`}
+            heroBadgesMasked={heroBadgesMasked}
+            heroBadgesTop={heroBadgesTop}
             heroIconSrc={`${base}${icons['demographics-group'].newcomers}`}
             heroIconAlt=""
         />

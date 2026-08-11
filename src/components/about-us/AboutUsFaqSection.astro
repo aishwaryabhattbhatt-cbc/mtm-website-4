@@ -1,0 +1,46 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import FaqAccordion from '../shared/FaqAccordion.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+
+const faqs = [
+    {
+        id: 'data-history',
+        questionKey: 'about_faq_item_1_question',
+        questionFallback: 'How long has MTM been collecting data?',
+        answerKey: 'about_faq_item_1_answer',
+        answerFallback:
+            "Continuously since 2005 — MTM is one of Canada's longest-running trackers of media and technology behaviour.",
+    },
+    {
+        id: 'peer-review',
+        questionKey: 'about_faq_item_2_question',
+        questionFallback: 'Is MTM data peer-reviewed?',
+        answerKey: 'about_faq_item_2_answer',
+        answerFallback:
+            "Yes. Every MTM product follows a validated, peer-reviewed methodology, detailed in each product's methodology section.",
+    },
+    {
+        id: 'shared-dataset',
+        questionKey: 'about_faq_item_3_question',
+        questionFallback: 'Can more than one organization use the same MTM dataset?',
+        answerKey: 'about_faq_item_3_answer',
+        answerFallback:
+            'Yes. MTM is built as a shared industry reference — the same dataset is used by multiple broadcasters, advertisers, and agencies, not licensed exclusively to one company.',
+    },
+];
+---
+
+<FaqAccordion
+    locale={locale}
+    copy={copy}
+    titleKey="about_faq_title"
+    titleFallback="FAQ"
+    items={faqs}
+/>

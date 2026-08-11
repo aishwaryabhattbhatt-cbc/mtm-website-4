@@ -3,7 +3,9 @@ import Layout from '../../../layouts/Layout.astro';
 import { toAbsoluteUrl } from '../../../lib/i18n/routing';
 import { buildBreadcrumbList } from '../../../lib/content/breadcrumbs';
 import Navbar from '../../../components/shared/Navbar.astro';
-import ProductsHeroSection from '../../../components/products/ProductsHeroSection.astro';
+import ProductsHeroSection, {
+    type HeroBadge,
+} from '../../../components/products/ProductsHeroSection.astro';
 import Mtm18PlusFeaturesSection from '../../../components/products/Mtm18PlusFeaturesSection.astro';
 import Mtm18PlusToolsSection from '../../../components/products/Mtm18PlusToolsSection.astro';
 import Mtm18PlusReportsSection from '../../../components/products/Mtm18PlusReportsSection.astro';
@@ -11,6 +13,7 @@ import ProductMethodologySection from '../../../components/products/ProductMetho
 import Mtm18PlusExploreMoreSection from '../../../components/products/Mtm18PlusExploreMoreSection.astro';
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
+import { t } from '../../../lib/i18n/t';
 import type { Locale } from '../../../lib/cms/types';
 import { icons } from '../../../lib/icons/registry';
 
@@ -34,10 +37,28 @@ const localeSwitchUrls = {
     fr: `${base}fr/products/mtm-18-plus/`,
 };
 
-const pageTitle =
-    locale === 'fr'
-        ? 'MTM 18+ | Données médiatiques des adultes canadiens'
-        : 'MTM 18+ | Canadian Adult Media & Technology Data';
+// Positions/sizes read off the reference mock (public/images/products/mtm-18-plus/18+.png),
+// as % of the hero media box. The 2 lower badges sit in front of the subject
+// in the mock (not behind), so they go in heroBadgesTop instead — see
+// ProductsHeroSection's HeroBadge doc comment for the masked/top distinction.
+// Icons are placeholders — swap any `icon` value for a different registry
+// entry whenever the real set is decided.
+const heroBadgesMasked: HeroBadge[] = [
+    { left: 36, top: 16, size: '5.5rem', icon: icons['device-tv'].default },
+    { left: 25, top: 49, size: '7rem', icon: icons['device-cellphone'].default },
+    { left: 60, top: 23, size: '7rem', icon: icons['device-tablet'].online },
+];
+const heroBadgesTop: HeroBadge[] = [
+    { left: 30, top: 75, size: '5rem', icon: icons['device-gaming'].default },
+    { left: 73, top: 68, size: '4.5rem', icon: icons['device-audio'].headphones },
+];
+
+const pageTitle = t(
+    copy,
+    'mtm18plus_page_title',
+    locale,
+    'MTM 18+ | Canadian Adult Media & Technology Data (Ages 18+)'
+);
 const pageDescription =
     locale === 'fr'
         ? 'Données sur les habitudes médiatiques et technologiques des Canadiens de 18 ans et plus.'
@@ -64,6 +85,10 @@ const pageDescription =
             locale={locale}
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
+            heroImageSrc={`${base}images/products/mtm-18-plus/hero/hero-product-18.webp`}
+            maskImageSrc={`${base}images/products/mtm-18-plus/hero/hero-product-18-mask.webp`}
+            heroBadgesMasked={heroBadgesMasked}
+            heroBadgesTop={heroBadgesTop}
             heroIconSrc={`${base}${icons['demographics-group'].adult}`}
             heroIconAlt=""
         />

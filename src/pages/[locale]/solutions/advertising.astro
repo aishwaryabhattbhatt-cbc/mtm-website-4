@@ -47,10 +47,12 @@ const heroIcons = [
     icons.gen.credibility,
 ];
 
-const pageTitle =
-    locale === 'fr'
-        ? "MTM | Données d'audience pour publicitaires et agences"
-        : 'MTM | Audience Data for Advertisers & Agencies';
+const pageTitle = t(
+    copy,
+    'advertising_page_title',
+    locale,
+    'MTM | Advertisers & Agencies: Audience Data for Winning Pitches'
+);
 const pageDescription =
     locale === 'fr'
         ? "Solutions MTM pour l'industrie publicitaire."

@@ -36,7 +36,7 @@ function splitCallout(text: string): [string, string] {
 ---
 
 <section class="product-tools-section">
-    <div class="product-tools-headline">
+    <div class="product-tools-headline heading-fly-in">
         <h2 data-copy-key="tools_title">
             {t(copy, 'tools_title', locale, 'Tools')}
         </h2>
@@ -58,7 +58,7 @@ function splitCallout(text: string): [string, string] {
             const [calloutQ, calloutA] = splitCallout(tool.calloutText);
             return (
                 <div
-                    class={`row product-tools-grid${reversed ? ' product-tools-grid--reversed' : ''}`}
+                    class={`row product-tools-grid card-fly-in${reversed ? ' product-tools-grid--reversed' : ''}`}
                 >
                     <div class="col col-12 col-lg-7 product-tools-left">
                         <img
@@ -340,4 +340,70 @@ function splitCallout(text: string): [string, string] {
             gap: var(--space-9);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Per-row entrance, same spring/duration as the homepage Solutions cards
+       (.solutions-card-fly-in) — no post-heading delay here since each row
+       triggers independently as it scrolls into view, not all at once. */
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.product-tools-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(section);
+        }
+
+        // Each tool row is tall enough to fill most of the viewport, so a
+        // single section-level trigger would fire all of them before the
+        // visitor scrolls far enough to see rows 2/3. Observe each row on
+        // its own instead, so they reveal one after another as they scroll in.
+        const rowObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        rowObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
+        section.querySelectorAll<HTMLElement>('.card-fly-in').forEach((row) => {
+            rowObserver.observe(row);
+        });
+    });
+</script>

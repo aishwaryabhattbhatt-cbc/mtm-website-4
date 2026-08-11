@@ -6,6 +6,7 @@ import RequestDemoSuccessSection from '../../components/request-demo/RequestDemo
 import RequestDemoExploreSection from '../../components/request-demo/RequestDemoExploreSection.astro';
 import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
+import { t } from '../../lib/i18n/t';
 import type { Locale } from '../../lib/cms/types';
 
 export function getStaticPaths() {
@@ -28,7 +29,7 @@ const localeSwitchUrls: Record<Locale, string> = {
     fr: `${base}fr/request-demo-success/`,
 };
 
-const pageTitle = locale === 'fr' ? 'MTM | Demande envoyée' : 'MTM | Request Submitted';
+const pageTitle = t(copy, 'request_demo_success_page_title', locale, 'MTM | Request Submitted');
 const pageDescription =
     locale === 'fr'
         ? 'Votre demande de démo a été envoyée avec succès.'

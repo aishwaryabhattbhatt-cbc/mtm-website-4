@@ -62,7 +62,7 @@ const topics = topicFallbacks.map((fallback, i) => {
 ---
 
 <section class="solutions-topics-section">
-    <div class="solutions-topics-header">
+    <div class="solutions-topics-header heading-fly-in">
         <h2>
             {
                 t(
@@ -88,7 +88,7 @@ const topics = topicFallbacks.map((fallback, i) => {
     <div class="solutions-topics-grid">
         {
             topics.map((topic, i) => (
-                <article class="solutions-topics-card">
+                <article class="solutions-topics-card card-fly-in">
                     <div class="solutions-topics-card__body">
                         <div
                             class={`solutions-topics-card__eyebrow solutions-topics-card__eyebrow--${cardColors[i % cardColors.length]}`}
@@ -127,7 +127,7 @@ const topics = topicFallbacks.map((fallback, i) => {
         }
     </div>
 
-    <p class="text-h4 solutions-topics-footer">
+    <p class="text-h4 solutions-topics-footer content-fly-in">
         {
             t(
                 copy,
@@ -278,4 +278,96 @@ const topics = topicFallbacks.map((fallback, i) => {
             height: 2rem;
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .content-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .content-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // 6 cards form rows of 3/2/1 depending on breakpoint — within any one
+    // row the cards share a vertical position, so per-card observers fired
+    // each row's cards together with no visible cascade. Trigger off the
+    // grid itself instead and stagger all 6 in index order.
+    document.querySelectorAll<HTMLElement>('.solutions-topics-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        const cardsRow = section.querySelector<HTMLElement>('.solutions-topics-grid');
+        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+        if (cardsRow && cards.length) {
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        cardObserver.disconnect();
+                    }
+                },
+                { threshold: 0.4 }
+            );
+            cardObserver.observe(cardsRow);
+        }
+
+        const footer = section.querySelector<HTMLElement>('.content-fly-in');
+        if (footer) {
+            const footerObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        footer.classList.add('is-visible');
+                        footerObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            footerObserver.observe(footer);
+        }
+    });
+</script>

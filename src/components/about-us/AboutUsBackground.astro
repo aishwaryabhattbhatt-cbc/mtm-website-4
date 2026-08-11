@@ -1,0 +1,15 @@
+---
+// src/components/about-us/AboutUsBackground.astro
+// WebGL liquid-gradient canvas container. Pair with <AboutUsBackgroundScripts />
+// in the page's `scripts` slot to initialize it
+// (public/js/backgrounds/about-us-background.js — a dedicated copy of
+// sign-in-background.js, with purple/pink remapped to blue/teal so the
+// palette stays consistent with the rest of the About Us page).
+interface Props {
+    id: string;
+}
+
+const { id } = Astro.props as Props;
+---
+
+<div id={id} class="webgl-background" data-webgl-variant="about-us" aria-hidden="true"></div>

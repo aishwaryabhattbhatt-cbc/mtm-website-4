@@ -8,6 +8,7 @@ import HomeMtmSuiteSection from '../../components/home/HomeMtmSuiteSection.astro
 import HomeSolutions from '../../components/home/HomeSolutions.astro';
 import HomeFaqsSection from '../../components/home/HomeFaqsSection.astro';
 import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
+import HomeAskMtmButton from '../../components/home/HomeAskMtmButton.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
 import { resolveLocale, SUPPORTED_LOCALES, getLocaleSwitchUrls } from '../../lib/i18n/routing';
 import { t } from '../../lib/i18n/t';
@@ -30,10 +31,12 @@ const resolvedCmsCsvUrl =
 
 const localeSwitchUrls = getLocaleSwitchUrls(base);
 
-const pageTitle =
-    locale === 'fr'
-        ? 'MTM | Données médiatiques et technologiques canadiennes'
-        : 'MTM | Canadian Media & Technology Consumption Data';
+const pageTitle = t(
+    copy,
+    'home_page_title',
+    locale,
+    'MTM Home | Canadian Media & Technology Consumption Data'
+);
 const pageDescription =
     locale === 'fr'
         ? 'Données et perspectives sur la façon dont les Canadiens utilisent la technologie, le contenu et les médias.'
@@ -109,6 +112,8 @@ const faqPageJsonLd = {
         <HomeFaqsSection locale={locale} copy={copy} />
 
         <HomeFooterSection locale={locale} copy={copy} />
+
+        <HomeAskMtmButton locale={locale} copy={copy} />
     </main>
 
     <Fragment slot="head">

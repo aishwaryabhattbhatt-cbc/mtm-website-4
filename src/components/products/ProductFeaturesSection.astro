@@ -14,19 +14,49 @@ interface Props {
     locale: Locale;
     copy: CMSDictionary;
     features: FeatureItem[];
+    titleKey?: string;
+    titleFallback?: string;
+    compact?: boolean;
+    fadeTop?: boolean;
+    staggerCards?: boolean;
 }
 
-const { locale, copy, features } = Astro.props as Props;
+const {
+    locale,
+    copy,
+    features,
+    titleKey,
+    titleFallback,
+    compact = false,
+    fadeTop = false,
+    staggerCards = false,
+} = Astro.props as Props;
+
+// Compact (About Us) usage sits alongside Timeline/Team, both <h2> — match
+// their font token. Product pages keep <h3>, unchanged.
+const TitleTag = compact ? 'h2' : 'h3';
 ---
 
-<section class="product-features-section">
+<section class={`product-features-section${compact ? ' product-features-section--compact' : ''}`}>
+    {fadeTop && <div class="product-features-fade-top" aria-hidden="true" />}
+    {
+        titleKey && titleFallback && (
+            <div class="product-features-header heading-fly-in">
+                <TitleTag class="product-features-title" data-copy-key={titleKey}>
+                    {t(copy, titleKey, locale, titleFallback)}
+                </TitleTag>
+            </div>
+        )
+    }
+
     <div
-        class="product-features-grid"
+        class={`product-features-grid${staggerCards ? '' : ' content-fly-in'}`}
         style={`grid-template-columns: repeat(${features.length}, 1fr)`}
+        data-stagger-cards={staggerCards ? 'true' : undefined}
     >
         {
             features.map((f) => (
-                <div class="product-feature-item">
+                <div class={`product-feature-item${staggerCards ? ' card-fly-in' : ''}`}>
                     <img
                         src={f.icon}
                         alt=""
@@ -48,9 +78,38 @@ const { locale, copy, features } = Astro.props as Props;
 
 <style>
     .product-features-section {
+        position: relative;
         width: 100%;
         background-color: var(--surface-blue);
         padding: var(--section-pad-block) var(--content-margin-inline);
+        display: flex;
+        flex-direction: column;
+        gap: var(--section-header-gap);
+    }
+
+    /* Opt-in via the `fadeTop` prop — softens the hard edge where a
+       preceding section hands off into this one's solid blue background. */
+    .product-features-fade-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8rem;
+        background: linear-gradient(to bottom, var(--surface-white), transparent);
+        pointer-events: none;
+    }
+
+    .product-features-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        text-align: center;
+    }
+
+    .product-features-title {
+        margin: 0;
+        text-align: center;
+        color: var(--text-primary);
     }
 
     /* grid-template-columns is set inline to match the feature count */
@@ -89,6 +148,14 @@ const { locale, copy, features } = Astro.props as Props;
         color: var(--text-secondary);
         margin: 0;
         align-self: start;
+    }
+
+    /* Smaller icon variant — opt-in via the `compact` prop, existing
+       callers keep the original 5rem/2.5rem sizing untouched. */
+    .product-features-section--compact .product-feature-icon {
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: var(--space-4);
     }
 
     @media (max-width: 1023px) {
@@ -135,4 +202,107 @@ const { locale, copy, features } = Astro.props as Props;
             align-self: start;
         }
     }
+
+    /* Timeline/Team keep --section-pad-block at every breakpoint; the compact
+       variant (About Us) matches that instead of the denser product-page padding. */
+    @media (max-width: 1023px) {
+        .product-features-section--compact {
+            padding: var(--section-pad-block) var(--content-margin-inline);
+        }
+    }
+
+    .content-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .content-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Item wrapper is display:contents on desktop (see the grid-alignment
+       comment above), so the fly-in has to animate its children directly —
+       opacity/transform on a contents box never paints. */
+    .product-feature-item.card-fly-in .product-feature-icon,
+    .product-feature-item.card-fly-in .product-feature-title,
+    .product-feature-item.card-fly-in .product-feature-desc {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .product-feature-item.card-fly-in.is-visible .product-feature-icon,
+    .product-feature-item.card-fly-in.is-visible .product-feature-title,
+    .product-feature-item.card-fly-in.is-visible .product-feature-desc {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.product-features-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.product-features-header');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        const grid = section.querySelector<HTMLElement>('.product-features-grid');
+        if (grid?.dataset.staggerCards === 'true') {
+            const cards = grid.querySelectorAll<HTMLElement>('.card-fly-in');
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        cardObserver.disconnect();
+                    }
+                },
+                { threshold: 0.2 }
+            );
+            cardObserver.observe(grid);
+            return;
+        }
+
+        const content = section.querySelector<HTMLElement>('.content-fly-in');
+        if (!content) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    content.classList.add('is-visible');
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.15 }
+        );
+        observer.observe(section);
+    });
+</script>

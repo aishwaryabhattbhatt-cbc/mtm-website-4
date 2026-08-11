@@ -30,7 +30,7 @@ const filterTabs = [
 ---
 
 <section class="solutions-reportslibrary" data-filter="all">
-    <div class="solutions-reportslibrary__header">
+    <div class="solutions-reportslibrary__header heading-fly-in">
         <div class="solutions-reportslibrary__eyebrow-wrap">
             <Eyebrow>{t(copy, 'section_2_eyebrow', locale, 'Reports Library')}</Eyebrow>
         </div>
@@ -75,7 +75,10 @@ const filterTabs = [
         {
             (['junior', 'mtm18plus', 'newcomers', 'junior', 'mtm18plus', 'newcomers'] as const).map(
                 (variant, i) => (
-                    <div class="solutions-reportslibrary__card-wrap" data-card-variant={variant}>
+                    <div
+                        class="solutions-reportslibrary__card-wrap card-fly-in"
+                        data-card-variant={variant}
+                    >
                         <InsightsReportCard
                             locale={locale}
                             copy={copy}
@@ -260,6 +263,32 @@ const filterTabs = [
             transition: none;
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
 
 <script>
@@ -278,5 +307,40 @@ const filterTabs = [
                 filterAnimTimer = null;
             }, 180);
         }) as EventListener);
+
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        // Carousel cards sit at the same vertical scroll position, so
+        // trigger off the row itself and keep the stagger. Threshold raised
+        // from the 0.2 default — on the identical Insights reports carousel,
+        // 0.2 fired the reveal before the row was actually in view.
+        const cardsRow = section.querySelector<HTMLElement>('.solutions-reportslibrary__carousel');
+        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+        if (cardsRow && cards.length) {
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        cardObserver.disconnect();
+                    }
+                },
+                { threshold: 0.4 }
+            );
+            cardObserver.observe(cardsRow);
+        }
     });
 </script>

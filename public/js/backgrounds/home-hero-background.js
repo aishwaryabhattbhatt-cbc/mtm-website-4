@@ -565,7 +565,68 @@ class LiquidGradientEffect {
       this.containerResizeObserver = new ResizeObserver(() => this.onWindowResize());
       this.containerResizeObserver.observe(this.container);
     }
+    this._visibilityKey = containerId;
+    this.initVisibilityGating();
     this.animate();
+  }
+
+  // Skips the per-frame shader render (the expensive part) while the canvas
+  // is off-screen, the tab is hidden, or the visitor asked for less motion —
+  // otherwise this scene renders at full rate forever, even scrolled away.
+  // Also tracks a fine-grained visibility ratio in a page-wide registry: when
+  // this canvas overlaps another gated scene in the viewport (e.g. scrolling
+  // between the home hero and research sections, which sit ~30px apart),
+  // whichever one is less visible throttles its render calls to half rate
+  // instead of both competing for the GPU at full rate simultaneously.
+  initVisibilityGating() {
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    this.reducedMotion = reducedMotionQuery.matches;
+    reducedMotionQuery.addEventListener('change', (e) => {
+      this.reducedMotion = e.matches;
+      this.updatePausedState();
+    });
+
+    this.inViewport = true;
+    this.visibleRatio = 1;
+    if (typeof IntersectionObserver !== 'undefined') {
+      const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
+      this.visibilityObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            this.inViewport = entry.isIntersecting;
+            this.visibleRatio = entry.intersectionRatio;
+          });
+          this._updateVisibilityRegistry();
+          this.updatePausedState();
+        },
+        { threshold: thresholds }
+      );
+      this.visibilityObserver.observe(this.container);
+    }
+
+    document.addEventListener('visibilitychange', () => this.updatePausedState());
+    this.updatePausedState();
+  }
+
+  _updateVisibilityRegistry() {
+    if (!window.__mtmCanvasVisibility) window.__mtmCanvasVisibility = {};
+    window.__mtmCanvasVisibility[this._visibilityKey] = this.inViewport ? this.visibleRatio : 0;
+  }
+
+  // True when another gated canvas is currently more visible than this one —
+  // this instance should skip rendering every other frame while that holds.
+  _shouldThrottleForOverlap() {
+    const registry = window.__mtmCanvasVisibility;
+    if (!registry) return false;
+    const myRatio = registry[this._visibilityKey] ?? 0;
+    const maxOtherRatio = Object.entries(registry)
+      .filter(([key]) => key !== this._visibilityKey)
+      .reduce((max, [, ratio]) => Math.max(max, ratio), 0);
+    return maxOtherRatio > 0 && myRatio < maxOtherRatio;
+  }
+
+  updatePausedState() {
+    this.isPaused = this.reducedMotion || !this.inViewport || document.hidden;
   }
 
   onWindowResize() {
@@ -908,9 +969,17 @@ class LiquidGradientEffect {
 
   animate = () => {
     requestAnimationFrame(this.animate);
-    
+    if (this.isPaused) return;
+
     this.uniformsLiquid.uTime.value += 0.016;
     this.updateCenterPositions();
+
+    // Time/position state stays current every frame even when the render
+    // below is skipped, so throttling never causes a visible time-jump.
+    if (this._shouldThrottleForOverlap()) {
+      this._skipToggle = !this._skipToggle;
+      if (this._skipToggle) return;
+    }
 
     // Liquid Gradient Pass
     if (this.layerToggles.liquidGradient) {

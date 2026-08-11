@@ -23,7 +23,7 @@ const { locale, copy, ctaHref, bgPatternSrc } = Astro.props as Props;
     }
 
     <div class="insights-hero__content">
-        <div class="insights-hero__text">
+        <div class="insights-hero__text hero-fade-in" style="animation-delay: 0.1s">
             <h1 data-copy-key="hero_title">
                 {t(copy, 'hero_title', locale, 'Insights & Analysis')}
             </h1>
@@ -38,9 +38,11 @@ const { locale, copy, ctaHref, bgPatternSrc } = Astro.props as Props;
                 }
             </p>
         </div>
-        <Button variant="primary" size="lg" href={ctaHref}>
-            {t(copy, 'hero_cta_1', locale, 'Explore Reports')}
-        </Button>
+        <div class="hero-fade-in" style="animation-delay: 0.2s">
+            <Button variant="primary" size="lg" href={ctaHref}>
+                {t(copy, 'hero_cta_1', locale, 'Explore Reports')}
+            </Button>
+        </div>
     </div>
 </section>
 
@@ -113,6 +115,31 @@ const { locale, copy, ctaHref, bgPatternSrc } = Astro.props as Props;
 
         .insights-hero__text {
             gap: var(--space-3);
+        }
+    }
+
+    /* Page-load cascade — text, then CTA fly in in sequence. */
+    .hero-fade-in {
+        opacity: 0;
+        animation: hero-fade-in-up var(--motion-duration-heading) var(--motion-ease-standard)
+            forwards;
+    }
+
+    @keyframes hero-fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(1.625rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-fade-in {
+            animation: none;
+            opacity: 1;
         }
     }
 </style>

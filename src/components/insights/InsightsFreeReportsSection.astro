@@ -39,7 +39,7 @@ const freeReports = [
 ---
 
 <section class="free-reports-section">
-    <div class="free-reports-section__header">
+    <div class="free-reports-section__header heading-fly-in">
         <div class="free-reports-section__eyebrow-wrap">
             <Eyebrow>
                 <span data-copy-key="Free Reports"
@@ -80,7 +80,7 @@ const freeReports = [
     <div class="free-reports-section__grid" id="freeReportsCarousel">
         {
             freeReports.map((report) => (
-                <div class="free-reports-section__card-wrap">
+                <div class="free-reports-section__card-wrap card-fly-in">
                     <InsightsFreeReportCard
                         locale={locale}
                         copy={copy}
@@ -224,4 +224,70 @@ const freeReports = [
             width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.free-reports-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        // Cards sit at the same vertical scroll position (a grid row on
+        // desktop, a single carousel row on mobile), so trigger off the
+        // row itself and keep the stagger rather than per-card observers.
+        // Raised from the 0.2 default — the row was firing while barely
+        // scrolled into view, before it was actually being looked at.
+        const cardsRow = section.querySelector<HTMLElement>('.free-reports-section__grid');
+        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+        if (cardsRow && cards.length) {
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        cardObserver.disconnect();
+                    }
+                },
+                { threshold: 0.4 }
+            );
+            cardObserver.observe(cardsRow);
+        }
+    });
+</script>

@@ -78,7 +78,7 @@ const features = [
 ---
 
 <section class="dat-features">
-    <div class="dat-features__header">
+    <div class="dat-features__header heading-fly-in">
         <h4 class="text-body-p0 dat-features__tagline" data-copy-key="dat_features_tagline">
             {t(copy, 'dat_features_tagline', locale, 'Unlock insights with precision')}
         </h4>
@@ -94,7 +94,7 @@ const features = [
     <div class="dat-features__cards" id="datFeaturesScroll">
         {
             features.map((f) => (
-                <article class="dat-features__card">
+                <article class="dat-features__card card-fly-in">
                     <div class="dat-features__card-slot" aria-hidden="true">
                         <img
                             class="dat-features__card-slot-img dat-features__card-cover"
@@ -267,6 +267,34 @@ const features = [
             gap: var(--space-3);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Per-card entrance, staggered — same spring/duration/delay as the
+       homepage Solutions cards (.solutions-card-fly-in). */
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
 
 <script>
@@ -293,5 +321,45 @@ const features = [
     cards.forEach((card) => {
         card.addEventListener('mouseenter', () => playVideo(card));
         card.addEventListener('mouseleave', () => stopVideo(card));
+    });
+
+    // Each fly-in element observes itself, not the (potentially much larger)
+    // section — an IntersectionObserver threshold is a fraction of the
+    // target's own area, so watching the whole section skews the trigger
+    // point for elements that don't span the section's full height.
+    document.querySelectorAll<HTMLElement>('.dat-features').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        // Cards are laid out horizontally (all at the same vertical scroll
+        // position), so a per-card observer would fire them all at once —
+        // trigger off the cards row itself instead, and keep the stagger.
+        const cardsRow = section.querySelector<HTMLElement>('.dat-features__cards');
+        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+        if (cardsRow && cards.length) {
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        cardObserver.disconnect();
+                    }
+                },
+                { threshold: 0.2 }
+            );
+            cardObserver.observe(cardsRow);
+        }
     });
 </script>

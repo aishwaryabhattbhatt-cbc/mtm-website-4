@@ -6,27 +6,39 @@ import Button from '../shared/Button.astro';
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
-    ctaHref: string;
-    heroImageSrc: string;
+    ctaHref?: string;
+    background?: 'white' | 'blue';
+    heroImageSrc?: string;
     heroImageAlt?: string;
     bgPatternSrc?: string;
     secondaryCtaHref?: string;
     secondaryCtaLabel?: string;
+    titleKey?: string;
+    titleFallback?: string;
+    descriptionKey?: string;
+    descriptionFallback?: string;
 }
 
 const {
     locale,
     copy,
     ctaHref,
+    background = 'white',
     heroImageSrc,
     heroImageAlt,
     bgPatternSrc,
     secondaryCtaHref,
     secondaryCtaLabel,
+    titleKey = 'hero_title',
+    titleFallback = 'Data-Driven Decisions with Ease',
+    descriptionKey = 'hero_description',
+    descriptionFallback = 'Our analytic tools deliver targeted insights for media research. Use the Data Analysis Tool (DAT) for custom audience segment exploration (MTM 18+, Junior, Newcomers), the Trending Tool for identifying key trends, and the Forecasting Tool for reliable projections.',
 } = Astro.props as Props;
 ---
 
-<section class="tools-hero">
+<section class={`tools-hero${background === 'blue' ? ' tools-hero--blue' : ''}`}>
+    <slot name="background" />
+
     {
         bgPatternSrc && (
             <div class="tools-hero__pattern" aria-hidden="true">
@@ -36,39 +48,49 @@ const {
     }
 
     <div class="tools-hero__content">
-        <div class="tools-hero__text">
-            <h1 data-copy-key="hero_title">
-                {t(copy, 'hero_title', locale, 'Data-Driven Decisions with Ease')}
-            </h1>
-            <p class="text-body-p1 tools-hero__description" data-copy-key="hero_description">
-                {
-                    t(
-                        copy,
-                        'hero_description',
-                        locale,
-                        'Our analytic tools deliver targeted insights for media research. Use the Data Analysis Tool (DAT) for custom audience segment exploration (MTM 18+, Junior, Newcomers), the Trending Tool for identifying key trends, and the Forecasting Tool for reliable projections.'
-                    )
-                }
+        {
+            Astro.slots.has('logo') && (
+                <div class="tools-hero__logo hero-fade-in" style="animation-delay: 0s">
+                    <slot name="logo" />
+                </div>
+            )
+        }
+        <div class="tools-hero__text hero-fade-in" style="animation-delay: 0.1s">
+            <h1 data-copy-key={titleKey}>{t(copy, titleKey, locale, titleFallback)}</h1>
+            <p class="text-body-p1 tools-hero__description" data-copy-key={descriptionKey}>
+                {t(copy, descriptionKey, locale, descriptionFallback)}
             </p>
         </div>
-        <Button variant="primary" size="lg" href={ctaHref}>
-            {t(copy, 'hero_cta_1', locale, 'Request a Demo')}
-        </Button>
-    </div>
-
-    <div class="tools-hero__mockup">
-        <img
-            class="tools-hero__screenshot"
-            src={heroImageSrc}
-            alt={heroImageAlt ?? 'MTM analytic tool dashboard'}
-            loading="eager"
-            decoding="async"
-        />
+        {
+            ctaHref && (
+                <div class="hero-fade-in" style="animation-delay: 0.2s">
+                    <Button variant="primary" size="lg" href={ctaHref}>
+                        {t(copy, 'hero_cta_1', locale, 'Request a Demo')}
+                    </Button>
+                </div>
+            )
+        }
     </div>
 
     {
+        heroImageSrc && (
+            <div class="tools-hero__mockup hero-fade-in" style="animation-delay: 0.3s">
+                <img
+                    class="tools-hero__screenshot"
+                    src={heroImageSrc}
+                    alt={heroImageAlt ?? 'MTM analytic tool dashboard'}
+                    loading="eager"
+                    decoding="async"
+                />
+            </div>
+        )
+    }
+
+    <slot name="media" />
+
+    {
         secondaryCtaHref && (
-            <div class="tools-hero__secondary-cta">
+            <div class="tools-hero__secondary-cta hero-fade-in" style="animation-delay: 0.4s">
                 <Button variant="secondary" size="lg" href={secondaryCtaHref}>
                     {secondaryCtaLabel ?? t(copy, 'hero_cta_2', locale, 'Watch Video')}
                 </Button>
@@ -90,6 +112,10 @@ const {
         margin-top: var(--navbar-height);
     }
 
+    .tools-hero--blue {
+        background: var(--surface-blue);
+    }
+
     .tools-hero__pattern {
         position: absolute;
         bottom: 0;
@@ -103,6 +129,12 @@ const {
         width: 100%;
         height: auto;
         display: block;
+    }
+
+    /* Extra breathing room below the optional logo slot, on top of the
+       standard --hero-stack-gap between the content stack's children. */
+    .tools-hero__logo {
+        margin-bottom: var(--space-6);
     }
 
     .tools-hero__content {
@@ -164,6 +196,32 @@ const {
 
         .tools-hero__text {
             gap: var(--space-3);
+        }
+    }
+
+    /* Page-load cascade — text, CTA, mockup, secondary CTA fly in in
+       sequence, same easing/duration as the Products hero entrance. */
+    .hero-fade-in {
+        opacity: 0;
+        animation: hero-fade-in-up var(--motion-duration-heading) var(--motion-ease-standard)
+            forwards;
+    }
+
+    @keyframes hero-fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(1.625rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-fade-in {
+            animation: none;
+            opacity: 1;
         }
     }
 </style>
