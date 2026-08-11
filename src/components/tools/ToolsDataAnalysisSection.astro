@@ -18,7 +18,7 @@ const base = import.meta.env.BASE_URL;
 <section class="dat-section" id="data-analysis-tool">
     <div class="dat-section__inner">
         <div class="dat-section__header">
-            <div class="dat-section__title-row">
+            <div class="dat-section__title-row heading-fly-in">
                 <img
                     class="icon-3xl dat-section__title-icon"
                     src={`${base}${icons.tool.dat}`}
@@ -30,12 +30,15 @@ const base = import.meta.env.BASE_URL;
                     {t(copy, 'tool_1_title', locale, 'Data Analysis Tool')}
                 </h2>
             </div>
-            <div class="dat-section__pills">
+            <div class="dat-section__pills content-fly-in">
                 <ProductPill variant="mtm18plus" size="big" />
                 <ProductPill variant="junior" size="big" />
                 <ProductPill variant="newcomers" size="big" />
             </div>
-            <p class="text-body-p1 dat-section__description" data-copy-key="tool_1_description">
+            <p
+                class="text-body-p1 dat-section__description content-fly-in"
+                data-copy-key="tool_1_description"
+            >
                 {
                     t(
                         copy,
@@ -46,7 +49,7 @@ const base = import.meta.env.BASE_URL;
                 }
             </p>
         </div>
-        <div class="dat-section__cta">
+        <div class="dat-section__cta content-fly-in">
             <Button variant="secondary" size="md" href={ctaHref}>
                 {t(copy, 'tool_1_cta', locale, 'View Demo')}
             </Button>
@@ -109,6 +112,32 @@ const base = import.meta.env.BASE_URL;
             gap: var(--space-5);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .content-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease 0.9s,
+            transform var(--motion-duration-heading) var(--motion-ease-standard) 0.9s;
+    }
+
+    .content-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
 
 <style is:global>
@@ -120,3 +149,40 @@ const base = import.meta.env.BASE_URL;
         }
     }
 </style>
+
+<script>
+    // Each fly-in element observes itself, not the (potentially much larger)
+    // section — an IntersectionObserver threshold is a fraction of the
+    // target's own area, so watching the whole section skews the trigger
+    // point for elements that don't span the section's full height.
+    document.querySelectorAll<HTMLElement>('.dat-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        const contentObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        contentObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+        section.querySelectorAll<HTMLElement>('.content-fly-in').forEach((el) => {
+            contentObserver.observe(el);
+        });
+    });
+</script>

@@ -74,7 +74,7 @@ const products = [
         descKey: 'product_4_description',
         descFallback:
             'Comprehensive demographic and population data for enhanced analysis and targeting',
-        href: `/${locale}/products/census`,
+        href: `/${locale}/tools/census-tool`,
         bg: bgCs,
         people: peopleCs,
         chartSrc: chartCs,
@@ -609,8 +609,8 @@ const products = [
         opacity: 0;
         transform: translateY(1.625rem);
         transition:
-            opacity 1.1s ease,
-            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
     }
 
     .suite-fly-in.is-visible {
@@ -622,8 +622,8 @@ const products = [
     .data-products.suite-fly-in,
     .data-products-mobile.suite-fly-in {
         transition:
-            opacity 1.1s ease 0.9s,
-            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s;
+            opacity var(--motion-duration-heading) ease 0.9s,
+            transform var(--motion-duration-heading) var(--motion-ease-standard) 0.9s;
     }
 
     .mtm-suite-section {
@@ -822,7 +822,9 @@ const products = [
     .product-progress {
         position: absolute;
         inset: 0;
-        width: 0%;
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: left;
         border-radius: var(--radius-full);
         background: linear-gradient(
             to right,
@@ -831,7 +833,7 @@ const products = [
             var(--brand-indigo) 65%,
             var(--badge-juniors) 90%
         );
-        transition: width 0ms linear;
+        transition: transform 0ms linear;
     }
 
     /* ── RIGHT PANEL ── */
@@ -1421,7 +1423,7 @@ const products = [
     });
 
     // Original product carousel script
-    const AUTO_ADVANCE_DELAY = 5000; // ms between auto-advances — change this to adjust timing
+    const AUTO_ADVANCE_DELAY = 3000; // ms between auto-advances — change this to adjust timing
 
     const section = document.querySelector<HTMLElement>('.mtm-suite-section');
     if (section) {
@@ -1447,17 +1449,17 @@ const products = [
             rows.forEach((row) => {
                 const bar = row.querySelector<HTMLElement>('.product-progress');
                 if (!bar) return;
-                bar.style.transition = 'width 0ms linear';
-                bar.style.width = '0%';
+                bar.style.transition = 'transform 0ms linear';
+                bar.style.transform = 'scaleX(0)';
             });
         }
 
         function startProgress(idx: number) {
             const bar = rows[idx]?.querySelector<HTMLElement>('.product-progress');
             if (!bar) return;
-            bar.getBoundingClientRect(); // force reflow so the 0% reset lands before transition starts
-            bar.style.transition = `width ${AUTO_ADVANCE_DELAY}ms linear`;
-            bar.style.width = '100%';
+            bar.getBoundingClientRect(); // force reflow so the scaleX(0) reset lands before transition starts
+            bar.style.transition = `transform ${AUTO_ADVANCE_DELAY}ms linear`;
+            bar.style.transform = 'scaleX(1)';
         }
 
         function scheduleNext(currentIdx: number) {

@@ -15,7 +15,7 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <section class="sneak-peek-reports-section">
-    <div class="sneak-peek-reports-section__header">
+    <div class="sneak-peek-reports-section__header heading-fly-in">
         <div class="sneak-peek-reports-section__eyebrow-wrap">
             <Eyebrow>
                 <span>Free infographic</span>
@@ -52,17 +52,19 @@ const base = import.meta.env.BASE_URL;
         </div>
     </div>
 
-    <SneakPeekReportCard
-        locale={locale}
-        copy={copy}
-        imageSrc={`${base}images/products/mtm-18-plus/report-image.webp`}
-        imageAlt=""
-        graphIconSrc={`${base}${icons['service-video-svod'].gaming}`}
-        graphIconAlt=""
-        chartSrc={`${base}images/products/mtm-18-plus/report-graph.svg`}
-        chartAlt=""
-        downloadHref={`${base}${locale}/insights/report-download/`}
-    />
+    <div class="content-fly-in">
+        <SneakPeekReportCard
+            locale={locale}
+            copy={copy}
+            imageSrc={`${base}images/products/mtm-18-plus/report-image.webp`}
+            imageAlt=""
+            graphIconSrc={`${base}${icons['service-video-svod'].gaming}`}
+            graphIconAlt=""
+            chartSrc={`${base}images/products/mtm-18-plus/report-graph.svg`}
+            chartAlt=""
+            downloadHref={`${base}${locale}/insights/report-download/`}
+        />
+    </div>
 </section>
 
 <style>
@@ -121,4 +123,63 @@ const base = import.meta.env.BASE_URL;
             gap: var(--space-4);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .content-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .content-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.sneak-peek-reports-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        const contentObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        contentObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+        section.querySelectorAll<HTMLElement>('.content-fly-in').forEach((el) => {
+            contentObserver.observe(el);
+        });
+    });
+</script>

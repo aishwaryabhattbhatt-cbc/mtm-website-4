@@ -1,0 +1,71 @@
+---
+interface Props {
+    value: string;
+    class?: string;
+}
+
+const { value, class: className } = Astro.props as Props;
+---
+
+<span class:list={['count-value', className]}>{value}</span>
+
+<script>
+    // Counts a stat span up from 0 to its target value on scroll-in. Only
+    // the leading numeric portion animates — a prefix/suffix (%, $, text)
+    // around it, or a value with no number at all (CMS copy can be swapped
+    // to plain text like "Unlimited seats"), is left untouched, and the
+    // original string is restored exactly at the end so formatting can
+    // never drift from the CMS copy.
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animateCount(el: HTMLElement) {
+        const raw = el.textContent?.trim() ?? '';
+        const match = raw.match(/-?[\d,]+(\.\d+)?/);
+        if (!match) return;
+
+        const numStr = match[0];
+        const prefix = raw.slice(0, match.index);
+        const suffix = raw.slice((match.index ?? 0) + numStr.length);
+        const target = parseFloat(numStr.replace(/,/g, ''));
+        const decimals = numStr.includes('.') ? numStr.split('.')[1].length : 0;
+        const useCommas = numStr.includes(',');
+        const duration = 1400;
+        const startTime = performance.now();
+
+        function frame(now: number) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = target * eased;
+            const formatted = useCommas
+                ? current.toLocaleString('en-US', {
+                      minimumFractionDigits: decimals,
+                      maximumFractionDigits: decimals,
+                  })
+                : current.toFixed(decimals);
+            el.textContent = `${prefix}${formatted}${suffix}`;
+            if (progress < 1) {
+                requestAnimationFrame(frame);
+            } else {
+                el.textContent = raw;
+            }
+        }
+        requestAnimationFrame(frame);
+    }
+
+    // Small element — same reasoning as a compact section (see
+    // animation-conventions.md threshold guidance): raise past the 0.15/0.2
+    // defaults so it's substantially in view, not counting up on a sliver.
+    document.querySelectorAll<HTMLElement>('.count-value').forEach((el) => {
+        if (prefersReducedMotion) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    animateCount(el);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.6 }
+        );
+        observer.observe(el);
+    });
+</script>

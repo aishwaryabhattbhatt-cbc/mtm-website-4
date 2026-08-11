@@ -8,6 +8,7 @@ import SolutionsTrustedBySection from '../../components/solutions/SolutionsTrust
 import SolutionsMediaTestimonialsSection from '../../components/solutions/SolutionsMediaTestimonialsSection.astro';
 import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../lib/cms/getPageContent';
+import { t } from '../../lib/i18n/t';
 import type { Locale } from '../../lib/cms/types';
 
 export function getStaticPaths() {
@@ -30,7 +31,7 @@ const localeSwitchUrls: Record<Locale, string> = {
     fr: `${base}fr/request-demo/`,
 };
 
-const pageTitle = locale === 'fr' ? 'MTM | Demander une démo' : 'MTM | Request a Demo';
+const pageTitle = t(copy, 'request_demo_page_title', locale, 'MTM | Request a Demo');
 const pageDescription =
     locale === 'fr'
         ? 'Réservez une démo avec un expert MTM pour découvrir nos produits et outils.'

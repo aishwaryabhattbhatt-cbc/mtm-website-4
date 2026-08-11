@@ -45,7 +45,10 @@ const {
 } = Astro.props;
 ---
 
-<article class={`census-tool-card${reversed ? ' census-tool-card--reversed' : ''}`} id={id}>
+<article
+    class={`census-tool-card card-fly-in${reversed ? ' census-tool-card--reversed' : ''}`}
+    id={id}
+>
     <div class="census-tool-card__slot">
         {
             imageSrc ? (
@@ -91,7 +94,7 @@ const {
         <ul class="census-tool-card__features">
             {
                 features.map((f) => (
-                    <li class="census-tool-card__feature">
+                    <li class="census-tool-card__feature feature-fly-in">
                         <span class="census-tool-card__bullet" aria-hidden="true" />
                         <div class="census-tool-card__feature-text">
                             <p
@@ -273,4 +276,62 @@ const {
             gap: var(--space-6);
         }
     }
+
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Distinct name from .card-fly-in — these are nested inside a card-fly-in
+       article, and a shared class name would make the section-level card
+       observer pick up each bullet individually instead of just the card. */
+    .feature-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .feature-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // The feature bullets sit near the bottom of a tall card, so giving them
+    // their own independent IntersectionObserver lets their trigger point
+    // land at a different scroll position than the card's own reveal —
+    // sometimes earlier, making the stagger fire before the card is even
+    // visible. Tie the stagger directly to the same observer that reveals
+    // the card, so it always plays right after the card appears.
+    document.querySelectorAll<HTMLElement>('.census-tool-card').forEach((card) => {
+        const items = card.querySelectorAll<HTMLElement>('.feature-fly-in');
+        const cardObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    card.classList.add('is-visible');
+                    // A plain 140ms stagger starting at 0ms landed the first
+                    // bullet in lockstep with the card's own fade, reading as
+                    // one fast motion rather than a visible cascade. Let the
+                    // card settle first, then space the bullets out more.
+                    items.forEach((item, i) => {
+                        setTimeout(() => item.classList.add('is-visible'), 300 + i * 220);
+                    });
+                    cardObserver.disconnect();
+                }
+            },
+            { threshold: 0.35 }
+        );
+        cardObserver.observe(card);
+    });
+</script>

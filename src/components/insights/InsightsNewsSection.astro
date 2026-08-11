@@ -73,7 +73,7 @@ const newsItems = [
 ---
 
 <section class="news-section">
-    <div class="news-section__header">
+    <div class="news-section__header heading-fly-in">
         <div class="news-section__content-wrap">
             <h2 data-copy-key="section_5_title">
                 {t(copy, 'section_5_title', locale, 'News')}
@@ -103,7 +103,7 @@ const newsItems = [
     <div class="news-section__grid" id="newsSectionCarousel">
         {
             newsItems.map((item) => (
-                <div class="news-section__card-wrap">
+                <div class="news-section__card-wrap card-fly-in">
                     <InsightsNewsCard
                         locale={locale}
                         copy={copy}
@@ -223,4 +223,70 @@ const newsItems = [
             width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.news-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        // Carousel cards sit at the same vertical scroll position, so
+        // trigger off the row itself and keep the stagger rather than
+        // per-card observers. Raised from the 0.2 default — the row was
+        // firing while barely scrolled into view, before it was actually
+        // being looked at.
+        const cardsRow = section.querySelector<HTMLElement>('.news-section__grid');
+        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+        if (cardsRow && cards.length) {
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        cardObserver.disconnect();
+                    }
+                },
+                { threshold: 0.4 }
+            );
+            cardObserver.observe(cardsRow);
+        }
+    });
+</script>

@@ -31,8 +31,16 @@ function walk(dirPath) {
       errors.push(`${relativePath}: replace placeholder href="#" links with real destinations.`);
     }
 
-    if (relativePath.startsWith('src/') && content.includes('style="')) {
-      errors.push(`${relativePath}: avoid inline style attributes in Astro templates.`);
+    if (relativePath.startsWith('src/')) {
+      // The one sanctioned exception: the hero page-load fade-in cascade
+      // (see .claude/rules/animation-conventions.md) uses a per-element
+      // inline animation-delay — everything else must use a CSS class.
+      const disallowedInlineStyle = [...content.matchAll(/style="([^"]*)"/g)].some(
+        ([, value]) => !/^animation-delay:\s*[\d.]+s$/.test(value.trim())
+      );
+      if (disallowedInlineStyle) {
+        errors.push(`${relativePath}: avoid inline style attributes in Astro templates.`);
+      }
     }
 
     if ((relativePath.startsWith('src/') || relativePath === 'public/js/runtime/script.js') && content.includes('console.log(')) {

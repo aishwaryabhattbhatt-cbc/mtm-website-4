@@ -43,7 +43,7 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
 ---
 
 <section class="solutions-workflow-section">
-    <div class="solutions-workflow-header">
+    <div class="solutions-workflow-header heading-fly-in">
         <h2>{t(copy, 'workflow_title', locale, 'How MTM fits the way you already work')}</h2>
         <p class="text-body-p1 solutions-workflow-description">
             {
@@ -58,7 +58,7 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
     </div>
 
     <div class="solutions-workflow-cards">
-        <div class="solutions-workflow-card solutions-workflow-card--blue">
+        <div class="solutions-workflow-card solutions-workflow-card--blue card-fly-in">
             <Eyebrow>{t(copy, 'workflow_step_1_number', locale, '01 Query')}</Eyebrow>
             <div class="solutions-workflow-card-content">
                 <p class="text-body-p1 solutions-workflow-step-title">
@@ -108,7 +108,7 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
             </div>
         </div>
 
-        <div class="solutions-workflow-card solutions-workflow-card--teal">
+        <div class="solutions-workflow-card solutions-workflow-card--teal card-fly-in">
             <Eyebrow>{t(copy, 'workflow_step_2_number', locale, '02 Customize')}</Eyebrow>
             <div class="solutions-workflow-card-content">
                 <p class="text-body-p1 solutions-workflow-step-title">
@@ -158,7 +158,7 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
             </div>
         </div>
 
-        <div class="solutions-workflow-card solutions-workflow-card--purple">
+        <div class="solutions-workflow-card solutions-workflow-card--purple card-fly-in">
             <Eyebrow>{t(copy, 'workflow_step_3_number', locale, '03 Export')}</Eyebrow>
             <div class="solutions-workflow-card-content">
                 <p class="text-body-p1 solutions-workflow-step-title">
@@ -338,4 +338,69 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
             padding-bottom: var(--section-pad-block);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // Cards are a wrapping grid — a single row at desktop, so they all cross
+    // the viewport edge together at that breakpoint. A per-card observer
+    // would fire them all at once there, losing the stagger; trigger off
+    // the grid itself instead and stagger the children.
+    document.querySelectorAll<HTMLElement>('.solutions-workflow-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        const cardsRow = section.querySelector<HTMLElement>('.solutions-workflow-cards');
+        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+        if (cardsRow && cards.length) {
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        cardObserver.disconnect();
+                    }
+                },
+                { threshold: 0.4 }
+            );
+            cardObserver.observe(cardsRow);
+        }
+    });
+</script>

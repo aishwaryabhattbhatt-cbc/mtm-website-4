@@ -14,7 +14,7 @@ const { locale, copy, base } = Astro.props as Props;
 ---
 
 <section class="solutions-media-insights-section">
-    <div class="solutions-media-insights-header">
+    <div class="solutions-media-insights-header heading-fly-in">
         <h2 data-copy-key="problem_title">
             {t(copy, 'problem_title', locale, "The shifts you don't see until it's too late.")}
         </h2>
@@ -34,49 +34,63 @@ const { locale, copy, base } = Astro.props as Props;
     </div>
 
     <div class="solutions-media-insights-cards">
-        <SolutionsInsightCard
-            iconSrc={`${base}${icons.gen.multitasking}`}
-            eyebrow={t(copy, 'insight_1_eyebrow', locale, 'Platform Diversification')}
-            eyebrowKey="insight_1_eyebrow"
-            title={t(
-                copy,
-                'insight_1_title',
-                locale,
-                'Your audience is moving across platforms simultaneously.'
-            )}
-            titleKey="insight_1_title"
-            description={t(
-                copy,
-                'insight_1_description',
-                locale,
-                "Canadians don't live on one platform. They stream on one device, podcast on another, and browse FAST channels in the evening. MTM tracks the full picture across every screen — so you know where attention is actually going."
-            )}
-            descriptionKey="insight_1_description"
-            imageSrc={`${base}images/solutions/media/insight-1.svg`}
-            imageAlt="Audience reach by platform visualization"
-            imageTitle={t(copy, 'insight_1_chart_title', locale, 'Platform reach over time')}
-            imageTitleKey="insight_1_chart_title"
-            imageTitleColor="blue"
-        />
-        <SolutionsInsightCard
-            iconSrc={`${base}${icons.gen.uniqueSegments}`}
-            eyebrow={t(copy, 'insight_2_eyebrow', locale, 'Market Intelligence')}
-            eyebrowKey="insight_2_eyebrow"
-            title={t(copy, 'insight_2_title', locale, "Stop marketing to the 'average' Canadian.")}
-            titleKey="insight_2_title"
-            description={t(
-                copy,
-                'insight_2_description',
-                locale,
-                'The MTM allows you to see Canada in high definition. From streaming subscriptions to podcast habits to device ownership — not all Canadians have the same media behaviours.'
-            )}
-            descriptionKey="insight_2_description"
-            imageSrc={`${base}images/solutions/media/insight-2.svg`}
-            imageAlt="Market intelligence variable selection visualization"
-            imageTitle={t(copy, 'insight_2_chart_title', locale, 'Audience breakdown by segment')}
-            imageTitleKey="insight_2_chart_title"
-            imageTitleColor="indigo"
-        />
+        <div class="card-fly-in">
+            <SolutionsInsightCard
+                iconSrc={`${base}${icons.gen.multitasking}`}
+                eyebrow={t(copy, 'insight_1_eyebrow', locale, 'Platform Diversification')}
+                eyebrowKey="insight_1_eyebrow"
+                title={t(
+                    copy,
+                    'insight_1_title',
+                    locale,
+                    'Your audience is moving across platforms simultaneously.'
+                )}
+                titleKey="insight_1_title"
+                description={t(
+                    copy,
+                    'insight_1_description',
+                    locale,
+                    "Canadians don't live on one platform. They stream on one device, podcast on another, and browse FAST channels in the evening. MTM tracks the full picture across every screen — so you know where attention is actually going."
+                )}
+                descriptionKey="insight_1_description"
+                imageSrc={`${base}images/solutions/media/insight-1.svg`}
+                imageAlt="Audience reach by platform visualization"
+                imageTitle={t(copy, 'insight_1_chart_title', locale, 'Platform reach over time')}
+                imageTitleKey="insight_1_chart_title"
+                imageTitleColor="blue"
+            />
+        </div>
+        <div class="card-fly-in">
+            <SolutionsInsightCard
+                iconSrc={`${base}${icons.gen.uniqueSegments}`}
+                eyebrow={t(copy, 'insight_2_eyebrow', locale, 'Market Intelligence')}
+                eyebrowKey="insight_2_eyebrow"
+                title={t(
+                    copy,
+                    'insight_2_title',
+                    locale,
+                    "Stop marketing to the 'average' Canadian."
+                )}
+                titleKey="insight_2_title"
+                description={t(
+                    copy,
+                    'insight_2_description',
+                    locale,
+                    'The MTM allows you to see Canada in high definition. From streaming subscriptions to podcast habits to device ownership — not all Canadians have the same media behaviours.'
+                )}
+                descriptionKey="insight_2_description"
+                imageSrc={`${base}images/solutions/media/insight-2.svg`}
+                imageAlt="Market intelligence variable selection visualization"
+                imageTitle={t(
+                    copy,
+                    'insight_2_chart_title',
+                    locale,
+                    'Audience breakdown by segment'
+                )}
+                imageTitleKey="insight_2_chart_title"
+                imageTitleColor="indigo"
+            />
+        </div>
     </div>
 </section>
 
@@ -125,4 +139,71 @@ const { locale, copy, base } = Astro.props as Props;
             row-gap: var(--space-9);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // Cards are a wrapping grid — a single row at desktop, so they all cross
+    // the viewport edge together at that breakpoint. A per-card observer
+    // would fire them all at once there, losing the stagger; trigger off
+    // the grid itself instead and stagger the children.
+    document
+        .querySelectorAll<HTMLElement>('.solutions-media-insights-section')
+        .forEach((section) => {
+            const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+            if (heading) {
+                const headingObserver = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            heading.classList.add('is-visible');
+                            headingObserver.disconnect();
+                        }
+                    },
+                    { threshold: 0.15 }
+                );
+                headingObserver.observe(heading);
+            }
+
+            const cardsRow = section.querySelector<HTMLElement>('.solutions-media-insights-cards');
+            const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+            if (cardsRow && cards.length) {
+                const cardObserver = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            cards.forEach((card, i) => {
+                                setTimeout(() => card.classList.add('is-visible'), i * 140);
+                            });
+                            cardObserver.disconnect();
+                        }
+                    },
+                    { threshold: 0.4 }
+                );
+                cardObserver.observe(cardsRow);
+            }
+        });
+</script>

@@ -114,6 +114,7 @@ const DEFAULT_TAB_MAP = {
   'analytic-tools': '1734378829',
   'census-tool': '606257462',
   insights: '1724411017',
+  'about-us': '550283014',
 };
 
 // Solutions pages live on a separate spreadsheet — always use published CSV URLs directly.

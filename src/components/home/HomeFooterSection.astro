@@ -34,7 +34,6 @@ const footerMenus = [
                 label: locale === 'fr' ? 'À propos' : 'About Us',
                 href: `${base}${locale}/about-us/`,
             },
-            { label: locale === 'fr' ? 'Nouvelles' : 'News', href: `${base}${locale}/insights/` },
             {
                 label: locale === 'fr' ? 'Contactez-nous' : 'Contact Us',
                 href: `${base}${locale}/contact/`,
@@ -103,7 +102,7 @@ const footerMenus = [
         title: locale === 'fr' ? 'Perspectives' : 'Insights',
         items: [
             {
-                label: locale === 'fr' ? 'Vos perspectives' : 'Your Insights',
+                label: locale === 'fr' ? 'Perspectives' : 'Insights',
                 href: `${base}${locale}/insights/`,
             },
         ],
@@ -871,8 +870,8 @@ const footerMenus = [
         opacity: 0;
         transform: translateY(1.625rem);
         transition:
-            opacity 1.1s ease,
-            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
     }
 
     .footer-eyebrow-fly-in.is-visible {
@@ -907,8 +906,8 @@ const footerMenus = [
         opacity: 0;
         transform: translateY(1.625rem);
         transition:
-            opacity 1.1s ease,
-            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
     }
 
     .footer-form-fly-in.is-visible {

@@ -88,7 +88,7 @@ const cards = [
 ---
 
 <section class="solutions-govngos-insights-section">
-    <div class="solutions-govngos-insights-header">
+    <div class="solutions-govngos-insights-header heading-fly-in">
         <h2>
             {t(copy, 'insights_title', locale, 'Insights That Support Better Public Decisions')}
         </h2>
@@ -107,7 +107,7 @@ const cards = [
     <div class="solutions-govngos-insights-cards">
         {
             cards.map((card) => (
-                <article class="solutions-govngos-insight-card">
+                <article class="solutions-govngos-insight-card card-fly-in">
                     <div class="solutions-govngos-insight-card__body">
                         <div class="solutions-govngos-insight-card__block">
                             <span class="text-label-small solutions-govngos-insight-card__label">
@@ -294,4 +294,73 @@ const cards = [
             gap: var(--section-header-gap);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // Cards are a wrapping grid — a single row at desktop, so they all cross
+    // the viewport edge together at that breakpoint. A per-card observer
+    // would fire them all at once there, losing the stagger; trigger off
+    // the grid itself instead and stagger the children.
+    document
+        .querySelectorAll<HTMLElement>('.solutions-govngos-insights-section')
+        .forEach((section) => {
+            const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+            if (heading) {
+                const headingObserver = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            heading.classList.add('is-visible');
+                            headingObserver.disconnect();
+                        }
+                    },
+                    { threshold: 0.15 }
+                );
+                headingObserver.observe(heading);
+            }
+
+            const cardsRow = section.querySelector<HTMLElement>(
+                '.solutions-govngos-insights-cards'
+            );
+            const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+            if (cardsRow && cards.length) {
+                const cardObserver = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            cards.forEach((card, i) => {
+                                setTimeout(() => card.classList.add('is-visible'), i * 140);
+                            });
+                            cardObserver.disconnect();
+                        }
+                    },
+                    { threshold: 0.4 }
+                );
+                cardObserver.observe(cardsRow);
+            }
+        });
+</script>

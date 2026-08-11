@@ -2,6 +2,7 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
+import FaqAccordion from '../shared/FaqAccordion.astro';
 import { icons } from '../../lib/icons/registry';
 import { homeFaqs as faqs } from '../../lib/content/homeFaqs';
 
@@ -14,223 +15,54 @@ const { locale, copy } = Astro.props as Props;
 const askMtmIconPath = `${import.meta.env.BASE_URL}${icons.tool.askMtm}`;
 ---
 
-<section
-    class="home-faqs"
-    aria-label={t(copy, 'faq_section_title', locale, 'Frequently Asked Questions')}
+<FaqAccordion
+    locale={locale}
+    copy={copy}
+    titleKey="faq_section_title"
+    titleFallback="Frequently Asked Questions"
+    items={faqs}
 >
-    <div class="home-faqs__heading">
-        <h2 class="home-faqs__title faq-fly-in" data-copy-key="faq_section_title">
-            {t(copy, 'faq_section_title', locale, 'Frequently Asked Questions')}
-        </h2>
-    </div>
-
-    <div class="home-faqs__accordion">
-        {
-            faqs.map((faq, idx) => (
-                <div
-                    class={`home-faqs__item faq-fly-in${idx === 0 ? ' is-open' : ''}`}
-                    data-faq-id={faq.id}
-                    style={`--faq-color: ${faq.color}`}
+    <Fragment slot="footer">
+        <div class="home-faqs__footer">
+            <div class="home-faqs__footer-text text-body-p1">
+                {
+                    t(
+                        copy,
+                        'faq_footer_text_before',
+                        locale,
+                        'Got a question not listed here? Speak to our chatbot'
+                    )
+                }
+            </div>
+            <div class="home-faqs__footer-actions">
+                <Button
+                    variant="secondary-icon"
+                    href={`/${locale}/tools`}
+                    class="home-faqs__ask-mtm-button"
+                    aria-label={t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
+                    iconSrc={askMtmIconPath}
+                    iconAlt="Ask MTM"
                 >
-                    <button
-                        type="button"
-                        class={`home-faqs__trigger${idx === 0 ? ' is-open' : ''}`}
-                        data-faq-trigger={faq.id}
-                        aria-expanded={idx === 0 ? 'true' : 'false'}
-                        aria-controls={`home-faqs-content-${faq.id}`}
-                    >
-                        <span
-                            class="home-faqs__question text-body-p1-bold"
-                            data-copy-key={faq.questionKey}
-                        >
-                            {t(copy, faq.questionKey, locale, faq.questionFallback)}
-                        </span>
-                        <span class="home-faqs__chevron icon-m" aria-hidden="true">
-                            <svg
-                                width="100%"
-                                height="100%"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M5 7.5L10 12.5L15 7.5"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-                        </span>
-                    </button>
-
-                    <div class={`home-faqs__content-clip${idx === 0 ? ' is-open' : ''}`}>
-                        <div
-                            class="home-faqs__content"
-                            id={`home-faqs-content-${faq.id}`}
-                            role="region"
-                            aria-labelledby={`home-faqs-trigger-${faq.id}`}
-                        >
-                            <p class="home-faqs__answer text-body-p1" data-copy-key={faq.answerKey}>
-                                {t(copy, faq.answerKey, locale, faq.answerFallback)}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            ))
-        }
-    </div>
-
-    <div class="home-faqs__footer">
-        <div class="home-faqs__footer-text text-body-p1">
-            {
-                t(
-                    copy,
-                    'faq_footer_text_before',
-                    locale,
-                    'Got a question not listed here? Speak to our chatbot'
-                )
-            }
+                    {t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
+                </Button>
+                <span class="home-faqs__footer-or text-body-p1">
+                    {t(copy, 'faq_footer_text_after', locale, 'or')}
+                </span>
+                <Button
+                    variant="secondary"
+                    href={`${import.meta.env.BASE_URL}${locale}/contact`}
+                    class="home-faqs__footer-button"
+                >
+                    {t(copy, 'faq_contact_button', locale, 'Contact us')}
+                </Button>
+            </div>
         </div>
-        <div class="home-faqs__footer-actions">
-            <Button
-                variant="secondary-icon"
-                href={`/${locale}/tools`}
-                class="home-faqs__ask-mtm-button"
-                aria-label={t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
-                iconSrc={askMtmIconPath}
-                iconAlt="Ask MTM"
-            >
-                {t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
-            </Button>
-            <span class="home-faqs__footer-or text-body-p1">
-                {t(copy, 'faq_footer_text_after', locale, 'or')}
-            </span>
-            <Button
-                variant="secondary"
-                href={`/${locale}/contact`}
-                class="home-faqs__footer-button"
-            >
-                {t(copy, 'faq_contact_button', locale, 'Contact us')}
-            </Button>
-        </div>
-    </div>
-</section>
+    </Fragment>
+</FaqAccordion>
 
 <style>
-    .home-faqs {
-        background: var(--surface-white);
-        padding: var(--section-pad-block) var(--content-margin-inline);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-9);
-    }
-
-    .home-faqs__heading {
-        width: min(100%, 90rem);
-        text-align: center;
-    }
-
-    .home-faqs__title {
-        margin: 0;
-        color: var(--text-primary);
-    }
-
-    .faq-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity 0.65s ease,
-            transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
-    }
-
-    .faq-fly-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Pause after heading before FAQ items appear */
-    .home-faqs__item.faq-fly-in {
-        transition:
-            opacity 0.65s ease 0.9s,
-            transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s;
-    }
-
-    .home-faqs__accordion {
-        width: min(100%, 90rem);
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-5);
-    }
-
-    .home-faqs__item {
-        border-radius: var(--layout-card-radius);
-        background: var(--surface-white);
-        box-shadow: var(--shadow-card);
-    }
-
-    .home-faqs__item.is-open {
-        box-shadow: var(--shadow-card);
-    }
-
-    .home-faqs__trigger {
-        appearance: none;
-        background: transparent;
-        border: 0;
-        color: var(--neutral-black);
-        padding: var(--space-8);
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--space-4);
-        cursor: pointer;
-        text-align: left;
-        transition: all 220ms ease;
-    }
-
-    .home-faqs__trigger:focus-visible {
-        outline: var(--stroke-2) solid var(--brand-blue-main);
-        outline-offset: var(--space-1);
-    }
-
-    .home-faqs__question {
-        margin: 0;
-        color: var(--text-primary);
-        flex: 1;
-    }
-
-    .home-faqs__chevron {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transform: rotate(0deg);
-        transition: transform 240ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .home-faqs__trigger.is-open .home-faqs__chevron {
-        transform: rotate(180deg);
-    }
-
-    .home-faqs__content-clip {
-        overflow: hidden;
-        height: 0;
-        transition: height 450ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .home-faqs__content {
-        padding: 0 var(--space-8) var(--space-8) var(--space-8);
-    }
-
-    .home-faqs__answer {
-        margin: 0;
-        color: var(--text-primary);
-    }
-
     .home-faqs__footer {
-        width: min(100%, 90rem);
+        width: 100%;
         display: flex;
         align-items: center;
         gap: var(--space-4);
@@ -280,24 +112,6 @@ const askMtmIconPath = `${import.meta.env.BASE_URL}${icons.tool.askMtm}`;
     }
 
     @media (max-width: 767px) {
-        .home-faqs {
-            padding-top: var(--space-9);
-            padding-bottom: var(--space-9);
-            gap: var(--space-8);
-        }
-
-        .home-faqs__heading {
-            text-align: left;
-        }
-
-        .home-faqs__trigger {
-            padding: var(--space-6);
-        }
-
-        .home-faqs__content {
-            padding: 0 var(--space-6) var(--space-6) var(--space-6);
-        }
-
         .home-faqs__footer {
             flex-direction: column;
             align-items: flex-start;
@@ -309,67 +123,3 @@ const askMtmIconPath = `${import.meta.env.BASE_URL}${icons.tool.askMtm}`;
         }
     }
 </style>
-
-<script>
-    // Fly-in: heading + staggered cards
-    const faqsFlySection = document.querySelector('.home-faqs');
-    if (faqsFlySection) {
-        const faqFlyEls = faqsFlySection.querySelectorAll<HTMLElement>('.faq-fly-in');
-        const faqFlyObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        faqFlyObserver.unobserve(entry.target);
-                        faqFlyEls.forEach((el, i) => {
-                            setTimeout(() => el.classList.add('is-visible'), i * 80);
-                        });
-                    }
-                });
-            },
-            { threshold: 0.15 }
-        );
-        faqFlyObserver.observe(faqsFlySection);
-    }
-
-    const faqsSection = document.querySelector('.home-faqs');
-
-    if (faqsSection) {
-        const triggers = faqsSection.querySelectorAll('.home-faqs__trigger');
-
-        // Set initial height for the first open item
-        const firstOpenClip = faqsSection.querySelector(
-            '.home-faqs__content-clip.is-open'
-        ) as HTMLElement | null;
-        if (firstOpenClip) {
-            const inner = firstOpenClip.querySelector('.home-faqs__content') as HTMLElement;
-            firstOpenClip.style.height = inner.scrollHeight + 'px';
-        }
-
-        triggers.forEach((trigger) => {
-            trigger.addEventListener('click', () => {
-                const item = trigger.closest('.home-faqs__item');
-                const contentClip = item?.querySelector('.home-faqs__content-clip');
-                const isOpen = trigger.classList.contains('is-open');
-
-                // Close all items
-                triggers.forEach((t) => {
-                    t.classList.remove('is-open');
-                    t.setAttribute('aria-expanded', 'false');
-                    t.closest('.home-faqs__item')?.classList.remove('is-open');
-                });
-                faqsSection.querySelectorAll('.home-faqs__content-clip').forEach((c) => {
-                    (c as HTMLElement).style.height = '0';
-                });
-
-                // Open clicked item if it was closed
-                if (!isOpen && contentClip) {
-                    trigger.classList.add('is-open');
-                    trigger.setAttribute('aria-expanded', 'true');
-                    item?.classList.add('is-open');
-                    const inner = contentClip.querySelector('.home-faqs__content') as HTMLElement;
-                    (contentClip as HTMLElement).style.height = inner.scrollHeight + 'px';
-                }
-            });
-        });
-    }
-</script>

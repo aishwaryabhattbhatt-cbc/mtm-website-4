@@ -84,5 +84,11 @@ export async function getPageDictionary(pageId: string): Promise<CMSDictionary> 
 }
 
 export function getRuntimeCMSConfig(pageId: string): PageCMSConfig {
+    // Live-reload from the published sheet is dev-only — production visitors
+    // must never see in-progress spreadsheet edits. Omitting the csv/sheet
+    // info here makes the runtime script's own no-op guard kick in.
+    if (!import.meta.env.DEV) {
+        return { pageId, refreshMs: getPageCMSConfig(pageId).refreshMs };
+    }
     return getPageCMSConfig(pageId);
 }

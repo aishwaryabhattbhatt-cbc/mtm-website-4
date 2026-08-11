@@ -48,13 +48,4 @@ export const homeFaqs: HomeFaqEntry[] = [
             'MTM employs rigorous methodology, continuous validation, peer review, and partnerships with industry experts to ensure data accuracy and relevance. Our processes comply with international research standards.',
         color: '#fae8fc',
     },
-    {
-        id: 'faq_5',
-        questionKey: 'faq_5_question',
-        answerKey: 'faq_5_answer',
-        questionFallback: 'When is MTM 18+ data released?',
-        answerFallback:
-            'MTM 18+ data is published twice annually, with Fall results released in February and Spring results released in July.',
-        color: '#fef3e8',
-    },
 ];

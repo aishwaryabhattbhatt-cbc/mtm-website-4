@@ -27,6 +27,8 @@ pnpm-debug.log*
 .agents/
 .claude/
 .planning/
+.playwright-mcp/
+docs/superpowers/
 CLAUDE.md
 SKILLS.md
 REVIEW.md

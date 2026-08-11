@@ -96,7 +96,7 @@
   },
   "product_1_description": {
     "key": "product_1_description",
-    "en": "Insights on media consumption, technology adoption and digital behaviours for Canadians 18 and up",
+    "en": "Media and technology data for Canadians aged 18 and older.",
     "fr": ""
   },
   "product_2_title": {
@@ -106,7 +106,7 @@
   },
   "product_2_description": {
     "key": "product_2_description",
-    "en": "Insights into the media and technology habits of Canadians aged 2–17",
+    "en": "Media and technology behaviour insights for Canadians aged 2–17.",
     "fr": ""
   },
   "product_3_title": {
@@ -279,16 +279,6 @@
     "en": "MTM uses rigorous research methodologies, large-scale national sampling, and ongoing quality assurance processes to ensure data accuracy, consistency, and representativeness across all studies.",
     "fr": ""
   },
-  "faq_5_question": {
-    "key": "faq_5_question",
-    "en": "When is MTM 18+ data released?",
-    "fr": ""
-  },
-  "faq_5_answer": {
-    "key": "faq_5_answer",
-    "en": "MTM 18+ data is published twice annually, with Fall results released in February and Spring results released in July.",
-    "fr": ""
-  },
   "faq_contact_label": {
     "key": "faq_contact_label",
     "en": "Have a question that isn't listed here? Speak with our chatbot or",
@@ -407,6 +397,71 @@
   "nav_solutions_item_5_description": {
     "key": "nav_solutions_item_5_description",
     "en": "Plan services and policies with reliable evidence.",
+    "fr": ""
+  },
+  "contact_page_title": {
+    "key": "contact_page_title",
+    "en": "Contact Us",
+    "fr": ""
+  },
+  "contact_page_description": {
+    "key": "contact_page_description",
+    "en": "Fill out the form below and our team will get back to you.",
+    "fr": ""
+  },
+  "contact_first_name_label": {
+    "key": "contact_first_name_label",
+    "en": "First Name",
+    "fr": ""
+  },
+  "contact_first_name_placeholder": {
+    "key": "contact_first_name_placeholder",
+    "en": "John",
+    "fr": ""
+  },
+  "contact_last_name_label": {
+    "key": "contact_last_name_label",
+    "en": "Last Name",
+    "fr": ""
+  },
+  "contact_last_name_placeholder": {
+    "key": "contact_last_name_placeholder",
+    "en": "Doe",
+    "fr": ""
+  },
+  "contact_email_label": {
+    "key": "contact_email_label",
+    "en": "Email",
+    "fr": ""
+  },
+  "contact_email_placeholder": {
+    "key": "contact_email_placeholder",
+    "en": "john@workmail.com",
+    "fr": ""
+  },
+  "contact_message_label": {
+    "key": "contact_message_label",
+    "en": "Message",
+    "fr": ""
+  },
+  "contact_message_placeholder": {
+    "key": "contact_message_placeholder",
+    "en": "How can we help?",
+    "fr": ""
+  },
+  "contact_submit_cta": {
+    "key": "contact_submit_cta",
+    "en": "Submit",
+    "fr": ""
+  },
+  "contact_success_title": {
+    "key": "contact_success_title",
+    "en": "Success!",
+    "fr": ""
+  },
+  "contact_success_message": {
+    "key": "contact_success_message",
+    "en": "Thanks for reaching out. We'll be in touch shortly.",
     "fr": ""
   }
 }

@@ -1,6 +1,7 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import CountUpValue from '../shared/CountUpValue.astro';
 
 interface Props {
     locale: Locale;
@@ -23,15 +24,17 @@ const {
 } = Astro.props as Props;
 ---
 
-<div class="solutions-stat-divider">
+<div class="solutions-stat-divider content-fly-in">
     <img src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
     <div class={`solutions-stat-divider__callout solutions-stat-divider__callout--${align}`}>
-        <span class="text-hero solutions-stat-divider__value solutions-stat-divider__value--lg">
-            {t(copy, 'stat_value', locale, fallbackValue)}
-        </span>
-        <span class="text-metrics solutions-stat-divider__value solutions-stat-divider__value--sm">
-            {t(copy, 'stat_value', locale, fallbackValue)}
-        </span>
+        <CountUpValue
+            value={t(copy, 'stat_value', locale, fallbackValue)}
+            class="text-hero solutions-stat-divider__value solutions-stat-divider__value--lg"
+        />
+        <CountUpValue
+            value={t(copy, 'stat_value', locale, fallbackValue)}
+            class="text-metrics solutions-stat-divider__value solutions-stat-divider__value--sm"
+        />
         <span class="text-body-p1 solutions-stat-divider__desc">
             {t(copy, 'stat_description', locale, fallbackDescription)}
         </span>
@@ -76,11 +79,13 @@ const {
         text-align: left;
     }
 
-    .solutions-stat-divider__value {
+    /* :global — these target CountUpValue's own <span>, which doesn't carry
+       this component's scope attribute. */
+    :global(.solutions-stat-divider__value) {
         color: var(--text-primary);
     }
 
-    .solutions-stat-divider__value--sm {
+    :global(.solutions-stat-divider__value--sm) {
         display: none;
     }
 
@@ -89,11 +94,11 @@ const {
     }
 
     @media (max-width: 1023px) {
-        .solutions-stat-divider__value--lg {
+        :global(.solutions-stat-divider__value--lg) {
             display: none;
         }
 
-        .solutions-stat-divider__value--sm {
+        :global(.solutions-stat-divider__value--sm) {
             display: block;
         }
     }
@@ -117,4 +122,34 @@ const {
             max-width: 60%;
         }
     }
+
+    .content-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .content-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // The stat value (CountUpValue) triggers its own count-up independently,
+    // on its own scroll-in observer — this only handles the block's fade/slide.
+    document.querySelectorAll<HTMLElement>('.solutions-stat-divider').forEach((el) => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    el.classList.add('is-visible');
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.15 }
+        );
+        observer.observe(el);
+    });
+</script>

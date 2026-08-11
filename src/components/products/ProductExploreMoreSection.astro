@@ -23,7 +23,7 @@ const { heading, products } = Astro.props as Props;
 ---
 
 <section class="explore-more-section">
-    <div class="explore-header">
+    <div class="explore-header heading-fly-in">
         <h2>{heading}</h2>
         <CarouselNavArrows
             scrollTargetSelector="#exploreMobileScroll"
@@ -38,7 +38,7 @@ const { heading, products } = Astro.props as Props;
     <div class="explore-cards-desktop">
         {
             products.map((product) => (
-                <a class="explore-card" href={product.href}>
+                <a class="explore-card card-fly-in" href={product.href}>
                     <div class="explore-card-image">
                         <Image class="explore-card-bg" src={product.bg} alt="" loading="lazy" />
                         <img
@@ -108,7 +108,7 @@ const { heading, products } = Astro.props as Props;
     <div class="explore-cards-mobile" id="exploreMobileScroll">
         {
             products.map((product) => (
-                <a class="explore-mobile-card" href={product.href}>
+                <a class="explore-mobile-card card-fly-in" href={product.href}>
                     <div class="explore-mobile-image">
                         <Image class="explore-mobile-bg" src={product.bg} alt="" loading="lazy" />
                         <img
@@ -422,4 +422,78 @@ const { heading, products } = Astro.props as Props;
             padding-bottom: var(--space-8);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Per-card entrance, staggered — same spring/duration/delay as the
+       homepage Solutions cards (.solutions-card-fly-in). */
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // Heading and each cards row observe themselves, not the outer section —
+    // a threshold is a fraction of the target's own area, so watching the
+    // whole section skews the trigger point once it's taller than any one
+    // piece inside it.
+    document.querySelectorAll<HTMLElement>('.explore-more-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        // Staggered independently per layout (desktop vs. mobile) since only
+        // one is ever visible at a time; each row triggers off its own
+        // container so the cards aren't gated by the whole section's size.
+        function staggerCardsIn(containerSelector: string, cardClass: string) {
+            const container = section.querySelector<HTMLElement>(containerSelector);
+            const cards = section.querySelectorAll<HTMLElement>(cardClass);
+            if (!container || !cards.length) return;
+            const rowObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        rowObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            rowObserver.observe(container);
+        }
+
+        staggerCardsIn('.explore-cards-desktop', '.explore-card.card-fly-in');
+        staggerCardsIn('.explore-cards-mobile', '.explore-mobile-card.card-fly-in');
+    });
+</script>

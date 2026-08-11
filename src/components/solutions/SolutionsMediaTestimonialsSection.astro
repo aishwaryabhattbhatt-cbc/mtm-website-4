@@ -65,7 +65,7 @@ const isMulti = items.length > 1;
     <div class="media-testimonials-inner">
         {
             showTitle && (
-                <h2 class="media-testimonials-heading">
+                <h2 class="media-testimonials-heading heading-fly-in">
                     {t(
                         copy,
                         'testimonial_title',
@@ -76,7 +76,7 @@ const isMulti = items.length > 1;
             )
         }
 
-        <div class="media-testimonials-card">
+        <div class="media-testimonials-card content-fly-in">
             <img
                 src={`${base}images/solutions/testimonials/left-top.png`}
                 alt=""
@@ -312,6 +312,32 @@ const isMulti = items.length > 1;
             top: auto;
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .content-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .content-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
 
 <script>
@@ -360,4 +386,37 @@ const isMulti = items.length > 1;
     } else {
         initAll();
     }
+</script>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.media-testimonials-section').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        const contentObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        contentObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+        section.querySelectorAll<HTMLElement>('.content-fly-in').forEach((el) => {
+            contentObserver.observe(el);
+        });
+    });
 </script>

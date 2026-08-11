@@ -1,0 +1,59 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { icons } from '../../lib/icons/registry';
+import ProductFeaturesSection from '../products/ProductFeaturesSection.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+
+const features = [
+    {
+        icon: `${base}${icons.gen.largeSamples}`,
+        titleKey: 'about_values_item_1_label',
+        descKey: 'about_values_item_1_desc',
+        titleFallback: 'Scale',
+        descFallback:
+            '12,000+ Canadians surveyed twice a year — enough sample to break down by niche demographics.',
+    },
+    {
+        icon: `${base}${icons.gen.calendar}`,
+        titleKey: 'about_values_item_2_label',
+        descKey: 'about_values_item_2_desc',
+        titleFallback: 'Recency',
+        descFallback:
+            'Refreshed every spring and fall, so the numbers reflect how Canadians use media right now.',
+    },
+    {
+        icon: `${base}${icons.gen.multipleVariables}`,
+        titleKey: 'about_values_item_3_label',
+        descKey: 'about_values_item_3_desc',
+        titleFallback: 'Coverage',
+        descFallback:
+            '5,000+ variables across demographics, devices, and platforms — one dataset, not a patchwork of surveys.',
+    },
+    {
+        icon: `${base}${icons.gen.trends}`,
+        titleKey: 'about_values_item_4_label',
+        descKey: 'about_values_item_4_desc',
+        titleFallback: 'Comparability',
+        descFallback:
+            'The same core methodology every wave since 2005, so trend claims actually hold up.',
+    },
+];
+---
+
+<ProductFeaturesSection
+    locale={locale}
+    copy={copy}
+    features={features}
+    titleKey="about_values_title"
+    titleFallback="What MTM stands for"
+    compact
+    fadeTop
+    staggerCards
+/>

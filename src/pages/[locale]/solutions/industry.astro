@@ -46,10 +46,12 @@ const heroIcons = [
     icons.gen.reportsActionable,
 ];
 
-const pageTitle =
-    locale === 'fr'
-        ? "MTM | Intelligence médiatique canadienne pour l'industrie"
-        : 'MTM | Canadian Media Intelligence for Industry';
+const pageTitle = t(
+    copy,
+    'industry_page_title',
+    locale,
+    'MTM | Industry: Canadian Media Intelligence & Insights'
+);
 const pageDescription =
     locale === 'fr'
         ? 'Solutions MTM pour les entreprises industrielles.'

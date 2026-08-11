@@ -11,7 +11,7 @@ const { locale, copy } = Astro.props;
 ---
 
 <section class="census-features-title">
-    <h2 data-copy-key="census_tool_features">
+    <h2 class="heading-fly-in" data-copy-key="census_tool_features">
         {t(copy, 'census_tool_features', locale, 'Tool Features')}
     </h2>
 </section>
@@ -21,4 +21,34 @@ const { locale, copy } = Astro.props;
         width: 100%;
         padding: 0 var(--content-margin-inline);
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.census-features-title').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (!heading) return;
+        const headingObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    heading.classList.add('is-visible');
+                    headingObserver.disconnect();
+                }
+            },
+            { threshold: 0.15 }
+        );
+        headingObserver.observe(heading);
+    });
+</script>

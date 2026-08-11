@@ -48,7 +48,7 @@ const benefits = [
 ---
 
 <section class="yourdata-section-v2" id="yourdata-v2">
-    <div class="yourdata-section-v2__header">
+    <div class="yourdata-section-v2__header heading-fly-in">
         <h2 class="yourdata-section-v2__title" data-copy-key="yourdata_title">
             {t(copy, 'yourdata_title', locale, 'Your Data')}
         </h2>
@@ -70,7 +70,7 @@ const benefits = [
     <div class="yourdata-section-v2__cards">
         {
             benefits.map((b) => (
-                <div class="yourdata-section-v2__card">
+                <div class="yourdata-section-v2__card card-fly-in">
                     <img
                         class="icon-3xl yourdata-section-v2__card-icon"
                         src={`${base}${b.icon}`}
@@ -188,4 +188,74 @@ const benefits = [
             gap: var(--card-stack-gap);
         }
     }
+
+    .heading-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .heading-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Per-card entrance, staggered — same spring/duration/delay as the
+       homepage Solutions cards (.solutions-card-fly-in). */
+    .card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // Heading and the cards row each observe themselves, not the outer
+    // section — a threshold is a fraction of the target's own area, so
+    // watching the whole section skews the trigger point once the section
+    // is taller than any one piece inside it.
+    document.querySelectorAll<HTMLElement>('.yourdata-section-v2').forEach((section) => {
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading) {
+            const headingObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        heading.classList.add('is-visible');
+                        headingObserver.disconnect();
+                    }
+                },
+                { threshold: 0.4 }
+            );
+            headingObserver.observe(heading);
+        }
+
+        // Cards sit in a single row (desktop) that would all cross a
+        // per-card threshold together, so trigger off the row itself and
+        // keep the JS stagger between cards.
+        const cardsRow = section.querySelector<HTMLElement>('.yourdata-section-v2__cards');
+        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+        if (cardsRow && cards.length) {
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                        });
+                        cardObserver.disconnect();
+                    }
+                },
+                { threshold: 0.3 }
+            );
+            cardObserver.observe(cardsRow);
+        }
+    });
+</script>

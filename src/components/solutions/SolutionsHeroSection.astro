@@ -262,6 +262,24 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
         transform: translate(-50%, -50%);
     }
 
+    /* Cell size is the grid's own width / 14, which shrinks much faster than
+       the icon-2xl token as --content-margin-inline steps down — by mobile
+       the cell is ~20-30px while icon-2xl stays 2.5rem (40px), badly
+       overflowing the badge square. Step the icon down with the cell. */
+    @media (max-width: 1023px) {
+        .panel-cell .panel-cell-icon {
+            width: var(--icon-xl);
+            height: var(--icon-xl);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .panel-cell .panel-cell-icon {
+            width: var(--icon-m);
+            height: var(--icon-m);
+        }
+    }
+
     .panel-cell.is-hidden {
         opacity: 0;
         /* No entrance animation: its forwards-fill opacity would override this. */
@@ -302,7 +320,7 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
         /* Home-section fly-in: image + mask + grid move as one unit, so the
            silhouette cut-out stays registered while it settles. Duration
            pairs with MEDIA_IN_SECONDS (0.9s pause) in the frontmatter. */
-        animation: hero-media-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+        animation: hero-media-in var(--motion-duration-heading) var(--motion-ease-standard) forwards;
     }
 
     @keyframes hero-media-in {
@@ -418,6 +436,14 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
             /* 2x taller than the desktop ratio so object-fit: cover zooms in
                by scaling to fill the extra height, cropping only the sides */
             aspect-ratio: 1920 / 1540;
+        }
+
+        /* The panel-grid centers on .solutions-hero-media's own height, which
+           is 2x taller here — so the same 50% mark sits much lower in the
+           now-zoomed photo than it did on desktop. Pull it further up to
+           compensate, on top of the shared -space-4 offset. */
+        .solutions-hero-panel-grid {
+            transform: translateY(calc(-50% - var(--space-9)));
         }
     }
 </style>
