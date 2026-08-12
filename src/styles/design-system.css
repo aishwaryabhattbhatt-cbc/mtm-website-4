@@ -402,6 +402,30 @@ h1,
     letter-spacing: var(--ls-hero);
 }
 
+/* 1.5x scaled variants — fluid clamp() instead of the base tokens' discrete
+   breakpoint steps, so size tracks viewport width continuously. Bounds are
+   1.5x of --fs-hero/--fs-metrics' own min/max across the range each variant
+   is actually shown at (see split-callout-value--lg/--sm). */
+.text-hero-1-5x {
+    font-family: var(--font-heading);
+    /* 6.75rem @1024px → 8rem @1920px (1.5x of --fs-hero's 4.5rem, up to a
+       proportional 6rem ceiling) */
+    font-size: clamp(6.75rem, 5.32rem + 0.14vw, 8rem);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-hero);
+}
+
+.text-metrics-1-5x {
+    font-family: var(--font-heading);
+    /* 3.375rem @375px → 4.125rem @1023px (1.5x of --fs-metrics' 2.25rem–2.75rem
+       mobile/tablet range) */
+    font-size: clamp(3.375rem, 2.94rem + 0.116vw, 4.125rem);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-hero);
+}
+
 h2,
 .text-subsection-h2 {
     font-family: var(--font-heading);
@@ -452,6 +476,18 @@ h3,
 .text-body-p1 {
     font-family: var(--font-body);
     font-size: var(--fs-body-l);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-relaxed);
+    letter-spacing: var(--ls-body-lg);
+}
+
+/* 1.25x scaled variant — calc() off --fs-body-l so it stays in sync with its
+   own responsive breakpoint steps. */
+.text-body-p1-1-25x {
+    font-family: var(--font-body);
+    /* Fluid clamp() instead of a fixed 1.25x of --fs-body-l (which itself
+       never steps at any breakpoint): 1.375rem @320px → 1.75rem @1920px. */
+    font-size: clamp(1.375rem, 1.3rem + 0.0234vw, 1.75rem);
     font-weight: var(--fw-regular);
     line-height: var(--lh-relaxed);
     letter-spacing: var(--ls-body-lg);
