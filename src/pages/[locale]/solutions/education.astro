@@ -53,10 +53,12 @@ const pageTitle = t(
     locale,
     'MTM | Educators: Media Research Data for the Classroom'
 );
-const pageDescription =
-    locale === 'fr'
-        ? "Solutions MTM pour le secteur de l'éducation."
-        : 'MTM solutions for the education sector.';
+const pageDescription = t(
+    copy,
+    'education_page_description',
+    locale,
+    'MTM solutions for the education sector.'
+);
 
 const trustedByLogos = [
     { src: `${base}images/home/solutions/logos/education/HEC_Montreal.svg`, alt: 'HEC Montréal' },

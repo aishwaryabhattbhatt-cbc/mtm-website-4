@@ -40,10 +40,12 @@ const pageTitle = t(
     locale,
     'MTM Insights | Reports on Canadian Media Trends'
 );
-const pageDescription =
-    locale === 'fr'
-        ? 'Perspectives et analyses sur les tendances médiatiques et technologiques canadiennes.'
-        : 'Insights and analysis on Canadian media and technology trends.';
+const pageDescription = t(
+    copy,
+    'insights_page_description',
+    locale,
+    'Insights and analysis on Canadian media and technology trends.'
+);
 ---
 
 <Layout

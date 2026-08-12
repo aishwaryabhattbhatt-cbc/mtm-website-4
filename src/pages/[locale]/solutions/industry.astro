@@ -52,10 +52,12 @@ const pageTitle = t(
     locale,
     'MTM | Industry: Canadian Media Intelligence & Insights'
 );
-const pageDescription =
-    locale === 'fr'
-        ? 'Solutions MTM pour les entreprises industrielles.'
-        : 'MTM solutions for industry enterprises.';
+const pageDescription = t(
+    copy,
+    'industry_page_description',
+    locale,
+    'MTM solutions for industry enterprises.'
+);
 
 const trustedByLogos = [
     {

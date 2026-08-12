@@ -37,10 +37,12 @@ const pageTitle = t(
     locale,
     'MTM Home | Canadian Media & Technology Consumption Data'
 );
-const pageDescription =
-    locale === 'fr'
-        ? 'Données et perspectives sur la façon dont les Canadiens utilisent la technologie, le contenu et les médias.'
-        : 'Data and insights on how Canadians use technology, content, and media.';
+const pageDescription = t(
+    copy,
+    'home_page_description',
+    locale,
+    'Data and insights on how Canadians use technology, content, and media.'
+);
 
 const siteRoot = toAbsoluteUrl(Astro.site, base);
 const organizationId = `${siteRoot}#organization`;

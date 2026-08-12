@@ -60,10 +60,12 @@ const pageTitle = t(
     locale,
     'MTM Newcomers | Newcomer Media & Technology Data'
 );
-const pageDescription =
-    locale === 'fr'
-        ? 'Données sur les habitudes médiatiques et technologiques des nouveaux arrivants au Canada.'
-        : 'Data on media and technology habits of newcomers to Canada.';
+const pageDescription = t(
+    copy,
+    'newcomers_page_description',
+    locale,
+    'Data on media and technology habits of newcomers to Canada.'
+);
 ---
 
 <Layout
@@ -90,7 +92,7 @@ const pageDescription =
             maskImageSrc={`${base}images/products/mtm-newcomers/hero/hero-product-nc-mask.webp`}
             heroBadgesMasked={heroBadgesMasked}
             heroBadgesTop={heroBadgesTop}
-            heroIconSrc={`${base}${icons['demographics-group'].newcomers}`}
+            heroIconSrc={`${base}${icons['product-newcomers'].badge}`}
             heroIconAlt=""
         />
 

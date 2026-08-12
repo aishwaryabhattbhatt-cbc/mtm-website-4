@@ -373,11 +373,13 @@ export const icons = {
         uniqueSegments: 'icons/gen/unique-segments.svg',
     },
     'product-18-plus': {
+        badge: 'icons/products/18+.svg',
         dataCanadians: 'icons/products/18+/gen-data-canadians.svg',
         dataDecades: 'icons/products/18+/gen-data-decades.svg',
         value: 'icons/products/18+/gen-value.svg',
     },
     'product-juniors': {
+        badge: 'icons/products/JR.svg',
         focusedOnKids: 'icons/products/JR/gen-focused-on-kids.svg',
         surveyingKids: 'icons/products/JR/gen-surveying-kids.svg',
         yearsData1: 'icons/products/JR/gen-years-data-1.svg',
@@ -396,6 +398,7 @@ export const icons = {
         yearsData25Plus: 'icons/products/JR/gen-years-data-25-plus.svg',
     },
     'product-newcomers': {
+        badge: 'icons/products/NC.svg',
         interviewInternet: 'icons/products/Newcomers/gen-interview-internet.svg',
         survey12Languages: 'icons/products/Newcomers/gen-survey-12-languages.svg',
         yearsData5: 'icons/products/Newcomers/gen-years-data-5.svg',

@@ -107,6 +107,7 @@ function parseCSV(csvText) {
 
 const DEFAULT_TAB_MAP = {
   home: '328712104',
+  seo: '135464300',
   'mtm-18-plus': '7615361',
   juniors: '1128385549',
   newcomers: '1277962868',

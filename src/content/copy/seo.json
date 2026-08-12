@@ -1,0 +1,192 @@
+{
+  "home_page_title": {
+    "key": "home_page_title",
+    "en": "MTM Home | Canadian Media & Technology Consumption Data",
+    "fr": ""
+  },
+  "home_page_description": {
+    "key": "home_page_description",
+    "en": "MTM tracks how 300,000+ Canadians use media and technology every year — the independent, industry-standard dataset for streaming, devices, and content trends.",
+    "fr": ""
+  },
+  "mtm18plus_page_title": {
+    "key": "mtm18plus_page_title",
+    "en": "MTM 18+ | Canadian Adult Media & Technology Data (Ages 18+)",
+    "fr": ""
+  },
+  "mtm18plus_page_description": {
+    "key": "mtm18plus_page_description",
+    "en": "MTM 18+ tracks media and technology habits of Canadian adults with 5,000+ variables — the independent dataset broadcasters and advertisers plan around.",
+    "fr": ""
+  },
+  "juniors_page_title": {
+    "key": "juniors_page_title",
+    "en": "MTM Junior | Kids' Media & Technology Data (Ages 2-17)",
+    "fr": ""
+  },
+  "juniors_page_description": {
+    "key": "juniors_page_description",
+    "en": "MTM Jr. tracks media and technology habits of Canadian kids and teens aged 2-17, from streaming to devices to emerging platforms.",
+    "fr": ""
+  },
+  "newcomers_page_title": {
+    "key": "newcomers_page_title",
+    "en": "MTM Newcomers | Newcomer Media & Technology Data",
+    "fr": ""
+  },
+  "newcomers_page_description": {
+    "key": "newcomers_page_description",
+    "en": "MTM Jr. tracks media and technology habits of Canadian kids and teens aged 2-17, from streaming to devices to emerging platforms.",
+    "fr": ""
+  },
+  "media_page_title": {
+    "key": "media_page_title",
+    "en": "MTM | Media Companies: Canadian Audience Data & Insights",
+    "fr": ""
+  },
+  "media_page_description": {
+    "key": "media_page_description",
+    "en": "Canadian media and technology data for broadcasters and media companies to track audience behaviour and platform shifts.",
+    "fr": ""
+  },
+  "advertising_page_title": {
+    "key": "advertising_page_title",
+    "en": "MTM | Advertisers & Agencies: Audience Data for Winning Pitches",
+    "fr": ""
+  },
+  "advertising_page_description": {
+    "key": "advertising_page_description",
+    "en": "Canadian media and technology data to plan, target, and validate advertising campaigns across every platform and demographic.",
+    "fr": ""
+  },
+  "gov_ngos_page_title": {
+    "key": "gov_ngos_page_title",
+    "en": "MTM | Government & NGOs: Trusted Data for Public Decisions",
+    "fr": ""
+  },
+  "gov_ngos_page_description": {
+    "key": "gov_ngos_page_description",
+    "en": "Canadian media and technology data to inform public-sector and non-profit decisions, funding, and outreach strategy.",
+    "fr": ""
+  },
+  "education_page_title": {
+    "key": "education_page_title",
+    "en": "MTM | Educators: Media Research Data for the Classroom",
+    "fr": ""
+  },
+  "education_page_description": {
+    "key": "education_page_description",
+    "en": "Canadian media and technology data for education-sector research, curriculum planning, and understanding student media habits.",
+    "fr": ""
+  },
+  "industry_page_title": {
+    "key": "industry_page_title",
+    "en": "MTM | Industry: Canadian Media Intelligence & Insights",
+    "fr": ""
+  },
+  "industry_page_description": {
+    "key": "industry_page_description",
+    "en": "Canadian media and technology data for industry and enterprise teams tracking consumer and market trends.",
+    "fr": ""
+  },
+  "insights_page_title": {
+    "key": "insights_page_title",
+    "en": "MTM Insights | Reports on Canadian Media Trends",
+    "fr": ""
+  },
+  "insights_page_description": {
+    "key": "insights_page_description",
+    "en": "Reports and data insights on Canadian media and technology trends, drawn from MTM's continuous, independent research since 2005.",
+    "fr": ""
+  },
+  "analytic_tools_page_title": {
+    "key": "analytic_tools_page_title",
+    "en": "MTM | Analytic Tools for Canadian Media & Technology Data",
+    "fr": ""
+  },
+  "analytic_tools_page_description": {
+    "key": "analytic_tools_page_description",
+    "en": "Query MTM's full dataset with the Data Analysis Tool, Trending Tool, and Forecasting Tool for custom audience and media insights.",
+    "fr": ""
+  },
+  "census_tool_page_title": {
+    "key": "census_tool_page_title",
+    "en": "MTM | Census Tool for Canadian Demographic Data",
+    "fr": ""
+  },
+  "census_tool_page_description": {
+    "key": "census_tool_page_description",
+    "en": "Map Canadian audiences at the postal-code level with the MTM Census Tool — detailed, independent demographic data down to the community.",
+    "fr": ""
+  },
+  "about_page_title": {
+    "key": "about_page_title",
+    "en": "MTM | About Us",
+    "fr": ""
+  },
+  "about_page_description": {
+    "key": "about_page_description",
+    "en": "Media Technology Monitor (MTM) is a continuous, independent research initiative measuring how Canadians use media and technology since 2005.",
+    "fr": ""
+  },
+  "sign_in_page_title": {
+    "key": "sign_in_page_title",
+    "en": "MTM | Sign In",
+    "fr": ""
+  },
+  "sign_in_page_description": {
+    "key": "sign_in_page_description",
+    "en": "Sign in to your Media Technology Monitor (MTM) account.",
+    "fr": ""
+  },
+  "forgot_password_page_title": {
+    "key": "forgot_password_page_title",
+    "en": "MTM | Forgot Password",
+    "fr": ""
+  },
+  "forgot_password_page_description": {
+    "key": "forgot_password_page_description",
+    "en": "Reset the password for your Media Technology Monitor (MTM) account.",
+    "fr": ""
+  },
+  "contact_page_title": {
+    "key": "contact_page_title",
+    "en": "MTM | Contact Us",
+    "fr": ""
+  },
+  "contact_page_description": {
+    "key": "contact_page_description",
+    "en": "Get in touch with the Media Technology Monitor (MTM) team.",
+    "fr": ""
+  },
+  "report_download_page_title": {
+    "key": "report_download_page_title",
+    "en": "MTM | Report Download",
+    "fr": ""
+  },
+  "report_download_page_description": {
+    "key": "report_download_page_description",
+    "en": "Download this MTM report.",
+    "fr": ""
+  },
+  "request_demo_page_title": {
+    "key": "request_demo_page_title",
+    "en": "MTM | Request a Demo",
+    "fr": ""
+  },
+  "request_demo_description": {
+    "key": "request_demo_description",
+    "en": "Book a demo with a our experts at Media Technology Monitor (MTM) to see our products and tools in action.",
+    "fr": ""
+  },
+  "request_demo_success_page_title": {
+    "key": "request_demo_success_page_title",
+    "en": "MTM | Request Submitted",
+    "fr": ""
+  },
+  "request_demo_success_page_description": {
+    "key": "request_demo_success_page_description",
+    "en": "Your demo request has been submitted successfully.",
+    "fr": ""
+  }
+}

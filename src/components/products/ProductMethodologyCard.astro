@@ -13,19 +13,40 @@ interface Props {
     iconSrc: string;
     stats: StatItem[];
     statLayout?: 'column' | 'row';
+    /** Extra delay (ms) before this card's own stat stagger starts —
+        lets one card's data points wait until sibling cards in the same
+        row have visibly appeared, instead of every card's stats revealing
+        the moment they scroll into view. */
+    revealDelayMs?: number;
+    /** Per-stat offsets (ms, relative to the stagger's own start) —
+        overrides the default uniform 300ms-apart spacing when a card
+        needs a custom rhythm (e.g. the last stat catching up faster). */
+    staggerOffsetsMs?: number[];
 }
 
-const { pillLabel, iconSrc, stats, statLayout = 'column' } = Astro.props as Props;
+const {
+    pillLabel,
+    iconSrc,
+    stats,
+    statLayout = 'column',
+    revealDelayMs = 0,
+    staggerOffsetsMs,
+} = Astro.props as Props;
 ---
 
 <div class="methodology-card">
     <EyebrowIcon iconSrc={iconSrc} label={pillLabel} />
 
-    <ul class="methodology-card-stats" role="list">
+    <ul
+        class="methodology-card-stats"
+        role="list"
+        data-reveal-delay={revealDelayMs}
+        data-stagger-offsets={staggerOffsetsMs ? JSON.stringify(staggerOffsetsMs) : undefined}
+    >
         {
             stats.map((stat) => (
                 <li
-                    class={`methodology-card-stat${statLayout === 'row' ? ' methodology-card-stat--row' : ''}`}
+                    class={`methodology-card-stat methodology-stat-fly-in${statLayout === 'row' ? ' methodology-card-stat--row' : ''}`}
                 >
                     {stat.value && (
                         <span class="text-body-p0-bold methodology-card-stat-value">
@@ -120,4 +141,86 @@ const { pillLabel, iconSrc, stats, statLayout = 'column' } = Astro.props as Prop
             max-height: none;
         }
     }
+
+    .methodology-stat-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .methodology-stat-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // The stat list's own geometry says nothing about whether it's actually
+    // visible: the card wrapping it (.card-fly-in, from the parent section)
+    // starts at opacity:0 and fades in on its own row-based delay. If this
+    // stagger fired on the list's own intersection, a card sitting later in
+    // that row would finish its whole stagger while still hidden behind the
+    // parent's fade-in — so by the time the card appears, every stat is
+    // already resolved to "visible" and the reveal reads as one instant pop
+    // instead of a stagger. Wait for the ancestor card to actually become
+    // visible before starting the stagger; fall back to this element's own
+    // intersection if it isn't wrapped in one.
+    //
+    // MutationObserver fires right as the card's is-visible class gets
+    // added — i.e. right as its 650ms (--motion-duration-card) fade-in
+    // *starts*, not once it's finished. Starting the stat stagger at that
+    // same instant makes stat 1 fade in on top of the still-fading card, so
+    // the two blend together and the stagger disappears visually. CARD_FADE_MS
+    // holds the stagger off until the card's own entrance has settled;
+    // revealDelayMs (data-reveal-delay) adds on top of that for cross-card
+    // sequencing (see Survey Design's usage in ProductMethodologySection).
+    const CARD_FADE_MS = 650;
+
+    function runStagger(list: HTMLElement) {
+        const baseDelay = CARD_FADE_MS + (Number(list.dataset.revealDelay) || 0);
+        let offsets: number[] = [];
+        try {
+            offsets = list.dataset.staggerOffsets ? JSON.parse(list.dataset.staggerOffsets) : [];
+        } catch {
+            offsets = [];
+        }
+        const stats = list.querySelectorAll<HTMLElement>('.methodology-stat-fly-in');
+        stats.forEach((stat, i) => {
+            const offset = offsets[i] ?? i * 300;
+            setTimeout(() => stat.classList.add('is-visible'), baseDelay + offset);
+        });
+    }
+
+    document.querySelectorAll<HTMLElement>('.methodology-card-stats').forEach((list) => {
+        const card = list.closest<HTMLElement>('.card-fly-in');
+        if (!card) {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        runStagger(list);
+                        observer.unobserve(entry.target);
+                    });
+                },
+                { threshold: 0.2 }
+            );
+            observer.observe(list);
+            return;
+        }
+
+        if (card.classList.contains('is-visible')) {
+            runStagger(list);
+            return;
+        }
+
+        const cardObserver = new MutationObserver(() => {
+            if (card.classList.contains('is-visible')) {
+                cardObserver.disconnect();
+                runStagger(list);
+            }
+        });
+        cardObserver.observe(card, { attributes: true, attributeFilter: ['class'] });
+    });
+</script>

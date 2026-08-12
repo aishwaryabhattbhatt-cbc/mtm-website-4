@@ -50,20 +50,18 @@ const {
         </p>
     </div>
 
-    <div class="content-fly-in">
-        <Reports
-            imageSrc={imageSrc}
-            imageAlt={imageAlt}
-            graphIconSrc={graphIconSrc}
-            graphTitle={graphTitle}
-            graphDetail={graphDetail}
-            chartSrc={chartSrc}
-            chartAlt={chartAlt}
-            insightsHref={insightsHref}
-            sampleReportHref={sampleReportHref}
-            stats={stats}
-        />
-    </div>
+    <Reports
+        imageSrc={imageSrc}
+        imageAlt={imageAlt}
+        graphIconSrc={graphIconSrc}
+        graphTitle={graphTitle}
+        graphDetail={graphDetail}
+        chartSrc={chartSrc}
+        chartAlt={chartAlt}
+        insightsHref={insightsHref}
+        sampleReportHref={sampleReportHref}
+        stats={stats}
+    />
 </section>
 
 <style>
@@ -97,26 +95,15 @@ const {
         opacity: 1;
         transform: translateY(0);
     }
-
-    .content-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity var(--motion-duration-heading) ease 0.9s,
-            transform var(--motion-duration-heading) var(--motion-ease-standard) 0.9s;
-    }
-
-    .content-fly-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
 </style>
 
 <script>
-    // Heading and content observe themselves, not the outer section — a
-    // threshold is a fraction of the target's own area, so watching the
-    // whole section skews the trigger point once it's taller than either
-    // piece inside it.
+    // Heading observes itself, not the outer section — a threshold is a
+    // fraction of the target's own area, so watching the whole section
+    // skews the trigger point once it's taller than the heading inside it.
+    // The Reports block below (report card / stat cards / action card) now
+    // stages its own per-row reveals in Reports.astro instead of fading in
+    // as one block here.
     document.querySelectorAll<HTMLElement>('.product-reports-section').forEach((section) => {
         const heading = section.querySelector<HTMLElement>('.heading-fly-in');
         if (heading) {
@@ -130,20 +117,6 @@ const {
                 { threshold: 0.15 }
             );
             headingObserver.observe(heading);
-        }
-
-        const content = section.querySelector<HTMLElement>('.content-fly-in');
-        if (content) {
-            const contentObserver = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        content.classList.add('is-visible');
-                        contentObserver.disconnect();
-                    }
-                },
-                { threshold: 0.15 }
-            );
-            contentObserver.observe(content);
         }
     });
 </script>

@@ -32,10 +32,12 @@ const localeSwitchUrls: Record<Locale, string> = {
 };
 
 const pageTitle = t(copy, 'request_demo_page_title', locale, 'MTM | Request a Demo');
-const pageDescription =
-    locale === 'fr'
-        ? 'Réservez une démo avec un expert MTM pour découvrir nos produits et outils.'
-        : 'Book a demo with an MTM expert to see our products and tools in action.';
+const pageDescription = t(
+    copy,
+    'request_demo_description',
+    locale,
+    'Book a demo with an MTM expert to see our products and tools in action.'
+);
 
 const mediaTrustedByLogos = [
     { src: `${base}images/home/solutions/logos/media/quebecor.svg`, alt: 'Quebecor' },

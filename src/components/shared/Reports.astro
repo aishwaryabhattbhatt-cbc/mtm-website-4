@@ -37,7 +37,7 @@ const {
 } = Astro.props as Props;
 ---
 
-<div class="report-card">
+<div class="report-card report-card-fly-in">
     <div class="report-card-photo">
         <img src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
     </div>
@@ -73,7 +73,7 @@ const {
     stats.length > 0 && (
         <div class="report-stats">
             {stats.map((stat) => (
-                <div class="report-stat-card">
+                <div class="report-stat-card report-card-fly-in">
                     <img
                         src={stat.iconSrc}
                         alt={stat.iconAlt ?? ''}
@@ -91,7 +91,7 @@ const {
     )
 }
 
-<div class="report-action-card">
+<div class="report-action-card report-card-fly-in">
     <p class="text-body-p1 report-action-text">
         Explore our full library of reports or download a free sneak peek.
     </p>
@@ -328,4 +328,71 @@ const {
             text-align: center;
         }
     }
+
+    .report-card-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .report-card-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // report-card and report-action-card sit at different vertical scroll
+    // positions than each other and than the stats row, so each row gets
+    // its own observer (per animation-conventions: never observe a single
+    // shared wrapper spanning multiple rows — a threshold is a fraction of
+    // the target's own area, so a tall shared wrapper skews the trigger
+    // point badly and was the reason this used to feel late).
+    document.querySelectorAll<HTMLElement>('.report-card').forEach((card) => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    card.classList.add('is-visible');
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.2 }
+        );
+        observer.observe(card);
+    });
+
+    document.querySelectorAll<HTMLElement>('.report-action-card').forEach((card) => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    card.classList.add('is-visible');
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.2 }
+        );
+        observer.observe(card);
+    });
+
+    // The stat cards sit side by side in one row, so they'd all cross an
+    // individual threshold together — observe the row once instead and
+    // stagger the children in JS.
+    document.querySelectorAll<HTMLElement>('.report-stats').forEach((row) => {
+        const cards = row.querySelectorAll<HTMLElement>('.report-stat-card');
+        if (!cards.length) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    cards.forEach((card, i) => {
+                        setTimeout(() => card.classList.add('is-visible'), i * 300);
+                    });
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.2 }
+        );
+        observer.observe(row);
+    });
+</script>

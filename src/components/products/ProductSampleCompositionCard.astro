@@ -11,26 +11,48 @@ interface Props {
     pillLabel: string;
     iconSrc: string;
     items: DonutItem[];
+    /** Extra delay (ms) before this card's own pair stagger starts — lets
+        it wait until sibling cards in the same row have visibly finished
+        revealing their own content. Same idea as ProductMethodologyCard's
+        revealDelayMs. */
+    revealDelayMs?: number;
+    /** Extra delay (ms) before the description line fades in — independent
+        of revealDelayMs since the description doesn't have to follow the
+        donut pairs' own timing. */
+    descriptionRevealDelayMs?: number;
 }
 
-const { pillLabel, iconSrc, items } = Astro.props as Props;
+const {
+    pillLabel,
+    iconSrc,
+    items,
+    revealDelayMs = 0,
+    descriptionRevealDelayMs = 0,
+} = Astro.props as Props;
 ---
 
 <div class="composition-card">
     <EyebrowIcon iconSrc={iconSrc} label={pillLabel} />
 
-    <div class="composition-card-donuts">
+    <div class="composition-card-donuts" data-reveal-delay={revealDelayMs}>
         {
             items.map((item) => (
                 <>
-                    <p class="text-body-p2-bold composition-donut-label">{item.label}</p>
-                    <ProductDonutChart percentage={item.percentage} size="9rem" />
+                    <p class="text-body-p2-bold composition-donut-label composition-fly-in">
+                        {item.label}
+                    </p>
+                    <div class="composition-fly-in">
+                        <ProductDonutChart percentage={item.percentage} size="9rem" />
+                    </div>
                 </>
             ))
         }
     </div>
 
-    <p class="text-body-p3 composition-card-description">
+    <p
+        class="text-body-p3 composition-card-description composition-fly-in"
+        data-reveal-delay={descriptionRevealDelayMs}
+    >
         Sample composition is weighted to reflect the national distribution of Canadian households.
     </p>
 </div>
@@ -75,4 +97,95 @@ const { pillLabel, iconSrc, items } = Astro.props as Props;
             max-width: 6.5rem;
         }
     }
+
+    /* Label + its donut are separate grid cells (see markup) so the 2-column
+       grid layout stays intact, but both share the same pair index in the
+       script below, so each label/donut pair fades in together. */
+    .composition-fly-in {
+        opacity: 0;
+        transform: translateY(1.625rem);
+        transition:
+            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .composition-fly-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<script>
+    // The grid's own geometry says nothing about whether it's actually
+    // visible: the card wrapping it (.card-fly-in, from the parent section)
+    // starts at opacity:0 and fades in on its own row-based delay. This card
+    // sits last in that row, so if the pair-stagger fired on the grid's own
+    // intersection it would finish its (much shorter) stagger while still
+    // hidden behind the parent's fade — by the time the card appears both
+    // pairs are already resolved to "visible" and the reveal reads as one
+    // instant pop instead of a stagger. Wait for the ancestor card to
+    // actually become visible before starting the stagger; fall back to
+    // this element's own intersection if it isn't wrapped in one.
+    //
+    // MutationObserver fires right as the card's own is-visible class gets
+    // added — i.e. right as its 650ms (--motion-duration-card) fade-in
+    // *starts*, not once it's finished. Starting a stagger at that same
+    // instant makes its first element fade in on top of the still-fading
+    // card, so the two blend together and the stagger disappears visually.
+    // CARD_FADE_MS holds every stagger below off until the card's own
+    // entrance has settled.
+    const CARD_FADE_MS = 650;
+
+    // Shared by both the donut-pair grid and the description line below —
+    // each waits for its own ancestor .card-fly-in to actually become
+    // visible (not just intersect the viewport, which opacity:0 doesn't
+    // affect) before running its own timing.
+    function waitForCard(el: HTMLElement, run: () => void) {
+        const card = el.closest<HTMLElement>('.card-fly-in');
+        if (!card) {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        run();
+                        observer.unobserve(entry.target);
+                    });
+                },
+                { threshold: 0.2 }
+            );
+            observer.observe(el);
+            return;
+        }
+
+        if (card.classList.contains('is-visible')) {
+            run();
+            return;
+        }
+
+        const cardObserver = new MutationObserver(() => {
+            if (card.classList.contains('is-visible')) {
+                cardObserver.disconnect();
+                run();
+            }
+        });
+        cardObserver.observe(card, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    document.querySelectorAll<HTMLElement>('.composition-card-donuts').forEach((grid) => {
+        waitForCard(grid, () => {
+            const baseDelay = CARD_FADE_MS + (Number(grid.dataset.revealDelay) || 0);
+            const els = grid.querySelectorAll<HTMLElement>('.composition-fly-in');
+            els.forEach((el, i) => {
+                const pairIndex = Math.floor(i / 2);
+                setTimeout(() => el.classList.add('is-visible'), baseDelay + pairIndex * 300);
+            });
+        });
+    });
+
+    document.querySelectorAll<HTMLElement>('.composition-card-description').forEach((desc) => {
+        waitForCard(desc, () => {
+            const delay = CARD_FADE_MS + (Number(desc.dataset.revealDelay) || 0);
+            setTimeout(() => desc.classList.add('is-visible'), delay);
+        });
+    });
+</script>

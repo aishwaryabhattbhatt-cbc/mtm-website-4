@@ -59,10 +59,12 @@ const pageTitle = t(
     locale,
     'MTM 18+ | Canadian Adult Media & Technology Data (Ages 18+)'
 );
-const pageDescription =
-    locale === 'fr'
-        ? 'Données sur les habitudes médiatiques et technologiques des Canadiens de 18 ans et plus.'
-        : 'Data on media and technology habits of Canadians aged 18 and over.';
+const pageDescription = t(
+    copy,
+    'mtm18plus_page_description',
+    locale,
+    'Data on media and technology habits of Canadians aged 18 and over.'
+);
 ---
 
 <Layout
@@ -89,7 +91,7 @@ const pageDescription =
             maskImageSrc={`${base}images/products/mtm-18-plus/hero/hero-product-18-mask.webp`}
             heroBadgesMasked={heroBadgesMasked}
             heroBadgesTop={heroBadgesTop}
-            heroIconSrc={`${base}${icons['demographics-group'].adult}`}
+            heroIconSrc={`${base}${icons['product-18-plus'].badge}`}
             heroIconAlt=""
         />
 
