@@ -18,10 +18,12 @@ const base = import.meta.env.BASE_URL;
 const localeSwitchUrls = getLocaleSwitchUrls(base, 'contact');
 
 const pageTitle = t(copy, 'contact_page_title', locale, 'MTM | Contact Us');
-const pageDescription =
-    locale === 'fr'
-        ? 'Communiquez avec l’équipe Media Technology Monitor (MTM).'
-        : 'Get in touch with the Media Technology Monitor (MTM) team.';
+const pageDescription = t(
+    copy,
+    'contact_page_description',
+    locale,
+    'Get in touch with the Media Technology Monitor (MTM) team.'
+);
 ---
 
 <Layout

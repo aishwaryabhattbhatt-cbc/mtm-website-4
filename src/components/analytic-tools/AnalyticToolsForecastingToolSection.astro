@@ -67,115 +67,117 @@ const base = import.meta.env.BASE_URL;
         </div>
     </div>
 
-    <!-- row 2: 3 feature cards (4 cols each) -->
-    <div class="forecasting-tool__feature forecasting-tool__feature--blue card-fly-in">
-        <EyebrowIcon
-            iconSrc={`${base}${icons.gen.sampleCoverage}`}
-            label={t(copy, 'forecasting_feature_1_eyebrow', locale, 'What You Project')}
-            copyKey="forecasting_feature_1_eyebrow"
-            variant="white"
-        />
-        <div class="forecasting-tool__feature-content">
-            <p
-                class="text-body-p1 forecasting-tool__feature-title"
-                data-copy-key="forecasting_feature_1_title"
-            >
-                {
-                    t(
-                        copy,
-                        'forecasting_feature_1_title',
-                        locale,
-                        'Where technology adoption is heading and when'
-                    )
-                }
-            </p>
-            <p
-                class="text-body-p2 forecasting-tool__feature-desc"
-                data-copy-key="forecasting_feature_1_description"
-            >
-                {
-                    t(
-                        copy,
-                        'forecasting_feature_1_description',
-                        locale,
-                        "Multi-year projections built on MTM's nationally representative dataset and refined by industry experts."
-                    )
-                }
-            </p>
+    <!-- row 2: 3 feature cards -->
+    <div class="forecasting-tool__features">
+        <div class="forecasting-tool__feature forecasting-tool__feature--blue card-fly-in">
+            <EyebrowIcon
+                iconSrc={`${base}${icons.gen.sampleCoverage}`}
+                label={t(copy, 'forecasting_feature_1_eyebrow', locale, 'What You Project')}
+                copyKey="forecasting_feature_1_eyebrow"
+                variant="white"
+            />
+            <div class="forecasting-tool__feature-content">
+                <p
+                    class="text-body-p1 forecasting-tool__feature-title"
+                    data-copy-key="forecasting_feature_1_title"
+                >
+                    {
+                        t(
+                            copy,
+                            'forecasting_feature_1_title',
+                            locale,
+                            'Where technology adoption is heading and when'
+                        )
+                    }
+                </p>
+                <p
+                    class="text-body-p2 forecasting-tool__feature-desc"
+                    data-copy-key="forecasting_feature_1_description"
+                >
+                    {
+                        t(
+                            copy,
+                            'forecasting_feature_1_description',
+                            locale,
+                            "Multi-year projections built on MTM's nationally representative dataset and refined by industry experts."
+                        )
+                    }
+                </p>
+            </div>
         </div>
-    </div>
 
-    <div class="forecasting-tool__feature forecasting-tool__feature--teal card-fly-in">
-        <EyebrowIcon
-            iconSrc={`${base}${icons.gen.surveyDesign}`}
-            label={t(copy, 'forecasting_feature_2_eyebrow', locale, 'What You Model')}
-            copyKey="forecasting_feature_2_eyebrow"
-            variant="white"
-        />
-        <div class="forecasting-tool__feature-content">
-            <p
-                class="text-body-p1 forecasting-tool__feature-title"
-                data-copy-key="forecasting_feature_2_title"
-            >
-                {
-                    t(
-                        copy,
-                        'forecasting_feature_2_title',
-                        locale,
-                        'Key technologies like podcasts, AI tool usage, paid TV subscriptions and more'
-                    )
-                }
-            </p>
-            <p
-                class="text-body-p2 forecasting-tool__feature-desc"
-                data-copy-key="forecasting_feature_2_description"
-            >
-                {
-                    t(
-                        copy,
-                        'forecasting_feature_2_description',
-                        locale,
-                        'Explore a variety of different media and technology within a few clicks.'
-                    )
-                }
-            </p>
+        <div class="forecasting-tool__feature forecasting-tool__feature--teal card-fly-in">
+            <EyebrowIcon
+                iconSrc={`${base}${icons.gen.surveyDesign}`}
+                label={t(copy, 'forecasting_feature_2_eyebrow', locale, 'What You Model')}
+                copyKey="forecasting_feature_2_eyebrow"
+                variant="white"
+            />
+            <div class="forecasting-tool__feature-content">
+                <p
+                    class="text-body-p1 forecasting-tool__feature-title"
+                    data-copy-key="forecasting_feature_2_title"
+                >
+                    {
+                        t(
+                            copy,
+                            'forecasting_feature_2_title',
+                            locale,
+                            'Key technologies like podcasts, AI tool usage, paid TV subscriptions and more'
+                        )
+                    }
+                </p>
+                <p
+                    class="text-body-p2 forecasting-tool__feature-desc"
+                    data-copy-key="forecasting_feature_2_description"
+                >
+                    {
+                        t(
+                            copy,
+                            'forecasting_feature_2_description',
+                            locale,
+                            'Explore a variety of different media and technology within a few clicks.'
+                        )
+                    }
+                </p>
+            </div>
         </div>
-    </div>
 
-    <div class="forecasting-tool__feature forecasting-tool__feature--purple card-fly-in">
-        <EyebrowIcon
-            iconSrc={`${base}${icons.gen.sampleComposition}`}
-            label={t(copy, 'forecasting_feature_3_eyebrow', locale, 'What You Compare')}
-            copyKey="forecasting_feature_3_eyebrow"
-            variant="white"
-        />
-        <div class="forecasting-tool__feature-content">
-            <p
-                class="text-body-p1 forecasting-tool__feature-title"
-                data-copy-key="forecasting_feature_3_title"
-            >
-                {
-                    t(
-                        copy,
-                        'forecasting_feature_3_title',
-                        locale,
-                        'National, Anglophone and Francophone markets'
-                    )
-                }
-            </p>
-            <p
-                class="text-body-p2 forecasting-tool__feature-desc"
-                data-copy-key="forecasting_feature_3_description"
-            >
-                {
-                    t(
-                        copy,
-                        'forecasting_feature_3_description',
-                        locale,
-                        'Find out how these markets align or differ with an eye toward the future.'
-                    )
-                }
-            </p>
+        <div class="forecasting-tool__feature forecasting-tool__feature--purple card-fly-in">
+            <EyebrowIcon
+                iconSrc={`${base}${icons.gen.sampleComposition}`}
+                label={t(copy, 'forecasting_feature_3_eyebrow', locale, 'What You Compare')}
+                copyKey="forecasting_feature_3_eyebrow"
+                variant="white"
+            />
+            <div class="forecasting-tool__feature-content">
+                <p
+                    class="text-body-p1 forecasting-tool__feature-title"
+                    data-copy-key="forecasting_feature_3_title"
+                >
+                    {
+                        t(
+                            copy,
+                            'forecasting_feature_3_title',
+                            locale,
+                            'National, Anglophone and Francophone markets'
+                        )
+                    }
+                </p>
+                <p
+                    class="text-body-p2 forecasting-tool__feature-desc"
+                    data-copy-key="forecasting_feature_3_description"
+                >
+                    {
+                        t(
+                            copy,
+                            'forecasting_feature_3_description',
+                            locale,
+                            'Find out how these markets align or differ with an eye toward the future.'
+                        )
+                    }
+                </p>
+            </div>
         </div>
     </div>
 </section>
@@ -244,8 +246,14 @@ const base = import.meta.env.BASE_URL;
         display: block;
     }
 
+    .forecasting-tool__features {
+        grid-column: span 12;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--layout-card-gap);
+    }
+
     .forecasting-tool__feature {
-        grid-column: span 4;
         align-self: stretch;
         display: flex;
         flex-direction: column;
@@ -287,8 +295,12 @@ const base = import.meta.env.BASE_URL;
 
         .forecasting-tool__visual,
         .forecasting-tool__content,
-        .forecasting-tool__feature {
+        .forecasting-tool__features {
             grid-column: auto;
+        }
+
+        .forecasting-tool__features {
+            grid-template-columns: 1fr;
         }
 
         /* DOM order is visual-then-content (desktop places the image on the
@@ -339,8 +351,8 @@ const base = import.meta.env.BASE_URL;
         opacity: 0;
         transform: translateY(1.625rem);
         transition:
-            opacity var(--motion-duration-heading) ease 0.9s,
-            transform var(--motion-duration-heading) var(--motion-ease-standard) 0.9s;
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
     }
 
     .content-fly-in.is-visible {
@@ -401,23 +413,25 @@ const base = import.meta.env.BASE_URL;
             contentObserver.observe(el);
         });
 
-        // The section is tall (heading + visual + 3 cards stacked), so a
-        // single section-level trigger would fire the cards before they've
-        // actually scrolled into view. Observe each card on its own instead.
-        const cardObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
+        // Cards sit in a single row (desktop) that would all cross a
+        // per-card threshold together, so trigger off the row itself and
+        // keep the JS stagger between cards.
+        const cardsRow = section.querySelector<HTMLElement>('.forecasting-tool__features');
+        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+        if (cardsRow && cards.length) {
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        cardObserver.unobserve(entry.target);
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 250);
+                        });
+                        cardObserver.disconnect();
                     }
-                });
-            },
-            { threshold: 0.2 }
-        );
-        section.querySelectorAll<HTMLElement>('.card-fly-in').forEach((card) => {
-            cardObserver.observe(card);
-        });
+                },
+                { threshold: 0.2 }
+            );
+            cardObserver.observe(cardsRow);
+        }
     });
 </script>
 

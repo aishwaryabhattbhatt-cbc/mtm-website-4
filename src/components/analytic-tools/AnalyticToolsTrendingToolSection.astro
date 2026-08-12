@@ -68,115 +68,117 @@ const base = import.meta.env.BASE_URL;
         />
     </div>
 
-    <!-- row 2: 3 feature cards (4 cols each) -->
-    <div class="trending-tool__feature trending-tool__feature--blue card-fly-in">
-        <EyebrowIcon
-            iconSrc={`${base}${icons.gen.sampleCoverage}`}
-            label={t(copy, 'trending_feature_1_eyebrow', locale, 'What You See')}
-            copyKey="trending_feature_1_eyebrow"
-            variant="white"
-        />
-        <div class="trending-tool__feature-content">
-            <p
-                class="text-body-p1 trending-tool__feature-title"
-                data-copy-key="trending_feature_1_title"
-            >
-                {
-                    t(
-                        copy,
-                        'trending_feature_1_title',
-                        locale,
-                        'Which technologies are rising or losing ground'
-                    )
-                }
-            </p>
-            <p
-                class="text-body-p2 trending-tool__feature-desc"
-                data-copy-key="trending_feature_1_description"
-            >
-                {
-                    t(
-                        copy,
-                        'trending_feature_1_description',
-                        locale,
-                        'Track adoption curves across media types. Know which platforms are winning the streaming wars when it comes to your target audiences.'
-                    )
-                }
-            </p>
+    <!-- row 2: 3 feature cards -->
+    <div class="trending-tool__features">
+        <div class="trending-tool__feature trending-tool__feature--blue card-fly-in">
+            <EyebrowIcon
+                iconSrc={`${base}${icons.gen.sampleCoverage}`}
+                label={t(copy, 'trending_feature_1_eyebrow', locale, 'What You See')}
+                copyKey="trending_feature_1_eyebrow"
+                variant="white"
+            />
+            <div class="trending-tool__feature-content">
+                <p
+                    class="text-body-p1 trending-tool__feature-title"
+                    data-copy-key="trending_feature_1_title"
+                >
+                    {
+                        t(
+                            copy,
+                            'trending_feature_1_title',
+                            locale,
+                            'Which technologies are rising or losing ground'
+                        )
+                    }
+                </p>
+                <p
+                    class="text-body-p2 trending-tool__feature-desc"
+                    data-copy-key="trending_feature_1_description"
+                >
+                    {
+                        t(
+                            copy,
+                            'trending_feature_1_description',
+                            locale,
+                            'Track adoption curves across media types. Know which platforms are winning the streaming wars when it comes to your target audiences.'
+                        )
+                    }
+                </p>
+            </div>
         </div>
-    </div>
 
-    <div class="trending-tool__feature trending-tool__feature--teal card-fly-in">
-        <EyebrowIcon
-            iconSrc={`${base}${icons.gen.surveyDesign}`}
-            label={t(copy, 'trending_feature_2_eyebrow', locale, 'What You Track')}
-            copyKey="trending_feature_2_eyebrow"
-            variant="white"
-        />
-        <div class="trending-tool__feature-content">
-            <p
-                class="text-body-p1 trending-tool__feature-title"
-                data-copy-key="trending_feature_2_title"
-            >
-                {
-                    t(
-                        copy,
-                        'trending_feature_2_title',
-                        locale,
-                        'Where your audiences are heading towards'
-                    )
-                }
-            </p>
-            <p
-                class="text-body-p2 trending-tool__feature-desc"
-                data-copy-key="trending_feature_2_description"
-            >
-                {
-                    t(
-                        copy,
-                        'trending_feature_2_description',
-                        locale,
-                        'Multiple years of quarterly data means you can show momentum, not just a snapshot. Bring a trajectory to the next client meeting.'
-                    )
-                }
-            </p>
+        <div class="trending-tool__feature trending-tool__feature--teal card-fly-in">
+            <EyebrowIcon
+                iconSrc={`${base}${icons.gen.surveyDesign}`}
+                label={t(copy, 'trending_feature_2_eyebrow', locale, 'What You Track')}
+                copyKey="trending_feature_2_eyebrow"
+                variant="white"
+            />
+            <div class="trending-tool__feature-content">
+                <p
+                    class="text-body-p1 trending-tool__feature-title"
+                    data-copy-key="trending_feature_2_title"
+                >
+                    {
+                        t(
+                            copy,
+                            'trending_feature_2_title',
+                            locale,
+                            'Where your audiences are heading towards'
+                        )
+                    }
+                </p>
+                <p
+                    class="text-body-p2 trending-tool__feature-desc"
+                    data-copy-key="trending_feature_2_description"
+                >
+                    {
+                        t(
+                            copy,
+                            'trending_feature_2_description',
+                            locale,
+                            'Multiple years of quarterly data means you can show momentum, not just a snapshot. Bring a trajectory to the next client meeting.'
+                        )
+                    }
+                </p>
+            </div>
         </div>
-    </div>
 
-    <div class="trending-tool__feature trending-tool__feature--purple card-fly-in">
-        <EyebrowIcon
-            iconSrc={`${base}${icons.gen.sampleComposition}`}
-            label={t(copy, 'trending_feature_3_eyebrow', locale, 'What You Compare')}
-            copyKey="trending_feature_3_eyebrow"
-            variant="white"
-        />
-        <div class="trending-tool__feature-content">
-            <p
-                class="text-body-p1 trending-tool__feature-title"
-                data-copy-key="trending_feature_3_title"
-            >
-                {
-                    t(
-                        copy,
-                        'trending_feature_3_title',
-                        locale,
-                        'How different regions and languages are moving'
-                    )
-                }
-            </p>
-            <p
-                class="text-body-p2 trending-tool__feature-desc"
-                data-copy-key="trending_feature_3_description"
-            >
-                {
-                    t(
-                        copy,
-                        'trending_feature_3_description',
-                        locale,
-                        "Quebec and Ontario don't always move together. Compare Anglophone and Francophone audiences side by side across any trend."
-                    )
-                }
-            </p>
+        <div class="trending-tool__feature trending-tool__feature--purple card-fly-in">
+            <EyebrowIcon
+                iconSrc={`${base}${icons.gen.sampleComposition}`}
+                label={t(copy, 'trending_feature_3_eyebrow', locale, 'What You Compare')}
+                copyKey="trending_feature_3_eyebrow"
+                variant="white"
+            />
+            <div class="trending-tool__feature-content">
+                <p
+                    class="text-body-p1 trending-tool__feature-title"
+                    data-copy-key="trending_feature_3_title"
+                >
+                    {
+                        t(
+                            copy,
+                            'trending_feature_3_title',
+                            locale,
+                            'How different regions and languages are moving'
+                        )
+                    }
+                </p>
+                <p
+                    class="text-body-p2 trending-tool__feature-desc"
+                    data-copy-key="trending_feature_3_description"
+                >
+                    {
+                        t(
+                            copy,
+                            'trending_feature_3_description',
+                            locale,
+                            "Quebec and Ontario don't always move together. Compare Anglophone and Francophone audiences side by side across any trend."
+                        )
+                    }
+                </p>
+            </div>
         </div>
     </div>
 </section>
@@ -247,8 +249,14 @@ const base = import.meta.env.BASE_URL;
         display: block;
     }
 
+    .trending-tool__features {
+        grid-column: span 12;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--layout-card-gap);
+    }
+
     .trending-tool__feature {
-        grid-column: span 4;
         align-self: stretch;
         display: flex;
         flex-direction: column;
@@ -290,8 +298,12 @@ const base = import.meta.env.BASE_URL;
 
         .trending-tool__content,
         .trending-tool__visual,
-        .trending-tool__feature {
+        .trending-tool__features {
             grid-column: auto;
+        }
+
+        .trending-tool__features {
+            grid-template-columns: 1fr;
         }
 
         .trending-tool__visual {
@@ -335,8 +347,8 @@ const base = import.meta.env.BASE_URL;
         opacity: 0;
         transform: translateY(1.625rem);
         transition:
-            opacity var(--motion-duration-heading) ease 0.9s,
-            transform var(--motion-duration-heading) var(--motion-ease-standard) 0.9s;
+            opacity var(--motion-duration-heading) ease,
+            transform var(--motion-duration-heading) var(--motion-ease-standard);
     }
 
     .content-fly-in.is-visible {
@@ -344,7 +356,7 @@ const base = import.meta.env.BASE_URL;
         transform: translateY(0);
     }
 
-    /* Per-card entrance, staggered — same spring/duration/delay as the
+    /* Per-card entrance, staggered — same spring/duration as the
        homepage Solutions cards (.solutions-card-fly-in). */
     .card-fly-in {
         opacity: 0;
@@ -364,9 +376,7 @@ const base = import.meta.env.BASE_URL;
     // Every fly-in element observes itself, not the (much larger) section —
     // an IntersectionObserver threshold is a fraction of the target's own
     // area, so watching the whole tall section skews the trigger point for
-    // elements that don't span its full height (the heading could end up
-    // firing later than the cards below it, since 15% of a big section is a
-    // lot more scroll than 20% of one small card).
+    // elements that don't span its full height.
     document.querySelectorAll<HTMLElement>('.trending-tool-section').forEach((section) => {
         const heading = section.querySelector<HTMLElement>('.heading-fly-in');
         if (heading) {
@@ -397,23 +407,25 @@ const base = import.meta.env.BASE_URL;
             contentObserver.observe(el);
         });
 
-        // The section is tall (heading + visual + 3 cards stacked), so a
-        // single section-level trigger would fire the cards before they've
-        // actually scrolled into view. Observe each card on its own instead.
-        const cardObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
+        // Cards sit in a single row (desktop) that would all cross a
+        // per-card threshold together, so trigger off the row itself and
+        // keep the JS stagger between cards.
+        const cardsRow = section.querySelector<HTMLElement>('.trending-tool__features');
+        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
+        if (cardsRow && cards.length) {
+            const cardObserver = new IntersectionObserver(
+                ([entry]) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        cardObserver.unobserve(entry.target);
+                        cards.forEach((card, i) => {
+                            setTimeout(() => card.classList.add('is-visible'), i * 250);
+                        });
+                        cardObserver.disconnect();
                     }
-                });
-            },
-            { threshold: 0.2 }
-        );
-        section.querySelectorAll<HTMLElement>('.card-fly-in').forEach((card) => {
-            cardObserver.observe(card);
-        });
+                },
+                { threshold: 0.2 }
+            );
+            cardObserver.observe(cardsRow);
+        }
     });
 </script>
 

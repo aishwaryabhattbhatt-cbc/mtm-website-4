@@ -53,10 +53,12 @@ const pageTitle = t(
     locale,
     'MTM | Government & NGOs: Trusted Data for Public Decisions'
 );
-const pageDescription =
-    locale === 'fr'
-        ? 'Solutions MTM pour le gouvernement et les organisations non gouvernementales.'
-        : 'MTM solutions for government and non-governmental organizations.';
+const pageDescription = t(
+    copy,
+    'gov_ngos_page_description',
+    locale,
+    'MTM solutions for government and non-governmental organizations.'
+);
 
 const trustedByLogos = [
     { src: `${base}images/home/solutions/logos/gov-ngo/canada.svg`, alt: 'Government of Canada' },
@@ -126,8 +128,8 @@ const trustedByLogos = [
             locale={locale}
             copy={copy}
             base={base}
-            logoSrc={`${base}images/home/solutions/logos/gov-ngo/crtc.svg`}
-            logoAlt="CRTC"
+            logoSrc={`${base}images/home/solutions/logos/gov-ngo/manso.svg`}
+            logoAlt="MANSO"
         />
 
         <HomeFooterSection locale={locale} copy={copy} />

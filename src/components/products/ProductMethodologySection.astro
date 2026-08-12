@@ -130,6 +130,8 @@ const sampleStats = [
                     pillLabel={t(copy, 'survey_title', locale, 'Survey Design')}
                     iconSrc={`${base}${icons.gen.surveyDesign}`}
                     stats={surveyStats}
+                    revealDelayMs={560}
+                    staggerOffsetsMs={[0, 300, 400]}
                 />
             </div>
             {
@@ -144,6 +146,8 @@ const sampleStats = [
                             )}
                             iconSrc={`${base}${icons.gen.sampleComposition}`}
                             items={compositionItems}
+                            revealDelayMs={1120}
+                            descriptionRevealDelayMs={1720}
                         />
                     </div>
                 )
@@ -157,6 +161,7 @@ const sampleStats = [
                     iconSrc={`${base}${icons.gen.researchProvider}`}
                     stats={providerStats}
                     statLayout="row"
+                    revealDelayMs={showComposition ? 2150 : 250}
                 />
             </div>
         </div>

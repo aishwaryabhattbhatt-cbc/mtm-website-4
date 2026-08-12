@@ -30,10 +30,12 @@ const localeSwitchUrls: Record<Locale, string> = {
 };
 
 const pageTitle = t(copy, 'request_demo_success_page_title', locale, 'MTM | Request Submitted');
-const pageDescription =
-    locale === 'fr'
-        ? 'Votre demande de démo a été envoyée avec succès.'
-        : 'Your demo request has been submitted successfully.';
+const pageDescription = t(
+    copy,
+    'request_demo_success_page_description',
+    locale,
+    'Your demo request has been submitted successfully.'
+);
 ---
 
 <Layout

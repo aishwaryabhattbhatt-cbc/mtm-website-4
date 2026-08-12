@@ -53,10 +53,12 @@ const pageTitle = t(
     locale,
     'MTM | Advertisers & Agencies: Audience Data for Winning Pitches'
 );
-const pageDescription =
-    locale === 'fr'
-        ? "Solutions MTM pour l'industrie publicitaire."
-        : 'MTM solutions for the advertising industry.';
+const pageDescription = t(
+    copy,
+    'advertising_page_description',
+    locale,
+    'MTM solutions for the advertising industry.'
+);
 
 const trustedByLogos = [
     { src: `${base}images/home/solutions/logos/advertising/cosette.svg`, alt: 'Cossette' },
@@ -130,8 +132,8 @@ const trustedByLogos = [
             locale={locale}
             copy={copy}
             base={base}
-            logoSrc={`${base}images/home/solutions/logos/advertising/mindshare.svg`}
-            logoAlt="Mindshare"
+            logoSrc={`${base}images/home/solutions/logos/advertising/time-space-media.png`}
+            logoAlt="Time & Space Media"
         />
 
         <HomeFooterSection locale={locale} copy={copy} />

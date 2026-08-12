@@ -352,7 +352,7 @@ const features = [
                 ([entry]) => {
                     if (entry.isIntersecting) {
                         cards.forEach((card, i) => {
-                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                            setTimeout(() => card.classList.add('is-visible'), i * 250);
                         });
                         cardObserver.disconnect();
                     }

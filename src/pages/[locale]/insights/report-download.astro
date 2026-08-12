@@ -32,8 +32,12 @@ const localeSwitchUrls: Record<Locale, string> = {
 };
 
 const pageTitle = t(copy, 'report_download_page_title', locale, 'MTM | Report Download');
-const pageDescription =
-    locale === 'fr' ? 'Téléchargez ce rapport MTM.' : 'Download this MTM report.';
+const pageDescription = t(
+    copy,
+    'report_download_page_description',
+    locale,
+    'Download this MTM report.'
+);
 ---
 
 <Layout

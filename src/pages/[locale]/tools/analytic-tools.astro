@@ -12,6 +12,7 @@ import AnalyticToolsForecastingToolSection from '../../../components/analytic-to
 import AnalyticToolsYourDataSectionV2 from '../../../components/analytic-tools/AnalyticToolsYourDataSectionV2.astro';
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
+import { t } from '../../../lib/i18n/t';
 import type { Locale } from '../../../lib/cms/types';
 
 export function getStaticPaths() {
@@ -34,14 +35,18 @@ const localeSwitchUrls = {
     fr: `${base}fr/tools/analytic-tools/`,
 };
 
-const pageTitle =
-    locale === 'fr'
-        ? 'MTM | Outils analytiques pour données médiatiques'
-        : 'MTM | Analytic Tools for Canadian Media Data';
-const pageDescription =
-    locale === 'fr'
-        ? 'Explorez les outils analytiques MTM pour des perspectives médiatiques approfondies.'
-        : 'Explore MTM analytic tools for in-depth media insights.';
+const pageTitle = t(
+    copy,
+    'analytic_tools_page_title',
+    locale,
+    'MTM | Analytic Tools for Canadian Media Data'
+);
+const pageDescription = t(
+    copy,
+    'analytic_tools_page_description',
+    locale,
+    'Explore MTM analytic tools for in-depth media insights.'
+);
 ---
 
 <Layout

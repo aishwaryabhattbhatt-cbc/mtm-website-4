@@ -6,6 +6,11 @@ import type { CMSDictionary, PageCMSConfig } from './types';
 
 const inMemoryCache = new Map<string, CMSDictionary>();
 const SHARED_PAGE_ID = 'home';
+// Page <title>/meta-description copy for every page, centralized in one tab
+// rather than scattered across each page's own sheet — merged in below like
+// SHARED_PAGE_ID, so every page (including home) picks up its own X_page_title
+// / X_page_description keys automatically.
+const SEO_PAGE_ID = 'seo';
 const useInMemoryCache = process.env.NODE_ENV === 'production';
 
 function getLocalCopyPath(pageId: string): string {
@@ -20,9 +25,16 @@ export async function getPageDictionary(pageId: string): Promise<CMSDictionary> 
         return inMemoryCache.get(pageId) ?? {};
     }
 
+    // SEO_PAGE_ID is a flat title/description dictionary — it never needs
+    // SHARED_PAGE_ID's nav/footer keys, so skip that fetch here. Without this,
+    // 'seo' pulls in 'home', which pulls 'seo' back in, forever.
     let sharedDictionary: CMSDictionary = {};
-    if (pageId !== SHARED_PAGE_ID) {
+    if (pageId !== SHARED_PAGE_ID && pageId !== SEO_PAGE_ID) {
         sharedDictionary = await getPageDictionary(SHARED_PAGE_ID);
+    }
+    let seoDictionary: CMSDictionary = {};
+    if (pageId !== SEO_PAGE_ID) {
+        seoDictionary = await getPageDictionary(SEO_PAGE_ID);
     }
 
     // 1. Local copy file (written by `npm run sync-copy`) — fast, no network
@@ -30,13 +42,7 @@ export async function getPageDictionary(pageId: string): Promise<CMSDictionary> 
     if (existsSync(localPath)) {
         try {
             const dict = JSON.parse(readFileSync(localPath, 'utf-8')) as CMSDictionary;
-            const mergedDict =
-                pageId === SHARED_PAGE_ID
-                    ? dict
-                    : {
-                          ...sharedDictionary,
-                          ...dict,
-                      };
+            const mergedDict = { ...sharedDictionary, ...seoDictionary, ...dict };
             if (useInMemoryCache) {
                 inMemoryCache.set(pageId, mergedDict);
             }
@@ -63,13 +69,7 @@ export async function getPageDictionary(pageId: string): Promise<CMSDictionary> 
 
     try {
         const dictionary = await fetchSheetDictionary(csvUrl);
-        const mergedDictionary =
-            pageId === SHARED_PAGE_ID
-                ? dictionary
-                : {
-                      ...sharedDictionary,
-                      ...dictionary,
-                  };
+        const mergedDictionary = { ...sharedDictionary, ...seoDictionary, ...dictionary };
         if (useInMemoryCache) {
             inMemoryCache.set(pageId, mergedDictionary);
         }

@@ -52,10 +52,12 @@ const pageTitle = t(
     locale,
     'MTM | Media Companies: Canadian Audience Data & Insights'
 );
-const pageDescription =
-    locale === 'fr'
-        ? 'Solutions MTM pour les entreprises médiatiques.'
-        : 'MTM solutions for media companies.';
+const pageDescription = t(
+    copy,
+    'media_page_description',
+    locale,
+    'MTM solutions for media companies.'
+);
 
 const trustedByLogos = [
     { src: `${base}images/home/solutions/logos/media/quebecor.svg`, alt: 'Quebecor' },
@@ -126,7 +128,13 @@ const trustedByLogos = [
 
         <SolutionsUseCasesSection locale={locale} copy={copy} />
 
-        <SolutionsMediaTestimonialsSection locale={locale} copy={copy} base={base} />
+        <SolutionsMediaTestimonialsSection
+            locale={locale}
+            copy={copy}
+            base={base}
+            logoSrc={`${base}images/home/solutions/logos/media/the-weather-network.svg`}
+            logoAlt="The Weather Network"
+        />
 
         <HomeFooterSection locale={locale} copy={copy} />
     </main>

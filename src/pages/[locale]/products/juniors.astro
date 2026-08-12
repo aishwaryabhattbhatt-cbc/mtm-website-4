@@ -60,10 +60,12 @@ const pageTitle = t(
     locale,
     "MTM Junior | Kids' Media & Technology Data (Ages 2-17)"
 );
-const pageDescription =
-    locale === 'fr'
-        ? 'Données sur les habitudes médiatiques et technologiques des jeunes Canadiens.'
-        : 'Data on media and technology habits of young Canadians.';
+const pageDescription = t(
+    copy,
+    'juniors_page_description',
+    locale,
+    'Data on media and technology habits of young Canadians.'
+);
 ---
 
 <Layout
@@ -90,7 +92,7 @@ const pageDescription =
             maskImageSrc={`${base}images/products/mtm-junior/hero/hero-product-jr-mask.webp`}
             heroBadgesMasked={heroBadgesMasked}
             heroBadgesTop={heroBadgesTop}
-            heroIconSrc={`${base}${icons['demographics-group'].kid}`}
+            heroIconSrc={`${base}${icons['product-juniors'].badge}`}
             heroIconAlt=""
         />
 

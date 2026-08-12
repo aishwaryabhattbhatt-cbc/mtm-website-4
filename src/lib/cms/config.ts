@@ -2,6 +2,7 @@ import type { PageCMSConfig, PageTabMap } from './types';
 
 const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
     home: '328712104',
+    seo: '135464300',
     'mtm-18-plus': '7615361',
     juniors: '1128385549',
     newcomers: '1277962868',
@@ -23,6 +24,7 @@ const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
 
 const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
     home: '',
+    seo: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=135464300&single=true&output=csv',
     'mtm-18-plus':
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=7615361&single=true&output=csv',
     juniors:

@@ -19,10 +19,12 @@ const base = import.meta.env.BASE_URL;
 const localeSwitchUrls = getLocaleSwitchUrls(base, 'sign-in');
 
 const pageTitle = t(copy, 'sign_in_page_title', locale, 'MTM | Sign In');
-const pageDescription =
-    locale === 'fr'
-        ? 'Connectez-vous à votre compte Media Technology Monitor (MTM).'
-        : 'Sign in to your Media Technology Monitor (MTM) account.';
+const pageDescription = t(
+    copy,
+    'sign_in_page_description',
+    locale,
+    'Sign in to your Media Technology Monitor (MTM) account.'
+);
 ---
 
 <Layout
