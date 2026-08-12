@@ -5,8 +5,6 @@ import Button from '../shared/Button.astro';
 import Eyebrow from '../shared/Eyebrow.astro';
 import { icons } from '../../lib/icons/registry';
 
-export type SolutionsHeroLayoutId = 'advertising' | 'media' | 'education' | 'gov-ngos' | 'industry';
-
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
@@ -15,9 +13,7 @@ interface Props {
     /** Black-on-white silhouette of heroImageSrc; cuts a person-shaped
         hole in the effects layer so animations appear behind the subject. */
     maskImageSrc?: string;
-    /** Which fixed panel-grid arrangement (hidden/scaled/icon cells) to use. */
-    layoutId?: SolutionsHeroLayoutId;
-    /** Six icon registry paths placed on the grid's icon cells, in order.
+    /** Nine icon registry paths placed on the grid's icon cells, in order.
         Swap entries here (per page) to change which icons appear. */
     heroIcons?: string[];
     fallbackEyebrow: string;
@@ -32,7 +28,6 @@ const {
     ctaHref,
     heroImageSrc,
     maskImageSrc,
-    layoutId = 'advertising',
     heroIcons = [
         icons.gen.marketing,
         icons.gen.trends,
@@ -40,6 +35,9 @@ const {
         icons.gen.quickInsights,
         icons.gen.uniqueSegments,
         icons.gen.credibility,
+        icons.gen.shapeStrategies,
+        icons.gen.quickAccess,
+        icons.gen.exportCharts,
     ],
     fallbackEyebrow,
     fallbackTitle,
@@ -57,89 +55,139 @@ const GRID_COLS = 14;
 const GRID_ROWS = 4;
 const gridCells = Array.from({ length: GRID_COLS * GRID_ROWS }, (_, i) => i);
 
-// Fixed hand-picked layouts (cell index = row*14+col) — central columns 4-9
-// (6 wide) stay reserved (fully visible, behind the subject), leaving a
-// 4-column block on each flank. Per layout, each set is split 3/3 across the
-// left/right flanks with no row/column adjacency within a set (diagonal is
-// fine within a type), and hidden cells sit at least two cells (row, column,
-// AND diagonal) from every scaled cell. Static rather than randomized per
-// build: a shuffled pick could clump or clash by chance; these are verified
-// balanced/separated and don't change between loads.
-// 'advertising' is the hand-verified original; 'education' is its horizontal
-// mirror (col -> 13-col), 'gov-ngos' its vertical mirror (row -> 3-row),
-// 'industry' its 180° rotation (i -> 55-i) — mirroring preserves every
-// adjacency relation, so the constraints hold by construction — and 'media'
-// is a second hand-verified design.
-const PANEL_LAYOUTS: Record<
-    SolutionsHeroLayoutId,
-    { hidden: number[]; scaled: [number, number][]; iconCells: number[] }
-> = {
-    advertising: {
-        hidden: [0, 2, 15, 10, 12, 25],
-        scaled: [
-            [31, 0.75],
-            [42, 0.5],
-            [44, 0.75],
-            [41, 0.5],
-            [52, 0.75],
-            [54, 0.5],
-        ],
-        iconCells: [1, 17, 43, 11, 27, 53],
-    },
-    media: {
-        hidden: [28, 43, 45, 38, 53, 55],
-        scaled: [
-            [1, 0.75],
-            [3, 0.5],
-            [16, 0.75],
-            [10, 0.5],
-            [12, 0.75],
-            [27, 0.5],
-        ],
-        iconCells: [0, 17, 30, 11, 39, 54],
-    },
-    education: {
-        hidden: [13, 11, 26, 3, 1, 16],
-        scaled: [
-            [38, 0.75],
-            [55, 0.5],
-            [53, 0.75],
-            [28, 0.5],
-            [45, 0.75],
-            [43, 0.5],
-        ],
-        iconCells: [12, 24, 54, 2, 14, 44],
-    },
-    'gov-ngos': {
-        hidden: [42, 44, 29, 52, 54, 39],
-        scaled: [
-            [17, 0.75],
-            [0, 0.5],
-            [2, 0.75],
-            [27, 0.5],
-            [10, 0.75],
-            [12, 0.5],
-        ],
-        iconCells: [43, 31, 1, 53, 41, 11],
-    },
-    industry: {
-        hidden: [55, 53, 40, 45, 43, 30],
-        scaled: [
-            [24, 0.75],
-            [13, 0.5],
-            [11, 0.75],
-            [14, 0.5],
-            [3, 0.75],
-            [1, 0.5],
-        ],
-        iconCells: [54, 38, 12, 44, 28, 2],
-    },
-};
+// Panel grid: central columns 5-8 (4 wide) stay reserved (fully visible,
+// behind the subject), leaving a 5-column block on each flank. Per flank,
+// `count` cells become hidden, `count` become scaled, `count` get an icon —
+// randomized fresh each build rather than hand-picked, but under the same
+// rules that kept the old hand-picked layouts readable: no two cells of the
+// same type (hidden/hidden, scaled/scaled, icon/icon) sit orthogonally
+// adjacent (diagonal is fine), and the bottom-row outer corner of each flank
+// is always an icon cell, never hidden/scaled. Which flank gets 4 vs 5 of
+// each is also randomized per build.
+type FlankCellType = 'hidden' | 'scaled' | 'icon';
+const FLANK_COLS = 5;
+const FLANK_ROWS = 4;
 
-const layout = PANEL_LAYOUTS[layoutId];
-const hiddenCells = new Set(layout.hidden);
-const cellScale = new Map<number, number>(layout.scaled);
-const cellIcon = new Map(layout.iconCells.map((i, idx) => [i, heroIcons[idx]]));
+function shuffle<T>(arr: T[]): T[] {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function orthogonallyAdjacent(a: [number, number], b: [number, number]): boolean {
+    return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) === 1;
+}
+
+/** Randomly places `count` hidden + `count` scaled + `count` icon cells in a
+    5x4 flank (rest stay plain), forcing the bottom-row outer corner to be an
+    icon. Backtracks with a step budget per attempt, retrying with a fresh
+    random order on failure — cheap since the grid is small. */
+function generateFlank(
+    count: number,
+    forcedCornerCol: number
+): Record<FlankCellType, [number, number][]> {
+    // 0-based index of row 4 (bottom row in a 4-row flank).
+    const forcedCornerRow = FLANK_ROWS - 1;
+    const forcedCorner: [number, number] = [forcedCornerRow, forcedCornerCol];
+
+    for (let attempt = 0; attempt < 200; attempt++) {
+        const rest = shuffle(
+            Array.from({ length: FLANK_ROWS * FLANK_COLS }, (_, i): [number, number] => [
+                Math.floor(i / FLANK_COLS),
+                i % FLANK_COLS,
+            ]).filter(([r, c]) => !(r === forcedCorner[0] && c === forcedCorner[1]))
+        );
+        const order = [forcedCorner, ...rest];
+        const target = { hidden: count, scaled: count, icon: count };
+        const counts = { hidden: 0, scaled: 0, icon: 0 };
+        const assign = new Map<string, FlankCellType>();
+        let steps = 0;
+
+        const fits = (cell: [number, number], type: FlankCellType) => {
+            for (const [key, t] of assign) {
+                if (t !== type) continue;
+                const [r, c] = key.split(',').map(Number);
+                if (orthogonallyAdjacent(cell, [r, c])) return false;
+            }
+            return true;
+        };
+
+        const dfs = (i: number): boolean => {
+            if (++steps > 4000) return false;
+            if (i === order.length) {
+                return (
+                    counts.hidden === target.hidden &&
+                    counts.scaled === target.scaled &&
+                    counts.icon === target.icon
+                );
+            }
+            const cell = order[i];
+            const key = `${cell[0]},${cell[1]}`;
+            const candidates: (FlankCellType | null)[] =
+                i === 0 ? ['icon'] : shuffle(['hidden', 'scaled', 'icon', null]);
+            for (const type of candidates) {
+                if (type === null) {
+                    if (dfs(i + 1)) return true;
+                    continue;
+                }
+                if (counts[type] >= target[type] || !fits(cell, type)) continue;
+                assign.set(key, type);
+                counts[type]++;
+                if (dfs(i + 1)) return true;
+                counts[type]--;
+                assign.delete(key);
+            }
+            return false;
+        };
+
+        if (dfs(0)) {
+            const result: Record<FlankCellType, [number, number][]> = {
+                hidden: [],
+                scaled: [],
+                icon: [],
+            };
+            for (const [key, type] of assign) {
+                const [r, c] = key.split(',').map(Number);
+                result[type].push([r, c]);
+            }
+            return result;
+        }
+    }
+    // Constraints are loose enough that this shouldn't happen at these
+    // counts; fall back to an all-plain flank rather than failing the build.
+    return { hidden: [], scaled: [], icon: [forcedCorner] };
+}
+
+function toGridIndex(cell: [number, number], side: 'left' | 'right'): number {
+    const col = side === 'left' ? cell[1] : GRID_COLS - FLANK_COLS + cell[1];
+    return cell[0] * GRID_COLS + col;
+}
+
+const SCALES = [0.35, 0.5, 0.65, 0.8];
+const leftCount = Math.random() < 0.5 ? 4 : 5;
+const rightCount = 9 - leftCount;
+const leftFlank = generateFlank(leftCount, 0);
+const rightFlank = generateFlank(rightCount, FLANK_COLS - 1);
+
+const hiddenCells = new Set([
+    ...leftFlank.hidden.map((c) => toGridIndex(c, 'left')),
+    ...rightFlank.hidden.map((c) => toGridIndex(c, 'right')),
+]);
+const scaledIndices = [
+    ...leftFlank.scaled.map((c) => toGridIndex(c, 'left')),
+    ...rightFlank.scaled.map((c) => toGridIndex(c, 'right')),
+];
+const cellScale = new Map<number, number>(
+    scaledIndices.map((i, idx) => [i, SCALES[idx % SCALES.length]])
+);
+const iconIndices = [
+    ...leftFlank.icon.map((c) => toGridIndex(c, 'left')),
+    ...rightFlank.icon.map((c) => toGridIndex(c, 'right')),
+];
+const cellIcon = new Map(iconIndices.map((i, idx) => [i, heroIcons[idx]]));
 const base = import.meta.env.BASE_URL;
 
 // The media block flies in first (home-section pattern: 1.1s fly-in, content
@@ -160,36 +208,57 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
         />
         {
             maskImageSrc && (
-                <div class="solutions-hero-effects">
-                    <div class="solutions-hero-panel-grid">
-                        {gridCells.map((i) => (
-                            <span
-                                class:list={[
-                                    'panel-cell',
-                                    hiddenCells.has(i) && 'is-hidden',
-                                    cellScale.has(i) && 'is-scaled',
-                                ]}
-                                style={`--cell-delay: ${cellDelays[i]}s${
-                                    cellScale.has(i)
-                                        ? `; --panel-cell-scale: ${cellScale.get(i)}`
-                                        : ''
-                                }`}
-                            >
-                                {cellIcon.has(i) && (
-                                    <img
-                                        src={`${base}${cellIcon.get(i)}`}
-                                        alt=""
-                                        class="panel-cell-icon icon-2xl"
-                                    />
-                                )}
-                            </span>
-                        ))}
+                <>
+                    <div class="solutions-hero-effects">
+                        <div class="solutions-hero-panel-grid">
+                            {gridCells.map((i) => (
+                                <span
+                                    class:list={[
+                                        'panel-cell',
+                                        hiddenCells.has(i) && 'is-hidden',
+                                        cellScale.has(i) && 'is-scaled',
+                                    ]}
+                                    style={`--cell-delay: ${cellDelays[i]}s${
+                                        cellScale.has(i)
+                                            ? `; --panel-cell-scale: ${cellScale.get(i)}`
+                                            : ''
+                                    }`}
+                                >
+                                    {cellIcon.has(i) && (
+                                        <img
+                                            src={`${base}${cellIcon.get(i)}`}
+                                            alt=""
+                                            class="panel-cell-icon icon-2xl"
+                                        />
+                                    )}
+                                </span>
+                            ))}
+                        </div>
+                        <slot name="effects" />
                     </div>
-                    <slot name="effects" />
-                </div>
+                    {/* Desktop-only: dotted connector (CSS only) wired to the
+                           two bottom-corner badges (always icon cells, see
+                           generateFlank) and the eyebrow pill below — each
+                           side drops straight down from its badge, turns
+                           toward center, then a shared segment drops from
+                           that turn down to the eyebrow. Not part of
+                           .solutions-hero-effects so it stays unmasked
+                           (drawn in front of the subject, like the source
+                           photos). Positions mirror .solutions-hero-panel-grid
+                           and .solutions-hero-content's own math exactly, so
+                           it tracks them with no JS measurement needed. */}
+                    <div class="solutions-hero-connector" aria-hidden="true">
+                        <span class="connector-dot connector-dot--left" />
+                        <span class="connector-dot connector-dot--right" />
+                        <span class="connector-dot connector-dot--center" />
+                        <span class="connector-elbow connector-elbow--left" />
+                        <span class="connector-elbow connector-elbow--right" />
+                        <span class="connector-corner-center connector-corner-center--left" />
+                        <span class="connector-corner-center connector-corner-center--right" />
+                    </div>
+                </>
             )
         }
-        <div class="solutions-hero-fade"></div>
     </div>
 
     <div class="solutions-hero-content">
@@ -305,6 +374,118 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
         mask-size: cover;
     }
 
+    /* Desktop-only dotted connector — see the markup comment above for why
+       this lives outside .solutions-hero-effects. Path per side: a dot just
+       below the corner badge, straight down to a "bend" row, then in toward
+       center; a shared segment then drops from that bend down to the
+       eyebrow's top edge. Hidden below desktop, see max-width: 1023px. */
+    .solutions-hero-connector {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 2;
+        /* Shared anchor points. `left`/`right` resolve % against this box's
+           WIDTH; `top`/`bottom` resolve % against its HEIGHT — since this
+           box exactly matches .solutions-hero-media, any height-context
+           formula that needs the panel-grid's WIDTH (to derive its height
+           via the 14:4 aspect-ratio) has to reconstruct that width from
+           height using the media's fixed desktop aspect-ratio (1920/770);
+           only valid at desktop, which is fine since the whole connector is
+           desktop-only. */
+        --connector-x-left: calc(
+            var(--content-margin-inline) + (100% - 2 * var(--content-margin-inline)) / 28
+        );
+        --connector-x-right: calc(100% - var(--connector-x-left));
+        /* Bottom edge of the panel grid (row 4's own bottom, not its center). */
+        --connector-y-grid-bottom: calc(
+            50% - var(--space-4) + (100% * 1920 / 770 - 2 * var(--content-margin-inline)) / 7
+        );
+        /* Eyebrow's top edge = .solutions-hero-content's negative margin-top,
+           nudged up by --space-1 so the dot sits fully above the pill
+           instead of being half-covered by it. */
+        --connector-y-eyebrow: calc(100% - var(--space-11) - var(--space-1));
+        /* Bend sits exactly halfway between the two, so the badge->bend drop
+           and the bend->eyebrow drop are always equal height. */
+        --connector-y-bend: calc((var(--connector-y-grid-bottom) + var(--connector-y-eyebrow)) / 2);
+        --connector-corner-r: 24px;
+    }
+
+    .connector-dot {
+        position: absolute;
+        width: var(--space-2);
+        height: var(--space-2);
+        border-radius: var(--radius-full);
+        background: var(--brand-blue-main);
+        transform: translate(-50%, -50%);
+    }
+
+    .connector-dot--left {
+        left: var(--connector-x-left);
+        top: var(--connector-y-grid-bottom);
+    }
+
+    .connector-dot--right {
+        left: var(--connector-x-right);
+        top: var(--connector-y-grid-bottom);
+    }
+
+    .connector-dot--center {
+        left: 50%;
+        top: var(--connector-y-eyebrow);
+    }
+
+    /* Each side is one S-curve made of two boxes: the elbow bends
+       vertical-from-badge into horizontal-toward-center (rounded at the
+       badge end); the center-corner then bends that same horizontal back
+       into vertical-toward-eyebrow (rounded at the center end) — one box
+       can only bend one way, so the S needs both pieces per side. */
+    .connector-elbow {
+        position: absolute;
+        top: var(--connector-y-grid-bottom);
+        bottom: calc(100% - var(--connector-y-bend));
+        border-bottom: var(--stroke-2) dotted var(--brand-blue-main);
+    }
+
+    .connector-elbow--left {
+        left: var(--connector-x-left);
+        right: calc(50% + var(--connector-corner-r));
+        border-left: var(--stroke-2) dotted var(--brand-blue-main);
+        border-bottom-left-radius: var(--connector-corner-r);
+    }
+
+    .connector-elbow--right {
+        left: calc(50% + var(--connector-corner-r));
+        right: var(--connector-x-left);
+        border-right: var(--stroke-2) dotted var(--brand-blue-main);
+        border-bottom-right-radius: var(--connector-corner-r);
+    }
+
+    /* Spans all the way down to the eyebrow (not just the corner radius) —
+       the curve fills whatever room it has near the top, and the box's own
+       straight edge continues the rest of the way, so no separate vertical
+       piece is needed below it. Top is nudged up 2px to overlap the
+       elbow's bottom edge and close a hairline seam between the two boxes. */
+    .connector-corner-center {
+        position: absolute;
+        top: calc(var(--connector-y-bend) - 2px);
+        bottom: calc(100% - var(--connector-y-eyebrow));
+        border-top: var(--stroke-2) dotted var(--brand-blue-main);
+    }
+
+    .connector-corner-center--left {
+        left: calc(50% - var(--connector-corner-r));
+        right: 50%;
+        border-right: var(--stroke-2) dotted var(--brand-blue-main);
+        border-top-right-radius: var(--connector-corner-r);
+    }
+
+    .connector-corner-center--right {
+        left: 50%;
+        right: calc(50% - var(--connector-corner-r));
+        border-left: var(--stroke-2) dotted var(--brand-blue-main);
+        border-top-left-radius: var(--connector-corner-r);
+    }
+
     .solutions-hero-section {
         position: relative;
         background-color: var(--surface-blue);
@@ -349,17 +530,6 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
         object-fit: cover;
         object-position: center top;
         display: block;
-    }
-
-    .solutions-hero-fade {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            to bottom,
-            transparent 48%,
-            color-mix(in srgb, var(--surface-blue) 47%, transparent) 74%,
-            var(--surface-blue) 100%
-        );
     }
 
     .solutions-hero-content {
@@ -421,6 +591,13 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
     @media (max-width: 1023px) {
         .solutions-hero-section {
             margin-top: 0;
+        }
+
+        /* Desktop-only: the panel-grid geometry it's wired to shifts too
+           much between breakpoints (translateY offset changes, mobile
+           switches to a taller aspect-ratio) to keep tracking correctly. */
+        .solutions-hero-connector {
+            display: none;
         }
     }
 

@@ -1,387 +1,292 @@
 {
-    "about_hero_eyebrow": {
-        "key": "about_hero_eyebrow",
-        "en": "About",
-        "fr": ""
-    },
-    "about_hero_title": {
-        "key": "about_hero_title",
-        "en": "About the MTM",
-        "fr": ""
-    },
-    "about_what_body": {
-        "key": "about_what_body",
-        "en": "MTM (Media Technology Monitor) is a continuous, bilingual research initiative that tracks how Canadians use media and technology — from streaming and social platforms to devices and emerging tech — across English and French Canada. Running since 2005, MTM exists so that understanding how Canadians actually use media doesn't require guesswork: broadcasters, advertisers, educators, and policymakers all plan around the same independent numbers.",
-        "fr": ""
-    },
-    "about_values_title": {
-        "key": "about_values_title",
-        "en": "What makes the data reliable",
-        "fr": ""
-    },
-    "about_values_item_1_label": {
-        "key": "about_values_item_1_label",
-        "en": "Scale",
-        "fr": ""
-    },
-    "about_values_item_1_desc": {
-        "key": "about_values_item_1_desc",
-        "en": "12,000+ Canadians surveyed twice a year — enough sample to break down by niche demographics.",
-        "fr": ""
-    },
-    "about_values_item_2_label": {
-        "key": "about_values_item_2_label",
-        "en": "Recency",
-        "fr": ""
-    },
-    "about_values_item_2_desc": {
-        "key": "about_values_item_2_desc",
-        "en": "Refreshed every spring and fall, so the numbers reflect how Canadians use media right now.",
-        "fr": ""
-    },
-    "about_values_item_3_label": {
-        "key": "about_values_item_3_label",
-        "en": "Coverage",
-        "fr": ""
-    },
-    "about_values_item_3_desc": {
-        "key": "about_values_item_3_desc",
-        "en": "5,000+ variables across demographics, devices, and platforms — one dataset, not a patchwork of surveys.",
-        "fr": ""
-    },
-    "about_values_item_4_label": {
-        "key": "about_values_item_4_label",
-        "en": "Comparability",
-        "fr": ""
-    },
-    "about_values_item_4_desc": {
-        "key": "about_values_item_4_desc",
-        "en": "The same core methodology every wave since 2005, so trend claims actually hold up.",
-        "fr": ""
-    },
-    "about_timeline_title": {
-        "key": "about_timeline_title",
-        "en": "Timeline",
-        "fr": ""
-    },
-    "about_timeline_item_1_year": {
-        "key": "about_timeline_item_1_year",
-        "en": "2005",
-        "fr": ""
-    },
-    "about_timeline_item_1_title": {
-        "key": "about_timeline_item_1_title",
-        "en": "MTM launches",
-        "fr": ""
-    },
-    "about_timeline_item_1_body": {
-        "key": "about_timeline_item_1_body",
-        "en": "MTM launches: an annual fall survey of 8,000 Canadians, gathering media and technology data by landline telephone.",
-        "fr": ""
-    },
-    "about_timeline_item_2_year": {
-        "key": "about_timeline_item_2_year",
-        "en": "2010",
-        "fr": ""
-    },
-    "about_timeline_item_2_title": {
-        "key": "about_timeline_item_2_title",
-        "en": "Spring wave added",
-        "fr": ""
-    },
-    "about_timeline_item_2_body": {
-        "key": "about_timeline_item_2_body",
-        "en": "A spring wave is added alongside the fall wave, and the annual sample grows to 12,000 Canadians — the release cadence still used today.",
-        "fr": ""
-    },
-    "about_timeline_item_3_year": {
-        "key": "about_timeline_item_3_year",
-        "en": "2011",
-        "fr": ""
-    },
-    "about_timeline_item_3_title": {
-        "key": "about_timeline_item_3_title",
-        "en": "MTM Portal launches",
-        "fr": ""
-    },
-    "about_timeline_item_3_body": {
-        "key": "about_timeline_item_3_body",
-        "en": "The MTM Portal launches, making data available online for the first time.",
-        "fr": ""
-    },
-    "about_timeline_item_4_year": {
-        "key": "about_timeline_item_4_year",
-        "en": "2012",
-        "fr": ""
-    },
-    "about_timeline_item_4_title": {
-        "key": "about_timeline_item_4_title",
-        "en": "Cell-phone-only households added",
-        "fr": ""
-    },
-    "about_timeline_item_4_body": {
-        "key": "about_timeline_item_4_body",
-        "en": "Cell-phone-only households are added to the sample, keeping pace with how Canadians were actually reachable by phone.",
-        "fr": ""
-    },
-    "about_timeline_item_5_year": {
-        "key": "about_timeline_item_5_year",
-        "en": "2015",
-        "fr": ""
-    },
-    "about_timeline_item_5_title": {
-        "key": "about_timeline_item_5_title",
-        "en": "10th anniversary",
-        "fr": ""
-    },
-    "about_timeline_item_5_body": {
-        "key": "about_timeline_item_5_body",
-        "en": "MTM's 10th anniversary. The interactive Trending Tool and Forecasting Tool launch, with 1,500+ data points now available.",
-        "fr": ""
-    },
-    "about_timeline_item_6_year": {
-        "key": "about_timeline_item_6_year",
-        "en": "2019",
-        "fr": ""
-    },
-    "about_timeline_item_6_title": {
-        "key": "about_timeline_item_6_title",
-        "en": "MTM Jr. launches",
-        "fr": ""
-    },
-    "about_timeline_item_6_body": {
-        "key": "about_timeline_item_6_body",
-        "en": "MTM Jr. launches, extending coverage to Canadians aged 2–17; additional EDI questions are added to the survey.",
-        "fr": ""
-    },
-    "about_timeline_item_7_year": {
-        "key": "about_timeline_item_7_year",
-        "en": "2021",
-        "fr": ""
-    },
-    "about_timeline_item_7_title": {
-        "key": "about_timeline_item_7_title",
-        "en": "MTM Newcomers launches",
-        "fr": ""
-    },
-    "about_timeline_item_7_body": {
-        "key": "about_timeline_item_7_body",
-        "en": "MTM Newcomers launches; the sample expands to include Northern Canada and a booster sample of Indigenous respondents.",
-        "fr": ""
-    },
-    "about_timeline_item_8_year": {
-        "key": "about_timeline_item_8_year",
-        "en": "2022",
-        "fr": ""
-    },
-    "about_timeline_item_8_title": {
-        "key": "about_timeline_item_8_title",
-        "en": "MTM Jr. sample grows",
-        "fr": ""
-    },
-    "about_timeline_item_8_body": {
-        "key": "about_timeline_item_8_body",
-        "en": "MTM Jr.'s sample size increases.",
-        "fr": ""
-    },
-    "about_timeline_item_9_year": {
-        "key": "about_timeline_item_9_year",
-        "en": "2023",
-        "fr": ""
-    },
-    "about_timeline_item_9_title": {
-        "key": "about_timeline_item_9_title",
-        "en": "80+ reports released",
-        "fr": ""
-    },
-    "about_timeline_item_9_body": {
-        "key": "about_timeline_item_9_body",
-        "en": "80+ reports and infographics released.",
-        "fr": ""
-    },
-    "about_timeline_item_10_year": {
-        "key": "about_timeline_item_10_year",
-        "en": "2024",
-        "fr": ""
-    },
-    "about_timeline_item_10_title": {
-        "key": "about_timeline_item_10_title",
-        "en": "YourData tool launches",
-        "fr": ""
-    },
-    "about_timeline_item_10_body": {
-        "key": "about_timeline_item_10_body",
-        "en": "The YourData visualization tool launches on the Portal; over 4,000 data points are now available to users.",
-        "fr": ""
-    },
-    "about_timeline_item_11_year": {
-        "key": "about_timeline_item_11_year",
-        "en": "2025",
-        "fr": ""
-    },
-    "about_timeline_item_11_title": {
-        "key": "about_timeline_item_11_title",
-        "en": "MTM Census Tool launches",
-        "fr": ""
-    },
-    "about_timeline_item_11_body": {
-        "key": "about_timeline_item_11_body",
-        "en": "MTM Census Tool launches.",
-        "fr": ""
-    },
-    "about_timeline_item_12_year": {
-        "key": "about_timeline_item_12_year",
-        "en": "2026",
-        "fr": ""
-    },
-    "about_timeline_item_12_title": {
-        "key": "about_timeline_item_12_title",
-        "en": "Census Tool 2.0 & MTM Chatbot",
-        "fr": ""
-    },
-    "about_timeline_item_12_body": {
-        "key": "about_timeline_item_12_body",
-        "en": "MTM Census Tool 2.0 and the MTM Chatbot launch.",
-        "fr": ""
-    },
-    "about_team_title": {
-        "key": "about_team_title",
-        "en": "Meet the team",
-        "fr": ""
-    },
-    "about_team_description": {
-        "key": "about_team_description",
-        "en": "The people who design the surveys, validate the methodology, and build the tools MTM's data feeds into.",
-        "fr": ""
-    },
-    "about_team_member_1_name": {
-        "key": "about_team_member_1_name",
-        "en": "Andrea Sharkey",
-        "fr": ""
-    },
-    "about_team_member_1_title": {
-        "key": "about_team_member_1_title",
-        "en": "Role",
-        "fr": ""
-    },
-    "about_team_member_1_desc": {
-        "key": "about_team_member_1_desc",
-        "en": "Description of what they do in a line or two.",
-        "fr": ""
-    },
-    "about_team_member_2_name": {
-        "key": "about_team_member_2_name",
-        "en": "Jenny Meadows",
-        "fr": ""
-    },
-    "about_team_member_2_title": {
-        "key": "about_team_member_2_title",
-        "en": "Role",
-        "fr": ""
-    },
-    "about_team_member_2_desc": {
-        "key": "about_team_member_2_desc",
-        "en": "Description of what they do in a line or two.",
-        "fr": ""
-    },
-    "about_team_member_3_name": {
-        "key": "about_team_member_3_name",
-        "en": "Alexander Jarocki",
-        "fr": ""
-    },
-    "about_team_member_3_title": {
-        "key": "about_team_member_3_title",
-        "en": "Role",
-        "fr": ""
-    },
-    "about_team_member_3_desc": {
-        "key": "about_team_member_3_desc",
-        "en": "Description of what they do in a line or two.",
-        "fr": ""
-    },
-    "about_team_member_4_name": {
-        "key": "about_team_member_4_name",
-        "en": "Jeff Baker",
-        "fr": ""
-    },
-    "about_team_member_4_title": {
-        "key": "about_team_member_4_title",
-        "en": "Role",
-        "fr": ""
-    },
-    "about_team_member_4_desc": {
-        "key": "about_team_member_4_desc",
-        "en": "Description of what they do in a line or two.",
-        "fr": ""
-    },
-    "about_team_member_5_name": {
-        "key": "about_team_member_5_name",
-        "en": "Ana Alvarez",
-        "fr": ""
-    },
-    "about_team_member_5_title": {
-        "key": "about_team_member_5_title",
-        "en": "Role",
-        "fr": ""
-    },
-    "about_team_member_5_desc": {
-        "key": "about_team_member_5_desc",
-        "en": "Description of what they do in a line or two.",
-        "fr": ""
-    },
-    "about_team_member_6_name": {
-        "key": "about_team_member_6_name",
-        "en": "Guy Dutrisac",
-        "fr": ""
-    },
-    "about_team_member_6_title": {
-        "key": "about_team_member_6_title",
-        "en": "Role",
-        "fr": ""
-    },
-    "about_team_member_6_desc": {
-        "key": "about_team_member_6_desc",
-        "en": "Description of what they do in a line or two.",
-        "fr": ""
-    },
-    "about_team_note": {
-        "key": "about_team_note",
-        "en": "Fieldwork itself is run independently by established Canadian research firms.",
-        "fr": ""
-    },
-    "about_faq_title": {
-        "key": "about_faq_title",
-        "en": "FAQ",
-        "fr": ""
-    },
-    "about_faq_item_1_question": {
-        "key": "about_faq_item_1_question",
-        "en": "How long has MTM been collecting data?",
-        "fr": ""
-    },
-    "about_faq_item_1_answer": {
-        "key": "about_faq_item_1_answer",
-        "en": "Continuously since 2005 — MTM is one of Canada's longest-running trackers of media and technology behaviour.",
-        "fr": ""
-    },
-    "about_faq_item_2_question": {
-        "key": "about_faq_item_2_question",
-        "en": "Is MTM data peer-reviewed?",
-        "fr": ""
-    },
-    "about_faq_item_2_answer": {
-        "key": "about_faq_item_2_answer",
-        "en": "Yes. Every MTM product follows a validated, peer-reviewed methodology, detailed in each product's methodology section.",
-        "fr": ""
-    },
-    "about_faq_item_3_question": {
-        "key": "about_faq_item_3_question",
-        "en": "Can more than one organization use the same MTM dataset?",
-        "fr": ""
-    },
-    "about_faq_item_3_answer": {
-        "key": "about_faq_item_3_answer",
-        "en": "Yes. MTM is built as a shared industry reference — the same dataset is used by multiple broadcasters, advertisers, and agencies, not licensed exclusively to one company.",
-        "fr": ""
-    }
+  "about_hero_eyebrow": {
+    "key": "about_hero_eyebrow",
+    "en": "About",
+    "fr": ""
+  },
+  "about_hero_title": {
+    "key": "about_hero_title",
+    "en": "About the MTM",
+    "fr": ""
+  },
+  "about_what_body": {
+    "key": "about_what_body",
+    "en": "MTM (Media Technology Monitor) is a continuous, bilingual research initiative that tracks how Canadians use media and technology — from streaming and social platforms to devices and emerging tech — across English and French Canada. Running since 2005, MTM exists so that understanding how Canadians actually use media doesn't require guesswork: broadcasters, advertisers, educators, and policymakers all plan around the same independent numbers.",
+    "fr": ""
+  },
+  "about_values_title": {
+    "key": "about_values_title",
+    "en": "What makes the data reliable",
+    "fr": ""
+  },
+  "about_values_item_1_label": {
+    "key": "about_values_item_1_label",
+    "en": "Scale",
+    "fr": ""
+  },
+  "about_values_item_1_desc": {
+    "key": "about_values_item_1_desc",
+    "en": "12,000+ Canadians surveyed twice a year — enough sample to break down by niche demographics.",
+    "fr": ""
+  },
+  "about_values_item_2_label": {
+    "key": "about_values_item_2_label",
+    "en": "Recency",
+    "fr": ""
+  },
+  "about_values_item_2_desc": {
+    "key": "about_values_item_2_desc",
+    "en": "Refreshed every spring and fall, so the numbers reflect how Canadians use media right now.",
+    "fr": ""
+  },
+  "about_values_item_3_label": {
+    "key": "about_values_item_3_label",
+    "en": "Coverage",
+    "fr": ""
+  },
+  "about_values_item_3_desc": {
+    "key": "about_values_item_3_desc",
+    "en": "5,000+ variables across demographics, devices, and platforms — one dataset, not a patchwork of surveys.",
+    "fr": ""
+  },
+  "about_values_item_4_label": {
+    "key": "about_values_item_4_label",
+    "en": "Comparability",
+    "fr": ""
+  },
+  "about_values_item_4_desc": {
+    "key": "about_values_item_4_desc",
+    "en": "The same core methodology every wave since 2005, so trend claims actually hold up.",
+    "fr": ""
+  },
+  "about_timeline_title": {
+    "key": "about_timeline_title",
+    "en": "Timeline",
+    "fr": ""
+  },
+  "about_timeline_item_1_year": {
+    "key": "about_timeline_item_1_year",
+    "en": "2005",
+    "fr": ""
+  },
+  "about_timeline_item_1_body": {
+    "key": "about_timeline_item_1_body",
+    "en": "MTM launches: an annual fall survey of 8,000 Canadians, gathering media and technology data by landline telephone.",
+    "fr": ""
+  },
+  "about_timeline_item_2_year": {
+    "key": "about_timeline_item_2_year",
+    "en": "2010",
+    "fr": ""
+  },
+  "about_timeline_item_2_body": {
+    "key": "about_timeline_item_2_body",
+    "en": "A spring wave is added alongside the fall wave, and the annual sample grows to 12,000 Canadians — the release cadence still used today.",
+    "fr": ""
+  },
+  "about_timeline_item_3_year": {
+    "key": "about_timeline_item_3_year",
+    "en": "2011",
+    "fr": ""
+  },
+  "about_timeline_item_3_body": {
+    "key": "about_timeline_item_3_body",
+    "en": "The MTM Portal launches, making data available online for the first time.",
+    "fr": ""
+  },
+  "about_timeline_item_4_year": {
+    "key": "about_timeline_item_4_year",
+    "en": "2012",
+    "fr": ""
+  },
+  "about_timeline_item_4_body": {
+    "key": "about_timeline_item_4_body",
+    "en": "Cell-phone-only households are added to the sample, keeping pace with how Canadians were actually reachable by phone.",
+    "fr": ""
+  },
+  "about_timeline_item_5_year": {
+    "key": "about_timeline_item_5_year",
+    "en": "2015",
+    "fr": ""
+  },
+  "about_timeline_item_5_body": {
+    "key": "about_timeline_item_5_body",
+    "en": "MTM's 10th anniversary. The interactive Trending Tool and Forecasting Tool launch, with 1,500+ data points now available.",
+    "fr": ""
+  },
+  "about_timeline_item_6_year": {
+    "key": "about_timeline_item_6_year",
+    "en": "2019",
+    "fr": ""
+  },
+  "about_timeline_item_6_body": {
+    "key": "about_timeline_item_6_body",
+    "en": "MTM Jr. launches, extending coverage to Canadians aged 2–17; additional EDI questions are added to the survey.",
+    "fr": ""
+  },
+  "about_timeline_item_7_year": {
+    "key": "about_timeline_item_7_year",
+    "en": "2021",
+    "fr": ""
+  },
+  "about_timeline_item_7_body": {
+    "key": "about_timeline_item_7_body",
+    "en": "MTM Newcomers launches; the sample expands to include Northern Canada and a booster sample of Indigenous respondents.",
+    "fr": ""
+  },
+  "about_timeline_item_8_year": {
+    "key": "about_timeline_item_8_year",
+    "en": "2022",
+    "fr": ""
+  },
+  "about_timeline_item_8_body": {
+    "key": "about_timeline_item_8_body",
+    "en": "MTM Jr.'s sample size increases.",
+    "fr": ""
+  },
+  "about_timeline_item_9_year": {
+    "key": "about_timeline_item_9_year",
+    "en": "2023",
+    "fr": ""
+  },
+  "about_timeline_item_9_body": {
+    "key": "about_timeline_item_9_body",
+    "en": "80+ reports and infographics released.",
+    "fr": ""
+  },
+  "about_timeline_item_10_year": {
+    "key": "about_timeline_item_10_year",
+    "en": "2024",
+    "fr": ""
+  },
+  "about_timeline_item_10_body": {
+    "key": "about_timeline_item_10_body",
+    "en": "The YourData visualization tool launches on the Portal; over 4,000 data points are now available to users.",
+    "fr": ""
+  },
+  "about_timeline_item_11_year": {
+    "key": "about_timeline_item_11_year",
+    "en": "2025",
+    "fr": ""
+  },
+  "about_timeline_item_11_body": {
+    "key": "about_timeline_item_11_body",
+    "en": "MTM Census Tool launches.",
+    "fr": ""
+  },
+  "about_timeline_item_12_year": {
+    "key": "about_timeline_item_12_year",
+    "en": "2026",
+    "fr": ""
+  },
+  "about_timeline_item_12_body": {
+    "key": "about_timeline_item_12_body",
+    "en": "MTM Census Tool 2.0 and the MTM Chatbot launch.",
+    "fr": ""
+  },
+  "about_team_title": {
+    "key": "about_team_title",
+    "en": "Meet the team",
+    "fr": ""
+  },
+  "about_team_description": {
+    "key": "about_team_description",
+    "en": "The people who design the surveys, validate the methodology, and build the tools MTM's data feeds into.",
+    "fr": ""
+  },
+  "about_team_member_1_name": {
+    "key": "about_team_member_1_name",
+    "en": "Andrea Sharkey",
+    "fr": ""
+  },
+  "about_team_member_1_title": {
+    "key": "about_team_member_1_title",
+    "en": "Role",
+    "fr": ""
+  },
+  "about_team_member_1_desc": {
+    "key": "about_team_member_1_desc",
+    "en": "Description of what they do in a line or two.",
+    "fr": ""
+  },
+  "about_team_member_2_name": {
+    "key": "about_team_member_2_name",
+    "en": "Jenny Meadows",
+    "fr": ""
+  },
+  "about_team_member_2_title": {
+    "key": "about_team_member_2_title",
+    "en": "Role",
+    "fr": ""
+  },
+  "about_team_member_2_desc": {
+    "key": "about_team_member_2_desc",
+    "en": "Description of what they do in a line or two.",
+    "fr": ""
+  },
+  "about_team_member_3_name": {
+    "key": "about_team_member_3_name",
+    "en": "Alexander Jarocki",
+    "fr": ""
+  },
+  "about_team_member_3_title": {
+    "key": "about_team_member_3_title",
+    "en": "Role",
+    "fr": ""
+  },
+  "about_team_member_3_desc": {
+    "key": "about_team_member_3_desc",
+    "en": "Description of what they do in a line or two.",
+    "fr": ""
+  },
+  "about_team_member_4_name": {
+    "key": "about_team_member_4_name",
+    "en": "Jeff Baker",
+    "fr": ""
+  },
+  "about_team_member_4_title": {
+    "key": "about_team_member_4_title",
+    "en": "Role",
+    "fr": ""
+  },
+  "about_team_member_4_desc": {
+    "key": "about_team_member_4_desc",
+    "en": "Description of what they do in a line or two.",
+    "fr": ""
+  },
+  "about_team_member_5_name": {
+    "key": "about_team_member_5_name",
+    "en": "Ana Alvarez",
+    "fr": ""
+  },
+  "about_team_member_5_title": {
+    "key": "about_team_member_5_title",
+    "en": "Role",
+    "fr": ""
+  },
+  "about_team_member_5_desc": {
+    "key": "about_team_member_5_desc",
+    "en": "Description of what they do in a line or two.",
+    "fr": ""
+  },
+  "about_team_member_6_name": {
+    "key": "about_team_member_6_name",
+    "en": "Guy Dutrisac",
+    "fr": ""
+  },
+  "about_team_member_6_title": {
+    "key": "about_team_member_6_title",
+    "en": "Role",
+    "fr": ""
+  },
+  "about_team_member_6_desc": {
+    "key": "about_team_member_6_desc",
+    "en": "Description of what they do in a line or two.",
+    "fr": ""
+  },
+  "about_team_note": {
+    "key": "about_team_note",
+    "en": "Fieldwork itself is run independently by established Canadian research firms.",
+    "fr": ""
+  }
 }

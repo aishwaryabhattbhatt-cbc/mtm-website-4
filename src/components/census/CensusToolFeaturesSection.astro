@@ -242,13 +242,13 @@ const tools = [
                                 <div class="split-frame-callout split-frame-callout--right">
                                     <CountUpValue
                                         value={t(copy, 'stat_callout_1_value', locale, '63%')}
-                                        class="text-hero split-callout-value split-callout-value--lg"
+                                        class="text-hero-1-5x split-callout-value split-callout-value--lg"
                                     />
                                     <CountUpValue
                                         value={t(copy, 'stat_callout_1_value', locale, '63%')}
-                                        class="text-metrics split-callout-value split-callout-value--sm"
+                                        class="text-metrics-1-5x split-callout-value split-callout-value--sm"
                                     />
-                                    <span class="text-body-p1 split-callout-desc">
+                                    <span class="text-body-p1-1-25x split-callout-desc">
                                         {t(
                                             copy,
                                             'stat_callout_1_description',
@@ -272,13 +272,13 @@ const tools = [
                                 <div class="split-frame-callout split-frame-callout--left">
                                     <CountUpValue
                                         value={t(copy, 'stat_callout_2_value', locale, '')}
-                                        class="text-hero split-callout-value split-callout-value--lg"
+                                        class="text-hero-1-5x split-callout-value split-callout-value--lg"
                                     />
                                     <CountUpValue
                                         value={t(copy, 'stat_callout_2_value', locale, '')}
-                                        class="text-metrics split-callout-value split-callout-value--sm"
+                                        class="text-metrics-1-5x split-callout-value split-callout-value--sm"
                                     />
-                                    <span class="text-body-p1 split-callout-desc">
+                                    <span class="text-body-p1-1-25x split-callout-desc">
                                         {t(copy, 'stat_callout_2_description', locale, '')}
                                     </span>
                                 </div>
@@ -302,6 +302,7 @@ const tools = [
     }
 
     .split-frame {
+        position: relative;
         display: grid;
         width: calc(100% + 2 * var(--content-margin-inline));
         margin-inline: calc(-1 * var(--content-margin-inline));
@@ -315,26 +316,27 @@ const tools = [
         display: block;
     }
 
+    /* split-frame-1/2.webp have a transparent/white zone covering the top
+       23% of the asset, with the photo band filling the bottom 77%. Center
+       within that band (23% + 77%/2 = 61.5%), not the full image height. */
     .split-frame-callout {
-        grid-area: 1 / 1;
-        align-self: center;
-        margin-top: var(--space-6);
+        position: absolute;
+        top: 61.5%;
+        transform: translateY(-50%);
         display: flex;
         flex-direction: column;
         gap: var(--space-3);
-        max-width: 22rem;
+        max-width: 30rem;
     }
 
     .split-frame-callout--right {
-        justify-self: end;
-        margin-right: var(--content-margin-inline);
+        right: var(--content-margin-inline);
         align-items: flex-end;
         text-align: right;
     }
 
     .split-frame-callout--left {
-        justify-self: start;
-        margin-left: var(--content-margin-inline);
+        left: var(--content-margin-inline);
         align-items: flex-start;
         text-align: left;
     }
