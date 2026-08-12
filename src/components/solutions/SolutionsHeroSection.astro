@@ -67,6 +67,19 @@ const gridCells = Array.from({ length: GRID_COLS * GRID_ROWS }, (_, i) => i);
 type FlankCellType = 'hidden' | 'scaled' | 'icon';
 const FLANK_COLS = 5;
 const FLANK_ROWS = 4;
+// Tablet gets a smaller grid: 2 columns off each flank, 1 row off the
+// bottom — see the tablet-only media query in <style> for where this is
+// actually swapped in.
+const TABLET_FLANK_COLS = FLANK_COLS - 2;
+const TABLET_FLANK_ROWS = FLANK_ROWS - 1;
+const TABLET_GRID_COLS = GRID_COLS - 2 * 2;
+const TABLET_GRID_ROWS = GRID_ROWS - 1;
+// Mobile gets a smaller grid still: 8 columns x 4 rows total (2-col flanks,
+// same 4-wide reserved center) — see the mobile media query in <style>.
+const MOBILE_GRID_COLS = 8;
+const MOBILE_GRID_ROWS = 4;
+const MOBILE_FLANK_COLS = (MOBILE_GRID_COLS - 4) / 2;
+const MOBILE_FLANK_ROWS = MOBILE_GRID_ROWS;
 
 function shuffle<T>(arr: T[]): T[] {
     const a = arr.slice();
@@ -81,27 +94,29 @@ function orthogonallyAdjacent(a: [number, number], b: [number, number]): boolean
     return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) === 1;
 }
 
-/** Randomly places `count` hidden + `count` scaled + `count` icon cells in a
-    5x4 flank (rest stay plain), forcing the bottom-row outer corner to be an
-    icon. Backtracks with a step budget per attempt, retrying with a fresh
-    random order on failure — cheap since the grid is small. */
+/** Randomly places `target.hidden` hidden + `target.scaled` scaled +
+    `target.icon` icon cells in a `rows`x`cols` flank (rest stay plain),
+    forcing the bottom-row outer corner to be an icon. Backtracks with a
+    step budget per attempt, retrying with a fresh random order on failure —
+    cheap since the grid is small. */
 function generateFlank(
-    count: number,
+    rows: number,
+    cols: number,
+    target: Record<FlankCellType, number>,
     forcedCornerCol: number
 ): Record<FlankCellType, [number, number][]> {
-    // 0-based index of row 4 (bottom row in a 4-row flank).
-    const forcedCornerRow = FLANK_ROWS - 1;
+    // 0-based index of the bottom row.
+    const forcedCornerRow = rows - 1;
     const forcedCorner: [number, number] = [forcedCornerRow, forcedCornerCol];
 
     for (let attempt = 0; attempt < 200; attempt++) {
         const rest = shuffle(
-            Array.from({ length: FLANK_ROWS * FLANK_COLS }, (_, i): [number, number] => [
-                Math.floor(i / FLANK_COLS),
-                i % FLANK_COLS,
+            Array.from({ length: rows * cols }, (_, i): [number, number] => [
+                Math.floor(i / cols),
+                i % cols,
             ]).filter(([r, c]) => !(r === forcedCorner[0] && c === forcedCorner[1]))
         );
         const order = [forcedCorner, ...rest];
-        const target = { hidden: count, scaled: count, icon: count };
         const counts = { hidden: 0, scaled: 0, icon: 0 };
         const assign = new Map<string, FlankCellType>();
         let steps = 0;
@@ -161,33 +176,131 @@ function generateFlank(
     return { hidden: [], scaled: [], icon: [forcedCorner] };
 }
 
-function toGridIndex(cell: [number, number], side: 'left' | 'right'): number {
-    const col = side === 'left' ? cell[1] : GRID_COLS - FLANK_COLS + cell[1];
-    return cell[0] * GRID_COLS + col;
+function toGridIndex(
+    cell: [number, number],
+    side: 'left' | 'right',
+    gridCols: number,
+    flankCols: number
+): number {
+    const col = side === 'left' ? cell[1] : gridCols - flankCols + cell[1];
+    return cell[0] * gridCols + col;
 }
+
+// Tablet's 3x3 flank skews toward icons rather than splitting evenly:
+// fewer hidden cells, more icon cells, so the smaller grid still reads as
+// icon-forward rather than sparse. Sums to all 9 cells of the flank.
+const TABLET_TARGET: Record<FlankCellType, number> = { hidden: 2, scaled: 3, icon: 4 };
+// Mobile's 2x4 flank: 1 hidden, 1 scaled, 2 icon — same small badge count
+// as before the flank grew taller, so the extra rows read as more open
+// space around the badges rather than packing in more of them.
+const MOBILE_TARGET: Record<FlankCellType, number> = { hidden: 1, scaled: 1, icon: 2 };
 
 const SCALES = [0.35, 0.5, 0.65, 0.8];
 const leftCount = Math.random() < 0.5 ? 4 : 5;
 const rightCount = 9 - leftCount;
-const leftFlank = generateFlank(leftCount, 0);
-const rightFlank = generateFlank(rightCount, FLANK_COLS - 1);
+const leftFlank = generateFlank(
+    FLANK_ROWS,
+    FLANK_COLS,
+    { hidden: leftCount, scaled: leftCount, icon: leftCount },
+    0
+);
+const rightFlank = generateFlank(
+    FLANK_ROWS,
+    FLANK_COLS,
+    { hidden: rightCount, scaled: rightCount, icon: rightCount },
+    FLANK_COLS - 1
+);
 
 const hiddenCells = new Set([
-    ...leftFlank.hidden.map((c) => toGridIndex(c, 'left')),
-    ...rightFlank.hidden.map((c) => toGridIndex(c, 'right')),
+    ...leftFlank.hidden.map((c) => toGridIndex(c, 'left', GRID_COLS, FLANK_COLS)),
+    ...rightFlank.hidden.map((c) => toGridIndex(c, 'right', GRID_COLS, FLANK_COLS)),
 ]);
 const scaledIndices = [
-    ...leftFlank.scaled.map((c) => toGridIndex(c, 'left')),
-    ...rightFlank.scaled.map((c) => toGridIndex(c, 'right')),
+    ...leftFlank.scaled.map((c) => toGridIndex(c, 'left', GRID_COLS, FLANK_COLS)),
+    ...rightFlank.scaled.map((c) => toGridIndex(c, 'right', GRID_COLS, FLANK_COLS)),
 ];
 const cellScale = new Map<number, number>(
     scaledIndices.map((i, idx) => [i, SCALES[idx % SCALES.length]])
 );
 const iconIndices = [
-    ...leftFlank.icon.map((c) => toGridIndex(c, 'left')),
-    ...rightFlank.icon.map((c) => toGridIndex(c, 'right')),
+    ...leftFlank.icon.map((c) => toGridIndex(c, 'left', GRID_COLS, FLANK_COLS)),
+    ...rightFlank.icon.map((c) => toGridIndex(c, 'right', GRID_COLS, FLANK_COLS)),
 ];
 const cellIcon = new Map(iconIndices.map((i, idx) => [i, heroIcons[idx]]));
+
+// Tablet: smaller grid (see TABLET_* consts above), icon-skewed split.
+const tabletLeftFlank = generateFlank(TABLET_FLANK_ROWS, TABLET_FLANK_COLS, TABLET_TARGET, 0);
+const tabletRightFlank = generateFlank(
+    TABLET_FLANK_ROWS,
+    TABLET_FLANK_COLS,
+    TABLET_TARGET,
+    TABLET_FLANK_COLS - 1
+);
+
+const tabletHiddenCells = new Set([
+    ...tabletLeftFlank.hidden.map((c) =>
+        toGridIndex(c, 'left', TABLET_GRID_COLS, TABLET_FLANK_COLS)
+    ),
+    ...tabletRightFlank.hidden.map((c) =>
+        toGridIndex(c, 'right', TABLET_GRID_COLS, TABLET_FLANK_COLS)
+    ),
+]);
+const tabletScaledIndices = [
+    ...tabletLeftFlank.scaled.map((c) =>
+        toGridIndex(c, 'left', TABLET_GRID_COLS, TABLET_FLANK_COLS)
+    ),
+    ...tabletRightFlank.scaled.map((c) =>
+        toGridIndex(c, 'right', TABLET_GRID_COLS, TABLET_FLANK_COLS)
+    ),
+];
+const tabletCellScale = new Map<number, number>(
+    tabletScaledIndices.map((i, idx) => [i, SCALES[idx % SCALES.length]])
+);
+const tabletIconIndices = [
+    ...tabletLeftFlank.icon.map((c) => toGridIndex(c, 'left', TABLET_GRID_COLS, TABLET_FLANK_COLS)),
+    ...tabletRightFlank.icon.map((c) =>
+        toGridIndex(c, 'right', TABLET_GRID_COLS, TABLET_FLANK_COLS)
+    ),
+];
+const tabletCellIcon = new Map(tabletIconIndices.map((i, idx) => [i, heroIcons[idx]]));
+const tabletGridCells = Array.from({ length: TABLET_GRID_COLS * TABLET_GRID_ROWS }, (_, i) => i);
+
+// Mobile: smaller grid still (see MOBILE_* consts above), same icon-skewed split.
+const mobileLeftFlank = generateFlank(MOBILE_FLANK_ROWS, MOBILE_FLANK_COLS, MOBILE_TARGET, 0);
+const mobileRightFlank = generateFlank(
+    MOBILE_FLANK_ROWS,
+    MOBILE_FLANK_COLS,
+    MOBILE_TARGET,
+    MOBILE_FLANK_COLS - 1
+);
+
+const mobileHiddenCells = new Set([
+    ...mobileLeftFlank.hidden.map((c) =>
+        toGridIndex(c, 'left', MOBILE_GRID_COLS, MOBILE_FLANK_COLS)
+    ),
+    ...mobileRightFlank.hidden.map((c) =>
+        toGridIndex(c, 'right', MOBILE_GRID_COLS, MOBILE_FLANK_COLS)
+    ),
+]);
+const mobileScaledIndices = [
+    ...mobileLeftFlank.scaled.map((c) =>
+        toGridIndex(c, 'left', MOBILE_GRID_COLS, MOBILE_FLANK_COLS)
+    ),
+    ...mobileRightFlank.scaled.map((c) =>
+        toGridIndex(c, 'right', MOBILE_GRID_COLS, MOBILE_FLANK_COLS)
+    ),
+];
+const mobileCellScale = new Map<number, number>(
+    mobileScaledIndices.map((i, idx) => [i, SCALES[idx % SCALES.length]])
+);
+const mobileIconIndices = [
+    ...mobileLeftFlank.icon.map((c) => toGridIndex(c, 'left', MOBILE_GRID_COLS, MOBILE_FLANK_COLS)),
+    ...mobileRightFlank.icon.map((c) =>
+        toGridIndex(c, 'right', MOBILE_GRID_COLS, MOBILE_FLANK_COLS)
+    ),
+];
+const mobileCellIcon = new Map(mobileIconIndices.map((i, idx) => [i, heroIcons[idx]]));
+const mobileGridCells = Array.from({ length: MOBILE_GRID_COLS * MOBILE_GRID_ROWS }, (_, i) => i);
 const base = import.meta.env.BASE_URL;
 
 // The media block flies in first (home-section pattern: 1.1s fly-in, content
@@ -195,6 +308,12 @@ const base = import.meta.env.BASE_URL;
 // random point within the next ~2s (delay capped at 1.5s + 0.5s fade).
 const MEDIA_IN_SECONDS = 0.9;
 const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).toFixed(2));
+const tabletCellDelays = tabletGridCells.map(() =>
+    (MEDIA_IN_SECONDS + Math.random() * 1.5).toFixed(2)
+);
+const mobileCellDelays = mobileGridCells.map(() =>
+    (MEDIA_IN_SECONDS + Math.random() * 1.5).toFixed(2)
+);
 ---
 
 <section class="solutions-hero-section">
@@ -210,7 +329,7 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
             maskImageSrc && (
                 <>
                     <div class="solutions-hero-effects">
-                        <div class="solutions-hero-panel-grid">
+                        <div class="solutions-hero-panel-grid solutions-hero-panel-grid--desktop">
                             {gridCells.map((i) => (
                                 <span
                                     class:list={[
@@ -234,19 +353,78 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
                                 </span>
                             ))}
                         </div>
+                        {/* Tablet-only (768-1023px): a separately-generated
+                               smaller grid — 2 fewer columns per flank, 1
+                               fewer row, fewer badges per flank — swapped in
+                               for the desktop grid above via the tablet-only
+                               media query in <style>. */}
+                        <div class="solutions-hero-panel-grid solutions-hero-panel-grid--tablet">
+                            {tabletGridCells.map((i) => (
+                                <span
+                                    class:list={[
+                                        'panel-cell',
+                                        tabletHiddenCells.has(i) && 'is-hidden',
+                                        tabletCellScale.has(i) && 'is-scaled',
+                                    ]}
+                                    style={`--cell-delay: ${tabletCellDelays[i]}s${
+                                        tabletCellScale.has(i)
+                                            ? `; --panel-cell-scale: ${tabletCellScale.get(i)}`
+                                            : ''
+                                    }`}
+                                >
+                                    {tabletCellIcon.has(i) && (
+                                        <img
+                                            src={`${base}${tabletCellIcon.get(i)}`}
+                                            alt=""
+                                            class="panel-cell-icon icon-2xl"
+                                        />
+                                    )}
+                                </span>
+                            ))}
+                        </div>
+                        {/* Mobile-only (<=767px): smaller again — 8 columns x
+                               2 rows total, swapped in for both grids above
+                               via the mobile media query in <style>. */}
+                        <div class="solutions-hero-panel-grid solutions-hero-panel-grid--mobile">
+                            {mobileGridCells.map((i) => (
+                                <span
+                                    class:list={[
+                                        'panel-cell',
+                                        mobileHiddenCells.has(i) && 'is-hidden',
+                                        mobileCellScale.has(i) && 'is-scaled',
+                                    ]}
+                                    style={`--cell-delay: ${mobileCellDelays[i]}s${
+                                        mobileCellScale.has(i)
+                                            ? `; --panel-cell-scale: ${mobileCellScale.get(i)}`
+                                            : ''
+                                    }`}
+                                >
+                                    {mobileCellIcon.has(i) && (
+                                        <img
+                                            src={`${base}${mobileCellIcon.get(i)}`}
+                                            alt=""
+                                            class="panel-cell-icon icon-2xl"
+                                        />
+                                    )}
+                                </span>
+                            ))}
+                        </div>
                         <slot name="effects" />
                     </div>
-                    {/* Desktop-only: dotted connector (CSS only) wired to the
-                           two bottom-corner badges (always icon cells, see
+                    {/* Dotted connector (CSS only) wired to the two
+                           bottom-corner badges (always icon cells, see
                            generateFlank) and the eyebrow pill below — each
                            side drops straight down from its badge, turns
                            toward center, then a shared segment drops from
                            that turn down to the eyebrow. Not part of
                            .solutions-hero-effects so it stays unmasked
                            (drawn in front of the subject, like the source
-                           photos). Positions mirror .solutions-hero-panel-grid
-                           and .solutions-hero-content's own math exactly, so
-                           it tracks them with no JS measurement needed. */}
+                           photos). Positions mirror whichever panel-grid
+                           variant is visible at the current breakpoint and
+                           .solutions-hero-content's own math exactly (see
+                           the per-breakpoint --connector-* overrides in
+                           <style>), so it tracks with no JS measurement
+                           needed. */}
                     <div class="solutions-hero-connector" aria-hidden="true">
                         <span class="connector-dot connector-dot--left" />
                         <span class="connector-dot connector-dot--right" />
@@ -285,11 +463,35 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
         top: 50%;
         /* Slightly above dead-center, not exact vertical middle. */
         transform: translateY(calc(-50% - var(--space-4)));
-        /* 14 columns x 4 rows of square cells; height follows from width,
-           so the tile's uniform built-in margin gives equal gaps both ways */
-        aspect-ratio: 14 / 4;
+        /* Square cells; height follows from width, so the tile's uniform
+           built-in margin gives equal gaps both ways. */
         display: grid;
+    }
+
+    /* 14 columns x 4 rows — shown at desktop widths only; tablet and mobile
+       each swap in their own smaller grid below. */
+    .solutions-hero-panel-grid--desktop {
+        aspect-ratio: 14 / 4;
         grid-template-columns: repeat(14, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    /* 10 columns x 3 rows, separately generated — fewer, bigger badges than
+       the desktop grid — hidden except at tablet, see the tablet-only media
+       query below. */
+    .solutions-hero-panel-grid--tablet {
+        display: none;
+        aspect-ratio: 10 / 3;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    /* 8 columns x 4 rows, separately generated — hidden except at mobile,
+       see max-width: 767px below. */
+    .solutions-hero-panel-grid--mobile {
+        display: none;
+        aspect-ratio: 8 / 4;
+        grid-template-columns: repeat(8, 1fr);
         grid-template-rows: repeat(4, 1fr);
     }
 
@@ -340,12 +542,26 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
             width: var(--icon-xl);
             height: var(--icon-xl);
         }
+
+        /* Tablet's own grid has fewer, bigger cells (10 cols vs desktop's
+           14) than this rule assumes — size back up for it specifically. */
+        .solutions-hero-panel-grid--tablet .panel-cell-icon {
+            width: var(--icon-3xl);
+            height: var(--icon-3xl);
+        }
     }
 
     @media (max-width: 767px) {
         .panel-cell .panel-cell-icon {
             width: var(--icon-m);
             height: var(--icon-m);
+        }
+
+        /* Mobile's own grid has fewer, bigger columns (8 vs desktop's 14)
+           than this rule assumes — size back up. */
+        .solutions-hero-panel-grid--mobile .panel-cell-icon {
+            width: var(--icon-2xl);
+            height: var(--icon-2xl);
         }
     }
 
@@ -374,40 +590,64 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
         mask-size: cover;
     }
 
-    /* Desktop-only dotted connector — see the markup comment above for why
-       this lives outside .solutions-hero-effects. Path per side: a dot just
-       below the corner badge, straight down to a "bend" row, then in toward
-       center; a shared segment then drops from that bend down to the
-       eyebrow's top edge. Hidden below desktop, see max-width: 1023px. */
+    /* Dotted connector — see the markup comment above for why this lives
+       outside .solutions-hero-effects. Path per side: a dot just below the
+       corner badge, straight down to a "bend" row, then in toward center;
+       a shared segment then drops from that bend down to the eyebrow's top
+       edge. Geometry below is the desktop default; the tablet-only and
+       max-width: 767px media queries further down override the anchor
+       custom properties for their own grid (column count, row count, media
+       aspect-ratio, and content margin-top all differ per breakpoint) —
+       everything else (dots, elbows, corners) just reads those variables,
+       so it doesn't need its own per-breakpoint copy. */
     .solutions-hero-connector {
         position: absolute;
         inset: 0;
         pointer-events: none;
         z-index: 2;
+        opacity: 0;
+        /* Badge cells fire at up to MEDIA_IN_SECONDS (0.9s) + 1.5s random
+           delay, each with its own 0.5s entrance animation — so the last
+           badge can still be animating in until 0.9 + 1.5 + 0.5 = 2.9s.
+           Wait for that before fading the connector in. */
+        animation: connector-fade-in var(--motion-duration-card) ease 2.9s forwards;
         /* Shared anchor points. `left`/`right` resolve % against this box's
            WIDTH; `top`/`bottom` resolve % against its HEIGHT — since this
            box exactly matches .solutions-hero-media, any height-context
            formula that needs the panel-grid's WIDTH (to derive its height
-           via the 14:4 aspect-ratio) has to reconstruct that width from
-           height using the media's fixed desktop aspect-ratio (1920/770);
-           only valid at desktop, which is fine since the whole connector is
-           desktop-only. */
+           via its aspect-ratio) has to reconstruct that width from height
+           using the media's own aspect-ratio at that breakpoint. Desktop:
+           14 cols, media is 1920/770. */
         --connector-x-left: calc(
             var(--content-margin-inline) + (100% - 2 * var(--content-margin-inline)) / 28
         );
         --connector-x-right: calc(100% - var(--connector-x-left));
-        /* Bottom edge of the panel grid (row 4's own bottom, not its center). */
+        /* Bottom edge of the panel grid (last row's own bottom, not its
+           center). Coefficient is grid-rows / (2 * grid-cols): 4/(2*14). */
         --connector-y-grid-bottom: calc(
             50% - var(--space-4) + (100% * 1920 / 770 - 2 * var(--content-margin-inline)) / 7
         );
-        /* Eyebrow's top edge = .solutions-hero-content's negative margin-top,
-           nudged up by --space-1 so the dot sits fully above the pill
-           instead of being half-covered by it. */
+        /* Eyebrow's top edge = .solutions-hero-content's negative margin-top
+           (desktop: -space-11), nudged up by --space-1 so the dot sits
+           fully above the pill instead of being half-covered by it. */
         --connector-y-eyebrow: calc(100% - var(--space-11) - var(--space-1));
         /* Bend sits exactly halfway between the two, so the badge->bend drop
            and the bend->eyebrow drop are always equal height. */
         --connector-y-bend: calc((var(--connector-y-grid-bottom) + var(--connector-y-eyebrow)) / 2);
         --connector-corner-r: 24px;
+    }
+
+    @keyframes connector-fade-in {
+        to {
+            opacity: 1;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .solutions-hero-connector {
+            animation: none;
+            opacity: 1;
+        }
     }
 
     .connector-dot {
@@ -592,20 +832,54 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
         .solutions-hero-section {
             margin-top: 0;
         }
+    }
 
-        /* Desktop-only: the panel-grid geometry it's wired to shifts too
-           much between breakpoints (translateY offset changes, mobile
-           switches to a taller aspect-ratio) to keep tracking correctly. */
-        .solutions-hero-connector {
+    /* Tablet only. */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .solutions-hero-panel-grid--desktop {
             display: none;
+        }
+
+        .solutions-hero-panel-grid--tablet {
+            display: grid;
+        }
+
+        .solutions-hero-content {
+            /* Pulled up only slightly, same spirit as mobile — content sits
+               near the bottom edge of the image instead of overlapping deep
+               into it (desktop's default is -space-11, 64px). */
+            margin-top: calc(-1 * var(--space-4));
+        }
+
+        /* Tablet's own grid: 10 cols x 3 rows, same media aspect-ratio as
+           desktop (1920/770). Coefficients: x-left is 0.5/10; the
+           y-grid-bottom term is 3/(2*10). Eyebrow tracks this block's own
+           margin-top above (-space-4) instead of desktop's -space-11. */
+        .solutions-hero-connector {
+            --connector-x-left: calc(
+                var(--content-margin-inline) + (100% - 2 * var(--content-margin-inline)) / 20
+            );
+            --connector-y-grid-bottom: calc(
+                50% - var(--space-4) + (100% * 1920 / 770 - 2 * var(--content-margin-inline)) * 3 /
+                    20
+            );
+            --connector-y-eyebrow: calc(100% - var(--space-4) - var(--space-1));
         }
     }
 
     @media (max-width: 767px) {
+        .solutions-hero-panel-grid--desktop {
+            display: none;
+        }
+
+        .solutions-hero-panel-grid--mobile {
+            display: grid;
+        }
+
         .solutions-hero-content {
-            /* Mobile media is 1540/1920 ratio, so 35% upward shift = 28.0729vw
-               — same scaling as ProductsHeroSection's mobile treatment */
-            margin-top: -28.0729vw;
+            /* Pulled up only slightly — content sits near the bottom edge
+               of the image instead of overlapping deep into it. */
+            margin-top: -4vw;
             gap: var(--space-5);
         }
 
@@ -621,6 +895,22 @@ const cellDelays = gridCells.map(() => (MEDIA_IN_SECONDS + Math.random() * 1.5).
            compensate, on top of the shared -space-4 offset. */
         .solutions-hero-panel-grid {
             transform: translateY(calc(-50% - var(--space-9)));
+        }
+
+        /* Mobile's own grid: 8 cols x 4 rows, media is 1920/1540 (2x
+           desktop's aspect-ratio), and the panel-grid's own translateY
+           offset is -space-9 here (not desktop/tablet's -space-4) — all
+           three feed into the coefficients below. x-left is 0.5/8; the
+           y-grid-bottom term is 4/(2*8). Eyebrow tracks this block's own
+           margin-top above (-4vw) instead of desktop's -space-11. */
+        .solutions-hero-connector {
+            --connector-x-left: calc(
+                var(--content-margin-inline) + (100% - 2 * var(--content-margin-inline)) / 16
+            );
+            --connector-y-grid-bottom: calc(
+                50% - var(--space-9) + (100% * 1920 / 1540 - 2 * var(--content-margin-inline)) / 4
+            );
+            --connector-y-eyebrow: calc(100% - 4vw - var(--space-1));
         }
     }
 </style>
