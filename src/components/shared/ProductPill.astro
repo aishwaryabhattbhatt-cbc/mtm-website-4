@@ -3,7 +3,7 @@
 // Figma node: 362:11068 — Product badge pill for MTM product lines
 
 export type ProductVariant = 'mtm18plus' | 'junior' | 'newcomers' | 'census';
-export type PillSize = 'xsmall' | 'small' | 'big';
+export type PillSize = 'xsmall' | 'small' | 'big' | 'large';
 
 interface Props {
     variant: ProductVariant;
@@ -67,6 +67,17 @@ const labels: Record<ProductVariant, string> = {
     .product-pill--big {
         font-family: var(--font-body);
         font-size: var(--fs-label-small);
+        font-weight: var(--fw-regular);
+        line-height: 1.1;
+        letter-spacing: var(--ls-pill);
+    }
+
+    .product-pill--large {
+        padding: var(--space-2) var(--space-5);
+    }
+    .product-pill--large {
+        font-family: var(--font-body);
+        font-size: var(--fs-body-m);
         font-weight: var(--fw-regular);
         line-height: 1.1;
         letter-spacing: var(--ls-pill);

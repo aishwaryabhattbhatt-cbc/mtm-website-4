@@ -246,10 +246,15 @@ const isMulti = items.length > 1;
     }
 
     .media-testimonials-logo {
-        max-height: var(--space-9);
-        max-width: 12rem;
+        /* Fixed height, not max-height/height:auto — some logo SVGs have only
+           a viewBox and no width/height attributes, and Chrome collapses a
+           replaced element with only an intrinsic ratio (no intrinsic size)
+           to 0x0 under width:auto/height:auto with just max-* constraints.
+           A definite height sidesteps that collapse. */
+        height: var(--space-9);
         width: auto;
-        height: auto;
+        max-width: 12rem;
+        object-fit: contain;
     }
 
     .media-testimonials-quote {
