@@ -76,7 +76,7 @@ const trustedByLogos = [
         src: `${base}images/home/solutions/logos/industry/nfb.svg`,
         alt: 'National Film Board of Canada',
     },
-    { src: `${base}images/home/solutions/logos/industry/numeris.svg`, alt: 'Numeris' },
+    { src: `${base}images/home/solutions/logos/industry/numeris.png`, alt: 'Numeris' },
 ];
 ---
 
@@ -108,7 +108,13 @@ const trustedByLogos = [
             fallbackDescription="Support decisions with credible, longitudinal media and technology intelligence for Canada."
         />
 
-        <SolutionsTrustedBySection locale={locale} copy={copy} logos={trustedByLogos} />
+        <SolutionsTrustedBySection
+            locale={locale}
+            copy={copy}
+            logos={trustedByLogos}
+            logoHeight="var(--space-9)"
+            desktopStatic
+        />
 
         <SolutionsMethodologySection locale={locale} copy={copy} />
 

@@ -7,11 +7,14 @@ import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
 import Button from '../shared/Button.astro';
 import Eyebrow from '../shared/Eyebrow.astro';
-import ProductPill from '../shared/ProductPill.astro';
+import ProductPill, { type ProductVariant } from '../shared/ProductPill.astro';
 import ReportsTickerCard from './reports/ReportsTickerCard.astro';
-import photo18 from '../../assets/images/home/mtm-suite/data-products/data-products-18.png';
-import photoJr from '../../assets/images/home/mtm-suite/data-products/data-products-JR.png';
-import photoNc from '../../assets/images/home/mtm-suite/data-products/data-products-NC.png';
+import bg18 from '../../assets/images/home/mtm-suite/home-products-bg-18.webp';
+import segments18 from '../../assets/images/home/mtm-suite/segments-top-18.png';
+import bgJr from '../../assets/images/home/mtm-suite/home-products-bg-jr.webp';
+import segmentsJr from '../../assets/images/home/mtm-suite/segments-top-jr.png';
+import bgNc from '../../assets/images/home/mtm-suite/home-products-bg-nc.webp';
+import segmentsNc from '../../assets/images/home/mtm-suite/segments-top-nc.png';
 import bgCs from '../../assets/images/home/mtm-suite/home-products-bg-cs.webp';
 import peopleCs from '../../assets/images/home/mtm-suite/home-products-people-cs.webp';
 import chart18 from '../../assets/svg/home/data-products/mtm18plus.svg?url';
@@ -35,8 +38,8 @@ const products = [
         descFallback:
             'Comprehensive data on Canadians aged 18 and older, covering media consumption, technology adoption, and digital behaviours',
         href: `/${locale}/products/mtm-18-plus`,
-        bg: photo18,
-        people: null,
+        bg: bg18,
+        people: segments18,
         chartSrc: chart18,
     },
     {
@@ -46,8 +49,8 @@ const products = [
         descKey: 'product_2_description',
         descFallback: 'Insights into the media and technology habits of Canadians aged 2–17',
         href: `/${locale}/products/juniors`,
-        bg: photoJr,
-        people: null,
+        bg: bgJr,
+        people: segmentsJr,
         chartSrc: chartJr,
         chevronFill: 'var(--badge-juniors)',
     },
@@ -59,8 +62,8 @@ const products = [
         descFallback:
             'Research focused on Canadians who have arrived within the past five years, offering insights into settlement, media usage, and technology adoption',
         href: `/${locale}/products/newcomers`,
-        bg: photoNc,
-        people: null,
+        bg: bgNc,
+        people: segmentsNc,
         chartSrc: chartNc,
         chevronFill: 'var(--badge-newcomers)',
     },
@@ -149,12 +152,15 @@ const products = [
                                         </defs>
                                     </svg>
                                 </span>
-                                <span
-                                    class="product-name text-body-p1-bold"
-                                    data-copy-key={product.nameKey}
-                                >
-                                    {t(copy, product.nameKey, locale, product.nameFallback)}
-                                </span>
+                                <ProductPill
+                                    class="product-name"
+                                    variant={
+                                        (product.id === 'newcomer'
+                                            ? 'newcomers'
+                                            : product.id) as ProductVariant
+                                    }
+                                    size="large"
+                                />
                                 <Button
                                     variant="tertiary"
                                     href={product.href}
@@ -795,20 +801,24 @@ const products = [
         opacity: 1;
     }
 
-    .product-name {
-        flex: 1;
-        color: var(--neutral-grey-3);
-        transition: color 0.3s ease;
-        white-space: nowrap;
+    /* :global needed — .product-name is a class passed into ProductPill, a
+       child component; its rendered span carries ProductPill's own Astro
+       scope hash, not this file's, so a plain scoped selector never matches.
+       Scoped to .product-row so it doesn't dim unrelated .product-name
+       elements elsewhere on the page (e.g. the solutions cards' titles). */
+    .product-row :global(.product-name) {
+        opacity: 0.45;
+        transition: opacity 0.3s ease;
     }
 
-    .product-row.active .product-name {
-        color: var(--text-primary);
+    .product-row.active :global(.product-name) {
+        opacity: 1;
     }
 
     .product-row .btn {
         display: none;
         flex-shrink: 0;
+        margin-left: auto;
     }
 
     .product-row.active .btn {
@@ -918,11 +928,13 @@ const products = [
 
     .card-people {
         position: absolute;
-        inset: 0;
+        right: 0;
+        bottom: 0;
         width: 110%;
         height: 100%;
         object-fit: cover;
-        left: -1.125rem;
+        transform: scale(0.75);
+        transform-origin: bottom right;
         z-index: 3;
     }
 
@@ -983,11 +995,13 @@ const products = [
 
     .mobile-card-people {
         position: absolute;
-        inset: 0;
+        right: 0;
+        bottom: 0;
         width: 110%;
         height: 100%;
         object-fit: cover;
-        left: -1.125rem;
+        transform: scale(0.75);
+        transform-origin: bottom right;
         z-index: 3;
     }
 

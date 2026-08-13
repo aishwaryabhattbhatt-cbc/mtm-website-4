@@ -439,20 +439,6 @@ const cards = [
         color: var(--text-primary);
     }
 
-    /* Row mode: pin every description to exactly 4 lines (pad shorter copy,
-       clamp longer) so the glass card height never changes between tabs.
-       border-box: min-height includes the label-gap padding-top. */
-    @media (min-width: 1024px) {
-        .tab-body {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 4;
-            line-clamp: 4;
-            overflow: hidden;
-            min-height: calc(var(--fs-body-l) * var(--lh-relaxed) * 4 + 0.625rem);
-        }
-    }
-
     .tab-item.is-disabled {
         color: var(--neutral-grey-3);
         pointer-events: none;
@@ -825,8 +811,6 @@ const cards = [
             const clip = t.querySelector<HTMLElement>('.tab-body-clip');
             const body = t.querySelector<HTMLElement>('.tab-body');
             if (!clip || !body) return;
-            // rect height (not scrollHeight): the line-clamped body reports
-            // its full unclamped text height via scrollHeight
             clip.style.height = i === activeIdx ? body.getBoundingClientRect().height + 'px' : '0';
         });
     }

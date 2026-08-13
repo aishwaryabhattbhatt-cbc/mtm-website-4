@@ -14,6 +14,8 @@ interface Props {
     logoSets?: LogoItem[][];
     rotationIntervalMs?: number;
     topPadding?: boolean;
+    logoHeight?: string;
+    desktopStatic?: boolean;
 }
 
 const {
@@ -23,6 +25,8 @@ const {
     logoSets,
     rotationIntervalMs = 7000,
     topPadding = false,
+    logoHeight,
+    desktopStatic = false,
 } = Astro.props as Props;
 
 const sets: LogoItem[][] = logoSets && logoSets.length > 0 ? logoSets : [logos ?? []];
@@ -34,6 +38,7 @@ const isMulti = sets.length > 1;
         'solutions-trusted-by-section',
         topPadding && 'solutions-trusted-by-section--top-padding',
     ]}
+    style={logoHeight ? `--trusted-by-logo-height: ${logoHeight}` : undefined}
     aria-label={t(copy, 'trusted_by_label', locale, 'Trusted by')}
 >
     <p class="text-label-regular solutions-trusted-by-label" data-copy-key="trusted_by_label">
@@ -41,7 +46,10 @@ const isMulti = sets.length > 1;
     </p>
 
     <div
-        class="solutions-trusted-by-strip"
+        class:list={[
+            'solutions-trusted-by-strip',
+            desktopStatic && 'solutions-trusted-by-strip--desktop-static',
+        ]}
         data-trusted-by-rotator={isMulti ? 'true' : undefined}
         data-interval={isMulti ? rotationIntervalMs : undefined}
     >
@@ -147,14 +155,17 @@ const isMulti = sets.length > 1;
     .solutions-trusted-by-set {
         display: flex;
         align-items: center;
-        gap: var(--space-6);
+        /* Fluid between the mobile floor (--space-6, at a 375px viewport) and
+           the desktop ceiling (--space-13, at a 1440px viewport) so the gap
+           scales continuously on smaller screens instead of jumping at the
+           767px breakpoint. */
+        gap: clamp(var(--space-6), -0.613rem + 9.014vw, var(--space-13));
         flex-shrink: 0;
         /* padding-right creates the inter-set gap that matches the intra-set gap */
-        padding-right: var(--space-6);
+        padding-right: clamp(var(--space-6), -0.613rem + 9.014vw, var(--space-13));
     }
 
     .solutions-trusted-by-logo-item {
-        width: 10rem;
         min-height: var(--space-10);
         display: flex;
         align-items: center;
@@ -163,9 +174,12 @@ const isMulti = sets.length > 1;
     }
 
     .solutions-trusted-by-logo-item img {
+        /* Fixed height (not max-height) so every logo renders at the same
+           height regardless of aspect ratio — width is free to vary, and the
+           item container is content-width so wide wordmarks aren't squished
+           back down to fit a fixed box. */
+        height: var(--trusted-by-logo-height, var(--space-8));
         width: auto;
-        max-width: 100%;
-        max-height: var(--space-7);
         display: block;
         object-fit: contain;
     }
@@ -189,6 +203,22 @@ const isMulti = sets.length > 1;
         }
     }
 
+    /* Desktop-static variant (e.g. industry page): show one centered, still
+       row instead of the auto-scrolling marquee. Below 1024px it reverts to
+       the normal scrolling behavior — tablet/mobile keep the marquee since a
+       row this wide won't fit those viewports. */
+    @media (min-width: 1024px) {
+        .solutions-trusted-by-strip--desktop-static .solutions-trusted-by-track {
+            animation: none;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .solutions-trusted-by-strip--desktop-static .solutions-trusted-by-set[aria-hidden='true'] {
+            display: none;
+        }
+    }
+
     @media (max-width: 767px) {
         .solutions-trusted-by-section {
             gap: var(--space-4);
@@ -198,30 +228,24 @@ const isMulti = sets.length > 1;
         .solutions-trusted-by-strip {
             padding: var(--space-5) 0;
         }
-
-        .solutions-trusted-by-track {
-            animation-duration: 56s;
-        }
-
-        .solutions-trusted-by-set {
-            gap: var(--space-5);
-            padding-right: var(--space-5);
-        }
-
-        .solutions-trusted-by-logo-item {
-            width: 8rem;
-        }
     }
 </style>
 
 <script>
+    // Same px/s on every page/breakpoint, regardless of how many logos or how
+    // wide the set is — calibrated to match the media page's original
+    // 70s/4667px pace so that reference speed didn't visibly change.
+    const TRUSTED_BY_PX_PER_SECOND = 66.67;
+
     function initMarquee(strip: HTMLElement) {
         strip.querySelectorAll<HTMLElement>('.solutions-trusted-by-track').forEach((track) => {
             const set = track.querySelector<HTMLElement>('.solutions-trusted-by-set');
             if (!set) return;
 
             function measure() {
-                track.style.setProperty('--scroll-distance', `-${set!.offsetWidth}px`);
+                const width = set!.offsetWidth;
+                track.style.setProperty('--scroll-distance', `-${width}px`);
+                track.style.animationDuration = `${width / TRUSTED_BY_PX_PER_SECOND}s`;
             }
 
             measure();
