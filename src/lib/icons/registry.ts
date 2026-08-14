@@ -403,6 +403,9 @@ export const icons = {
         survey12Languages: 'icons/products/Newcomers/gen-survey-12-languages.svg',
         yearsData5: 'icons/products/Newcomers/gen-years-data-5.svg',
     },
+    'product-census': {
+        badge: 'icons/tool/tool-census.svg',
+    },
 
     // ═══════════════════════════════════════════════════════════════════════════
     // SOLUTIONS

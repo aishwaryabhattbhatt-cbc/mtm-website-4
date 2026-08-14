@@ -31,7 +31,7 @@ const localeSwitchUrls: Record<Locale, string> = {
     fr: `${base}fr/insights/report-download/`,
 };
 
-const pageTitle = t(copy, 'report_download_page_title', locale, 'MTM | Report Download');
+const pageTitle = t(copy, 'report_download_page_title', locale, 'Download Report');
 const pageDescription = t(
     copy,
     'report_download_page_description',
@@ -72,7 +72,13 @@ const pageDescription = t(
             descriptionKey="free_report_1_description"
         />
 
-        <HomeFooterSection locale={locale} copy={copy} />
+        <HomeFooterSection
+            locale={locale}
+            copy={copy}
+            showCta={false}
+            showNewsletter={false}
+            showBgLeftCenter={false}
+        />
     </main>
 
     <Fragment slot="scripts">

@@ -20,7 +20,7 @@ const base = import.meta.env.BASE_URL;
 
     <div class="sign-in-hero__content">
         <div class="sign-in-hero__stack">
-            <div class="sign-in-hero__intro">
+            <div class="sign-in-hero__intro hero-fade-in" style="animation-delay: 0.1s">
                 <h1 class="sign-in-hero__title" data-copy-key="hero_title">
                     {t(copy, 'hero_title', locale, 'Sign In')}
                 </h1>
@@ -37,7 +37,7 @@ const base = import.meta.env.BASE_URL;
                 </p>
             </div>
 
-            <div class="sign-in-hero__card">
+            <div class="sign-in-hero__card hero-fade-in" style="animation-delay: 0.2s">
                 <form class="sign-in-hero__form" aria-label="Sign in">
                     <FormField
                         locale={locale}
@@ -125,6 +125,49 @@ const base = import.meta.env.BASE_URL;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .hero-fade-in {
+        opacity: 0;
+        animation: hero-fade-in-up var(--motion-duration-heading) var(--motion-ease-standard)
+            forwards;
+    }
+
+    @keyframes hero-fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(1.625rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-fade-in {
+            animation: none;
+            opacity: 1;
+        }
+    }
+
+    /* __intro centers itself via transform: translateX(-50%) (it's
+       position: absolute; left: 50%) — animating transform here too (even a
+       matching translateX(-50%) translateY(...) keyframe) risks the browser
+       reconciling two transform sources on the same paint and flashing the
+       pre-animation position for a frame. Fade opacity only so the element's
+       transform never changes throughout. */
+    .sign-in-hero__intro.hero-fade-in {
+        animation-name: fade-in-opacity-only;
+    }
+
+    @keyframes fade-in-opacity-only {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 
     .sign-in-hero__content {
