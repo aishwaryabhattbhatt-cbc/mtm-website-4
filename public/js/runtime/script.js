@@ -755,8 +755,8 @@ function runTitleAnimation() {
     const heroTitles = document.querySelectorAll('.hero-title');
     const wordDelay = 0.15; // Delay between each word (seconds)
     const wordAnimationDuration = 0.6; // Duration of each word animation (seconds)
-    const collageImageAnimationDuration = 0.4; // Faster fly-in animation for collage images
-    const collageImageGap = 0.0; // Gap between each collage image appearance
+    const collageImageAnimationDuration = 1.3; // Grow-in duration for collage cards — slow, fluid entrance
+    const collageImageStagger = 0.15; // Delay between each card's start (same pace as the badge stagger below)
     
     heroTitles.forEach(title => {
         const text = title.textContent;
@@ -821,18 +821,29 @@ function runTitleAnimation() {
                 const collageStartTime = buttonsStartTime + 0.5;
 
                 collageImages.forEach((img, index) => {
-                    const delay = collageStartTime + (index * (collageImageAnimationDuration + collageImageGap));
+                    const delay = collageStartTime + (index * collageImageStagger);
                     img.style.animationDelay = `${delay}s`;
                     img.style.animationDuration = `${collageImageAnimationDuration}s`;
+                });
+
+                // Decorative badges continue the exact same stagger train as
+                // the cards (indices length, length+1, ...) instead of
+                // waiting for every card to fully finish first — that wait
+                // read as two separate movements instead of one continuous
+                // reveal, since cards themselves overlap at this stagger.
+                const collageBadges = heroSection.querySelectorAll('.collage-badge');
+                collageBadges.forEach((badge, index) => {
+                    const delay = collageStartTime + ((collageImages.length + index) * collageImageStagger);
+                    badge.style.animationDelay = `${delay}s`;
                 });
             }
         }
     });
-    
+
     // Force animation restart by removing and re-adding animation-play-state
     // This ensures animations start from the beginning
     setTimeout(() => {
-        document.querySelectorAll('.hero-title-word, .hero-subtitle, .hero-buttons, .hero-image-right, .collage-image').forEach(el => {
+        document.querySelectorAll('.hero-title-word, .hero-subtitle, .hero-buttons, .hero-image-right, .collage-image, .collage-badge').forEach(el => {
             el.style.animationPlayState = 'running';
         });
     }, 10);

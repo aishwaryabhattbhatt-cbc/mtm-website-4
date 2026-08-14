@@ -49,7 +49,7 @@ const interestOptionRows = [
     </div>
 
     <div class="request-demo-hero__content">
-        <div class="request-demo-hero__text">
+        <div class="request-demo-hero__text hero-fade-in" style="animation-delay: 0.1s">
             <h1 data-copy-key="hero_title">
                 {t(copy, 'hero_title', locale, 'Book A Demo Today!')}
             </h1>
@@ -84,7 +84,7 @@ const interestOptionRows = [
             </div>
         </div>
 
-        <div class="request-demo-hero__card">
+        <div class="request-demo-hero__card hero-fade-in" style="animation-delay: 0.2s">
             <h2 class="request-demo-hero__card-title text-h4" data-copy-key="hero_form_title">
                 {t(copy, 'hero_form_title', locale, 'Talk to our experts')}
             </h2>
@@ -263,6 +263,30 @@ const interestOptionRows = [
         background: var(--surface-white);
         margin-top: var(--navbar-height);
         padding: var(--section-pad-block) var(--content-margin-inline);
+    }
+
+    .hero-fade-in {
+        opacity: 0;
+        animation: hero-fade-in-up var(--motion-duration-heading) var(--motion-ease-standard)
+            forwards;
+    }
+
+    @keyframes hero-fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(1.625rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-fade-in {
+            animation: none;
+            opacity: 1;
+        }
     }
 
     .request-demo-hero__pattern {

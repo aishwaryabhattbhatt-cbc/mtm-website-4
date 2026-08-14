@@ -161,12 +161,12 @@
   },
   "report_download_page_title": {
     "key": "report_download_page_title",
-    "en": "MTM | Report Download",
+    "en": "Download Report",
     "fr": ""
   },
   "report_download_page_description": {
     "key": "report_download_page_description",
-    "en": "Download this MTM report.",
+    "en": "Enter your details and the report will be sent to your inbox.",
     "fr": ""
   },
   "request_demo_page_title": {

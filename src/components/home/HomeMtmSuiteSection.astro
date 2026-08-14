@@ -13,10 +13,10 @@ import bg18 from '../../assets/images/home/mtm-suite/home-products-bg-18.webp';
 import segments18 from '../../assets/images/home/mtm-suite/segments-top-18.png';
 import bgJr from '../../assets/images/home/mtm-suite/home-products-bg-jr.webp';
 import segmentsJr from '../../assets/images/home/mtm-suite/segments-top-jr.png';
-import bgNc from '../../assets/images/home/mtm-suite/home-products-bg-nc.webp';
+import bgNc from '../../assets/images/home/mtm-suite/home-products-bg-nc.jpg';
 import segmentsNc from '../../assets/images/home/mtm-suite/segments-top-nc.png';
 import bgCs from '../../assets/images/home/mtm-suite/home-products-bg-cs.webp';
-import peopleCs from '../../assets/images/home/mtm-suite/home-products-people-cs.webp';
+import segmentsCs from '../../assets/images/home/mtm-suite/segments-top-census.png';
 import chart18 from '../../assets/svg/home/data-products/mtm18plus.svg?url';
 import chartJr from '../../assets/svg/home/data-products/junior.svg?url';
 import chartNc from '../../assets/svg/home/data-products/newcomers.svg?url';
@@ -29,6 +29,8 @@ interface Props {
 
 const { locale, copy } = Astro.props as Props;
 
+const base = import.meta.env.BASE_URL;
+
 const products = [
     {
         id: 'mtm18plus',
@@ -37,7 +39,7 @@ const products = [
         descKey: 'product_1_description',
         descFallback:
             'Comprehensive data on Canadians aged 18 and older, covering media consumption, technology adoption, and digital behaviours',
-        href: `/${locale}/products/mtm-18-plus`,
+        href: `${base}${locale}/products/mtm-18-plus`,
         bg: bg18,
         people: segments18,
         chartSrc: chart18,
@@ -48,7 +50,7 @@ const products = [
         nameFallback: 'MTM Junior',
         descKey: 'product_2_description',
         descFallback: 'Insights into the media and technology habits of Canadians aged 2–17',
-        href: `/${locale}/products/juniors`,
+        href: `${base}${locale}/products/juniors`,
         bg: bgJr,
         people: segmentsJr,
         chartSrc: chartJr,
@@ -61,7 +63,7 @@ const products = [
         descKey: 'product_3_description',
         descFallback:
             'Research focused on Canadians who have arrived within the past five years, offering insights into settlement, media usage, and technology adoption',
-        href: `/${locale}/products/newcomers`,
+        href: `${base}${locale}/products/newcomers`,
         bg: bgNc,
         people: segmentsNc,
         chartSrc: chartNc,
@@ -74,9 +76,9 @@ const products = [
         descKey: 'product_4_description',
         descFallback:
             'Comprehensive demographic and population data for enhanced analysis and targeting',
-        href: `/${locale}/tools/census-tool`,
+        href: `${base}${locale}/tools/census-tool`,
         bg: bgCs,
-        people: peopleCs,
+        people: segmentsCs,
         chartSrc: chartCs,
         chevronFill: 'var(--badge-census)',
     },
@@ -318,7 +320,7 @@ const products = [
                     <Button
                         variant="primary"
                         size="md"
-                        href={`/${locale}/reports#sneak-peek`}
+                        href={`${base}${locale}/insights/report-download/`}
                         data-copy-key="package_2_cta_2"
                     >
                         <span class="reports-cta-btn-inner">
@@ -343,7 +345,7 @@ const products = [
                     </Button>
                     <Button
                         variant="tertiary"
-                        href={`/${locale}/insights`}
+                        href={`${base}${locale}/insights/`}
                         data-copy-key="package_2_cta_1"
                     >
                         {t(copy, 'package_2_cta_1', locale, 'GO TO INSIGHTS')}
@@ -381,7 +383,7 @@ const products = [
                     <Button
                         variant="primary"
                         size="md"
-                        href={`/${locale}/reports#sneak-peek`}
+                        href={`${base}${locale}/insights/report-download/`}
                         data-copy-key="package_2_cta_2"
                     >
                         <span class="reports-cta-btn-inner">
@@ -406,7 +408,7 @@ const products = [
                     </Button>
                     <Button
                         variant="tertiary"
-                        href={`/${locale}/insights`}
+                        href={`${base}${locale}/insights/`}
                         data-copy-key="package_2_cta_1"
                     >
                         {t(copy, 'package_2_cta_1', locale, 'GO TO INSIGHTS')}
@@ -933,6 +935,15 @@ const products = [
         width: 110%;
         height: 100%;
         object-fit: cover;
+        /* .products-right's height tracks the text column's natural height
+           (stretch), not the viewport — so on very wide screens this box's
+           width keeps growing while its height barely does. cover then has
+           to crop more off the vertical axis to fill it, and centered
+           (default) positioning splits that evenly, eating into the head
+           before the shoulders. Anchoring to the top keeps any unavoidable
+           crop at the bottom instead, where the scale-down below already
+           hides part of the photo. */
+        object-position: top;
         transform: scale(0.75);
         transform-origin: bottom right;
         z-index: 3;
