@@ -445,27 +445,31 @@ const products = [
                             titleFallback: 'Data Analysis Tool',
                             variants: ['mtm18plus', 'junior', 'newcomers'] as const,
                             iconPath: icons.tool.dat,
+                            href: `${base}${locale}/tools/analytic-tools/`,
                         },
                         {
                             titleKey: 'tools_item_2_title',
                             titleFallback: 'Trending Tool',
                             variants: ['mtm18plus', 'junior'] as const,
                             iconPath: icons.tool.trending,
+                            href: `${base}${locale}/tools/analytic-tools/#trending-tool`,
                         },
                         {
                             titleKey: 'tools_item_3_title',
                             titleFallback: 'Forecasting Tool',
                             variants: ['mtm18plus'] as const,
                             iconPath: icons.tool.forecast,
+                            href: `${base}${locale}/tools/analytic-tools/#forecasting-tool`,
                         },
                         {
                             titleKey: 'tools_item_4_title',
                             titleFallback: 'Census Tool',
                             variants: ['census'] as const,
                             iconPath: icons.tool.census,
+                            href: `${base}${locale}/tools/census-tool/`,
                         },
                     ].map((tool) => (
-                        <div class="tool-item">
+                        <a class="tool-item" href={tool.href}>
                             <div class="tool-icon" aria-hidden="true">
                                 <img
                                     src={`${import.meta.env.BASE_URL}${tool.iconPath}`}
@@ -505,7 +509,7 @@ const products = [
                                     />
                                 </svg>
                             </div>
-                        </div>
+                        </a>
                     ))
                 }
             </div>
@@ -1187,6 +1191,8 @@ const products = [
         padding: var(--space-1);
         border-bottom: var(--stroke-2) solid #ddd;
         transition: background-color 0.3s ease;
+        color: inherit;
+        text-decoration: none;
     }
 
     .tool-item:last-child {
