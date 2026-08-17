@@ -104,28 +104,28 @@ function badgeEntryStyle(badge: CollageBadge) {
                 decoding="async"
             />
             <img
-                src={`${collageSrc}2.svg`}
+                src={`${collageSrc}2-hero-main.webp`}
                 alt=""
                 class="collage-image collage-image-2"
                 loading="lazy"
                 decoding="async"
             />
             <img
-                src={`${collageSrc}3.svg`}
+                src={`${collageSrc}3-update.svg`}
                 alt=""
                 class="collage-image collage-image-3"
                 loading="lazy"
                 decoding="async"
             />
             <img
-                src={`${collageSrc}4.svg`}
+                src={`${collageSrc}4-hero-charting.webp`}
                 alt=""
                 class="collage-image collage-image-4"
                 loading="lazy"
                 decoding="async"
             />
             <img
-                src={`${collageSrc}5.svg`}
+                src={`${collageSrc}5-hero-secondary.webp`}
                 alt=""
                 class="collage-image collage-image-5"
                 loading="lazy"
@@ -276,7 +276,7 @@ function badgeEntryStyle(badge: CollageBadge) {
     .collage-image-3 {
         width: 162px;
         height: 90px;
-        left: 394px;
+        left: 410px;
         top: 296px;
         z-index: 5;
     }
@@ -284,16 +284,16 @@ function badgeEntryStyle(badge: CollageBadge) {
     .collage-image-4 {
         width: 183px;
         height: 175px;
-        left: 240px;
-        top: 297px;
+        left: 250px;
+        top: 310px;
         z-index: 10;
     }
 
     .collage-image-5 {
         width: 328px;
-        height: 302px;
-        left: 0px;
-        top: 112px;
+        height: 328px;
+        left: 15px;
+        top: 96px;
         z-index: 1;
     }
 
@@ -542,5 +542,13 @@ function badgeEntryStyle(badge: CollageBadge) {
             const target = document.querySelector('.home-section-2') as HTMLElement | null;
             target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    }
+
+    // Card 1 has 4 stat variants (1A-1D) baked as separate SVGs; pick one at random per load.
+    const card1 = document.querySelector<HTMLImageElement>('.collage-image-1');
+    if (card1) {
+        const variants = ['1A', '1B', '1C', '1D'];
+        const pick = variants[Math.floor(Math.random() * variants.length)];
+        card1.src = card1.src.replace(/1\.svg$/, `${pick}.svg`);
     }
 </script>

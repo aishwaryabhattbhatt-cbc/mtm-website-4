@@ -635,6 +635,10 @@ const mobileCellDelays = mobileGridCells.map(() =>
            and the bend->eyebrow drop are always equal height. */
         --connector-y-bend: calc((var(--connector-y-grid-bottom) + var(--connector-y-eyebrow)) / 2);
         --connector-corner-r: 24px;
+        /* No design-system stroke token goes above --stroke-2 (2px); this
+           connector's dotted pattern needs a heavier dot than that renders,
+           so it defines its own local width instead. */
+        --connector-stroke-width: 4px;
     }
 
     @keyframes connector-fade-in {
@@ -652,8 +656,8 @@ const mobileCellDelays = mobileGridCells.map(() =>
 
     .connector-dot {
         position: absolute;
-        width: var(--space-2);
-        height: var(--space-2);
+        width: var(--space-3);
+        height: var(--space-3);
         border-radius: var(--radius-full);
         background: var(--brand-blue-main);
         transform: translate(-50%, -50%);
@@ -683,46 +687,63 @@ const mobileCellDelays = mobileGridCells.map(() =>
         position: absolute;
         top: var(--connector-y-grid-bottom);
         bottom: calc(100% - var(--connector-y-bend));
-        border-bottom: var(--stroke-2) dotted var(--brand-blue-main);
+        border-bottom: var(--connector-stroke-width) dotted var(--brand-blue-main);
     }
 
+    /* Left/right edges nudged out by half a stroke-width for the same
+       reason as the corner-center pieces below: border-box draws the
+       vertical border inward from the box's own edge, so a box edge
+       planted exactly on --connector-x-left/right leaves the border's
+       centerline half a stroke-width off — which reads as the dot sitting
+       off-center from the line dropping out of it. */
     .connector-elbow--left {
-        left: var(--connector-x-left);
+        left: calc(var(--connector-x-left) - var(--connector-stroke-width) / 2);
         right: calc(50% + var(--connector-corner-r));
-        border-left: var(--stroke-2) dotted var(--brand-blue-main);
+        border-left: var(--connector-stroke-width) dotted var(--brand-blue-main);
         border-bottom-left-radius: var(--connector-corner-r);
     }
 
     .connector-elbow--right {
         left: calc(50% + var(--connector-corner-r));
-        right: var(--connector-x-left);
-        border-right: var(--stroke-2) dotted var(--brand-blue-main);
+        right: calc(var(--connector-x-left) - var(--connector-stroke-width) / 2);
+        border-right: var(--connector-stroke-width) dotted var(--brand-blue-main);
         border-bottom-right-radius: var(--connector-corner-r);
     }
 
-    /* Spans all the way down to the eyebrow (not just the corner radius) —
-       the curve fills whatever room it has near the top, and the box's own
-       straight edge continues the rest of the way, so no separate vertical
-       piece is needed below it. Top is nudged up 2px to overlap the
-       elbow's bottom edge and close a hairline seam between the two boxes. */
+    /* Top nudged up 2px to overlap the elbow's bottom edge and close a
+       hairline seam there. Bottom is set per side below — one side's curve
+       stops as soon as its radius is done; the other carries on, in the
+       same unbroken border, all the way down to the eyebrow dot. Two
+       *separate* elements each drawing their own dotted border down to the
+       same point don't share a dot phase (plus they sit a full stroke-width
+       apart at their box edges), which reads as two unmerged lines — a
+       single element's border can curve into a straight run with no seam,
+       so only one side needs to make the full trip. */
     .connector-corner-center {
         position: absolute;
         top: calc(var(--connector-y-bend) - 2px);
-        bottom: calc(100% - var(--connector-y-eyebrow));
-        border-top: var(--stroke-2) dotted var(--brand-blue-main);
+        border-top: var(--connector-stroke-width) dotted var(--brand-blue-main);
     }
 
+    /* Right/left edges sit half a stroke-width past true center rather than
+       exactly on it — border-box draws each border inward from its own box
+       edge, so a box edge planted exactly at 50% puts that border's visual
+       centerline half a stroke-width off to one side, not on 50% itself.
+       Nudging the edge out by that half-width lands the centerline exactly
+       on 50%, matching the other side. */
     .connector-corner-center--left {
         left: calc(50% - var(--connector-corner-r));
-        right: 50%;
-        border-right: var(--stroke-2) dotted var(--brand-blue-main);
+        right: calc(50% - var(--connector-stroke-width) / 2);
+        bottom: calc(100% - (var(--connector-y-bend) + var(--connector-corner-r)));
+        border-right: var(--connector-stroke-width) dotted var(--brand-blue-main);
         border-top-right-radius: var(--connector-corner-r);
     }
 
     .connector-corner-center--right {
-        left: 50%;
+        left: calc(50% - var(--connector-stroke-width) / 2);
         right: calc(50% - var(--connector-corner-r));
-        border-left: var(--stroke-2) dotted var(--brand-blue-main);
+        bottom: calc(100% - var(--connector-y-eyebrow));
+        border-left: var(--connector-stroke-width) dotted var(--brand-blue-main);
         border-top-left-radius: var(--connector-corner-r);
     }
 
