@@ -2,7 +2,6 @@
 // ResearchTabsSection.astro
 // Figma node: 1:9423 — "Access credible research on" animated section
 import techBox1 from '../../assets/images/laptop-section/tech/box-1.webp';
-import techBox2 from '../../assets/images/laptop-section/tech/box-2.webp';
 import techBox3 from '../../assets/images/laptop-section/tech/box-3.webp';
 import techBox4 from '../../assets/images/laptop-section/tech/box-4.webp';
 import mediaBox1 from '../../assets/images/laptop-section/media/box-1.webp';
@@ -16,6 +15,7 @@ import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
 
 const base = import.meta.env.BASE_URL;
+const techBox2Src = `${base}images/home/trusted/chart-smartphone.webp`;
 
 // Same badge-panel treatment as ProductsHeroSection/HomeHeroSection: a white
 // rounded-square panel behind a centered line icon. Standing in for the
@@ -181,11 +181,11 @@ const cards = [
                 </div>
                 <div
                     class="box box-lg box2"
-                    data-tech={techBox2.src}
+                    data-tech={techBox2Src}
                     data-media={mediaBox2.src}
                     data-variables={varIcon2}
                 >
-                    <img src={techBox2.src} alt="Box 2" />
+                    <img src={techBox2Src} alt="Box 2" />
                 </div>
                 <div
                     class="box box-sm box3"
@@ -495,6 +495,11 @@ const cards = [
         text-align: center;
         opacity: 0.85;
         overflow: hidden;
+        /* Same drop-shadow as the tab-2 variable badges below (box-shadow
+           tokens all carry a spread-radius, which filter: drop-shadow()
+           doesn't support — hence the literal value here, matching that
+           existing exception rather than introducing a mismatched one). */
+        filter: drop-shadow(0 2px 4px rgba(27, 28, 29, 0.16));
         transition:
             left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
             top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
