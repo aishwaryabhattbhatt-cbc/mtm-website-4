@@ -71,10 +71,10 @@ const donutOffset = CIRCUMFERENCE - arcLength(percentage);
            fully solid no matter what stroke-dashoffset is. */
         stroke-dasharray: var(--donut-circumference) var(--donut-circumference);
         /* Starts fully wound back (offset = full circumference, so none of
-           the ring shows) and eases forward to --donut-offset once the
-           chart scrolls into view (self-observed, see script below). Kept
-           slower than the usual entrance tokens — a data reveal reads
-           better unhurried than a snappy UI transition. */
+           the ring shows) and eases forward to --donut-offset once
+           ProductSampleCompositionCard adds .is-visible during its reveal
+           stagger. Kept slower than the usual entrance tokens — a data
+           reveal reads better unhurried than a snappy UI transition. */
         stroke-dashoffset: var(--donut-circumference);
         transition: stroke-dashoffset 1.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -97,19 +97,8 @@ const donutOffset = CIRCUMFERENCE - arcLength(percentage);
     }
 </style>
 
-<script>
-    const donutObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    donutObserver.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.2 }
-    );
-    document.querySelectorAll<HTMLElement>('.donut-chart').forEach((chart) => {
-        donutObserver.observe(chart);
-    });
-</script>
+<!-- .is-visible is added by ProductSampleCompositionCard's own reveal stagger
+     (which also drives the value count-up), not by a self-observer here —
+     this chart only ever appears wrapped in that card's fly-in timing, and a
+     second independent viewport observer would fire the ring animation
+     before the wrapper has actually faded in. -->
