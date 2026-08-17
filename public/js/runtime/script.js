@@ -753,8 +753,8 @@ function initHeroTitleAnimation() {
 
 function runTitleAnimation() {
     const heroTitles = document.querySelectorAll('.hero-title');
-    const wordDelay = 0.15; // Delay between each word (seconds)
-    const wordAnimationDuration = 0.6; // Duration of each word animation (seconds)
+    const wordDelay = 0.12; // Delay between each word (seconds) — 20% faster than 0.15
+    const wordAnimationDuration = 0.48; // Duration of each word animation (seconds) — 20% faster than 0.6, keep in sync with .hero-title-word's wordAppear duration in HomeHeroSection.astro
     const collageImageAnimationDuration = 1.3; // Grow-in duration for collage cards — slow, fluid entrance
     const collageImageStagger = 0.15; // Delay between each card's start (same pace as the badge stagger below)
     

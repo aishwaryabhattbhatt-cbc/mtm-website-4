@@ -2,20 +2,16 @@
 // ResearchTabsSection.astro
 // Figma node: 1:9423 — "Access credible research on" animated section
 import techBox1 from '../../assets/images/laptop-section/tech/box-1.webp';
-import techBox3 from '../../assets/images/laptop-section/tech/box-3.webp';
-import techBox4 from '../../assets/images/laptop-section/tech/box-4.webp';
-import mediaBox1 from '../../assets/images/laptop-section/media/box-1.webp';
-import mediaBox2 from '../../assets/images/laptop-section/media/box-2.webp';
-import mediaBox3 from '../../assets/images/laptop-section/media/box-3.webp';
-import mediaBox4 from '../../assets/images/laptop-section/media/box-4.webp';
-import mediaBox5 from '../../assets/images/laptop-section/media/box-5.webp';
 import dashboardImg from '../../assets/images/dashboard.png';
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
 
 const base = import.meta.env.BASE_URL;
-const techBox2Src = `${base}images/home/trusted/chart-smartphone.webp`;
+const techBox2Src = `${base}images/home/trusted/tab-1/chart-smartphone.webp`;
+const techBox3Src = `${base}images/home/trusted/tab-1/chart-export-options.webp`;
+const mediaBox1Src = `${base}images/home/trusted/tab-2/chart-audio-streaming.webp`;
+const mediaBox2Src = `${base}images/home/trusted/tab-2/report-jr.webp`;
 
 // Same badge-panel treatment as ProductsHeroSection/HomeHeroSection: a white
 // rounded-square panel behind a centered line icon. Standing in for the
@@ -174,7 +170,7 @@ const cards = [
                 <div
                     class="box box-lg box1"
                     data-tech={techBox1.src}
-                    data-media={mediaBox1.src}
+                    data-media={mediaBox1Src}
                     data-variables={varIcon1}
                 >
                     <img src={techBox1.src} alt="Box 1" />
@@ -182,29 +178,26 @@ const cards = [
                 <div
                     class="box box-lg box2"
                     data-tech={techBox2Src}
-                    data-media={mediaBox2.src}
+                    data-media={mediaBox2Src}
                     data-variables={varIcon2}
                 >
                     <img src={techBox2Src} alt="Box 2" />
                 </div>
-                <div
-                    class="box box-sm box3"
-                    data-tech={techBox3.src}
-                    data-media={mediaBox3.src}
-                    data-variables={varIcon3}
-                >
-                    <img src={techBox3.src} alt="Box 3" />
+                <!-- Box 4-5: always the badge+icon treatment (same panel look
+                     as the tab-2 variable badges below, just slightly
+                     bigger). Box 3 is badge+icon everywhere EXCEPT tab 0
+                     (Technology Trends), where it shows its own chart image
+                     — data-tech/data-variables are read by setTab() to swap
+                     it, and #boxVisual.tab0 .box3 below switches its visual
+                     treatment from panel-badge to full-bleed image. -->
+                <div class="box box-badge box3" data-tech={techBox3Src} data-variables={varIcon3}>
+                    <img src={varIcon3} alt="" />
                 </div>
-                <div
-                    class="box box-sm box4"
-                    data-tech={techBox4.src}
-                    data-media={mediaBox4.src}
-                    data-variables={varIcon4}
-                >
-                    <img src={techBox4.src} alt="Box 4" />
+                <div class="box box-badge box4">
+                    <img src={varIcon4} alt="" />
                 </div>
-                <div class="box box-xs box5" data-media={mediaBox5.src} data-variables={varIcon5}>
-                    <img src={mediaBox5.src} alt="Box 5" />
+                <div class="box box-badge box5">
+                    <img src={varIcon5} alt="" />
                 </div>
                 {
                     extraVarIcons.map((icon, i) => (
@@ -546,15 +539,18 @@ const cards = [
        icon, instead of a full-bleed photo — only in the variables tab, so
        tab0/tab1's real screenshots on box1-5 are untouched. */
     #boxVisual.tab2 .box {
-        width: 90px;
-        height: 90px;
+        /* 1.25x the original 90px — positions/stride below are unchanged,
+           so badges sit slightly closer together than the grid comment's
+           110px stride assumed (112.5px box vs 110px stride). */
+        width: 112.5px;
+        height: 112.5px;
         background-image: var(--panel-url);
         background-repeat: no-repeat;
         background-size: 100% 100%;
         border: none;
         border-radius: var(--radius-s);
         filter: drop-shadow(0 2px 4px rgba(27, 28, 29, 0.16));
-        opacity: 0.85;
+        opacity: 1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -578,7 +574,7 @@ const cards = [
         background-repeat: no-repeat;
         background-size: 100% 100%;
         border: none;
-        opacity: 0.85;
+        opacity: 1;
         padding: 0;
         margin: 0;
         display: flex;
@@ -595,10 +591,6 @@ const cards = [
         height: 55%;
     }
 
-    /* Hide box 5 only for tab 0 */
-    .custom-box-layout.tab0 .box5 {
-        display: none !important;
-    }
     /* Hide label text when in grid mode */
     #boxVisual.tab2 .box span {
         opacity: 0;
@@ -608,14 +600,93 @@ const cards = [
         width: 25rem;
         height: 25rem;
     }
-    .custom-box-layout .box-sm {
-        width: 7.5rem;
-        height: 7.5rem;
-    }
     .custom-box-layout .box-xs {
         width: 5.625rem;
         height: 5.625rem;
     }
+
+    /* Boxes 3-5: the same badge-panel look as the tab-2 variable badges
+       (#boxVisual.tab2 .box below), just slightly bigger (7rem vs their
+       5.625rem) since only 2-3 of these sit alongside the big screenshot
+       here instead of a tight 13-badge grid. Box 3 overrides back to a
+       full-bleed image in tab 0 only — see #boxVisual.tab0 .box3 below. */
+    .custom-box-layout .box-badge {
+        width: 7rem;
+        height: 7rem;
+        background-image: var(--panel-url);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border: none;
+        border-radius: var(--radius-s);
+        /* .box3/.box4/.box5 above resets display to block (meant for the
+           full-bleed screenshot boxes, where centering doesn't matter) —
+           same specificity, so re-declare centering here to win by source
+           order and actually center the icon. */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* These are small icon badges, not 400px screenshot cards — the
+           base .box transition above (1s/0.75s, tuned for box1/2's heavy
+           dramatic reveal) reads as sluggish at this size, and doesn't
+           cover transform at all. Lighter weight gets a lighter, quicker
+           transition, using the project's own card-motion tokens. */
+        transform: scale(1);
+        transition:
+            left var(--motion-duration-card) var(--motion-ease-standard),
+            top var(--motion-duration-card) var(--motion-ease-standard),
+            width var(--motion-duration-card) var(--motion-ease-standard),
+            height var(--motion-duration-card) var(--motion-ease-standard),
+            opacity var(--motion-duration-card) var(--motion-ease-standard),
+            transform var(--motion-duration-card) var(--motion-ease-standard);
+    }
+
+    /* Slightly smaller than the other badges (6rem vs 7rem) — only applies
+       outside tab 2, where #boxVisual.tab2 .box's 90px override still wins
+       for the shared 13-badge grid. */
+    .custom-box-layout .box-badge.box4 {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    /* Tab 0 only: box5 has no content there (tech tab has no 5th image),
+       so it's hidden instead of repositioned. A scale+opacity fade (not
+       display:none, which can't transition) so it settles in/out smoothly
+       like every other box, instead of hard-cutting in when leaving tab0. */
+    .custom-box-layout.tab0 .box5 {
+        opacity: 0;
+        transform: scale(0.7);
+        pointer-events: none;
+    }
+
+    .custom-box-layout .box-badge img {
+        object-fit: contain;
+        width: 55%;
+        height: 55%;
+    }
+
+    /* Tab 0 only: box 3 switches from panel-badge to a full-bleed chart
+       image — no card background/border framing it, just the image itself.
+       #boxVisual gets .tab0 in setTab(), giving this the ID specificity to
+       win over .box-badge. */
+    #boxVisual.tab0 .box3 {
+        /* 1.5x .box-badge's 7rem */
+        width: 10.5rem;
+        height: 10.5rem;
+        background-image: none;
+        background: transparent;
+        border: none;
+    }
+
+    #boxVisual.tab0 .box3 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Tab 2 still shrinks everything (including box3-5) to the shared
+       90px badge grid size via #boxVisual.tab2 .box below, so no override
+       needed here for that state. */
+
     /* Positioning for demo, adjust as needed */
     .custom-box-layout .box1 {
         left: 199px;
@@ -824,8 +895,13 @@ const cards = [
         if (!boxVisual || !container) return;
 
         // Visible content spans x=176 to x=878 within the 860px box layout.
+        // shadowMargin reserves room past the tightest edges (box2's right
+        // edge, box4's bottom edge in tab 1) for the boxes' drop-shadow —
+        // container overflow:hidden was clipping it when those edges landed
+        // exactly on the crop bounds with zero spare pixels.
+        const shadowMargin = 12;
         const contentMinX = 176;
-        const contentWidth = 753; // box2 right edge (529+400=929) minus contentMinX (176)
+        const contentWidth = 753 + shadowMargin; // box2 right edge (529+400=929) minus contentMinX (176)
         const containerWidth = container.clientWidth || boxVisual.clientWidth || 860;
         const scale = Math.min(1, containerWidth / contentWidth);
         const offsetX = (containerWidth - contentWidth * scale) / 2 - contentMinX * scale;
@@ -834,7 +910,7 @@ const cards = [
         boxVisual.style.transform = `translateX(${offsetX}px) scale(${scale})`;
 
         // 610px covers the tallest content (tab1 box4 bottom = 482+120 = 602px)
-        container.style.height = Math.ceil(610 * scale) + 'px';
+        container.style.height = Math.ceil((610 + shadowMargin) * scale) + 'px';
     }
 
     function syncTabBodyHeights(activeIdx: number) {
@@ -869,8 +945,12 @@ const cards = [
                 updateBoxPosition(id, idx as 0 | 1)
             );
 
-            // Switch images based on tab with crossfade effect
-            ['box1', 'box2', 'box3', 'box4', 'box5'].forEach((id) => {
+            // Switch images based on tab with crossfade effect. Box4/5 are
+            // permanent badge+icon, so only box1-3 have sources to swap.
+            // Box3 has no data-media — it falls back to its badge icon
+            // (data-variables) for tab 1, since it's only a real chart in
+            // tab 0 (see the #boxVisual.tab0 .box3 CSS override below).
+            ['box1', 'box2', 'box3'].forEach((id) => {
                 const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
                 if (!box) return;
                 const img = box.querySelector<HTMLImageElement>('img');
@@ -884,7 +964,10 @@ const cards = [
                     if (idx === 0) {
                         img.src = box.getAttribute('data-tech') || img.src;
                     } else if (idx === 1) {
-                        img.src = box.getAttribute('data-media') || img.src;
+                        img.src =
+                            box.getAttribute('data-media') ||
+                            box.getAttribute('data-variables') ||
+                            img.src;
                     }
                     // Fade back in
                     img.style.opacity = '1';
@@ -895,8 +978,11 @@ const cards = [
             boxVisual?.classList.add('tab2');
             boxVisual?.classList.remove('tab0');
 
-            // Crossfade box1-5 images to their variables icons (same timing as tab0→1)
-            ['box1', 'box2', 'box3', 'box4', 'box5'].forEach((id) => {
+            // Crossfade box1-3 images to their variables icons (same timing
+            // as tab0→1) — box3 needs this too since a direct tab0→tab2
+            // click would otherwise leave its chart image loaded underneath
+            // the badge styling. Box4/5 already show their icon permanently.
+            ['box1', 'box2', 'box3'].forEach((id) => {
                 const box = document.querySelector<HTMLElement>(`#boxVisual .${id}`);
                 if (!box) return;
                 const img = box.querySelector<HTMLImageElement>('img');
@@ -937,7 +1023,7 @@ const cards = [
                 box.style.top = pos.top + 'px';
                 setTimeout(
                     () => {
-                        box.style.opacity = '0.85';
+                        box.style.opacity = '1';
                     },
                     300 + i * 80
                 );
@@ -952,7 +1038,7 @@ const cards = [
                 box.style.top = pos.top + 'px';
                 setTimeout(
                     () => {
-                        box.style.opacity = '0.85';
+                        box.style.opacity = '1';
                     },
                     470 + i * 80
                 );
@@ -967,7 +1053,7 @@ const cards = [
                 box.style.top = pos.top + 'px';
                 setTimeout(
                     () => {
-                        box.style.opacity = '0.85';
+                        box.style.opacity = '1';
                     },
                     650 + i * 80
                 );
@@ -1100,42 +1186,44 @@ const cards = [
         box1: { left: 176, top: 58 },
         box2: { left: 529, top: 128 },
         box3: { left: 314, top: 402 },
-        box4: { left: 750, top: 57 },
+        box4: { left: 750, top: 60 },
         box5: { left: 740, top: 439 },
     };
 
     const tab1BoxPositions: BoxPositions = {
-        box1: { left: 188, top: 147 },
-        box2: { left: 528, top: 71 },
-        box3: { left: 758, top: 18 },
-        box4: { left: 398, top: 482 },
-        box5: { left: 398, top: 103 },
+        box1: { left: 188, top: 100 },
+        box2: { left: 550, top: 50 },
+        box3: { left: 790, top: 16 },
+        box4: { left: 465, top: 495 },
+        box5: { left: 760, top: 420 },
     };
 
     // Tab 2: 5-column staggered grid — 2|3|3|3|2
-    // Box size 90px, gap 20px, stride 110px
-    // 3-box columns baseline top=145; center 3-box column is slightly staggered down
+    // Box size 112.5px, gap 25px, stride 137.5px (both 1.25x the original
+    // 90px/20px/110px) — every position below is the original grid scaled
+    // 1.25x around its center (507, 265) so it grows in place symmetrically.
+    // 3-box columns baseline top=115; center 3-box column is slightly staggered down
     const tab2BoxPositions: BoxPositions = {
         // Col 1 (2 boxes, vertically centered)
-        box1: { left: 287, top: 200 },
-        box2: { left: 287, top: 310 },
+        box1: { left: 232, top: 184 },
+        box2: { left: 232, top: 321 },
         // Col 2 (3 boxes)
-        box3: { left: 397, top: 145 },
-        box4: { left: 397, top: 255 },
-        box5: { left: 397, top: 365 },
+        box3: { left: 370, top: 115 },
+        box4: { left: 370, top: 253 },
+        box5: { left: 370, top: 390 },
     };
     const tab2ExtraPositions: Record<string, { left: number; top: number }> = {
         // Col 3 (center, 3 boxes) — slightly staggered down
-        box6: { left: 507, top: 165 },
-        box7: { left: 507, top: 275 },
-        box8: { left: 507, top: 385 },
+        box6: { left: 507, top: 140 },
+        box7: { left: 507, top: 278 },
+        box8: { left: 507, top: 415 },
         // Col 4 (3 boxes)
-        box9: { left: 617, top: 145 },
-        box10: { left: 617, top: 255 },
-        box11: { left: 617, top: 365 },
+        box9: { left: 645, top: 115 },
+        box10: { left: 645, top: 253 },
+        box11: { left: 645, top: 390 },
         // Col 5 (2 boxes, vertically centered)
-        box12: { left: 727, top: 200 },
-        box13: { left: 727, top: 310 },
+        box12: { left: 782, top: 184 },
+        box13: { left: 782, top: 321 },
     };
 
     function updateBoxPosition(boxId: BoxId, tabIdx: 0 | 1 = 0) {
