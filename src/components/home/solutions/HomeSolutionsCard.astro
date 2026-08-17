@@ -11,6 +11,10 @@ interface Props {
     title: string;
     imageSrc: string;
     imageAlt?: string;
+    /** object-position override for the card image — most images crop fine
+        centered, but a wide source photo can leave its subject off-center
+        once cover-cropped into the card's portrait frame. */
+    imagePosition?: string;
     iconPath: string;
     href?: string;
     ctaLabel?: string;
@@ -23,6 +27,7 @@ const {
     title,
     imageSrc,
     imageAlt = '',
+    imagePosition = 'center',
     iconPath,
     href = '#',
     ctaLabel = 'LEARN MORE',
@@ -34,9 +39,10 @@ const forceHover = state === 'hover';
 const isCarousel = state === 'carousel';
 ---
 
-<article
+<a
     class={`solutions-card${forceHover ? ' is-hover' : ''}${isCarousel ? ' is-carousel' : ''}`}
     data-state={state}
+    href={href}
 >
     <div class="solutions-card__image-wrap">
         <img
@@ -45,6 +51,7 @@ const isCarousel = state === 'carousel';
             alt={imageAlt}
             loading="lazy"
             decoding="async"
+            style={`--image-position: ${imagePosition}`}
         />
     </div>
 
@@ -77,11 +84,11 @@ const isCarousel = state === 'carousel';
             )
         }
 
-        <Button variant="tertiary" href={href} class="solutions-card__cta">
+        <Button variant="tertiary" class="solutions-card__cta" tabindex="-1" aria-hidden="true">
             {ctaLabel}
         </Button>
     </div>
-</article>
+</a>
 
 <style>
     .solutions-card {
@@ -93,6 +100,8 @@ const isCarousel = state === 'carousel';
         display: flex;
         flex-direction: column;
         height: 24.625rem;
+        color: inherit;
+        text-decoration: none;
         --card-image-height-default: 80%;
         --card-image-height-hover: 70%;
     }
@@ -142,6 +151,7 @@ const isCarousel = state === 'carousel';
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: var(--image-position, center);
         display: block;
         transition: transform 220ms ease;
     }

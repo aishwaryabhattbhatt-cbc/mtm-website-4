@@ -177,6 +177,60 @@ const {
     // revealDelayMs (data-reveal-delay) adds on top of that for cross-card
     // sequencing (see Survey Design's usage in ProductMethodologySection).
     const CARD_FADE_MS = 650;
+    const STAT_COUNT_MS = 1400;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Same leading-number roll-up as CountUpValue, but matches every number
+    // in the string (not just the first) — sample_stat_3 is literally two
+    // stats in one value ("6,000+/6,000+"), and animating only the first
+    // half would read as broken rather than intentional. Values with no
+    // digits at all (e.g. "Two-Part") are left untouched.
+    function animateStatValue(el: HTMLElement) {
+        const raw = el.textContent?.trim() ?? '';
+        const matches = [...raw.matchAll(/-?[\d,]+(\.\d+)?/g)];
+        if (!matches.length) return;
+
+        const segments: { text: string; target?: number; decimals?: number; commas?: boolean }[] =
+            [];
+        let cursor = 0;
+        matches.forEach((m) => {
+            const start = m.index ?? 0;
+            if (start > cursor) segments.push({ text: raw.slice(cursor, start) });
+            const numStr = m[0];
+            segments.push({
+                text: numStr,
+                target: parseFloat(numStr.replace(/,/g, '')),
+                decimals: numStr.includes('.') ? numStr.split('.')[1].length : 0,
+                commas: numStr.includes(','),
+            });
+            cursor = start + numStr.length;
+        });
+        if (cursor < raw.length) segments.push({ text: raw.slice(cursor) });
+
+        const startTime = performance.now();
+        function frame(now: number) {
+            const progress = Math.min((now - startTime) / STAT_COUNT_MS, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = segments
+                .map((s) => {
+                    if (s.target === undefined) return s.text;
+                    const current = s.target * eased;
+                    return s.commas
+                        ? current.toLocaleString('en-US', {
+                              minimumFractionDigits: s.decimals,
+                              maximumFractionDigits: s.decimals,
+                          })
+                        : current.toFixed(s.decimals);
+                })
+                .join('');
+            if (progress < 1) {
+                requestAnimationFrame(frame);
+            } else {
+                el.textContent = raw;
+            }
+        }
+        requestAnimationFrame(frame);
+    }
 
     function runStagger(list: HTMLElement) {
         const baseDelay = CARD_FADE_MS + (Number(list.dataset.revealDelay) || 0);
@@ -189,7 +243,12 @@ const {
         const stats = list.querySelectorAll<HTMLElement>('.methodology-stat-fly-in');
         stats.forEach((stat, i) => {
             const offset = offsets[i] ?? i * 300;
-            setTimeout(() => stat.classList.add('is-visible'), baseDelay + offset);
+            setTimeout(() => {
+                stat.classList.add('is-visible');
+                if (prefersReducedMotion) return;
+                const value = stat.querySelector<HTMLElement>('.methodology-card-stat-value');
+                if (value) animateStatValue(value);
+            }, baseDelay + offset);
         });
     }
 

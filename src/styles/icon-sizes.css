@@ -18,6 +18,7 @@
     --icon-2xl: 3rem;
     --icon-3xl: 4rem;
     --icon-4xl: 5rem;
+    --icon-5xl: 6rem;
     /* Small CTA/arrow icons inside buttons & cards — not part of the t-shirt content-icon scale */
     --icon-control: 1.25rem;
 }
@@ -66,6 +67,11 @@
     height: var(--icon-4xl);
 }
 
+.icon-5xl {
+    width: var(--icon-5xl);
+    height: var(--icon-5xl);
+}
+
 .icon-control {
     width: var(--icon-control);
     height: var(--icon-control);
@@ -78,6 +84,7 @@
 
 @media (max-width: 1023px) {
     :root {
+        --icon-5xl: 5rem; /* → 4xl */
         --icon-4xl: 4rem; /* → 3xl */
         --icon-3xl: 3rem; /* → 2xl */
         --icon-2xl: 2.5rem; /* → xl */
@@ -93,6 +100,7 @@
        tier. Icons inside buttons/arrows/chevrons use icon-xs/s/m/control, which
        are untouched here, so UI-control icons keep their own sizing. */
     :root {
+        --icon-5xl: 2.5rem;
         --icon-4xl: 2.5rem;
         --icon-3xl: 2.5rem;
         --icon-2xl: 2.5rem;

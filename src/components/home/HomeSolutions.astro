@@ -85,7 +85,7 @@ const cards = [
         solutionId: 'media',
         titleKey: 'solutions_item_2',
         title: t(copy, 'solutions_item_2', locale, 'Media'),
-        imageSrc: `${base}images/solutions/media/hero/hero-solutions-media.webp`,
+        imageSrc: `${base}images/home/solutions/cards/solutions-media.jpg`,
         imageAlt: t(copy, 'solutions_item_2_image_alt', locale, 'Professional using a laptop'),
         iconPath: `${base}${icons.solutions.media}`,
         href: `${base}${locale}/solutions/media/`,
@@ -95,7 +95,7 @@ const cards = [
         solutionId: 'advertising',
         titleKey: 'solutions_item_3',
         title: t(copy, 'solutions_item_3', locale, 'Advertising'),
-        imageSrc: `${base}images/solutions/advertising/hero/hero-solutions-advertising.webp`,
+        imageSrc: `${base}images/home/solutions/cards/solutions-advertising.png`,
         imageAlt: t(copy, 'solutions_item_3_image_alt', locale, 'Professional using a laptop'),
         iconPath: `${base}${icons.solutions.advertising}`,
         href: `${base}${locale}/solutions/advertising/`,
@@ -105,8 +105,12 @@ const cards = [
         solutionId: 'govngo',
         titleKey: 'solutions_item_5',
         title: t(copy, 'solutions_item_5', locale, 'Gov & NGOs'),
-        imageSrc: `${base}images/solutions/govngo/hero/hero-solutions-govngo.webp`,
+        imageSrc: `${base}images/home/solutions/cards/solutions-govngo.png`,
         imageAlt: t(copy, 'solutions_item_5_image_alt', locale, 'Professional using a laptop'),
+        // Source photo is a wide banner crop with the subject right-of-center;
+        // shifting the visible window right (higher %) re-centers her once
+        // object-fit: cover crops it down into the card's portrait frame.
+        imagePosition: '58% center',
         iconPath: `${base}${icons.solutions.govNgo}`,
         href: `${base}${locale}/solutions/gov-ngos/`,
         ctaLabel: t(copy, 'solutions_cta', locale, 'Learn more'),
@@ -115,7 +119,7 @@ const cards = [
         solutionId: 'education',
         titleKey: 'solutions_item_4',
         title: t(copy, 'solutions_item_4', locale, 'Education'),
-        imageSrc: `${base}images/solutions/education/hero/hero-solutions-education.webp`,
+        imageSrc: `${base}images/home/solutions/cards/solutions-education.png`,
         imageAlt: t(copy, 'solutions_item_4_image_alt', locale, 'Professional using a laptop'),
         iconPath: `${base}${icons.solutions.education}`,
         href: `${base}${locale}/solutions/education/`,
@@ -125,7 +129,7 @@ const cards = [
         solutionId: 'industry',
         titleKey: 'solutions_item_1',
         title: t(copy, 'solutions_item_1', locale, 'Industry'),
-        imageSrc: `${base}images/solutions/industry/hero/hero-solutions-industry.webp`,
+        imageSrc: `${base}images/home/solutions/cards/solutions-industry.png`,
         imageAlt: t(copy, 'solutions_item_1_image_alt', locale, 'Professional using a laptop'),
         iconPath: `${base}${icons.solutions.industry}`,
         href: `${base}${locale}/solutions/industry/`,
@@ -153,6 +157,7 @@ const cards = [
                             title={card.title}
                             imageSrc={card.imageSrc}
                             imageAlt={card.imageAlt}
+                            imagePosition={card.imagePosition}
                             iconPath={card.iconPath}
                             href={card.href}
                             ctaLabel={card.ctaLabel}
@@ -247,6 +252,7 @@ const cards = [
                             title={card.title}
                             imageSrc={card.imageSrc}
                             imageAlt={card.imageAlt}
+                            imagePosition={card.imagePosition}
                             iconPath={card.iconPath}
                             href={card.href}
                             ctaLabel={card.ctaLabel}
@@ -348,6 +354,7 @@ const cards = [
                                     alt={card.imageAlt}
                                     loading="lazy"
                                     decoding="async"
+                                    style={`--image-position: ${card.imagePosition ?? 'center'}`}
                                 />
                                 <Button
                                     variant="tertiary"
@@ -719,6 +726,7 @@ const cards = [
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
+            object-position: var(--image-position, center);
             border-radius: var(--radius-m);
             display: block;
         }

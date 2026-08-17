@@ -10,20 +10,52 @@ import mediaBox2 from '../../assets/images/laptop-section/media/box-2.webp';
 import mediaBox3 from '../../assets/images/laptop-section/media/box-3.webp';
 import mediaBox4 from '../../assets/images/laptop-section/media/box-4.webp';
 import mediaBox5 from '../../assets/images/laptop-section/media/box-5.webp';
-import varBox1 from '../../assets/images/laptop-section/variables/icon-age0-group.png';
-import varBox2 from '../../assets/images/laptop-section/variables/icon-audio.png';
-import varBox3 from '../../assets/images/laptop-section/variables/icon-avod.png';
-import varBox4 from '../../assets/images/laptop-section/variables/icon-digital-audio.png';
-import varBox5 from '../../assets/images/laptop-section/variables/icon-home-internet.png';
-import varBox6 from '../../assets/images/laptop-section/variables/icon-music.png';
-import varBox7 from '../../assets/images/laptop-section/variables/icon-smartphone-audio.png';
-import varBox8 from '../../assets/images/laptop-section/variables/icon-smartphone-love.png';
-import varBox9 from '../../assets/images/laptop-section/variables/icon-speech.png';
-import varBox10 from '../../assets/images/laptop-section/variables/icon-trends.png';
-import varBox11 from '../../assets/images/laptop-section/variables/icon-tv-time.png';
 import dashboardImg from '../../assets/images/dashboard.png';
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import { icons } from '../../lib/icons/registry';
+
+const base = import.meta.env.BASE_URL;
+
+// Same badge-panel treatment as ProductsHeroSection/HomeHeroSection: a white
+// rounded-square panel behind a centered line icon. Standing in for the
+// bespoke "5,000+ variables" PNGs — a random draw from the shared icon
+// library at build time instead of one custom asset per icon.
+const panelSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91 91'><defs><radialGradient id='g' cx='50%' cy='42%' r='78%'><stop offset='0%' stop-color='#ffffff'/><stop offset='60%' stop-color='#fdfeff'/><stop offset='100%' stop-color='#f5f8fc'/></radialGradient></defs><rect x='4' y='4' width='83' height='83' rx='10' fill='url(#g)' stroke='#eef2f8' stroke-width='1'/></svg>`;
+const panelUrl = `url("data:image/svg+xml,${encodeURIComponent(panelSvg)}")`;
+
+const variableIconPool = [
+    icons['device-audio'].headphones,
+    icons['device-audio'].smartSpeakers,
+    icons['device-cellphone'].gaming,
+    icons['device-cellphone'].selfie,
+    icons['device-gaming'].online,
+    icons['device-tablet'].brands,
+    icons['device-tv'].connectedTv,
+    icons['service-audio-podcast'].premium,
+    icons['service-video-svod'].avod,
+    icons['service-video-shortform'].like,
+    icons['service-social'].likes,
+    icons['service-news'].social,
+    icons['demographics-group'].age,
+    icons['demographics-group'].kid,
+    icons['demographics-household'].withKids,
+    icons.gen.trends,
+    icons.gen.ai,
+    icons.gen.multitasking,
+    icons.gen.landline,
+    icons.tool.dashboard,
+    icons.tool.trending,
+];
+
+function pickRandomIcons(count: number): string[] {
+    const shuffled = [...variableIconPool].sort(() => Math.random() - 0.5);
+    return Array.from({ length: count }, (_, i) => shuffled[i % shuffled.length]);
+}
+
+const [varIcon1, varIcon2, varIcon3, varIcon4, varIcon5, ...extraVarIcons] = pickRandomIcons(
+    13
+).map((icon) => `${base}${icon}`);
 
 interface Props {
     locale: Locale;
@@ -143,7 +175,7 @@ const cards = [
                     class="box box-lg box1"
                     data-tech={techBox1.src}
                     data-media={mediaBox1.src}
-                    data-variables={varBox1.src}
+                    data-variables={varIcon1}
                 >
                     <img src={techBox1.src} alt="Box 1" />
                 </div>
@@ -151,7 +183,7 @@ const cards = [
                     class="box box-lg box2"
                     data-tech={techBox2.src}
                     data-media={mediaBox2.src}
-                    data-variables={varBox2.src}
+                    data-variables={varIcon2}
                 >
                     <img src={techBox2.src} alt="Box 2" />
                 </div>
@@ -159,7 +191,7 @@ const cards = [
                     class="box box-sm box3"
                     data-tech={techBox3.src}
                     data-media={mediaBox3.src}
-                    data-variables={varBox3.src}
+                    data-variables={varIcon3}
                 >
                     <img src={techBox3.src} alt="Box 3" />
                 </div>
@@ -167,47 +199,26 @@ const cards = [
                     class="box box-sm box4"
                     data-tech={techBox4.src}
                     data-media={mediaBox4.src}
-                    data-variables={varBox4.src}
+                    data-variables={varIcon4}
                 >
                     <img src={techBox4.src} alt="Box 4" />
                 </div>
-                <div
-                    class="box box-xs box5"
-                    data-media={mediaBox5.src}
-                    data-variables={varBox5.src}
-                >
+                <div class="box box-xs box5" data-media={mediaBox5.src} data-variables={varIcon5}>
                     <img src={mediaBox5.src} alt="Box 5" />
                 </div>
-                <div class="box box-xs box6 box-variables-6">
-                    <img src={varBox6.src} alt="Music" />
-                </div>
-                <div class="box box-xs box7 box-variables-7">
-                    <img src={varBox7.src} alt="Smartphone Audio" />
-                </div>
-                <div class="box box-xs box8 box-variables-8">
-                    <img src={varBox8.src} alt="Smartphone Love" />
-                </div>
-                <div class="box box-xs box9 box-variables-9">
-                    <img src={varBox9.src} alt="Speech" />
-                </div>
-                <div class="box box-xs box10 box-variables-10">
-                    <img src={varBox10.src} alt="Trends" />
-                </div>
-                <div class="box box-xs box11 box-variables-11">
-                    <img src={varBox11.src} alt="TV Time" />
-                </div>
-                <div class="box box-xs box12 box-variables-12">
-                    <img src={varBox1.src} alt="Age Group" />
-                </div>
-                <div class="box box-xs box13 box-variables-13">
-                    <img src={varBox2.src} alt="Audio" />
-                </div>
+                {
+                    extraVarIcons.map((icon, i) => (
+                        <div class={`box box-xs box${i + 6} box-variables-${i + 6}`}>
+                            <img src={icon} alt="" />
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </div>
 </section>
 
-<style>
+<style define:vars={{ 'panel-url': panelUrl }}>
     .research-section {
         width: 100%;
         padding: var(--space-9) var(--content-margin-inline);
@@ -525,16 +536,26 @@ const cards = [
         justify-content: unset;
     }
     /* Tab 2: all boxes shrink to XS, no card — just the image */
+    /* Same badge-panel look as ProductsHeroSection/HomeHeroSection's floating
+       badges: a white rounded-square panel (--panel-url) behind a centered
+       icon, instead of a full-bleed photo — only in the variables tab, so
+       tab0/tab1's real screenshots on box1-5 are untouched. */
     #boxVisual.tab2 .box {
         width: 90px;
         height: 90px;
-        background: transparent;
+        background-image: var(--panel-url);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         border: none;
+        border-radius: var(--radius-s);
+        filter: drop-shadow(0 2px 4px rgba(27, 28, 29, 0.16));
         opacity: 0.85;
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    /* box1-13: all fully transparent image boxes in tab2 */
+    /* box1-13: all badge-panel boxes in tab2 */
     #boxVisual.tab2 .box1,
     #boxVisual.tab2 .box2,
     #boxVisual.tab2 .box3,
@@ -548,20 +569,25 @@ const cards = [
     #boxVisual.tab2 .box11,
     #boxVisual.tab2 .box12,
     #boxVisual.tab2 .box13 {
-        background: transparent;
+        background-image: var(--panel-url);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         border: none;
         opacity: 0.85;
         padding: 0;
         margin: 0;
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    /* Images in tab2: fill the box fully, no padding */
+    /* Icon centered at ~55% of the badge, matching ProductsHeroSection's
+       badge-icon ratio, instead of filling the box edge-to-edge. */
     #boxVisual.tab2 .box img {
-        object-fit: cover;
+        object-fit: contain;
         padding: 0;
-        width: 100%;
-        height: 100%;
+        width: 55%;
+        height: 55%;
     }
 
     /* Hide box 5 only for tab 0 */
