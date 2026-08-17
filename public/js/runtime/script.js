@@ -759,7 +759,7 @@ function runTitleAnimation() {
     const collageImageStagger = 0.15; // Delay between each card's start (same pace as the badge stagger below)
     
     heroTitles.forEach(title => {
-        const text = title.textContent;
+        const text = title.textContent.trim();
         const words = text.split(' ');
 
         // Prevent CMS runtime refresh from overwriting the animated spans
