@@ -9,18 +9,14 @@ import Button from '../shared/Button.astro';
 import Eyebrow from '../shared/Eyebrow.astro';
 import ProductPill, { type ProductVariant } from '../shared/ProductPill.astro';
 import ReportsTickerCard from './reports/ReportsTickerCard.astro';
-import bg18 from '../../assets/images/home/mtm-suite/home-products-bg-18.webp';
-import segments18 from '../../assets/images/home/mtm-suite/segments-top-18.png';
+import bg18 from '../../assets/images/home/mtm-suite/bg-product-18.webp';
+import segments18 from '../../assets/images/home/mtm-suite/fg-product-18.webp';
 import bgJr from '../../assets/images/home/mtm-suite/home-products-bg-jr.webp';
 import segmentsJr from '../../assets/images/home/mtm-suite/segments-top-jr.png';
 import bgNc from '../../assets/images/home/mtm-suite/home-products-bg-nc.jpg';
 import segmentsNc from '../../assets/images/home/mtm-suite/segments-top-nc.png';
 import bgCs from '../../assets/images/home/mtm-suite/home-products-bg-cs.webp';
 import segmentsCs from '../../assets/images/home/mtm-suite/segments-top-census.png';
-import chart18 from '../../assets/svg/home/data-products/mtm18plus.svg?url';
-import chartJr from '../../assets/svg/home/data-products/junior.svg?url';
-import chartNc from '../../assets/svg/home/data-products/newcomers.svg?url';
-import chartCs from '../../assets/svg/home/data-products/census.svg?url';
 
 interface Props {
     locale: Locale;
@@ -42,7 +38,6 @@ const products = [
         href: `${base}${locale}/products/mtm-18-plus`,
         bg: bg18,
         people: segments18,
-        chartSrc: chart18,
     },
     {
         id: 'junior',
@@ -53,7 +48,6 @@ const products = [
         href: `${base}${locale}/products/juniors`,
         bg: bgJr,
         people: segmentsJr,
-        chartSrc: chartJr,
         chevronFill: 'var(--badge-juniors)',
     },
     {
@@ -66,7 +60,6 @@ const products = [
         href: `${base}${locale}/products/newcomers`,
         bg: bgNc,
         people: segmentsNc,
-        chartSrc: chartNc,
         chevronFill: 'var(--badge-newcomers)',
     },
     {
@@ -79,7 +72,6 @@ const products = [
         href: `${base}${locale}/tools/census-tool`,
         bg: bgCs,
         people: segmentsCs,
-        chartSrc: chartCs,
         chevronFill: 'var(--badge-census)',
     },
 ];
@@ -191,16 +183,6 @@ const products = [
                         aria-hidden={i !== 0 ? 'true' : 'false'}
                     >
                         <Image class="card-bg" src={product.bg} alt="" loading="lazy" />
-                        {product.people && (
-                            <img
-                                class="card-chart-svg"
-                                src={product.chartSrc}
-                                alt=""
-                                aria-hidden="true"
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        )}
                         <p class="card-desc text-body-p0" data-copy-key={product.descKey}>
                             {t(copy, product.descKey, locale, product.descFallback)}
                         </p>
@@ -235,16 +217,6 @@ const products = [
                     <a class="mobile-product-card" href={product.href}>
                         <div class="mobile-card-image">
                             <Image class="mobile-card-bg" src={product.bg} alt="" loading="lazy" />
-                            {product.people && (
-                                <img
-                                    class="mobile-card-chart"
-                                    src={product.chartSrc}
-                                    alt=""
-                                    aria-hidden="true"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                            )}
                             {product.people && (
                                 <Image
                                     class="mobile-card-people"
@@ -895,16 +867,6 @@ const products = [
         left: -1.125rem;
     }
 
-    .card-chart-svg {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        pointer-events: none;
-        z-index: 1;
-    }
-
     .card-chart-wrap {
         position: absolute;
         bottom: 0;
@@ -984,7 +946,7 @@ const products = [
     .mobile-card-image {
         position: relative;
         width: 100%;
-        aspect-ratio: 5 / 3;
+        aspect-ratio: 2 / 1;
         border-radius: var(--layout-card-radius);
         overflow: hidden;
     }
@@ -995,28 +957,19 @@ const products = [
         width: 110%;
         height: 100%;
         object-fit: cover;
+        object-position: bottom;
         left: -1.125rem;
-    }
-
-    .mobile-card-chart {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        pointer-events: none;
-        z-index: 1;
     }
 
     .mobile-card-people {
         position: absolute;
-        right: 0;
+        left: -10%;
         bottom: 0;
         width: 110%;
         height: 100%;
         object-fit: cover;
-        transform: scale(0.75);
-        transform-origin: bottom right;
+        transform: scale(0.9);
+        transform-origin: bottom;
         z-index: 3;
     }
 
@@ -1028,7 +981,7 @@ const products = [
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: var(--title-desc-gap);
+        gap: var(--space-2);
         min-width: 0;
     }
 
@@ -1061,13 +1014,26 @@ const products = [
     .mobile-card-desc {
         color: var(--text-secondary);
         margin: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
     }
 
     /* ── RESPONSIVE ── */
+    /* Data products only — 2-per-row grid between 600px and 1340px */
+    @media (min-width: 600px) and (max-width: 1340px) {
+        .data-products {
+            display: none;
+        }
+
+        .data-products-mobile {
+            display: flex;
+        }
+
+        .mobile-products-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--layout-card-gap);
+        }
+    }
+
     @media (max-width: 1023px) {
         /* swap desktop ↔ mobile data-products layouts */
         .data-products {
