@@ -403,9 +403,19 @@ const tabs = [
            content span + 12px shadow margin) instead of the box canvas's
            full 860px — the boxes only ever occupied ~786px of that, so the
            container no longer carries dead space that used to sit between
-           the content and the section's right margin. */
-        flex: 0 0 49.125rem;
-        width: 49.125rem;
+           the content and the section's right margin.
+
+           px, not rem — this whole canvas (this width, custom-box-layout,
+           box-lg/xs/badge below) has to stay in lockstep with the box
+           left/top positions the script sets, which are raw px and don't
+           know about root font-size. Above 1920px the project's root font
+           jumps to 18px, which would scale a rem-based canvas up ~12.5%
+           while the positions stayed put — confirmed this clips box2 in
+           tab 0 at 2036px. px keeps the whole illustration pixel-locked
+           regardless of root font-size, matching #boxVisual.tab2 .box
+           below, which was already px for the same reason. */
+        flex: 0 0 786px;
+        width: 786px;
         max-width: none;
         min-width: 0;
         margin-left: auto;
@@ -414,10 +424,10 @@ const tabs = [
 
     .custom-box-layout {
         position: relative;
-        width: 53.75rem;
+        width: 860px;
         max-width: none;
-        height: 37.5rem;
-        min-height: 25rem;
+        height: 600px;
+        min-height: 400px;
         margin-left: 0;
     }
     .custom-box-layout .box {
@@ -540,12 +550,12 @@ const tabs = [
         transition: opacity 0.25s ease;
     }
     .custom-box-layout .box-lg {
-        width: 25rem;
-        height: 25rem;
+        width: 400px;
+        height: 400px;
     }
     .custom-box-layout .box-xs {
-        width: 5.625rem;
-        height: 5.625rem;
+        width: 90px;
+        height: 90px;
     }
 
     /* Boxes 3-5: the same badge-panel look as the tab-2 variable badges
@@ -554,8 +564,8 @@ const tabs = [
        here instead of a tight 13-badge grid. Box 3 overrides back to a
        full-bleed image in tab 0 only — see #boxVisual.tab0 .box3 below. */
     .custom-box-layout .box-badge {
-        width: 7rem;
-        height: 7rem;
+        width: 112px;
+        height: 112px;
         background-image: var(--panel-url);
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -587,8 +597,8 @@ const tabs = [
        outside tab 2, where #boxVisual.tab2 .box's 90px override still wins
        for the shared 13-badge grid. */
     .custom-box-layout .box-badge.box4 {
-        width: 6rem;
-        height: 6rem;
+        width: 96px;
+        height: 96px;
     }
 
     /* Tab 0 only: box5 has no content there (tech tab has no 5th image),
@@ -612,9 +622,9 @@ const tabs = [
        #boxVisual gets .tab0 in setTab(), giving this the ID specificity to
        win over .box-badge. */
     #boxVisual.tab0 .box3 {
-        /* 1.5x .box-badge's 7rem */
-        width: 10.5rem;
-        height: 10.5rem;
+        /* 1.5x .box-badge's 112px */
+        width: 168px;
+        height: 168px;
         background-image: none;
         background: transparent;
         border: none;
@@ -685,7 +695,7 @@ const tabs = [
         }
         .right-visual {
             flex: 0 0 auto;
-            width: calc(var(--research-scale) * 49.125rem);
+            width: calc(var(--research-scale) * 786px);
             max-width: none;
         }
         .heading {
@@ -700,7 +710,7 @@ const tabs = [
         }
         .right-visual {
             flex: 0 0 auto;
-            width: calc(var(--research-scale) * 49.125rem);
+            width: calc(var(--research-scale) * 786px);
             max-width: none;
         }
         .heading {
