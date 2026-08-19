@@ -250,6 +250,26 @@ const sampleStats = [
             flex-shrink: 0;
             scroll-snap-align: start;
         }
+
+        /* Two-col variant (no Sample Composition card, e.g. Newcomers/Juniors)
+           only ever has 2 cards — let them fill the row evenly instead of
+           capping at the 3-card carousel's 26rem ceiling, which left a gap
+           on the right at 1020–1439px. Subtracts half the row's actual flex
+           gap (--layout-card-gap, not --space-3) — using the wrong gap value
+           here made the two cards sum past 100% and overflow the margin. */
+        .product-top-row--two-col > :global(*) {
+            width: clamp(17.1875rem, calc(50% - var(--layout-card-gap) / 2), 100%);
+        }
+    }
+
+    /* Below the width where cards can comfortably fit multiple-up, both the
+       two-col formula above and the default 3-card clamp bottom out at a
+       fixed 17.1875rem — cramped for this card's icon+pill+stat content.
+       Switch every variant to a near-full-width single-card carousel. */
+    @media (max-width: 767px) {
+        .product-top-row > :global(*) {
+            width: 90%;
+        }
     }
 
     .heading-fly-in {
