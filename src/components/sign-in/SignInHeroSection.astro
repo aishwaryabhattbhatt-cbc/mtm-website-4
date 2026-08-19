@@ -97,18 +97,31 @@ const base = import.meta.env.BASE_URL;
                         </Button>
                     </div>
                 </form>
+            </div>
 
-                <p class="text-body-p3 sign-in-hero__no-account">
-                    <span data-copy-key="hero_form_no_account_text">
-                        {t(copy, 'hero_form_no_account_text', locale, "Don't have an account?")}
-                    </span>{' '}
-                    <a
-                        href={`${base}${locale}/request-demo/`}
-                        data-copy-key="hero_form_no_account_cta"
-                    >
-                        {t(copy, 'hero_form_no_account_cta', locale, 'Request a Demo')}
-                    </a>
-                </p>
+            <div class="sign-in-hero__register hero-fade-in" style="animation-delay: 0.3s">
+                <h4
+                    class="text-h4 sign-in-hero__register-text"
+                    data-copy-key="hero_form_register_text"
+                >
+                    {
+                        t(
+                            copy,
+                            'hero_form_register_text',
+                            locale,
+                            'Signing in first time? Register to gain access'
+                        )
+                    }
+                </h4>
+                <Button
+                    variant="secondary"
+                    size="lg"
+                    href={`${base}${locale}/register/`}
+                    class="sign-in-hero__register-cta"
+                    data-copy-key="hero_form_create_account_cta"
+                >
+                    {t(copy, 'hero_form_create_account_cta', locale, 'Register')}
+                </Button>
             </div>
         </div>
     </div>
@@ -183,6 +196,7 @@ const base = import.meta.env.BASE_URL;
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: var(--space-9);
         width: 100%;
     }
 
@@ -191,11 +205,30 @@ const base = import.meta.env.BASE_URL;
         flex-direction: column;
         gap: var(--space-6);
         width: 100%;
-        max-width: 30rem;
+        max-width: 37.5rem;
         padding: var(--space-9);
         border-radius: var(--radius-m);
         background: var(--surface-blue);
         box-shadow: var(--shadow-card);
+    }
+
+    .sign-in-hero__register {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        width: 100%;
+        max-width: 37.5rem;
+        text-align: center;
+    }
+
+    .sign-in-hero__register-text {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .sign-in-hero__register-cta {
+        text-align: center;
     }
 
     .sign-in-hero__intro {
@@ -269,16 +302,6 @@ const base = import.meta.env.BASE_URL;
 
     .sign-in-hero__forgot:hover {
         text-decoration: underline;
-    }
-
-    .sign-in-hero__no-account {
-        margin: 0;
-        text-align: left;
-        color: var(--text-secondary);
-    }
-
-    .sign-in-hero__no-account a {
-        color: var(--text-primary);
     }
 
     @media (max-width: 1023px) {

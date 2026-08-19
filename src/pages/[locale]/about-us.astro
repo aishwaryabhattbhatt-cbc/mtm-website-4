@@ -6,8 +6,9 @@ import AboutUsHeroSection from '../../components/about-us/AboutUsHeroSection.ast
 import AboutUsBackgroundScripts from '../../components/about-us/AboutUsBackgroundScripts.astro';
 import AboutUsValuesSection from '../../components/about-us/AboutUsValuesSection.astro';
 import AboutUsTimelineSection from '../../components/about-us/AboutUsTimelineSection.astro';
-import AboutUsTeamSection from '../../components/about-us/AboutUsTeamSection.astro';
-// AboutUsFaqSection hidden for now — see usage below.
+import InsightsNewsSection from '../../components/insights/InsightsNewsSection.astro';
+// AboutUsTeamSection and AboutUsFaqSection hidden for now — see usage below.
+// import AboutUsTeamSection from '../../components/about-us/AboutUsTeamSection.astro';
 // import AboutUsFaqSection from '../../components/about-us/AboutUsFaqSection.astro';
 import { getPageDictionary } from '../../lib/cms/getPageContent';
 import { getLocaleSwitchUrls, toAbsoluteUrl } from '../../lib/i18n/routing';
@@ -63,13 +64,14 @@ const breadcrumbJsonLd = buildBreadcrumbList(siteRoot, isFrench ? 'À propos' : 
 
         <div class="section-gap section-gap-sm" aria-hidden="true"></div>
 
-        <AboutUsTeamSection locale={locale} copy={copy} />
+        <InsightsNewsSection locale={locale} copy={copy} />
 
         <div class="section-gap section-gap-sm" aria-hidden="true"></div>
 
         {
-            /* AboutUsFaqSection hidden for now — re-enable when the FAQ
-               content is ready. */
+            /* AboutUsTeamSection hidden for now — re-enable when the team
+               section is ready. AboutUsFaqSection hidden for now — re-enable
+               when the FAQ content is ready. */
         }
 
         <HomeFooterSection locale={locale} copy={copy} />

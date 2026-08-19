@@ -3,6 +3,7 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
 import FormField from '../shared/FormField.astro';
+import SignInBackground from '../sign-in/SignInBackground.astro';
 
 interface Props {
     locale: Locale;
@@ -14,20 +15,7 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <section class="contact-form-section" data-contact-form-section>
-    <div class="contact-form-section__edge contact-form-section__edge--left" aria-hidden="true">
-        <img
-            src={`${base}images/contact-us/left-edge.png`}
-            alt=""
-            class="contact-form-section__edge-img"
-        />
-    </div>
-    <div class="contact-form-section__edge contact-form-section__edge--right" aria-hidden="true">
-        <img
-            src={`${base}images/contact-us/right-edge.png`}
-            alt=""
-            class="contact-form-section__edge-img"
-        />
-    </div>
+    <SignInBackground id="webgl-background-contact" />
 
     <div class="contact-form-section__inner">
         <div class="contact-form-section__heading hero-fade-in" style="animation-delay: 0.1s">
@@ -50,7 +38,12 @@ const base = import.meta.env.BASE_URL;
         </div>
 
         <div class="contact-form-section__card hero-fade-in" style="animation-delay: 0.2s">
-            <form class="contact-form-section__form" data-contact-form novalidate>
+            <form
+                class="contact-form-section__form"
+                data-contact-form
+                data-submit-href={`${base}${locale}/contact-success/`}
+                novalidate
+            >
                 <div class="contact-form-section__row">
                     <FormField
                         locale={locale}
@@ -118,45 +111,6 @@ const base = import.meta.env.BASE_URL;
                     {t(copy, 'contact_submit_cta', locale, 'Submit')}
                 </Button>
             </form>
-
-            <div
-                class="contact-form-section__success"
-                data-contact-form-success
-                role="status"
-                aria-live="polite"
-                aria-atomic="true"
-                tabindex="-1"
-            >
-                <span class="contact-form-section__success-icon" aria-hidden="true">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon-s"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                </span>
-                <div class="contact-form-section__success-copy">
-                    <p class="text-body-p1-bold" data-copy-key="contact_success_title">
-                        {t(copy, 'contact_success_title', locale, 'Success!')}
-                    </p>
-                    <p class="text-body-p3" data-copy-key="contact_success_message">
-                        {
-                            t(
-                                copy,
-                                'contact_success_message',
-                                locale,
-                                "Thanks for reaching out. We'll be in touch shortly."
-                            )
-                        }
-                    </p>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -171,28 +125,7 @@ const base = import.meta.env.BASE_URL;
         background: var(--surface-white);
         display: flex;
         align-items: center;
-    }
-
-    .contact-form-section__edge {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    .contact-form-section__edge--left {
-        left: 0;
-    }
-
-    .contact-form-section__edge--right {
-        right: 0;
-    }
-
-    .contact-form-section__edge-img {
-        height: 100%;
-        width: auto;
-        display: block;
+        justify-content: center;
     }
 
     .contact-form-section__inner {
@@ -202,15 +135,17 @@ const base = import.meta.env.BASE_URL;
         max-width: 37.5rem;
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: var(--space-6);
     }
 
     .contact-form-section__heading {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: var(--title-desc-gap);
         width: 100%;
-        text-align: left;
+        text-align: center;
     }
 
     .contact-form-section__title {
@@ -261,54 +196,9 @@ const base = import.meta.env.BASE_URL;
         margin-top: var(--space-4);
     }
 
-    .contact-form-section__success {
-        display: none;
-        align-items: flex-start;
-        gap: var(--space-3);
-        border: var(--stroke-1) solid var(--badge-newcomers);
-        border-radius: var(--radius-s);
-        background: var(--surface-white);
-        padding: var(--space-4);
-    }
-
-    .contact-form-section__success-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: var(--space-6);
-        height: var(--space-6);
-        border-radius: var(--radius-full);
-        background: var(--badge-newcomers);
-        color: var(--text-white);
-        flex-shrink: 0;
-    }
-
-    .contact-form-section__success-copy {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-1);
-    }
-
-    .contact-form-section__success-copy p {
-        margin: 0;
-    }
-
-    .contact-form-section.is-success .contact-form-section__form {
-        display: none;
-    }
-
-    .contact-form-section.is-success .contact-form-section__success {
-        display: flex;
-    }
-
     @media (max-width: 1023px) {
         .contact-form-section {
             margin-top: 0;
-        }
-
-        /* Edge images are desktop-only for now — tablet/mobile treatment TBD. */
-        .contact-form-section__edge {
-            display: none;
         }
     }
 
@@ -352,7 +242,6 @@ const base = import.meta.env.BASE_URL;
 <script>
     document.querySelectorAll<HTMLElement>('[data-contact-form-section]').forEach((section) => {
         const form = section.querySelector<HTMLFormElement>('[data-contact-form]');
-        const success = section.querySelector<HTMLElement>('[data-contact-form-success]');
         if (!form) return;
 
         form.addEventListener('submit', (event) => {
@@ -361,8 +250,10 @@ const base = import.meta.env.BASE_URL;
                 form.reportValidity();
                 return;
             }
-            section.classList.add('is-success');
-            success?.focus();
+            const submitHref = form.dataset.submitHref;
+            if (submitHref) {
+                window.location.href = submitHref;
+            }
         });
     });
 </script>

@@ -1,0 +1,17 @@
+{
+  "success_title": {
+    "key": "success_title",
+    "en": "Registration Submitted!",
+    "fr": ""
+  },
+  "success_description": {
+    "key": "success_description",
+    "en": "Thank you for registering. Once your details are verified, you'll receive your login details by email.",
+    "fr": ""
+  },
+  "success_cta": {
+    "key": "success_cta",
+    "en": "Sign In",
+    "fr": ""
+  }
+}

@@ -12,6 +12,9 @@ interface Props {
 
 const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
+// Lets the download-success page's "Go Back to Exploring" CTA return
+// here instead of a hardcoded destination.
+const reportDownloadHref = `${base}${locale}/insights/report-download/?from=${encodeURIComponent(`${base}${locale}/insights/#free-reports`)}`;
 
 const freeReports = [
     {
@@ -38,7 +41,7 @@ const freeReports = [
 ];
 ---
 
-<section class="free-reports-section">
+<section class="free-reports-section" id="free-reports">
     <div class="free-reports-section__header heading-fly-in">
         <div class="free-reports-section__eyebrow-wrap">
             <Eyebrow>
@@ -84,7 +87,7 @@ const freeReports = [
                     <InsightsFreeReportCard
                         locale={locale}
                         copy={copy}
-                        ctaHref={`${base}${locale}/insights/report-download/`}
+                        ctaHref={reportDownloadHref}
                         imageSrc={report.imageSrc}
                         tagKey={report.tagKey}
                         dateKey={report.dateKey}
@@ -108,6 +111,7 @@ const freeReports = [
         display: flex;
         flex-direction: column;
         gap: 0;
+        scroll-margin-top: var(--navbar-height);
     }
 
     .free-reports-section__header {

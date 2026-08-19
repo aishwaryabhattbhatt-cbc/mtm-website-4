@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/shared/Navbar.astro';
-import ContactFormSection from '../../components/contact/ContactFormSection.astro';
+import RegisterHeroSection from '../../components/register/RegisterHeroSection.astro';
 import HomeFooterSection from '../../components/home/HomeFooterSection.astro';
 import SignInBackgroundScripts from '../../components/sign-in/SignInBackgroundScripts.astro';
 import { getPageDictionary } from '../../lib/cms/getPageContent';
@@ -14,16 +14,16 @@ export function getStaticPaths() {
 }
 
 const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
-const copy = await getPageDictionary('home');
+const copy = await getPageDictionary('register');
 const base = import.meta.env.BASE_URL;
-const localeSwitchUrls = getLocaleSwitchUrls(base, 'contact');
+const localeSwitchUrls = getLocaleSwitchUrls(base, 'register');
 
-const pageTitle = t(copy, 'contact_page_title', locale, 'Contact Us');
+const pageTitle = t(copy, 'hero_title', locale, 'MTM | Register');
 const pageDescription = t(
     copy,
-    'contact_page_description',
+    'hero_subtitle',
     locale,
-    'Get in touch with the Media Technology Monitor (MTM) team.'
+    "To gain access through your employer's subscription please fill out the following registration form."
 );
 ---
 
@@ -34,10 +34,10 @@ const pageDescription = t(
     alternates={localeSwitchUrls}
     noindex={true}
 >
-    <main class="contact-page">
+    <main class="register-page">
         <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-        <ContactFormSection locale={locale} copy={copy} />
+        <RegisterHeroSection locale={locale} copy={copy} />
 
         <HomeFooterSection
             locale={locale}
@@ -54,7 +54,7 @@ const pageDescription = t(
 </Layout>
 
 <style>
-    .contact-page {
+    .register-page {
         width: 100%;
     }
 </style>

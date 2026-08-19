@@ -58,18 +58,36 @@ const pageDescription = t(
         <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
         {
-            /* TEMPLATE: report content below reuses the existing free_report_1_*
-               placeholder copy. Wiring this section to a real, individually
-               linkable report is a later phase — see plan's "out of scope". */
+            /* TEMPLATE: report content below reuses the existing free_report_1/2/3_*
+               placeholder copy. Wiring this section to real, individually
+               linkable reports is a later phase — see plan's "out of scope". */
         }
         <InsightsReportDownloadSection
             locale={locale}
             copy={copy}
-            imageSrc={`${base}images/insights/free-reports/Picture.png`}
-            tagKey="free_report_1_tag"
-            dateKey="free_report_1_date"
-            titleKey="free_report_1_title"
-            descriptionKey="free_report_1_description"
+            reports={[
+                {
+                    imageSrc: `${base}images/insights/free-reports/Picture.png`,
+                    tagKey: 'free_report_1_tag',
+                    dateKey: 'free_report_1_date',
+                    titleKey: 'free_report_1_title',
+                    value: 'free_report_1',
+                },
+                {
+                    imageSrc: `${base}images/insights/free-reports/Picture-1.png`,
+                    tagKey: 'free_report_2_tag',
+                    dateKey: 'free_report_2_date',
+                    titleKey: 'free_report_2_title',
+                    value: 'free_report_2',
+                },
+                {
+                    imageSrc: `${base}images/insights/free-reports/Picture-2.png`,
+                    tagKey: 'free_report_3_tag',
+                    dateKey: 'free_report_3_date',
+                    titleKey: 'free_report_3_title',
+                    value: 'free_report_3',
+                },
+            ]}
         />
 
         <HomeFooterSection

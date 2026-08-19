@@ -1,6 +1,6 @@
 ---
-// src/components/request-demo/RequestDemoSuccessSection.astro
-// Figma node: 89:61406 — "Request a Demo success"
+// src/components/contact/ContactSuccessSection.astro
+// Mirrors RequestDemoSuccessSection.astro's glass-card success layout.
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 
@@ -13,18 +13,18 @@ const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<section class="request-demo-success">
-    <div class="request-demo-success__pattern" aria-hidden="true">
+<section class="contact-success">
+    <div class="contact-success__pattern" aria-hidden="true">
         <img
             src={`${base}images/request-demo/hero-pattern.png`}
             alt=""
-            class="request-demo-success__pattern-img"
+            class="contact-success__pattern-img"
         />
     </div>
 
-    <div class="request-demo-success__card">
-        <div class="request-demo-success__content">
-            <span class="request-demo-success__icon" aria-hidden="true">
+    <div class="contact-success__card">
+        <div class="contact-success__content">
+            <span class="contact-success__icon" aria-hidden="true">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="icon-m"
@@ -40,11 +40,11 @@ const base = import.meta.env.BASE_URL;
             </span>
 
             <h2 data-copy-key="success_title">
-                {t(copy, 'success_title', locale, 'Thank You!')}
+                {t(copy, 'success_title', locale, 'Form Submitted!')}
             </h2>
 
             <p
-                class="text-body-p1 request-demo-success__description"
+                class="text-body-p1 contact-success__description"
                 data-copy-key="success_description"
             >
                 {
@@ -52,7 +52,7 @@ const base = import.meta.env.BASE_URL;
                         copy,
                         'success_description',
                         locale,
-                        'Your request has been submitted. One of our experts will be in touch with you shortly to schedule your demo.'
+                        'Thank you for reaching out. One of our experts will be in touch with you shortly.'
                     )
                 }
             </p>
@@ -61,7 +61,7 @@ const base = import.meta.env.BASE_URL;
 </section>
 
 <style>
-    .request-demo-success {
+    .contact-success {
         position: relative;
         width: 100%;
         overflow: clip;
@@ -70,7 +70,7 @@ const base = import.meta.env.BASE_URL;
         background: var(--surface-white);
     }
 
-    .request-demo-success__pattern {
+    .contact-success__pattern {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -79,13 +79,13 @@ const base = import.meta.env.BASE_URL;
         z-index: 0;
     }
 
-    .request-demo-success__pattern-img {
+    .contact-success__pattern-img {
         width: 100%;
         height: auto;
         display: block;
     }
 
-    .request-demo-success__card {
+    .contact-success__card {
         position: relative;
         z-index: 1;
         width: min(100%, 90rem);
@@ -101,7 +101,7 @@ const base = import.meta.env.BASE_URL;
         box-shadow: var(--shadow-beautiful);
     }
 
-    .request-demo-success__content {
+    .contact-success__content {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -110,7 +110,7 @@ const base = import.meta.env.BASE_URL;
         max-width: 32rem;
     }
 
-    .request-demo-success__icon {
+    .contact-success__icon {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -122,24 +122,24 @@ const base = import.meta.env.BASE_URL;
         flex-shrink: 0;
     }
 
-    .request-demo-success__content h2 {
+    .contact-success__content h2 {
         margin: 0;
         color: var(--text-primary);
     }
 
-    .request-demo-success__description {
+    .contact-success__description {
         margin: 0;
         color: var(--text-primary);
     }
 
     @media (max-width: 1023px) {
-        .request-demo-success {
+        .contact-success {
             margin-top: 0;
         }
     }
 
     @media (max-width: 767px) {
-        .request-demo-success__card {
+        .contact-success__card {
             padding: var(--space-8) var(--space-5);
         }
     }
