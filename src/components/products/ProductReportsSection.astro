@@ -40,7 +40,7 @@ const {
 } = Astro.props as Props;
 ---
 
-<section class="product-reports-section">
+<section class="product-reports-section" id="reports">
     <div class="product-reports-headline heading-fly-in">
         <h2 data-copy-key="report_title">
             {t(copy, 'report_title', locale, 'Reports')}
@@ -69,6 +69,7 @@ const {
         width: 100%;
         padding: var(--section-pad-block-lg) var(--content-margin-inline);
         background-color: var(--surface-blue);
+        scroll-margin-top: var(--navbar-height);
     }
 
     .product-reports-headline {

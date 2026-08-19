@@ -39,14 +39,14 @@
     "en": "Forgot Password?",
     "fr": ""
   },
-  "hero_form_no_account_text": {
-    "key": "hero_form_no_account_text",
-    "en": "Don't have an account?",
+  "hero_form_register_text": {
+    "key": "hero_form_register_text",
+    "en": "Signing in first time? Register to gain access",
     "fr": ""
   },
-  "hero_form_no_account_cta": {
-    "key": "hero_form_no_account_cta",
-    "en": "Request a Demo",
+  "hero_form_create_account_cta": {
+    "key": "hero_form_create_account_cta",
+    "en": "Register",
     "fr": ""
   }
 }

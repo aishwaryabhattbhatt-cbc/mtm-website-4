@@ -20,6 +20,9 @@ const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
     'request-demo-success': '0',
     'sign-in': '0',
     'forgot-password': '0',
+    register: '0',
+    'register-success': '0',
+    'contact-success': '0',
 };
 
 const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
@@ -53,6 +56,9 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
     'request-demo-success': '',
     'sign-in': '',
     'forgot-password': '',
+    register: '',
+    'register-success': '',
+    'contact-success': '',
 };
 
 const DEFAULT_REFRESH_MS = 30000;

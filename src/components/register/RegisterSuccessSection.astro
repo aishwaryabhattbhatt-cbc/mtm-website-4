@@ -1,8 +1,9 @@
 ---
-// src/components/request-demo/RequestDemoSuccessSection.astro
-// Figma node: 89:61406 — "Request a Demo success"
+// src/components/register/RegisterSuccessSection.astro
+// Mirrors RequestDemoSuccessSection.astro's glass-card success layout.
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
 
 interface Props {
     locale: Locale;
@@ -13,18 +14,18 @@ const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<section class="request-demo-success">
-    <div class="request-demo-success__pattern" aria-hidden="true">
+<section class="register-success">
+    <div class="register-success__pattern" aria-hidden="true">
         <img
             src={`${base}images/request-demo/hero-pattern.png`}
             alt=""
-            class="request-demo-success__pattern-img"
+            class="register-success__pattern-img"
         />
     </div>
 
-    <div class="request-demo-success__card">
-        <div class="request-demo-success__content">
-            <span class="request-demo-success__icon" aria-hidden="true">
+    <div class="register-success__card">
+        <div class="register-success__content">
+            <span class="register-success__icon" aria-hidden="true">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="icon-m"
@@ -40,11 +41,11 @@ const base = import.meta.env.BASE_URL;
             </span>
 
             <h2 data-copy-key="success_title">
-                {t(copy, 'success_title', locale, 'Thank You!')}
+                {t(copy, 'success_title', locale, 'Registration Submitted!')}
             </h2>
 
             <p
-                class="text-body-p1 request-demo-success__description"
+                class="text-body-p1 register-success__description"
                 data-copy-key="success_description"
             >
                 {
@@ -52,16 +53,26 @@ const base = import.meta.env.BASE_URL;
                         copy,
                         'success_description',
                         locale,
-                        'Your request has been submitted. One of our experts will be in touch with you shortly to schedule your demo.'
+                        "Thank you for registering. Once your details are verified, you'll receive your login details by email."
                     )
                 }
             </p>
+
+            <Button
+                variant="primary"
+                size="lg"
+                href={`${base}${locale}/sign-in/`}
+                class="register-success__cta"
+                data-copy-key="success_cta"
+            >
+                {t(copy, 'success_cta', locale, 'Sign In')}
+            </Button>
         </div>
     </div>
 </section>
 
 <style>
-    .request-demo-success {
+    .register-success {
         position: relative;
         width: 100%;
         overflow: clip;
@@ -70,7 +81,7 @@ const base = import.meta.env.BASE_URL;
         background: var(--surface-white);
     }
 
-    .request-demo-success__pattern {
+    .register-success__pattern {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -79,13 +90,13 @@ const base = import.meta.env.BASE_URL;
         z-index: 0;
     }
 
-    .request-demo-success__pattern-img {
+    .register-success__pattern-img {
         width: 100%;
         height: auto;
         display: block;
     }
 
-    .request-demo-success__card {
+    .register-success__card {
         position: relative;
         z-index: 1;
         width: min(100%, 90rem);
@@ -101,7 +112,7 @@ const base = import.meta.env.BASE_URL;
         box-shadow: var(--shadow-beautiful);
     }
 
-    .request-demo-success__content {
+    .register-success__content {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -110,7 +121,7 @@ const base = import.meta.env.BASE_URL;
         max-width: 32rem;
     }
 
-    .request-demo-success__icon {
+    .register-success__icon {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -122,24 +133,28 @@ const base = import.meta.env.BASE_URL;
         flex-shrink: 0;
     }
 
-    .request-demo-success__content h2 {
+    .register-success__content h2 {
         margin: 0;
         color: var(--text-primary);
     }
 
-    .request-demo-success__description {
+    .register-success__description {
         margin: 0;
         color: var(--text-primary);
+    }
+
+    .register-success__cta {
+        margin-top: var(--space-3);
     }
 
     @media (max-width: 1023px) {
-        .request-demo-success {
+        .register-success {
             margin-top: 0;
         }
     }
 
     @media (max-width: 767px) {
-        .request-demo-success__card {
+        .register-success__card {
             padding: var(--space-8) var(--space-5);
         }
     }

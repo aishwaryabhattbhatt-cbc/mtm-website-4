@@ -258,5 +258,22 @@
     "key": "news_card_cta",
     "en": "Read More",
     "fr": ""
-  }
+  },
+  "report_download_page_title": { "key": "report_download_page_title", "en": "Download This Report", "fr": "" },
+  "report_download_page_description": { "key": "report_download_page_description", "en": "Thank you for your interest in this content. Please fill out the form below, and we will provide you with an email containing a download link.", "fr": "" },
+  "report_download_select_subtitle": { "key": "report_download_select_subtitle", "en": "Select Free Report", "fr": "" },
+  "report_download_first_name_label": { "key": "report_download_first_name_label", "en": "First Name", "fr": "" },
+  "report_download_first_name_placeholder": { "key": "report_download_first_name_placeholder", "en": "John", "fr": "" },
+  "report_download_last_name_label": { "key": "report_download_last_name_label", "en": "Last Name", "fr": "" },
+  "report_download_last_name_placeholder": { "key": "report_download_last_name_placeholder", "en": "Doe", "fr": "" },
+  "report_download_email_label": { "key": "report_download_email_label", "en": "Work Email", "fr": "" },
+  "report_download_email_placeholder": { "key": "report_download_email_placeholder", "en": "john@workmail.com", "fr": "" },
+  "report_download_organisation_label": { "key": "report_download_organisation_label", "en": "Organisation", "fr": "" },
+  "report_download_organisation_placeholder": { "key": "report_download_organisation_placeholder", "en": "Organisation Name", "fr": "" },
+  "report_download_position_label": { "key": "report_download_position_label", "en": "Position", "fr": "" },
+  "report_download_position_placeholder": { "key": "report_download_position_placeholder", "en": "Marketing Director", "fr": "" },
+  "download_confirmation_page_title": { "key": "download_confirmation_page_title", "en": "Reports Sent", "fr": "" },
+  "download_confirmation_title": { "key": "download_confirmation_title", "en": "Check Your Inbox!", "fr": "" },
+  "download_confirmation_description": { "key": "download_confirmation_description", "en": "We've sent your selected reports to your inbox. If you don't see the email in a few minutes, check your spam folder.", "fr": "" },
+  "download_confirmation_insights_cta": { "key": "download_confirmation_insights_cta", "en": "Go Back to Exploring", "fr": "" }
 }

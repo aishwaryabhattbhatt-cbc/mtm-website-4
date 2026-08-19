@@ -464,6 +464,18 @@ h3,
     text-transform: capitalize;
 }
 
+/* Same rationale as above, applied to form-field labels: every current
+   usage (First Name, Last Name, Work Email, Organisation, Position, Email,
+   Message, Language Preference) is already authored Title Case, but the
+   text is CMS-editable (labelKey), so this guards future Sheet edits from
+   silently drifting to sentence case. Includes required-field-style labels
+   that sit outside the FormField component (e.g. the report-download
+   "Choose the Free Reports You Want" selector heading). */
+:lang(en) .form-field__label,
+:lang(en) .report-download-section__reports-subtitle {
+    text-transform: capitalize;
+}
+
 .text-h4 {
     font-family: var(--font-subheading);
     font-size: var(--fs-h4);

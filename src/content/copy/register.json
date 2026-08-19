@@ -1,0 +1,87 @@
+{
+  "hero_title": {
+    "key": "hero_title",
+    "en": "Register",
+    "fr": ""
+  },
+  "hero_subtitle": {
+    "key": "hero_subtitle",
+    "en": "To gain access through your employer's subscription please fill out the following registration form. Please use your work email address.",
+    "fr": ""
+  },
+  "hero_form_first_name_label": {
+    "key": "hero_form_first_name_label",
+    "en": "First Name",
+    "fr": ""
+  },
+  "hero_form_first_name_placeholder": {
+    "key": "hero_form_first_name_placeholder",
+    "en": "John",
+    "fr": ""
+  },
+  "hero_form_last_name_label": {
+    "key": "hero_form_last_name_label",
+    "en": "Last Name",
+    "fr": ""
+  },
+  "hero_form_last_name_placeholder": {
+    "key": "hero_form_last_name_placeholder",
+    "en": "Doe",
+    "fr": ""
+  },
+  "hero_form_email_label": {
+    "key": "hero_form_email_label",
+    "en": "Work Email",
+    "fr": ""
+  },
+  "hero_form_email_placeholder": {
+    "key": "hero_form_email_placeholder",
+    "en": "john@workmail.com",
+    "fr": ""
+  },
+  "hero_form_department_label": {
+    "key": "hero_form_department_label",
+    "en": "Department",
+    "fr": ""
+  },
+  "hero_form_department_placeholder": {
+    "key": "hero_form_department_placeholder",
+    "en": "Marketing",
+    "fr": ""
+  },
+  "hero_form_job_title_label": {
+    "key": "hero_form_job_title_label",
+    "en": "Job Title",
+    "fr": ""
+  },
+  "hero_form_job_title_placeholder": {
+    "key": "hero_form_job_title_placeholder",
+    "en": "Marketing Director",
+    "fr": ""
+  },
+  "hero_form_submit": {
+    "key": "hero_form_submit",
+    "en": "Submit",
+    "fr": ""
+  },
+  "hero_form_note": {
+    "key": "hero_form_note",
+    "en": "Once the registration form is complete you'll receive your login details by email.\nIf nothing is received, please check your spam/junk folder.\nIf your email domain is not recognized or if you have questions,",
+    "fr": ""
+  },
+  "hero_form_note_cta": {
+    "key": "hero_form_note_cta",
+    "en": "Contact Us",
+    "fr": ""
+  },
+  "hero_form_has_account_text": {
+    "key": "hero_form_has_account_text",
+    "en": "Already have an account?",
+    "fr": ""
+  },
+  "hero_form_has_account_cta": {
+    "key": "hero_form_has_account_cta",
+    "en": "Sign In",
+    "fr": ""
+  }
+}

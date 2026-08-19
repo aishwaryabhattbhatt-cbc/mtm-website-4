@@ -1,0 +1,220 @@
+---
+// Mirrors RequestDemoSuccessSection.astro's glass-card success layout,
+// extended with two CTAs.
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="download-success">
+    <div class="download-success__pattern" aria-hidden="true">
+        <img
+            src={`${base}images/request-demo/hero-pattern.png`}
+            alt=""
+            class="download-success__pattern-img"
+        />
+    </div>
+
+    <div class="download-success__card">
+        <div class="download-success__content">
+            <span
+                class="download-success__icon hero-fade-in"
+                style="animation-delay: 0.1s"
+                aria-hidden="true"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon-m"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </span>
+
+            <h2
+                class="hero-fade-in"
+                style="animation-delay: 0.2s"
+                data-copy-key="download_confirmation_title"
+            >
+                {t(copy, 'download_confirmation_title', locale, 'Check Your Inbox!')}
+            </h2>
+
+            <p
+                class="text-body-p1 download-success__description hero-fade-in"
+                style="animation-delay: 0.3s"
+                data-copy-key="download_confirmation_description"
+            >
+                {
+                    t(
+                        copy,
+                        'download_confirmation_description',
+                        locale,
+                        "We've sent your selected reports to your inbox. If you don't see the email in a few minutes, check your spam folder."
+                    )
+                }
+            </p>
+
+            <div class="download-success__actions hero-fade-in" style="animation-delay: 0.4s">
+                <Button
+                    variant="secondary"
+                    size="lg"
+                    href={`${base}${locale}/insights/#free-reports`}
+                    class="download-success__back-cta"
+                    data-back-cta
+                    data-copy-key="download_confirmation_insights_cta"
+                >
+                    {t(copy, 'download_confirmation_insights_cta', locale, 'Go Back to Exploring')}
+                </Button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .download-success {
+        position: relative;
+        width: 100%;
+        overflow: clip;
+        padding: var(--section-pad-block-lg) var(--content-margin-inline);
+        margin-top: var(--navbar-height);
+        background: var(--surface-white);
+    }
+
+    .hero-fade-in {
+        opacity: 0;
+        animation: hero-fade-in-up var(--motion-duration-heading) var(--motion-ease-standard)
+            forwards;
+    }
+
+    @keyframes hero-fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(1.625rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-fade-in {
+            animation: none;
+            opacity: 1;
+        }
+    }
+
+    .download-success__pattern {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .download-success__pattern-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .download-success__card {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 90rem);
+        margin: 0 auto;
+        padding: var(--space-12) var(--space-12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--layout-card-radius);
+        background: rgba(255, 255, 255, 0.39);
+        border: var(--stroke-1) solid rgba(255, 255, 255, 0.37);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-beautiful);
+    }
+
+    .download-success__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--space-4);
+        width: 100%;
+        max-width: 34rem;
+    }
+
+    .download-success__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--space-9);
+        height: var(--space-9);
+        border-radius: var(--radius-full);
+        background: var(--badge-newcomers);
+        color: var(--text-white);
+        flex-shrink: 0;
+    }
+
+    .download-success__content h2 {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .download-success__description {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .download-success__actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-5);
+        width: 100%;
+        margin-top: var(--space-3);
+    }
+
+    @media (max-width: 1023px) {
+        .download-success {
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .download-success__card {
+            padding: var(--space-8) var(--space-5);
+        }
+
+        .download-success__actions {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+</style>
+
+<script>
+    // The "from" param carries the page/section the visitor started from
+    // (set by the report card/CTA that linked into the report-download
+    // flow, forwarded through the form's submit redirect). Point the CTA
+    // there instead of the fixed insights-page fallback when it's present.
+    const backCta = document.querySelector<HTMLAnchorElement>('[data-back-cta]');
+    const fromParam = new URLSearchParams(window.location.search).get('from');
+    if (backCta && fromParam) {
+        backCta.href = fromParam;
+    }
+</script>

@@ -106,7 +106,7 @@
   },
   "hero_form_interest_newcomer": {
     "key": "hero_form_interest_newcomer",
-    "en": "Newcomer",
+    "en": "Newcomers",
     "fr": ""
   },
   "hero_form_interest_census": {
@@ -114,24 +114,9 @@
     "en": "Census",
     "fr": ""
   },
-  "hero_form_interest_reports": {
-    "key": "hero_form_interest_reports",
-    "en": "Reports",
-    "fr": ""
-  },
-  "hero_form_interest_tools": {
-    "key": "hero_form_interest_tools",
-    "en": "Tools",
-    "fr": ""
-  },
   "hero_form_interest_services": {
     "key": "hero_form_interest_services",
     "en": "Services",
-    "fr": ""
-  },
-  "hero_form_interest_variables": {
-    "key": "hero_form_interest_variables",
-    "en": "Variables",
     "fr": ""
   },
   "hero_form_message_label": {

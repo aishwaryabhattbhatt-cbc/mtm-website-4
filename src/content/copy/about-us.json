@@ -184,6 +184,16 @@
     "en": "MTM Census Tool 2.0 and the MTM Chatbot launch.",
     "fr": ""
   },
+  "about_timeline_today_label": {
+    "key": "about_timeline_today_label",
+    "en": "Today",
+    "fr": ""
+  },
+  "about_timeline_today_cta": {
+    "key": "about_timeline_today_cta",
+    "en": "Reach out to us today!",
+    "fr": ""
+  },
   "about_team_title": {
     "key": "about_team_title",
     "en": "Meet the team",

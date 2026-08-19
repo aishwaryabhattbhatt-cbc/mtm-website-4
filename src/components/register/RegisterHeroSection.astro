@@ -1,0 +1,347 @@
+---
+// src/components/register/RegisterHeroSection.astro
+// Mirrors SignInHeroSection.astro's layout (dynamic WebGL background,
+// centered intro + card) for the same auth-flow family.
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+import FormField from '../shared/FormField.astro';
+import SignInBackground from '../sign-in/SignInBackground.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="register-hero section-height-100">
+    <SignInBackground id="webgl-background-register" />
+
+    <div class="register-hero__content">
+        <div class="register-hero__stack">
+            <div class="register-hero__intro hero-fade-in" style="animation-delay: 0.1s">
+                <h1 class="register-hero__title" data-copy-key="hero_title">
+                    {t(copy, 'hero_title', locale, 'Register')}
+                </h1>
+
+                <p class="text-body-p2 register-hero__subtitle" data-copy-key="hero_subtitle">
+                    {
+                        t(
+                            copy,
+                            'hero_subtitle',
+                            locale,
+                            "To gain access through your employer's subscription please fill out the following registration form. Please use your work email address."
+                        )
+                    }
+                </p>
+            </div>
+
+            <div class="register-hero__card hero-fade-in" style="animation-delay: 0.2s">
+                <form
+                    class="register-hero__form"
+                    aria-label="Create your user account"
+                    data-submit-href={`${base}${locale}/register-success/`}
+                >
+                    <div class="register-hero__row">
+                        <FormField
+                            locale={locale}
+                            copy={copy}
+                            variant="field-with-label"
+                            type="text"
+                            name="firstName"
+                            labelKey="hero_form_first_name_label"
+                            label="First Name"
+                            placeholderKey="hero_form_first_name_placeholder"
+                            placeholder="John"
+                            labelColor="primary"
+                            required
+                        />
+                        <FormField
+                            locale={locale}
+                            copy={copy}
+                            variant="field-with-label"
+                            type="text"
+                            name="lastName"
+                            labelKey="hero_form_last_name_label"
+                            label="Last Name"
+                            placeholderKey="hero_form_last_name_placeholder"
+                            placeholder="Doe"
+                            labelColor="primary"
+                            required
+                        />
+                    </div>
+
+                    <FormField
+                        locale={locale}
+                        copy={copy}
+                        variant="field-with-label"
+                        type="email"
+                        name="email"
+                        labelKey="hero_form_email_label"
+                        label="Work Email"
+                        placeholderKey="hero_form_email_placeholder"
+                        placeholder="john@workmail.com"
+                        emailValidation="none"
+                        labelColor="primary"
+                        required
+                    />
+
+                    <div class="register-hero__row">
+                        <FormField
+                            locale={locale}
+                            copy={copy}
+                            variant="field-with-label"
+                            type="text"
+                            name="department"
+                            labelKey="hero_form_department_label"
+                            label="Department"
+                            placeholderKey="hero_form_department_placeholder"
+                            placeholder="Marketing"
+                            labelColor="primary"
+                            required
+                        />
+                        <FormField
+                            locale={locale}
+                            copy={copy}
+                            variant="field-with-label"
+                            type="text"
+                            name="jobTitle"
+                            labelKey="hero_form_job_title_label"
+                            label="Job Title"
+                            placeholderKey="hero_form_job_title_placeholder"
+                            placeholder="Marketing Director"
+                            labelColor="primary"
+                            required
+                        />
+                    </div>
+
+                    <div class="register-hero__actions">
+                        <Button
+                            variant="primary"
+                            size="lg"
+                            type="submit"
+                            class="register-hero__submit"
+                        >
+                            {t(copy, 'hero_form_submit', locale, 'Submit')}
+                        </Button>
+                    </div>
+                </form>
+            </div>
+
+            <p class="text-body-p3 register-hero__note hero-fade-in" style="animation-delay: 0.3s">
+                <span data-copy-key="hero_form_note">
+                    {
+                        t(
+                            copy,
+                            'hero_form_note',
+                            locale,
+                            "Once the registration form is complete you'll receive your login details by email.\nIf nothing is received, please check your spam/junk folder.\nIf your email domain is not recognized or if you have questions,"
+                        )
+                    }
+                </span>{' '}
+                <a href={`${base}${locale}/contact/`} data-copy-key="hero_form_note_cta">
+                    {t(copy, 'hero_form_note_cta', locale, 'Contact Us')}
+                </a>
+            </p>
+
+            <p
+                class="text-body-p3 register-hero__signin hero-fade-in"
+                style="animation-delay: 0.4s"
+            >
+                <span data-copy-key="hero_form_has_account_text">
+                    {t(copy, 'hero_form_has_account_text', locale, 'Already have an account?')}
+                </span>{' '}
+                <a href={`${base}${locale}/sign-in/`} data-copy-key="hero_form_has_account_cta">
+                    {t(copy, 'hero_form_has_account_cta', locale, 'Sign In')}
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .register-hero {
+        position: relative;
+        width: 100%;
+        overflow: clip;
+        background: var(--surface-white);
+        margin-top: var(--navbar-height);
+        padding: var(--section-pad-block) var(--content-margin-inline);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-fade-in {
+        opacity: 0;
+        animation: hero-fade-in-up var(--motion-duration-heading) var(--motion-ease-standard)
+            forwards;
+    }
+
+    @keyframes hero-fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(1.625rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-fade-in {
+            animation: none;
+            opacity: 1;
+        }
+    }
+
+    .register-hero__content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .register-hero__stack {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-9);
+        width: 100%;
+    }
+
+    .register-hero__card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        width: 100%;
+        max-width: 37.5rem;
+        padding: var(--space-9);
+        border-radius: var(--radius-m);
+        background: var(--surface-blue);
+        box-shadow: var(--shadow-card);
+    }
+
+    .register-hero__intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        max-width: 37.5rem;
+        text-align: center;
+    }
+
+    .register-hero__title {
+        margin: 0;
+        font-family: var(--font-heading);
+        font-size: var(--fs-subsection-h2);
+        font-weight: var(--fw-semibold);
+        line-height: var(--lh-tight);
+        letter-spacing: var(--ls-heading-lg);
+        color: var(--text-primary);
+    }
+
+    .register-hero__subtitle {
+        margin: 0;
+        color: var(--text-secondary);
+    }
+
+    .register-hero__form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+    }
+
+    .register-hero__row {
+        display: flex;
+        gap: var(--space-5);
+    }
+
+    .register-hero__row > :global(.form-field) {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .register-hero__actions {
+        display: flex;
+        margin-top: var(--space-3);
+    }
+
+    .register-hero__submit {
+        width: 100%;
+        text-align: center;
+    }
+
+    .register-hero__note {
+        margin: 0;
+        width: 100%;
+        max-width: 37.5rem;
+        text-align: left;
+        color: var(--text-secondary);
+        white-space: pre-line;
+    }
+
+    .register-hero__note a {
+        color: var(--text-primary);
+    }
+
+    .register-hero__signin {
+        margin: 0;
+        width: 100%;
+        max-width: 37.5rem;
+        text-align: left;
+        color: var(--text-secondary);
+    }
+
+    .register-hero__signin a {
+        color: var(--text-primary);
+    }
+
+    @media (max-width: 1023px) {
+        .register-hero {
+            height: auto;
+            min-height: var(--section-height-100);
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .register-hero {
+            align-items: flex-start;
+            padding: var(--space-11) var(--content-margin-inline) var(--space-9);
+        }
+
+        .register-hero__card {
+            padding: var(--space-6);
+        }
+
+        .register-hero__row {
+            flex-direction: column;
+            gap: var(--space-5);
+        }
+    }
+</style>
+
+<script>
+    const form = document.querySelector<HTMLFormElement>('.register-hero__form');
+
+    form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const submitHref = form.dataset.submitHref;
+        if (submitHref) {
+            window.location.href = submitHref;
+        }
+    });
+</script>

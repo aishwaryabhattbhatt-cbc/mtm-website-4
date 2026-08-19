@@ -1,0 +1,12 @@
+{
+  "success_title": {
+    "key": "success_title",
+    "en": "Form Submitted!",
+    "fr": ""
+  },
+  "success_description": {
+    "key": "success_description",
+    "en": "Thank you for reaching out. One of our experts will be in touch with you shortly.",
+    "fr": ""
+  }
+}

@@ -30,6 +30,9 @@ interface Props {
 const { locale, copy } = Astro.props as Props;
 
 const base = import.meta.env.BASE_URL;
+// Lets the download-success page's "Go Back to Exploring" CTA return
+// here instead of a hardcoded destination.
+const reportDownloadHref = `${base}${locale}/insights/report-download/?from=${encodeURIComponent(`${base}${locale}/#reports-library`)}`;
 
 const products = [
     {
@@ -293,7 +296,7 @@ const products = [
         </div>
     </div>
 
-    <div class="reports-library-bg suite-fly-in">
+    <div class="reports-library-bg suite-fly-in" id="reports-library">
         <div class="reports-library row">
             <!-- LEFT: Heading + description -->
             <div class="products-left col col-12 col-lg-5 reports-content">
@@ -318,7 +321,7 @@ const products = [
                     <Button
                         variant="primary"
                         size="md"
-                        href={`${base}${locale}/insights/report-download/`}
+                        href={reportDownloadHref}
                         data-copy-key="package_2_cta_2"
                     >
                         <span class="reports-cta-btn-inner">
@@ -381,7 +384,7 @@ const products = [
                     <Button
                         variant="primary"
                         size="md"
-                        href={`${base}${locale}/insights/report-download/`}
+                        href={reportDownloadHref}
                         data-copy-key="package_2_cta_2"
                     >
                         <span class="reports-cta-btn-inner">
@@ -663,6 +666,7 @@ const products = [
         margin-inline: calc(-1 * var(--content-margin-inline));
         padding-inline: var(--content-margin-inline);
         padding-block: var(--section-pad-block);
+        scroll-margin-top: var(--navbar-height);
     }
 
     .reports-library {

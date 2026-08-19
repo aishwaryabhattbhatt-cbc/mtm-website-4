@@ -24,18 +24,11 @@ const expectItems = [
     { key: 'hero_expect_item_3', fallback: 'Expert advice on how MTM can fit in your workflow' },
 ];
 
-const interestOptionRows = [
-    [
-        { key: 'hero_form_interest_mtm18', fallback: 'MTM 18+', value: 'mtm18' },
-        { key: 'hero_form_interest_junior', fallback: 'Junior', value: 'junior' },
-        { key: 'hero_form_interest_newcomer', fallback: 'Newcomer', value: 'newcomer' },
-        { key: 'hero_form_interest_census', fallback: 'Census', value: 'census' },
-    ],
-    [
-        { key: 'hero_form_interest_reports', fallback: 'Reports', value: 'reports' },
-        { key: 'hero_form_interest_tools', fallback: 'Tools', value: 'tools' },
-        { key: 'hero_form_interest_variables', fallback: 'Variables', value: 'variables' },
-    ],
+const interestOptions = [
+    { key: 'hero_form_interest_mtm18', fallback: 'MTM 18+', value: 'mtm18' },
+    { key: 'hero_form_interest_junior', fallback: 'Junior', value: 'junior' },
+    { key: 'hero_form_interest_newcomer', fallback: 'Newcomers', value: 'newcomer' },
+    { key: 'hero_form_interest_census', fallback: 'Census', value: 'census' },
 ];
 ---
 
@@ -191,27 +184,11 @@ const interestOptionRows = [
                         aria-labelledby="request-demo-interest-label"
                     >
                         {
-                            interestOptionRows.map((row, rowIndex) => (
-                                <div class="request-demo-hero__choice-row">
-                                    {row.map((option, colIndex) => (
-                                        <label
-                                            class:list={[
-                                                'request-demo-hero__choice',
-                                                'text-body-p3',
-                                                rowIndex > 0 &&
-                                                    colIndex === 0 &&
-                                                    'request-demo-hero__choice--row-start',
-                                            ]}
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                name="interests"
-                                                value={option.value}
-                                            />
-                                            {t(copy, option.key, locale, option.fallback)}
-                                        </label>
-                                    ))}
-                                </div>
+                            interestOptions.map((option) => (
+                                <label class="request-demo-hero__choice text-body-p3">
+                                    <input type="checkbox" name="interests" value={option.value} />
+                                    {t(copy, option.key, locale, option.fallback)}
+                                </label>
                             ))
                         }
                     </div>
@@ -415,14 +392,6 @@ const interestOptionRows = [
         column-gap: var(--space-6);
         row-gap: var(--space-1);
         align-items: center;
-    }
-
-    .request-demo-hero__choice-row {
-        display: contents;
-    }
-
-    .request-demo-hero__choice--row-start {
-        grid-column: 1;
     }
 
     .request-demo-hero__choice {

@@ -6,10 +6,11 @@ import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
+    useCase1ImageSrc: string;
+    useCase2ImageSrc: string;
 }
 
-const { locale, copy } = Astro.props as Props;
-const base = import.meta.env.BASE_URL;
+const { locale, copy, useCase1ImageSrc, useCase2ImageSrc } = Astro.props as Props;
 
 const vars1 = t(
     copy,
@@ -105,7 +106,7 @@ const vars2 = t(
             <div class="solutions-usecase-card__right">
                 <div class="solutions-usecase-image">
                     <img
-                        src={`${base}images/solutions/media/use-case-1.png`}
+                        src={useCase1ImageSrc}
                         alt=""
                         class="solutions-usecase-image-src"
                         loading="lazy"
@@ -157,7 +158,7 @@ const vars2 = t(
             <div class="solutions-usecase-card__right">
                 <div class="solutions-usecase-image">
                     <img
-                        src={`${base}images/solutions/media/use-case-2.png`}
+                        src={useCase2ImageSrc}
                         alt=""
                         class="solutions-usecase-image-src"
                         loading="lazy"
