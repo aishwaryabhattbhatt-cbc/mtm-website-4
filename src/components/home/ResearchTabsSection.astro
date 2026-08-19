@@ -83,84 +83,32 @@ const tabs = [
             'Explore a deep dataset spanning demographics, intent, and usage. Connect variables to uncover high-value opportunities.',
     },
 ];
-
-const cards = [
-    {
-        id: 'card-ai-usage',
-        label: 'AI Usage',
-        src: 'https://www.figma.com/api/mcp/asset/f3a681fe-a53a-4860-a5bb-41d42f70683e',
-    },
-    {
-        id: 'card-fast',
-        label: 'FAST',
-        src: 'https://www.figma.com/api/mcp/asset/fa8e679c-509e-4839-887d-76cd8bc771ec',
-    },
-    {
-        id: 'card-svod',
-        label: 'SVOD',
-        src: 'https://www.figma.com/api/mcp/asset/6ead7ec3-ee3c-486e-9a9f-5d87ae00e46b',
-    },
-    {
-        id: 'card-avod',
-        label: 'AVOD',
-        src: 'https://www.figma.com/api/mcp/asset/d9105888-c61d-4678-ba3c-4a9d0bf8b7a9',
-    },
-    {
-        id: 'card-gaming',
-        label: 'Gaming',
-        src: 'https://www.figma.com/api/mcp/asset/fa8e679c-509e-4839-887d-76cd8bc771ec',
-    },
-    {
-        id: 'card-news',
-        label: 'News',
-        src: 'https://www.figma.com/api/mcp/asset/f3a681fe-a53a-4860-a5bb-41d42f70683e',
-    },
-    {
-        id: 'card-social',
-        label: 'Social',
-        src: 'https://www.figma.com/api/mcp/asset/6ead7ec3-ee3c-486e-9a9f-5d87ae00e46b',
-    },
-    {
-        id: 'card-podcasts',
-        label: 'Podcasts',
-        src: 'https://www.figma.com/api/mcp/asset/d9105888-c61d-4678-ba3c-4a9d0bf8b7a9',
-    },
-    {
-        id: 'card-mobile',
-        label: 'Mobile',
-        src: 'https://www.figma.com/api/mcp/asset/fa8e679c-509e-4839-887d-76cd8bc771ec',
-    },
-    {
-        id: 'card-ecommerce',
-        label: 'Ecommerce',
-        src: 'https://www.figma.com/api/mcp/asset/f3a681fe-a53a-4860-a5bb-41d42f70683e',
-    },
-];
 ---
 
 <div id="research-assets" data-dashboard={dashboardImg.src} hidden aria-hidden="true"></div>
 <section class="research-section">
-    <h2 class="heading heading-fly-in" data-copy-key="access_title">
-        {t(copy, 'access_title', locale, 'Access credible research on')}
-    </h2>
-
     <div class="content content-fly-in">
-        <!-- LEFT: Topic Tabs -->
+        <!-- LEFT: Heading + Topic Tabs -->
         <div class="left-text">
-            {
-                tabs.map((tab, i) => (
-                    <div class="tab-item" data-tab={i}>
-                        <span class="tab-label text-body-p0-bold" data-copy-key={tab.labelKey}>
-                            {t(copy, tab.labelKey, locale, tab.labelFallback)}
-                        </span>
-                        <span class="tab-body-clip">
-                            <span class="tab-body text-body-p1" data-copy-key={tab.bodyKey}>
-                                {t(copy, tab.bodyKey, locale, tab.bodyFallback)}
+            <h2 class="heading heading-fly-in" data-copy-key="access_title">
+                {t(copy, 'access_title', locale, 'Access credible research on')}
+            </h2>
+            <div class="tabs-panel">
+                {
+                    tabs.map((tab, i) => (
+                        <div class="tab-item" data-tab={i}>
+                            <span class="tab-label text-body-p0-bold" data-copy-key={tab.labelKey}>
+                                {t(copy, tab.labelKey, locale, tab.labelFallback)}
                             </span>
-                        </span>
-                    </div>
-                ))
-            }
+                            <span class="tab-body-clip">
+                                <span class="tab-body text-body-p1" data-copy-key={tab.bodyKey}>
+                                    {t(copy, tab.bodyKey, locale, tab.bodyFallback)}
+                                </span>
+                            </span>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
 
         <!-- RIGHT: Visual -->
@@ -219,26 +167,22 @@ const cards = [
         z-index: 20;
     }
 
-    .heading {
-        margin-bottom: var(--space-3);
-    }
-
     @media (max-height: 750px) {
-        .heading {
-            margin-bottom: var(--space-1);
-        }
-
         .content {
             gap: var(--space-5);
         }
 
-        .left-text {
+        .tabs-panel {
             gap: 0.625rem;
         }
 
         .tab-item {
             gap: var(--space-1);
         }
+    }
+
+    .heading {
+        white-space: nowrap;
     }
 
     .heading-fly-in {
@@ -259,7 +203,7 @@ const cards = [
         display: flex;
         align-items: center;
         width: 100%;
-        gap: var(--space-8);
+        gap: var(--space-7);
     }
 
     .content-fly-in {
@@ -331,8 +275,22 @@ const cards = [
         top: 310px;
     }
 
-    /* LEFT TABS */
+    /* LEFT COLUMN: heading sits above the tabs panel */
     .left-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+        flex: 1 1 auto;
+        /* No min-width: 0 here on purpose — .heading is white-space: nowrap,
+           and the default flex min-width: auto keeps this column from ever
+           shrinking narrower than the nowrap heading needs. Without it the
+           heading silently overflows its box instead of the box growing to
+           fit (confirmed happening with the live copy at ~1440-1620px). */
+        max-width: 40rem;
+    }
+
+    /* TABS PANEL */
+    .tabs-panel {
         position: relative;
         --tab-progress: 0%;
         --tab-progress-duration: 3000ms;
@@ -340,11 +298,9 @@ const cards = [
         flex-direction: column;
         gap: var(--space-5);
         padding-left: var(--space-6);
-        flex: 1 1 auto;
-        min-width: 0;
     }
 
-    .left-text::before {
+    .tabs-panel::before {
         content: '';
         position: absolute;
         left: 0;
@@ -355,7 +311,7 @@ const cards = [
         background: var(--color-divider);
     }
 
-    .left-text::after {
+    .tabs-panel::after {
         content: '';
         position: absolute;
         left: 0;
@@ -373,29 +329,21 @@ const cards = [
         transition: height var(--tab-progress-duration) linear;
     }
 
-    /* Row mode: glass card behind the tabs, matching the footer CTA card */
+    /* Row mode: glass card wraps heading + tabs panel, matching the footer CTA card */
     @media (min-width: 1024px) {
         .left-text {
-            padding: var(--card-pad) var(--card-pad) var(--card-pad) calc(var(--card-pad) * 2);
+            padding: var(--card-pad);
             border-radius: var(--layout-card-radius);
             border: var(--stroke-1) solid color-mix(in srgb, var(--surface-white) 37%, transparent);
             background: color-mix(in srgb, var(--surface-white) 39%, transparent);
             backdrop-filter: blur(10px);
         }
 
-        .left-text::before,
-        .left-text::after {
-            left: var(--card-pad);
-            top: var(--card-pad);
-            bottom: var(--card-pad);
-        }
-
-        .left-text::after {
-            /* Inside the padded card the track is inset, so the raw
-               percentage no longer maps to it — scale the fraction by the
-               inset track height. Animating height (not scaleY) keeps the
-               rounded end caps undistorted at every progress stage. */
-            height: calc(var(--tab-progress-scale, 0) * (100% - 2 * var(--card-pad)));
+        .tabs-panel {
+            /* left-text's own card padding already insets the panel by
+               1x card-pad; add one more so text clears the progress bar
+               the same as before the card padding moved up a level. */
+            padding-left: var(--card-pad);
         }
     }
 
@@ -451,22 +399,17 @@ const cards = [
     /* RIGHT VISUAL */
     .right-visual {
         position: relative;
-        flex: 0 0 53.75rem;
-        width: 53.75rem;
+        /* Matches normalizeBoxVisual()'s contentWidth (774px worst-case
+           content span + 12px shadow margin) instead of the box canvas's
+           full 860px — the boxes only ever occupied ~786px of that, so the
+           container no longer carries dead space that used to sit between
+           the content and the section's right margin. */
+        flex: 0 0 49.125rem;
+        width: 49.125rem;
         max-width: none;
         min-width: 0;
         margin-left: auto;
         overflow: hidden;
-    }
-
-    .screen-wrapper {
-        position: relative;
-        margin-left: auto;
-        width: 95%;
-        aspect-ratio: 16 / 9;
-        overflow: visible;
-        box-shadow: none;
-        background: transparent;
     }
 
     .custom-box-layout {
@@ -709,78 +652,59 @@ const cards = [
         top: 439px;
     }
 
-    .screen-wrapper.hidden {
-        display: none;
-    }
-
-    .screen-wrapper img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        margin-top: 0;
-        background: transparent;
-        opacity: 1;
-        visibility: visible;
-        transition:
-            opacity 0.45s ease,
-            visibility 0s linear 0s;
-    }
-
-    .screen-wrapper img.is-hidden {
-        opacity: 0;
-        visibility: hidden;
-        transition:
-            opacity 0.45s ease,
-            visibility 0s linear 0.45s;
-    }
-
-    .cards-layer {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        pointer-events: none;
-    }
-
-    .screen-wrapper.is-empty::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: transparent;
-    }
-
-    :global(.research-icon-card.hidden) {
-        opacity: 0;
-        transform: scale(0.8);
-        pointer-events: none;
-    }
-
     /* ─── Row-mode proportional scale-down ─── */
+    /* Only .right-visual gets an explicit shrink formula — the box images
+       need to visually get smaller (normalizeBoxVisual() below reads this
+       width to scale/position them), text doesn't. .left-text stays
+       flex: 1 1 auto (its base rule), so it just fills whatever width is
+       left after .right-visual and the gap are subtracted, and its text
+       reflows normally at full size within that. No transform anywhere in
+       this range.
 
-    /* Range 1: 1440–1554px (margin-inline: 120px → available = vw − 240px)
-     Scale interpolates 1.0 → 0.913, keeping left-text at 375px + 40px gap */
+       Giving .left-text its own independent width formula (instead of
+       filling the remainder) was tried and reverted — two independently
+       shrinking widths don't sum back to the row's available width, and
+       the leftover became dead space via .right-visual's margin-left:
+       auto, visibly disconnecting the two columns at the narrow end of
+       the range. Filling the remainder is what guarantees no leftover gap
+       and no overflow, at the cost of not shrinking at exactly the same
+       rate as .right-visual — an acceptable trade next to a broken layout.
+
+       .heading is white-space: nowrap outside this range for a one-line
+       title, but that can't hold while .left-text's fluid width is being
+       squeezed by .right-visual's shrink — confirmed the real heading
+       copy overflows its own box (not just wraps) right at the edges of
+       this range. Allowing wrap here, same as mobile, is what keeps that
+       safe without re-introducing the leftover-gap problem a min-width
+       floor would cause. */
+
+    /* Range 1: 1440–1554px. Scale interpolates 1.0 → 0.913 */
     @media (min-width: 1440px) and (max-width: 1554px) {
         .research-section {
             --research-scale: calc(0.913 + (100vw - 1440px) / 1321px);
         }
         .right-visual {
             flex: 0 0 auto;
-            width: calc(var(--research-scale) * 53.75rem);
+            width: calc(var(--research-scale) * 49.125rem);
             max-width: none;
+        }
+        .heading {
+            white-space: normal;
         }
     }
 
-    /* Range 2: 1024–1439px (margin-inline: 72px → available = vw − 144px)
-     Scale interpolates 0.913 → 0.541, preserving 375px for left-text at 1024px */
+    /* Range 2: 1024–1439px. Scale interpolates 0.913 → 0.541 */
     @media (min-width: 1024px) and (max-width: 1439px) {
         .research-section {
             --research-scale: calc(0.541 + (100vw - 1024px) / 1115px);
         }
         .right-visual {
             flex: 0 0 auto;
-            width: calc(var(--research-scale) * 53.75rem);
+            width: calc(var(--research-scale) * 49.125rem);
             max-width: none;
+        }
+        .heading {
+            white-space: normal;
         }
     }
 
@@ -812,20 +736,27 @@ const cards = [
 
         .heading {
             text-align: center;
-            margin-bottom: var(--space-6);
+            white-space: normal;
         }
 
         .left-text {
             width: 23.4375rem;
             max-width: 100%;
+            /* .tab-label is still nowrap here (heading isn't, it's reset
+               above) — restore the default flex min-width guard so a long
+               label can't force the column past 100% on narrow phones. */
+            min-width: 0;
             align-self: center;
+        }
+
+        .tabs-panel {
             padding-left: 0;
             padding-top: var(--space-6);
             align-items: center;
         }
 
         /* Rotate progress bar to horizontal, placed above tabs */
-        .left-text::before {
+        .tabs-panel::before {
             left: 0;
             right: 0;
             top: 0;
@@ -834,7 +765,7 @@ const cards = [
             height: 0.375rem;
         }
 
-        .left-text::after {
+        .tabs-panel::after {
             left: 0;
             top: 0;
             bottom: auto;
@@ -865,16 +796,10 @@ const cards = [
             padding-bottom: var(--space-8);
         }
 
-        .left-text {
+        .tabs-panel {
             padding-left: 0;
             padding-top: var(--space-6);
-            flex-direction: column;
             gap: var(--space-4);
-        }
-
-        :global(.research-icon-card) {
-            width: 5.25rem;
-            height: 5.25rem;
         }
     }
 </style>
@@ -886,25 +811,30 @@ const cards = [
     const section = document.querySelector<HTMLElement>('.research-section');
     const heading = section?.querySelector<HTMLElement>('.heading-fly-in');
     const contentBlock = section?.querySelector<HTMLElement>('.content-fly-in');
-    const leftText = section?.querySelector<HTMLElement>('.left-text');
-    const iconCards = section?.querySelectorAll<HTMLElement>('.research-icon-card');
+    const tabsPanel = section?.querySelector<HTMLElement>('.tabs-panel');
 
     function normalizeBoxVisual() {
         const boxVisual = document.getElementById('boxVisual') as HTMLElement | null;
         const container = document.getElementById('rightVisual') as HTMLElement | null;
         if (!boxVisual || !container) return;
 
-        // Visible content spans x=176 to x=878 within the 860px box layout.
-        // shadowMargin reserves room past the tightest edges (box2's right
-        // edge, box4's bottom edge in tab 1) for the boxes' drop-shadow —
-        // container overflow:hidden was clipping it when those edges landed
-        // exactly on the crop bounds with zero spare pixels.
+        // Content spans x=176 (tab0 box1) to x=950 (tab1 box2: left 550 +
+        // 400 width) across every tab state. shadowMargin reserves room past
+        // that tightest edge for the boxes' drop-shadow — container
+        // overflow:hidden was clipping it when the edge landed exactly on
+        // the crop bounds with zero spare pixels. Now that the container is
+        // sized tight to the content (no leftover centering slack to absorb
+        // slop), this has to be the true worst-case edge across all three
+        // tabs, not just tab0's.
         const shadowMargin = 12;
         const contentMinX = 176;
-        const contentWidth = 753 + shadowMargin; // box2 right edge (529+400=929) minus contentMinX (176)
+        const contentWidth = 950 - contentMinX + shadowMargin;
         const containerWidth = container.clientWidth || boxVisual.clientWidth || 860;
         const scale = Math.min(1, containerWidth / contentWidth);
-        const offsetX = (containerWidth - contentWidth * scale) / 2 - contentMinX * scale;
+        // Flush right against the container's right edge instead of centered —
+        // the same uniform translateX still shifts every box by one shared
+        // amount, so their positions relative to each other are untouched.
+        const offsetX = containerWidth - (contentMinX + contentWidth) * scale;
 
         boxVisual.style.transformOrigin = 'top left';
         boxVisual.style.transform = `translateX(${offsetX}px) scale(${scale})`;
@@ -918,7 +848,12 @@ const cards = [
             const clip = t.querySelector<HTMLElement>('.tab-body-clip');
             const body = t.querySelector<HTMLElement>('.tab-body');
             if (!clip || !body) return;
-            clip.style.height = i === activeIdx ? body.getBoundingClientRect().height + 'px' : '0';
+            // scrollHeight, not getBoundingClientRect() — the latter is
+            // transform-aware, and .content gets scaled down by an ancestor
+            // in the row-mode breakpoints below. Reading a post-transform
+            // height back into an inline style on a descendant of that same
+            // transform double-shrinks it, clipping the text.
+            clip.style.height = i === activeIdx ? body.scrollHeight + 'px' : '0';
         });
     }
 
@@ -1073,11 +1008,11 @@ const cards = [
     }
 
     function updateTabProgressBar(idx: number, durationMs = TAB_DURATION_MS, immediate = false) {
-        if (!leftText) return;
+        if (!tabsPanel) return;
         const progress = ((idx + 1) / 3) * 100;
-        leftText.style.setProperty('--tab-progress-duration', `${immediate ? 0 : durationMs}ms`);
-        leftText.style.setProperty('--tab-progress', `${progress}%`);
-        leftText.style.setProperty('--tab-progress-scale', String(progress / 100));
+        tabsPanel.style.setProperty('--tab-progress-duration', `${immediate ? 0 : durationMs}ms`);
+        tabsPanel.style.setProperty('--tab-progress', `${progress}%`);
+        tabsPanel.style.setProperty('--tab-progress-scale', String(progress / 100));
     }
 
     // Attach click listeners
@@ -1098,10 +1033,6 @@ const cards = [
 
     function setTabsEnabled(enabled: boolean) {
         tabs.forEach((tab) => tab.classList.toggle('is-disabled', !enabled));
-    }
-
-    function setAllIconsHidden(hidden: boolean) {
-        iconCards?.forEach((card) => card.classList.toggle('hidden', hidden));
     }
 
     function startAutoRotate() {
@@ -1130,8 +1061,7 @@ const cards = [
         startAutoRotate();
     });
 
-    // Init default state: no active tab interactions and no icons shown.
-    setAllIconsHidden(true);
+    // Init default state: no active tab interactions.
     setTabsEnabled(false);
     // Start at 0 and wait for full in-view before beginning playback.
     updateTabProgressBar(-1, 0, true);
