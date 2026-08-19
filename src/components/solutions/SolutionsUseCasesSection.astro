@@ -67,17 +67,19 @@ const vars2 = t(
         <!-- Card 1 -->
         <article class="solutions-usecase-card card-fly-in">
             <div class="solutions-usecase-card__left">
-                <span class="text-body-p0 solutions-usecase-eyebrow">Use Case</span>
-                <p class="text-body-p1 solutions-usecase-desc">
-                    {
-                        t(
-                            copy,
-                            'usecase_1_description',
-                            locale,
-                            'Understanding the most effective way to promote a new TV show to affluent Baby Boomers.'
-                        )
-                    }
-                </p>
+                <div class="solutions-usecase-heading">
+                    <span class="text-body-p0 solutions-usecase-eyebrow">Use Case</span>
+                    <p class="text-body-p1 solutions-usecase-desc">
+                        {
+                            t(
+                                copy,
+                                'usecase_1_description',
+                                locale,
+                                'Understanding the most effective way to promote a new TV show to affluent Baby Boomers.'
+                            )
+                        }
+                    </p>
+                </div>
                 <div class="solutions-usecase-variables">
                     <div class="solutions-usecase-pills">
                         {
@@ -119,17 +121,19 @@ const vars2 = t(
         <!-- Card 2 -->
         <article class="solutions-usecase-card card-fly-in">
             <div class="solutions-usecase-card__left">
-                <span class="text-body-p0 solutions-usecase-eyebrow">Use Case</span>
-                <p class="text-body-p1 solutions-usecase-desc">
-                    {
-                        t(
-                            copy,
-                            'usecase_2_description',
-                            locale,
-                            'Gaining maximum exposure for a podcast aimed at men aged 18 to 35'
-                        )
-                    }
-                </p>
+                <div class="solutions-usecase-heading">
+                    <span class="text-body-p0 solutions-usecase-eyebrow">Use Case</span>
+                    <p class="text-body-p1 solutions-usecase-desc">
+                        {
+                            t(
+                                copy,
+                                'usecase_2_description',
+                                locale,
+                                'Gaining maximum exposure for a podcast aimed at men aged 18 to 35'
+                            )
+                        }
+                    </p>
+                </div>
                 <div class="solutions-usecase-variables">
                     <div class="solutions-usecase-pills">
                         {
@@ -225,8 +229,8 @@ const vars2 = t(
     .solutions-usecase-card {
         display: grid;
         grid-template-columns: 2fr 1fr;
-        gap: var(--space-3);
-        padding: var(--card-pad-thin);
+        gap: var(--card-pad);
+        padding: var(--card-pad);
         background: var(--surface-white);
         border-radius: var(--radius-m);
         box-shadow: var(--shadow-card);
@@ -240,7 +244,12 @@ const vars2 = t(
         display: flex;
         flex-direction: column;
         gap: var(--space-6);
-        padding: var(--space-5);
+    }
+
+    .solutions-usecase-heading {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
     }
 
     .solutions-usecase-eyebrow {
@@ -285,7 +294,6 @@ const vars2 = t(
     .solutions-usecase-card__right {
         display: flex;
         flex-direction: column;
-        padding: var(--space-5);
     }
 
     .solutions-usecase-image {
@@ -321,6 +329,14 @@ const vars2 = t(
         color: var(--text-secondary);
     }
 
+    /* 1:1 columns between mobile and the widest desktop breakpoint — wider
+       than that, the left copy gets the extra 2fr:1fr room back. */
+    @media (max-width: 1440px) {
+        .solutions-usecase-card {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
     /* Tablet */
     @media (max-width: 1023px) {
         .solutions-usecases-section {
@@ -328,7 +344,6 @@ const vars2 = t(
         }
 
         .solutions-usecase-card {
-            grid-template-columns: 2fr 1fr;
             width: calc(100vw - 2 * var(--content-margin-inline));
         }
     }
