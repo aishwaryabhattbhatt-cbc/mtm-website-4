@@ -446,6 +446,24 @@ h3,
     letter-spacing: var(--ls-heading-lg);
 }
 
+/* Enforced globally instead of per-string, so every current and future
+   Source Serif heading (component fallback or live CMS copy pulled from the
+   Sheet) renders Title Case without needing every string edited by hand.
+   Scoped to :lang(en) — French doesn't title-case the same way, so French
+   headings render as authored. */
+:lang(en) h1,
+:lang(en) .text-section-h1,
+:lang(en) h2,
+:lang(en) .text-subsection-h2,
+:lang(en) h3,
+:lang(en) .text-tertiary-h3,
+:lang(en) .text-hero,
+:lang(en) .text-hero-1-5x,
+:lang(en) .text-metrics,
+:lang(en) .text-metrics-1-5x {
+    text-transform: capitalize;
+}
+
 .text-h4 {
     font-family: var(--font-subheading);
     font-size: var(--fs-h4);

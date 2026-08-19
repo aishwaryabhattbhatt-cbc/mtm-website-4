@@ -191,12 +191,12 @@
   },
   "workflow_step_1_title": {
     "key": "workflow_step_1_title",
-    "en": "Export for your audience",
+    "en": "Build Market-Ready Skills",
     "fr": ""
   },
   "workflow_step_1_description": {
     "key": "workflow_step_1_description",
-    "en": "Ground assignments in the most up-to-date research and build market-ready skills by navigating the same metrics and trends used by Canada’s top media companies, ad agencies, media associations and governmental institutions.",
+    "en": "Ground assignments in the most up-to-date research and build market-ready skills by navigating the same metrics and trends used by Canada’s top industry leaders and governmental institutions.",
     "fr": ""
   },
   "workflow_step_2_number": {
@@ -206,7 +206,7 @@
   },
   "workflow_step_2_title": {
     "key": "workflow_step_2_title",
-    "en": "Export for your audience",
+    "en": "Enrich Course Curriculum",
     "fr": ""
   },
   "workflow_step_2_description": {
@@ -221,7 +221,7 @@
   },
   "workflow_step_3_title": {
     "key": "workflow_step_3_title",
-    "en": "Export for your audience",
+    "en": "Power Serious Academic Inquiry",
     "fr": ""
   },
   "workflow_step_3_description": {
@@ -236,7 +236,7 @@
   },
   "usecases_description": {
     "key": "usecases_description",
-    "en": "Learn how the MTM offers essential content and tools for the professors and students alike",
+    "en": "Learn how the MTM offers essential content and tools for professors and students alike",
     "fr": ""
   },
   "usecase_1_brand": {
@@ -306,12 +306,12 @@
   },
   "testimonial_quote": {
     "key": "testimonial_quote",
-    "en": "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
+    "en": "As the author of nine editions of a Canadian Advertising textbook, I have included data from Media Technology Monitor (MTM) for the past five editions to enhance the Broadcast, Internet and Social Media Chapters. I believe the data improved the quality allowing students to understand the complexities of advertising planning decisions. The textbook contains the most current consumer media technology usage and adoption data to keep it in a leading market position. MTM is a wonderful partner and I look forward to working with them for the next edition.",
     "fr": ""
   },
   "testimonial_attribution": {
     "key": "testimonial_attribution",
-    "en": "University student",
+    "en": "Michael Guolla, Professor, University of Ottawa",
     "fr": ""
   }
 }
