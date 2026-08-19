@@ -6,7 +6,7 @@
   },
   "hero_title": {
     "key": "hero_title",
-    "en": "Win the pitch. Validate the plan.",
+    "en": "Win the pitch, Validate the plan",
     "fr": ""
   },
   "hero_description": {
@@ -96,7 +96,7 @@
   },
   "workflow_title": {
     "key": "workflow_title",
-    "en": "",
+    "en": "How MTM fits the way you work already",
     "fr": ""
   },
   "workflow_description": {

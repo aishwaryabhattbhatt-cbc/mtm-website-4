@@ -21,7 +21,9 @@ const askMtmIconPath = `${base}icons/products/AskMTM-REV.svg`;
         aria-label={t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
         iconSrc={askMtmIconPath}
         iconAlt="Ask MTM"
-    />
+    >
+        {t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
+    </Button>
 </div>
 
 <style>
@@ -35,25 +37,50 @@ const askMtmIconPath = `${base}icons/products/AskMTM-REV.svg`;
     .ask-mtm-sticky-button :global(.ask-mtm-sticky-button__btn) {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        width: var(--space-11);
-        height: var(--space-11);
-        padding: 0;
+        justify-content: flex-start;
+        overflow: hidden;
+        gap: var(--space-3);
+        color: var(--text-white);
+        height: var(--space-10);
+        max-width: var(--space-10);
+        padding: 0 var(--space-2);
         border-radius: var(--radius-full);
         background: var(--neutral-black);
         border: none;
         box-shadow: var(--shadow-card);
+        transition:
+            max-width var(--motion-duration-card) var(--motion-ease-standard),
+            padding-right var(--motion-duration-card) var(--motion-ease-standard);
     }
 
-    .ask-mtm-sticky-button :global(.ask-mtm-sticky-button__btn:hover) {
-        background: var(--neutral-grey-1);
+    .ask-mtm-sticky-button :global(.ask-mtm-sticky-button__btn:hover),
+    .ask-mtm-sticky-button :global(.ask-mtm-sticky-button__btn:focus-visible) {
+        max-width: 16rem;
+        padding-right: var(--space-5);
+        background: var(--neutral-black);
+        box-shadow: var(--shadow-card);
+        transform: none;
     }
 
     .ask-mtm-sticky-button :global(.btn-secondary-icon-label) {
-        display: none;
+        flex-shrink: 0;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity var(--motion-duration-card) var(--motion-ease-standard);
+    }
+
+    .ask-mtm-sticky-button :global(.ask-mtm-sticky-button__btn:hover .btn-secondary-icon-label),
+    .ask-mtm-sticky-button
+        :global(.ask-mtm-sticky-button__btn:focus-visible .btn-secondary-icon-label) {
+        opacity: 1;
+    }
+
+    .ask-mtm-sticky-button :global(.btn-secondary-icon-wrap) {
+        flex-shrink: 0;
     }
 
     .ask-mtm-sticky-button :global(.btn-secondary-icon-asset) {
+        flex-shrink: 0;
         width: var(--icon-xl);
         height: var(--icon-xl);
     }

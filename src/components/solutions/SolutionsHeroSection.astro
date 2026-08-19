@@ -4,6 +4,7 @@ import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
 import Eyebrow from '../shared/Eyebrow.astro';
 import { icons } from '../../lib/icons/registry';
+import { getHeroIconPool } from '../../lib/icons/heroIconPool';
 
 interface Props {
     locale: Locale;
@@ -455,6 +456,37 @@ const mobileCellDelays = mobileGridCells.map(() =>
         </Button>
     </div>
 </section>
+
+<script
+    define:vars={{
+        // Same curated pool as ProductsHeroSection, not just this page's
+        // hand-picked 9 — real variety to draw from, and kept in sync in
+        // one shared place.
+        heroIconPaths: getHeroIconPool(base),
+    }}
+>
+    // Cell layout (which cells are hidden/scaled/icon) stays exactly as
+    // generated at build time — only which icon fills each icon-cell
+    // re-rolls on every page load, drawn fresh from the shared pool each
+    // time. Each grid variant (desktop/tablet/mobile) is shuffled
+    // independently since they don't use the same number of icon cells.
+    function shuffle(arr) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    document.querySelectorAll('.solutions-hero-panel-grid').forEach((grid) => {
+        const cellIcons = grid.querySelectorAll('.panel-cell-icon');
+        const picks = shuffle(heroIconPaths);
+        cellIcons.forEach((img, i) => {
+            if (picks[i]) img.src = picks[i];
+        });
+    });
+</script>
 
 <style define:vars={{ 'mask-url': maskUrl, 'panel-url': panelUrl }}>
     .solutions-hero-panel-grid {

@@ -2,6 +2,7 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
+import { getHeroIconPool } from '../../lib/icons/heroIconPool';
 
 export type HeroBadge = { left: number; top: number; size: string; icon: string };
 
@@ -39,6 +40,10 @@ const {
 
 const base = import.meta.env.BASE_URL;
 const maskUrl = maskImageSrc ? `url("${maskImageSrc}")` : 'none';
+
+// Client script below (not this frontmatter) does the picking, since it
+// needs to re-roll on every page visit, not just once per build.
+const heroIconPool = getHeroIconPool(base);
 
 /* Same panel tile as SolutionsHeroSection's grid — reused here as empty
    floating badges (no icon yet), hand-positioned to match the reference
@@ -152,6 +157,28 @@ function badgeFloatStyle(badge: HeroBadge, index: number) {
         </Button>
     </div>
 </section>
+
+<script define:vars={{ heroIconPool }}>
+    // Re-rolls on every page load (not just per build, unlike
+    // SolutionsHeroSection's grid) — positions/sizes stay exactly where each
+    // page hand-tuned them, only which icon fills each slot changes.
+    function shuffle(arr) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    document.querySelectorAll('.products-hero-section').forEach((section) => {
+        const badgeIcons = section.querySelectorAll('.products-hero-badge-icon');
+        const picks = shuffle(heroIconPool);
+        badgeIcons.forEach((img, i) => {
+            if (picks[i]) img.src = picks[i];
+        });
+    });
+</script>
 
 <style define:vars={{ 'mask-url': maskUrl, 'panel-url': panelUrl }}>
     /* Mimics .products-hero-image's object-fit:cover geometry instead of

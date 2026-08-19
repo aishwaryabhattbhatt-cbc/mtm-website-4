@@ -6,7 +6,7 @@
   },
   "hero_title": {
     "key": "hero_title",
-    "en": "Know your audience.",
+    "en": "Know your audience",
     "fr": ""
   },
   "hero_description": {
@@ -26,7 +26,7 @@
   },
   "problem_title": {
     "key": "problem_title",
-    "en": "Get ahead of changes.",
+    "en": "Get ahead of changes",
     "fr": ""
   },
   "problem_description": {
@@ -41,7 +41,7 @@
   },
   "insight_1_title": {
     "key": "insight_1_title",
-    "en": "Your audience is everywhere, getting what they need, when they want it.",
+    "en": "Meet your audience where they're at",
     "fr": ""
   },
   "insight_1_description": {
@@ -66,7 +66,7 @@
   },
   "insight_2_description": {
     "key": "insight_2_description",
-    "en": "The MTM allows you to see Canada in high definition. From streaming subscriptions to podcast habits to device ownership - not all Canadians have the same media behaviours. Filter data by specific racialized groups, families, age groups, income brackets and more so that you can connect when and how your audience needs you.",
+    "en": "Not all Canadians share the same media habits—from streaming and podcasts to device ownership. MTM provides high-definition visibility, filtering data by ethnicity, age, income, and family structure so you connect exactly when and how your audience needs you.",
     "fr": ""
   },
   "insight_2_chart_title": {
@@ -131,7 +131,7 @@
   },
   "workflow_title": {
     "key": "workflow_title",
-    "en": "How MTM fits the way you already work",
+    "en": "How MTM fits the way you work already",
     "fr": ""
   },
   "workflow_description": {

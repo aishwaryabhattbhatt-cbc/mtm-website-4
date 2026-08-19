@@ -61,7 +61,7 @@
   },
   "access_item_3_description": {
     "key": "access_item_3_description",
-    "en": "Every insight above is backed by 5,000+ variables — demographics, attitudes, and intent, across Canada's most comprehensive media and technology dataset.",
+    "en": "Every insight above is backed by variables across demographics, attitudes, and intent, across Canada's most comprehensive media and technology dataset.",
     "fr": ""
   },
   "package_title": {
@@ -246,7 +246,7 @@
   },
   "faq_1_answer": {
     "key": "faq_1_answer",
-    "en": "Release schedules vary by product:\n\nMTM 18+: Released twice a year, with Fall data available in February and Spring data available in July.\nMTM Jr.: Released annually in May.\nMTM Newcomers: Released annually in November.\nMTM Census Tool: Updated with new Statistics Canada Census data following each national census. The next update, based on the 2026 Census, is expected in Spring/Summer 2027.",
+    "en": "Release schedules vary by product:\n\nMTM 18+: Releases twice a year, with Fall data available in February and Spring data available in July.\n\nMTM Junior: Releases annually in May.\n\nMTM Newcomers: Releases annually in October or November.\n\nMTM Census Tool: Updated with new Statistics Canada Census data following each national census. The next update, based on the 2026 Census, is expected in Spring/Summer 2027.",
     "fr": ""
   },
   "faq_2_question": {

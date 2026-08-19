@@ -37,7 +37,6 @@ const askMtmIconPath = `${import.meta.env.BASE_URL}${icons.tool.askMtm}`;
             <div class="home-faqs__footer-actions">
                 <Button
                     variant="secondary-icon"
-                    href={`/${locale}/tools`}
                     class="home-faqs__ask-mtm-button"
                     aria-label={t(copy, 'faq_ask_mtm_label', locale, 'Ask MTM')}
                     iconSrc={askMtmIconPath}
@@ -59,6 +58,14 @@ const askMtmIconPath = `${import.meta.env.BASE_URL}${icons.tool.askMtm}`;
         </div>
     </Fragment>
 </FaqAccordion>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.home-faqs__ask-mtm-button').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+            document.querySelector<HTMLElement>('.ask-mtm-sticky-button__btn')?.click();
+        });
+    });
+</script>
 
 <style>
     .home-faqs__footer {

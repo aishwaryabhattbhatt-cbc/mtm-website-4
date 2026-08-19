@@ -210,6 +210,7 @@ const hasFooter = Astro.slots.has('footer');
     .faq-accordion__answer {
         margin: 0;
         color: var(--text-primary);
+        white-space: pre-line;
     }
 
     .faq-accordion__footer {
@@ -257,13 +258,21 @@ const hasFooter = Astro.slots.has('footer');
 
         const triggers = faqsFlySection.querySelectorAll('.faq-accordion__trigger');
 
-        const firstOpenClip = faqsFlySection.querySelector(
-            '.faq-accordion__content-clip.is-open'
-        ) as HTMLElement | null;
-        if (firstOpenClip) {
-            const inner = firstOpenClip.querySelector('.faq-accordion__content') as HTMLElement;
-            firstOpenClip.style.height = inner.scrollHeight + 'px';
-        }
+        const measureFirstOpen = () => {
+            const firstOpenClip = faqsFlySection.querySelector(
+                '.faq-accordion__content-clip.is-open'
+            ) as HTMLElement | null;
+            if (firstOpenClip) {
+                const inner = firstOpenClip.querySelector('.faq-accordion__content') as HTMLElement;
+                firstOpenClip.style.height = inner.scrollHeight + 'px';
+            }
+        };
+        measureFirstOpen();
+        // Web fonts can swap in after this script runs and change line count
+        // (e.g. multi-line answers with white-space: pre-line), so re-measure
+        // once fonts have actually loaded — otherwise the fixed inline height
+        // clips the text.
+        document.fonts?.ready.then(measureFirstOpen);
 
         triggers.forEach((trigger) => {
             trigger.addEventListener('click', () => {

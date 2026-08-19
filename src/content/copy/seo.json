@@ -151,7 +151,7 @@
   },
   "contact_page_title": {
     "key": "contact_page_title",
-    "en": "Contact Us",
+    "en": "MTM | Contact Us",
     "fr": ""
   },
   "contact_page_description": {
@@ -161,12 +161,12 @@
   },
   "report_download_page_title": {
     "key": "report_download_page_title",
-    "en": "Download Report",
+    "en": "MTM | Report Download",
     "fr": ""
   },
   "report_download_page_description": {
     "key": "report_download_page_description",
-    "en": "Enter your details and the report will be sent to your inbox.",
+    "en": "Download this MTM report.",
     "fr": ""
   },
   "request_demo_page_title": {
