@@ -279,6 +279,16 @@
     "en": "",
     "fr": ""
   },
+  "contact_page_title": {
+    "key": "contact_page_title",
+    "en": "Contact Us",
+    "fr": ""
+  },
+  "contact_page_description": {
+    "key": "contact_page_description",
+    "en": "Get in touch with the Media Technology Monitor (MTM) team.",
+    "fr": ""
+  },
   "contact_first_name_label": {
     "key": "contact_first_name_label",
     "en": "First Name",
