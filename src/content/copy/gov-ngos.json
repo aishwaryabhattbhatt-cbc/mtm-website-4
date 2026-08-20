@@ -24,11 +24,6 @@
     "en": "Trusted by",
     "fr": ""
   },
-  "Insights overview -topics directly relevant to government and what decisions it informs. (use cases but indirect)": {
-    "key": "Insights overview -topics directly relevant to government and what decisions it informs. (use cases but indirect)",
-    "en": "",
-    "fr": ""
-  },
   "insights_title": {
     "key": "insights_title",
     "en": "Insights That Support Better Public Decisions",
@@ -97,11 +92,6 @@
   "insight_3_informs": {
     "key": "insight_3_informs",
     "en": "Understanding what social platforms Canadians are using can ensure that your next campaign to find new employees has the greatest impact.",
-    "fr": ""
-  },
-  "MTM Reports as the solution for how they can access those insights (second highest report users)": {
-    "key": "MTM Reports as the solution for how they can access those insights (second highest report users)",
-    "en": "",
     "fr": ""
   },
   "Report": {
@@ -222,11 +212,6 @@
   "usecase_2_cta": {
     "key": "usecase_2_cta",
     "en": "Find our latest cellphone report to begin, then go deeper with the data analysis tool to find actionable insights.",
-    "fr": ""
-  },
-  "Testimonials": {
-    "key": "Testimonials",
-    "en": "",
     "fr": ""
   },
   "testimonial_title": {

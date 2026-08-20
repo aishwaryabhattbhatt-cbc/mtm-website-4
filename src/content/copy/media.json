@@ -24,11 +24,6 @@
     "en": "Trusted by",
     "fr": ""
   },
-  "Problem they face": {
-    "key": "Problem they face",
-    "en": "",
-    "fr": ""
-  },
   "problem_title": {
     "key": "problem_title",
     "en": "Get ahead of changes",
@@ -77,11 +72,6 @@
   "insight_2_chart_title": {
     "key": "insight_2_chart_title",
     "en": "FAST Channel Viewership",
-    "fr": ""
-  },
-  "MTM Tools as the solution": {
-    "key": "MTM Tools as the solution",
-    "en": "",
     "fr": ""
   },
   "tools_title": {
@@ -149,11 +139,6 @@
     "en": "Learn more",
     "fr": ""
   },
-  "Fitting in their workflow": {
-    "key": "Fitting in their workflow",
-    "en": "",
-    "fr": ""
-  },
   "workflow_title": {
     "key": "workflow_title",
     "en": "How MTM fits the way you work already",
@@ -207,11 +192,6 @@
   "workflow_step_3_description": {
     "key": "workflow_step_3_description",
     "en": "Download your analysis in presentation-ready formats. Drop it straight into a deck, a brief, or a regulatory submission - formatted and ready to go.",
-    "fr": ""
-  },
-  "Use case or Case study": {
-    "key": "Use case or Case study",
-    "en": "",
     "fr": ""
   },
   "usecases_title": {
@@ -277,11 +257,6 @@
   "usecase_2_cta": {
     "key": "usecase_2_cta",
     "en": "Use our tools to take a deep dive on the platforms, time spent and online communities where this group is most active.",
-    "fr": ""
-  },
-  "Testimonials": {
-    "key": "Testimonials",
-    "en": "",
     "fr": ""
   },
   "testimonial_title": {

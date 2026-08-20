@@ -24,11 +24,6 @@
     "en": "Trusted by",
     "fr": ""
   },
-  "Problem they face": {
-    "key": "Problem they face",
-    "en": "",
-    "fr": ""
-  },
   "problem_title": {
     "key": "problem_title",
     "en": "Why trusted data changes everything",
@@ -169,11 +164,6 @@
     "en": "YourData",
     "fr": ""
   },
-  "Use case or Case study": {
-    "key": "Use case or Case study",
-    "en": "",
-    "fr": ""
-  },
   "usecases_title": {
     "key": "usecases_title",
     "en": "MTM in Action for Ad Agencies",
@@ -222,11 +212,6 @@
   "usecase_2_cta": {
     "key": "usecase_2_cta",
     "en": "Leverage the Ranker feature in the census tool to find out where the wealthiest Canadians reside and target your campaign effectively.",
-    "fr": ""
-  },
-  "Testimonials": {
-    "key": "Testimonials",
-    "en": "",
     "fr": ""
   },
   "testimonial_title": {
