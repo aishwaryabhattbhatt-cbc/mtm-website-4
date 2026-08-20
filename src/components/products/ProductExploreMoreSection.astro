@@ -250,12 +250,15 @@ const { heading, products } = Astro.props as Props;
         z-index: 1;
     }
 
+    /* Uses a pre-cropped source asset with subjects already centered in
+       frame, so a plain centered cover crop fills the card cleanly without
+       needing any positional tuning. */
     .explore-card-people {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         object-position: bottom;
         z-index: 3;
     }
@@ -362,7 +365,7 @@ const { heading, products } = Astro.props as Props;
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         object-position: bottom;
         z-index: 3;
     }
