@@ -3,14 +3,25 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
 
+const base = import.meta.env.BASE_URL;
+
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
     useCase1ImageSrc: string;
     useCase2ImageSrc: string;
+    useCase1Icons?: string[];
+    useCase2Icons?: string[];
 }
 
-const { locale, copy, useCase1ImageSrc, useCase2ImageSrc } = Astro.props as Props;
+const {
+    locale,
+    copy,
+    useCase1ImageSrc,
+    useCase2ImageSrc,
+    useCase1Icons = [],
+    useCase2Icons = [],
+} = Astro.props as Props;
 
 const vars1 = t(
     copy,
@@ -31,6 +42,10 @@ const vars2 = t(
     .split(',')
     .map((v) => v.trim())
     .filter(Boolean);
+
+/* Same rounded-square icon panel as SolutionsHeroSection's badges. */
+const panelSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91 91'><defs><radialGradient id='g' cx='50%' cy='42%' r='78%'><stop offset='0%' stop-color='#ffffff'/><stop offset='60%' stop-color='#fdfeff'/><stop offset='100%' stop-color='#f5f8fc'/></radialGradient></defs><rect x='4' y='4' width='83' height='83' rx='10' fill='url(#g)' stroke='#eef2f8' stroke-width='1'/></svg>`;
+const panelUrl = `url("data:image/svg+xml,${encodeURIComponent(panelSvg)}")`;
 ---
 
 <section class="solutions-usecases-section">
@@ -123,6 +138,21 @@ const vars2 = t(
                         decoding="async"
                     />
                 </div>
+                <div class="solutions-usecase-badges" aria-hidden="true">
+                    {
+                        useCase1Icons.map((icon) => (
+                            <span class="solutions-usecase-badge">
+                                {icon && (
+                                    <img
+                                        src={`${base}${icon}`}
+                                        alt=""
+                                        class="solutions-usecase-badge-icon icon-xl"
+                                    />
+                                )}
+                            </span>
+                        ))
+                    }
+                </div>
             </div>
         </article>
 
@@ -185,12 +215,27 @@ const vars2 = t(
                         decoding="async"
                     />
                 </div>
+                <div class="solutions-usecase-badges" aria-hidden="true">
+                    {
+                        useCase2Icons.map((icon) => (
+                            <span class="solutions-usecase-badge">
+                                {icon && (
+                                    <img
+                                        src={`${base}${icon}`}
+                                        alt=""
+                                        class="solutions-usecase-badge-icon icon-xl"
+                                    />
+                                )}
+                            </span>
+                        ))
+                    }
+                </div>
             </div>
         </article>
     </div>
 </section>
 
-<style>
+<style define:vars={{ 'panel-url': panelUrl }}>
     .solutions-usecases-section {
         width: 100%;
         background: var(--surface-white);
@@ -308,6 +353,7 @@ const vars2 = t(
 
     /* Right */
     .solutions-usecase-card__right {
+        position: relative;
         display: flex;
         flex-direction: column;
     }
@@ -324,6 +370,32 @@ const vars2 = t(
         height: 100%;
         object-fit: cover;
         display: block;
+    }
+
+    /* Icon badges — stacked vertically, inset into the image's
+       bottom-right corner with equal padding on both sides. */
+    .solutions-usecase-badges {
+        position: absolute;
+        right: var(--space-4);
+        bottom: var(--space-4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-3);
+        z-index: 1;
+    }
+
+    .solutions-usecase-badge {
+        width: var(--icon-2xl);
+        height: var(--icon-2xl);
+        border-radius: var(--radius-xs);
+        background-image: var(--panel-url);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        box-shadow: var(--shadow-e2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .solutions-usecase-cta {
@@ -387,6 +459,12 @@ const vars2 = t(
         .solutions-usecase-image {
             min-height: 14rem;
         }
+
+        /* Same bottom-right corner inset as desktop, but stacked
+           horizontally instead of vertically. */
+        .solutions-usecase-badges {
+            flex-direction: row;
+        }
     }
 
     .heading-fly-in {
@@ -413,6 +491,22 @@ const vars2 = t(
     .card-fly-in.is-visible {
         opacity: 1;
         transform: translateY(0);
+    }
+
+    /* Badges pop in one after another once their card is visible — DOM order
+       already reads top-to-bottom on desktop's column and left-to-right on
+       mobile's row, so a single index-based stagger covers both layouts. */
+    .solutions-usecase-badge {
+        opacity: 0;
+        transform: scale(0.8);
+        transition:
+            opacity var(--motion-duration-heading) cubic-bezier(0.22, 1, 0.36, 1),
+            transform var(--motion-duration-heading) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .solutions-usecase-badge.is-visible {
+        opacity: 1;
+        transform: scale(1);
     }
 </style>
 
@@ -444,7 +538,23 @@ const vars2 = t(
                 ([entry]) => {
                     if (entry.isIntersecting) {
                         cards.forEach((card, i) => {
-                            setTimeout(() => card.classList.add('is-visible'), i * 140);
+                            setTimeout(() => {
+                                card.classList.add('is-visible');
+                                // Wait for the card's own entrance transition to
+                                // finish (matches --motion-duration-card) before
+                                // starting the badge stagger.
+                                setTimeout(() => {
+                                    const badges = card.querySelectorAll<HTMLElement>(
+                                        '.solutions-usecase-badge'
+                                    );
+                                    badges.forEach((badge, j) => {
+                                        setTimeout(
+                                            () => badge.classList.add('is-visible'),
+                                            j * 220
+                                        );
+                                    });
+                                }, 650);
+                            }, i * 140);
                         });
                         cardObserver.disconnect();
                     }
