@@ -11,15 +11,19 @@ import ProductPill, { type ProductVariant } from '../shared/ProductPill.astro';
 import ReportsTickerCard from './reports/ReportsTickerCard.astro';
 import bg18 from '../../assets/images/home/mtm-suite/bg-product-18.webp';
 import segments18 from '../../assets/images/home/mtm-suite/fg-product-18.webp';
+import segments18Center from '../../assets/images/home/mtm-suite/fg-product-18-center.webp';
 import line18 from '../../assets/images/home/mtm-suite/line-product-18.webp';
 import bgJr from '../../assets/images/home/mtm-suite/bg-product-jr.webp';
 import segmentsJr from '../../assets/images/home/mtm-suite/fg-product-jr.webp';
+import segmentsJrCenter from '../../assets/images/home/mtm-suite/fg-product-jr-center.webp';
 import lineJr from '../../assets/images/home/mtm-suite/line-product-jr.webp';
 import bgNc from '../../assets/images/home/mtm-suite/bg-product-nc.webp';
 import segmentsNc from '../../assets/images/home/mtm-suite/fg-product-nc.webp';
+import segmentsNcCenter from '../../assets/images/home/mtm-suite/fg-product-nc-center.webp';
 import lineNc from '../../assets/images/home/mtm-suite/line-product-nc.webp';
 import bgCs from '../../assets/images/home/mtm-suite/bg-product-cs.webp';
 import segmentsCs from '../../assets/images/home/mtm-suite/fg-product-cs.webp';
+import segmentsCsCenter from '../../assets/images/home/mtm-suite/fg-product-cs-center.webp';
 import lineCs from '../../assets/images/home/mtm-suite/line-product-cs.webp';
 
 interface Props {
@@ -45,6 +49,7 @@ const products = [
         href: `${base}${locale}/products/mtm-18-plus`,
         bg: bg18,
         people: segments18,
+        peopleCenter: segments18Center,
         line: line18,
     },
     {
@@ -56,6 +61,7 @@ const products = [
         href: `${base}${locale}/products/juniors`,
         bg: bgJr,
         people: segmentsJr,
+        peopleCenter: segmentsJrCenter,
         line: lineJr,
         chevronFill: 'var(--badge-juniors)',
     },
@@ -69,6 +75,7 @@ const products = [
         href: `${base}${locale}/products/newcomers`,
         bg: bgNc,
         people: segmentsNc,
+        peopleCenter: segmentsNcCenter,
         line: lineNc,
         chevronFill: 'var(--badge-newcomers)',
     },
@@ -82,6 +89,7 @@ const products = [
         href: `${base}${locale}/tools/census-tool`,
         bg: bgCs,
         people: segmentsCs,
+        peopleCenter: segmentsCsCenter,
         line: lineCs,
         chevronFill: 'var(--badge-census)',
     },
@@ -246,10 +254,10 @@ const products = [
                                     loading="lazy"
                                 />
                             )}
-                            {product.people && (
+                            {product.peopleCenter && (
                                 <Image
                                     class="mobile-card-people"
-                                    src={product.people}
+                                    src={product.peopleCenter}
                                     alt={product.nameFallback}
                                     loading="lazy"
                                 />
@@ -928,7 +936,7 @@ const products = [
         position: absolute;
         top: var(--space-8);
         left: var(--space-8);
-        width: 18rem;
+        width: 35%;
         color: var(--text-primary);
         margin: 0;
         z-index: 2;
@@ -1000,12 +1008,17 @@ const products = [
         z-index: 1;
     }
 
+    /* Mobile/tablet cards only — .data-products-mobile is display:none above
+       1340px, so this never renders on desktop. Uses peopleCenter, a
+       pre-cropped source asset with the subjects already centered in frame
+       (unlike the desktop-only `people` asset, which has empty space on one
+       side) — cover just fills the card, no positional tuning needed. */
     .mobile-card-people {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         object-position: bottom;
         z-index: 3;
     }
