@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 145">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #125;
+        stroke-width: 6px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-4 {
+        fill: #2e6af5;
+      }
+
+      .cls-3 {
+        stroke: #2e6af5;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-5 {
+        fill: #125;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <g>
+          <circle class="cls-4" cx="88.07" cy="72.5" r="6.08"/>
+          <circle class="cls-4" cx="56.93" cy="72.5" r="6.08"/>
+          <circle class="cls-5" cx="72.5" cy="56.93" r="6.08"/>
+          <circle class="cls-5" cx="72.5" cy="88.07" r="6.08"/>
+        </g>
+        <circle class="cls-2" cx="72.5" cy="72.5" r="47.57"/>
+        <path class="cls-3" d="M85.78,36.03c10.45,3.81,18.81,11.98,22.86,22.32"/>
+        <path class="cls-3" d="M36.03,59.22c3.81-10.45,11.98-18.81,22.32-22.86"/>
+        <path class="cls-3" d="M59.22,108.97c-10.45-3.81-18.81-11.98-22.86-22.32"/>
+        <path class="cls-3" d="M108.97,85.78c-3.81,10.45-11.98,18.81-22.32,22.86"/>
+        <path class="cls-5" d="M75.4,40.79l6.25-10.83c1.29-2.24-.32-5.03-2.9-5.03h-12.5c-2.58,0-4.19,2.79-2.9,5.03l6.25,10.83c1.29,2.24,4.52,2.24,5.81,0Z"/>
+        <path class="cls-5" d="M69.6,104.21l-6.25,10.83c-1.29,2.24.32,5.03,2.9,5.03h12.5c2.58,0,4.19-2.79,2.9-5.03l-6.25-10.83c-1.29-2.24-4.52-2.24-5.81,0Z"/>
+        <path class="cls-5" d="M104.21,75.4l10.83,6.25c2.24,1.29,5.03-.32,5.03-2.9v-12.5c0-2.58-2.79-4.19-5.03-2.9l-10.83,6.25c-2.24,1.29-2.24,4.52,0,5.81Z"/>
+        <path class="cls-5" d="M40.79,69.6l-10.83-6.25c-2.24-1.29-5.03.32-5.03,2.9v12.5c0,2.58,2.79,4.19,5.03,2.9l10.83-6.25c2.24-1.29,2.24-4.52,0-5.81Z"/>
+      </g>
+      <rect class="cls-1" x="0" y="0" width="145" height="145" transform="translate(145 145) rotate(-180)"/>
+    </g>
+  </g>
+</svg>
