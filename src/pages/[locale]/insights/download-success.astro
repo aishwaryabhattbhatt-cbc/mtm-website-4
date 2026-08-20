@@ -12,11 +12,7 @@ export function getStaticPaths() {
 }
 
 const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
-// Shares the 'insights' CMS dictionary with /insights/report-download/. The
-// download_confirmation_* copy keys only exist in the local insights.json
-// today — they must be added as rows to the live Google Sheet's insights
-// tab, or the next `npm run sync-copy` will silently drop them.
-const pageId = 'insights';
+const pageId = 'download-success';
 const copy = await getPageDictionary(pageId);
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;

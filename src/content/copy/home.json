@@ -14,19 +14,9 @@
     "en": "Request a Demo",
     "fr": ""
   },
-  "hero_stat_value": {
-    "key": "hero_stat_value",
-    "en": "300,000 +",
-    "fr": ""
-  },
-  "hero_stat_label": {
-    "key": "hero_stat_label",
-    "en": "Canadians 18+ Surveyed",
-    "fr": ""
-  },
-  "hero_featured_report_title": {
-    "key": "hero_featured_report_title",
-    "en": "The Rise Of Shortform Video",
+  "hero_cta_2": {
+    "key": "hero_cta_2",
+    "en": "Explore More",
     "fr": ""
   },
   "access_title": {
@@ -86,7 +76,7 @@
   },
   "package_1_description": {
     "key": "package_1_description",
-    "en": "Explore four specialized research products",
+    "en": "Explore four research products, each built for a different audience.",
     "fr": ""
   },
   "product_1_title": {
@@ -129,6 +119,11 @@
     "en": "Detailed demographic data for sharper targeting and planning.",
     "fr": ""
   },
+  "mtm_suite_cta": {
+    "key": "mtm_suite_cta",
+    "en": "EXPLORE MORE",
+    "fr": ""
+  },
   "package_2_eyebrow": {
     "key": "package_2_eyebrow",
     "en": "Reports Library",
@@ -154,6 +149,16 @@
     "en": "Download a Sample Report",
     "fr": ""
   },
+  "package_2_cta_2": {
+    "key": "package_2_cta_2",
+    "en": "SNEAK PEEK REPORT",
+    "fr": ""
+  },
+  "package_2_cta_1": {
+    "key": "package_2_cta_1",
+    "en": "GO TO INSIGHTS",
+    "fr": ""
+  },
   "package_3_eyebrow": {
     "key": "package_3_eyebrow",
     "en": "Tool Suite",
@@ -176,7 +181,7 @@
   },
   "tools_item_1_tags": {
     "key": "tools_item_1_tags",
-    "en": "MTM 18+, MTM Junior., MTM Newcomers",
+    "en": "MTM 18+, MTM Junior, MTM Newcomers",
     "fr": ""
   },
   "tools_item_2_title": {
@@ -234,9 +239,14 @@
     "en": "Government and NGOs",
     "fr": ""
   },
-  "faq_title": {
-    "key": "faq_title",
-    "en": "",
+  "solutions_cta": {
+    "key": "solutions_cta",
+    "en": "Learn more",
+    "fr": ""
+  },
+  "faq_section_title": {
+    "key": "faq_section_title",
+    "en": "Frequently Asked Questions",
     "fr": ""
   },
   "faq_1_question": {
@@ -251,52 +261,52 @@
   },
   "faq_2_question": {
     "key": "faq_2_question",
-    "en": "What are the turnaround times for data requests?",
+    "en": "How much does it cost for an MTM subscription?",
     "fr": ""
   },
   "faq_2_answer": {
     "key": "faq_2_answer",
-    "en": "Turnaround times vary based on complexity. We respond to most queries within 2 business days and provide data for requests within 5 business days.",
+    "en": "Costs will vary based on the size of your organization as well as which MTM products you opt in for. We offer discounts for those who subscribe to multiple MTM products. Contact us today for a quote and more details.",
     "fr": ""
   },
   "faq_3_question": {
     "key": "faq_3_question",
-    "en": "Is MTM data accepted as a source for funding publication and policy submissions?",
+    "en": "How many accounts/seats does an MTM subscription come with?",
     "fr": ""
   },
   "faq_3_answer": {
     "key": "faq_3_answer",
-    "en": "Yes. MTM data is widely used across the Canadian media, advertising, academic, and public sectors to support publications, strategic planning, funding applications, and policy development.",
+    "en": "We offer an unlimited amount of seats for subscribers and include a self-sign up page for users.",
     "fr": ""
   },
   "faq_4_question": {
     "key": "faq_4_question",
-    "en": "How does MTM ensure the validity and reliability of its datasets?",
+    "en": "Can I buy an individual report?",
     "fr": ""
   },
   "faq_4_answer": {
     "key": "faq_4_answer",
-    "en": "MTM uses rigorous research methodologies, large-scale national sampling, and ongoing quality assurance processes to ensure data accuracy, consistency, and representativeness across all studies.",
+    "en": "A subscription to an MTM product includes full access to its suite of reports and web-based tools. Reports are not available for individual purchase.",
     "fr": ""
   },
-  "faq_5_question": {
-    "key": "faq_5_question",
-    "en": "When is MTM 18+ data released?",
+  "faq_ask_mtm_label": {
+    "key": "faq_ask_mtm_label",
+    "en": "Ask MTM",
     "fr": ""
   },
-  "faq_5_answer": {
-    "key": "faq_5_answer",
-    "en": "MTM 18+ data is published twice annually, with Fall results released in February and Spring results released in July.",
+  "faq_contact_button": {
+    "key": "faq_contact_button",
+    "en": "Contact us",
     "fr": ""
   },
-  "faq_contact_label": {
-    "key": "faq_contact_label",
-    "en": "Have a question that isn't listed here? Speak with our chatbot or",
+  "faq_footer_text_after": {
+    "key": "faq_footer_text_after",
+    "en": "or",
     "fr": ""
   },
-  "faq_contact_cta": {
-    "key": "faq_contact_cta",
-    "en": "Contact Us.",
+  "faq_footer_text_before": {
+    "key": "faq_footer_text_before",
+    "en": "Got a question not listed here? Speak to our chatbot",
     "fr": ""
   },
   "cta_subtitle": {
@@ -314,6 +324,31 @@
     "en": "Request a Demo",
     "fr": ""
   },
+  "footer_cta_email_label": {
+    "key": "footer_cta_email_label",
+    "en": "Work email",
+    "fr": ""
+  },
+  "footer_cta_email_placeholder": {
+    "key": "footer_cta_email_placeholder",
+    "en": "Enter your work email",
+    "fr": ""
+  },
+  "form_email_error_message": {
+    "key": "form_email_error_message",
+    "en": "Please enter a valid email address.",
+    "fr": ""
+  },
+  "form_password_show_label": {
+    "key": "form_password_show_label",
+    "en": "Show password",
+    "fr": ""
+  },
+  "form_password_hide_label": {
+    "key": "form_password_hide_label",
+    "en": "Hide password",
+    "fr": ""
+  },
   "newsletter_title": {
     "key": "newsletter_title",
     "en": "Subscribe to Our Newsletter",
@@ -324,14 +359,54 @@
     "en": "Stay informed with the latest Canadian media and technology trends, new reports, research releases, and industry insights delivered directly to your inbox.",
     "fr": ""
   },
-  "Navigation bar dropdown descriptions": {
-    "key": "Navigation bar dropdown descriptions",
+  "newsletter_email_label": {
+    "key": "newsletter_email_label",
+    "en": "Email",
+    "fr": ""
+  },
+  "newsletter_email_placeholder": {
+    "key": "newsletter_email_placeholder",
+    "en": "Enter your email",
+    "fr": ""
+  },
+  "newsletter_industry_placeholder": {
+    "key": "newsletter_industry_placeholder",
+    "en": "Select your industry",
+    "fr": ""
+  },
+  "newsletter_industry_other": {
+    "key": "newsletter_industry_other",
+    "en": "Other",
+    "fr": ""
+  },
+  "newsletter_submit": {
+    "key": "newsletter_submit",
+    "en": "Submit",
+    "fr": ""
+  },
+  "Navigation bar": {
+    "key": "Navigation bar",
     "en": "",
     "fr": ""
   },
-  "Products dropdown": {
-    "key": "Products dropdown",
+  "Products": {
+    "key": "Products",
     "en": "",
+    "fr": ""
+  },
+  "nav_products_main_label": {
+    "key": "nav_products_main_label",
+    "en": "Analytic Products",
+    "fr": ""
+  },
+  "nav_products_side_label": {
+    "key": "nav_products_side_label",
+    "en": "Census Product",
+    "fr": ""
+  },
+  "nav_products_item_1_title": {
+    "key": "nav_products_item_1_title",
+    "en": "MTM 18+",
     "fr": ""
   },
   "nav_products_item_1_description": {
@@ -339,14 +414,29 @@
     "en": "Media and technology data for Canadians aged 18 and older.",
     "fr": ""
   },
+  "nav_products_item_2_title": {
+    "key": "nav_products_item_2_title",
+    "en": "MTM Junior",
+    "fr": ""
+  },
   "nav_products_item_2_description": {
     "key": "nav_products_item_2_description",
     "en": "Media and technology behaviour insights for ages 2–17.",
     "fr": ""
   },
+  "nav_products_item_3_title": {
+    "key": "nav_products_item_3_title",
+    "en": "MTM Newcomers",
+    "fr": ""
+  },
   "nav_products_item_3_description": {
     "key": "nav_products_item_3_description",
-    "en": "Media and technology behaviour insights for newcomers who have arrived to Canada in the past 5 years",
+    "en": "Media and technology data for newcomers who have arrived to Canada in the past 5 years",
+    "fr": ""
+  },
+  "nav_products_side_title": {
+    "key": "nav_products_side_title",
+    "en": "MTM Census",
     "fr": ""
   },
   "nav_products_side_description": {
@@ -354,9 +444,24 @@
     "en": "Detailed demographic data for sharper targeting and planning.",
     "fr": ""
   },
-  "Tools dropdown": {
-    "key": "Tools dropdown",
+  "Tools": {
+    "key": "Tools",
     "en": "",
+    "fr": ""
+  },
+  "nav_tools_main_label": {
+    "key": "nav_tools_main_label",
+    "en": "Analytic Tools",
+    "fr": ""
+  },
+  "nav_tools_side_label": {
+    "key": "nav_tools_side_label",
+    "en": "Census Tool",
+    "fr": ""
+  },
+  "nav_tools_item_1_title": {
+    "key": "nav_tools_item_1_title",
+    "en": "Data Analysis Tool",
     "fr": ""
   },
   "nav_tools_item_1_description": {
@@ -364,14 +469,29 @@
     "en": "Explore, filter, and compare data quickly and clearly.",
     "fr": ""
   },
+  "nav_tools_item_2_title": {
+    "key": "nav_tools_item_2_title",
+    "en": "Trending Tool",
+    "fr": ""
+  },
   "nav_tools_item_2_description": {
     "key": "nav_tools_item_2_description",
     "en": "Track key trends over time with confidence.",
     "fr": ""
   },
+  "nav_tools_item_3_title": {
+    "key": "nav_tools_item_3_title",
+    "en": "Forecasting Tool",
+    "fr": ""
+  },
   "nav_tools_item_3_description": {
     "key": "nav_tools_item_3_description",
     "en": "Project future shifts across your target segments.",
+    "fr": ""
+  },
+  "nav_tools_side_title": {
+    "key": "nav_tools_side_title",
+    "en": "Census Tool",
     "fr": ""
   },
   "nav_tools_side_description": {
@@ -382,6 +502,11 @@
   "Solutions dropdown": {
     "key": "Solutions dropdown",
     "en": "",
+    "fr": ""
+  },
+  "nav_solutions_label": {
+    "key": "nav_solutions_label",
+    "en": "Solutions by Industry",
     "fr": ""
   },
   "nav_solutions_item_1_description": {
@@ -407,6 +532,141 @@
   "nav_solutions_item_5_description": {
     "key": "nav_solutions_item_5_description",
     "en": "Plan services and policies with reliable evidence.",
+    "fr": ""
+  },
+  "nav_sign_in_cta": {
+    "key": "nav_sign_in_cta",
+    "en": "SIGN IN",
+    "fr": ""
+  },
+  "nav_request_demo_cta": {
+    "key": "nav_request_demo_cta",
+    "en": "REQUEST A DEMO",
+    "fr": ""
+  },
+  "Footer": {
+    "key": "Footer",
+    "en": "",
+    "fr": ""
+  },
+  "footer_menu_company_title": {
+    "key": "footer_menu_company_title",
+    "en": "Company",
+    "fr": ""
+  },
+  "footer_menu_company_item_1": {
+    "key": "footer_menu_company_item_1",
+    "en": "Home",
+    "fr": ""
+  },
+  "footer_menu_company_item_2": {
+    "key": "footer_menu_company_item_2",
+    "en": "About Us",
+    "fr": ""
+  },
+  "footer_menu_company_item_3": {
+    "key": "footer_menu_company_item_3",
+    "en": "Contact Us",
+    "fr": ""
+  },
+  "footer_menu_products_title": {
+    "key": "footer_menu_products_title",
+    "en": "Products",
+    "fr": ""
+  },
+  "footer_menu_products_item_1": {
+    "key": "footer_menu_products_item_1",
+    "en": "MTM 18+",
+    "fr": ""
+  },
+  "footer_menu_products_item_2": {
+    "key": "footer_menu_products_item_2",
+    "en": "MTM Juniors",
+    "fr": ""
+  },
+  "footer_menu_products_item_3": {
+    "key": "footer_menu_products_item_3",
+    "en": "MTM Newcomers",
+    "fr": ""
+  },
+  "footer_menu_products_item_4": {
+    "key": "footer_menu_products_item_4",
+    "en": "Census",
+    "fr": ""
+  },
+  "footer_menu_tools_title": {
+    "key": "footer_menu_tools_title",
+    "en": "Tools",
+    "fr": ""
+  },
+  "footer_menu_tools_item_1": {
+    "key": "footer_menu_tools_item_1",
+    "en": "Data Analysis",
+    "fr": ""
+  },
+  "footer_menu_tools_item_2": {
+    "key": "footer_menu_tools_item_2",
+    "en": "Trending",
+    "fr": ""
+  },
+  "footer_menu_tools_item_3": {
+    "key": "footer_menu_tools_item_3",
+    "en": "Forecasting",
+    "fr": ""
+  },
+  "footer_menu_tools_item_4": {
+    "key": "footer_menu_tools_item_4",
+    "en": "Census",
+    "fr": ""
+  },
+  "footer_menu_solutions_title": {
+    "key": "footer_menu_solutions_title",
+    "en": "Solutions",
+    "fr": ""
+  },
+  "footer_menu_insights_title": {
+    "key": "footer_menu_insights_title",
+    "en": "Insights",
+    "fr": ""
+  },
+  "footer_menu_insights_item_1": {
+    "key": "footer_menu_insights_item_1",
+    "en": "Reports",
+    "fr": ""
+  },
+  "footer_address_company": {
+    "key": "footer_address_company",
+    "en": "Media Technology Monitor",
+    "fr": ""
+  },
+  "footer_address_street": {
+    "key": "footer_address_street",
+    "en": "181 Queen St, Ottawa, Ontario, K1P1K9",
+    "fr": ""
+  },
+  "footer_phone_number": {
+    "key": "footer_phone_number",
+    "en": "1-855-898-4999",
+    "fr": ""
+  },
+  "footer_copyright_text": {
+    "key": "footer_copyright_text",
+    "en": "Media Technology Monitor. All Rights Reserved. A division of CBC/Radio-Canada.",
+    "fr": ""
+  },
+  "footer_site_policies_label": {
+    "key": "footer_site_policies_label",
+    "en": "Site Policies",
+    "fr": ""
+  },
+  "footer_privacy_policy_label": {
+    "key": "footer_privacy_policy_label",
+    "en": "Privacy Policy",
+    "fr": ""
+  },
+  "footer_terms_conditions_label": {
+    "key": "footer_terms_conditions_label",
+    "en": "Terms & Conditions",
     "fr": ""
   }
 }

@@ -21,7 +21,16 @@ const reportDownloadHref = `${base}${locale}/insights/report-download/?from=${en
     <div class="sneak-peek-reports-section__header heading-fly-in">
         <div class="sneak-peek-reports-section__eyebrow-wrap">
             <Eyebrow>
-                <span>Free infographic</span>
+                <span data-copy-key="section_4_eyebrow">
+                    {
+                        t(
+                            copy,
+                            'section_4_eyebrow',
+                            locale,
+                            locale === 'fr' ? 'Infographie gratuite' : 'Free infographic'
+                        )
+                    }
+                </span>
             </Eyebrow>
         </div>
 

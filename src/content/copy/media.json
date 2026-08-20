@@ -16,7 +16,12 @@
   },
   "hero_cta": {
     "key": "hero_cta",
-    "en": "",
+    "en": "Request a demo",
+    "fr": ""
+  },
+  "trusted_by_label": {
+    "key": "trusted_by_label",
+    "en": "Trusted by",
     "fr": ""
   },
   "Problem they face": {
@@ -74,26 +79,6 @@
     "en": "FAST Channel Viewership",
     "fr": ""
   },
-  "value_prop_1_title": {
-    "key": "value_prop_1_title",
-    "en": "",
-    "fr": ""
-  },
-  "value_prop_2_title": {
-    "key": "value_prop_2_title",
-    "en": "",
-    "fr": ""
-  },
-  "value_prop_3_title": {
-    "key": "value_prop_3_title",
-    "en": "",
-    "fr": ""
-  },
-  "value_prop_4_title": {
-    "key": "value_prop_4_title",
-    "en": "",
-    "fr": ""
-  },
   "MTM Tools as the solution": {
     "key": "MTM Tools as the solution",
     "en": "",
@@ -101,7 +86,7 @@
   },
   "tools_title": {
     "key": "tools_title",
-    "en": "Tools that empower you to track the shifts",
+    "en": "Tools that empower you",
     "fr": ""
   },
   "tools_analytic_eyebrow": {
@@ -114,6 +99,21 @@
     "en": "Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.",
     "fr": ""
   },
+  "tools_analytic_feature_1": {
+    "key": "tools_analytic_feature_1",
+    "en": "Data Analysis",
+    "fr": ""
+  },
+  "tools_analytic_feature_2": {
+    "key": "tools_analytic_feature_2",
+    "en": "Trending",
+    "fr": ""
+  },
+  "tools_analytic_feature_3": {
+    "key": "tools_analytic_feature_3",
+    "en": "Forecasting",
+    "fr": ""
+  },
   "tools_census_eyebrow": {
     "key": "tools_census_eyebrow",
     "en": "Census Tools",
@@ -122,6 +122,31 @@
   "media_tools_census_description": {
     "key": "media_tools_census_description",
     "en": "Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.",
+    "fr": ""
+  },
+  "tools_census_feature_1": {
+    "key": "tools_census_feature_1",
+    "en": "Snapshot",
+    "fr": ""
+  },
+  "tools_census_feature_2": {
+    "key": "tools_census_feature_2",
+    "en": "Explorer",
+    "fr": ""
+  },
+  "tools_census_feature_3": {
+    "key": "tools_census_feature_3",
+    "en": "Compare",
+    "fr": ""
+  },
+  "tools_census_more": {
+    "key": "tools_census_more",
+    "en": "3 more",
+    "fr": ""
+  },
+  "tools_learn_more": {
+    "key": "tools_learn_more",
+    "en": "Learn more",
     "fr": ""
   },
   "Fitting in their workflow": {
@@ -199,9 +224,14 @@
     "en": "Learn how your organization can use the MTM to grow or maintain your key audiences.",
     "fr": ""
   },
-  "usecase_1_brand": {
-    "key": "usecase_1_brand",
-    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
+  "usecases_card_title": {
+    "key": "usecases_card_title",
+    "en": "Use Case",
+    "fr": ""
+  },
+  "leverage_title": {
+    "key": "leverage_title",
+    "en": "How to leverage this",
     "fr": ""
   },
   "usecase_1_description": {

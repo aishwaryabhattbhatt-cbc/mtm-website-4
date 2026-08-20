@@ -184,6 +184,21 @@
     "en": "of households subscribe to Amazon Prime Video, the current runner up in the SVOD space.",
     "fr": ""
   },
+  "report_action_text": {
+    "key": "report_action_text",
+    "en": "Explore our full library of reports or download a free sneak peek.",
+    "fr": ""
+  },
+  "report_action_cta_1": {
+    "key": "report_action_cta_1",
+    "en": "GO TO INSIGHTS",
+    "fr": ""
+  },
+  "report_action_cta_2": {
+    "key": "report_action_cta_2",
+    "en": "SAMPLE REPORT",
+    "fr": ""
+  },
   "methodology_title": {
     "key": "methodology_title",
     "en": "Research Methodology",
@@ -314,11 +329,6 @@
     "en": "57%",
     "fr": ""
   },
-  "method_1_unit": {
-    "key": "method_1_unit",
-    "en": "",
-    "fr": ""
-  },
   "method_2": {
     "key": "method_2",
     "en": "Cellphone Only Household (CPO) Proportion",
@@ -329,9 +339,9 @@
     "en": "43%",
     "fr": ""
   },
-  "method_2_unit": {
-    "key": "method_2_unit",
-    "en": "",
+  "data_collected_description": {
+    "key": "data_collected_description",
+    "en": "Sample composition is weighted to reflect the national distribution of Canadian households.",
     "fr": ""
   },
   "provider_title": {
@@ -347,6 +357,11 @@
   "provider_description": {
     "key": "provider_description",
     "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Forum Research conducts all of the French and English research for the MTM 18+.\n\nEstablished in 1993, Forum Research Inc. is a Canadian market research and technology company, with offices in Toronto, Montreal, and Saskatoon. With over 30 years of experience, they combine industry talent, cutting-edge technology, and behavioral science to provide in-depth insights.",
+    "fr": ""
+  },
+  "explore_title": {
+    "key": "explore_title",
+    "en": "Explore More Data",
     "fr": ""
   }
 }

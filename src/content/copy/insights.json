@@ -49,6 +49,16 @@
     "en": "View Press Release",
     "fr": ""
   },
+  "Reports Library": {
+    "key": "Reports Library",
+    "en": "",
+    "fr": ""
+  },
+  "section_2_eyebrow": {
+    "key": "section_2_eyebrow",
+    "en": "Reports Library",
+    "fr": ""
+  },
   "section_2_title": {
     "key": "section_2_title",
     "en": "Research Across Every Corner of Canadian Media Behaviour",
@@ -59,9 +69,29 @@
     "en": "From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.",
     "fr": ""
   },
+  "filter_all": {
+    "key": "filter_all",
+    "en": "All",
+    "fr": ""
+  },
+  "filter_junior": {
+    "key": "filter_junior",
+    "en": "Junior",
+    "fr": ""
+  },
+  "filter_mtm18plus": {
+    "key": "filter_mtm18plus",
+    "en": "MTM 18+",
+    "fr": ""
+  },
+  "filter_newcomers": {
+    "key": "filter_newcomers",
+    "en": "Newcomers",
+    "fr": ""
+  },
   "Reports (to be auto-filled)": {
     "key": "Reports (to be auto-filled)",
-    "en": "AUTO-FILLED",
+    "en": "",
     "fr": ""
   },
   "report_card_tag": {
@@ -104,14 +134,19 @@
     "en": "",
     "fr": ""
   },
+  "section_3_eyebrow": {
+    "key": "section_3_eyebrow",
+    "en": "Free Reports",
+    "fr": ""
+  },
   "section_3_title": {
     "key": "section_3_title",
-    "en": "Insights Across Key Canadian Audiences",
+    "en": "Deep Dives Into Key Canadian Audiences",
     "fr": ""
   },
   "section_3_description": {
     "key": "section_3_description",
-    "en": "MTM reporting helps organizations better understand the behaviours, attitudes, and technology adoption patterns of Canadians across distinct demographic and cultural segments.",
+    "en": "Access a selection of reports and have a better understanding of\nCanadians’ behaviours, attitudes, and technology adoption patterns \nacross distinct demographic and cultural segments.",
     "fr": ""
   },
   "free_report_1_tag": {
@@ -174,9 +209,19 @@
     "en": "Gain insight into the media preferences, platform usage, and technology adoption patterns of Canadians who have arrived within the past five years.",
     "fr": ""
   },
+  "free_report_cta": {
+    "key": "free_report_cta",
+    "en": "Download",
+    "fr": ""
+  },
   "Free Infographics": {
     "key": "Free Infographics",
     "en": "",
+    "fr": ""
+  },
+  "section_4_eyebrow": {
+    "key": "section_4_eyebrow",
+    "en": "Free infographic",
     "fr": ""
   },
   "section_4_title": {
@@ -184,14 +229,14 @@
     "en": "Gain Insights from Our Infographics",
     "fr": ""
   },
-  "(to be auto-filled)": {
-    "key": "(to be auto-filled)",
-    "en": "",
-    "fr": ""
-  },
   "section_4_description": {
     "key": "section_4_description",
     "en": "MTM infographics translate complex research into concise, visual storytelling designed for presentations, strategy sessions, and quick decision-making.",
+    "fr": ""
+  },
+  "(to be auto-filled)": {
+    "key": "(to be auto-filled)",
+    "en": "",
     "fr": ""
   },
   "infographic_tag": {
@@ -224,6 +269,11 @@
     "en": "Canadians 18+",
     "fr": ""
   },
+  "News": {
+    "key": "News",
+    "en": "",
+    "fr": ""
+  },
   "section_5_title": {
     "key": "section_5_title",
     "en": "In The News",
@@ -254,26 +304,9 @@
     "en": "New MTM findings reveal growing engagement with digital media among Canadian children, including rising usage of streaming, social video, and mobile-first content platforms.",
     "fr": ""
   },
-  "news_card_cta": {
-    "key": "news_card_cta",
-    "en": "Read More",
+  "news_cta": {
+    "key": "news_cta",
+    "en": "Read",
     "fr": ""
-  },
-  "report_download_page_title": { "key": "report_download_page_title", "en": "Download This Report", "fr": "" },
-  "report_download_page_description": { "key": "report_download_page_description", "en": "Thank you for your interest in this content. Please fill out the form below, and we will provide you with an email containing a download link.", "fr": "" },
-  "report_download_select_subtitle": { "key": "report_download_select_subtitle", "en": "Select Free Report", "fr": "" },
-  "report_download_first_name_label": { "key": "report_download_first_name_label", "en": "First Name", "fr": "" },
-  "report_download_first_name_placeholder": { "key": "report_download_first_name_placeholder", "en": "John", "fr": "" },
-  "report_download_last_name_label": { "key": "report_download_last_name_label", "en": "Last Name", "fr": "" },
-  "report_download_last_name_placeholder": { "key": "report_download_last_name_placeholder", "en": "Doe", "fr": "" },
-  "report_download_email_label": { "key": "report_download_email_label", "en": "Work Email", "fr": "" },
-  "report_download_email_placeholder": { "key": "report_download_email_placeholder", "en": "john@workmail.com", "fr": "" },
-  "report_download_organisation_label": { "key": "report_download_organisation_label", "en": "Organisation", "fr": "" },
-  "report_download_organisation_placeholder": { "key": "report_download_organisation_placeholder", "en": "Organisation Name", "fr": "" },
-  "report_download_position_label": { "key": "report_download_position_label", "en": "Position", "fr": "" },
-  "report_download_position_placeholder": { "key": "report_download_position_placeholder", "en": "Marketing Director", "fr": "" },
-  "download_confirmation_page_title": { "key": "download_confirmation_page_title", "en": "Reports Sent", "fr": "" },
-  "download_confirmation_title": { "key": "download_confirmation_title", "en": "Check Your Inbox!", "fr": "" },
-  "download_confirmation_description": { "key": "download_confirmation_description", "en": "We've sent your selected reports to your inbox. If you don't see the email in a few minutes, check your spam folder.", "fr": "" },
-  "download_confirmation_insights_cta": { "key": "download_confirmation_insights_cta", "en": "Go Back to Exploring", "fr": "" }
+  }
 }

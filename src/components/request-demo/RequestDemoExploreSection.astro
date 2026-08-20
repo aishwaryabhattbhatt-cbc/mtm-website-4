@@ -18,34 +18,34 @@ const base = import.meta.env.BASE_URL;
 const cards = [
     {
         iconSrc: `${base}${icons.tool.dat}`,
-        labelKey: 'explore_dat_label',
+        labelKey: 'request_demo_explore_dat_label',
         labelFallback: 'Data Analysis Tool',
-        descriptionKey: 'explore_dat_description',
+        descriptionKey: 'request_demo_explore_dat_description',
         descriptionFallback:
             "Personalize your impact with data that's tailor made for you. Leverage thousands of variables across multiple years of data in this easy-to-use drag and drop tool.",
-        ctaKey: 'explore_dat_cta',
+        ctaKey: 'request_demo_explore_dat_cta',
         ctaFallback: 'Go to Analysis Tool',
         href: `${base}${locale}/tools/analytic-tools/#data-analysis-tool`,
     },
     {
         iconSrc: `${base}${icons.tool.trending}`,
-        labelKey: 'explore_trending_label',
+        labelKey: 'request_demo_explore_trending_label',
         labelFallback: 'Trending Tool',
-        descriptionKey: 'explore_trending_description',
+        descriptionKey: 'request_demo_explore_trending_description',
         descriptionFallback:
             'Understand the evolution of your business and where your clients interests are heading with the user-friendly Trending Tool. Filter over 25 years data to better understand where media consumption and technology adoption is heading.',
-        ctaKey: 'explore_trending_cta',
+        ctaKey: 'request_demo_explore_trending_cta',
         ctaFallback: 'Go to Analysis Tool',
         href: `${base}${locale}/tools/analytic-tools/#trending-tool`,
     },
     {
         iconSrc: `${base}${icons.tool.census}`,
-        labelKey: 'explore_census_label',
+        labelKey: 'request_demo_explore_census_label',
         labelFallback: 'Census',
-        descriptionKey: 'explore_census_description',
+        descriptionKey: 'request_demo_explore_census_description',
         descriptionFallback:
             'Explore your target audience through the unrivaled precision of population census data. This product brings complexity into focus with a state-of-the-art tool that marries the depth of census data with the simplicity of the MTM tools. A powerful pairing.',
-        ctaKey: 'explore_census_cta',
+        ctaKey: 'request_demo_explore_census_cta',
         ctaFallback: 'Go to Census',
         href: `${base}${locale}/tools/census-tool/`,
     },
@@ -54,17 +54,17 @@ const cards = [
 
 <section class="request-demo-explore">
     <div class="request-demo-explore__headline">
-        <h2 data-copy-key="explore_title">
-            {t(copy, 'explore_title', locale, 'Continue Exploring')}
+        <h2 data-copy-key="request_demo_explore_title">
+            {t(copy, 'request_demo_explore_title', locale, 'Continue Exploring')}
         </h2>
         <p
             class="text-body-p0 request-demo-explore__description"
-            data-copy-key="explore_description"
+            data-copy-key="request_demo_explore_description"
         >
             {
                 t(
                     copy,
-                    'explore_description',
+                    'request_demo_explore_description',
                     locale,
                     'Want to learn more about how the MTM tools and products can help to enrich your next project and amplify your outreach? Check out some of the short videos below.'
                 )
@@ -90,7 +90,7 @@ const cards = [
 
                         <div class="request-demo-explore-card__actions">
                             <Button variant="secondary" size="md" type="button">
-                                {t(copy, 'explore_watch_video', locale, 'Watch Video')}
+                                {t(copy, 'request_demo_explore_watch_video', locale, 'Watch Video')}
                             </Button>
                             <Button variant="tertiary" size="md" href={card.href}>
                                 {t(copy, card.ctaKey, locale, card.ctaFallback)}

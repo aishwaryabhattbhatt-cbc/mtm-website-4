@@ -17,18 +17,24 @@ const base = import.meta.env.BASE_URL;
 
 const expectItems = [
     {
-        key: 'hero_expect_item_1',
+        key: 'request_demo_hero_expect_item_1',
         fallback: 'Personalized walk-through of the tools, reports and services',
     },
-    { key: 'hero_expect_item_2', fallback: 'Q & A to understand how the MTM can support you' },
-    { key: 'hero_expect_item_3', fallback: 'Expert advice on how MTM can fit in your workflow' },
+    {
+        key: 'request_demo_hero_expect_item_2',
+        fallback: 'Q & A to understand how the MTM can support you',
+    },
+    {
+        key: 'request_demo_hero_expect_item_3',
+        fallback: 'Expert advice on how MTM can fit in your workflow',
+    },
 ];
 
 const interestOptions = [
-    { key: 'hero_form_interest_mtm18', fallback: 'MTM 18+', value: 'mtm18' },
-    { key: 'hero_form_interest_junior', fallback: 'Junior', value: 'junior' },
-    { key: 'hero_form_interest_newcomer', fallback: 'Newcomers', value: 'newcomer' },
-    { key: 'hero_form_interest_census', fallback: 'Census', value: 'census' },
+    { key: 'request_demo_hero_form_interest_mtm18', fallback: 'MTM 18+', value: 'mtm18' },
+    { key: 'request_demo_hero_form_interest_junior', fallback: 'Junior', value: 'junior' },
+    { key: 'request_demo_hero_form_interest_newcomer', fallback: 'Newcomers', value: 'newcomer' },
+    { key: 'request_demo_hero_form_interest_census', fallback: 'Census', value: 'census' },
 ];
 ---
 
@@ -43,15 +49,18 @@ const interestOptions = [
 
     <div class="request-demo-hero__content">
         <div class="request-demo-hero__text hero-fade-in" style="animation-delay: 0.1s">
-            <h1 data-copy-key="hero_title">
-                {t(copy, 'hero_title', locale, 'Book A Demo Today!')}
+            <h1 data-copy-key="request_demo_hero_title">
+                {t(copy, 'request_demo_hero_title', locale, 'Book A Demo Today!')}
             </h1>
 
-            <p class="text-body-p1 request-demo-hero__description" data-copy-key="hero_description">
+            <p
+                class="text-body-p1 request-demo-hero__description"
+                data-copy-key="request_demo_hero_description"
+            >
                 {
                     t(
                         copy,
-                        'hero_description',
+                        'request_demo_hero_description',
                         locale,
                         'Interested to see what the MTM can do for you? Book a demo with one of our experts to walk you though the products and tools in more detail.'
                     )
@@ -59,7 +68,11 @@ const interestOptions = [
             </p>
 
             <div class="request-demo-hero__expect">
-                <Eyebrow>{t(copy, 'hero_expect_eyebrow', locale, 'What You Can Expect')}</Eyebrow>
+                <Eyebrow
+                    >{
+                        t(copy, 'request_demo_hero_expect_eyebrow', locale, 'What You Can Expect')
+                    }</Eyebrow
+                >
 
                 <ul class="request-demo-hero__expect-list">
                     {
@@ -78,8 +91,11 @@ const interestOptions = [
         </div>
 
         <div class="request-demo-hero__card hero-fade-in" style="animation-delay: 0.2s">
-            <h2 class="request-demo-hero__card-title text-h4" data-copy-key="hero_form_title">
-                {t(copy, 'hero_form_title', locale, 'Talk to our experts')}
+            <h2
+                class="request-demo-hero__card-title text-h4"
+                data-copy-key="request_demo_hero_form_title"
+            >
+                {t(copy, 'request_demo_hero_form_title', locale, 'Talk to our experts')}
             </h2>
 
             <form
@@ -94,9 +110,9 @@ const interestOptions = [
                         variant="field-with-label"
                         type="text"
                         name="firstName"
-                        labelKey="hero_form_first_name_label"
+                        labelKey="request_demo_hero_form_first_name_label"
                         label="First Name"
-                        placeholderKey="hero_form_first_name_placeholder"
+                        placeholderKey="request_demo_hero_form_first_name_placeholder"
                         placeholder="John"
                         labelColor="primary"
                         required
@@ -107,9 +123,9 @@ const interestOptions = [
                         variant="field-with-label"
                         type="text"
                         name="lastName"
-                        labelKey="hero_form_last_name_label"
+                        labelKey="request_demo_hero_form_last_name_label"
                         label="Last Name"
-                        placeholderKey="hero_form_last_name_placeholder"
+                        placeholderKey="request_demo_hero_form_last_name_placeholder"
                         placeholder="Doe"
                         labelColor="primary"
                         required
@@ -123,9 +139,9 @@ const interestOptions = [
                         variant="field-with-label"
                         type="email"
                         name="email"
-                        labelKey="hero_form_email_label"
+                        labelKey="request_demo_hero_form_email_label"
                         label="Work Email"
-                        placeholderKey="hero_form_email_placeholder"
+                        placeholderKey="request_demo_hero_form_email_placeholder"
                         placeholder="john@workmail.com"
                         emailValidation="none"
                         labelColor="primary"
@@ -137,9 +153,9 @@ const interestOptions = [
                         variant="field-with-label"
                         type="text"
                         name="organisation"
-                        labelKey="hero_form_org_label"
+                        labelKey="request_demo_hero_form_org_label"
                         label="Organisation"
-                        placeholderKey="hero_form_org_placeholder"
+                        placeholderKey="request_demo_hero_form_org_placeholder"
                         placeholder="Organisation Name"
                         labelColor="primary"
                         required
@@ -150,9 +166,16 @@ const interestOptions = [
                     <p
                         class="text-body-p3 request-demo-hero__group-label"
                         id="request-demo-language-label"
-                        data-copy-key="hero_form_language_label"
+                        data-copy-key="request_demo_hero_form_language_label"
                     >
-                        {t(copy, 'hero_form_language_label', locale, 'Language Preference')}
+                        {
+                            t(
+                                copy,
+                                'request_demo_hero_form_language_label',
+                                locale,
+                                'Language Preference'
+                            )
+                        }
                     </p>
                     <div
                         class="request-demo-hero__choice-grid"
@@ -161,11 +184,11 @@ const interestOptions = [
                     >
                         <label class="request-demo-hero__choice text-body-p3">
                             <input type="radio" name="language" value="en" checked />
-                            {t(copy, 'hero_form_language_en', locale, 'English')}
+                            {t(copy, 'request_demo_hero_form_language_en', locale, 'English')}
                         </label>
                         <label class="request-demo-hero__choice text-body-p3">
                             <input type="radio" name="language" value="fr" />
-                            {t(copy, 'hero_form_language_fr', locale, 'French')}
+                            {t(copy, 'request_demo_hero_form_language_fr', locale, 'French')}
                         </label>
                     </div>
                 </div>
@@ -174,9 +197,16 @@ const interestOptions = [
                     <p
                         class="text-body-p3 request-demo-hero__group-label"
                         id="request-demo-interest-label"
-                        data-copy-key="hero_form_interest_label"
+                        data-copy-key="request_demo_hero_form_interest_label"
                     >
-                        {t(copy, 'hero_form_interest_label', locale, 'What are you interested in?')}
+                        {
+                            t(
+                                copy,
+                                'request_demo_hero_form_interest_label',
+                                locale,
+                                'What are you interested in?'
+                            )
+                        }
                     </p>
                     <div
                         class="request-demo-hero__choice-grid"
@@ -196,12 +226,12 @@ const interestOptions = [
                     <div class="request-demo-hero__message">
                         <p
                             class="text-body-p3 request-demo-hero__message-label"
-                            data-copy-key="hero_form_message_label"
+                            data-copy-key="request_demo_hero_form_message_label"
                         >
                             {
                                 t(
                                     copy,
-                                    'hero_form_message_label',
+                                    'request_demo_hero_form_message_label',
                                     locale,
                                     'Something else? Please enter below.'
                                 )
@@ -213,7 +243,7 @@ const interestOptions = [
                             variant="field-only"
                             type="textarea"
                             name="message"
-                            placeholderKey="hero_form_message_placeholder"
+                            placeholderKey="request_demo_hero_form_message_placeholder"
                             placeholder="Write your message here..."
                         />
                     </div>
@@ -221,11 +251,18 @@ const interestOptions = [
 
                 <label class="request-demo-hero__choice request-demo-hero__newsletter text-body-p3">
                     <input type="checkbox" name="newsletter" checked />
-                    {t(copy, 'hero_form_newsletter_label', locale, 'Subscribe to our newsletter')}
+                    {
+                        t(
+                            copy,
+                            'request_demo_hero_form_newsletter_label',
+                            locale,
+                            'Subscribe to our newsletter'
+                        )
+                    }
                 </label>
 
                 <Button variant="primary" type="submit" class="request-demo-hero__submit">
-                    {t(copy, 'hero_form_submit', locale, 'Submit')}
+                    {t(copy, 'request_demo_hero_form_submit', locale, 'Submit')}
                 </Button>
             </form>
         </div>

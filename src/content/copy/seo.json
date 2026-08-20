@@ -6,17 +6,17 @@
   },
   "home_page_description": {
     "key": "home_page_description",
-    "en": "MTM tracks how 300,000+ Canadians use media and technology every year — the independent, industry-standard dataset for streaming, devices, and content trends.",
+    "en": "MTM tracks how 12,000+ Canadians use media and technology every year — the independent, industry-standard dataset for streaming, devices, and content trends.",
     "fr": ""
   },
   "mtm18plus_page_title": {
     "key": "mtm18plus_page_title",
-    "en": "MTM 18+ | Canadian Adult Media & Technology Data (Ages 18+)",
+    "en": "MTM 18+ | Canadian Media & Technology Data (Ages 18+)",
     "fr": ""
   },
   "mtm18plus_page_description": {
     "key": "mtm18plus_page_description",
-    "en": "MTM 18+ tracks media and technology habits of Canadian adults with 5,000+ variables — the independent dataset broadcasters and advertisers plan around.",
+    "en": "MTM 18+ tracks media and technology habits of Canadian adults with 4,000+ variables — the independent dataset broadcasters and advertisers plan around.",
     "fr": ""
   },
   "juniors_page_title": {
@@ -36,7 +36,7 @@
   },
   "newcomers_page_description": {
     "key": "newcomers_page_description",
-    "en": "MTM Jr. tracks media and technology habits of Canadian kids and teens aged 2-17, from streaming to devices to emerging platforms.",
+    "en": "MTM Newcomers tracks media and technology habits of those who have come to Canada in the past 5 years.",
     "fr": ""
   },
   "media_page_title": {
@@ -96,7 +96,7 @@
   },
   "insights_page_description": {
     "key": "insights_page_description",
-    "en": "Reports and data insights on Canadian media and technology trends, drawn from MTM's continuous, independent research since 2005.",
+    "en": "Reports, infographics and data insights on Canadian media and technology trends, drawn from MTM's continuous, independent research since 2002.",
     "fr": ""
   },
   "analytic_tools_page_title": {
@@ -116,7 +116,7 @@
   },
   "census_tool_page_description": {
     "key": "census_tool_page_description",
-    "en": "Map Canadian audiences at the postal-code level with the MTM Census Tool — detailed, independent demographic data down to the community.",
+    "en": "Map Canadian audiences at the postal-code level with the MTM Census Tool — detailed, independent demographic data down to the community, FSA or postal code.",
     "fr": ""
   },
   "about_page_title": {

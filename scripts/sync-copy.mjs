@@ -116,6 +116,18 @@ const DEFAULT_TAB_MAP = {
   'census-tool': '606257462',
   insights: '1724411017',
   'about-us': '550283014',
+  // Small utility pages share one tab — keys are page-prefixed to avoid
+  // collisions (sign_in_*, register_*, request_demo_*, etc.)
+  'request-demo': '133994915',
+  'request-demo-success': '133994915',
+  'sign-in': '133994915',
+  'forgot-password': '133994915',
+  register: '133994915',
+  'register-success': '133994915',
+  'contact-success': '133994915',
+  contact: '133994915',
+  'report-download': '133994915',
+  'download-success': '133994915',
 };
 
 // Solutions pages live on a separate spreadsheet — always use published CSV URLs directly.

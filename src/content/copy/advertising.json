@@ -16,7 +16,12 @@
   },
   "hero_cta": {
     "key": "hero_cta",
-    "en": "",
+    "en": "Request a demo",
+    "fr": ""
+  },
+  "trusted_by_label": {
+    "key": "trusted_by_label",
+    "en": "Trusted by",
     "fr": ""
   },
   "Problem they face": {
@@ -41,7 +46,7 @@
   },
   "insight_1_title": {
     "key": "insight_1_title",
-    "en": "More than 300,000 Canadians surveyed to date",
+    "en": "300,000+ Canadians surveyed to date",
     "fr": ""
   },
   "insight_1_description": {
@@ -76,22 +81,7 @@
   },
   "MTM Reports as the solution": {
     "key": "MTM Reports as the solution",
-    "en": "",
-    "fr": ""
-  },
-  "reports_title": {
-    "key": "reports_title",
-    "en": "",
-    "fr": ""
-  },
-  "Reports cards (to be autofilled)": {
-    "key": "Reports cards (to be autofilled)",
-    "en": "",
-    "fr": ""
-  },
-  "How they would actually use it - combination of tools and reports used in different stages": {
-    "key": "How they would actually use it - combination of tools and reports used in different stages",
-    "en": "",
+    "en": "Same as insights page",
     "fr": ""
   },
   "workflow_title": {
@@ -101,7 +91,7 @@
   },
   "workflow_description": {
     "key": "workflow_description",
-    "en": "",
+    "en": "You don't open a research tool and start clicking. You have a business question. MTM is built to answer it, at every stage of your workflow.",
     "fr": ""
   },
   "workflow_step_1_number": {
@@ -189,14 +179,19 @@
     "en": "MTM in Action for Ad Agencies",
     "fr": ""
   },
+  "usecases_card_title": {
+    "key": "usecases_card_title",
+    "en": "Use Case",
+    "fr": ""
+  },
+  "leverage_title": {
+    "key": "leverage_title",
+    "en": "How to leverage this",
+    "fr": ""
+  },
   "usecases_description": {
     "key": "usecases_description",
     "en": "Use the MTM to sharpen your pitches, validate plans and win more business — then apply the same thinking to your clients.",
-    "fr": ""
-  },
-  "usecase_1_brand": {
-    "key": "usecase_1_brand",
-    "en": "",
     "fr": ""
   },
   "usecase_1_description": {
@@ -209,19 +204,9 @@
     "en": "Ad exposure, Regions, Devices used, Income",
     "fr": ""
   },
-  "usecase_1_cta_title": {
-    "key": "usecase_1_cta_title",
-    "en": "How you can use it",
-    "fr": ""
-  },
   "usecase_1_cta": {
     "key": "usecase_1_cta",
     "en": "Leverage the Data Analysis Tool to find the income levels, devices used to maximize exposure.",
-    "fr": ""
-  },
-  "usecase_2_brand": {
-    "key": "usecase_2_brand",
-    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
     "fr": ""
   },
   "usecase_2_description": {
@@ -232,11 +217,6 @@
   "usecase_2_variables": {
     "key": "usecase_2_variables",
     "en": "FSA, Postal Code, Income",
-    "fr": ""
-  },
-  "usecase_2_cta_title": {
-    "key": "usecase_2_cta_title",
-    "en": "",
     "fr": ""
   },
   "usecase_2_cta": {

@@ -16,13 +16,19 @@ const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
     industry: '2038951837',
     education: '682166038',
     'gov-ngos': '611009991',
-    'request-demo': '0',
-    'request-demo-success': '0',
-    'sign-in': '0',
-    'forgot-password': '0',
-    register: '0',
-    'register-success': '0',
-    'contact-success': '0',
+    // Small utility pages share one tab — see the per-page comment above each
+    // component's copy keys; keys are page-prefixed (sign_in_*, register_*,
+    // etc.) so they don't collide within this shared tab.
+    'request-demo': '133994915',
+    'request-demo-success': '133994915',
+    'sign-in': '133994915',
+    'forgot-password': '133994915',
+    register: '133994915',
+    'register-success': '133994915',
+    'contact-success': '133994915',
+    contact: '133994915',
+    'report-download': '133994915',
+    'download-success': '133994915',
 };
 
 const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
@@ -52,13 +58,26 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=682166038&single=true&output=csv',
     'gov-ngos':
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=611009991&single=true&output=csv',
-    'request-demo': '',
-    'request-demo-success': '',
-    'sign-in': '',
-    'forgot-password': '',
-    register: '',
-    'register-success': '',
-    'contact-success': '',
+    'request-demo':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    'request-demo-success':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    'sign-in':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    'forgot-password':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    register:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    'register-success':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    'contact-success':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    contact:
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    'report-download':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    'download-success':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
 };
 
 const DEFAULT_REFRESH_MS = 30000;

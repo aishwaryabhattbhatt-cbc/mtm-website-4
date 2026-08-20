@@ -29,14 +29,14 @@
     "en": "The Data Analysis Tool (DAT) offers subscribers easy access to MTM 18+, Junior and Newcomers data. Select data, filter results and get answers to burning questions.",
     "fr": ""
   },
-  "tool_1_cta": {
-    "key": "tool_1_cta",
-    "en": "View Demo",
+  "Tool Features": {
+    "key": "Tool Features",
+    "en": "",
     "fr": ""
   },
-  "dat_features_heading": {
-    "key": "dat_features_heading",
-    "en": "Tool Features",
+  "dat_features_tagline": {
+    "key": "dat_features_tagline",
+    "en": "Explore Tool Features",
     "fr": ""
   },
   "dat_feature_1_title": {
@@ -126,12 +126,7 @@
   },
   "tool_2_description": {
     "key": "tool_2_description",
-    "en": "20+ years of data all in one place. Find all you need to know about past and present media technology with the Forecasting Tool.",
-    "fr": ""
-  },
-  "tool_2_cta": {
-    "key": "tool_2_cta",
-    "en": "View Demo",
+    "en": "The Trending tool offeres 20+ years of data all in one place. Find all the trends about past and present media technology.",
     "fr": ""
   },
   "trending_feature_1_eyebrow": {
@@ -191,12 +186,7 @@
   },
   "tool_3_description": {
     "key": "tool_3_description",
-    "en": "Project future technology adoption and model scenarios. Know where things are headed in the next 1 to 5 years.",
-    "fr": ""
-  },
-  "tool_3_cta": {
-    "key": "tool_3_cta",
-    "en": "View Demo",
+    "en": "The Forecasting Tool helps project future technology adoption and model scenarios. Know where things are headed in the next 1 to 5 years.",
     "fr": ""
   },
   "forecasting_feature_1_eyebrow": {

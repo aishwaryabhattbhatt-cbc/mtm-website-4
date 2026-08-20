@@ -18,10 +18,10 @@ const copy = await getPageDictionary('register');
 const base = import.meta.env.BASE_URL;
 const localeSwitchUrls = getLocaleSwitchUrls(base, 'register');
 
-const pageTitle = t(copy, 'hero_title', locale, 'MTM | Register');
+const pageTitle = t(copy, 'register_hero_title', locale, 'MTM | Register');
 const pageDescription = t(
     copy,
-    'hero_subtitle',
+    'register_hero_subtitle',
     locale,
     "To gain access through your employer's subscription please fill out the following registration form."
 );
