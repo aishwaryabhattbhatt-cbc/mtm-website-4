@@ -565,6 +565,16 @@ const mobileCellDelays = mobileGridCells.map(() =>
         transform: translate(-50%, -50%);
     }
 
+    /* Desktop only — 20% over the shared icon-2xl token from the markup's
+       `icon-2xl` class. Tablet and mobile already size correctly off their
+       own overrides below and must stay untouched. */
+    @media (min-width: 1024px) {
+        .panel-cell-icon {
+            width: calc(var(--icon-2xl) * 1.2);
+            height: calc(var(--icon-2xl) * 1.2);
+        }
+    }
+
     /* Cell size is the grid's own width / 14, which shrinks much faster than
        the icon-2xl token as --content-margin-inline steps down — by mobile
        the cell is ~20-30px while icon-2xl stays 2.5rem (40px), badly
