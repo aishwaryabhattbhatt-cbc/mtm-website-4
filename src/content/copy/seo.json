@@ -188,5 +188,40 @@
     "key": "request_demo_success_page_description",
     "en": "Your demo request has been submitted successfully.",
     "fr": ""
+  },
+  "contact_success_page_title": {
+    "key": "contact_success_page_title",
+    "en": "MTM | Message Sent",
+    "fr": ""
+  },
+  "contact_success_page_description": {
+    "key": "contact_success_page_description",
+    "en": "Your message has been sent successfully.",
+    "fr": ""
+  },
+  "register_page_title": {
+    "key": "register_page_title",
+    "en": "MTM | Register",
+    "fr": ""
+  },
+  "register_page_description": {
+    "key": "register_page_description",
+    "en": "To gain access through your employer's subscription please fill out the following registration form.",
+    "fr": ""
+  },
+  "register_success_page_title": {
+    "key": "register_success_page_title",
+    "en": "MTM | Registration Submitted",
+    "fr": ""
+  },
+  "register_success_page_description": {
+    "key": "register_success_page_description",
+    "en": "Your registration has been submitted successfully.",
+    "fr": ""
+  },
+  "download_confirmation_page_description": {
+    "key": "download_confirmation_page_description",
+    "en": "We've sent your selected reports to your inbox.",
+    "fr": ""
   }
 }
