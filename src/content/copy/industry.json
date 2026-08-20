@@ -19,19 +19,19 @@
     "en": "Request a Demo",
     "fr": ""
   },
+  "trusted_by_label": {
+    "key": "trusted_by_label",
+    "en": "Trusted by",
+    "fr": ""
+  },
   "methodology_title": {
     "key": "methodology_title",
-    "en": "",
+    "en": "Research Methodology",
     "fr": ""
   },
   "methodology_description": {
     "key": "methodology_description",
     "en": "Get data that holds up when it matters most. MTM is designed with detail in mind. Every number comes from a methodology built for citation, replication, and regulatory use.",
-    "fr": ""
-  },
-  "methodology_cta": {
-    "key": "methodology_cta",
-    "en": "Methodology Data",
     "fr": ""
   },
   "method_step_1_number": {
@@ -86,7 +86,7 @@
   },
   "method_step_3_number": {
     "key": "method_step_3_number",
-    "en": "",
+    "en": "03 Data Processing",
     "fr": ""
   },
   "method_step_3_title": {
@@ -141,47 +141,7 @@
   },
   "Reports cards (to be autofilled)": {
     "key": "Reports cards (to be autofilled)",
-    "en": "",
-    "fr": ""
-  },
-  "product_tag": {
-    "key": "product_tag",
-    "en": "Just to note that Census appears twice on the mock up. the first instance should say Newcomers",
-    "fr": ""
-  },
-  "latest_report_title": {
-    "key": "latest_report_title",
-    "en": "",
-    "fr": ""
-  },
-  "latest_report_description": {
-    "key": "latest_report_description",
-    "en": "",
-    "fr": ""
-  },
-  "latest_report_tag_1": {
-    "key": "latest_report_tag_1",
-    "en": "",
-    "fr": ""
-  },
-  "latest_report_tag_2": {
-    "key": "latest_report_tag_2",
-    "en": "",
-    "fr": ""
-  },
-  "tools_label": {
-    "key": "tools_label",
-    "en": "",
-    "fr": ""
-  },
-  "tools_cta": {
-    "key": "tools_cta",
-    "en": "",
-    "fr": ""
-  },
-  "tool1_title": {
-    "key": "tool1_title",
-    "en": "",
+    "en": "Same as insight",
     "fr": ""
   },
   "usecases_title": {
@@ -194,9 +154,14 @@
     "en": "Learn how your organization can use the MTM to better understand audiences and users of all sizes.",
     "fr": ""
   },
-  "usecase_1_brand": {
-    "key": "usecase_1_brand",
-    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
+  "usecases_card_title": {
+    "key": "usecases_card_title",
+    "en": "Use Case",
+    "fr": ""
+  },
+  "leverage_title": {
+    "key": "leverage_title",
+    "en": "How to leverage this",
     "fr": ""
   },
   "usecase_1_description": {
@@ -246,7 +211,7 @@
   },
   "testimonial_logo": {
     "key": "testimonial_logo",
-    "en": "",
+    "en": "Numeris",
     "fr": ""
   },
   "testimonial_quote": {

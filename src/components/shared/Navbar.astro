@@ -24,11 +24,21 @@ const linkedInUrl = 'https://www.linkedin.com/company/media-technology-monitor/'
 const isFrench = locale === 'fr';
 
 const productsDropdown = {
-    mainLabel: isFrench ? 'Produits analytiques' : 'Analytic Products',
-    sideLabel: isFrench ? 'Produits du recensement' : 'Census Products',
+    mainLabel: t(
+        copy,
+        'nav_products_main_label',
+        locale,
+        isFrench ? 'Produits analytiques' : 'Analytic Products'
+    ),
+    sideLabel: t(
+        copy,
+        'nav_products_side_label',
+        locale,
+        isFrench ? 'Produits du recensement' : 'Census Products'
+    ),
     mainItems: [
         {
-            title: 'MTM 18+',
+            title: t(copy, 'nav_products_item_1_title', locale, 'MTM 18+'),
             description: t(
                 copy,
                 'nav_products_item_1_description',
@@ -39,7 +49,7 @@ const productsDropdown = {
             iconPath: `${base}${icons['product-18-plus'].badge}`,
         },
         {
-            title: isFrench ? 'Junior' : 'Junior',
+            title: t(copy, 'nav_products_item_2_title', locale, 'Junior'),
             description: t(
                 copy,
                 'nav_products_item_2_description',
@@ -50,7 +60,12 @@ const productsDropdown = {
             iconPath: `${base}${icons['product-juniors'].badge}`,
         },
         {
-            title: isFrench ? 'Nouveaux arrivants' : 'Newcomers',
+            title: t(
+                copy,
+                'nav_products_item_3_title',
+                locale,
+                isFrench ? 'Nouveaux arrivants' : 'Newcomers'
+            ),
             description: t(
                 copy,
                 'nav_products_item_3_description',
@@ -62,7 +77,7 @@ const productsDropdown = {
         },
     ],
     sideItem: {
-        title: isFrench ? 'Census' : 'Census',
+        title: t(copy, 'nav_products_side_title', locale, 'Census'),
         description: t(
             copy,
             'nav_products_side_description',
@@ -75,11 +90,26 @@ const productsDropdown = {
 };
 
 const toolsDropdown = {
-    mainLabel: isFrench ? 'Outils analytiques' : 'Analytic Tools',
-    sideLabel: isFrench ? 'Outils de recensement' : 'Census Tools',
+    mainLabel: t(
+        copy,
+        'nav_tools_main_label',
+        locale,
+        isFrench ? 'Outils analytiques' : 'Analytic Tools'
+    ),
+    sideLabel: t(
+        copy,
+        'nav_tools_side_label',
+        locale,
+        isFrench ? 'Outils de recensement' : 'Census Tools'
+    ),
     mainItems: [
         {
-            title: isFrench ? "Outils d'analyse de données" : 'Data Analysis Tool',
+            title: t(
+                copy,
+                'nav_tools_item_1_title',
+                locale,
+                isFrench ? "Outils d'analyse de données" : 'Data Analysis Tool'
+            ),
             description: t(
                 copy,
                 'nav_tools_item_1_description',
@@ -90,7 +120,12 @@ const toolsDropdown = {
             iconPath: `${base}${icons.tool.dat}`,
         },
         {
-            title: isFrench ? 'Outil de tendances' : 'Trending Tool',
+            title: t(
+                copy,
+                'nav_tools_item_2_title',
+                locale,
+                isFrench ? 'Outil de tendances' : 'Trending Tool'
+            ),
             description: t(
                 copy,
                 'nav_tools_item_2_description',
@@ -101,7 +136,12 @@ const toolsDropdown = {
             iconPath: `${base}${icons.tool.trending}`,
         },
         {
-            title: isFrench ? 'Outil de prévision' : 'Forecasting Tool',
+            title: t(
+                copy,
+                'nav_tools_item_3_title',
+                locale,
+                isFrench ? 'Outil de prévision' : 'Forecasting Tool'
+            ),
             description: t(
                 copy,
                 'nav_tools_item_3_description',
@@ -113,7 +153,7 @@ const toolsDropdown = {
         },
     ],
     sideItem: {
-        title: isFrench ? 'Census' : 'Census',
+        title: t(copy, 'nav_tools_side_title', locale, 'Census'),
         description: t(
             copy,
             'nav_tools_side_description',
@@ -126,7 +166,12 @@ const toolsDropdown = {
 };
 
 const solutionsDropdown = {
-    label: isFrench ? 'Solutions par secteur' : 'Solutions by Industry',
+    label: t(
+        copy,
+        'nav_solutions_label',
+        locale,
+        isFrench ? 'Solutions par secteur' : 'Solutions by Industry'
+    ),
     items: [
         {
             title: t(copy, 'solutions_item_2', locale, 'Media'),
@@ -480,8 +525,12 @@ const solutionsDropdown = {
                     </svg>
                 </a>
 
-                <Button href={signInUrl} variant="secondary" size="md">SIGN IN</Button>
-                <Button href={requestDemoUrl} variant="primary" size="md">REQUEST A DEMO</Button>
+                <Button href={signInUrl} variant="secondary" size="md"
+                    >{t(copy, 'nav_sign_in_cta', locale, 'SIGN IN')}</Button
+                >
+                <Button href={requestDemoUrl} variant="primary" size="md"
+                    >{t(copy, 'nav_request_demo_cta', locale, 'REQUEST A DEMO')}</Button
+                >
             </div>
         </div>
     </div>

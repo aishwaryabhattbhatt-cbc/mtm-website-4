@@ -62,14 +62,28 @@ const resolvedPlaceholder = placeholderKey
     : placeholder;
 
 const resolvedLabel = labelKey ? t(copy, labelKey, locale, label || '') : label;
-const emailErrorMessage =
+const emailErrorMessage = t(
+    copy,
+    'form_email_error_message',
+    locale,
     locale === 'fr'
         ? 'Veuillez saisir une adresse courriel valide.'
-        : 'Please enter a valid email address.';
-const passwordToggleLabels =
-    locale === 'fr'
-        ? { show: 'Afficher le mot de passe', hide: 'Masquer le mot de passe' }
-        : { show: 'Show password', hide: 'Hide password' };
+        : 'Please enter a valid email address.'
+);
+const passwordToggleLabels = {
+    show: t(
+        copy,
+        'form_password_show_label',
+        locale,
+        locale === 'fr' ? 'Afficher le mot de passe' : 'Show password'
+    ),
+    hide: t(
+        copy,
+        'form_password_hide_label',
+        locale,
+        locale === 'fr' ? 'Masquer le mot de passe' : 'Hide password'
+    ),
+};
 ---
 
 <div class={`form-field form-field--${variant} ${className || ''}`}>

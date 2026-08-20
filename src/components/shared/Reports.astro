@@ -1,4 +1,6 @@
 ---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
 import Button from './Button.astro';
 
 interface StatItem {
@@ -9,6 +11,8 @@ interface StatItem {
 }
 
 interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
     imageSrc: string;
     imageAlt?: string;
     graphIconSrc?: string;
@@ -23,6 +27,8 @@ interface Props {
 }
 
 const {
+    locale,
+    copy,
     imageSrc,
     imageAlt = '',
     graphIconSrc,
@@ -92,14 +98,28 @@ const {
 }
 
 <div class="report-action-card report-card-fly-in">
-    <p class="text-body-p1 report-action-text">
-        Explore our full library of reports or download a free sneak peek.
+    <p class="text-body-p1 report-action-text" data-copy-key="report_action_text">
+        {
+            t(
+                copy,
+                'report_action_text',
+                locale,
+                'Explore our full library of reports or download a free sneak peek.'
+            )
+        }
     </p>
     <div class="report-action-buttons">
-        <Button variant="secondary" size="lg" href={insightsHref}>GO TO INSIGHTS</Button>
+        <Button
+            variant="secondary"
+            size="lg"
+            href={insightsHref}
+            data-copy-key="report_action_cta_1"
+        >
+            {t(copy, 'report_action_cta_1', locale, 'GO TO INSIGHTS')}
+        </Button>
         <Button variant="primary" size="lg" href={sampleReportHref}>
-            <span class="report-action-btn-inner">
-                SAMPLE REPORT
+            <span class="report-action-btn-inner" data-copy-key="report_action_cta_2">
+                {t(copy, 'report_action_cta_2', locale, 'SAMPLE REPORT')}
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

@@ -1,52 +1,642 @@
 {
-  "hero_title": {
-    "key": "hero_title",
-    "en": "Sign In",
+  "Request a demo page": {
+    "key": "Request a demo page",
+    "en": "",
     "fr": ""
   },
-  "hero_subtitle": {
-    "key": "hero_subtitle",
-    "en": "Sign in to access your MTM dashboard, tools, and reports.",
+  "request_demo_hero_title": {
+    "key": "request_demo_hero_title",
+    "en": "Book A Demo Today!",
     "fr": ""
   },
-  "hero_form_email_label": {
-    "key": "hero_form_email_label",
-    "en": "Email",
+  "request_demo_hero_description": {
+    "key": "request_demo_hero_description",
+    "en": "Interested to see what the MTM can do for you? Book a demo with one of our experts to walk you though the products and tools in more detail.",
     "fr": ""
   },
-  "hero_form_email_placeholder": {
-    "key": "hero_form_email_placeholder",
+  "request_demo_hero_expect_eyebrow": {
+    "key": "request_demo_hero_expect_eyebrow",
+    "en": "What You Can Expect",
+    "fr": ""
+  },
+  "request_demo_hero_expect_item_1": {
+    "key": "request_demo_hero_expect_item_1",
+    "en": "Personalized walk-through of the tools, reports and services",
+    "fr": ""
+  },
+  "request_demo_hero_expect_item_2": {
+    "key": "request_demo_hero_expect_item_2",
+    "en": "Q & A to understand how the MTM can support you",
+    "fr": ""
+  },
+  "request_demo_hero_expect_item_3": {
+    "key": "request_demo_hero_expect_item_3",
+    "en": "Expert advice on how MTM can fit in your workflow",
+    "fr": ""
+  },
+  "request_demo_hero_form_title": {
+    "key": "request_demo_hero_form_title",
+    "en": "Talk to our experts",
+    "fr": ""
+  },
+  "request_demo_hero_form_first_name_label": {
+    "key": "request_demo_hero_form_first_name_label",
+    "en": "First Name",
+    "fr": ""
+  },
+  "request_demo_hero_form_first_name_placeholder": {
+    "key": "request_demo_hero_form_first_name_placeholder",
+    "en": "John",
+    "fr": ""
+  },
+  "request_demo_hero_form_last_name_label": {
+    "key": "request_demo_hero_form_last_name_label",
+    "en": "Last Name",
+    "fr": ""
+  },
+  "request_demo_hero_form_last_name_placeholder": {
+    "key": "request_demo_hero_form_last_name_placeholder",
+    "en": "Doe",
+    "fr": ""
+  },
+  "request_demo_hero_form_email_label": {
+    "key": "request_demo_hero_form_email_label",
+    "en": "Work Email",
+    "fr": ""
+  },
+  "request_demo_hero_form_email_placeholder": {
+    "key": "request_demo_hero_form_email_placeholder",
     "en": "john@workmail.com",
     "fr": ""
   },
-  "hero_form_password_label": {
-    "key": "hero_form_password_label",
+  "request_demo_hero_form_org_label": {
+    "key": "request_demo_hero_form_org_label",
+    "en": "Organisation",
+    "fr": ""
+  },
+  "request_demo_hero_form_org_placeholder": {
+    "key": "request_demo_hero_form_org_placeholder",
+    "en": "Organisation Name",
+    "fr": ""
+  },
+  "request_demo_hero_form_language_label": {
+    "key": "request_demo_hero_form_language_label",
+    "en": "Language Preference",
+    "fr": ""
+  },
+  "request_demo_hero_form_language_en": {
+    "key": "request_demo_hero_form_language_en",
+    "en": "English",
+    "fr": ""
+  },
+  "request_demo_hero_form_language_fr": {
+    "key": "request_demo_hero_form_language_fr",
+    "en": "French",
+    "fr": ""
+  },
+  "request_demo_hero_form_interest_label": {
+    "key": "request_demo_hero_form_interest_label",
+    "en": "What are you interested in?",
+    "fr": ""
+  },
+  "request_demo_hero_form_interest_mtm18": {
+    "key": "request_demo_hero_form_interest_mtm18",
+    "en": "MTM 18+",
+    "fr": ""
+  },
+  "request_demo_hero_form_interest_junior": {
+    "key": "request_demo_hero_form_interest_junior",
+    "en": "Junior",
+    "fr": ""
+  },
+  "request_demo_hero_form_interest_newcomer": {
+    "key": "request_demo_hero_form_interest_newcomer",
+    "en": "Newcomer",
+    "fr": ""
+  },
+  "request_demo_hero_form_interest_census": {
+    "key": "request_demo_hero_form_interest_census",
+    "en": "Census",
+    "fr": ""
+  },
+  "request_demo_hero_form_message_label": {
+    "key": "request_demo_hero_form_message_label",
+    "en": "Something else? Please enter below.",
+    "fr": ""
+  },
+  "request_demo_hero_form_message_placeholder": {
+    "key": "request_demo_hero_form_message_placeholder",
+    "en": "Write your message here...",
+    "fr": ""
+  },
+  "request_demo_hero_form_newsletter_label": {
+    "key": "request_demo_hero_form_newsletter_label",
+    "en": "Subscribe to our newsletter",
+    "fr": ""
+  },
+  "request_demo_hero_form_submit": {
+    "key": "request_demo_hero_form_submit",
+    "en": "Submit",
+    "fr": ""
+  },
+  "trusted_by_label": {
+    "key": "trusted_by_label",
+    "en": "Trusted by",
+    "fr": ""
+  },
+  "request_demo_testimonial_title": {
+    "key": "request_demo_testimonial_title",
+    "en": "What clients are saying about us",
+    "fr": ""
+  },
+  "request_demo_testimonial_1_quote": {
+    "key": "request_demo_testimonial_1_quote",
+    "en": "When it comes to technology ownership and usage in Canada, the MTM is THE go-to source of information. For our team, this resource is invaluable because it allows us to make informed decisions with confidence and stay one step ahead in an ever-changing media landscape. It is a fundamental tool for our strategic planning and innovation efforts.",
+    "fr": ""
+  },
+  "request_demo_testimonial_1_attribution": {
+    "key": "request_demo_testimonial_1_attribution",
+    "en": "Élise Roy-Pepin, The Weather Network",
+    "fr": ""
+  },
+  "request_demo_testimonial_2_quote": {
+    "key": "request_demo_testimonial_2_quote",
+    "en": "MTM is a valuable resource for effective media planning and research for our clients. The comprehensive data, forecasting and frequent reports give us deep insight into Canadian audience behaviors and media trends.",
+    "fr": ""
+  },
+  "request_demo_testimonial_2_attribution": {
+    "key": "request_demo_testimonial_2_attribution",
+    "en": "Ryan Casey, Director, Media Operations - Time & Space Media",
+    "fr": ""
+  },
+  "request_demo_testimonial_3_quote": {
+    "key": "request_demo_testimonial_3_quote",
+    "en": "Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.",
+    "fr": ""
+  },
+  "request_demo_testimonial_3_attribution": {
+    "key": "request_demo_testimonial_3_attribution",
+    "en": "Director of Audience Strategy",
+    "fr": ""
+  },
+  "request_demo_testimonial_4_quote": {
+    "key": "request_demo_testimonial_4_quote",
+    "en": "As the author of nine editions of a Canadian Advertising textbook, I have included data from Media Technology Monitor (MTM) for the past five editions to enhance the Broadcast, Internet and Social Media Chapters. I believe the data improved the quality allowing students to understand the complexities of advertising planning decisions. The textbook contains the most current consumer media technology usage and adoption data to keep it in a leading market position. MTM is a wonderful partner and I look forward to working with them for the next edition.",
+    "fr": ""
+  },
+  "request_demo_testimonial_4_attribution": {
+    "key": "request_demo_testimonial_4_attribution",
+    "en": "Michael Guolla, Professor, University of Ottawa",
+    "fr": ""
+  },
+  "request_demo_testimonial_5_quote": {
+    "key": "request_demo_testimonial_5_quote",
+    "en": "Thanks to our subscription to MTM Newcomers, we have access to newcomer data insights and their settlement and integration journey in Manitoba. We particularly appreciate seeing information that is not available through any other sources, like newcomers' use of media, devices, and newcomer knowledge of services available through our sector. This information helps our members ensure that their services are well adapted to the needs and characteristics of the newcomers they serve.",
+    "fr": ""
+  },
+  "request_demo_testimonial_5_attribution": {
+    "key": "request_demo_testimonial_5_attribution",
+    "en": "Valeria Castellanos, Language Support and Program Manager - MANSO",
+    "fr": ""
+  },
+  "Request a demo - success": {
+    "key": "Request a demo - success",
+    "en": "",
+    "fr": ""
+  },
+  "request_demo_success_title": {
+    "key": "request_demo_success_title",
+    "en": "Thank You!",
+    "fr": ""
+  },
+  "request_demo_success_description": {
+    "key": "request_demo_success_description",
+    "en": "Your request has been submitted. One of our experts will be in touch with you shortly to schedule your demo.",
+    "fr": ""
+  },
+  "request_demo_explore_title": {
+    "key": "request_demo_explore_title",
+    "en": "Continue Exploring",
+    "fr": ""
+  },
+  "request_demo_explore_description": {
+    "key": "request_demo_explore_description",
+    "en": "Want to learn more about how the MTM tools and products can help to enrich your next project and amplify your outreach? Check out some of the short videos below.",
+    "fr": ""
+  },
+  "request_demo_explore_dat_label": {
+    "key": "request_demo_explore_dat_label",
+    "en": "Data Analysis Tool",
+    "fr": ""
+  },
+  "request_demo_explore_dat_description": {
+    "key": "request_demo_explore_dat_description",
+    "en": "Personalize your impact with data that's tailor made for you. Leverage thousands of variables across multiple years of data in this easy-to-use drag and drop tool.",
+    "fr": ""
+  },
+  "request_demo_explore_dat_cta": {
+    "key": "request_demo_explore_dat_cta",
+    "en": "Go to Analysis Tool",
+    "fr": ""
+  },
+  "request_demo_explore_trending_label": {
+    "key": "request_demo_explore_trending_label",
+    "en": "Trending Tool",
+    "fr": ""
+  },
+  "request_demo_explore_trending_description": {
+    "key": "request_demo_explore_trending_description",
+    "en": "Understand the evolution of your business and where your clients interests are heading with the user-friendly Trending Tool. Filter over 25 years data to better understand where media consumption and technology adoption is heading.",
+    "fr": ""
+  },
+  "request_demo_explore_trending_cta": {
+    "key": "request_demo_explore_trending_cta",
+    "en": "Go to Analysis Tool",
+    "fr": ""
+  },
+  "request_demo_explore_census_label": {
+    "key": "request_demo_explore_census_label",
+    "en": "Census",
+    "fr": ""
+  },
+  "request_demo_explore_census_description": {
+    "key": "request_demo_explore_census_description",
+    "en": "Explore your target audience through the unrivaled precision of population census data. This product brings complexity into focus with a state-of-the-art tool that marries the depth of census data with the simplicity of the MTM tools. A powerful pairing.",
+    "fr": ""
+  },
+  "request_demo_explore_census_cta": {
+    "key": "request_demo_explore_census_cta",
+    "en": "Go to Census",
+    "fr": ""
+  },
+  "request_demo_explore_watch_video": {
+    "key": "request_demo_explore_watch_video",
+    "en": "Watch Video",
+    "fr": ""
+  },
+  "Contact us": {
+    "key": "Contact us",
+    "en": "",
+    "fr": ""
+  },
+  "contact_first_name_label": {
+    "key": "contact_first_name_label",
+    "en": "First Name",
+    "fr": ""
+  },
+  "contact_first_name_placeholder": {
+    "key": "contact_first_name_placeholder",
+    "en": "John",
+    "fr": ""
+  },
+  "contact_last_name_label": {
+    "key": "contact_last_name_label",
+    "en": "Last Name",
+    "fr": ""
+  },
+  "contact_last_name_placeholder": {
+    "key": "contact_last_name_placeholder",
+    "en": "Doe",
+    "fr": ""
+  },
+  "contact_email_label": {
+    "key": "contact_email_label",
+    "en": "Email",
+    "fr": ""
+  },
+  "contact_email_placeholder": {
+    "key": "contact_email_placeholder",
+    "en": "john@workmail.com",
+    "fr": ""
+  },
+  "contact_message_label": {
+    "key": "contact_message_label",
+    "en": "Message",
+    "fr": ""
+  },
+  "contact_message_placeholder": {
+    "key": "contact_message_placeholder",
+    "en": "How can we help?",
+    "fr": ""
+  },
+  "contact_submit_cta": {
+    "key": "contact_submit_cta",
+    "en": "Submit",
+    "fr": ""
+  },
+  "Contact us- Success": {
+    "key": "Contact us- Success",
+    "en": "",
+    "fr": ""
+  },
+  "contact_success_title": {
+    "key": "contact_success_title",
+    "en": "Form Submitted!",
+    "fr": ""
+  },
+  "contact_success_description": {
+    "key": "contact_success_description",
+    "en": "Thank you for reaching out. One of our experts will be in touch with you shortly.",
+    "fr": ""
+  },
+  "Register": {
+    "key": "Register",
+    "en": "",
+    "fr": ""
+  },
+  "register_hero_title": {
+    "key": "register_hero_title",
+    "en": "Register",
+    "fr": ""
+  },
+  "register_hero_subtitle": {
+    "key": "register_hero_subtitle",
+    "en": "To gain access through your employer's subscription please fill out the following registration form. Please use your work email address.",
+    "fr": ""
+  },
+  "register_hero_form_first_name_label": {
+    "key": "register_hero_form_first_name_label",
+    "en": "First Name",
+    "fr": ""
+  },
+  "register_hero_form_first_name_placeholder": {
+    "key": "register_hero_form_first_name_placeholder",
+    "en": "John",
+    "fr": ""
+  },
+  "register_hero_form_last_name_label": {
+    "key": "register_hero_form_last_name_label",
+    "en": "Last Name",
+    "fr": ""
+  },
+  "register_hero_form_last_name_placeholder": {
+    "key": "register_hero_form_last_name_placeholder",
+    "en": "Doe",
+    "fr": ""
+  },
+  "register_hero_form_email_label": {
+    "key": "register_hero_form_email_label",
+    "en": "Work Email",
+    "fr": ""
+  },
+  "register_hero_form_email_placeholder": {
+    "key": "register_hero_form_email_placeholder",
+    "en": "john@workmail.com",
+    "fr": ""
+  },
+  "register_hero_form_department_label": {
+    "key": "register_hero_form_department_label",
+    "en": "Department",
+    "fr": ""
+  },
+  "register_hero_form_department_placeholder": {
+    "key": "register_hero_form_department_placeholder",
+    "en": "Marketing",
+    "fr": ""
+  },
+  "register_hero_form_job_title_label": {
+    "key": "register_hero_form_job_title_label",
+    "en": "Job Title",
+    "fr": ""
+  },
+  "register_hero_form_job_title_placeholder": {
+    "key": "register_hero_form_job_title_placeholder",
+    "en": "Marketing Director",
+    "fr": ""
+  },
+  "register_hero_form_submit": {
+    "key": "register_hero_form_submit",
+    "en": "Submit",
+    "fr": ""
+  },
+  "register_hero_form_note": {
+    "key": "register_hero_form_note",
+    "en": "Once the registration form is complete you'll receive your login details by email. If nothing is received, please check your spam/junk folder. If your email domain is not recognized or if you have questions,",
+    "fr": ""
+  },
+  "register_hero_form_note_cta": {
+    "key": "register_hero_form_note_cta",
+    "en": "Contact Us",
+    "fr": ""
+  },
+  "register_hero_form_has_account_text": {
+    "key": "register_hero_form_has_account_text",
+    "en": "Already have an account?",
+    "fr": ""
+  },
+  "register_hero_form_has_account_cta": {
+    "key": "register_hero_form_has_account_cta",
+    "en": "Sign In",
+    "fr": ""
+  },
+  "Register - Success": {
+    "key": "Register - Success",
+    "en": "",
+    "fr": ""
+  },
+  "register_success_title": {
+    "key": "register_success_title",
+    "en": "Registration Submitted!",
+    "fr": ""
+  },
+  "register_success_description": {
+    "key": "register_success_description",
+    "en": "Thank you for registering. Once your details are verified, you'll receive your login details by email.",
+    "fr": ""
+  },
+  "register_success_cta": {
+    "key": "register_success_cta",
+    "en": "Sign In",
+    "fr": ""
+  },
+  "Sign in": {
+    "key": "Sign in",
+    "en": "",
+    "fr": ""
+  },
+  "sign_in_hero_title": {
+    "key": "sign_in_hero_title",
+    "en": "Sign In",
+    "fr": ""
+  },
+  "sign_in_hero_subtitle": {
+    "key": "sign_in_hero_subtitle",
+    "en": "Sign in to access your MTM dashboard, tools, and reports.",
+    "fr": ""
+  },
+  "sign_in_hero_form_email_label": {
+    "key": "sign_in_hero_form_email_label",
+    "en": "Email",
+    "fr": ""
+  },
+  "sign_in_hero_form_email_placeholder": {
+    "key": "sign_in_hero_form_email_placeholder",
+    "en": "john@workmail.com",
+    "fr": ""
+  },
+  "sign_in_hero_form_password_label": {
+    "key": "sign_in_hero_form_password_label",
     "en": "Password",
     "fr": ""
   },
-  "hero_form_password_placeholder": {
-    "key": "hero_form_password_placeholder",
+  "sign_in_hero_form_password_placeholder": {
+    "key": "sign_in_hero_form_password_placeholder",
     "en": "Enter your password",
     "fr": ""
   },
-  "hero_form_submit": {
-    "key": "hero_form_submit",
-    "en": "Log In",
-    "fr": ""
-  },
-  "hero_form_forgot_password": {
-    "key": "hero_form_forgot_password",
+  "sign_in_hero_form_forgot_password": {
+    "key": "sign_in_hero_form_forgot_password",
     "en": "Forgot Password?",
     "fr": ""
   },
-  "hero_form_register_text": {
-    "key": "hero_form_register_text",
+  "sign_in_hero_form_submit": {
+    "key": "sign_in_hero_form_submit",
+    "en": "Log In",
+    "fr": ""
+  },
+  "sign_in_hero_form_register_text": {
+    "key": "sign_in_hero_form_register_text",
     "en": "Signing in first time? Register to gain access",
     "fr": ""
   },
-  "hero_form_create_account_cta": {
-    "key": "hero_form_create_account_cta",
+  "sign_in_hero_form_create_account_cta": {
+    "key": "sign_in_hero_form_create_account_cta",
     "en": "Register",
+    "fr": ""
+  },
+  "Forgot Password": {
+    "key": "Forgot Password",
+    "en": "",
+    "fr": ""
+  },
+  "forgot_password_hero_title": {
+    "key": "forgot_password_hero_title",
+    "en": "Forgot Password?",
+    "fr": ""
+  },
+  "forgot_password_hero_subtitle": {
+    "key": "forgot_password_hero_subtitle",
+    "en": "Enter your email and we'll send you a link to reset your password.",
+    "fr": ""
+  },
+  "forgot_password_hero_form_email_label": {
+    "key": "forgot_password_hero_form_email_label",
+    "en": "Email",
+    "fr": ""
+  },
+  "forgot_password_hero_form_email_placeholder": {
+    "key": "forgot_password_hero_form_email_placeholder",
+    "en": "john@workmail.com",
+    "fr": ""
+  },
+  "forgot_password_hero_form_submit": {
+    "key": "forgot_password_hero_form_submit",
+    "en": "Submit",
+    "fr": ""
+  },
+  "forgot_password_hero_form_remember_cta": {
+    "key": "forgot_password_hero_form_remember_cta",
+    "en": "Go Back to Sign In",
+    "fr": ""
+  },
+  "Report Download": {
+    "key": "Report Download",
+    "en": "",
+    "fr": ""
+  },
+  "report_download_page_title": {
+    "key": "report_download_page_title",
+    "en": "Download This Report",
+    "fr": ""
+  },
+  "report_download_page_description": {
+    "key": "report_download_page_description",
+    "en": "Thank you for your interest in this content. Please fill out the form below, and we will provide you with an email containing a download link.",
+    "fr": ""
+  },
+  "report_download_select_subtitle": {
+    "key": "report_download_select_subtitle",
+    "en": "Select Free Report",
+    "fr": ""
+  },
+  "report_download_first_name_label": {
+    "key": "report_download_first_name_label",
+    "en": "First Name",
+    "fr": ""
+  },
+  "report_download_first_name_placeholder": {
+    "key": "report_download_first_name_placeholder",
+    "en": "John",
+    "fr": ""
+  },
+  "report_download_last_name_label": {
+    "key": "report_download_last_name_label",
+    "en": "Last Name",
+    "fr": ""
+  },
+  "report_download_last_name_placeholder": {
+    "key": "report_download_last_name_placeholder",
+    "en": "Doe",
+    "fr": ""
+  },
+  "report_download_email_label": {
+    "key": "report_download_email_label",
+    "en": "Work Email",
+    "fr": ""
+  },
+  "report_download_email_placeholder": {
+    "key": "report_download_email_placeholder",
+    "en": "john@workmail.com",
+    "fr": ""
+  },
+  "report_download_organisation_label": {
+    "key": "report_download_organisation_label",
+    "en": "Organisation",
+    "fr": ""
+  },
+  "report_download_organisation_placeholder": {
+    "key": "report_download_organisation_placeholder",
+    "en": "Organisation Name",
+    "fr": ""
+  },
+  "report_download_position_label": {
+    "key": "report_download_position_label",
+    "en": "Position",
+    "fr": ""
+  },
+  "report_download_position_placeholder": {
+    "key": "report_download_position_placeholder",
+    "en": "Marketing Director",
+    "fr": ""
+  },
+  "report_download_submit_cta": {
+    "key": "report_download_submit_cta",
+    "en": "Submit",
+    "fr": ""
+  },
+  "Download Success": {
+    "key": "Download Success",
+    "en": "",
+    "fr": ""
+  },
+  "download_confirmation_page_title": {
+    "key": "download_confirmation_page_title",
+    "en": "Reports Sent",
+    "fr": ""
+  },
+  "download_confirmation_title": {
+    "key": "download_confirmation_title",
+    "en": "Check Your Inbox!",
+    "fr": ""
+  },
+  "download_confirmation_description": {
+    "key": "download_confirmation_description",
+    "en": "We've sent your selected reports to your inbox. If you don't see the email in a few minutes, check your spam folder.",
+    "fr": ""
+  },
+  "download_confirmation_insights_cta": {
+    "key": "download_confirmation_insights_cta",
+    "en": "Go Back to Exploring",
     "fr": ""
   }
 }

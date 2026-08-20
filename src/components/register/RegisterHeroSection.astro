@@ -23,15 +23,18 @@ const base = import.meta.env.BASE_URL;
     <div class="register-hero__content">
         <div class="register-hero__stack">
             <div class="register-hero__intro hero-fade-in" style="animation-delay: 0.1s">
-                <h1 class="register-hero__title" data-copy-key="hero_title">
-                    {t(copy, 'hero_title', locale, 'Register')}
+                <h1 class="register-hero__title" data-copy-key="register_hero_title">
+                    {t(copy, 'register_hero_title', locale, 'Register')}
                 </h1>
 
-                <p class="text-body-p2 register-hero__subtitle" data-copy-key="hero_subtitle">
+                <p
+                    class="text-body-p2 register-hero__subtitle"
+                    data-copy-key="register_hero_subtitle"
+                >
                     {
                         t(
                             copy,
-                            'hero_subtitle',
+                            'register_hero_subtitle',
                             locale,
                             "To gain access through your employer's subscription please fill out the following registration form. Please use your work email address."
                         )
@@ -52,9 +55,9 @@ const base = import.meta.env.BASE_URL;
                             variant="field-with-label"
                             type="text"
                             name="firstName"
-                            labelKey="hero_form_first_name_label"
+                            labelKey="register_hero_form_first_name_label"
                             label="First Name"
-                            placeholderKey="hero_form_first_name_placeholder"
+                            placeholderKey="register_hero_form_first_name_placeholder"
                             placeholder="John"
                             labelColor="primary"
                             required
@@ -65,9 +68,9 @@ const base = import.meta.env.BASE_URL;
                             variant="field-with-label"
                             type="text"
                             name="lastName"
-                            labelKey="hero_form_last_name_label"
+                            labelKey="register_hero_form_last_name_label"
                             label="Last Name"
-                            placeholderKey="hero_form_last_name_placeholder"
+                            placeholderKey="register_hero_form_last_name_placeholder"
                             placeholder="Doe"
                             labelColor="primary"
                             required
@@ -80,9 +83,9 @@ const base = import.meta.env.BASE_URL;
                         variant="field-with-label"
                         type="email"
                         name="email"
-                        labelKey="hero_form_email_label"
+                        labelKey="register_hero_form_email_label"
                         label="Work Email"
-                        placeholderKey="hero_form_email_placeholder"
+                        placeholderKey="register_hero_form_email_placeholder"
                         placeholder="john@workmail.com"
                         emailValidation="none"
                         labelColor="primary"
@@ -96,9 +99,9 @@ const base = import.meta.env.BASE_URL;
                             variant="field-with-label"
                             type="text"
                             name="department"
-                            labelKey="hero_form_department_label"
+                            labelKey="register_hero_form_department_label"
                             label="Department"
-                            placeholderKey="hero_form_department_placeholder"
+                            placeholderKey="register_hero_form_department_placeholder"
                             placeholder="Marketing"
                             labelColor="primary"
                             required
@@ -109,9 +112,9 @@ const base = import.meta.env.BASE_URL;
                             variant="field-with-label"
                             type="text"
                             name="jobTitle"
-                            labelKey="hero_form_job_title_label"
+                            labelKey="register_hero_form_job_title_label"
                             label="Job Title"
-                            placeholderKey="hero_form_job_title_placeholder"
+                            placeholderKey="register_hero_form_job_title_placeholder"
                             placeholder="Marketing Director"
                             labelColor="primary"
                             required
@@ -125,25 +128,25 @@ const base = import.meta.env.BASE_URL;
                             type="submit"
                             class="register-hero__submit"
                         >
-                            {t(copy, 'hero_form_submit', locale, 'Submit')}
+                            {t(copy, 'register_hero_form_submit', locale, 'Submit')}
                         </Button>
                     </div>
                 </form>
             </div>
 
             <p class="text-body-p3 register-hero__note hero-fade-in" style="animation-delay: 0.3s">
-                <span data-copy-key="hero_form_note">
+                <span data-copy-key="register_hero_form_note">
                     {
                         t(
                             copy,
-                            'hero_form_note',
+                            'register_hero_form_note',
                             locale,
                             "Once the registration form is complete you'll receive your login details by email.\nIf nothing is received, please check your spam/junk folder.\nIf your email domain is not recognized or if you have questions,"
                         )
                     }
                 </span>{' '}
-                <a href={`${base}${locale}/contact/`} data-copy-key="hero_form_note_cta">
-                    {t(copy, 'hero_form_note_cta', locale, 'Contact Us')}
+                <a href={`${base}${locale}/contact/`} data-copy-key="register_hero_form_note_cta">
+                    {t(copy, 'register_hero_form_note_cta', locale, 'Contact Us')}
                 </a>
             </p>
 
@@ -151,11 +154,21 @@ const base = import.meta.env.BASE_URL;
                 class="text-body-p3 register-hero__signin hero-fade-in"
                 style="animation-delay: 0.4s"
             >
-                <span data-copy-key="hero_form_has_account_text">
-                    {t(copy, 'hero_form_has_account_text', locale, 'Already have an account?')}
+                <span data-copy-key="register_hero_form_has_account_text">
+                    {
+                        t(
+                            copy,
+                            'register_hero_form_has_account_text',
+                            locale,
+                            'Already have an account?'
+                        )
+                    }
                 </span>{' '}
-                <a href={`${base}${locale}/sign-in/`} data-copy-key="hero_form_has_account_cta">
-                    {t(copy, 'hero_form_has_account_cta', locale, 'Sign In')}
+                <a
+                    href={`${base}${locale}/sign-in/`}
+                    data-copy-key="register_hero_form_has_account_cta"
+                >
+                    {t(copy, 'register_hero_form_has_account_cta', locale, 'Sign In')}
                 </a>
             </p>
         </div>

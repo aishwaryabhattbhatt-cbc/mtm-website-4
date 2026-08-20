@@ -14,9 +14,14 @@
     "en": "Give your students and faculty access to the same datasets by the Media Technology Monitor (MTM) that media experts, industry regulators and scholars have relied on for over two decades. Nationally representative, bilingual, and rigorous enough for peer review.",
     "fr": ""
   },
-  "Topics and variables gallery using research questions - Emphasize discovery and research": {
-    "key": "Topics and variables gallery using research questions - Emphasize discovery and research",
-    "en": "",
+  "hero_cta": {
+    "key": "hero_cta",
+    "en": "Request a demo",
+    "fr": ""
+  },
+  "trusted_by_label": {
+    "key": "trusted_by_label",
+    "en": "Trusted by",
     "fr": ""
   },
   "dataset_title": {
@@ -27,6 +32,16 @@
   "dataset_description": {
     "key": "dataset_description",
     "en": "MTM tracks how Canadians consume media and technology across 5000+ variables — spanning platforms, behaviours, demographics, and devices. Browse by topic to find what your research needs.",
+    "fr": ""
+  },
+  "topic_example_label": {
+    "key": "topic_example_label",
+    "en": "Example",
+    "fr": ""
+  },
+  "topic_variables_label": {
+    "key": "topic_variables_label",
+    "en": "Variables available",
     "fr": ""
   },
   "topic_1_eyebrow": {
@@ -124,11 +139,6 @@
     "en": "Over 5000+ variables available across 200+ topic areas, searchable and filterable in our tools.",
     "fr": ""
   },
-  "MTM Tools as the solution for answering research questions (Second highest tool users)": {
-    "key": "MTM Tools as the solution for answering research questions (Second highest tool users)",
-    "en": "",
-    "fr": ""
-  },
   "tools_title": {
     "key": "tools_title",
     "en": "Powerful tools designed for serious inquiry",
@@ -144,6 +154,21 @@
     "en": "Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.",
     "fr": ""
   },
+  "tools_analytic_feature_1": {
+    "key": "tools_analytic_feature_1",
+    "en": "Data Analysis",
+    "fr": ""
+  },
+  "tools_analytic_feature_2": {
+    "key": "tools_analytic_feature_2",
+    "en": "Trending",
+    "fr": ""
+  },
+  "tools_analytic_feature_3": {
+    "key": "tools_analytic_feature_3",
+    "en": "Forecasting",
+    "fr": ""
+  },
   "tools_census_eyebrow": {
     "key": "tools_census_eyebrow",
     "en": "Census Tools",
@@ -154,9 +179,29 @@
     "en": "Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.",
     "fr": ""
   },
-  "Stats about how many research studies have cited mtm (also works to add people imagery)": {
-    "key": "Stats about how many research studies have cited mtm (also works to add people imagery)",
-    "en": "",
+  "tools_census_feature_1": {
+    "key": "tools_census_feature_1",
+    "en": "Snapshot",
+    "fr": ""
+  },
+  "tools_census_feature_2": {
+    "key": "tools_census_feature_2",
+    "en": "Explorer",
+    "fr": ""
+  },
+  "tools_census_feature_3": {
+    "key": "tools_census_feature_3",
+    "en": "Compare",
+    "fr": ""
+  },
+  "tools_census_more": {
+    "key": "tools_census_more",
+    "en": "3 more",
+    "fr": ""
+  },
+  "tools_learn_more": {
+    "key": "tools_learn_more",
+    "en": "Learn more",
     "fr": ""
   },
   "stat_value": {
@@ -169,14 +214,9 @@
     "en": "No extra charge for faculty, students and staff",
     "fr": ""
   },
-  "How MTM fits in their research process": {
-    "key": "How MTM fits in their research process",
-    "en": "",
-    "fr": ""
-  },
   "workflow_title": {
     "key": "workflow_title",
-    "en": "Gold standard research in media and technology for all of your research needs",
+    "en": "Gold standard research all of your research needs",
     "fr": ""
   },
   "workflow_description": {
@@ -239,9 +279,14 @@
     "en": "Learn how the MTM offers essential content and tools for professors and students alike",
     "fr": ""
   },
-  "usecase_1_brand": {
-    "key": "usecase_1_brand",
-    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
+  "usecases_card_title": {
+    "key": "usecases_card_title",
+    "en": "Use Case",
+    "fr": ""
+  },
+  "leverage_title": {
+    "key": "leverage_title",
+    "en": "How to leverage this",
     "fr": ""
   },
   "usecase_1_description": {
@@ -264,11 +309,6 @@
     "en": "Examine usage of linear TV and channels across a wide range of demographics via the Data Analysis Tool, or read the TV distribution report for a broader overview.",
     "fr": ""
   },
-  "usecase_2_brand": {
-    "key": "usecase_2_brand",
-    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
-    "fr": ""
-  },
   "usecase_2_description": {
     "key": "usecase_2_description",
     "en": "A student writing a masters thesis on different locations for data centres across different communities.",
@@ -289,11 +329,6 @@
     "en": "Leverage the Compare feature in the Census Tool for a granular look at different prospective locations.",
     "fr": ""
   },
-  "Testimonials": {
-    "key": "Testimonials",
-    "en": "",
-    "fr": ""
-  },
   "testimonial_title": {
     "key": "testimonial_title",
     "en": "What academic institutions are saying about us",
@@ -301,7 +336,7 @@
   },
   "testimonial_logo": {
     "key": "testimonial_logo",
-    "en": "",
+    "en": "University of Ottawa",
     "fr": ""
   },
   "testimonial_quote": {

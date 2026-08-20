@@ -1,4 +1,6 @@
 ---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
 import EyebrowIcon from '../shared/EyebrowIcon.astro';
 import ProductDonutChart from './ProductDonutChart.astro';
 
@@ -8,6 +10,8 @@ interface DonutItem {
 }
 
 interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
     pillLabel: string;
     iconSrc: string;
     items: DonutItem[];
@@ -23,6 +27,8 @@ interface Props {
 }
 
 const {
+    locale,
+    copy,
     pillLabel,
     iconSrc,
     items,
@@ -52,8 +58,16 @@ const {
     <p
         class="text-body-p3 composition-card-description composition-fly-in"
         data-reveal-delay={descriptionRevealDelayMs}
+        data-copy-key="data_collected_description"
     >
-        Sample composition is weighted to reflect the national distribution of Canadian households.
+        {
+            t(
+                copy,
+                'data_collected_description',
+                locale,
+                'Sample composition is weighted to reflect the national distribution of Canadian households.'
+            )
+        }
     </p>
 </div>
 

@@ -14,6 +14,16 @@
     "en": "In the public and non-profit sectors, effective decisions depend on understanding the people you serve — how they access information, use technology, and engage with media. The Media Technology Monitor (MTM) provides trusted Canadian data that helps organizations design better programs, improve communications, and make evidence-based decisions with confidence.",
     "fr": ""
   },
+  "hero_cta": {
+    "key": "hero_cta",
+    "en": "Request a demo",
+    "fr": ""
+  },
+  "trusted_by_label": {
+    "key": "trusted_by_label",
+    "en": "Trusted by",
+    "fr": ""
+  },
   "Insights overview -topics directly relevant to government and what decisions it informs. (use cases but indirect)": {
     "key": "Insights overview -topics directly relevant to government and what decisions it informs. (use cases but indirect)",
     "en": "",
@@ -86,7 +96,7 @@
   },
   "insight_3_informs": {
     "key": "insight_3_informs",
-    "en": "Stop guessing where your future talent lives. Understanding what social platforms Canadians are using can ensure that your next campaign to find new employees has the greatest impact.",
+    "en": "Understanding what social platforms Canadians are using can ensure that your next campaign to find new employees has the greatest impact.",
     "fr": ""
   },
   "MTM Reports as the solution for how they can access those insights (second highest report users)": {
@@ -94,24 +104,14 @@
     "en": "",
     "fr": ""
   },
-  "reports_title": {
-    "key": "reports_title",
-    "en": "Ready-to-use reports on Canadians and media",
-    "fr": ""
-  },
-  "Reports cards (to be autofilled)": {
-    "key": "Reports cards (to be autofilled)",
-    "en": "",
-    "fr": ""
-  },
-  "Can be same as advertising and industry pages": {
-    "key": "Can be same as advertising and industry pages",
-    "en": "",
+  "Report": {
+    "key": "Report",
+    "en": "Same as insights",
     "fr": ""
   },
   "tools_title": {
     "key": "tools_title",
-    "en": "Tools that empower you to track the shifts",
+    "en": "Tools that empower you",
     "fr": ""
   },
   "tools_census_eyebrow": {
@@ -124,6 +124,26 @@
     "en": "Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.",
     "fr": ""
   },
+  "tools_census_feature_1": {
+    "key": "tools_census_feature_1",
+    "en": "Snapshot",
+    "fr": ""
+  },
+  "tools_census_feature_2": {
+    "key": "tools_census_feature_2",
+    "en": "Explorer",
+    "fr": ""
+  },
+  "tools_census_feature_3": {
+    "key": "tools_census_feature_3",
+    "en": "Compare",
+    "fr": ""
+  },
+  "tools_census_more": {
+    "key": "tools_census_more",
+    "en": "3 more",
+    "fr": ""
+  },
   "tools_analytic_eyebrow": {
     "key": "tools_analytic_eyebrow",
     "en": "Analytic Tools",
@@ -132,6 +152,26 @@
   "gov_ngos_tools_analytic_description": {
     "key": "gov_ngos_tools_analytic_description",
     "en": "Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.",
+    "fr": ""
+  },
+  "tools_analytic_feature_1": {
+    "key": "tools_analytic_feature_1",
+    "en": "Data Analysis",
+    "fr": ""
+  },
+  "tools_analytic_feature_2": {
+    "key": "tools_analytic_feature_2",
+    "en": "Trending",
+    "fr": ""
+  },
+  "tools_analytic_feature_3": {
+    "key": "tools_analytic_feature_3",
+    "en": "Forecasting",
+    "fr": ""
+  },
+  "tools_learn_more": {
+    "key": "tools_learn_more",
+    "en": "Learn more",
     "fr": ""
   },
   "usecases_title": {
@@ -144,9 +184,14 @@
     "en": "Learn how the MTM offers reports and content that can inform decisions based on robust, tried and true survey results.",
     "fr": ""
   },
-  "usecase_1_brand": {
-    "key": "usecase_1_brand",
-    "en": "",
+  "usecases_card_title": {
+    "key": "usecases_card_title",
+    "en": "Use Case",
+    "fr": ""
+  },
+  "leverage_title": {
+    "key": "leverage_title",
+    "en": "How to leverage this",
     "fr": ""
   },
   "usecase_1_description": {
@@ -157,11 +202,6 @@
   "usecase_1_variables": {
     "key": "usecase_1_variables",
     "en": "SVOD, Netflix, Music Streaming Services, Spotify, income",
-    "fr": ""
-  },
-  "usecase_1_cta_title": {
-    "key": "usecase_1_cta_title",
-    "en": "How you can use it",
     "fr": ""
   },
   "usecase_1_cta": {
@@ -177,11 +217,6 @@
   "usecase_2_variables": {
     "key": "usecase_2_variables",
     "en": "Cellphone service provider, Region",
-    "fr": ""
-  },
-  "usecase_2_cta_title": {
-    "key": "usecase_2_cta_title",
-    "en": "How you can use it",
     "fr": ""
   },
   "usecase_2_cta": {

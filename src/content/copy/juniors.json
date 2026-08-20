@@ -164,6 +164,21 @@
     "en": "The percentaged of anglophone children who are tuning in for FAST content.",
     "fr": ""
   },
+  "report_action_text": {
+    "key": "report_action_text",
+    "en": "Explore our full library of reports or download a free sneak peek.",
+    "fr": ""
+  },
+  "report_action_cta_1": {
+    "key": "report_action_cta_1",
+    "en": "GO TO INSIGHTS",
+    "fr": ""
+  },
+  "report_action_cta_2": {
+    "key": "report_action_cta_2",
+    "en": "SAMPLE REPORT",
+    "fr": ""
+  },
   "methodology_title": {
     "key": "methodology_title",
     "en": "Research Methodology",
@@ -246,67 +261,37 @@
   },
   "survey_stat_1_description": {
     "key": "survey_stat_1_description",
-    "en": "Industry standard level tracking",
+    "en": "Industry standard level tracking.",
     "fr": ""
   },
   "survey_stat_2": {
     "key": "survey_stat_2",
-    "en": "Always refining",
+    "en": "Teens",
     "fr": ""
   },
   "survey_stat_2_label": {
     "key": "survey_stat_2_label",
-    "en": "Survey is updated annually",
+    "en": "Surveyed directly",
     "fr": ""
   },
   "survey_stat_2_description": {
     "key": "survey_stat_2_description",
-    "en": "Ensuring new data on emergent technologies",
+    "en": "Asking teens directly to allow for the most accurate and detailed insights.",
+    "fr": ""
+  },
+  "survey_stat_3": {
+    "key": "survey_stat_3",
+    "en": "Two-Part",
     "fr": ""
   },
   "survey_stat_3_label": {
     "key": "survey_stat_3_label",
-    "en": "Two-Part survey structure",
+    "en": "Survey structure",
     "fr": ""
   },
   "survey_stat_3_description": {
     "key": "survey_stat_3_description",
     "en": "Parents complete complete a survey about their household and their children aged 2-11 while teens (aged 12-17) respond directly to a survey of their own.",
-    "fr": ""
-  },
-  "data_collected_title": {
-    "key": "data_collected_title",
-    "en": "",
-    "fr": ""
-  },
-  "method_1": {
-    "key": "method_1",
-    "en": "remove",
-    "fr": ""
-  },
-  "method_1_percentage": {
-    "key": "method_1_percentage",
-    "en": "remove",
-    "fr": ""
-  },
-  "method_1_unit": {
-    "key": "method_1_unit",
-    "en": "remove",
-    "fr": ""
-  },
-  "method_2": {
-    "key": "method_2",
-    "en": "remove",
-    "fr": ""
-  },
-  "method_2_percentage": {
-    "key": "method_2_percentage",
-    "en": "remove",
-    "fr": ""
-  },
-  "method_2_unit": {
-    "key": "method_2_unit",
-    "en": "remove",
     "fr": ""
   },
   "provider_title": {
@@ -322,6 +307,11 @@
   "provider_description": {
     "key": "provider_description",
     "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Ad Hoc Research conducts all of the French and English research for the MTM Jr. MTM Jr. research was conducted in February 2026.\r\n\nFounded in 1984 in Montreal, Canada, Ad Hoc Research is a full-service marketing, communications and social research firm, with a multidisciplinary team of more than 100 employees and a constantly growing network of national and international clients. Leaders in the Canadian market, Ad Hoc Research builds lasting relationships with their clients, guiding them every step of the way with a creative and passionate approach.",
+    "fr": ""
+  },
+  "explore_title": {
+    "key": "explore_title",
+    "en": "Explore More Data",
     "fr": ""
   }
 }

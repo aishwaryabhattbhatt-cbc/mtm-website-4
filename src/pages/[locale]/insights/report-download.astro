@@ -12,12 +12,12 @@ export function getStaticPaths() {
 }
 
 const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
-// Shares the 'insights' CMS dictionary with /insights/. The report_download_*
-// copy keys this page depends on (added in Task 1) only exist in the local
-// insights.json today — they must be added as rows to the live Google Sheet's
-// insights tab, or the next `npm run sync-copy` will silently drop them.
-const pageId = 'insights';
-const copy = await getPageDictionary(pageId);
+// This page has its own 'report-download' tab for its title/description/form
+// copy, but its report picker (free_report_1/2/3_tag/date/title) deliberately
+// reuses the same rows shown on /insights/ — so it also merges in the shared
+// 'insights' dictionary. report-download's own keys win on any collision.
+const pageId = 'report-download';
+const copy = { ...(await getPageDictionary('insights')), ...(await getPageDictionary(pageId)) };
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;
 const resolvedCmsCsvUrl =

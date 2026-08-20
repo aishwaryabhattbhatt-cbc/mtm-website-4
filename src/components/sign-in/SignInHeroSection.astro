@@ -21,15 +21,18 @@ const base = import.meta.env.BASE_URL;
     <div class="sign-in-hero__content">
         <div class="sign-in-hero__stack">
             <div class="sign-in-hero__intro hero-fade-in" style="animation-delay: 0.1s">
-                <h1 class="sign-in-hero__title" data-copy-key="hero_title">
-                    {t(copy, 'hero_title', locale, 'Sign In')}
+                <h1 class="sign-in-hero__title" data-copy-key="sign_in_hero_title">
+                    {t(copy, 'sign_in_hero_title', locale, 'Sign In')}
                 </h1>
 
-                <p class="text-body-p2 sign-in-hero__subtitle" data-copy-key="hero_subtitle">
+                <p
+                    class="text-body-p2 sign-in-hero__subtitle"
+                    data-copy-key="sign_in_hero_subtitle"
+                >
                     {
                         t(
                             copy,
-                            'hero_subtitle',
+                            'sign_in_hero_subtitle',
                             locale,
                             'Sign in to access your MTM dashboard, tools, and reports.'
                         )
@@ -45,9 +48,9 @@ const base = import.meta.env.BASE_URL;
                         variant="field-with-label"
                         type="email"
                         name="email"
-                        labelKey="hero_form_email_label"
+                        labelKey="sign_in_hero_form_email_label"
                         label="Email"
-                        placeholderKey="hero_form_email_placeholder"
+                        placeholderKey="sign_in_hero_form_email_placeholder"
                         placeholder="john@workmail.com"
                         emailValidation="none"
                         labelColor="primary"
@@ -59,16 +62,23 @@ const base = import.meta.env.BASE_URL;
                                 for="sign-in-password"
                                 class="form-field__label form-field__label--primary text-body-p3"
                             >
-                                {t(copy, 'hero_form_password_label', locale, 'Password')}
+                                {t(copy, 'sign_in_hero_form_password_label', locale, 'Password')}
                                 <span class="form-field__required">*</span>
                             </label>
 
                             <a
                                 href={`${base}${locale}/forgot-password/`}
                                 class="sign-in-hero__forgot text-body-p3-small"
-                                data-copy-key="hero_form_forgot_password"
+                                data-copy-key="sign_in_hero_form_forgot_password"
                             >
-                                {t(copy, 'hero_form_forgot_password', locale, 'Forgot Password?')}
+                                {
+                                    t(
+                                        copy,
+                                        'sign_in_hero_form_forgot_password',
+                                        locale,
+                                        'Forgot Password?'
+                                    )
+                                }
                             </a>
                         </div>
 
@@ -79,9 +89,14 @@ const base = import.meta.env.BASE_URL;
                             type="password"
                             id="sign-in-password"
                             name="password"
-                            placeholderKey="hero_form_password_placeholder"
+                            placeholderKey="sign_in_hero_form_password_placeholder"
                             placeholder="Enter your password"
-                            ariaLabel={t(copy, 'hero_form_password_label', locale, 'Password')}
+                            ariaLabel={t(
+                                copy,
+                                'sign_in_hero_form_password_label',
+                                locale,
+                                'Password'
+                            )}
                             required
                         />
                     </div>
@@ -93,7 +108,7 @@ const base = import.meta.env.BASE_URL;
                             type="submit"
                             class="sign-in-hero__submit"
                         >
-                            {t(copy, 'hero_form_submit', locale, 'Log In')}
+                            {t(copy, 'sign_in_hero_form_submit', locale, 'Log In')}
                         </Button>
                     </div>
                 </form>
@@ -102,12 +117,12 @@ const base = import.meta.env.BASE_URL;
             <div class="sign-in-hero__register hero-fade-in" style="animation-delay: 0.3s">
                 <h4
                     class="text-h4 sign-in-hero__register-text"
-                    data-copy-key="hero_form_register_text"
+                    data-copy-key="sign_in_hero_form_register_text"
                 >
                     {
                         t(
                             copy,
-                            'hero_form_register_text',
+                            'sign_in_hero_form_register_text',
                             locale,
                             'Signing in first time? Register to gain access'
                         )
@@ -118,9 +133,9 @@ const base = import.meta.env.BASE_URL;
                     size="lg"
                     href={`${base}${locale}/register/`}
                     class="sign-in-hero__register-cta"
-                    data-copy-key="hero_form_create_account_cta"
+                    data-copy-key="sign_in_hero_form_create_account_cta"
                 >
-                    {t(copy, 'hero_form_create_account_cta', locale, 'Register')}
+                    {t(copy, 'sign_in_hero_form_create_account_cta', locale, 'Register')}
                 </Button>
             </div>
         </div>

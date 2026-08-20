@@ -2,102 +2,112 @@
   "hero_title": {
     "key": "hero_title",
     "en": "Ultra Localized Demographic Data",
-    "fr": "Ultra Localized Demographic Data"
+    "fr": ""
   },
   "hero_description": {
     "key": "hero_description",
     "en": "Canadian census data offers precise insights for business decisions, but its complexity can be a hurdle. The MTM Census Tool is a user-friendly interactive dashboard that simplifies census data analysis, providing geography-based demographic information sourced directly from Statistics Canada.",
-    "fr": "Canadian census data offers precise insights for business decisions, but its complexity can be a hurdle. The MTM Census Tool is a user-friendly interactive dashboard that simplifies census data analysis, providing geography-based demographic information sourced directly from Statistics Canada."
+    "fr": ""
   },
   "hero_cta_1": {
     "key": "hero_cta_1",
     "en": "Request a Demo",
-    "fr": "Request a Demo"
+    "fr": ""
   },
-  "hero_video_cta": {
-    "key": "hero_video_cta",
-    "en": "Watch Here",
-    "fr": "Watch Here"
+  "hero_cta_2": {
+    "key": "hero_cta_2",
+    "en": "Watch Video",
+    "fr": ""
   },
   "highlights_title": {
     "key": "highlights_title",
     "en": "Highlights",
-    "fr": "Highlights"
+    "fr": ""
+  },
+  "highlights_geo_label": {
+    "key": "highlights_geo_label",
+    "en": "Geographic Filters",
+    "fr": ""
   },
   "highlights_stat_1_value": {
     "key": "highlights_stat_1_value",
     "en": "70,000+ Geographic Areas",
-    "fr": "70,000+ Geographic Areas"
+    "fr": ""
   },
   "highlights_stat_1_description": {
     "key": "highlights_stat_1_description",
     "en": "Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal area to pinpoint where media and tech trends emerge.",
-    "fr": "Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal area to pinpoint where media and tech trends emerge."
+    "fr": ""
+  },
+  "highlights_demo_label": {
+    "key": "highlights_demo_label",
+    "en": "Demographic Filters",
+    "fr": ""
   },
   "highlights_stat_2_value": {
     "key": "highlights_stat_2_value",
     "en": "2,000+ Demographic Variables",
-    "fr": "2,000+ Demographic Variables"
+    "fr": ""
   },
   "highlights_stat_2_description": {
     "key": "highlights_stat_2_description",
     "en": "Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who’s driving adoption and change.",
-    "fr": "Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who’s driving adoption and change."
+    "fr": ""
   },
   "census_tool_features": {
     "key": "census_tool_features",
     "en": "Explore Census Tool Features",
-    "fr": "Explore Census Tool Features"
+    "fr": ""
   },
   "benefit_label": {
     "key": "benefit_label",
     "en": "What You Get",
-    "fr": "What You Get"
+    "fr": ""
   },
   "tool_1_title": {
     "key": "tool_1_title",
     "en": "Snapshot",
-    "fr": "Snapshot"
+    "fr": ""
   },
   "tool_1_subtitle": {
     "key": "tool_1_subtitle",
     "en": "Understand any region at a glance",
-    "fr": "Understand any region at a glance"
+    "fr": ""
   },
   "tool_1_description": {
     "key": "tool_1_description",
     "en": "Population, age, income, language, immigration, indigenous identity: Any Canadian geography in seconds.",
-    "fr": "Population, age, income, language, immigration, indigenous identity: Any Canadian geography in seconds."
+    "fr": ""
   },
   "tool_1_benefit_1": {
     "key": "tool_1_benefit_1",
     "en": "Quick Insights",
-    "fr": "Quick Insights"
+    "fr": ""
   },
   "tool_1_benefit_1_des": {
     "key": "tool_1_benefit_1_des",
     "en": "Generate instant \"Community Portraits\" for any Canadian geography.",
-    "fr": "Generate instant \"Community Portraits\" for any Canadian geography."
+    "fr": ""
   },
   "tool_1_benefit_2": {
     "key": "tool_1_benefit_2",
     "en": "Key Metrics",
-    "fr": "Key Metrics"
+    "fr": ""
   },
   "tool_1_benefit_2_des": {
     "key": "tool_1_benefit_2_des",
     "en": "Analyze population, age, income, and language in seconds.",
-    "fr": "Analyze population, age, income, and language in seconds."
+    "fr": ""
   },
   "tool_1_benefit_3": {
     "key": "tool_1_benefit_3",
     "en": "Data Exports",
-    "fr": "Data Exports"
+    "fr": ""
   },
   "tool_1_benefit_3_des": {
     "key": "tool_1_benefit_3_des",
     "en": "Easily export data tables for quick analysis and sharing.",
-    "fr": "Easily export data tables for quick analysis and sharing."
+    "fr": ""
   },
   "Stat callout": {
     "key": "Stat callout",
@@ -107,246 +117,246 @@
   "stat_callout_1_value": {
     "key": "stat_callout_1_value",
     "en": "63%",
-    "fr": "63%"
+    "fr": ""
   },
   "stat_callout_1_description": {
     "key": "stat_callout_1_description",
     "en": "In Toronto, 63% of women aged 18-34 make less than $40,000/year",
-    "fr": "In Toronto, 63% of women aged 18-34 make less than $40,000/year"
+    "fr": ""
   },
   "tool_2_title": {
     "key": "tool_2_title",
     "en": "Drilldown",
-    "fr": "Drilldown"
+    "fr": ""
   },
   "tool_2_subtitle": {
     "key": "tool_2_subtitle",
     "en": "Multi-dimensional targeting",
-    "fr": "Multi-dimensional targeting"
+    "fr": ""
   },
   "tool_2_description": {
     "key": "tool_2_description",
     "en": "Find exactly who you are looking for by combining up to three distinct characteristics simultaneously. Layer specific demographic filters to surface the precise communities your work is about and visualize their distribution across the map",
-    "fr": "Find exactly who you are looking for by combining up to three distinct characteristics simultaneously. Layer specific demographic filters to surface the precise communities your work is about and visualize their distribution across the map"
+    "fr": ""
   },
   "tool_2_benefit_1": {
     "key": "tool_2_benefit_1",
     "en": "Target Markets",
-    "fr": "Target Markets"
+    "fr": ""
   },
   "tool_2_benefit_1_des": {
     "key": "tool_2_benefit_1_des",
     "en": "Find populations with the exact combination of characteristics you require.",
-    "fr": "Find populations with the exact combination of characteristics you require."
+    "fr": ""
   },
   "tool_2_benefit_2": {
     "key": "tool_2_benefit_2",
     "en": "Visual Mapping",
-    "fr": "Visual Mapping"
+    "fr": ""
   },
   "tool_2_benefit_2_des": {
     "key": "tool_2_benefit_2_des",
     "en": "Use interactive maps to visualize exactly where your target population lives",
-    "fr": "Use interactive maps to visualize exactly where your target population lives"
+    "fr": ""
   },
   "tool_2_benefit_3": {
     "key": "tool_2_benefit_3",
     "en": "Ranked Data",
-    "fr": "Ranked Data"
+    "fr": ""
   },
   "tool_2_benefit_3_des": {
     "key": "tool_2_benefit_3_des",
     "en": "Access characteristic distributions and ranked geographies for your selected segments.",
-    "fr": "Access characteristic distributions and ranked geographies for your selected segments."
+    "fr": ""
   },
   "tool_3_title": {
     "key": "tool_3_title",
     "en": "Ranker",
-    "fr": "Ranker"
+    "fr": ""
   },
   "tool_3_subtitle": {
     "key": "tool_3_subtitle",
     "en": "Identify target geographies in seconds",
-    "fr": "Identify target geographies in seconds"
+    "fr": ""
   },
   "tool_3_description": {
     "key": "tool_3_description",
     "en": "Eliminate the guesswork by ranking every geography in Canada against your specific business KPIs. Instantly identify geographies of interest.",
-    "fr": "Eliminate the guesswork by ranking every geography in Canada against your specific business KPIs. Instantly identify geographies of interest."
+    "fr": ""
   },
   "tool_3_benefit_1": {
     "key": "tool_3_benefit_1",
     "en": "Market Rankings",
-    "fr": "Market Rankings"
+    "fr": ""
   },
   "tool_3_benefit_1_des": {
     "key": "tool_3_benefit_1_des",
     "en": "Rank geographies based on any specific Census characteristic.",
-    "fr": "Rank geographies based on any specific Census characteristic."
+    "fr": ""
   },
   "tool_3_benefit_2": {
     "key": "tool_3_benefit_2",
     "en": "Custom Criteria",
-    "fr": "Custom Criteria"
+    "fr": ""
   },
   "tool_3_benefit_2_des": {
     "key": "tool_3_benefit_2_des",
     "en": "Rank markets by counts, percentages, medians, or averages.",
-    "fr": "Rank markets by counts, percentages, medians, or averages."
+    "fr": ""
   },
   "tool_3_benefit_3": {
     "key": "tool_3_benefit_3",
     "en": "Filtered Selection",
-    "fr": "Filtered Selection"
+    "fr": ""
   },
   "tool_3_benefit_3_des": {
     "key": "tool_3_benefit_3_des",
     "en": "Precision-target regions by filtering out irrelevant population sizes.",
-    "fr": "Precision-target regions by filtering out irrelevant population sizes."
+    "fr": ""
   },
   "tool_4_title": {
     "key": "tool_4_title",
     "en": "Demographic Explorer",
-    "fr": "Demographic Explorer"
+    "fr": ""
   },
   "tool_4_subtitle": {
     "key": "tool_4_subtitle",
     "en": "Deep-dive into any geography",
-    "fr": "Deep-dive into any geography"
+    "fr": ""
   },
   "tool_4_description": {
     "key": "tool_4_description",
     "en": "Analyze any region through granular characteristic distributions. Move beyond surface-level statistics to evaluate the unique profiles of individuals, families, and households.",
-    "fr": "Analyze any region through granular characteristic distributions. Move beyond surface-level statistics to evaluate the unique profiles of individuals, families, and households."
+    "fr": ""
   },
   "tool_4_benefit_1": {
     "key": "tool_4_benefit_1",
     "en": "Characteristic Distributions",
-    "fr": "Characteristic Distributions"
+    "fr": ""
   },
   "tool_4_benefit_1_des": {
     "key": "tool_4_benefit_1_des",
     "en": "View distributions of any characteristic in any Canadian geography.",
-    "fr": "View distributions of any characteristic in any Canadian geography."
+    "fr": ""
   },
   "tool_4_benefit_2": {
     "key": "tool_4_benefit_2",
     "en": "Multidimensional Data",
-    "fr": "Multidimensional Data"
+    "fr": ""
   },
   "tool_4_benefit_2_des": {
     "key": "tool_4_benefit_2_des",
     "en": "Access data on individuals, families, dwellings, and household types.",
-    "fr": "Access data on individuals, families, dwellings, and household types."
+    "fr": ""
   },
   "tool_4_benefit_3": {
     "key": "tool_4_benefit_3",
     "en": "Aggregate Statistics",
-    "fr": "Aggregate Statistics"
+    "fr": ""
   },
   "tool_4_benefit_3_des": {
     "key": "tool_4_benefit_3_des",
     "en": "Explore averages and medians alongside distributions for thorough location understanding.",
-    "fr": "Explore averages and medians alongside distributions for thorough location understanding."
+    "fr": ""
   },
   "stat_callout_2_value": {
     "key": "stat_callout_2_value",
     "en": "11%",
-    "fr": "11.70%"
+    "fr": ""
   },
   "stat_callout_2_description": {
     "key": "stat_callout_2_description",
     "en": "of the labour force in Saskatchewan work in the primary sector (Sector 11: Agriculture, Forestry, Fishing and Hunting, and Sector 21: Mining, Quarrying, and Oil and Gas Extraction), more than any other province",
-    "fr": "of the labour force in Saskatchewan work in the primary sector (Sector 11: Agriculture, Forestry, Fishing and Hunting, and Sector 21: Mining, Quarrying, and Oil and Gas Extraction), more than any other province"
+    "fr": ""
   },
   "tool_5_title": {
     "key": "tool_5_title",
     "en": "Compare",
-    "fr": "Compare"
+    "fr": ""
   },
   "tool_5_subtitle": {
     "key": "tool_5_subtitle",
     "en": "Benchmark your target geography",
-    "fr": "Benchmark your target geography"
+    "fr": ""
   },
   "tool_5_description": {
     "key": "tool_5_description",
     "en": "Contextualize your regional data by contrasting local markets against provincial or national standards. Identify demographic gaps and outliers to to better understand you target market.",
-    "fr": "Contextualize your regional data by contrasting local markets against provincial or national standards. Identify demographic gaps and outliers to to better understand you target market."
+    "fr": ""
   },
   "tool_5_benefit_1": {
     "key": "tool_5_benefit_1",
     "en": "Market Benchmarking",
-    "fr": "Market Benchmarking"
+    "fr": ""
   },
   "tool_5_benefit_1_des": {
     "key": "tool_5_benefit_1_des",
     "en": "Compare a market against similar regions or national benchmarks.",
-    "fr": "Compare a market against similar regions or national benchmarks."
+    "fr": ""
   },
   "tool_5_benefit_2": {
     "key": "tool_5_benefit_2",
     "en": "Visual Analysis",
-    "fr": "Visual Analysis"
+    "fr": ""
   },
   "tool_5_benefit_2_des": {
     "key": "tool_5_benefit_2_des",
     "en": "Contrast characteristic distributions across different geographies using intuitive charts.",
-    "fr": "Contrast characteristic distributions across different geographies using intuitive charts."
+    "fr": ""
   },
   "tool_5_benefit_3": {
     "key": "tool_5_benefit_3",
     "en": "Gap Identification",
-    "fr": "Gap Identification"
+    "fr": ""
   },
   "tool_5_benefit_3_des": {
     "key": "tool_5_benefit_3_des",
     "en": "Identify and understand demographic differences between specific territories.",
-    "fr": "Identify and understand demographic differences between specific territories."
+    "fr": ""
   },
   "tool_6_title": {
     "key": "tool_6_title",
     "en": "Canada Score",
-    "fr": "Canada Score"
+    "fr": ""
   },
   "tool_6_subtitle": {
     "key": "tool_6_subtitle",
     "en": "Data-driven scoring tailored to your strategy",
-    "fr": "Data-driven scoring tailored to your strategy"
+    "fr": ""
   },
   "tool_6_description": {
     "key": "tool_6_description",
     "en": "Take control of your market analysis with advanced, multi-factor weighted modeling. Score and rank potential locations based on your custom persona clusters to find the best opportunities for your brand.",
-    "fr": "Take control of your market analysis with advanced, multi-factor weighted modeling. Score and rank potential locations based on your custom persona clusters to find the best opportunities for your brand."
+    "fr": ""
   },
   "tool_6_benefit_1": {
     "key": "tool_6_benefit_1",
     "en": "Strategic Alignment",
-    "fr": "Strategic Alignment"
+    "fr": ""
   },
   "tool_6_benefit_1_des": {
     "key": "tool_6_benefit_1_des",
     "en": "Align rankings to your strategy using weighted modeling and custom personas.",
-    "fr": "Align rankings to your strategy using weighted modeling and custom personas."
+    "fr": ""
   },
   "tool_6_benefit_2": {
     "key": "tool_6_benefit_2",
     "en": "Threshold Filtering",
-    "fr": "Threshold Filtering"
+    "fr": ""
   },
   "tool_6_benefit_2_des": {
     "key": "tool_6_benefit_2_des",
     "en": "Ensure only geographies meeting your specific business thresholds are considered.",
-    "fr": "Ensure only geographies meeting your specific business thresholds are considered."
+    "fr": ""
   },
   "tool_6_benefit_3": {
     "key": "tool_6_benefit_3",
     "en": "Infinite Combinations",
-    "fr": "Infinite Combinations"
+    "fr": ""
   },
   "tool_6_benefit_3_des": {
     "key": "tool_6_benefit_3_des",
     "en": "Access millions of characteristic combinations possible across four distinct dimensions.",
-    "fr": "Access millions of characteristic combinations possible across four distinct dimensions."
+    "fr": ""
   }
 }

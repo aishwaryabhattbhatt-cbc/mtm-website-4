@@ -24,57 +24,115 @@ const {
 } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 const currentYear = new Date().getFullYear();
+const footerPhoneNumber = t(copy, 'footer_phone_number', locale, '1-855-898-4999');
 
 const footerMenus = [
     {
-        title: locale === 'fr' ? 'Entreprise' : 'Company',
+        title: t(
+            copy,
+            'footer_menu_company_title',
+            locale,
+            locale === 'fr' ? 'Entreprise' : 'Company'
+        ),
         items: [
-            { label: locale === 'fr' ? 'Accueil' : 'Home', href: `${base}${locale}/` },
             {
-                label: locale === 'fr' ? 'À propos' : 'About Us',
+                label: t(
+                    copy,
+                    'footer_menu_company_item_1',
+                    locale,
+                    locale === 'fr' ? 'Accueil' : 'Home'
+                ),
+                href: `${base}${locale}/`,
+            },
+            {
+                label: t(
+                    copy,
+                    'footer_menu_company_item_2',
+                    locale,
+                    locale === 'fr' ? 'À propos' : 'About Us'
+                ),
                 href: `${base}${locale}/about-us/`,
             },
             {
-                label: locale === 'fr' ? 'Contactez-nous' : 'Contact Us',
+                label: t(
+                    copy,
+                    'footer_menu_company_item_3',
+                    locale,
+                    locale === 'fr' ? 'Contactez-nous' : 'Contact Us'
+                ),
                 href: `${base}${locale}/contact/`,
             },
         ],
     },
     {
-        title: locale === 'fr' ? 'Produits' : 'Products',
+        title: t(
+            copy,
+            'footer_menu_products_title',
+            locale,
+            locale === 'fr' ? 'Produits' : 'Products'
+        ),
         items: [
-            { label: 'MTM 18+', href: `${base}${locale}/products/mtm-18-plus/` },
-            { label: 'MTM Juniors', href: `${base}${locale}/products/juniors/` },
-            { label: 'MTM Newcomers', href: `${base}${locale}/products/newcomers/` },
             {
-                label: locale === 'fr' ? 'Census' : 'Census',
+                label: t(copy, 'footer_menu_products_item_1', locale, 'MTM 18+'),
+                href: `${base}${locale}/products/mtm-18-plus/`,
+            },
+            {
+                label: t(copy, 'footer_menu_products_item_2', locale, 'MTM Juniors'),
+                href: `${base}${locale}/products/juniors/`,
+            },
+            {
+                label: t(copy, 'footer_menu_products_item_3', locale, 'MTM Newcomers'),
+                href: `${base}${locale}/products/newcomers/`,
+            },
+            {
+                label: t(copy, 'footer_menu_products_item_4', locale, 'Census'),
                 href: `${base}${locale}/tools/census-tool/`,
             },
         ],
     },
     {
-        title: locale === 'fr' ? 'Outils' : 'Tools',
+        title: t(copy, 'footer_menu_tools_title', locale, locale === 'fr' ? 'Outils' : 'Tools'),
         items: [
             {
-                label: locale === 'fr' ? 'Analyse des données' : 'Data Analysis',
+                label: t(
+                    copy,
+                    'footer_menu_tools_item_1',
+                    locale,
+                    locale === 'fr' ? 'Analyse des données' : 'Data Analysis'
+                ),
                 href: `${base}${locale}/tools/analytic-tools/`,
             },
             {
-                label: locale === 'fr' ? 'Tendances' : 'Trending',
+                label: t(
+                    copy,
+                    'footer_menu_tools_item_2',
+                    locale,
+                    locale === 'fr' ? 'Tendances' : 'Trending'
+                ),
                 href: `${base}${locale}/tools/analytic-tools/#trending-tool`,
             },
             {
-                label: locale === 'fr' ? 'Prévisions' : 'Forecasting',
+                label: t(
+                    copy,
+                    'footer_menu_tools_item_3',
+                    locale,
+                    locale === 'fr' ? 'Prévisions' : 'Forecasting'
+                ),
                 href: `${base}${locale}/tools/analytic-tools/#forecasting-tool`,
             },
             {
-                label: locale === 'fr' ? 'Recensement' : 'Census',
+                label: t(
+                    copy,
+                    'footer_menu_tools_item_4',
+                    locale,
+                    locale === 'fr' ? 'Recensement' : 'Census'
+                ),
                 href: `${base}${locale}/tools/census-tool/`,
             },
         ],
     },
     {
-        title: locale === 'fr' ? 'Solutions' : 'Solutions',
+        title: t(copy, 'footer_menu_solutions_title', locale, 'Solutions'),
         items: [
             {
                 label: t(copy, 'solutions_item_2', locale, 'Media'),
@@ -99,10 +157,20 @@ const footerMenus = [
         ],
     },
     {
-        title: locale === 'fr' ? 'Perspectives' : 'Insights',
+        title: t(
+            copy,
+            'footer_menu_insights_title',
+            locale,
+            locale === 'fr' ? 'Perspectives' : 'Insights'
+        ),
         items: [
             {
-                label: locale === 'fr' ? 'Rapports' : 'Reports',
+                label: t(
+                    copy,
+                    'footer_menu_insights_item_1',
+                    locale,
+                    locale === 'fr' ? 'Rapports' : 'Reports'
+                ),
                 href: `${base}${locale}/insights/`,
             },
         ],
@@ -337,9 +405,24 @@ const footerMenus = [
                 </a>
 
                 <div class="home-footer__footer-address text-body-p2">
-                    <span>Media Technology Monitor,</span>
-                    <span>181 Queen St, Ottawa, Ontario, K1P1K9</span>
-                    <a href="tel:1-855-898-4999">1-855-898-4999</a>
+                    <span
+                        >{
+                            t(copy, 'footer_address_company', locale, 'Media Technology Monitor,')
+                        }</span
+                    >
+                    <span
+                        >{
+                            t(
+                                copy,
+                                'footer_address_street',
+                                locale,
+                                '181 Queen St, Ottawa, Ontario, K1P1K9'
+                            )
+                        }</span
+                    >
+                    <a href={`tel:${footerPhoneNumber.replace(/[^0-9+]/g, '')}`}
+                        >{footerPhoneNumber}</a
+                    >
                 </div>
 
                 <a
@@ -355,24 +438,44 @@ const footerMenus = [
                 <div
                     class="home-footer__footer-policies home-footer__footer-policies--mobile text-body-p2"
                 >
-                    <a href={`${base}${locale}/contact/`}>Site Policies</a>
-                    <a href={`${base}${locale}/contact/`}>Privacy Policy</a>
-                    <a href={`${base}${locale}/contact/`}>Terms &amp; Conditions</a>
+                    <a href={`${base}${locale}/contact/`}
+                        >{t(copy, 'footer_site_policies_label', locale, 'Site Policies')}</a
+                    >
+                    <a href={`${base}${locale}/contact/`}
+                        >{t(copy, 'footer_privacy_policy_label', locale, 'Privacy Policy')}</a
+                    >
+                    <a href={`${base}${locale}/contact/`}
+                        >{t(copy, 'footer_terms_conditions_label', locale, 'Terms & Conditions')}</a
+                    >
                 </div>
             </div>
         </div>
 
         <div class="home-footer__footer-meta">
             <p class="home-footer__footer-copyright text-body-p2">
-                © {currentYear} Media Technology Monitor. All Rights Reserved. A division of CBC/Radio-Canada.
+                © {currentYear}{' '}
+                {
+                    t(
+                        copy,
+                        'footer_copyright_text',
+                        locale,
+                        'Media Technology Monitor. All Rights Reserved. A division of CBC/Radio-Canada.'
+                    )
+                }
             </p>
 
             <div class="home-footer__footer-policies text-body-p2">
-                <a href={`${base}${locale}/contact/`}>Site Policies</a>
+                <a href={`${base}${locale}/contact/`}
+                    >{t(copy, 'footer_site_policies_label', locale, 'Site Policies')}</a
+                >
                 <span aria-hidden="true">|</span>
-                <a href={`${base}${locale}/contact/`}>Privacy Policy</a>
+                <a href={`${base}${locale}/contact/`}
+                    >{t(copy, 'footer_privacy_policy_label', locale, 'Privacy Policy')}</a
+                >
                 <span aria-hidden="true">|</span>
-                <a href={`${base}${locale}/contact/`}>Terms &amp; Conditions</a>
+                <a href={`${base}${locale}/contact/`}
+                    >{t(copy, 'footer_terms_conditions_label', locale, 'Terms & Conditions')}</a
+                >
             </div>
         </div>
     </div>
