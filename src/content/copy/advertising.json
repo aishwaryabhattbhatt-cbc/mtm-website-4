@@ -41,7 +41,7 @@
   },
   "insight_1_title": {
     "key": "insight_1_title",
-    "en": "300,000+ Canadians surveyed to date",
+    "en": "300,000+ Canadians surveyed to date.",
     "fr": ""
   },
   "insight_1_description": {
@@ -201,7 +201,7 @@
   },
   "usecase_2_description": {
     "key": "usecase_2_description",
-    "en": "A luxary car brand is interested in reaching the most affluent households in Canada.",
+    "en": "A luxury car brand is interested in reaching the most affluent households in Canada.",
     "fr": ""
   },
   "usecase_2_variables": {
