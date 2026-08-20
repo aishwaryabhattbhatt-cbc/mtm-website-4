@@ -67,15 +67,22 @@ const {
 </div>
 
 <style>
+    /* Subgrid, spanning the 2 rows (body, visual) the parent cards grid
+       defines — lets the body row size to the taller of the two sibling
+       cards' content instead of each card sizing independently, so the
+       visual/chart row that follows lands at the same height on both.
+       Falls back to plain stacking on mobile/tablet, where cards no longer
+       sit side by side and matched heights don't matter (see media query
+       below). */
     .solutions-insight-card {
         background: var(--surface-white);
         border-radius: var(--layout-card-radius);
         padding: var(--card-pad-thin);
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 2;
         gap: var(--space-7);
         box-shadow: var(--shadow-card);
-        height: 100%;
     }
 
     .solutions-insight-card-body {
@@ -95,29 +102,19 @@ const {
     .solutions-insight-card-title {
         margin: 0;
         color: var(--text-primary);
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
     }
 
     .solutions-insight-card-description {
         margin: 0;
         color: var(--text-secondary);
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        min-height: calc(4 * 1lh);
-        max-height: calc(4 * 1lh);
     }
 
-    /* Visual expands to fill remaining card height */
+    /* Fills the subgrid's second row, which stretches to match the taller
+       sibling card's remaining space — see .solutions-insight-card above. */
     .solutions-insight-card-visual {
         background: var(--surface-blue);
         border-radius: calc(var(--layout-card-radius) - var(--space-1));
         overflow: hidden;
-        flex: 1;
         min-height: 16rem;
         display: flex;
         flex-direction: column;
@@ -151,13 +148,18 @@ const {
         display: block;
     }
 
+    /* Parent cards grid drops to a single column here — cards stack instead
+       of sitting side by side, so matched row heights no longer apply. */
+    @media (max-width: 1023px) {
+        .solutions-insight-card {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
     @media (max-width: 767px) {
         .solutions-insight-card-visual {
             min-height: 12rem;
-        }
-
-        .solutions-insight-card-title {
-            -webkit-line-clamp: 2;
         }
     }
 </style>

@@ -125,10 +125,14 @@ const { locale, copy, base } = Astro.props as Props;
         max-width: 44rem;
     }
 
-    /* Cards grid — stretch keeps both cards at equal height */
+    /* Cards grid — stretch keeps both cards at equal height. The explicit
+       row pair (body, visual) lets each card subgrid into it, so the two
+       cards' body/visual split lines up even when one card's copy is
+       longer — see SolutionsInsightCard's own comment for the full chain. */
     .solutions-media-insights-cards {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
         gap: var(--layout-card-gap);
         align-items: stretch;
     }
@@ -136,6 +140,7 @@ const { locale, copy, base } = Astro.props as Props;
     @media (max-width: 1023px) {
         .solutions-media-insights-cards {
             grid-template-columns: 1fr;
+            grid-template-rows: none;
             row-gap: var(--space-9);
         }
     }
@@ -153,7 +158,13 @@ const { locale, copy, base } = Astro.props as Props;
         transform: translateY(0);
     }
 
+    /* Pass-through wrapper for the subgrid rows defined above — must also
+       be a subgridded grid item itself, or the row tracks don't reach
+       SolutionsInsightCard's own subgrid two levels down. */
     .card-fly-in {
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 2;
         opacity: 0;
         transform: translateY(1.625rem);
         transition:
@@ -164,6 +175,12 @@ const { locale, copy, base } = Astro.props as Props;
     .card-fly-in.is-visible {
         opacity: 1;
         transform: translateY(0);
+    }
+
+    @media (max-width: 1023px) {
+        .card-fly-in {
+            display: block;
+        }
     }
 </style>
 
