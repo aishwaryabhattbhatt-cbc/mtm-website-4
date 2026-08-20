@@ -936,22 +936,11 @@ const products = [
 
     .card-people {
         position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 110%;
+        inset: 0;
+        width: 100%;
         height: 100%;
-        object-fit: cover;
-        /* .products-right's height tracks the text column's natural height
-           (stretch), not the viewport — so on very wide screens this box's
-           width keeps growing while its height barely does. cover then has
-           to crop more off the vertical axis to fill it, and centered
-           (default) positioning splits that evenly, eating into the head
-           before the shoulders. Anchoring to the top keeps any unavoidable
-           crop at the bottom instead, where the scale-down below already
-           hides part of the photo. */
-        object-position: top;
-        transform: scale(0.75);
-        transform-origin: bottom right;
+        object-fit: contain;
+        object-position: bottom right;
         z-index: 3;
     }
 
@@ -1016,10 +1005,8 @@ const products = [
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        object-position: center bottom;
-        transform: scale(0.9);
-        transform-origin: bottom;
+        object-fit: contain;
+        object-position: bottom;
         z-index: 3;
     }
 
