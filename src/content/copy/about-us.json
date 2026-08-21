@@ -91,7 +91,7 @@
   },
   "about_timeline_item_1_body": {
     "key": "about_timeline_item_1_body",
-    "en": "MTM launches: an annual fall survey of 8,000 Canadians, gathering media and technology data by landline telephone.",
+    "en": "An annual fall survey of 8,000 Canadians, gathering media and technology data by landline telephone.",
     "fr": ""
   },
   "about_timeline_item_2_year": {
@@ -106,7 +106,7 @@
   },
   "about_timeline_item_2_body": {
     "key": "about_timeline_item_2_body",
-    "en": "A spring wave is added alongside the fall wave, and the annual sample grows to 12,000 Canadians — the release cadence still used today.",
+    "en": "The annual sample grows to 12,000 Canadians across fall and spring waves — the release cadence still used today.",
     "fr": ""
   },
   "about_timeline_item_3_year": {
@@ -121,7 +121,7 @@
   },
   "about_timeline_item_3_body": {
     "key": "about_timeline_item_3_body",
-    "en": "The MTM Portal launches, making data available online for the first time.",
+    "en": "MTM data becomes available online for the first time, giving users direct access to survey findings.",
     "fr": ""
   },
   "about_timeline_item_4_year": {
@@ -136,7 +136,7 @@
   },
   "about_timeline_item_4_body": {
     "key": "about_timeline_item_4_body",
-    "en": "Cell-phone-only households are added to the sample, keeping pace with how Canadians were actually reachable by phone.",
+    "en": "The sample is updated to keep pace with how Canadians were actually reachable by phone, as landlines gave way to mobile.",
     "fr": ""
   },
   "about_timeline_item_5_year": {
@@ -151,7 +151,7 @@
   },
   "about_timeline_item_5_body": {
     "key": "about_timeline_item_5_body",
-    "en": "MTM's 10th anniversary. The interactive Trending Tool and Forecasting Tool launch, with 1,500+ data points now available.",
+    "en": "The interactive Trending Tool and Forecasting Tool launch, unlocking 1,500+ data points for exploration.",
     "fr": ""
   },
   "about_timeline_item_6_year": {
@@ -166,7 +166,7 @@
   },
   "about_timeline_item_6_body": {
     "key": "about_timeline_item_6_body",
-    "en": "MTM Jr. launches, extending coverage to Canadians aged 2–17; additional EDI questions are added to the survey.",
+    "en": "Coverage extends to Canadians aged 2–17, with additional EDI questions added to the survey.",
     "fr": ""
   },
   "about_timeline_item_7_year": {
@@ -181,7 +181,7 @@
   },
   "about_timeline_item_7_body": {
     "key": "about_timeline_item_7_body",
-    "en": "MTM Newcomers launches; the sample expands to include Northern Canada and a booster sample of Indigenous respondents.",
+    "en": "A dedicated survey reaches Canadians new to the country, while the sample also expands to include Northern Canada and a booster sample of Indigenous respondents.",
     "fr": ""
   },
   "about_timeline_item_8_year": {
@@ -196,7 +196,7 @@
   },
   "about_timeline_item_8_body": {
     "key": "about_timeline_item_8_body",
-    "en": "MTM Jr.'s sample size increases.",
+    "en": "The MTM Jr. sample expands, sharpening the picture of media habits among younger Canadians.",
     "fr": ""
   },
   "about_timeline_item_9_year": {
@@ -211,7 +211,7 @@
   },
   "about_timeline_item_9_body": {
     "key": "about_timeline_item_9_body",
-    "en": "80+ reports and infographics released.",
+    "en": "Data from across the year turns into reports and infographics, making insights easier to share and act on.",
     "fr": ""
   },
   "about_timeline_item_10_year": {
@@ -226,7 +226,7 @@
   },
   "about_timeline_item_10_body": {
     "key": "about_timeline_item_10_body",
-    "en": "The YourData visualization tool launches on the Portal; over 4,000 data points are now available to users.",
+    "en": "Users can visualize the data themselves directly on the Portal, with over 4,000 data points now available.",
     "fr": ""
   },
   "about_timeline_item_11_year": {
@@ -241,7 +241,7 @@
   },
   "about_timeline_item_11_body": {
     "key": "about_timeline_item_11_body",
-    "en": "MTM Census Tool launches.",
+    "en": "Census data becomes directly explorable within the Portal.",
     "fr": ""
   },
   "about_timeline_item_12_year": {
@@ -256,7 +256,7 @@
   },
   "about_timeline_item_12_body": {
     "key": "about_timeline_item_12_body",
-    "en": "MTM Census Tool 2.0 and the MTM Chatbot launch.",
+    "en": "An upgraded Census Tool arrives alongside a new AI chatbot, making it faster to find answers within MTM's data.",
     "fr": ""
   },
   "about_timeline_today_label": {
