@@ -3,7 +3,6 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
 import FormField from '../shared/FormField.astro';
-import mtmLogo from '../../assets/svg/mtm-logo.svg?url';
 
 interface Props {
     locale: Locale;
@@ -407,7 +406,7 @@ const footerMenus = [
                     aria-label={t(copy, 'footer_logo_aria_label', locale, 'MTM home')}
                 >
                     <img
-                        src={mtmLogo}
+                        src={`${base}images/mtm-logo.svg`}
                         alt={t(copy, 'nav_logo_alt', locale, 'MTM - Media Technology Monitor')}
                     />
                 </a>

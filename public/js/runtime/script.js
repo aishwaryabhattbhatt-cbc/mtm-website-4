@@ -530,8 +530,7 @@ function initParticleSwell() {
     
     const particleSpacing = 25;
     const mouseDist = 350;
-    const glideSpeed = 0.15;
-    
+
     // Create particle grid
     const particlesContainer = document.createElement('div');
     particlesContainer.className = 'particles-container';
@@ -634,7 +633,7 @@ function initSVGBreathing() {
     // Get all hero sections that should have breathing (hero-section without hero-2 or hero-no-breathing class)
     const heroSections = document.querySelectorAll('.hero-section:not(.hero-2):not(.hero-no-breathing)');
     
-    heroSections.forEach((section, sectionIndex) => {
+    heroSections.forEach((section) => {
         const bottomLeftImg = section.querySelector('.hero-svg-bottom-left');
         const topRightImg = section.querySelector('.hero-svg-top-right');
         

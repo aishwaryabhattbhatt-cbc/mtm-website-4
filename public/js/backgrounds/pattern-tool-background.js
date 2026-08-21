@@ -6,7 +6,6 @@ import * as THREE from 'three';
 
 class LiquidGradientEffect {
   constructor() {
-    console.log('Initializing LiquidGradientEffect (Pattern Tool)...');
     this.storageKey = 'pattern-tool-background-settings';
     this.settingsVersion = 2;
 
@@ -1260,7 +1259,6 @@ class LiquidGradientEffect {
   }
 
   saveSettings() {
-    console.log('Settings persistence disabled; using in-code defaults only.');
 
     // Visual feedback
     const button = event.target;
@@ -1273,7 +1271,6 @@ class LiquidGradientEffect {
 
   loadSettings() {
     // Always boot Hero 10 from in-code defaults; ignore persisted localStorage.
-    console.log('Ignoring saved settings; using in-code defaults');
     return null;
   }
 
@@ -1289,7 +1286,6 @@ class LiquidGradientEffect {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      console.log('Settings downloaded');
       
       // Visual feedback
       const button = event.target;

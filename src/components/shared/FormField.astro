@@ -48,7 +48,7 @@ const {
     labelColor = 'secondary',
 } = Astro.props as Props;
 
-const fieldId = id || `${name}-${Math.random().toString(36).substr(2, 9)}`;
+const fieldId = id || `${name}-${Math.random().toString(36).slice(2, 11)}`;
 const showLabel = variant === 'field-with-label' || variant === 'dropdown';
 const isSelect = type === 'select' || variant === 'dropdown';
 const isEmail = type === 'email';

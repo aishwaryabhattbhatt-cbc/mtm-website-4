@@ -3,7 +3,12 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { execFileSync } from 'node:child_process';
 
-const base = '/mtm-website-4/';
+// Overridable for a handoff build served from somewhere other than GitHub
+// Pages (e.g. the backend developer's own host/IIS path) — every asset URL
+// in the build is prefixed with this exact string, so it must match wherever
+// dist/ actually gets served from, or CSS/JS/images will all 404.
+// Usage: BUILD_BASE_PATH=/some/other/path/ npm run build
+const base = process.env.BUILD_BASE_PATH || '/mtm-website-4/';
 
 // Keep in sync with any page that sets noindex={true} in its <Layout> usage —
 // @astrojs/sitemap has no visibility into that prop, so noindex routes have to
@@ -85,7 +90,9 @@ function resolveLastmod(pathname) {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://aishwaryabhattbhatt-cbc.github.io',
+  // Overridable alongside BUILD_BASE_PATH for a handoff build — affects
+  // sitemap URLs, canonical tags, and absolute OG image URLs.
+  site: process.env.BUILD_SITE_URL || 'https://aishwaryabhattbhatt-cbc.github.io',
   base,
   integrations: [
     sitemap({

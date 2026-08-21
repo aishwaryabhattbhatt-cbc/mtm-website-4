@@ -2,7 +2,6 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import ToolsHeroSection from '../tools/ToolsHeroSection.astro';
 import AboutUsBackground from './AboutUsBackground.astro';
-import mtmLogo from '../../assets/svg/mtm-logo.svg?url';
 
 interface Props {
     locale: Locale;
@@ -10,6 +9,7 @@ interface Props {
 }
 
 const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <ToolsHeroSection
@@ -26,7 +26,7 @@ const { locale, copy } = Astro.props as Props;
     </Fragment>
     <img
         slot="logo"
-        src={mtmLogo}
+        src={`${base}images/mtm-logo.svg`}
         alt="MTM - Media Technology Monitor"
         class="about-us-hero-logo"
     />

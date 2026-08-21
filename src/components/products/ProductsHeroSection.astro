@@ -67,7 +67,7 @@ function badgeEntryStyle(badge: HeroBadge, index: number) {
 // duration/direction per badge so they drift out of phase with each other
 // instead of bobbing in unison. Delay (not randomized) starts the float the
 // instant that badge's own fly-in finishes.
-function badgeFloatStyle(badge: HeroBadge, index: number) {
+function badgeFloatStyle(index: number) {
     const entryDelay = MEDIA_IN_SECONDS + index * BADGE_ENTRY_STEP;
     const floatDelay = (entryDelay + BADGE_ENTRY_DURATION).toFixed(2);
     const duration = (Math.random() * (11 - 7) + 7).toFixed(2);
@@ -91,10 +91,7 @@ function badgeFloatStyle(badge: HeroBadge, index: number) {
                     <div class="products-hero-badges">
                         {heroBadgesMasked.map((badge, i) => (
                             <span class="products-hero-badge" style={badgeEntryStyle(badge, i)}>
-                                <span
-                                    class="products-hero-badge-float"
-                                    style={badgeFloatStyle(badge, i)}
-                                >
+                                <span class="products-hero-badge-float" style={badgeFloatStyle(i)}>
                                     <img
                                         src={`${base}${badge.icon}`}
                                         alt=""
@@ -113,7 +110,7 @@ function badgeFloatStyle(badge: HeroBadge, index: number) {
             {
                 heroBadgesTop.map((badge, i) => (
                     <span class="products-hero-badge" style={badgeEntryStyle(badge, i)}>
-                        <span class="products-hero-badge-float" style={badgeFloatStyle(badge, i)}>
+                        <span class="products-hero-badge-float" style={badgeFloatStyle(i)}>
                             <img
                                 src={`${base}${badge.icon}`}
                                 alt=""

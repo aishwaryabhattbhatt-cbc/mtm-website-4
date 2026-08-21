@@ -6,7 +6,6 @@ import * as THREE from 'three';
 
 class LiquidGradientEffect {
   constructor(containerId = 'webgl-background-10') {
-    console.log('Initializing LiquidGradientEffect...');
     this.storageKey = 'research-hero-background-settings';
     this.settingsVersion = 2;
 
@@ -1099,14 +1098,6 @@ class LiquidGradientEffect {
       return wrapper;
     };
 
-    const makeColor = (value, onChange) => {
-      const input = document.createElement('input');
-      input.type = 'color';
-      input.value = value;
-      input.addEventListener('input', () => onChange(input.value));
-      return input;
-    };
-
     const makeCheckbox = (checked, onChange) => {
       const input = document.createElement('input');
       input.type = 'checkbox';
@@ -1444,7 +1435,6 @@ class LiquidGradientEffect {
   }
 
   saveSettings() {
-    console.log('Settings persistence disabled; using in-code defaults only.');
 
     // Visual feedback
     const button = event.target;
@@ -1457,7 +1447,6 @@ class LiquidGradientEffect {
 
   loadSettings() {
     // Always boot Hero 10 from in-code defaults; ignore persisted localStorage.
-    console.log('Ignoring saved settings; using in-code defaults');
     return null;
   }
 
@@ -1473,7 +1462,6 @@ class LiquidGradientEffect {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      console.log('Settings downloaded');
       
       // Visual feedback
       const button = event.target;
