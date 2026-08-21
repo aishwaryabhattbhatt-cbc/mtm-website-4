@@ -1,7 +1,6 @@
 ---
 // ResearchTabsSection.astro
 // Figma node: 1:9423 — "Access credible research on" animated section
-import dashboardImg from '../../assets/images/dashboard.png';
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
@@ -85,7 +84,6 @@ const tabs = [
 ];
 ---
 
-<div id="research-assets" data-dashboard={dashboardImg.src} hidden aria-hidden="true"></div>
 <section class="research-section">
     <div class="content content-fly-in">
         <!-- LEFT: Heading + Topic Tabs -->

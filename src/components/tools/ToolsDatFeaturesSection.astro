@@ -22,9 +22,8 @@ const features = [
         titleFb: 'Easily create a custom query',
         descFb: 'Select query parameters, drag variables from the master list into output rows and columns. What you arrange is exactly what you get. No SQL or python, no analyst handoff, no waiting. Go from brief to cross-tab in minutes.',
         icon: icons.tool.queryParameters,
-        image: 'images/tools/dat/dat-query.webp',
-        videoSrc: 'videos/dat-compressed/tools-query.mp4',
-        coverSrc: 'videos/dat-compressed/tools-query-cover.jpg',
+        image: 'images/tools/analytic-tools/dat/dat-query.webp',
+        videoSrc: 'images/tools/analytic-tools/dat/tools-query.mp4',
     },
     {
         pillKey: 'dat_feature_2_title',
@@ -34,9 +33,8 @@ const features = [
         titleFb: 'Large, robust data sets at your fingertips',
         descFb: 'Thousands of variables covering demographics, device ownership, media habits, platform usage — all in a single searchable list by categories.',
         icon: icons.gen.multipleVariables,
-        image: 'images/tools/dat/dat-select-variables.webp',
-        videoSrc: 'videos/dat-compressed/tools-select-variables.mp4',
-        coverSrc: 'videos/dat-compressed/tools-select-variables-cover.jpg',
+        image: 'images/tools/analytic-tools/dat/dat-select-variables.webp',
+        videoSrc: 'images/tools/analytic-tools/dat/tools-select-variables.mp4',
     },
     {
         pillKey: 'dat_feature_3_title',
@@ -46,9 +44,8 @@ const features = [
         titleFb: 'Refine your query with Quick or Additional Filters',
         descFb: 'Narrow your results by age, gender or region with Quick Filters or apply any variable in the tool as a filter using Additional Filters.',
         icon: icons.tool.datFiltersQuickFilters,
-        image: 'images/tools/dat/dat-quick-filters.webp',
-        videoSrc: 'videos/dat-compressed/tools-quick-filters.mp4',
-        coverSrc: 'videos/dat-compressed/tools-quick-filters-cover.jpg',
+        image: 'images/tools/analytic-tools/dat/dat-quick-filters.webp',
+        videoSrc: 'images/tools/analytic-tools/dat/tools-quick-filters.mp4',
     },
     {
         pillKey: 'dat_feature_4_title',
@@ -58,9 +55,8 @@ const features = [
         titleFb: 'Our data, your way',
         descFb: 'Easily adjust or refine your query with drag and drop functionality. No headaches, just a new table with new results in seconds.',
         icon: icons.gen.clickDrag,
-        image: 'images/tools/dat/dat-drag-drop.webp',
-        videoSrc: 'videos/dat-compressed/tools-drag-drop.mp4',
-        coverSrc: 'videos/dat-compressed/tools-drag-drop-cover.jpg',
+        image: 'images/tools/analytic-tools/dat/dat-drag-drop.webp',
+        videoSrc: 'images/tools/analytic-tools/dat/tools-drag-drop.mp4',
     },
     {
         pillKey: 'dat_feature_5_title',
@@ -70,9 +66,8 @@ const features = [
         titleFb: 'Results in multiple formats',
         descFb: 'Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required.',
         icon: icons.gen.multipleOutputs,
-        image: 'images/tools/dat/dat-export.webp',
-        videoSrc: 'videos/dat-compressed/tools-export.mp4',
-        coverSrc: 'videos/dat-compressed/tools-export-cover.jpg',
+        image: 'images/tools/analytic-tools/dat/dat-export.webp',
+        videoSrc: 'images/tools/analytic-tools/dat/tools-export.mp4',
     },
 ];
 ---
@@ -100,7 +95,7 @@ const features = [
                     <div class="dat-features__card-slot" aria-hidden="true">
                         <img
                             class="dat-features__card-slot-img dat-features__card-cover"
-                            src={`${base}${f.coverSrc ?? f.image}`}
+                            src={`${base}${f.image}`}
                             alt=""
                             loading="lazy"
                             decoding="async"
@@ -221,6 +216,9 @@ const features = [
         display: block;
         opacity: 0;
         transition: opacity 0.2s ease;
+        /* Source recordings have a stray edge line baked into the bottom row of
+           pixels; scale up slightly to push it outside the clipped area. */
+        transform: scale(1.01);
     }
 
     .dat-features__card.is-playing .dat-features__card-cover {
