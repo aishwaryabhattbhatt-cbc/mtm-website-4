@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
 
 interface Product {
     id: string;
@@ -17,9 +19,11 @@ interface Product {
 interface Props {
     heading: string;
     products: Product[];
+    copy?: CMSDictionary;
+    locale?: Locale;
 }
 
-const { heading, products } = Astro.props as Props;
+const { heading, products, copy, locale } = Astro.props as Props;
 ---
 
 <section class="explore-more-section">
@@ -27,9 +31,15 @@ const { heading, products } = Astro.props as Props;
         <h2>{heading}</h2>
         <CarouselNavArrows
             scrollTargetSelector="#exploreMobileScroll"
-            ariaLabel="Product navigation"
-            prevLabel="Previous product"
-            nextLabel="Next product"
+            ariaLabel={copy && locale
+                ? t(copy, 'explore_more_carousel_aria_label', locale, 'Product navigation')
+                : 'Product navigation'}
+            prevLabel={copy && locale
+                ? t(copy, 'explore_more_carousel_prev_label', locale, 'Previous product')
+                : 'Previous product'}
+            nextLabel={copy && locale
+                ? t(copy, 'explore_more_carousel_next_label', locale, 'Next product')
+                : 'Next product'}
             class="explore-nav"
         />
     </div>

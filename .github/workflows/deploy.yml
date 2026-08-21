@@ -5,6 +5,10 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    # Rebuilds daily so sheet-only edits (e.g. new In the News rows) go live
+    # without needing a code push. 13:00 UTC ≈ 9am ET.
+    - cron: '0 13 * * *'
 
 permissions:
   contents: read
@@ -36,13 +40,9 @@ jobs:
 
       - name: Sync copy from Google Sheets
         run: npm run sync-copy
-        env:
-          GOOGLE_SHEET_CSV_URL_MAP_JSON: ${{ secrets.GOOGLE_SHEET_CSV_URL_MAP_JSON }}
 
       - name: Build with Astro
         run: npm run build
-        env:
-          GOOGLE_SHEET_CSV_URL_MAP_JSON: ${{ secrets.GOOGLE_SHEET_CSV_URL_MAP_JSON }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5

@@ -183,7 +183,10 @@ const cards = [
             }
         </div>
 
-        <div class="home-solutions__logos" aria-label="Client logos">
+        <div
+            class="home-solutions__logos"
+            aria-label={t(copy, 'solutions_logos_aria_label', locale, 'Client logos')}
+        >
             {
                 Object.entries(logoSets).map(([solutionId, logos], idx) => (
                     <div
@@ -269,7 +272,10 @@ const cards = [
             </span>
         </div>
 
-        <div class="home-solutions__mobile-logos" aria-label="Client logos">
+        <div
+            class="home-solutions__mobile-logos"
+            aria-label={t(copy, 'solutions_logos_aria_label', locale, 'Client logos')}
+        >
             {
                 Object.entries(logoSets).map(([solutionId, logos], idx) => (
                     <div

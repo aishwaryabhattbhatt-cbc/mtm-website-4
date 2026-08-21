@@ -45,7 +45,12 @@ const base = import.meta.env.BASE_URL;
             <div class="register-hero__card hero-fade-in" style="animation-delay: 0.2s">
                 <form
                     class="register-hero__form"
-                    aria-label="Create your user account"
+                    aria-label={t(
+                        copy,
+                        'register_hero_form_aria_label',
+                        locale,
+                        'Create your user account'
+                    )}
                     data-submit-href={`${base}${locale}/register-success/`}
                 >
                     <div class="register-hero__row">

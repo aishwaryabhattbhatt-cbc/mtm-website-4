@@ -74,8 +74,15 @@ const freeReports = [
         <div class="free-reports-section__controls-wrap">
             <CarouselNavArrows
                 scrollTargetSelector="#freeReportsCarousel"
-                ariaLabel="Reports navigation"
+                ariaLabel={t(
+                    copy,
+                    'reports_library_carousel_aria_label',
+                    locale,
+                    'Reports navigation'
+                )}
                 class="free-reports-section__arrows"
+                copy={copy}
+                locale={locale}
             />
         </div>
     </div>

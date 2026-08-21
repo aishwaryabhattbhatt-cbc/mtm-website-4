@@ -74,19 +74,19 @@
     "en": "All",
     "fr": ""
   },
-  "filter_junior": {
-    "key": "filter_junior",
-    "en": "Junior",
-    "fr": ""
-  },
   "filter_mtm18plus": {
     "key": "filter_mtm18plus",
     "en": "MTM 18+",
     "fr": ""
   },
+  "filter_junior": {
+    "key": "filter_junior",
+    "en": "MTM Junior",
+    "fr": ""
+  },
   "filter_newcomers": {
     "key": "filter_newcomers",
-    "en": "Newcomers",
+    "en": "MTM Newcomers",
     "fr": ""
   },
   "Reports (to be auto-filled)": {
@@ -284,29 +284,9 @@
     "en": "Read articles and interviews showcasing how MTM insights are shaping conversations across the industry.",
     "fr": ""
   },
-  "news_card_tag": {
-    "key": "news_card_tag",
-    "en": "MTM JR",
-    "fr": ""
-  },
-  "news_card_tag_date": {
-    "key": "news_card_tag_date",
-    "en": "TBD",
-    "fr": ""
-  },
-  "news_card_title": {
-    "key": "news_card_title",
-    "en": "Kids are increasingly hooked in",
-    "fr": ""
-  },
-  "news_card_description": {
-    "key": "news_card_description",
-    "en": "New MTM findings reveal growing engagement with digital media among Canadian children, including rising usage of streaming, social video, and mobile-first content platforms.",
-    "fr": ""
-  },
-  "news_cta": {
-    "key": "news_cta",
-    "en": "Read",
+  "news list": {
+    "key": "news list",
+    "en": "MTM | In the News",
     "fr": ""
   }
 }

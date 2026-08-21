@@ -34,6 +34,16 @@
     "en": "Access current, nationally representative data on how Canadians consume media and technology. MTM helps governments and NGOs better understand audiences, evaluate communications strategies, and identify emerging behavioural shifts across demographic groups and regions.",
     "fr": ""
   },
+  "insight_card_label": {
+    "key": "insight_card_label",
+    "en": "Insight",
+    "fr": ""
+  },
+  "insight_informs_label": {
+    "key": "insight_informs_label",
+    "en": "Informs decisions on",
+    "fr": ""
+  },
   "insight_1_stat": {
     "key": "insight_1_stat",
     "en": "42%",

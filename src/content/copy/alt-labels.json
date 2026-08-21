@@ -1,0 +1,177 @@
+{
+  "nav_logo_aria_label": {
+    "key": "nav_logo_aria_label",
+    "en": "MTM home",
+    "fr": ""
+  },
+  "nav_logo_alt": {
+    "key": "nav_logo_alt",
+    "en": "MTM - Media Technology Monitor",
+    "fr": ""
+  },
+  "nav_menu_toggle_aria_label": {
+    "key": "nav_menu_toggle_aria_label",
+    "en": "Open navigation menu",
+    "fr": ""
+  },
+  "nav_linkedin_aria_label": {
+    "key": "nav_linkedin_aria_label",
+    "en": "LinkedIn",
+    "fr": ""
+  },
+  "footer_logo_aria_label": {
+    "key": "footer_logo_aria_label",
+    "en": "MTM home",
+    "fr": ""
+  },
+  "footer_linkedin_aria_label": {
+    "key": "footer_linkedin_aria_label",
+    "en": "LinkedIn",
+    "fr": ""
+  },
+  "footer_cta_form_aria_label": {
+    "key": "footer_cta_form_aria_label",
+    "en": "Request a demo",
+    "fr": ""
+  },
+  "footer_newsletter_form_aria_label": {
+    "key": "footer_newsletter_form_aria_label",
+    "en": "Newsletter signup",
+    "fr": ""
+  },
+  "mtm_suite_explore_prefix": {
+    "key": "mtm_suite_explore_prefix",
+    "en": "Explore",
+    "fr": ""
+  },
+  "mtm_suite_video_aria_label": {
+    "key": "mtm_suite_video_aria_label",
+    "en": "Tools suite demonstration",
+    "fr": ""
+  },
+  "mtm_suite_video_toggle_aria_label": {
+    "key": "mtm_suite_video_toggle_aria_label",
+    "en": "Play/pause video",
+    "fr": ""
+  },
+  "solutions_logos_aria_label": {
+    "key": "solutions_logos_aria_label",
+    "en": "Client logos",
+    "fr": ""
+  },
+  "carousel_default_aria_label": {
+    "key": "carousel_default_aria_label",
+    "en": "Carousel navigation",
+    "fr": ""
+  },
+  "carousel_prev_label": {
+    "key": "carousel_prev_label",
+    "en": "Previous",
+    "fr": ""
+  },
+  "carousel_next_label": {
+    "key": "carousel_next_label",
+    "en": "Next",
+    "fr": ""
+  },
+  "methodology_carousel_aria_label": {
+    "key": "methodology_carousel_aria_label",
+    "en": "Cards navigation",
+    "fr": ""
+  },
+  "methodology_carousel_prev_label": {
+    "key": "methodology_carousel_prev_label",
+    "en": "Previous card",
+    "fr": ""
+  },
+  "methodology_carousel_next_label": {
+    "key": "methodology_carousel_next_label",
+    "en": "Next card",
+    "fr": ""
+  },
+  "explore_more_carousel_aria_label": {
+    "key": "explore_more_carousel_aria_label",
+    "en": "Product navigation",
+    "fr": ""
+  },
+  "explore_more_carousel_prev_label": {
+    "key": "explore_more_carousel_prev_label",
+    "en": "Previous product",
+    "fr": ""
+  },
+  "explore_more_carousel_next_label": {
+    "key": "explore_more_carousel_next_label",
+    "en": "Next product",
+    "fr": ""
+  },
+  "use_cases_carousel_aria_label": {
+    "key": "use_cases_carousel_aria_label",
+    "en": "Case study navigation",
+    "fr": ""
+  },
+  "use_cases_carousel_prev_label": {
+    "key": "use_cases_carousel_prev_label",
+    "en": "Previous case study",
+    "fr": ""
+  },
+  "use_cases_carousel_next_label": {
+    "key": "use_cases_carousel_next_label",
+    "en": "Next case study",
+    "fr": ""
+  },
+  "reports_library_carousel_aria_label": {
+    "key": "reports_library_carousel_aria_label",
+    "en": "Reports navigation",
+    "fr": ""
+  },
+  "news_carousel_aria_label": {
+    "key": "news_carousel_aria_label",
+    "en": "News navigation",
+    "fr": ""
+  },
+  "request_demo_hero_form_aria_label": {
+    "key": "request_demo_hero_form_aria_label",
+    "en": "Request a demo",
+    "fr": ""
+  },
+  "register_hero_form_aria_label": {
+    "key": "register_hero_form_aria_label",
+    "en": "Create your user account",
+    "fr": ""
+  },
+  "sign_in_hero_form_aria_label": {
+    "key": "sign_in_hero_form_aria_label",
+    "en": "Sign in",
+    "fr": ""
+  },
+  "forgot_password_hero_form_aria_label": {
+    "key": "forgot_password_hero_form_aria_label",
+    "en": "Forgot password",
+    "fr": ""
+  },
+  "dat_features_carousel_aria_label": {
+    "key": "dat_features_carousel_aria_label",
+    "en": "Feature navigation",
+    "fr": ""
+  },
+  "dat_features_carousel_prev_label": {
+    "key": "dat_features_carousel_prev_label",
+    "en": "Previous feature",
+    "fr": ""
+  },
+  "dat_features_carousel_next_label": {
+    "key": "dat_features_carousel_next_label",
+    "en": "Next feature",
+    "fr": ""
+  },
+  "insight_1_chart_alt": {
+    "key": "insight_1_chart_alt",
+    "en": "Trustworthy data visualization",
+    "fr": ""
+  },
+  "insight_2_chart_alt": {
+    "key": "insight_2_chart_alt",
+    "en": "Precision audience targeting visualization",
+    "fr": ""
+  }
+}

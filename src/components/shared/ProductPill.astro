@@ -2,6 +2,9 @@
 // src/components/shared/ProductPill.astro
 // Figma node: 362:11068 — Product badge pill for MTM product lines
 
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
 export type ProductVariant = 'mtm18plus' | 'junior' | 'newcomers' | 'census';
 export type PillSize = 'xsmall' | 'small' | 'big' | 'large';
 
@@ -10,22 +13,46 @@ interface Props {
     size?: PillSize;
     responsive?: boolean;
     class?: string;
+    copy?: CMSDictionary;
+    locale?: Locale;
 }
 
-const { variant, size = 'small', responsive = false, class: className = '' } = Astro.props;
+const {
+    variant,
+    size = 'small',
+    responsive = false,
+    class: className = '',
+    copy,
+    locale,
+} = Astro.props as Props;
 
-const labels: Record<ProductVariant, string> = {
+// Fallback labels — used verbatim when a call site doesn't pass copy/locale
+// (most don't yet), and as the t() fallback when the CMS key is missing.
+const fallbackLabels: Record<ProductVariant, string> = {
     mtm18plus: 'MTM 18+',
     junior: 'Junior',
     newcomers: 'Newcomers',
     census: 'Census',
 };
+
+// Sourced from the home CMS tab — merged into every page's dictionary already.
+const cmsKeys: Record<ProductVariant, string> = {
+    mtm18plus: 'product_1_title',
+    junior: 'product_2_title',
+    newcomers: 'product_3_title',
+    census: 'product_4_title',
+};
+
+const label =
+    copy && locale
+        ? t(copy, cmsKeys[variant], locale, fallbackLabels[variant])
+        : fallbackLabels[variant];
 ---
 
 <span
     class={`product-pill product-pill--${variant} product-pill--${size}${responsive ? ' product-pill--responsive' : ''}${className ? ` ${className}` : ''}`}
 >
-    {labels[variant]}
+    {label}
 </span>
 
 <style>

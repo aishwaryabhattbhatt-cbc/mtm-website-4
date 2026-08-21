@@ -1,32 +1,49 @@
 ---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
 interface Props {
     scrollTargetSelector: string;
     ariaLabel?: string;
     prevLabel?: string;
     nextLabel?: string;
     class?: string;
+    copy?: CMSDictionary;
+    locale?: Locale;
 }
 
 const {
     scrollTargetSelector,
-    ariaLabel = 'Carousel navigation',
-    prevLabel = 'Previous',
-    nextLabel = 'Next',
+    ariaLabel,
+    prevLabel,
+    nextLabel,
     class: className = '',
+    copy,
+    locale,
 } = Astro.props as Props;
+
+const resolvedAriaLabel =
+    ariaLabel ??
+    (copy && locale
+        ? t(copy, 'carousel_default_aria_label', locale, 'Carousel navigation')
+        : 'Carousel navigation');
+const resolvedPrevLabel =
+    prevLabel ?? (copy && locale ? t(copy, 'carousel_prev_label', locale, 'Previous') : 'Previous');
+const resolvedNextLabel =
+    nextLabel ?? (copy && locale ? t(copy, 'carousel_next_label', locale, 'Next') : 'Next');
 ---
 
 <div
     class={`carousel-nav-arrows ${className}`}
     data-carousel-nav
     data-carousel-target={scrollTargetSelector}
-    aria-label={ariaLabel}
+    aria-label={resolvedAriaLabel}
 >
     <button
         type="button"
         class="carousel-nav-arrow"
         data-carousel-prev
-        aria-label={prevLabel}
+        aria-label={resolvedPrevLabel}
         disabled
     >
         <svg class="icon-s" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -38,7 +55,12 @@ const {
                 stroke-linejoin="round"></path>
         </svg>
     </button>
-    <button type="button" class="carousel-nav-arrow" data-carousel-next aria-label={nextLabel}>
+    <button
+        type="button"
+        class="carousel-nav-arrow"
+        data-carousel-next
+        aria-label={resolvedNextLabel}
+    >
         <svg class="icon-s" viewBox="0 0 18 18" fill="none" aria-hidden="true">
             <path
                 d="M7 4.5L11.5 9L7 13.5"

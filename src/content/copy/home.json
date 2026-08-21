@@ -394,6 +394,11 @@
     "en": "",
     "fr": ""
   },
+  "nav_products_label": {
+    "key": "nav_products_label",
+    "en": "PRODUCTS",
+    "fr": ""
+  },
   "nav_products_main_label": {
     "key": "nav_products_main_label",
     "en": "Analytic Products",
@@ -449,14 +454,14 @@
     "en": "",
     "fr": ""
   },
+  "nav_tools_label": {
+    "key": "nav_tools_label",
+    "en": "TOOLS",
+    "fr": ""
+  },
   "nav_tools_main_label": {
     "key": "nav_tools_main_label",
     "en": "Analytic Tools",
-    "fr": ""
-  },
-  "nav_tools_side_label": {
-    "key": "nav_tools_side_label",
-    "en": "Census Tool",
     "fr": ""
   },
   "nav_tools_item_1_title": {
@@ -487,6 +492,11 @@
   "nav_tools_item_3_description": {
     "key": "nav_tools_item_3_description",
     "en": "Project future shifts across your target segments.",
+    "fr": ""
+  },
+  "nav_tools_side_label": {
+    "key": "nav_tools_side_label",
+    "en": "Census Tool",
     "fr": ""
   },
   "nav_tools_side_title": {
@@ -532,6 +542,11 @@
   "nav_solutions_item_5_description": {
     "key": "nav_solutions_item_5_description",
     "en": "Plan services and policies with reliable evidence.",
+    "fr": ""
+  },
+  "nav_insights_label": {
+    "key": "nav_insights_label",
+    "en": "INSIGHTS",
     "fr": ""
   },
   "nav_sign_in_cta": {

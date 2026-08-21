@@ -54,7 +54,7 @@ const { locale, copy, base } = Astro.props as Props;
                 )}
                 descriptionKey="insight_1_description"
                 imageSrc={`${base}images/solutions/media/insight-1.svg`}
-                imageAlt="Audience reach by platform visualization"
+                imageAlt={t(copy, 'insight_1_chart_title', locale, 'Platform reach over time')}
                 imageTitle={t(copy, 'insight_1_chart_title', locale, 'Platform reach over time')}
                 imageTitleKey="insight_1_chart_title"
                 imageTitleColor="blue"
@@ -80,7 +80,7 @@ const { locale, copy, base } = Astro.props as Props;
                 )}
                 descriptionKey="insight_2_description"
                 imageSrc={`${base}images/solutions/media/insight-2.svg`}
-                imageAlt="Market intelligence variable selection visualization"
+                imageAlt={t(copy, 'insight_2_chart_title', locale, 'Audience breakdown by segment')}
                 imageTitle={t(
                     copy,
                     'insight_2_chart_title',

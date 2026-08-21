@@ -7,10 +7,15 @@
  * Usage: npm run sync-copy
  *
  * HOW URLs ARE RESOLVED (in priority order):
- *  1. GOOGLE_SHEET_ID in .env  →  export?format=csv  (live, no CDN cache — recommended)
- *  2. GOOGLE_SHEET_CSV_URL_MAP_JSON in .env  →  used as-is (may lag 1-5 min after edits)
+ *  1. GOOGLE_SHEET_ID in .env  →  export?format=csv  (live, no CDN cache — needs edit access)
+ *  2. GOOGLE_SHEET_CSV_URL_MAP_JSON in .env  →  overrides/extends the hardcoded map below
+ *  3. Hardcoded published CSV URLs (MAIN_PUB_URL_MAP / SOLUTIONS_PUB_URL_MAP)  →  the
+ *     default — works out of the box for anyone with read access to the published
+ *     sheets, no .env or GitHub secret required. May lag 1-5 min after edits due to
+ *     Google's CDN cache. Add a new tab here (and to DEFAULT_TAB_MAP) rather than a
+ *     GitHub secret whenever a new page/tab is added.
  *
- * To enable instant sync, add your real spreadsheet ID to .env:
+ * To enable instant sync (no CDN lag), add your real spreadsheet ID to .env:
  *   GOOGLE_SHEET_ID=<the ID from your sheet's edit URL>
  * The ID is the long string between /d/ and /edit in the browser address bar.
  */
@@ -50,8 +55,8 @@ function findCol(headers, candidates) {
   );
 }
 
-function parseCSV(csvText) {
-  // Split into lines respecting quoted fields
+function tokenizeCsv(csvText) {
+  // Split into rows of cells, respecting quoted fields
   const rows = [];
   let cur = [], field = '', inQuote = false;
   for (let i = 0; i < csvText.length; i++) {
@@ -71,6 +76,29 @@ function parseCSV(csvText) {
     }
   }
   if (field || cur.length) { cur.push(field); rows.push(cur); }
+  return rows;
+}
+
+async function fetchCsvWithRetries(url) {
+  let lastErr;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const res = await fetch(url, {
+        redirect: 'follow',
+        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.text();
+    } catch (err) {
+      lastErr = err;
+      if (attempt < 3) await new Promise((r) => setTimeout(r, attempt * 500));
+    }
+  }
+  throw lastErr;
+}
+
+function parseCSV(csvText) {
+  const rows = tokenizeCsv(csvText);
 
   if (rows.length === 0) return {};
 
@@ -103,11 +131,51 @@ function parseCSV(csvText) {
   return dict;
 }
 
+// ── In the News (Insights page) — separate published sheet, one row per
+// article rather than the key/en/fr dictionary shape every other tab uses.
+// Two header variants are supported: a "Title"+"Link" pair, or two columns
+// both literally named "Link" (the first holding the headline text) — in
+// that case the first "link"-named column is treated as the title and the
+// last as the URL.
+
+const NEWS_CSV_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vSGdktvNmQ1aTzBsHsqF12vK6Nk4W9QVmkbNywbEl6elMmHVGH4Lb9LkCYuIsAK7DadNXW6qt0Mc0dC/pub?output=csv';
+
+function parseNewsRows(csvText) {
+  const rows = tokenizeCsv(csvText);
+  if (rows.length < 2) return [];
+
+  const headerRow = rows[0].map(c => normalizeCell(c).toLowerCase());
+  const languageIdx = headerRow.indexOf('language');
+  const productIdx = headerRow.indexOf('product');
+  const dateIdx = headerRow.indexOf('date');
+  const platformIdx = headerRow.indexOf('platform');
+  const titleIdx = headerRow.includes('title') ? headerRow.indexOf('title') : headerRow.indexOf('link');
+  const linkIdx = headerRow.lastIndexOf('link');
+
+  const items = [];
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i];
+    const title = normalizeCell(row[titleIdx]);
+    if (!title) continue;
+    items.push({
+      languages: normalizeCell(row[languageIdx]).split(',').map(s => s.trim()).filter(Boolean),
+      products: normalizeCell(row[productIdx]).split(',').map(s => s.trim()).filter(Boolean),
+      title,
+      link: normalizeCell(row[linkIdx]),
+      date: normalizeCell(row[dateIdx]),
+      platform: normalizeCell(row[platformIdx]),
+    });
+  }
+  return items;
+}
+
 // ── Tab GID map (mirrors src/lib/cms/config.ts DEFAULT_PAGE_TAB_MAP) ─────────
 
 const DEFAULT_TAB_MAP = {
   home: '328712104',
   seo: '135464300',
+  'alt-labels': '1381991042',
   'mtm-18-plus': '7615361',
   juniors: '1128385549',
   newcomers: '1277962868',
@@ -139,6 +207,20 @@ const SOLUTIONS_PUB_URL_MAP = {
   'gov-ngos': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=611009991&single=true&output=csv',
 };
 
+// Main content spreadsheet (home, alt-labels, products, tools, insights, about-us,
+// seo, and the shared utility-pages tab) — published, no secret/env needed. Built
+// straight from DEFAULT_TAB_MAP so a new tab only ever needs a gid added there.
+const MAIN_SHEET_PUBLISH_ID =
+  '2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g';
+const MAIN_PUB_URL_MAP = Object.fromEntries(
+  Object.entries(DEFAULT_TAB_MAP)
+    .filter(([, gid]) => gid && gid !== '0')
+    .map(([pageId, gid]) => [
+      pageId,
+      `https://docs.google.com/spreadsheets/d/e/${MAIN_SHEET_PUBLISH_ID}/pub?gid=${gid}&single=true&output=csv`,
+    ])
+);
+
 // ── Build the URL map from available env config ───────────────────────────────
 
 function buildCsvUrlMap(env) {
@@ -161,19 +243,23 @@ function buildCsvUrlMap(env) {
     return { urlMap: { ...urlMap, ...SOLUTIONS_PUB_URL_MAP }, mode: 'export' };
   }
 
-  // Fall back to pub URLs — may lag 1-5 minutes after sheet edits due to Google CDN caching.
-  // Add GOOGLE_SHEET_ID to .env to fix this permanently (see comment at top of file).
+  // No GOOGLE_SHEET_ID (the common case — it requires edit access most
+  // contributors won't have): use published CSV URLs, hardcoded here so
+  // syncing never depends on a GitHub secret or local .env. An optional
+  // GOOGLE_SHEET_CSV_URL_MAP_JSON can still override/extend this if needed.
   const rawMap = env.GOOGLE_SHEET_CSV_URL_MAP_JSON ?? process.env.GOOGLE_SHEET_CSV_URL_MAP_JSON;
-  if (!rawMap) {
-    // No main sheet configured — at minimum sync solutions pages
-    return { urlMap: { ...SOLUTIONS_PUB_URL_MAP }, mode: 'pub' };
+  let envOverrides = {};
+  if (rawMap) {
+    try {
+      envOverrides = JSON.parse(rawMap);
+    } catch {
+      // ignore malformed override, fall back to the hardcoded map
+    }
   }
-
-  try {
-    return { urlMap: { ...JSON.parse(rawMap), ...SOLUTIONS_PUB_URL_MAP }, mode: 'pub' };
-  } catch {
-    return { urlMap: { ...SOLUTIONS_PUB_URL_MAP }, mode: 'pub' };
-  }
+  return {
+    urlMap: { ...MAIN_PUB_URL_MAP, ...envOverrides, ...SOLUTIONS_PUB_URL_MAP },
+    mode: 'pub',
+  };
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
@@ -210,20 +296,10 @@ async function main() {
 
     let lastErr;
     let dict;
-    for (let attempt = 1; attempt <= 3 && !dict; attempt++) {
-      try {
-        const res = await fetch(url, {
-          redirect: 'follow',
-          headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' },
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-        const csv = await res.text();
-        dict = parseCSV(csv);
-      } catch (err) {
-        lastErr = err;
-        if (attempt < 3) await new Promise((r) => setTimeout(r, attempt * 500));
-      }
+    try {
+      dict = parseCSV(await fetchCsvWithRetries(url));
+    } catch (err) {
+      lastErr = err;
     }
 
     if (dict) {
@@ -243,6 +319,26 @@ async function main() {
       console.log(`❌  ${lastErr.message} — no existing copy to fall back on`);
       anyFailed = true;
     }
+  }
+
+  process.stdout.write(`  Syncing in-the-news… `);
+  const newsOutPath = join(outputDir, 'news-items.json');
+  const hadExistingNews = existsSync(newsOutPath);
+  let newsItems, newsErr;
+  try {
+    newsItems = parseNewsRows(await fetchCsvWithRetries(NEWS_CSV_URL));
+  } catch (err) {
+    newsErr = err;
+  }
+
+  if (newsItems) {
+    writeFileSync(newsOutPath, JSON.stringify(newsItems, null, 2));
+    console.log(`✓  ${newsItems.length} articles`);
+  } else if (hadExistingNews) {
+    console.log(`⚠️   ${newsErr.message} — keeping existing src/content/copy/news-items.json`);
+  } else {
+    console.log(`❌  ${newsErr.message} — no existing copy to fall back on`);
+    anyFailed = true;
   }
 
   if (anyFailed) process.exit(1);

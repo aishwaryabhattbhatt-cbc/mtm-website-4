@@ -234,15 +234,23 @@ const solutionsDropdown = {
 
 <nav class="navbar">
     <div class="navbar-container">
-        <a class="navbar-logo" href={homeUrl} aria-label="MTM home">
-            <img src={mtmLogo} alt="MTM - Media Technology Monitor" class="logo-image" />
+        <a
+            class="navbar-logo"
+            href={homeUrl}
+            aria-label={t(copy, 'nav_logo_aria_label', locale, 'MTM home')}
+        >
+            <img
+                src={mtmLogo}
+                alt={t(copy, 'nav_logo_alt', locale, 'MTM - Media Technology Monitor')}
+                class="logo-image"
+            />
         </a>
 
         <button
             class="hamburger"
             id="hamburger"
             type="button"
-            aria-label="Open navigation menu"
+            aria-label={t(copy, 'nav_menu_toggle_aria_label', locale, 'Open navigation menu')}
             aria-controls="navbar-menu"
             aria-expanded="false"
         >
@@ -261,7 +269,7 @@ const solutionsDropdown = {
                         aria-expanded="false"
                         aria-controls="dropdown-products"
                     >
-                        PRODUCTS
+                        {t(copy, 'nav_products_label', locale, 'PRODUCTS')}
                         <span class="dropdown-arrow" aria-hidden="true">
                             <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -334,7 +342,7 @@ const solutionsDropdown = {
                         aria-expanded="false"
                         aria-controls="dropdown-tools"
                     >
-                        TOOLS
+                        {t(copy, 'nav_tools_label', locale, 'TOOLS')}
                         <span class="dropdown-arrow" aria-hidden="true">
                             <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -407,7 +415,7 @@ const solutionsDropdown = {
                         aria-expanded="false"
                         aria-controls="dropdown-solutions"
                     >
-                        SOLUTIONS
+                        {t(copy, 'nav_solutions_label', locale, 'SOLUTIONS')}
                         <span class="dropdown-arrow" aria-hidden="true">
                             <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -448,7 +456,7 @@ const solutionsDropdown = {
                 </li>
                 <li class="nav-item">
                     <a href={`${base}${locale}/insights/`} class="nav-link text-button-small">
-                        INSIGHTS
+                        {t(copy, 'nav_insights_label', locale, 'INSIGHTS')}
                     </a>
                 </li>
             </ul>
@@ -510,7 +518,7 @@ const solutionsDropdown = {
                     href={linkedInUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="LinkedIn"
+                    aria-label={t(copy, 'nav_linkedin_aria_label', locale, 'LinkedIn')}
                 >
                     <svg
                         class="navbar-linkedin-btn__icon"
