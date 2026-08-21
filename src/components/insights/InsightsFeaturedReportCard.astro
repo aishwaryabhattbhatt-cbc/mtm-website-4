@@ -41,7 +41,7 @@ const variables = [variable1, variable2].filter(Boolean);
             <div class="featured-report-card__meta">
                 {
                     tagVariant ? (
-                        <ProductPill variant={tagVariant} size="big" />
+                        <ProductPill variant={tagVariant} size="big" copy={copy} locale={locale} />
                     ) : tagText ? (
                         <span class="featured-report-card__tag text-body-p2-bold">{tagText}</span>
                     ) : null

@@ -3,6 +3,7 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
 import InsightsNewsCard from './InsightsNewsCard.astro';
+import { getNewsItemsForLocale } from '../../lib/cms/getNewsItems';
 
 interface Props {
     locale: Locale;
@@ -10,66 +11,29 @@ interface Props {
 }
 
 const { locale, copy } = Astro.props as Props;
-const base = import.meta.env.BASE_URL;
 
-const newsItems = [
-    {
-        tag: 'Junior',
-        date: 'Dec 11, 2025',
-        title: 'Kids and their Reliance on the media and their portable devices',
-        description:
-            'MTM Junior findings show Canadian children aged 2–11 are spending more time on tablets and smartphones than any previous generation, with screen time now exceeding three hours daily on average.',
-    },
-    {
-        tag: 'Newcomers',
-        date: 'Dec 11, 2025',
-        title: 'Audio Streamers Can Now Listen to Their Favourite Podcasts No Matter Where They Live',
-        description:
-            'New MTM data reveals newcomers to Canada are turning to on-demand audio at significantly higher rates than the general population, using podcasts as a primary tool for language learning and cultural integration.',
-    },
-    {
-        tag: 'MTM 18+',
-        date: 'Dec 11, 2025',
-        title: 'The Next Generation of News Consumers',
-        description:
-            'Canadians aged 18–34 are increasingly bypassing traditional broadcast news in favour of social video platforms, with MTM tracking a 22-point drop in nightly newscast viewership over five years.',
-    },
-    {
-        tag: 'MTM 18+',
-        date: 'Dec 11, 2025',
-        title: 'Youtube Is The New Cable',
-        description:
-            "MTM's latest wave finds YouTube now rivals conventional cable TV for total weekly viewing hours among English-speaking Canadians, driven largely by long-form content and live-stream events.",
-    },
-    {
-        tag: 'Junior',
-        date: 'Jan 15, 2026',
-        title: 'Gaming Platforms Are the New Social Networks for Canadian Kids',
-        description:
-            'More than half of Canadian children aged 6–11 now use gaming platforms as their primary way to communicate with friends, surpassing both messaging apps and in-person interaction, per MTM Junior.',
-    },
-    {
-        tag: 'Newcomers',
-        date: 'Jan 15, 2026',
-        title: 'Streaming Closes the Language Gap for Newcomer Families',
-        description:
-            'MTM research shows newcomer households subscribe to an average of 3.4 streaming services — above the national average — using multilingual content libraries to maintain cultural ties while adapting to Canadian media.',
-    },
-    {
-        tag: 'MTM 18+',
-        date: 'Jan 15, 2026',
-        title: 'Smart Speaker Adoption Plateaus as Canadians Reassess Voice Tech',
-        description:
-            'After years of rapid growth, MTM data shows smart speaker adoption has levelled off among Canadian adults, with privacy concerns and limited French-language support cited as the top barriers to expanded use.',
-    },
-    {
-        tag: 'Census',
-        date: 'Jan 15, 2026',
-        title: 'Rural Canadians Still Face Significant Streaming Access Gaps',
-        description:
-            "MTM's census-representative sample highlights a persistent divide in broadband quality, with rural households 40% less likely to report a seamless streaming experience compared to their urban counterparts.",
-    },
-];
+// Sheet dates are either "YYYY-MM-DD" or a bare "YYYY" — sort by a normalized
+// timestamp (year-only entries anchor to Jan 1) so newest articles lead the carousel.
+function toSortableTime(raw: string): number {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return new Date(`${raw}T00:00:00`).getTime();
+    if (/^\d{4}$/.test(raw)) return new Date(`${raw}-01-01T00:00:00`).getTime();
+    return 0;
+}
+
+function parseNewsDate(raw: string): Date | string {
+    return /^\d{4}-\d{2}-\d{2}$/.test(raw) ? new Date(`${raw}T00:00:00`) : raw;
+}
+
+const newsItems = getNewsItemsForLocale(locale)
+    .filter((item) => item.link)
+    .sort((a, b) => toSortableTime(b.date) - toSortableTime(a.date))
+    .map((item) => ({
+        tags: item.products,
+        date: parseNewsDate(item.date),
+        title: item.title,
+        platform: item.platform,
+        href: item.link,
+    }));
 ---
 
 <section class="news-section">
@@ -94,8 +58,10 @@ const newsItems = [
         <div class="news-section__controls-wrap">
             <CarouselNavArrows
                 scrollTargetSelector="#newsSectionCarousel"
-                ariaLabel="News navigation"
+                ariaLabel={t(copy, 'news_carousel_aria_label', locale, 'News navigation')}
                 class="news-section__arrows"
+                copy={copy}
+                locale={locale}
             />
         </div>
     </div>
@@ -107,11 +73,11 @@ const newsItems = [
                     <InsightsNewsCard
                         locale={locale}
                         copy={copy}
-                        tag={item.tag}
+                        tags={item.tags}
                         date={item.date}
                         title={item.title}
-                        description={item.description}
-                        href={`${base}${locale}/insights/`}
+                        platform={item.platform}
+                        href={item.href}
                     />
                 </div>
             ))

@@ -111,7 +111,7 @@ const cards = [
                     <div class="solutions-govngos-insight-card__body">
                         <div class="solutions-govngos-insight-card__block">
                             <span class="text-label-small solutions-govngos-insight-card__label">
-                                Insight
+                                {t(copy, 'insight_card_label', locale, 'Insight')}
                             </span>
                             <div class="solutions-govngos-insight-card__stat-row">
                                 <p class="text-metrics solutions-govngos-insight-card__stat">
@@ -136,7 +136,7 @@ const cards = [
                         class={`solutions-govngos-insight-card__informs solutions-govngos-insight-card__informs--${card.accent}`}
                     >
                         <span class="text-label-small solutions-govngos-insight-card__label">
-                            Informs decisions on
+                            {t(copy, 'insight_informs_label', locale, 'Informs decisions on')}
                         </span>
                         <p class="text-body-p2 solutions-govngos-insight-card__informs-text">
                             {card.informs}

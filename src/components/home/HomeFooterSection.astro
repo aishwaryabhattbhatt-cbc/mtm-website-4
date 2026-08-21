@@ -223,7 +223,7 @@ const footerMenus = [
 
                     <form
                         class="home-footer__cta-form footer-form-fly-in"
-                        aria-label="Request a demo"
+                        aria-label={t(copy, 'footer_cta_form_aria_label', locale, 'Request a demo')}
                         data-submit-href={`${base}${locale}/request-demo/`}
                     >
                         <FormField
@@ -275,7 +275,12 @@ const footerMenus = [
                     <form
                         class="home-footer__newsletter-form"
                         novalidate
-                        aria-label="Newsletter signup"
+                        aria-label={t(
+                            copy,
+                            'footer_newsletter_form_aria_label',
+                            locale,
+                            'Newsletter signup'
+                        )}
                     >
                         <FormField
                             locale={locale}
@@ -399,9 +404,12 @@ const footerMenus = [
                 <a
                     href={`${base}${locale}/`}
                     class="home-footer__footer-logo"
-                    aria-label="MTM home"
+                    aria-label={t(copy, 'footer_logo_aria_label', locale, 'MTM home')}
                 >
-                    <img src={mtmLogo} alt="MTM - Media Technology Monitor" />
+                    <img
+                        src={mtmLogo}
+                        alt={t(copy, 'nav_logo_alt', locale, 'MTM - Media Technology Monitor')}
+                    />
                 </a>
 
                 <div class="home-footer__footer-address text-body-p2">
@@ -430,7 +438,7 @@ const footerMenus = [
                     href="https://www.linkedin.com/company/media-technology-monitor/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="LinkedIn"
+                    aria-label={t(copy, 'footer_linkedin_aria_label', locale, 'LinkedIn')}
                 >
                     in
                 </a>

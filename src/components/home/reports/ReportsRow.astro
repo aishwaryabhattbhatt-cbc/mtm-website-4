@@ -5,6 +5,7 @@
 import ProductPill from '../../shared/ProductPill.astro';
 import DatePill from '../../shared/DatePill.astro';
 import type { ProductVariant } from '../../shared/ProductPill.astro';
+import type { CMSDictionary, Locale } from '../../../lib/cms/types';
 
 interface Props {
     /** Report title */
@@ -20,6 +21,8 @@ interface Props {
     /** Link URL for the row */
     href?: string;
     class?: string;
+    copy?: CMSDictionary;
+    locale?: Locale;
 }
 
 const {
@@ -30,6 +33,8 @@ const {
     thumbnailAlt = '',
     href,
     class: className = '',
+    copy,
+    locale,
 } = Astro.props;
 
 const productList = Array.isArray(products) ? products : [products];
@@ -48,7 +53,17 @@ const Tag = href ? 'a' : 'div';
             <DatePill date={date} responsive={true} />
         </div>
         <div class="reports-row__pills">
-            {productList.map((v) => <ProductPill variant={v} size="small" responsive={true} />)}
+            {
+                productList.map((v) => (
+                    <ProductPill
+                        variant={v}
+                        size="small"
+                        responsive={true}
+                        copy={copy}
+                        locale={locale}
+                    />
+                ))
+            }
         </div>
     </div>
 </Tag>

@@ -1,4 +1,7 @@
 ---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+
 interface Tab {
     label: string;
     value: string;
@@ -9,10 +12,14 @@ interface Props {
     defaultValue?: string;
     showArrows?: boolean;
     id?: string;
+    copy?: CMSDictionary;
+    locale?: Locale;
 }
 
-const { tabs, defaultValue, showArrows = false, id } = Astro.props as Props;
+const { tabs, defaultValue, showArrows = false, id, copy, locale } = Astro.props as Props;
 const activeValue = defaultValue ?? tabs[0]?.value ?? '';
+const prevLabel = copy && locale ? t(copy, 'carousel_prev_label', locale, 'Previous') : 'Previous';
+const nextLabel = copy && locale ? t(copy, 'carousel_next_label', locale, 'Next') : 'Next';
 ---
 
 <div class="tabs-bar" id={id}>
@@ -39,7 +46,7 @@ const activeValue = defaultValue ?? tabs[0]?.value ?? '';
     {
         showArrows && (
             <div class="tabs-bar__arrows">
-                <button class="tabs-bar__arrow" aria-label="Previous" data-arrow="prev">
+                <button class="tabs-bar__arrow" aria-label={prevLabel} data-arrow="prev">
                     <svg
                         class="tabs-bar__arrow-icon"
                         width="100%"
@@ -57,7 +64,7 @@ const activeValue = defaultValue ?? tabs[0]?.value ?? '';
                         />
                     </svg>
                 </button>
-                <button class="tabs-bar__arrow" aria-label="Next" data-arrow="next">
+                <button class="tabs-bar__arrow" aria-label={nextLabel} data-arrow="next">
                     <svg
                         class="tabs-bar__arrow-icon"
                         width="100%"

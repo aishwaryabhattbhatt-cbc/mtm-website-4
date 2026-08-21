@@ -84,10 +84,12 @@ const features = [
         </h4>
         <CarouselNavArrows
             scrollTargetSelector="#datFeaturesScroll"
-            ariaLabel={locale === 'fr' ? 'Navigation des fonctionnalités' : 'Feature navigation'}
-            prevLabel={locale === 'fr' ? 'Fonctionnalité précédente' : 'Previous feature'}
-            nextLabel={locale === 'fr' ? 'Fonctionnalité suivante' : 'Next feature'}
+            ariaLabel={t(copy, 'dat_features_carousel_aria_label', locale, 'Feature navigation')}
+            prevLabel={t(copy, 'dat_features_carousel_prev_label', locale, 'Previous feature')}
+            nextLabel={t(copy, 'dat_features_carousel_next_label', locale, 'Next feature')}
             class="dat-features__nav"
+            copy={copy}
+            locale={locale}
         />
     </div>
 

@@ -62,11 +62,24 @@ const filterTabs = [
         </div>
 
         <div class="solutions-reportslibrary__controls-wrap">
-            <Tabs tabs={filterTabs} showArrows={false} id="solutions-reports-filter" />
+            <Tabs
+                tabs={filterTabs}
+                showArrows={false}
+                id="solutions-reports-filter"
+                copy={copy}
+                locale={locale}
+            />
             <CarouselNavArrows
                 scrollTargetSelector="#solutionsReportsLibraryCarousel"
-                ariaLabel="Reports navigation"
+                ariaLabel={t(
+                    copy,
+                    'reports_library_carousel_aria_label',
+                    locale,
+                    'Reports navigation'
+                )}
                 class="solutions-reportslibrary__arrows"
+                copy={copy}
+                locale={locale}
             />
         </div>
     </div>

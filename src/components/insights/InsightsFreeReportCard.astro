@@ -69,7 +69,7 @@ const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
         <div class="free-report-card__meta">
             {
                 tagVariant ? (
-                    <ProductPill variant={tagVariant} size="small" />
+                    <ProductPill variant={tagVariant} size="small" copy={copy} locale={locale} />
                 ) : tagText ? (
                     <span class="free-report-card__tag text-label-small">{tagText}</span>
                 ) : null

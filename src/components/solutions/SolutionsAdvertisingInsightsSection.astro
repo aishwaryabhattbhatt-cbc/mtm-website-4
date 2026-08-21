@@ -54,7 +54,7 @@ const { locale, copy, base } = Astro.props as Props;
                 )}
                 descriptionKey="insight_1_description"
                 imageSrc={`${base}images/solutions/advertising/insight-1.svg`}
-                imageAlt="Trustworthy data visualization"
+                imageAlt={t(copy, 'insight_1_chart_title', locale, '300,000+ Canadians surveyed')}
                 imageTitle={t(copy, 'insight_1_chart_title', locale, '300,000+ Canadians surveyed')}
                 imageTitleKey="insight_1_chart_title"
                 imageTitleColor="blue"
@@ -80,7 +80,7 @@ const { locale, copy, base } = Astro.props as Props;
                 )}
                 descriptionKey="insight_2_description"
                 imageSrc={`${base}images/solutions/advertising/insight-2.svg`}
-                imageAlt="Precision audience targeting visualization"
+                imageAlt={t(copy, 'insight_2_chart_title', locale, 'Audience breakdown by segment')}
                 imageTitle={t(
                     copy,
                     'insight_2_chart_title',

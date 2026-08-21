@@ -86,7 +86,16 @@ const titleText = t(copy, titleKey, locale, '');
         </span>
         <span class="report-select-row__text">
             <span class="report-select-row__meta">
-                {tagVariant ? <ProductPill variant={tagVariant} size="small" /> : null}
+                {
+                    tagVariant ? (
+                        <ProductPill
+                            variant={tagVariant}
+                            size="small"
+                            copy={copy}
+                            locale={locale}
+                        />
+                    ) : null
+                }
                 {dateText && <DatePill date={dateText} />}
             </span>
             <span class="text-body-p1-bold report-select-row__title" data-copy-key={titleKey}>

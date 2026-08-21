@@ -9,14 +9,14 @@ import Button from '../shared/Button.astro';
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
-    tag: string;
-    date: string;
+    tags: string[];
+    date: string | Date;
     title: string;
-    description: string;
+    platform: string;
     href: string;
 }
 
-const { locale, copy, tag, date, title, description, href } = Astro.props as Props;
+const { locale, copy, tags, date, title, platform, href } = Astro.props as Props;
 
 function tagToVariant(tag: string): ProductVariant | null {
     const n = tag.toLowerCase().replace(/\s+/g, '');
@@ -26,31 +26,41 @@ function tagToVariant(tag: string): ProductVariant | null {
     if (n.includes('census')) return 'census';
     return null;
 }
-
-const tagVariant = tagToVariant(tag);
 ---
 
 <article class="news-card">
     <div class="news-card__top">
         <div class="news-card__meta">
-            {
-                tagVariant ? (
-                    <ProductPill variant={tagVariant} size="small" />
-                ) : tag ? (
-                    <span class="news-card__tag text-label-small">{tag}</span>
-                ) : null
-            }
+            {platform && <p class="text-body-p2-bold news-card__platform">{platform}</p>}
             {date && <DatePill date={date} />}
         </div>
 
+        <hr class="news-card__divider" />
+
         <div class="news-card__text">
+            <div class="news-card__tags">
+                {
+                    tags.map((tag) => {
+                        const variant = tagToVariant(tag);
+                        return variant ? (
+                            <ProductPill
+                                variant={variant}
+                                size="small"
+                                copy={copy}
+                                locale={locale}
+                            />
+                        ) : (
+                            <span class="news-card__tag text-label-small">{tag}</span>
+                        );
+                    })
+                }
+            </div>
             <p class="text-body-p1-bold news-card__title">{title}</p>
-            <p class="text-body-p2 news-card__description">{description}</p>
         </div>
     </div>
 
     <div class="news-card__footer">
-        <Button variant="tertiary" size="md" href={href}>
+        <Button variant="tertiary" size="md" href={href} target="_blank" rel="noopener noreferrer">
             <span data-copy-key="news_cta">{t(copy, 'news_cta', locale, 'Read')}</span>
         </Button>
     </div>
@@ -81,6 +91,21 @@ const tagVariant = tagToVariant(tag);
         gap: var(--space-3);
     }
 
+    .news-card__divider {
+        width: 100%;
+        height: var(--stroke-1);
+        margin: 0;
+        border: none;
+        background: var(--border-tertiary);
+    }
+
+    .news-card__tags {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
     .news-card__tag {
         background: var(--badge-juniors);
         border-radius: var(--radius-full);
@@ -95,22 +120,14 @@ const tagVariant = tagToVariant(tag);
         gap: var(--title-desc-gap);
     }
 
+    .news-card__platform {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
     .news-card__title {
         margin: 0;
         color: var(--text-primary);
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .news-card__description {
-        margin: 0;
-        color: var(--text-secondary);
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
     }
 
     .news-card__footer {

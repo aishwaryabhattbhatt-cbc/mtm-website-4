@@ -108,10 +108,12 @@ const sampleStats = [
     <div class="product-methodology-cards">
         <CarouselNavArrows
             scrollTargetSelector="#productMethodologyCardsScroll"
-            ariaLabel="Cards navigation"
-            prevLabel="Previous card"
-            nextLabel="Next card"
+            ariaLabel={t(copy, 'methodology_carousel_aria_label', locale, 'Cards navigation')}
+            prevLabel={t(copy, 'methodology_carousel_prev_label', locale, 'Previous card')}
+            nextLabel={t(copy, 'methodology_carousel_next_label', locale, 'Next card')}
             class="product-cards-nav"
+            copy={copy}
+            locale={locale}
         />
 
         <div

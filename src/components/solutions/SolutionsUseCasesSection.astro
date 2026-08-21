@@ -67,9 +67,11 @@ const panelUrl = `url("data:image/svg+xml,${encodeURIComponent(panelSvg)}")`;
         </div>
         <CarouselNavArrows
             scrollTargetSelector="#solutionsUsecasesCarousel"
-            ariaLabel="Case study navigation"
-            prevLabel="Previous case study"
-            nextLabel="Next case study"
+            ariaLabel={t(copy, 'use_cases_carousel_aria_label', locale, 'Case study navigation')}
+            prevLabel={t(copy, 'use_cases_carousel_prev_label', locale, 'Previous case study')}
+            nextLabel={t(copy, 'use_cases_carousel_next_label', locale, 'Next case study')}
+            copy={copy}
+            locale={locale}
         />
     </div>
 

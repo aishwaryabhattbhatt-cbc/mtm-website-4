@@ -41,7 +41,10 @@ const base = import.meta.env.BASE_URL;
             </div>
 
             <div class="sign-in-hero__card hero-fade-in" style="animation-delay: 0.2s">
-                <form class="sign-in-hero__form" aria-label="Sign in">
+                <form
+                    class="sign-in-hero__form"
+                    aria-label={t(copy, 'sign_in_hero_form_aria_label', locale, 'Sign in')}
+                >
                     <FormField
                         locale={locale}
                         copy={copy}

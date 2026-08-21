@@ -127,7 +127,12 @@ const researchPartners: {
                     </div>
                     <div class="about-us-team-section__card-content">
                         <p class="text-body-p1 about-us-team-section__card-name">{partner.name}</p>
-                        <ProductPill variant={partner.pillVariant} size="small" />
+                        <ProductPill
+                            variant={partner.pillVariant}
+                            size="small"
+                            copy={copy}
+                            locale={locale}
+                        />
                     </div>
                 </div>
             ))
