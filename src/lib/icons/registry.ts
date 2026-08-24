@@ -411,6 +411,7 @@ export const icons = {
     },
     'product-census': {
         badge: 'icons/tool/tool-census.svg',
+        badgeNoBrackets: 'icons/tool/tool-census-no-brackets.svg',
     },
 
     // ═══════════════════════════════════════════════════════════════════════════

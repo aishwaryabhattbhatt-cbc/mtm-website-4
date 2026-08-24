@@ -329,15 +329,21 @@ html {
     }
 }
 
+/* 1440px+: margin holds at 120px while content grows, same as before, until
+   content hits a 1440px cap (at 100vw = 1680px) — from there the margin
+   fluidly takes over the growth up to its 240px ceiling at 1920px, instead
+   of holding flat at 120px and then jumping straight to 240px. Above 1920px
+   the margin ceiling holds and content resumes growing, unchanged from
+   before. (100vw - 1440px) / 2 is the margin needed to keep a 1440px content
+   column centered; clamp() floors/ceils it to the existing --content-margin-xl
+   / --content-margin-xxl values so nothing before 1680px or after 1920px changes. */
 @media (min-width: 1440px) {
     :root {
-        --content-margin-inline: var(--content-margin-xl);
-    }
-}
-
-@media (min-width: 1920px) {
-    :root {
-        --content-margin-inline: var(--content-margin-xxl);
+        --content-margin-inline: clamp(
+            var(--content-margin-xl),
+            calc((100vw - 1440px) / 2),
+            var(--content-margin-xxl)
+        );
     }
 }
 

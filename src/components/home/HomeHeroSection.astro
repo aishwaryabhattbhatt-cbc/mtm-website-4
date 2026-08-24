@@ -27,6 +27,12 @@ const copyKeys = {
    so the collage stays aria-hidden rather than run through t(). */
 const collageSrc = `${base}images/home/hero-collage-new/`;
 
+/* Mobile-only collage: 1 pre-composed image (badges/cards for the top row,
+   both photos for the bottom row, already baked in) from
+   public/images/home/hero-collage-mobile/. Swapped in for the desktop
+   collage above at ≤767px; see .collage-mobile-row. */
+const collageMobileSrc = `${base}images/home/hero-collage-mobile/`;
+
 /* Product badges scattered around the couple photo (collage-image-5): a
    rounded panel background (same treatment as ProductsHeroSection/
    SolutionsHeroSection) with each product line's badge icon centered on
@@ -38,7 +44,7 @@ const collageBadges: CollageBadge[] = [
     { left: 40, top: 430, size: '3rem', icon: icons['product-18-plus'].badge },
     { left: 160, top: 430, size: '3rem', icon: icons['product-newcomers'].badge },
     { left: 100, top: 430, size: '3rem', icon: icons['product-juniors'].badge },
-    { left: 220, top: 430, size: '3rem', icon: icons['product-census'].badge },
+    { left: 220, top: 430, size: '3rem', icon: icons['product-census'].badgeNoBrackets },
 ];
 const panelSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91 91'><defs><radialGradient id='g' cx='50%' cy='42%' r='78%'><stop offset='0%' stop-color='#ffffff'/><stop offset='60%' stop-color='#fdfeff'/><stop offset='100%' stop-color='#f5f8fc'/></radialGradient></defs><rect x='4' y='4' width='83' height='83' rx='10' fill='url(#g)' stroke='#eef2f8' stroke-width='1'/></svg>`;
 const panelUrl = `url("data:image/svg+xml,${encodeURIComponent(panelSvg)}")`;
@@ -96,20 +102,27 @@ function badgeEntryStyle(badge: CollageBadge) {
             </div>
         </div>
         <div class="hero-image-collage" aria-hidden="true">
-            <img
-                src={`${collageSrc}1.svg`}
-                alt=""
-                class="collage-image collage-image-1"
-                loading="lazy"
-                decoding="async"
-            />
-            <img
-                src={`${collageSrc}2-hero-main.webp`}
-                alt=""
-                class="collage-image collage-image-2"
-                loading="lazy"
-                decoding="async"
-            />
+            <!-- Badges + image 1 grouped for mobile only: on mobile they lay out
+                 together as one row (see .collage-row-top); on desktop this div
+                 is unstyled/position:static so it's transparent to its
+                 position:absolute children, which still position themselves
+                 relative to .hero-image-collage exactly as before. -->
+            <div class="collage-row-top">
+                {
+                    collageBadges.map((badge) => (
+                        <span class="collage-badge" style={badgeEntryStyle(badge)}>
+                            <img src={`${base}${badge.icon}`} alt="" class="collage-badge-icon" />
+                        </span>
+                    ))
+                }
+                <img
+                    src={`${collageSrc}1.svg`}
+                    alt=""
+                    class="collage-image collage-image-1"
+                    loading="lazy"
+                    decoding="async"
+                />
+            </div>
             <img
                 src={`${collageSrc}3-update.svg`}
                 alt=""
@@ -124,20 +137,44 @@ function badgeEntryStyle(badge: CollageBadge) {
                 loading="lazy"
                 decoding="async"
             />
+            <!-- Grouped for mobile only, same transparent-wrapper approach as
+                 .collage-row-top: unstyled/position:static on desktop, so
+                 .collage-image-2/5's position:absolute still positions them
+                 relative to .hero-image-collage exactly as before there. -->
+            <div class="collage-row-bottom">
+                <img
+                    src={`${collageSrc}2-hero-main.webp`}
+                    alt=""
+                    class="collage-image collage-image-2"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <!-- 5-hero-secondary.webp's visible card fills only ~83-87%
+                     of its own canvas (vs. ~96-99% for 2-hero-main.webp), so
+                     at an equal box size it visibly reads smaller.
+                     .collage-image-5-crop clips the ~16% scale-up applied to
+                     the image below to compensate. -->
+                <div class="collage-image-5-crop">
+                    <img
+                        src={`${collageSrc}5-hero-secondary.webp`}
+                        alt=""
+                        class="collage-image collage-image-5"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </div>
+            </div>
+
+            <!-- Mobile-only: replaces everything above at ≤767px (see
+                 .collage-mobile-row / .collage-row-top / .collage-image-3 etc.
+                 in the mobile media query). Hidden on desktop. -->
             <img
-                src={`${collageSrc}5-hero-secondary.webp`}
+                src={`${collageMobileSrc}top+bottom.svg`}
                 alt=""
-                class="collage-image collage-image-5"
+                class="collage-mobile-row"
                 loading="lazy"
                 decoding="async"
             />
-            {
-                collageBadges.map((badge) => (
-                    <span class="collage-badge" style={badgeEntryStyle(badge)}>
-                        <img src={`${base}${badge.icon}`} alt="" class="collage-badge-icon" />
-                    </span>
-                ))
-            }
         </div>
     </div>
 
@@ -151,9 +188,13 @@ function badgeEntryStyle(badge: CollageBadge) {
         margin-bottom: 0 !important;
         /* Same height contract as home-section-2: fill the screen when the
            viewport is ≥ 900px tall, hold a 900px floor below that. min-height
-           (not height) so content can still grow it rather than clip. */
+           (not height) so content can still grow it rather than clip.
+           svh line after vh: mobile browsers that support svh use it (avoids
+           overflowing behind the address bar on load); older browsers treat
+           the svh calc as invalid and keep the vh line above. */
         height: auto;
         min-height: calc(max(100vh, 900px) - var(--navbar-height));
+        min-height: calc(max(100svh, 900px) - var(--navbar-height));
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -198,7 +239,11 @@ function badgeEntryStyle(badge: CollageBadge) {
     }
 
     .home-section-1 .hero-content {
-        width: clamp(32rem, 38vw, 40rem);
+        /* 640px, not 40rem: the max must stay pixel-locked so it doesn't jump
+           when html's root font-size steps up to 18px at 1920px (see
+           design-system.css) — --collage-scale below assumes this exact
+           640px when computing how much room the collage has left. */
+        width: clamp(32rem, 38vw, 640px);
         flex-shrink: 0;
         display: flex;
         flex-direction: column;
@@ -218,6 +263,19 @@ function badgeEntryStyle(badge: CollageBadge) {
         overflow: visible;
         padding-top: 0 !important;
         margin-top: 0 !important;
+    }
+
+    /* Mobile-only pre-composed row image — hidden on desktop, shown at
+       ≤767px (see the mobile media query, which hides the desktop collage
+       above in exchange). Same fadeInUp used by .hero-subtitle/.hero-buttons;
+       script.js's runTitleAnimation() sets its delay to fire once the
+       buttons' own entrance has fully finished (see collageMobileRow there)
+       and flips animation-play-state to running, same pattern as those. */
+    .collage-mobile-row {
+        display: none;
+        opacity: 0;
+        animation: fadeInUp var(--motion-duration-heading) var(--motion-ease-standard) forwards;
+        animation-play-state: paused;
     }
 
     .collage-image {
@@ -400,26 +458,39 @@ function badgeEntryStyle(badge: CollageBadge) {
     /* Desktop scaling: both columns scale via --hero-scale so proportions are preserved.
        Title uses clamp() only to cap growth above 1555px; everywhere else it tracks the scale. */
 
-    /* At 1920px: root font jumps to 18px AND margins jump to 240px (inner width = 1440px).
-       Without this cap, hero-content reaches 720px and zoomed collage hits 846px → 126px overflow.
-       Fix: set a scale that keeps total items comfortably within 1440px. */
-    @media (min-width: 1920px) {
-        .home-section-1 .hero-container {
-            --collage-scale: 1.1;
-        }
-        .home-section-1 .hero-content {
-            width: 36rem; /* 648px at 18px root ≈ 45% of 1440px inner width */
-        }
-        .hero-image-collage {
-            zoom: var(--collage-scale);
-            flex-shrink: 0;
-        }
-    }
+    /* Scale-up: 1555px and up. Content and collage share one --hero-natural-scale
+       factor (both are `base-width * scale`) so their 640:620 ratio stays locked
+       at every viewport — previously only the collage scaled while .hero-content
+       stayed pinned at 640px, so the collage kept outgrowing the content column
+       the wider the screen got. Title font-size still grows on its own separate
+       (gentler) formula below — that's a deliberate typographic choice, not
+       part of the box-width ratio this fixes.
 
-    /* Scale-up: 1555px → 1919px — collage grows faster, title grows gently */
-    @media (min-width: 1555px) and (max-width: 1919px) {
+       No separate 1920px+ rule: --content-margin-inline eventually reaches its
+       240px ceiling (see design-system.css) while html's root font-size also
+       steps up at 1920px, which would otherwise make the pair overflow past the
+       now-wider margins. Rather than hardcode a compensating scale for that one
+       viewport, --hero-fit-scale compares their natural combined width against
+       the actual space left after the live --content-margin-inline, and — only
+       when that's tight — shrinks both by the same extra factor, preserving the
+       640:620 ratio through the squeeze too. */
+    @media (min-width: 1555px) {
         .home-section-1 .hero-container {
-            --collage-scale: min(1.45, calc(1 + (100vw - 1555px) / 1000px));
+            --hero-natural-scale: min(1.45, calc(1 + (100vw - 1555px) / 1000px));
+            --hero-content-natural: calc(640px * var(--hero-natural-scale));
+            --hero-collage-natural: calc(620px * var(--hero-natural-scale));
+            --hero-fit-scale: min(
+                1,
+                calc(
+                    (100vw - 2 * var(--content-margin-inline)) /
+                        (var(--hero-content-natural) + var(--hero-collage-natural))
+                )
+            );
+            --collage-scale: calc(var(--hero-natural-scale) * var(--hero-fit-scale));
+        }
+
+        .home-section-1 .hero-content {
+            width: calc(var(--hero-content-natural) * var(--hero-fit-scale));
         }
 
         .hero-title {
@@ -531,7 +602,50 @@ function badgeEntryStyle(badge: CollageBadge) {
 
     @media (max-width: 767px) {
         .home-section-1 .hero-container {
-            padding-top: var(--space-7);
+            padding-top: var(--space-9);
+            gap: var(--space-5);
+        }
+
+        /* One-off exception to the "no font-size in component styles" rule:
+           .text-body-p0's mobile size (1.375rem) is tuned for short taglines
+           elsewhere on the site, but this paragraph runs 6-7 lines at that
+           size. Scoped to this element only, not a pattern to reuse. */
+        .hero-subtitle {
+            font-size: 16px;
+        }
+
+        #hero-scroll-btn {
+            display: none;
+        }
+
+        .hero-buttons {
+            margin-top: var(--space-0);
+        }
+
+        /* Mobile collage: 1 pre-composed image (both rows already baked in)
+           instead of the desktop's individually-positioned cards + badges —
+           swap one set of elements for the other outright rather than
+           re-laying-out the same DOM. */
+        .collage-row-top,
+        .collage-image-3,
+        .collage-image-4,
+        .collage-row-bottom {
+            display: none;
+        }
+
+        .hero-image-collage {
+            zoom: 1;
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .collage-mobile-row {
+            display: block;
+            width: 100%;
+            height: auto;
+            position: relative;
+            left: -5px;
         }
     }
 </style>
