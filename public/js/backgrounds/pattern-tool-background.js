@@ -161,7 +161,7 @@ class LiquidGradientEffect {
       },
       "inputSaturation": 1.5,
       "inputBrightness": 1.01,
-      "defaultImagePath": "./images/gradient.png",
+      "defaultImagePath": "./pattern-tool/gradient.png",
       "imageFitContain": true,
       "inputWhiteThreshold": 0.98,
       "inputWhiteFeather": 0.135,
@@ -195,7 +195,7 @@ class LiquidGradientEffect {
       this.config.inputBrightness = 1.0;
     }
     if (this.config.defaultImagePath === undefined) {
-      this.config.defaultImagePath = './images/gradient.png';
+      this.config.defaultImagePath = './pattern-tool/gradient.png';
     }
     if (this.config.imageFitContain === undefined) {
       this.config.imageFitContain = true;
