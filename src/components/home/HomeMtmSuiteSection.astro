@@ -1157,7 +1157,13 @@ const products = [
 
     @media (max-width: 767px) {
         /* bottom padding and gap now inherit --section-pad-block's own mobile
-           value (--space-10); top stays the base rule's shallow --space-5 */
+           value (--space-10); top bumped up from the base rule's shallow
+           --space-5 — on mobile the hero above stacks its own content
+           first, so there's no shared background to sit "directly under"
+           the way desktop's shallow top padding assumes. */
+        .mtm-suite-section {
+            padding-top: var(--space-11);
+        }
 
         .reports-library .products-right {
             height: auto;
