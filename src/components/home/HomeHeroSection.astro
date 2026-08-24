@@ -169,7 +169,7 @@ function badgeEntryStyle(badge: CollageBadge) {
                  .collage-mobile-row / .collage-row-top / .collage-image-3 etc.
                  in the mobile media query). Hidden on desktop. -->
             <img
-                src={`${collageMobileSrc}top+bottom.svg`}
+                src={`${collageMobileSrc}hero-mobile.webp`}
                 alt=""
                 class="collage-mobile-row"
                 loading="lazy"
@@ -677,10 +677,11 @@ function badgeEntryStyle(badge: CollageBadge) {
 
         .collage-mobile-row {
             display: block;
-            width: 100%;
+            /* Breaks out of .hero-container's padding to bleed full-width,
+               regardless of --content-margin-inline's value at this breakpoint. */
+            width: calc(100% + 2 * var(--content-margin-inline));
+            margin-inline: calc(-1 * var(--content-margin-inline));
             height: auto;
-            position: relative;
-            left: -5px;
         }
     }
 </style>
