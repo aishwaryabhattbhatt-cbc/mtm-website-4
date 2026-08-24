@@ -72,6 +72,10 @@ const { locale, copy } = Astro.props as Props;
            if content ever needs more — a hard height would clip it. */
         height: auto;
         min-height: calc(max(100vh, 900px) - var(--navbar-height));
+        /* svh line after vh: mobile browsers that support svh use it (avoids
+           overflowing behind the address bar on load); older browsers treat
+           the svh calc as invalid and keep the vh line above. */
+        min-height: calc(max(100svh, 900px) - var(--navbar-height));
         display: flex;
         flex-direction: column;
         justify-content: center;

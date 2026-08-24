@@ -835,6 +835,16 @@ function runTitleAnimation() {
                     const delay = collageStartTime + ((collageImages.length + index) * collageImageStagger);
                     badge.style.animationDelay = `${delay}s`;
                 });
+
+                // Mobile's single collage image: unlike the desktop cards
+                // above, this one waits for the buttons' entrance to fully
+                // finish (buttonsStartTime + their own 1.1s duration,
+                // --motion-duration-heading) before flying in, rather than
+                // overlapping with it.
+                const collageMobileRow = heroSection.querySelector('.collage-mobile-row');
+                if (collageMobileRow) {
+                    collageMobileRow.style.animationDelay = `${buttonsStartTime + 1.1}s`;
+                }
             }
         }
     });
@@ -842,7 +852,7 @@ function runTitleAnimation() {
     // Force animation restart by removing and re-adding animation-play-state
     // This ensures animations start from the beginning
     setTimeout(() => {
-        document.querySelectorAll('.hero-title-word, .hero-subtitle, .hero-buttons, .hero-image-right, .collage-image, .collage-badge').forEach(el => {
+        document.querySelectorAll('.hero-title-word, .hero-subtitle, .hero-buttons, .hero-image-right, .collage-image, .collage-badge, .collage-mobile-row').forEach(el => {
             el.style.animationPlayState = 'running';
         });
     }, 10);

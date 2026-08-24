@@ -232,12 +232,16 @@ const { heading, products, copy, locale } = Astro.props as Props;
         overflow: hidden;
     }
 
-    .explore-card-image .explore-card-bg {
-        transition: transform 0.4s ease;
+    .explore-card-image .explore-card-bg,
+    .explore-card-image .explore-card-chart,
+    .explore-card-image .explore-card-people {
+        transition: transform 0.4s var(--motion-ease-standard);
     }
 
-    .explore-card:hover .explore-card-image .explore-card-bg {
-        transform: scale(1.05);
+    .explore-card:hover .explore-card-image .explore-card-bg,
+    .explore-card:hover .explore-card-image .explore-card-chart,
+    .explore-card:hover .explore-card-image .explore-card-people {
+        transform: scale(1.08);
     }
 
     .explore-card-bg {
