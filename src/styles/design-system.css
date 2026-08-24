@@ -525,6 +525,15 @@ h3,
     letter-spacing: var(--ls-subhead);
 }
 
+@media (max-width: 767px) {
+    .text-body-p0 {
+        /* Tighter than the --lh-relaxed every other body tier keeps: p0 runs
+           longest (subtitle-length paragraphs), so 1.4 reads noticeably
+           loose once the mobile hero compresses around it. */
+        line-height: var(--lh-normal);
+    }
+}
+
 .text-body-p0-bold {
     font-family: var(--font-body);
     font-size: var(--fs-body-xl);
