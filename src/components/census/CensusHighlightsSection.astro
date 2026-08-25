@@ -55,11 +55,14 @@ const rows = [
                                 aria-hidden="true"
                                 loading="lazy"
                             />
-                            <p class="text-h4 census-highlights__stat" data-copy-key={row.statKey}>
+                            <p
+                                class="text-body-p0 census-highlights__stat"
+                                data-copy-key={row.statKey}
+                            >
                                 {t(copy, row.statKey, locale, row.statFb)}
                             </p>
                         </div>
-                        <p class="text-body-p1 census-highlights__desc" data-copy-key={row.descKey}>
+                        <p class="text-body-p2 census-highlights__desc" data-copy-key={row.descKey}>
                             {t(copy, row.descKey, locale, row.descFb)}
                         </p>
                         <div class="census-highlights__row-progress-divider" aria-hidden="true">
@@ -180,12 +183,6 @@ const rows = [
 
     /* ─── Preview (right panel) ──────────────────────── */
 
-    /* Mirrors .census-tool-card__slot — blue slot, image centered inside it
-       carrying its own radius + shadow. Grid (not flex) only because the two
-       panels stack in one cell to cross-fade; the centering below is the
-       slot's. No min-height: the layout's `align-items: stretch` already
-       matches this column to the nav's height, so padding here only shrinks
-       the screenshot — it never resizes the box. */
     .census-highlights__preview {
         background: var(--surface-blue);
         border-radius: var(--radius-s);
@@ -234,19 +231,19 @@ const rows = [
         }
     }
 
+    @media (max-width: 767px) {
+        /* Reserve 4 lines so rows of differing copy length keep the same
+           height. em (not rem) so it follows the element's own font-size. */
+        .census-highlights__desc {
+            min-height: calc(4 * var(--lh-relaxed) * 1em);
+        }
+    }
+
     @media (max-width: 1023px) {
         .census-highlights__title {
             margin-bottom: var(--space-5);
         }
 
-        /* Touch has no hover, so the desktop cross-fade leaves the inactive
-           slide unreachable once autoplay ends. Below 1024px the whole layout
-           becomes a swipeable carousel: one column per slide, text on the top
-           row and its image on the bottom row, so both move together.
-
-           `display: contents` on the two wrappers drops their boxes and lifts
-           the rows and panels into this grid as direct children — the native
-           way to re-pair them across a breakpoint without duplicating DOM. */
         .census-highlights__nav,
         .census-highlights__preview {
             display: contents;
@@ -499,11 +496,20 @@ const rows = [
         const slideObserver = new IntersectionObserver(
             (entries) => {
                 if (!carouselQuery.matches) return;
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    const idx = [...panels].indexOf(entry.target as HTMLElement);
-                    if (idx >= 0) setActive(idx);
-                });
+                /* Take only the most-visible slide. `isIntersecting` means "overlaps
+                   at all", NOT "cleared the threshold", so the initial callback
+                   reports both panels — the peeking one included — and applying each
+                   in turn would leave the last one active while the carousel still
+                   sits on the first. That desync also stalled autoplay, which read
+                   the active index as already being the final slide. */
+                let best: IntersectionObserverEntry | null = null;
+                for (const entry of entries) {
+                    if (entry.intersectionRatio < 0.6) continue;
+                    if (!best || entry.intersectionRatio > best.intersectionRatio) best = entry;
+                }
+                if (!best) return;
+                const idx = [...panels].indexOf(best.target as HTMLElement);
+                if (idx >= 0) setActive(idx);
             },
             { root: scroller, threshold: 0.6 }
         );
