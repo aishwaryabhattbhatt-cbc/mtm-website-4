@@ -28,7 +28,7 @@ export function parseSheetCsv(csvText: string): CMSDictionary {
     const headerRow = rows[0]?.map((cell) => normalizeCell(cell)) ?? [];
     const hasHeader = headerRow.length > 0 && isHeaderRow(headerRow[0]);
 
-    const keyIndex = hasHeader ? 0 : 0;
+    const keyIndex = 0;
     const englishIndex = hasHeader
         ? (() => {
               const updatedEnglish = findColumnIndex(headerRow, [
