@@ -403,13 +403,12 @@ const tools = [
         }
 
         .split-frame img {
-            transform: scale(1.1);
-            /* Growth anchored upward, not centered — a centered scale would
-               overflow ~11px into the callout below (transform doesn't
-               affect layout, so the reserved box stays put; only the paint
-               grows), even though .split-frame clips overflow at its own
-               edges, not between siblings. */
-            transform-origin: center bottom;
+            /* No scale/zoom — depends on how much headroom each mobile crop
+               happens to have above the subject (split-frame-2's farmer has
+               less than split-frame-1), so any upward-anchored zoom risks
+               clipping into hair/hats against .split-frame's overflow:
+               hidden. The image now displays uncropped at its full aspect
+               ratio, so no zoom is needed anyway. */
             aspect-ratio: 1280 / 710;
         }
 
