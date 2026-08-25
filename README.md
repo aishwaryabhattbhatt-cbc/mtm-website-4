@@ -1,46 +1,44 @@
-# Astro Starter Kit: Basics
+# MTM Website
+
+Marketing website for MTM (Media Technology Monitor), a CBC initiative that tracks Canadian media consumption. Built with [Astro 5](https://astro.build), deployed to GitHub Pages. Supports English (`en`) and French (`fr`).
+
+- **Live site**: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/
+- **Base path**: `/mtm-website-4/`
+
+## Getting started
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev      # http://localhost:4321/mtm-website-4/ (falls back to 4322)
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-## 🚀 Project Structure
+| Command             | Action                                                    |
+| :------------------- | :--------------------------------------------------------- |
+| `npm run dev`         | Start the dev server                                       |
+| `npm run build`       | Production build to `./dist/`                              |
+| `npm run preview`     | Preview the production build locally                       |
+| `npm run check`       | TypeScript check via `astro check`                          |
+| `npm run lint`        | ESLint (errors block; warnings surfaced only)                |
+| `npm run format`      | Prettier — formats all `src` files                          |
+| `npm run sync-copy`   | Pull copy from Google Sheets into `src/content/copy/[pageId].json` |
+| `npm run validate`    | `check` + `build` + site audit (also runs pre-commit)        |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── layouts/          # HTML shell (Layout.astro) — no CMS or locale logic
+├── pages/[locale]/   # Route entry points, getStaticPaths(), section ordering
+├── components/
+│   ├── {pageName}/   # Page-specific section components
+│   └── shared/       # UI primitives — Button, Navbar, Eyebrow, etc.
+├── lib/
+│   ├── cms/          # CMS types, page-to-sheet config, page loader
+│   ├── i18n/         # t() helper, locale routing
+│   └── icons/        # Icon registry
+├── content/copy/     # Synced CMS copy (JSON per page)
+└── styles/           # design-system.css — tokens, typography, spacing
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
