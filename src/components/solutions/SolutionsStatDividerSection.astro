@@ -57,6 +57,7 @@ const {
 
     .solutions-stat-divider__callout {
         grid-area: 1 / 1;
+        position: relative;
         align-self: center;
         margin-top: var(--space-6);
         display: flex;
@@ -105,8 +106,11 @@ const {
 
     @media (max-width: 767px) {
         .solutions-stat-divider img {
-            height: 14rem;
-            object-fit: cover;
+            transform: scale(1.1);
+        }
+
+        .solutions-stat-divider__callout {
+            max-width: 50%;
         }
 
         .solutions-stat-divider__desc {
@@ -114,12 +118,6 @@ const {
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-        }
-    }
-
-    @media (max-width: 599px) {
-        .solutions-stat-divider__callout {
-            max-width: 60%;
         }
     }
 

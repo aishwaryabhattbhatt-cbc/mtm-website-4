@@ -367,8 +367,11 @@ const tools = [
 
     @media (max-width: 767px) {
         .split-frame img {
-            height: 14rem;
-            object-fit: cover;
+            transform: scale(1.1);
+        }
+
+        .split-frame-callout {
+            max-width: 50%;
         }
 
         .split-callout-desc {
@@ -376,12 +379,6 @@ const tools = [
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-        }
-    }
-
-    @media (max-width: 599px) {
-        .split-frame-callout {
-            max-width: 60%;
         }
     }
 

@@ -563,6 +563,31 @@ h3,
     letter-spacing: var(--ls-body-lg);
 }
 
+/* Exception: solutions stat-divider description (SolutionsStatDividerSection,
+   shared across every solution page — "Unlimited Seats" etc.) reads too big
+   on mobile at text-body-p1. Compound selector (not just
+   .solutions-stat-divider__desc) so it outranks the unconditional rule above
+   regardless of source order. */
+@media (max-width: 767px) {
+    .text-body-p1.solutions-stat-divider__desc {
+        font-size: var(--fs-body-s);
+        letter-spacing: var(--ls-body-md);
+    }
+}
+
+/* Exception: census tool split-frame stat callout description
+   (CensusToolFeaturesSection — .split-callout-desc) is the only user of
+   text-body-p1-1-25x; its clamp() doesn't step down at any breakpoint, so it
+   reads too big on mobile. Same treatment as solutions-stat-divider__desc
+   above. Compound selector so it outranks the unconditional rule below
+   regardless of source order. */
+@media (max-width: 767px) {
+    .text-body-p1-1-25x.split-callout-desc {
+        font-size: var(--fs-body-s);
+        letter-spacing: var(--ls-body-md);
+    }
+}
+
 .text-body-p1-bold {
     font-family: var(--font-body);
     font-size: var(--fs-body-l);
@@ -870,6 +895,17 @@ h3,
     }
     .dat-features__card-desc {
         font-size: var(--fs-body-s);
+    }
+}
+
+/* Stat divider / split-frame metric value: text-metrics(-1-5x) → h2 tier at
+   mobile (shared SolutionsStatDividerSection + CensusToolFeaturesSection
+   callouts). Compound selectors so these outrank the unconditional
+   .text-metrics / .text-metrics-1-5x rules regardless of source order. */
+@media (max-width: 767px) {
+    .text-metrics.solutions-stat-divider__value--sm,
+    .text-metrics-1-5x.split-callout-value--sm {
+        font-size: var(--fs-subsection-h2);
     }
 }
 
