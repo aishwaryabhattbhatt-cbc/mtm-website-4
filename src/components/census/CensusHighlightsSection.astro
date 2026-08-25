@@ -179,21 +179,18 @@ const rows = [
     }
 
     /* ─── Preview (right panel) ──────────────────────── */
-    /* No padding, no fixed/min-height anywhere in this block, at any width —
-       the card's size is purely the sum of its content (label + image). The
-       old min-height ladder (32rem/24rem/18rem) boxed the card into a shape
-       that didn't match the 1.775:1 screenshots, letterboxing them. */
 
     /* Mirrors .census-tool-card__slot — blue slot, image centered inside it
        carrying its own radius + shadow. Grid (not flex) only because the two
        panels stack in one cell to cross-fade; the centering below is the
        slot's. No min-height: the layout's `align-items: stretch` already
-       matches this column to the nav's height. */
+       matches this column to the nav's height, so padding here only shrinks
+       the screenshot — it never resizes the box. */
     .census-highlights__preview {
         background: var(--surface-blue);
         border-radius: var(--radius-s);
         display: grid;
-        padding: var(--space-8);
+        padding: var(--space-12);
     }
 
     /* Stack all panels in the same grid cell so they cross-fade */
@@ -226,6 +223,16 @@ const rows = [
     }
 
     /* ─── Responsive ─────────────────────────────────── */
+
+    /* Narrow desktop: the two-column layout is still on, but the preview
+       column is small enough that --space-12 eats too much of the screenshot.
+       Lower bound is 1024px rather than 1020px because below that the layout
+       is the carousel and this padding no longer applies. */
+    @media (min-width: 1024px) and (max-width: 1220px) {
+        .census-highlights__preview {
+            padding: var(--space-6);
+        }
+    }
 
     @media (max-width: 1023px) {
         .census-highlights__title {
