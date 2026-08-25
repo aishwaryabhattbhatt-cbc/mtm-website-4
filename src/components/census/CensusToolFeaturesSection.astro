@@ -332,6 +332,12 @@ const tools = [
         width: 100%;
         height: auto;
         display: block;
+        /* Reserves the image's box immediately instead of collapsing to 0
+           height until the (loading="lazy") asset actually loads — without
+           this the callout below it visually overlaps/crops the image on
+           slower connections. Desktop asset is 2880x1000; the mobile source
+           swapped in below is a different ratio (1280x710). */
+        aspect-ratio: 2880 / 1000;
     }
 
     /* split-frame-1/2.webp have a transparent/white zone covering the top
@@ -353,7 +359,11 @@ const tools = [
         text-align: right;
     }
 
+    /* split-frame-2.webp (unlike split-frame-1) has no transparent header
+       band — it's a fully opaque photo top-to-bottom, so its callout centers
+       on the full image height instead of the 61.5% band-center above. */
     .split-frame-callout--left {
+        top: 50%;
         left: var(--content-margin-inline);
         align-items: flex-start;
         text-align: left;
@@ -389,33 +399,35 @@ const tools = [
         .split-frame {
             display: flex;
             flex-direction: column;
-            gap: var(--space-6);
+            gap: 0;
         }
 
         .split-frame img {
             transform: scale(1.1);
+            /* Growth anchored upward, not centered — a centered scale would
+               overflow ~11px into the callout below (transform doesn't
+               affect layout, so the reserved box stays put; only the paint
+               grows), even though .split-frame clips overflow at its own
+               edges, not between siblings. */
+            transform-origin: center bottom;
+            aspect-ratio: 1280 / 710;
         }
 
         .split-frame-callout {
             position: static;
             transform: none;
-            max-width: 100%;
-            margin-inline: var(--content-margin-inline);
+            max-width: none;
             align-items: center;
             text-align: center;
+            background: var(--surface-blue);
+            padding-block: var(--card-pad);
+            padding-inline: var(--content-margin-inline);
         }
 
         .split-frame-callout--right,
         .split-frame-callout--left {
             right: auto;
             left: auto;
-        }
-
-        .split-callout-desc {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
         }
     }
 
