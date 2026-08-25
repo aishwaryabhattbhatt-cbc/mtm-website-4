@@ -95,7 +95,7 @@ const rows = [
 
     .census-highlights {
         width: 100%;
-        padding: var(--section-pad-block) var(--content-margin-inline) 0;
+        padding: var(--section-pad-block) var(--content-margin-inline);
     }
 
     .census-highlights__title {
@@ -259,6 +259,16 @@ const rows = [
             /* row gap = text→image; column gap = slide→slide */
             gap: var(--space-4) var(--layout-card-gap);
             min-width: 0;
+            /* overflow-x makes this a scroll container, and a scroll container
+               clips on BOTH axes — which cuts off the screenshot's shadow at
+               the scroller's edges. Pad the scrollport to give the shadow room
+               (~24px sideways, ~70px down for --shadow-card) and pull the same
+               amount back with negative margins, so nothing moves. The inline
+               inset matches --content-margin-inline exactly, so the widened box
+               reaches the viewport edge without overflowing it. */
+            padding: 0 var(--content-margin-inline) var(--space-12);
+            margin: 0 calc(-1 * var(--content-margin-inline)) calc(-1 * var(--space-12));
+            scroll-padding-inline-start: var(--content-margin-inline);
             overflow-x: auto;
             overscroll-behavior-x: contain;
             scroll-snap-type: x mandatory;
@@ -290,11 +300,11 @@ const rows = [
             grid-column: 2;
         }
 
+        /* No blue slot on mobile — the screenshot is the slide, filling the
+           column edge to edge. Screen width is too tight to spend any of it
+           on a frame around the image. */
         .census-highlights__panel {
             grid-row: 2;
-            background: var(--surface-blue);
-            border-radius: var(--radius-s);
-            padding: var(--space-6);
             opacity: 1;
             transform: none;
             pointer-events: auto;
