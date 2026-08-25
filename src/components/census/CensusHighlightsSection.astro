@@ -18,9 +18,6 @@ const rows = [
         statFb: '70,000+ Geographic Areas',
         descKey: 'highlights_stat_1_description',
         descFb: 'Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal area to pinpoint where media and tech trends emerge.',
-        labelKey: 'highlights_geo_label',
-        labelFb: 'Geographic Filters',
-        labelClass: 'census-highlights__filter-label--geo',
         imgSrc: `${base}images/tools/census-tool/census-geo-filters.webp`,
         imgAlt: locale === 'fr' ? 'Aperçu des filtres géographiques' : 'Geographic filters preview',
     },
@@ -31,9 +28,6 @@ const rows = [
         statFb: '2,000+ Demographic Variables',
         descKey: 'highlights_stat_2_description',
         descFb: "Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who's driving adoption and change.",
-        labelKey: 'highlights_demo_label',
-        labelFb: 'Demographic Filters',
-        labelClass: 'census-highlights__filter-label--demo',
         imgSrc: `${base}images/tools/census-tool/census-demo-filters.webp`,
         imgAlt:
             locale === 'fr' ? 'Aperçu des filtres démographiques' : 'Demographic filters preview',
@@ -83,20 +77,12 @@ const rows = [
                         class={`census-highlights__panel${i === 0 ? ' is-active' : ''}`}
                         id={`census-panel-${row.id}`}
                     >
-                        <p
-                            class={`text-body-p1-bold-upper census-highlights__filter-label ${row.labelClass}`}
-                            data-copy-key={row.labelKey}
-                        >
-                            {t(copy, row.labelKey, locale, row.labelFb)}
-                        </p>
-                        <div class="census-highlights__screenshot-frame">
-                            <img
-                                class="census-highlights__screenshot"
-                                src={row.imgSrc}
-                                alt={row.imgAlt}
-                                loading="lazy"
-                            />
-                        </div>
+                        <img
+                            class="census-highlights__screenshot"
+                            src={row.imgSrc}
+                            alt={row.imgAlt}
+                            loading="lazy"
+                        />
                     </div>
                 ))
             }
@@ -120,7 +106,7 @@ const rows = [
         display: grid;
         grid-template-columns: 1fr 1.75fr;
         gap: var(--space-10);
-        align-items: start;
+        align-items: stretch;
     }
 
     /* ─── Nav (left panel) ───────────────────────────── */
@@ -193,22 +179,29 @@ const rows = [
     }
 
     /* ─── Preview (right panel) ──────────────────────── */
+    /* No padding, no fixed/min-height anywhere in this block, at any width —
+       the card's size is purely the sum of its content (label + image). The
+       old min-height ladder (32rem/24rem/18rem) boxed the card into a shape
+       that didn't match the 1.775:1 screenshots, letterboxing them. */
 
+    /* Mirrors .census-tool-card__slot — blue slot, image centered inside it
+       carrying its own radius + shadow. Grid (not flex) only because the two
+       panels stack in one cell to cross-fade; the centering below is the
+       slot's. No min-height: the layout's `align-items: stretch` already
+       matches this column to the nav's height. */
     .census-highlights__preview {
         background: var(--surface-blue);
-        border-radius: var(--radius-m);
-        box-shadow: var(--shadow-card);
-        padding: var(--space-11) var(--space-12);
+        border-radius: var(--radius-s);
         display: grid;
-        min-height: 32rem;
+        padding: var(--space-8);
     }
 
     /* Stack all panels in the same grid cell so they cross-fade */
     .census-highlights__panel {
         grid-area: 1 / 1;
         display: flex;
-        flex-direction: column;
-        gap: var(--space-5);
+        align-items: center;
+        justify-content: center;
         opacity: 0;
         transform: translateY(var(--space-2));
         pointer-events: none;
@@ -223,34 +216,13 @@ const rows = [
         pointer-events: auto;
     }
 
-    .census-highlights__filter-label {
-        margin: 0;
-    }
-
-    /* census-specific brand colors — no semantic token covers these */
-    .census-highlights__filter-label--geo {
-        color: #0e7fde;
-    }
-
-    .census-highlights__filter-label--demo {
-        color: #229e8e;
-    }
-
-    .census-highlights__screenshot-frame {
-        flex: 1;
-        min-height: 0;
-        background: var(--surface-white);
-        border-radius: var(--radius-s);
-        padding: var(--card-pad);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
+    /* Matches .census-tool-card__screenshot */
     .census-highlights__screenshot {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--radius-s);
+        box-shadow: var(--shadow-card);
     }
 
     /* ─── Responsive ─────────────────────────────────── */
@@ -260,66 +232,81 @@ const rows = [
             margin-bottom: var(--space-5);
         }
 
+        /* Touch has no hover, so the desktop cross-fade leaves the inactive
+           slide unreachable once autoplay ends. Below 1024px the whole layout
+           becomes a swipeable carousel: one column per slide, text on the top
+           row and its image on the bottom row, so both move together.
+
+           `display: contents` on the two wrappers drops their boxes and lifts
+           the rows and panels into this grid as direct children — the native
+           way to re-pair them across a breakpoint without duplicating DOM. */
+        .census-highlights__nav,
+        .census-highlights__preview {
+            display: contents;
+        }
+
         .census-highlights__layout {
-            grid-template-columns: 1fr;
-            gap: var(--space-4);
+            grid-template-columns: none;
+            grid-template-rows: auto auto;
+            grid-auto-columns: 88%;
+            /* row gap = text→image; column gap = slide→slide */
+            gap: var(--space-4) var(--layout-card-gap);
+            min-width: 0;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
 
-        /* Cross-fade rows one-at-a-time, mirroring how panels work */
-        .census-highlights__nav {
-            display: grid;
+        .census-highlights__layout::-webkit-scrollbar {
+            display: none;
         }
 
+        /* Explicit placement: auto-flow would fill column 1 with both rows
+           (they're adjacent in the DOM) instead of pairing each with its image. */
         .census-highlights__row {
-            grid-area: 1 / 1;
+            grid-row: 1;
+            scroll-snap-align: start;
             border-bottom: none;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             gap: var(--space-3);
+            padding: 0;
         }
 
-        .census-highlights__desc {
-            grid-column: 1 / -1;
+        .census-highlights__row:nth-child(1) {
+            grid-column: 1;
         }
 
-        .census-highlights__row--active {
+        .census-highlights__row:nth-child(2) {
+            grid-column: 2;
+        }
+
+        .census-highlights__panel {
+            grid-row: 2;
+            background: var(--surface-blue);
+            border-radius: var(--radius-s);
+            padding: var(--space-6);
             opacity: 1;
+            transform: none;
             pointer-events: auto;
         }
 
-        .census-highlights__row-progress-divider {
-            grid-column: 1 / -1;
+        .census-highlights__panel:nth-child(1) {
+            grid-column: 1;
         }
 
-        /* Row fades as a whole — reset per-element fading */
+        .census-highlights__panel:nth-child(2) {
+            grid-column: 2;
+        }
+
+        /* Every slide is on screen now — nothing to fade out */
         .census-highlights__row:not(.census-highlights__row--active) .census-highlights__row-icon,
         .census-highlights__row:not(.census-highlights__row--active) .census-highlights__stat,
         .census-highlights__row:not(.census-highlights__row--active) .census-highlights__desc {
             opacity: 1;
             transition: none;
-        }
-
-        .census-highlights__preview {
-            min-height: 24rem;
-            padding: var(--space-7) var(--space-8);
-        }
-
-        .census-highlights__screenshot-frame {
-            padding: var(--space-4);
-        }
-    }
-
-    @media (max-width: 767px) {
-        .census-highlights__preview {
-            min-height: 18rem;
-            padding: var(--space-5) var(--space-6);
-        }
-
-        .census-highlights__screenshot-frame {
-            padding: var(--space-3);
         }
     }
 
@@ -387,18 +374,35 @@ const rows = [
     const section = document.querySelector<HTMLElement>('.census-highlights');
     const rows = section?.querySelectorAll<HTMLElement>('.census-highlights__row') ?? [];
     const panels = section?.querySelectorAll<HTMLElement>('.census-highlights__panel') ?? [];
+    // ≤1023px the layout itself is the carousel scroller (the nav/preview
+    // wrappers are display:contents there, so they have no box to scroll).
+    const scroller = section?.querySelector<HTMLElement>('.census-highlights__layout');
 
-    const AUTO_ADVANCE_DELAY = 5000;
+    // Drives both the dwell time per slide and the progress bar's fill duration.
+    const AUTO_ADVANCE_DELAY = 2500;
+    const carouselQuery = window.matchMedia('(max-width: 1023px)');
 
     let autoTimer: ReturnType<typeof setTimeout> | null = null;
     let autoLoopDone = false;
 
+    /* Sets which row's text is showing. Deliberately does NOT scroll — the
+       carousel's own observer calls this while the user swipes, so scrolling
+       here would fight the gesture. Use goTo() to move the carousel. */
     function setActive(index: number) {
         rows.forEach((r, i) => {
             r.classList.toggle('census-highlights__row--active', i === index);
         });
         panels.forEach((p, i) => {
             p.classList.toggle('is-active', i === index);
+        });
+    }
+
+    function goTo(index: number) {
+        setActive(index);
+        if (!carouselQuery.matches || !scroller || !panels[index] || !panels[0]) return;
+        scroller.scrollTo({
+            left: panels[index].offsetLeft - panels[0].offsetLeft,
+            behavior: 'smooth',
         });
     }
 
@@ -419,10 +423,24 @@ const rows = [
         bar.style.transform = 'scaleX(1)';
     }
 
+    /* Once the loop has run its course the gradient is no longer indicating
+       anything, so fade it off and leave the plain grey track behind. Sets the
+       transition inline because startProgress() left a transform-only one
+       there, which would make the opacity change jump. */
+    function fadeProgressToIdle() {
+        rows.forEach((row) => {
+            const bar = row.querySelector<HTMLElement>('.census-highlights__row-progress-fill');
+            if (!bar) return;
+            bar.style.transition = 'opacity 0.45s ease';
+            bar.style.opacity = '0';
+        });
+    }
+
     function scheduleNext(currentIdx: number) {
         if (currentIdx >= rows.length - 1) {
             setTimeout(() => {
                 autoLoopDone = true;
+                fadeProgressToIdle();
             }, AUTO_ADVANCE_DELAY);
             return;
         }
@@ -430,7 +448,7 @@ const rows = [
         autoTimer = setTimeout(() => {
             const next = currentIdx + 1;
             resetProgress();
-            setActive(next);
+            goTo(next);
             startProgress(next);
             scheduleNext(next);
         }, AUTO_ADVANCE_DELAY);
@@ -442,14 +460,49 @@ const rows = [
         autoTimer = null;
     }
 
+    function selectRow(idx: number) {
+        stopAuto();
+        resetProgress();
+        goTo(idx);
+        autoLoopDone = true;
+    }
+
+    /* Hover and click both hand control to the visitor immediately — pointing
+       at a row is intent, so autoplay gets out of the way rather than making
+       them wait out the remaining dwell. */
     rows.forEach((row, idx) => {
-        row.addEventListener('mouseenter', () => {
-            if (!autoLoopDone) return;
-            stopAuto();
-            resetProgress();
-            setActive(idx);
-        });
+        row.addEventListener('mouseenter', () => selectRow(idx));
+        row.addEventListener('click', () => selectRow(idx));
     });
+
+    /* Carousel (≤1023px): keep the heading text in sync with whichever slide
+       the user has swiped to. Observing against the scroller as root means no
+       scrollLeft arithmetic and no assumptions about slide width. */
+    if (scroller && panels.length) {
+        const slideObserver = new IntersectionObserver(
+            (entries) => {
+                if (!carouselQuery.matches) return;
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const idx = [...panels].indexOf(entry.target as HTMLElement);
+                    if (idx >= 0) setActive(idx);
+                });
+            },
+            { root: scroller, threshold: 0.6 }
+        );
+        panels.forEach((p) => slideObserver.observe(p));
+
+        // A real swipe means the visitor has taken over — stop fighting them.
+        scroller.addEventListener(
+            'pointerdown',
+            () => {
+                stopAuto();
+                resetProgress();
+                autoLoopDone = true;
+            },
+            { passive: true }
+        );
+    }
 
     // Start auto-advance when section enters the viewport
     if (section) {
