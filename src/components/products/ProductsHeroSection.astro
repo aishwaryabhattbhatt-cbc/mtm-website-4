@@ -310,12 +310,22 @@ function badgeFloatStyle(index: number) {
         position: absolute;
         inset: 0;
         pointer-events: none;
-        /* Luminance mask: white = show, black silhouette = hole, so
+        /* Alpha mask: opaque = show, transparent silhouette = hole, so
            anything in this layer renders behind the photo's subject.
            Must stay registered with .products-hero-image: same cover
-           sizing and center-top anchor. */
+           sizing and center-top anchor. The mask asset is a real alpha PNG
+           baked from the original black/white luminance art — `mask-mode:
+           luminance` isn't reliably supported on real mobile WebKit/Blink
+           (desktop devtools' mobile emulation is a red herring: it's still
+           the same engine as the desktop browser), so alpha is the only
+           mode that renders identically everywhere and needs no mask-mode
+           at all. -webkit- prefixed versions cover older engines that
+           never learned the unprefixed properties. */
+        -webkit-mask-image: var(--mask-url);
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center top;
+        -webkit-mask-size: cover;
         mask-image: var(--mask-url);
-        mask-mode: luminance;
         mask-repeat: no-repeat;
         mask-position: center top;
         mask-size: cover;
