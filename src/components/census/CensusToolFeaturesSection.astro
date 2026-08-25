@@ -23,7 +23,7 @@ const tools = [
         descKey: 'tool_1_description',
         descFb: 'Population, age, income, language, immigration, indigenous identity. Any Canadian geography. In seconds.',
         iconSrc: `${base}${icons['census-tool'].snapshot}`,
-        imageSrc: `${base}images/tools/census-tool/Snapshot-Tool.svg`,
+        imageSrc: `${base}images/tools/census-tool/Snapshot-Tool.webp`,
         imageAlt: 'Snapshot tool preview',
         features: [
             {
@@ -55,7 +55,7 @@ const tools = [
         descKey: 'tool_2_description',
         descFb: 'Move beyond surface-level data. Explore nested demographic breakdowns across hundreds of variables for any Canadian geography.',
         iconSrc: `${base}${icons['census-tool'].drilldown}`,
-        imageSrc: `${base}images/tools/census-tool/Drilldown-Tool.svg`,
+        imageSrc: `${base}images/tools/census-tool/Drilldown-Tool.webp`,
         imageAlt: 'Drilldown tool preview',
         features: [
             {
@@ -87,7 +87,7 @@ const tools = [
         descKey: 'tool_3_description',
         descFb: 'Find out which cities, regions, or postal areas lead on any demographic variable — instantly ranked and sortable.',
         iconSrc: `${base}${icons['census-tool'].ranker}`,
-        imageSrc: `${base}images/tools/census-tool/Ranker-Tool.svg`,
+        imageSrc: `${base}images/tools/census-tool/Ranker-Tool.webp`,
         imageAlt: 'Ranker tool preview',
         features: [
             {
@@ -119,7 +119,7 @@ const tools = [
         descKey: 'tool_4_description',
         descFb: "Map and visualize how age, language, income, and hundreds of other variables distribute across Canada's diverse regions.",
         iconSrc: `${base}${icons['census-tool'].demographicExplorer}`,
-        imageSrc: `${base}images/tools/census-tool/Demo-Explorer-Tool.svg`,
+        imageSrc: `${base}images/tools/census-tool/Demo-Explorer-Tool.webp`,
         imageAlt: 'Demographic Explorer tool preview',
         features: [
             {
@@ -151,7 +151,7 @@ const tools = [
         descKey: 'tool_5_description',
         descFb: 'Place two or more geographies next to each other and identify what makes each one unique — or where they converge.',
         iconSrc: `${base}${icons['census-tool'].compare}`,
-        imageSrc: `${base}images/tools/census-tool/Compare-Tool.svg`,
+        imageSrc: `${base}images/tools/census-tool/Compare-Tool.webp`,
         imageAlt: 'Compare tool preview',
         features: [
             {
@@ -183,7 +183,7 @@ const tools = [
         descKey: 'tool_6_description',
         descFb: 'Understand how any Canadian geography performs relative to the national average across key demographic indicators.',
         iconSrc: `${base}${icons['census-tool'].canadaScore}`,
-        imageSrc: `${base}images/tools/census-tool/Canada-Score-Tool.svg`,
+        imageSrc: `${base}images/tools/census-tool/Canada-Score-Tool.webp`,
         imageAlt: 'Canada Score tool preview',
         features: [
             {
@@ -234,11 +234,17 @@ const tools = [
                         <>
                             <div class="section-gap section-gap-lg" aria-hidden="true" />
                             <div class="split-frame content-fly-in">
-                                <img
-                                    src={`${base}images/tools/census-tool/split-frame-1.webp`}
-                                    alt=""
-                                    loading="lazy"
-                                />
+                                <picture>
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset={`${base}images/tools/census-tool/split-frame-1-mobile.webp`}
+                                    />
+                                    <img
+                                        src={`${base}images/tools/census-tool/split-frame-1.webp`}
+                                        alt=""
+                                        loading="lazy"
+                                    />
+                                </picture>
                                 <div class="split-frame-callout split-frame-callout--right">
                                     <CountUpValue
                                         value={t(copy, 'stat_callout_1_value', locale, '63%')}
@@ -264,11 +270,17 @@ const tools = [
                         <>
                             <div class="section-gap section-gap-lg" aria-hidden="true" />
                             <div class="split-frame content-fly-in">
-                                <img
-                                    src={`${base}images/tools/census-tool/split-frame-2.webp`}
-                                    alt=""
-                                    loading="lazy"
-                                />
+                                <picture>
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset={`${base}images/tools/census-tool/split-frame-2-mobile.webp`}
+                                    />
+                                    <img
+                                        src={`${base}images/tools/census-tool/split-frame-2.webp`}
+                                        alt=""
+                                        loading="lazy"
+                                    />
+                                </picture>
                                 <div class="split-frame-callout split-frame-callout--left">
                                     <CountUpValue
                                         value={t(copy, 'stat_callout_2_value', locale, '')}
@@ -309,6 +321,12 @@ const tools = [
         overflow: hidden;
     }
 
+    /* Transparent wrapper — lets .split-frame img's grid-area placement
+       reach through <picture> as if img were the direct grid child. */
+    .split-frame picture {
+        display: contents;
+    }
+
     .split-frame img {
         grid-area: 1 / 1;
         width: 100%;
@@ -326,7 +344,7 @@ const tools = [
         display: flex;
         flex-direction: column;
         gap: var(--space-3);
-        max-width: 30rem;
+        max-width: 40%;
     }
 
     .split-frame-callout--right {
@@ -366,12 +384,31 @@ const tools = [
     }
 
     @media (max-width: 767px) {
+        /* Below the image instead of overlaid on it — the callout drops out
+           of the grid stack into normal flow, centered under the photo. */
+        .split-frame {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+
         .split-frame img {
             transform: scale(1.1);
         }
 
         .split-frame-callout {
-            max-width: 50%;
+            position: static;
+            transform: none;
+            max-width: 100%;
+            margin-inline: var(--content-margin-inline);
+            align-items: center;
+            text-align: center;
+        }
+
+        .split-frame-callout--right,
+        .split-frame-callout--left {
+            right: auto;
+            left: auto;
         }
 
         .split-callout-desc {
