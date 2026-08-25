@@ -320,10 +320,14 @@ const topics = topicFallbacks.map((fallback, i) => {
 </style>
 
 <script>
-    // 6 cards form rows of 3/2/1 depending on breakpoint — within any one
-    // row the cards share a vertical position, so per-card observers fired
-    // each row's cards together with no visible cascade. Trigger off the
-    // grid itself instead and stagger all 6 in index order.
+    // 6 cards form rows of 3/2/1 depending on breakpoint. At 1 column
+    // (mobile) the grid is 6 rows tall, so triggering off the grid as a
+    // whole (a single observer needing e.g. 40% of the *grid's own* height
+    // in view) could need most of the section scrolled past before it ever
+    // fires — cards never appeared. Each card observes itself instead: rows
+    // that share a vertical position (desktop/tablet) still reveal together
+    // since they cross the viewport edge at the same scroll position, and
+    // stacked rows (mobile) reveal one at a time as they're actually seen.
     document.querySelectorAll<HTMLElement>('.solutions-topics-section').forEach((section) => {
         const heading = section.querySelector<HTMLElement>('.heading-fly-in');
         if (heading) {
@@ -339,22 +343,20 @@ const topics = topicFallbacks.map((fallback, i) => {
             headingObserver.observe(heading);
         }
 
-        const cardsRow = section.querySelector<HTMLElement>('.solutions-topics-grid');
-        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
-        if (cardsRow && cards.length) {
-            const cardObserver = new IntersectionObserver(
-                ([entry]) => {
+        const cardObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        cards.forEach((card, i) => {
-                            setTimeout(() => card.classList.add('is-visible'), i * 140);
-                        });
-                        cardObserver.disconnect();
+                        entry.target.classList.add('is-visible');
+                        cardObserver.unobserve(entry.target);
                     }
-                },
-                { threshold: 0.4 }
-            );
-            cardObserver.observe(cardsRow);
-        }
+                });
+            },
+            { threshold: 0.2 }
+        );
+        section.querySelectorAll<HTMLElement>('.card-fly-in').forEach((card) => {
+            cardObserver.observe(card);
+        });
 
         const footer = section.querySelector<HTMLElement>('.content-fly-in');
         if (footer) {
