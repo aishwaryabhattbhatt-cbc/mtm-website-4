@@ -416,9 +416,11 @@ h1,
 }
 
 /* 1.5x scaled variants — fluid clamp() instead of the base tokens' discrete
-   breakpoint steps, so size tracks viewport width continuously. Bounds are
-   1.5x of --fs-hero/--fs-metrics' own min/max across the range each variant
-   is actually shown at (see split-callout-value--lg/--sm). */
+   breakpoint steps, so size tracks viewport width continuously. Currently
+   unused (SplitFrameStat's value styling was reverted to plain
+   text-hero/text-metrics — a scaled variant overflowed phrase-length CMS
+   values like "Unlimited Seats"); kept for the next short-numeral-only use
+   case that wants the bigger scale. */
 .text-hero-1-5x {
     font-family: var(--font-heading);
     /* 6.75rem @1024px → 8rem @1920px (1.5x of --fs-hero's 4.5rem, up to a
@@ -563,27 +565,26 @@ h3,
     letter-spacing: var(--ls-body-lg);
 }
 
-/* Exception: solutions stat-divider description (SolutionsStatDividerSection,
-   shared across every solution page — "Unlimited Seats" etc.) reads too big
-   on mobile at text-body-p1. Compound selector (not just
-   .solutions-stat-divider__desc) so it outranks the unconditional rule above
-   regardless of source order. */
+/* Exception: split-frame stat callout description (shared SplitFrameStat
+   component — census split-frames + education "Unlimited Seats") is the
+   only user of text-body-p1-1-25x; its clamp() doesn't step down at any
+   breakpoint, so it reads too big on mobile. Compound selector so it
+   outranks the unconditional rule below regardless of source order. */
 @media (max-width: 767px) {
-    .text-body-p1.solutions-stat-divider__desc {
+    .text-body-p1-1-25x.split-frame-stat__desc {
         font-size: var(--fs-body-s);
         letter-spacing: var(--ls-body-md);
     }
 }
 
-/* Exception: census tool split-frame stat callout description
-   (CensusToolFeaturesSection — .split-callout-desc) is the only user of
-   text-body-p1-1-25x; its clamp() doesn't step down at any breakpoint, so it
-   reads too big on mobile. Same treatment as solutions-stat-divider__desc
-   above. Compound selector so it outranks the unconditional rule below
-   regardless of source order. */
-@media (max-width: 767px) {
-    .text-body-p1-1-25x.split-callout-desc {
-        font-size: var(--fs-body-s);
+@media (max-width: 1440px) {
+    .text-body-p1-1-25x.split-frame-stat__desc {
+        /* Fluid between the two fixed neighbors instead of holding flat
+           across the whole 767–1440px range: 1rem @767px (continuity with
+           the ≤767px tier's --fs-body-s) → 1.375rem @1440px (continuity
+           with the >1440px clamp's own min bound). */
+        font-size: clamp(1rem, 0.573rem + 0.89vw, 1.375rem);
+        line-height: var(--lh-snug);
         letter-spacing: var(--ls-body-md);
     }
 }
@@ -898,13 +899,12 @@ h3,
     }
 }
 
-/* Stat divider / split-frame metric value: text-metrics(-1-5x) → h2 tier at
-   mobile (shared SolutionsStatDividerSection + CensusToolFeaturesSection
-   callouts). Compound selectors so these outrank the unconditional
-   .text-metrics / .text-metrics-1-5x rules regardless of source order. */
+/* Stat divider / split-frame metric value: text-metrics → h2 tier at mobile
+   (shared SplitFrameStat component — census split-frames + education
+   "Unlimited Seats"). Compound selector so it outranks the unconditional
+   .text-metrics rule regardless of source order. */
 @media (max-width: 767px) {
-    .text-metrics.solutions-stat-divider__value--sm,
-    .text-metrics-1-5x.split-callout-value--sm {
+    .text-metrics.split-frame-stat__value--sm {
         font-size: var(--fs-subsection-h2);
     }
 }

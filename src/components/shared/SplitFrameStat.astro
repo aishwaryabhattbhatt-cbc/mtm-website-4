@@ -1,7 +1,7 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
-import CountUpValue from '../shared/CountUpValue.astro';
+import CountUpValue from './CountUpValue.astro';
 
 interface Props {
     locale: Locale;
@@ -10,7 +10,14 @@ interface Props {
     mobileImageSrc?: string;
     imageAlt?: string;
     align?: 'left' | 'right';
+    /* Vertical center of the callout, as a CSS percentage of the image's
+       height. '61.5%' for the standard asset template (top 23% transparent/
+       gradient zone + bottom 77% photo band, centered within that band).
+       Use '50%' for a fully opaque photo with no header band. */
+    calloutTop?: string;
+    valueKey: string;
     fallbackValue?: string;
+    descriptionKey: string;
     fallbackDescription?: string;
 }
 
@@ -21,47 +28,59 @@ const {
     mobileImageSrc,
     imageAlt = '',
     align = 'right',
+    calloutTop = '61.5%',
+    valueKey,
     fallbackValue = '',
+    descriptionKey,
     fallbackDescription = '',
 } = Astro.props as Props;
 ---
 
-<div class="solutions-stat-divider content-fly-in">
+<div class="split-frame-stat content-fly-in" style={`--callout-top: ${calloutTop}`}>
     <picture>
         {mobileImageSrc && <source media="(max-width: 767px)" srcset={mobileImageSrc} />}
         <img src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
     </picture>
-    <div class={`solutions-stat-divider__callout solutions-stat-divider__callout--${align}`}>
+    <div class={`split-frame-stat__callout split-frame-stat__callout--${align}`}>
         <CountUpValue
-            value={t(copy, 'stat_value', locale, fallbackValue)}
-            class="text-hero solutions-stat-divider__value solutions-stat-divider__value--lg"
+            value={t(copy, valueKey, locale, fallbackValue)}
+            class="text-hero split-frame-stat__value split-frame-stat__value--lg"
         />
         <CountUpValue
-            value={t(copy, 'stat_value', locale, fallbackValue)}
-            class="text-metrics solutions-stat-divider__value solutions-stat-divider__value--sm"
+            value={t(copy, valueKey, locale, fallbackValue)}
+            class="text-metrics split-frame-stat__value split-frame-stat__value--sm"
         />
-        <span class="text-body-p1 solutions-stat-divider__desc">
-            {t(copy, 'stat_description', locale, fallbackDescription)}
+        <span class="text-body-p1-1-25x split-frame-stat__desc">
+            {t(copy, descriptionKey, locale, fallbackDescription)}
         </span>
     </div>
 </div>
 
 <style>
-    .solutions-stat-divider {
+    .split-frame-stat {
         position: relative;
         display: grid;
-        width: 100%;
+        /* Viewport-relative full-bleed, not parent-padding-relative — this
+           component is dropped both inside a padded section (census, whose
+           parent already insets by --content-margin-inline) and directly on
+           the page (education, no padding to break out of). A
+           calc(100% + 2*margin)/negative-margin-inline trick only cancels
+           out correctly in the first case; in the second it pushes the
+           whole block past the viewport edge. 100vw + this centering margin
+           reaches the viewport edge exactly either way. */
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
         overflow: hidden;
     }
 
-    /* Transparent wrapper — lets .solutions-stat-divider img's grid-area
+    /* Transparent wrapper — lets .split-frame-stat img's grid-area
        placement reach through <picture> as if img were the direct grid
        child. */
-    .solutions-stat-divider picture {
+    .split-frame-stat picture {
         display: contents;
     }
 
-    .solutions-stat-divider img {
+    .split-frame-stat img {
         grid-area: 1 / 1;
         width: 100%;
         height: auto;
@@ -74,28 +93,33 @@ const {
         aspect-ratio: 2880 / 1000;
     }
 
-    /* solution-split-unlimited-seats.webp has a transparent/gradient zone
-       covering the top 23% of the asset, with the photo band filling the
-       bottom 77%. Center within that band (23% + 77%/2 = 61.5%), not the
-       full image height — same math as CensusToolFeaturesSection's
-       split-frame-callout, since this asset uses the same template. */
-    .solutions-stat-divider__callout {
+    .split-frame-stat__callout {
         position: absolute;
-        top: 61.5%;
+        top: var(--callout-top);
         transform: translateY(-50%);
         display: flex;
         flex-direction: column;
         gap: var(--space-3);
-        max-width: 40%;
+        max-width: 30%;
     }
 
-    .solutions-stat-divider__callout--right {
+    /* Wider below 1440px — 30% of a narrower frame leaves too little room
+       for the description before it wraps to too many lines. Still
+       overridden by the ≤767px block below, which drops the overlay layout
+       entirely. */
+    @media (max-width: 1439px) {
+        .split-frame-stat__callout {
+            max-width: 40%;
+        }
+    }
+
+    .split-frame-stat__callout--right {
         right: var(--content-margin-inline);
         align-items: flex-end;
         text-align: right;
     }
 
-    .solutions-stat-divider__callout--left {
+    .split-frame-stat__callout--left {
         left: var(--content-margin-inline);
         align-items: flex-start;
         text-align: left;
@@ -103,24 +127,24 @@ const {
 
     /* :global — these target CountUpValue's own <span>, which doesn't carry
        this component's scope attribute. */
-    :global(.solutions-stat-divider__value) {
+    :global(.split-frame-stat__value) {
         color: var(--text-primary);
     }
 
-    :global(.solutions-stat-divider__value--sm) {
+    :global(.split-frame-stat__value--sm) {
         display: none;
     }
 
-    .solutions-stat-divider__desc {
+    .split-frame-stat__desc {
         color: var(--text-secondary);
     }
 
     @media (max-width: 1023px) {
-        :global(.solutions-stat-divider__value--lg) {
+        :global(.split-frame-stat__value--lg) {
             display: none;
         }
 
-        :global(.solutions-stat-divider__value--sm) {
+        :global(.split-frame-stat__value--sm) {
             display: block;
         }
     }
@@ -128,23 +152,22 @@ const {
     @media (max-width: 767px) {
         /* Below the image instead of overlaid on it — the callout drops out
            of the grid stack into normal flow, centered under the photo. */
-        .solutions-stat-divider {
+        .split-frame-stat {
             display: flex;
             flex-direction: column;
             gap: 0;
         }
 
-        .solutions-stat-divider img {
-            /* No scale/zoom here (unlike the census split-frame) — this
-               mobile crop has the subject's hair touching the very top
-               edge with no headroom, so any upward-anchored zoom clips
-               straight into her hair against .solutions-stat-divider's
-               overflow: hidden. The image now displays uncropped at its
-               full aspect ratio, so no zoom is needed anyway. */
+        .split-frame-stat img {
+            /* No scale/zoom — how much headroom a mobile crop has above its
+               subject varies per photo, so any upward-anchored zoom risks
+               clipping into hair/hats against this container's overflow:
+               hidden. The image displays uncropped at its full aspect
+               ratio, so no zoom is needed anyway. */
             aspect-ratio: 1280 / 710;
         }
 
-        .solutions-stat-divider__callout {
+        .split-frame-stat__callout {
             position: static;
             transform: none;
             max-width: none;
@@ -155,8 +178,8 @@ const {
             padding-inline: var(--content-margin-inline);
         }
 
-        .solutions-stat-divider__callout--right,
-        .solutions-stat-divider__callout--left {
+        .split-frame-stat__callout--right,
+        .split-frame-stat__callout--left {
             right: auto;
             left: auto;
         }
@@ -179,7 +202,7 @@ const {
 <script>
     // The stat value (CountUpValue) triggers its own count-up independently,
     // on its own scroll-in observer — this only handles the block's fade/slide.
-    document.querySelectorAll<HTMLElement>('.solutions-stat-divider').forEach((el) => {
+    document.querySelectorAll<HTMLElement>('.split-frame-stat').forEach((el) => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {

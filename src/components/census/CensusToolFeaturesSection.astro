@@ -2,8 +2,7 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import CensusToolCard from './CensusToolCard.astro';
 import { icons } from '../../lib/icons/registry';
-import { t } from '../../lib/i18n/t';
-import CountUpValue from '../shared/CountUpValue.astro';
+import SplitFrameStat from '../shared/SplitFrameStat.astro';
 
 interface Props {
     locale: Locale;
@@ -233,68 +232,31 @@ const tools = [
                     (i === 1 ? (
                         <>
                             <div class="section-gap section-gap-lg" aria-hidden="true" />
-                            <div class="split-frame content-fly-in">
-                                <picture>
-                                    <source
-                                        media="(max-width: 767px)"
-                                        srcset={`${base}images/tools/census-tool/split-frame-1-mobile.webp`}
-                                    />
-                                    <img
-                                        src={`${base}images/tools/census-tool/split-frame-1.webp`}
-                                        alt=""
-                                        loading="lazy"
-                                    />
-                                </picture>
-                                <div class="split-frame-callout split-frame-callout--right">
-                                    <CountUpValue
-                                        value={t(copy, 'stat_callout_1_value', locale, '63%')}
-                                        class="text-hero-1-5x split-callout-value split-callout-value--lg"
-                                    />
-                                    <CountUpValue
-                                        value={t(copy, 'stat_callout_1_value', locale, '63%')}
-                                        class="text-metrics-1-5x split-callout-value split-callout-value--sm"
-                                    />
-                                    <span class="text-body-p1-1-25x split-callout-desc">
-                                        {t(
-                                            copy,
-                                            'stat_callout_1_description',
-                                            locale,
-                                            'In Toronto, 63% of women aged 18-34 make less than $40,000/year'
-                                        )}
-                                    </span>
-                                </div>
-                            </div>
+                            <SplitFrameStat
+                                locale={locale}
+                                copy={copy}
+                                imageSrc={`${base}images/tools/census-tool/split-frame-1.webp`}
+                                mobileImageSrc={`${base}images/tools/census-tool/split-frame-1-mobile.webp`}
+                                align="right"
+                                valueKey="stat_callout_1_value"
+                                fallbackValue="63%"
+                                descriptionKey="stat_callout_1_description"
+                                fallbackDescription="In Toronto, 63% of women aged 18-34 make less than $40,000/year"
+                            />
                             <div class="section-gap section-gap-lg" aria-hidden="true" />
                         </>
                     ) : i === 3 ? (
                         <>
                             <div class="section-gap section-gap-lg" aria-hidden="true" />
-                            <div class="split-frame content-fly-in">
-                                <picture>
-                                    <source
-                                        media="(max-width: 767px)"
-                                        srcset={`${base}images/tools/census-tool/split-frame-2-mobile.webp`}
-                                    />
-                                    <img
-                                        src={`${base}images/tools/census-tool/split-frame-2.webp`}
-                                        alt=""
-                                        loading="lazy"
-                                    />
-                                </picture>
-                                <div class="split-frame-callout split-frame-callout--left">
-                                    <CountUpValue
-                                        value={t(copy, 'stat_callout_2_value', locale, '')}
-                                        class="text-hero-1-5x split-callout-value split-callout-value--lg"
-                                    />
-                                    <CountUpValue
-                                        value={t(copy, 'stat_callout_2_value', locale, '')}
-                                        class="text-metrics-1-5x split-callout-value split-callout-value--sm"
-                                    />
-                                    <span class="text-body-p1-1-25x split-callout-desc">
-                                        {t(copy, 'stat_callout_2_description', locale, '')}
-                                    </span>
-                                </div>
-                            </div>
+                            <SplitFrameStat
+                                locale={locale}
+                                copy={copy}
+                                imageSrc={`${base}images/tools/census-tool/split-frame-2.webp`}
+                                mobileImageSrc={`${base}images/tools/census-tool/split-frame-2-mobile.webp`}
+                                align="left"
+                                valueKey="stat_callout_2_value"
+                                descriptionKey="stat_callout_2_description"
+                            />
                             <div class="section-gap section-gap-lg" aria-hidden="true" />
                         </>
                     ) : (
@@ -313,158 +275,6 @@ const tools = [
         flex-direction: column;
     }
 
-    .split-frame {
-        position: relative;
-        display: grid;
-        width: calc(100% + 2 * var(--content-margin-inline));
-        margin-inline: calc(-1 * var(--content-margin-inline));
-        overflow: hidden;
-    }
-
-    /* Transparent wrapper — lets .split-frame img's grid-area placement
-       reach through <picture> as if img were the direct grid child. */
-    .split-frame picture {
-        display: contents;
-    }
-
-    .split-frame img {
-        grid-area: 1 / 1;
-        width: 100%;
-        height: auto;
-        display: block;
-        /* Reserves the image's box immediately instead of collapsing to 0
-           height until the (loading="lazy") asset actually loads — without
-           this the callout below it visually overlaps/crops the image on
-           slower connections. Desktop asset is 2880x1000; the mobile source
-           swapped in below is a different ratio (1280x710). */
-        aspect-ratio: 2880 / 1000;
-    }
-
-    /* split-frame-1/2.webp have a transparent/white zone covering the top
-       23% of the asset, with the photo band filling the bottom 77%. Center
-       within that band (23% + 77%/2 = 61.5%), not the full image height. */
-    .split-frame-callout {
-        position: absolute;
-        top: 61.5%;
-        transform: translateY(-50%);
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-3);
-        max-width: 40%;
-    }
-
-    .split-frame-callout--right {
-        right: var(--content-margin-inline);
-        align-items: flex-end;
-        text-align: right;
-    }
-
-    /* split-frame-2.webp (unlike split-frame-1) has no transparent header
-       band — it's a fully opaque photo top-to-bottom, so its callout centers
-       on the full image height instead of the 61.5% band-center above. */
-    .split-frame-callout--left {
-        top: 50%;
-        left: var(--content-margin-inline);
-        align-items: flex-start;
-        text-align: left;
-    }
-
-    /* :global — these target CountUpValue's own <span>, which doesn't carry
-       this component's scope attribute. */
-    :global(.split-callout-value) {
-        color: var(--text-primary);
-    }
-
-    :global(.split-callout-value--sm) {
-        display: none;
-    }
-
-    .split-callout-desc {
-        color: var(--text-secondary);
-    }
-
-    @media (max-width: 1023px) {
-        :global(.split-callout-value--lg) {
-            display: none;
-        }
-
-        :global(.split-callout-value--sm) {
-            display: block;
-        }
-    }
-
-    @media (max-width: 767px) {
-        /* Below the image instead of overlaid on it — the callout drops out
-           of the grid stack into normal flow, centered under the photo. */
-        .split-frame {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .split-frame img {
-            /* No scale/zoom — depends on how much headroom each mobile crop
-               happens to have above the subject (split-frame-2's farmer has
-               less than split-frame-1), so any upward-anchored zoom risks
-               clipping into hair/hats against .split-frame's overflow:
-               hidden. The image now displays uncropped at its full aspect
-               ratio, so no zoom is needed anyway. */
-            aspect-ratio: 1280 / 710;
-        }
-
-        .split-frame-callout {
-            position: static;
-            transform: none;
-            max-width: none;
-            align-items: center;
-            text-align: center;
-            background: var(--surface-blue);
-            padding-block: var(--card-pad);
-            padding-inline: var(--content-margin-inline);
-        }
-
-        .split-frame-callout--right,
-        .split-frame-callout--left {
-            right: auto;
-            left: auto;
-        }
-    }
-
-    .content-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity var(--motion-duration-heading) ease,
-            transform var(--motion-duration-heading) var(--motion-ease-standard);
-    }
-
-    .content-fly-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    /* Split-frame stat callouts (formerly inlined here) now live in the
+       shared SplitFrameStat component — see src/components/shared/. */
 </style>
-
-<script>
-    // Each CensusToolCard observes and reveals itself (see its own script) —
-    // it also drives the stagger for its nested feature bullets, so that
-    // reveal can't land at a different scroll position than the card's own.
-    // Only the split-frame page-breakers are handled at this section level.
-    // The stat values inside them (CountUpValue) trigger their own count-up
-    // independently, on their own scroll-in observer.
-    document.querySelectorAll<HTMLElement>('.census-tool-features').forEach((section) => {
-        const contentObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        contentObserver.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.15 }
-        );
-        section.querySelectorAll<HTMLElement>('.content-fly-in').forEach((el) => {
-            contentObserver.observe(el);
-        });
-    });
-</script>
