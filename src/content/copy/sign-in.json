@@ -361,7 +361,7 @@
   },
   "register_hero_subtitle": {
     "key": "register_hero_subtitle",
-    "en": "To gain access through your employer's subscription please fill out the following registration form. Please use your Email address.",
+    "en": "To gain access through your employer's subscription please fill out the following registration form. Please use your work email address.",
     "fr": ""
   },
   "register_hero_form_first_name_label": {
@@ -386,12 +386,12 @@
   },
   "register_hero_form_email_label": {
     "key": "register_hero_form_email_label",
-    "en": "Email",
+    "en": "Work Email",
     "fr": ""
   },
   "register_hero_form_email_placeholder": {
     "key": "register_hero_form_email_placeholder",
-    "en": "Enter your email",
+    "en": "Enter your work email",
     "fr": ""
   },
   "register_hero_form_department_label": {
