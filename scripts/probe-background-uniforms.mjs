@@ -153,10 +153,10 @@ globalThis.ResizeObserver = class {
     disconnect() {}
 };
 
-const [file, containerId] = process.argv.slice(2);
+const [file, containerId, variant] = process.argv.slice(2);
 if (!file || !containerId) {
     console.error(
-        'Usage: node scripts/probe-background-uniforms.mjs <background-file> <containerId>'
+        'Usage: node scripts/probe-background-uniforms.mjs <background-file> <containerId> [variant]'
     );
     process.exit(1);
 }
@@ -170,13 +170,24 @@ const src =
 const probePath = `${dirname(file)}/.${basename(file)}.probe.mjs`;
 writeFileSync(probePath, src);
 
-let LiquidGradientEffect;
+let LiquidGradientEffect, VARIANTS;
 try {
-    ({ LiquidGradientEffect } = await import(pathToFileURL(resolve(probePath)).href));
+    ({ LiquidGradientEffect, VARIANTS } = await import(pathToFileURL(resolve(probePath)).href));
 } finally {
     unlinkSync(probePath);
 }
-const inst = new LiquidGradientEffect(containerId);
+
+// A merged background picks its config from VARIANTS by container attribute at
+// runtime; there is no DOM here, so the variant is named on the command line.
+let overrides = {};
+if (variant) {
+    if (!VARIANTS || !(variant in VARIANTS)) {
+        console.error(`Unknown variant "${variant}". Known: ${Object.keys(VARIANTS || {}).join(', ') || '(none exported)'}`);
+        process.exit(1);
+    }
+    overrides = VARIANTS[variant];
+}
+const inst = new LiquidGradientEffect(containerId, overrides);
 
 const plain = (uniforms) =>
     Object.fromEntries(
