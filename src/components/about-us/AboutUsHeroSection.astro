@@ -1,7 +1,7 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import ToolsHeroSection from '../tools/ToolsHeroSection.astro';
-import AboutUsBackground from './AboutUsBackground.astro';
+import LiquidGradientBackground from '../shared/LiquidGradientBackground.astro';
 
 interface Props {
     locale: Locale;
@@ -22,7 +22,7 @@ const base = import.meta.env.BASE_URL;
     descriptionFallback="MTM (Media Technology Monitor) is a continuous, bilingual research initiative that tracks how Canadians use media and technology — from streaming and social platforms to devices and emerging tech — across English and French Canada. Running since 2005, MTM exists so that understanding how Canadians actually use media doesn't require guesswork: broadcasters, advertisers, educators, and policymakers all plan around the same independent numbers."
 >
     <Fragment slot="background">
-        <AboutUsBackground id="webgl-background-about-us" />
+        <LiquidGradientBackground id="webgl-background-about-us" />
     </Fragment>
     <img
         slot="logo"

@@ -1,10 +1,10 @@
 /**
  * Liquid Gradient + Halftone Dither background.
  *
- * Serves both the sign-in family (sign-in, register, forgot-password,
- * contact) and about-us. Those were byte-identical files apart from four
- * config values, so the variants live in VARIANTS below and the container's
- * data-webgl-variant attribute picks one.
+ * Drives sign-in, register, forgot-password, contact and about-us — one
+ * configuration for all five. about-us previously carried its own near-copy of
+ * this file that differed only in switching purple and pink off; it now uses
+ * this palette unchanged.
  */
 
 import * as THREE from 'three';
@@ -15,7 +15,7 @@ import {
 } from './liquid-shaders.js';
 
 class LiquidGradientEffect {
-  constructor(containerId, overrides = {}) {
+  constructor(containerId) {
     this.config = {
       "warpAmp": 0.3,
       "sharpness": 6,
@@ -179,9 +179,6 @@ class LiquidGradientEffect {
       "showMotionGuides": false
     };
 
-    // Variant deltas land before the `=== undefined` backfills below, so a
-    // variant can set a key to 0 without the default overwriting it.
-    Object.assign(this.config, overrides);
     if (this.config.gradientSaturation === undefined) {
       this.config.gradientSaturation = 1.0;
     }
@@ -754,29 +751,14 @@ class LiquidGradientEffect {
   }
 }
 
-// Variant deltas. about-us switches purple and pink off entirely; its
-// colorPurple/colorPink are copies of blue/teal and never sampled at zero
-// influence, but they are kept so the two configs stay comparable.
-const VARIANTS = {
-  'sign-in': {},
-  'about-us': {
-    purpleInfluence: 0,
-    pinkInfluence: 0,
-    colorPurple: { r: 0.196, g: 0.392, b: 1 },
-    colorPink: { r: 0.196, g: 0.863, b: 0.784 },
-  },
-};
-
 function init() {
-  Object.entries(VARIANTS).forEach(([variant, overrides]) => {
-    document.querySelectorAll(`[data-webgl-variant="${variant}"]`).forEach((el) => {
-      if (!el.id) return;
-      try {
-        new LiquidGradientEffect(el.id, overrides);
-      } catch (error) {
-        console.error(`Failed to initialize container #${el.id}:`, error);
-      }
-    });
+  document.querySelectorAll('[data-webgl-variant="sign-in"]').forEach((el) => {
+    if (!el.id) return;
+    try {
+      new LiquidGradientEffect(el.id);
+    } catch (error) {
+      console.error(`Failed to initialize container #${el.id}:`, error);
+    }
   });
 }
 
@@ -785,5 +767,3 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
-
-export { VARIANTS };

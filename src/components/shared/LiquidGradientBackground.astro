@@ -1,0 +1,14 @@
+---
+// src/components/shared/LiquidGradientBackground.astro
+// WebGL liquid-gradient canvas container. Pair with
+// <LiquidGradientBackgroundScripts /> in the page's `scripts` slot to
+// initialize it (public/js/backgrounds/liquid-gradient-background.js).
+// Shared by sign-in, register, forgot-password, contact and about-us.
+interface Props {
+    id: string;
+}
+
+const { id } = Astro.props as Props;
+---
+
+<div id={id} class="webgl-background" data-webgl-variant="sign-in" aria-hidden="true"></div>

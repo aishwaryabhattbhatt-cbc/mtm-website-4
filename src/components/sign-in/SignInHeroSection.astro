@@ -4,7 +4,7 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
 import FormField from '../shared/FormField.astro';
-import SignInBackground from './SignInBackground.astro';
+import LiquidGradientBackground from '../shared/LiquidGradientBackground.astro';
 
 interface Props {
     locale: Locale;
@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <section class="sign-in-hero section-height-100">
-    <SignInBackground id="webgl-background-sign-in" />
+    <LiquidGradientBackground id="webgl-background-sign-in" />
 
     <div class="sign-in-hero__content">
         <div class="sign-in-hero__stack">
