@@ -192,6 +192,10 @@ const tabs = [
         will-change: opacity, transform;
     }
 
+    /* Restated locally: the global .is-visible in design-system.css has the same
+       specificity as this component's scoped base rule above, so on a tie the
+       component's `opacity: 0` wins on source order and the element never
+       reveals. */
     .heading-fly-in.is-visible {
         opacity: 1;
         transform: translateY(0);

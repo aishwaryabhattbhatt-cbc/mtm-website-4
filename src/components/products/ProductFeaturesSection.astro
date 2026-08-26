@@ -211,30 +211,15 @@ const TitleTag = compact ? 'h2' : 'h3';
         }
     }
 
-    .content-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity var(--motion-duration-heading) ease,
-            transform var(--motion-duration-heading) var(--motion-ease-standard);
-    }
-
-    .content-fly-in.is-visible {
+    /* Here `card-fly-in` is only a marker for the stagger observer to find —
+       the wrapper itself must never animate. Opt out of the global entrance in
+       design-system.css: on desktop the wrapper is display:contents, where
+       opacity/transform never paint anyway, but at <=1023px it becomes a grid
+       and would otherwise fade in on top of the children's own entrance. */
+    .product-feature-item.card-fly-in {
         opacity: 1;
-        transform: translateY(0);
-    }
-
-    .heading-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity var(--motion-duration-heading) ease,
-            transform var(--motion-duration-heading) var(--motion-ease-standard);
-    }
-
-    .heading-fly-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
+        transform: none;
+        transition: none;
     }
 
     /* Item wrapper is display:contents on desktop (see the grid-alignment

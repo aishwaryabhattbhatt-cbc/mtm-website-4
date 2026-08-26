@@ -276,19 +276,6 @@ const sampleStats = [
         }
     }
 
-    .heading-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity var(--motion-duration-heading) ease,
-            transform var(--motion-duration-heading) var(--motion-ease-standard);
-    }
-
-    .heading-fly-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
     /* Per-card entrance, staggered — same spring/duration/delay as the
        homepage Solutions cards (.solutions-card-fly-in). display:flex so this
        wrapper (the actual grid item) passes the grid's row-height stretch down
@@ -303,13 +290,17 @@ const sampleStats = [
             transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .card-fly-in > :global(*) {
-        flex: 1;
-    }
-
+    /* Restated locally: the global .is-visible in design-system.css has the same
+       specificity as this component's scoped base rule above, so on a tie the
+       component's `opacity: 0` wins on source order and the element never
+       reveals. */
     .card-fly-in.is-visible {
         opacity: 1;
         transform: translateY(0);
+    }
+
+    .card-fly-in > :global(*) {
+        flex: 1;
     }
 </style>
 

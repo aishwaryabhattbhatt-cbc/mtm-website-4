@@ -136,32 +136,6 @@ const reportDownloadHref = `${base}${locale}/insights/report-download/?from=${en
             gap: var(--space-4);
         }
     }
-
-    .heading-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity var(--motion-duration-heading) ease,
-            transform var(--motion-duration-heading) var(--motion-ease-standard);
-    }
-
-    .heading-fly-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .content-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity var(--motion-duration-heading) ease,
-            transform var(--motion-duration-heading) var(--motion-ease-standard);
-    }
-
-    .content-fly-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
 </style>
 
 <script>

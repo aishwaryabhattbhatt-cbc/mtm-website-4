@@ -341,34 +341,9 @@ function splitCallout(text: string): [string, string] {
         }
     }
 
-    .heading-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity var(--motion-duration-heading) ease,
-            transform var(--motion-duration-heading) var(--motion-ease-standard);
-    }
-
-    .heading-fly-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
     /* Per-row entrance, same spring/duration as the homepage Solutions cards
        (.solutions-card-fly-in) — no post-heading delay here since each row
        triggers independently as it scrolls into view, not all at once. */
-    .card-fly-in {
-        opacity: 0;
-        transform: translateY(1.625rem);
-        transition:
-            opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
-            transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .card-fly-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
 </style>
 
 <script>

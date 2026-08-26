@@ -246,6 +246,49 @@ html {
 }
 
 /* ============================================
+   SCROLL-IN ENTRANCES
+   ============================================
+   The three fly-in tiers. These used to be pasted, byte-identical, into every
+   section that animated — 120 copies across 32 components. They live here once
+   instead; a section adds the class and its own IntersectionObserver toggles
+   `is-visible`.
+
+   A section that needs more than the base entrance (a `display` the animation
+   must not clobber, a stagger delay, a different resting transform) still
+   declares that in its own `<style>` block. Astro scopes component rules with
+   an attribute selector, so those out-specify these and win — which is exactly
+   how the handful of existing exceptions keep working.
+
+   Careful with the visible state: `transform: none` and `translateY(0)` look
+   interchangeable but are not. `translateY(0)` creates a containing block, and
+   that stops any descendant's `backdrop-filter` from sampling what's behind
+   it. ResearchTabsSection overrides to `none` for precisely that reason. */
+
+.heading-fly-in,
+.content-fly-in {
+    opacity: 0;
+    transform: translateY(1.625rem);
+    transition:
+        opacity var(--motion-duration-heading) ease,
+        transform var(--motion-duration-heading) var(--motion-ease-standard);
+}
+
+.card-fly-in {
+    opacity: 0;
+    transform: translateY(1.625rem);
+    transition:
+        opacity var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1),
+        transform var(--motion-duration-card) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.heading-fly-in.is-visible,
+.content-fly-in.is-visible,
+.card-fly-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
    RESPONSIVE TYPOGRAPHY OVERRIDES
    ============================================ */
 
