@@ -153,8 +153,20 @@ const pageDescription = t(
     </Fragment>
 
     <Fragment slot="scripts">
-        <script is:inline src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
-        ></script>
+        {
+            /* Dev only: parses the sheet CSV for the live-reload in
+        runtime/script.js. getRuntimeCMSConfig withholds the sheet details in
+        production, so that refresh no-ops there and this was 45KB fetched from
+        a CDN for nothing on every page load. */
+        }
+        {
+            import.meta.env.DEV && (
+                <script
+                    is:inline
+                    src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"
+                />
+            )
+        }
         <script is:inline src={`${base}js/runtime/script.js`}></script>
     </Fragment>
 </Layout>

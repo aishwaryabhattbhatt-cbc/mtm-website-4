@@ -1,7 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 import { resolve } from 'path';
-import { getPageCMSConfig, getPublishedCsvUrl } from './config';
-import { fetchSheetDictionary } from './sheets';
+import { getPageCMSConfig } from './config';
 import type { CMSDictionary, PageCMSConfig } from './types';
 
 const inMemoryCache = new Map<string, CMSDictionary>();
@@ -61,44 +60,17 @@ export async function getPageDictionary(pageId: string): Promise<CMSDictionary> 
             }
             return mergedDict;
         } catch {
-            console.warn(
-                `[CMS] Failed to read local copy for "${pageId}", falling back to sheet fetch`
-            );
+            console.warn(`[CMS] Local copy for "${pageId}" is unreadable or invalid JSON.`);
         }
     }
 
-    // 2. Live sheet fetch (fallback when local file doesn't exist)
-    const config = getPageCMSConfig(pageId);
-    const csvUrl =
-        config.csvUrl ||
-        (config.sheetId && config.gid ? getPublishedCsvUrl(config.sheetId, config.gid) : undefined);
-
-    if (!csvUrl) {
-        console.warn(
-            `[CMS] No local copy and no sheet URL configured for "${pageId}". Run \`npm run sync-copy\`.`
-        );
-        return {};
-    }
-
-    try {
-        const dictionary = await fetchSheetDictionary(csvUrl);
-        const mergedDictionary = {
-            ...sharedDictionary,
-            ...seoDictionary,
-            ...altLabelsDictionary,
-            ...dictionary,
-        };
-        if (useInMemoryCache) {
-            inMemoryCache.set(pageId, mergedDictionary);
-        }
-        return mergedDictionary;
-    } catch (error) {
-        console.warn(
-            `[CMS] Failed to load page dictionary for "${pageId}". Run \`npm run sync-copy\` to create a local copy.`,
-            error
-        );
-        return {};
-    }
+    // No local copy: nothing more to try. `npm run sync-copy` writes one JSON
+    // per page and they are committed, so this is a missing-file problem rather
+    // than something to fetch around. Fetching the sheet at build time used to
+    // live here; it could not fire — every pageId a page actually asks for has
+    // a committed JSON — and it cost a runtime papaparse dependency.
+    console.warn(`[CMS] No local copy for "${pageId}". Run \`npm run sync-copy\` to create one.`);
+    return {};
 }
 
 export function getRuntimeCMSConfig(pageId: string): PageCMSConfig {

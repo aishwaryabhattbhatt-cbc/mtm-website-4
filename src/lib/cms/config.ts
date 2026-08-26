@@ -147,7 +147,3 @@ export function getPageCMSConfig(pageId: string): PageCMSConfig {
         refreshMs: getRefreshMs(),
     };
 }
-
-export function getPublishedCsvUrl(sheetId: string, gid: string): string {
-    return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`;
-}
