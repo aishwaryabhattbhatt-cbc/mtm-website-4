@@ -16,8 +16,9 @@
 // brightness-adjusted ones. Anything that drops that second pass leaves the
 // gradient washed out, and the diff here is the only place it shows up.
 
-import { readFileSync, writeFileSync } from 'fs';
-import { tmpdir } from 'os';
+import { readFileSync, writeFileSync, unlinkSync } from 'fs';
+import { dirname, basename, resolve } from 'path';
+import { pathToFileURL } from 'url';
 
 class Vector2 {
     constructor(x = 0, y = 0) {
@@ -164,10 +165,17 @@ if (!file || !containerId) {
 const src =
     readFileSync(file, 'utf8').replace(/^import \* as THREE from 'three';$/m, '') +
     '\nexport { LiquidGradientEffect };\n';
-const probePath = `${tmpdir()}/${file.replace(/[/.]/g, '_')}.probe.mjs`;
+// Written next to the original, not in a temp dir: the backgrounds now import
+// ./liquid-shaders.js relatively, and that only resolves from this directory.
+const probePath = `${dirname(file)}/.${basename(file)}.probe.mjs`;
 writeFileSync(probePath, src);
 
-const { LiquidGradientEffect } = await import(probePath);
+let LiquidGradientEffect;
+try {
+    ({ LiquidGradientEffect } = await import(pathToFileURL(resolve(probePath)).href));
+} finally {
+    unlinkSync(probePath);
+}
 const inst = new LiquidGradientEffect(containerId);
 
 const plain = (uniforms) =>
