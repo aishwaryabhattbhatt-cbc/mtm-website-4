@@ -40,7 +40,7 @@ const {
 } = Astro.props as Props;
 ---
 
-<section class="product-reports-section" id="reports">
+<section class="product-reports-section" id="reports" data-flyin>
     <div class="product-reports-headline heading-fly-in">
         <h2 data-copy-key="report_title">
             {t(copy, 'report_title', locale, 'Reports')}
@@ -86,27 +86,3 @@ const {
         margin: 0;
     }
 </style>
-
-<script>
-    // Heading observes itself, not the outer section — a threshold is a
-    // fraction of the target's own area, so watching the whole section
-    // skews the trigger point once it's taller than the heading inside it.
-    // The Reports block below (report card / stat cards / action card) now
-    // stages its own per-row reveals in Reports.astro instead of fading in
-    // as one block here.
-    document.querySelectorAll<HTMLElement>('.product-reports-section').forEach((section) => {
-        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
-        if (heading) {
-            const headingObserver = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        heading.classList.add('is-visible');
-                        headingObserver.disconnect();
-                    }
-                },
-                { threshold: 0.15 }
-            );
-            headingObserver.observe(heading);
-        }
-    });
-</script>

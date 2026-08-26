@@ -95,5 +95,9 @@ const resolvedAlternateFr = alternates.fr ? toAbsoluteUrl(Astro.site, alternates
     <body>
         <slot />
         <slot name="scripts" />
+        <script>
+            // Shared scroll-in entrances for any section marked data-flyin.
+            import '../scripts/flyin';
+        </script>
     </body>
 </html>

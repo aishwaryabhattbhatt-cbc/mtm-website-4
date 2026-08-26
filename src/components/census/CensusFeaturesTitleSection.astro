@@ -10,7 +10,7 @@ interface Props {
 const { locale, copy } = Astro.props;
 ---
 
-<section class="census-features-title">
+<section class="census-features-title" data-flyin>
     <h2 class="heading-fly-in" data-copy-key="census_tool_features">
         {t(copy, 'census_tool_features', locale, 'Tool Features')}
     </h2>
@@ -22,20 +22,3 @@ const { locale, copy } = Astro.props;
         padding: 0 var(--content-margin-inline);
     }
 </style>
-
-<script>
-    document.querySelectorAll<HTMLElement>('.census-features-title').forEach((section) => {
-        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
-        if (!heading) return;
-        const headingObserver = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    heading.classList.add('is-visible');
-                    headingObserver.disconnect();
-                }
-            },
-            { threshold: 0.15 }
-        );
-        headingObserver.observe(heading);
-    });
-</script>
