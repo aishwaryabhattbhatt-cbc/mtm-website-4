@@ -238,7 +238,9 @@ const base = import.meta.env.BASE_URL;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--space-9);
+        /* Matches contact's heading-to-card gap so the four form pages space
+           their description and form identically. */
+        gap: var(--space-6);
         width: 100%;
     }
 
@@ -311,6 +313,9 @@ const base = import.meta.env.BASE_URL;
         text-align: left;
         color: var(--text-secondary);
         white-space: pre-line;
+        /* Restores the --space-9 separation this had before the stack gap
+           tightened to --space-6 for the description-to-form rule above. */
+        margin-top: var(--space-6);
     }
 
     .register-hero__note a {
@@ -323,6 +328,9 @@ const base = import.meta.env.BASE_URL;
         max-width: 37.5rem;
         text-align: left;
         color: var(--text-secondary);
+        /* Restores the --space-9 separation this had before the stack gap
+           tightened to --space-6 for the description-to-form rule above. */
+        margin-top: var(--space-6);
     }
 
     .register-hero__signin a {

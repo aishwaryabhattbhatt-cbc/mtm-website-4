@@ -222,7 +222,9 @@ const base = import.meta.env.BASE_URL;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--space-9);
+        /* Matches contact's heading-to-card gap so the four form pages space
+           their description and form identically. */
+        gap: var(--space-6);
         width: 100%;
     }
 
@@ -246,6 +248,9 @@ const base = import.meta.env.BASE_URL;
         width: 100%;
         max-width: 37.5rem;
         text-align: center;
+        /* Restores the --space-9 separation this had before the stack gap
+           tightened to --space-6 for the description-to-form rule above. */
+        margin-top: var(--space-6);
     }
 
     .sign-in-hero__register-text {
