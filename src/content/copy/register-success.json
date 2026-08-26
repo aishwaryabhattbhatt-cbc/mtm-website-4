@@ -61,12 +61,12 @@
   },
   "request_demo_hero_form_email_label": {
     "key": "request_demo_hero_form_email_label",
-    "en": "Work Email",
+    "en": "Email",
     "fr": ""
   },
   "request_demo_hero_form_email_placeholder": {
     "key": "request_demo_hero_form_email_placeholder",
-    "en": "john@workmail.com",
+    "en": "Enter your email",
     "fr": ""
   },
   "request_demo_hero_form_org_label": {
@@ -316,7 +316,7 @@
   },
   "contact_email_placeholder": {
     "key": "contact_email_placeholder",
-    "en": "john@workmail.com",
+    "en": "Enter your email",
     "fr": ""
   },
   "contact_message_label": {
@@ -361,7 +361,7 @@
   },
   "register_hero_subtitle": {
     "key": "register_hero_subtitle",
-    "en": "To gain access through your employer's subscription please fill out the following registration form. Please use your work email address.",
+    "en": "To gain access through your employer's subscription please fill out the following registration form. Please use your Email address.",
     "fr": ""
   },
   "register_hero_form_first_name_label": {
@@ -386,12 +386,12 @@
   },
   "register_hero_form_email_label": {
     "key": "register_hero_form_email_label",
-    "en": "Work Email",
+    "en": "Email",
     "fr": ""
   },
   "register_hero_form_email_placeholder": {
     "key": "register_hero_form_email_placeholder",
-    "en": "john@workmail.com",
+    "en": "Enter your email",
     "fr": ""
   },
   "register_hero_form_department_label": {
@@ -481,7 +481,7 @@
   },
   "sign_in_hero_form_email_placeholder": {
     "key": "sign_in_hero_form_email_placeholder",
-    "en": "john@workmail.com",
+    "en": "Enter your email",
     "fr": ""
   },
   "sign_in_hero_form_password_label": {
@@ -536,7 +536,7 @@
   },
   "forgot_password_hero_form_email_placeholder": {
     "key": "forgot_password_hero_form_email_placeholder",
-    "en": "john@workmail.com",
+    "en": "Enter your email",
     "fr": ""
   },
   "forgot_password_hero_form_submit": {
@@ -591,12 +591,12 @@
   },
   "report_download_email_label": {
     "key": "report_download_email_label",
-    "en": "Work Email",
+    "en": "Email",
     "fr": ""
   },
   "report_download_email_placeholder": {
     "key": "report_download_email_placeholder",
-    "en": "john@workmail.com",
+    "en": "Enter your email",
     "fr": ""
   },
   "report_download_organisation_label": {

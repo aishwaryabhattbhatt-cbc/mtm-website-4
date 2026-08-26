@@ -326,12 +326,12 @@
   },
   "footer_cta_email_label": {
     "key": "footer_cta_email_label",
-    "en": "Work email",
+    "en": "Email",
     "fr": ""
   },
   "footer_cta_email_placeholder": {
     "key": "footer_cta_email_placeholder",
-    "en": "Enter your work email",
+    "en": "Enter your email",
     "fr": ""
   },
   "form_email_error_message": {
