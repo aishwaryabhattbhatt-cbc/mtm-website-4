@@ -476,12 +476,12 @@
   },
   "sign_in_hero_form_email_label": {
     "key": "sign_in_hero_form_email_label",
-    "en": "Email",
+    "en": "Registered Email",
     "fr": ""
   },
   "sign_in_hero_form_email_placeholder": {
     "key": "sign_in_hero_form_email_placeholder",
-    "en": "Enter your email",
+    "en": "Enter your registered email",
     "fr": ""
   },
   "sign_in_hero_form_password_label": {
@@ -531,12 +531,12 @@
   },
   "forgot_password_hero_form_email_label": {
     "key": "forgot_password_hero_form_email_label",
-    "en": "Email",
+    "en": "Registered Email",
     "fr": ""
   },
   "forgot_password_hero_form_email_placeholder": {
     "key": "forgot_password_hero_form_email_placeholder",
-    "en": "Enter your email",
+    "en": "Enter your registered email",
     "fr": ""
   },
   "forgot_password_hero_form_submit": {
