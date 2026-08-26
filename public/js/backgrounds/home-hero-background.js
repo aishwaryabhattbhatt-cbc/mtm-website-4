@@ -8,6 +8,7 @@ import {
     fragmentShaderLiquid,
     fragmentShaderDither,
 } from './liquid-shaders.js';
+import { rescaleZonesForAspect } from './aspect-zones.js';
 
 class LiquidGradientEffect {
   constructor(containerId = 'webgl-background-11') {
@@ -208,8 +209,6 @@ class LiquidGradientEffect {
       { index: 10, key: 'white3', label: 'White 3', defaultCenterX: -0.85, defaultCenterY: 0.0 }
     ];
     this.ensureMovementZoneConfig();
-    this._computeAspectFractions();
-    this._rescaleZonesForAspect(window.innerWidth / window.innerHeight);
 
     this.layerToggles = {
       liquidGradient: true,
@@ -237,6 +236,8 @@ class LiquidGradientEffect {
     // leaves the bottom of the section without a background.
     const initW = this.container.clientWidth || window.innerWidth;
     const initH = this.container.clientHeight || window.innerHeight;
+    // Container-derived, matching what uRes below is built from.
+    rescaleZonesForAspect(this.config, initW / initH);
     this.renderer.setSize(initW, initH);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.container.appendChild(this.renderer.domElement);
@@ -415,7 +416,7 @@ class LiquidGradientEffect {
       this.guideCanvas.width = w;
       this.guideCanvas.height = h;
     }
-    this._rescaleZonesForAspect(w / h);
+    rescaleZonesForAspect(this.config, w / h);
   }
 
   createMotionGuideOverlay() {
@@ -686,35 +687,7 @@ class LiquidGradientEffect {
     if (this.config.colorGroupInfluence === undefined) this.config.colorGroupInfluence = 1.0;
   }
 
-  // Capture viewport-fraction form of blob X positions from the in-code defaults.
-  // refAspect (1.6) is the aspect ratio the config was tuned for (1440×900).
-  // blue2/teal2/purple2/pink2 are intentionally parked off-screen and excluded.
-  _computeAspectFractions() {
-    this._refAspect = 1.6;
-    const halfSpan = this._refAspect / 2;
-    this._aspectBlobs = ['white1', 'blue', 'teal', 'purple', 'pink', 'white2', 'white3'];
-    this._aspectFractions = {};
-    for (const key of this._aspectBlobs) {
-      this._aspectFractions[key] = {
-        centerXFrac: this.config[`${key}ZoneCenterX`] / halfSpan,
-        halfWidthFrac: this.config[`${key}ZoneHalfWidth`] / halfSpan
-      };
-    }
-  }
 
-  // Re-anchor blob X positions to the current aspect ratio.
-  // Math.min(aspect, refAspect) means any viewport wider than the reference
-  // (all normal desktops) produces the exact original config values — no change.
-  // Narrower viewports (tablets, phones) scale proportionally so blobs stay on-screen.
-  _rescaleZonesForAspect(aspect) {
-    const effectiveAspect = Math.min(aspect, this._refAspect);
-    const halfSpan = effectiveAspect / 2;
-    for (const key of this._aspectBlobs) {
-      const frac = this._aspectFractions[key];
-      this.config[`${key}ZoneCenterX`] = frac.centerXFrac * halfSpan;
-      this.config[`${key}ZoneHalfWidth`] = frac.halfWidthFrac * halfSpan;
-    }
-  }
 
   updateCenterPositions() {
     const t = this.uniformsLiquid.uTime.value * this.config.speed;

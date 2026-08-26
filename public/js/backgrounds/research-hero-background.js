@@ -8,6 +8,7 @@ import {
     fragmentShaderLiquid,
     fragmentShaderDither,
 } from './liquid-shaders.js';
+import { rescaleZonesForAspect } from './aspect-zones.js';
 
 class LiquidGradientEffect {
   constructor(containerId = 'webgl-background-10') {
@@ -245,6 +246,8 @@ class LiquidGradientEffect {
     // leaves the bottom of the section without a background.
     const initW = this.container.clientWidth || window.innerWidth;
     const initH = this.container.clientHeight || window.innerHeight;
+    // Container-derived, matching what uRes below is built from.
+    rescaleZonesForAspect(this.config, initW / initH);
     this.renderer.setSize(initW, initH);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.container.appendChild(this.renderer.domElement);
@@ -423,6 +426,7 @@ class LiquidGradientEffect {
       this.guideCanvas.width = w;
       this.guideCanvas.height = h;
     }
+    rescaleZonesForAspect(this.config, w / h);
   }
 
   createMotionGuideOverlay() {
