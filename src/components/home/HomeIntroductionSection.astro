@@ -67,15 +67,15 @@ const { locale, copy } = Astro.props as Props;
         position: relative;
         margin-top: 0 !important;
         width: 100%;
-        /* Fill the screen above 900px viewport height; below that, hold at a
-           900px floor instead of shrinking further. Still grows past either
+        /* Fill the screen above 700px viewport height; below that, hold at a
+           700px floor instead of shrinking further. Still grows past either
            if content ever needs more — a hard height would clip it. */
         height: auto;
-        min-height: calc(max(100vh, 900px) - var(--navbar-height));
+        min-height: calc(max(100vh, 700px) - var(--navbar-height));
         /* svh line after vh: mobile browsers that support svh use it (avoids
            overflowing behind the address bar on load); older browsers treat
            the svh calc as invalid and keep the vh line above. */
-        min-height: calc(max(100svh, 900px) - var(--navbar-height));
+        min-height: calc(max(100svh, 700px) - var(--navbar-height));
         display: flex;
         flex-direction: column;
         justify-content: center;

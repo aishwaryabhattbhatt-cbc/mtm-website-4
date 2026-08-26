@@ -425,11 +425,10 @@ const tabs = [
         text-align: center;
         opacity: 0.85;
         overflow: hidden;
-        /* Same drop-shadow as the tab-2 variable badges below (box-shadow
-           tokens all carry a spread-radius, which filter: drop-shadow()
-           doesn't support — hence the literal value here, matching that
-           existing exception rather than introducing a mismatched one). */
-        filter: drop-shadow(0 2px 4px rgba(27, 28, 29, 0.16));
+        /* Same drop-shadow as the tab-2 variable badges below. --shadow-badge
+           is the one shadow token without a spread-radius, which is why it's
+           the only one filter: drop-shadow() accepts. */
+        filter: drop-shadow(var(--shadow-badge));
         transition:
             left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
             top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -486,7 +485,7 @@ const tabs = [
         background-size: 100% 100%;
         border: none;
         border-radius: var(--radius-s);
-        filter: drop-shadow(0 2px 4px rgba(27, 28, 29, 0.16));
+        filter: drop-shadow(var(--shadow-badge));
         opacity: 1;
         display: flex;
         align-items: center;

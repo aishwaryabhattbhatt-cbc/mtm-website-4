@@ -186,15 +186,16 @@ function badgeEntryStyle(badge: CollageBadge) {
     .hero-section.home-section-1 {
         position: relative;
         margin-bottom: 0 !important;
-        /* Same height contract as home-section-2: fill the screen when the
-           viewport is ≥ 900px tall, hold a 900px floor below that. min-height
-           (not height) so content can still grow it rather than clip.
+        /* Fill the screen when the viewport is ≥ 700px tall, hold a 700px
+           floor below that. min-height (not height) so content can still
+           grow it rather than clip. Kept in step with home-section-2, which
+           holds the same floor.
            svh line after vh: mobile browsers that support svh use it (avoids
            overflowing behind the address bar on load); older browsers treat
            the svh calc as invalid and keep the vh line above. */
         height: auto;
-        min-height: calc(max(100vh, 900px) - var(--navbar-height));
-        min-height: calc(max(100svh, 900px) - var(--navbar-height));
+        min-height: calc(max(100vh, 700px) - var(--navbar-height));
+        min-height: calc(max(100svh, 700px) - var(--navbar-height));
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -365,7 +366,9 @@ function badgeEntryStyle(badge: CollageBadge) {
         background-repeat: no-repeat;
         background-size: 100% 100%;
         border-radius: var(--radius-s);
-        box-shadow: var(--shadow-eyebrow);
+        /* drop-shadow, not box-shadow: the panel SVG is inset ~4% inside its
+           box, so a box-shadow paints proud of the visible white panel. */
+        filter: drop-shadow(var(--shadow-badge));
         /* Grow/appear in place, matching ProductsHeroSection's badge entrance
            minus its infinite orbit-float loop. script.js sets each badge's
            animation-delay once the rest of the collage has settled, then
@@ -551,7 +554,7 @@ function badgeEntryStyle(badge: CollageBadge) {
     @media (max-width: 1023px) {
         /* screen height is a minimum, not a cap — the collage may extend past it */
         .hero-section.home-section-1 {
-            /* column mode keeps top-down block flow, no 900px floor */
+            /* column mode keeps top-down block flow, no 700px floor */
             display: block;
             height: auto;
             min-height: var(--section-height-100);

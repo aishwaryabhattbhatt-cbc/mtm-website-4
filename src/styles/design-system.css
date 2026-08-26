@@ -234,6 +234,10 @@ html {
         0 77px 22px 0 rgba(0, 0, 0, 0);
     --shadow-card: 0 12px 26px 0 rgba(0, 0, 0, 0.1), 0 47px 47px 0 rgba(0, 0, 0, 0.09);
     --shadow-eyebrow: 0 4px 3px rgba(0, 0, 0, 0.1); /* Figma: node 322-35442 */
+    /* No spread value — usable in filter: drop-shadow(), which (unlike
+       box-shadow) follows the element's real alpha. Used by the icon badges,
+       whose panel SVG has a transparent margin inside its box. */
+    --shadow-badge: 0 2px 4px rgba(27, 28, 29, 0.16);
 
     /* === Motion ===
        Scroll/page-load entrance tokens. Two duration tiers by element weight —
