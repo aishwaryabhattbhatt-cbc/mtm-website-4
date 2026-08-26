@@ -335,8 +335,11 @@ const base = import.meta.env.BASE_URL;
 
     @media (max-width: 1023px) {
         .sign-in-hero {
+            /* Hug the content from portrait tablet down. .section-height-100
+               floors every viewport at 100vh — the token has no mobile
+               variant — which left a tall empty gap under a short form. */
             height: auto;
-            min-height: var(--section-height-100);
+            min-height: auto;
             margin-top: 0;
         }
     }
@@ -344,7 +347,9 @@ const base = import.meta.env.BASE_URL;
     @media (max-width: 767px) {
         .sign-in-hero {
             align-items: flex-start;
-            padding: var(--space-11) var(--content-margin-inline) var(--space-9);
+            /* Symmetric: bottom matches top now that the section hugs its
+               content and the old floor is not absorbing the difference. */
+            padding: var(--space-11) var(--content-margin-inline);
         }
 
         .sign-in-hero__intro {
