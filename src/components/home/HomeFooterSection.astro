@@ -443,7 +443,7 @@ const footerMenus = [
                 </a>
 
                 <div
-                    class="home-footer__footer-policies home-footer__footer-policies--mobile text-body-p2"
+                    class="home-footer__footer-policies home-footer__footer-policies--mobile text-body-p3"
                 >
                     <a href={`${base}${locale}/contact/`}
                         >{t(copy, 'footer_site_policies_label', locale, 'Site Policies')}</a
@@ -459,7 +459,7 @@ const footerMenus = [
         </div>
 
         <div class="home-footer__footer-meta">
-            <p class="home-footer__footer-copyright text-body-p2">
+            <p class="home-footer__footer-copyright text-body-p3">
                 © {currentYear}{' '}
                 {
                     t(
@@ -471,7 +471,7 @@ const footerMenus = [
                 }
             </p>
 
-            <div class="home-footer__footer-policies text-body-p2">
+            <div class="home-footer__footer-policies text-body-p3">
                 <a href={`${base}${locale}/contact/`}
                     >{t(copy, 'footer_site_policies_label', locale, 'Site Policies')}</a
                 >
@@ -865,8 +865,18 @@ const footerMenus = [
             gap: var(--space-5);
         }
 
+        /* Matches the navbar logo. That one is sized by height (40px on
+           .logo-image), so this switches from width- to height-driven here —
+           a rem value would not line up, since the root drops to 14px at this
+           breakpoint while the navbar stays on a pixel height. */
         .home-footer__footer-logo {
-            width: 6.625rem;
+            width: auto;
+            height: 40px;
+        }
+
+        .home-footer__footer-logo img {
+            width: auto;
+            height: 100%;
         }
 
         .home-footer__footer-address {

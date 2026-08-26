@@ -355,6 +355,14 @@ const base = import.meta.env.BASE_URL;
         .sign-in-hero__card {
             padding: var(--space-6);
         }
+
+        /* Matches the Log In button above it. That one fills the form card's
+           content box, so it stops one card-padding short of the column on
+           each side; this sits outside the card, so it insets by the same
+           amount to line up with it. */
+        .sign-in-hero__register-cta {
+            width: calc(100% - 2 * var(--space-6));
+        }
     }
 </style>
 
