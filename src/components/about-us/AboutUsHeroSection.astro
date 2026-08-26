@@ -66,11 +66,43 @@ const base = import.meta.env.BASE_URL;
             padding-top: var(--space-9);
             padding-bottom: var(--space-9);
         }
+
+        /* The frosted panel below sits inside .tools-hero__text, which animates
+           with `forwards` and so keeps an identity transform afterwards — and
+           a transformed ancestor stops backdrop-filter sampling anything.
+           About Us fades that block without moving it; the slide is only
+           decorative and the blur is the point here. */
+        :global(.tools-hero--blue .tools-hero__text) {
+            animation-name: about-us-hero-fade;
+        }
+
+        /* Frosted panel, following the research tabs card and the footer CTA.
+           Mobile only: on desktop this text sits on plain white and needs no
+           separation from the background.
+
+           Blurred harder than those two (24px against 10px) on purpose. They
+           sit over the gradient at its most saturated; this panel covers most
+           of a narrow hero where the gradient is faint, so the softer blur
+           read as a flat white box. */
+        :global(.tools-hero--blue .tools-hero__description) {
+            padding: var(--card-pad);
+            border-radius: var(--layout-card-radius);
+            background: var(--surface-white);
+        }
     }
 
     .about-us-hero-logo {
         height: var(--icon-4xl);
         width: auto;
         display: block;
+    }
+
+    @keyframes about-us-hero-fade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 </style>

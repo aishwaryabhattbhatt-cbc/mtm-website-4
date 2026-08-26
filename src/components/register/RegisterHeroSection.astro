@@ -139,43 +139,51 @@ const base = import.meta.env.BASE_URL;
                 </form>
             </div>
 
-            <p class="text-body-p3 register-hero__note hero-fade-in" style="animation-delay: 0.3s">
-                <span data-copy-key="register_hero_form_note">
-                    {
-                        t(
-                            copy,
-                            'register_hero_form_note',
-                            locale,
-                            "Once the registration form is complete you'll receive your login details by email.\nIf nothing is received, please check your spam/junk folder.\nIf your email domain is not recognized or if you have questions,"
-                        )
-                    }
-                </span>{' '}
-                <a href={`${base}${locale}/contact/`} data-copy-key="register_hero_form_note_cta">
-                    {t(copy, 'register_hero_form_note_cta', locale, 'Contact Us')}
-                </a>
-            </p>
-
-            <p
-                class="text-body-p3 register-hero__signin hero-fade-in"
-                style="animation-delay: 0.4s"
-            >
-                <span data-copy-key="register_hero_form_has_account_text">
-                    {
-                        t(
-                            copy,
-                            'register_hero_form_has_account_text',
-                            locale,
-                            'Already have an account?'
-                        )
-                    }
-                </span>{' '}
-                <a
-                    href={`${base}${locale}/sign-in/`}
-                    data-copy-key="register_hero_form_has_account_cta"
+            <div class="register-hero__below">
+                <p
+                    class="text-body-p3 register-hero__note hero-fade-in"
+                    style="animation-delay: 0.3s"
                 >
-                    {t(copy, 'register_hero_form_has_account_cta', locale, 'Sign In')}
-                </a>
-            </p>
+                    <span data-copy-key="register_hero_form_note">
+                        {
+                            t(
+                                copy,
+                                'register_hero_form_note',
+                                locale,
+                                "Once the registration form is complete you'll receive your login details by email.\nIf nothing is received, please check your spam/junk folder.\nIf your email domain is not recognized or if you have questions,"
+                            )
+                        }
+                    </span>{' '}
+                    <a
+                        href={`${base}${locale}/contact/`}
+                        data-copy-key="register_hero_form_note_cta"
+                    >
+                        {t(copy, 'register_hero_form_note_cta', locale, 'Contact Us')}
+                    </a>
+                </p>
+
+                <p
+                    class="text-body-p3 register-hero__signin hero-fade-in"
+                    style="animation-delay: 0.4s"
+                >
+                    <span data-copy-key="register_hero_form_has_account_text">
+                        {
+                            t(
+                                copy,
+                                'register_hero_form_has_account_text',
+                                locale,
+                                'Already have an account?'
+                            )
+                        }
+                    </span>{' '}
+                    <a
+                        href={`${base}${locale}/sign-in/`}
+                        data-copy-key="register_hero_form_has_account_cta"
+                    >
+                        {t(copy, 'register_hero_form_has_account_cta', locale, 'Sign In')}
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
 </section>
@@ -306,6 +314,13 @@ const base = import.meta.env.BASE_URL;
         text-align: center;
     }
 
+    /* Box only on mobile, where it becomes the frosted panel. Everywhere else
+       it dissolves so note and sign-in stay direct children of the stack and
+       keep the stack's own spacing. */
+    .register-hero__below {
+        display: contents;
+    }
+
     .register-hero__note {
         margin: 0;
         width: 100%;
@@ -352,6 +367,20 @@ const base = import.meta.env.BASE_URL;
         .register-hero__row {
             flex-direction: column;
             gap: var(--space-5);
+        }
+
+        /* Frosted panel, matching the research tabs card and the footer CTA.
+           Mobile only: on desktop this text sits on plain white and needs no
+           separation from the background. */
+        .register-hero__below {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+            padding: var(--card-pad);
+            border-radius: var(--layout-card-radius);
+            border: var(--stroke-1) solid color-mix(in srgb, var(--surface-white) 37%, transparent);
+            background: color-mix(in srgb, var(--surface-white) 39%, transparent);
+            backdrop-filter: blur(10px);
         }
     }
 </style>
