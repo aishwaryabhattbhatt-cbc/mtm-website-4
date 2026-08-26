@@ -283,6 +283,15 @@ const tabs = [
         flex-direction: column;
         gap: var(--space-8);
         flex: 1 1 auto;
+        /* Glass card wrapping the heading and the tabs panel, matching the
+           footer CTA card. Applies at every width — the column layout below
+           1024px keeps the same single card rather than splitting it per
+           tab. */
+        padding: var(--card-pad);
+        border-radius: var(--layout-card-radius);
+        border: var(--stroke-1) solid color-mix(in srgb, var(--surface-white) 37%, transparent);
+        background: color-mix(in srgb, var(--surface-white) 39%, transparent);
+        backdrop-filter: blur(10px);
         /* No min-width: 0 here on purpose — .heading is white-space: nowrap,
            and the default flex min-width: auto keeps this column from ever
            shrinking narrower than the nowrap heading needs. Without it the
@@ -331,16 +340,7 @@ const tabs = [
         transition: height var(--tab-progress-duration) linear;
     }
 
-    /* Row mode: glass card wraps heading + tabs panel, matching the footer CTA card */
     @media (min-width: 1024px) {
-        .left-text {
-            padding: var(--card-pad);
-            border-radius: var(--layout-card-radius);
-            border: var(--stroke-1) solid color-mix(in srgb, var(--surface-white) 37%, transparent);
-            background: color-mix(in srgb, var(--surface-white) 39%, transparent);
-            backdrop-filter: blur(10px);
-        }
-
         .tabs-panel {
             /* left-text's own card padding already insets the panel by
                1x card-pad; add one more so text clears the progress bar
