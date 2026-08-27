@@ -1,0 +1,395 @@
+<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/about-us/ -->
+
+![MTM - Media Technology Monitor](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/mtm-logo.svg)
+
+# About the MTM
+
+MTM (Media Technology Monitor) is a continuous, bilingual research initiative that tracks how Canadians use media and technology — from streaming and social platforms to devices and emerging tech — across English and French Canada. Running since 2005, MTM exists so that understanding how Canadians actually use media doesn't require guesswork: broadcasters, advertisers, educators, and policymakers all plan around the same independent numbers.
+
+## What makes the data reliable
+
+Scale
+
+12,000+ Canadians surveyed twice a year — enough sample to break down by niche demographics.
+
+Recency
+
+Refreshed every spring and fall, so the numbers reflect how Canadians use media right now.
+
+Coverage
+
+5,000+ variables across demographics, devices, and platforms — one dataset, not a patchwork of surveys.
+
+Comparability
+
+The same core methodology every wave since 2005, so trend claims actually hold up.
+
+## Timeline
+
+Every wave since 2005 uses the same core methodology, so a claim about how Canadian media habits shifted can be traced to an exact year.
+
+1. 2005
+
+   MTM launches
+
+   An annual fall survey of 8,000 Canadians, gathering media and technology data by landline telephone.
+
+2. 2010
+
+   Spring wave added
+
+   The annual sample grows to 12,000 Canadians across fall and spring waves — the release cadence still used today.
+
+3. 2011
+
+   MTM Portal launches
+
+   MTM data becomes available online for the first time, giving users direct access to survey findings.
+
+4. 2012
+
+   Cell-phone-only households added
+
+   The sample is updated to keep pace with how Canadians were actually reachable by phone, as landlines gave way to mobile.
+
+5. 2015
+
+   10th anniversary
+
+   The interactive Trending Tool and Forecasting Tool launch, unlocking 1,500+ data points for exploration.
+
+6. 2019
+
+   MTM Jr. launches
+
+   Coverage extends to Canadians aged 2–17, with additional EDI questions added to the survey.
+
+7. 2021
+
+   MTM Newcomers launches
+
+   A dedicated survey reaches Canadians new to the country, while the sample also expands to include Northern Canada and a booster sample of Indigenous respondents.
+
+8. 2022
+
+   MTM Jr. sample grows
+
+   The MTM Jr. sample expands, sharpening the picture of media habits among younger Canadians.
+
+9. 2023
+
+   70+ reports released
+
+   Data from across the year turns into reports and infographics, making insights easier to share and act on.
+
+10. 2024
+
+    YourData tool launches
+
+    Users can create high quality, report ready tables and charts themselves directly on the Portal.
+
+11. 2025
+
+    MTM Census Tool launches
+
+    Census data becomes directly explorable within the Portal.
+
+12. 2026
+
+    Census Tool 2.0 & AskMTM
+
+    An upgraded Census Tool arrives alongside a new AI chatbot, making it faster to find answers within MTM's data.
+
+13. Today
+
+    [Reach out to us today!](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/request-demo/)
+
+## News
+
+Stay up to date with the latest MTM findings, product updates, and timely analysis on media and technology trends across Canada.
+
+Media in Canada
+
+Mar 26, 2026
+
+---
+
+MTM 18+
+
+MTM: Canadian newcomers seeking jobs online, pursuing degrees
+
+[Read](https://mediaincanada.com/2025/03/26/newcomers-canada-mtm-report/)
+
+Radio-Canada
+
+Mar 5, 2026
+
+---
+
+MTM 18+
+
+MTM 18+ fall 2025 data is here
+
+[Read](https://cbc.radio-canada.ca/en/media-centre/mtm-18-plus-fall-2025-data)
+
+nlogic
+
+Mar 4, 2026
+
+---
+
+MTM 18+
+
+The MTM 18+ survey: key insights on Canadian media technology trends
+
+[Read](https://inspiration.nlogic.ca/en/media-technology-survey)
+
+PLAYBACK
+
+Mar 3, 2026
+
+---
+
+MTM 18+
+
+MTM report maps shift from linear to digital media consumption
+
+[Read](https://playbackonline.ca/2026/03/03/mtm-report-maps-shift-from-linear-to-digital-media-consumption/)
+
+Media in Canada
+
+Feb 27, 2026
+
+---
+
+MTM 18+
+
+MTM identifies five viewer profiles as streaming reshapes Canadian media use
+
+[Read](https://mediaincanada.com/2026/02/27/mtm-five-viewer-profiles-media-use/)
+
+PR Newswire
+
+Feb 24, 2026
+
+---
+
+MTM 18+
+
+MTM Fall 2025 Sneak Peek Highlights Streaming Competition, Multitasking, and Short-form Video Growth in Canada
+
+[Read](https://www.newswire.ca/news-releases/mtm-fall-2025-sneak-peek-highlights-streaming-competition-multitasking-and-short-form-video-growth-in-canada-863836805.html)
+
+Broadcast Dialogue
+
+Feb 12, 2026
+
+---
+
+MTM 18+
+
+Radio still reaching strong majority of Canadians, says MTM release
+
+[Read](https://broadcastdialogue.com/radio-still-reaching-strong-majority-of-canadians-says-mtm-release/)
+
+La Presse
+
+Jan 8, 2026
+
+---
+
+MTM 18+
+
+Half of young Canadians watch fast-forwarded content
+
+[Read](https://www.lapresse.ca/arts/2026-01-08/selon-l-observatoire-des-technologies-medias/la-moitie-des-jeunes-canadiens-regarde-des-contenus-en-accelere.php)
+
+Media in Canada
+
+Dec 1, 2025
+
+---
+
+MTM Junior
+
+MTM Jr: The next generation of news consumers
+
+[Read](https://mediaincanada.com/2025/12/01/mtm-jr-the-next-generation-of-news-consumers/)
+
+nlogic
+
+Nov 21, 2025
+
+---
+
+MTM Newcomers
+
+New Canadians: technology ownership and use
+
+[Read](https://inspiration.nlogic.ca/en/new-canadians-technology-ownership-and-use)
+
+Media in Canada
+
+Nov 17, 2025
+
+---
+
+MTM 18+
+
+FAST channels hit a new high in 2025: MTM report
+
+[Read](https://mediaincanada.com/2025/11/17/fast-channels-high-2025/)
+
+Broadcast Dialogue
+
+Oct 30, 2025
+
+---
+
+MTM 18+
+
+Canadian podcast listening jumps substantially, according to latest MTM data
+
+[Read](https://broadcastdialogue.com/canadian-podcast-listening-jumps-substantially-according-to-latest-mtm-data/)
+
+Canada Media Fund
+
+Oct 2, 2025
+
+---
+
+MTM Junior
+
+Rethinking TV for teens
+
+[Read](https://cmf-fmc.ca/now-next/articles/rethinking-tv-for-teens/)
+
+Media in Canada
+
+Sep 2, 2025
+
+---
+
+MTM 18+
+
+Cellphone adoption in Canada at nearly 100%: survey
+
+[Read](https://mediaincanada.com/2025/09/02/mtm-cellphone-use-canada/)
+
+Media in Canada
+
+Aug 21, 2025
+
+---
+
+MTM Junior
+
+Canadian kids 2-6 are using tech devices on their own: report
+
+[Read](https://mediaincanada.com/2025/08/21/mtm-junior-2025/)
+
+Media in Canada
+
+Jul 31, 2025
+
+---
+
+MTM Newcomers
+
+Newcomers to Canada are big consumers of online audio: survey
+
+[Read](https://mediaincanada.com/2025/07/31/newcomers-to-canada-are-big-consumers-of-online-audio-survey/)
+
+Media in Canada
+
+Jul 14, 2025
+
+---
+
+MTM 18+
+
+Facebook still the top social media platform for Canadian adults: survey
+
+[Read](https://mediaincanada.com/2025/07/14/mtm-social-media-usage-adults/)
+
+Media in Canada
+
+Jun 24, 2025
+
+---
+
+MTM 18+
+
+40% say Canadian content is important: Survey
+
+[Read](https://mediaincanada.com/2025/06/24/mtm-cancon-survey-2025/)
+
+Broadcast Dialogue
+
+May 15, 2025
+
+---
+
+MTM 18+
+
+Traditional news brands key destination for online news, says MTM report
+
+[Read](https://broadcastdialogue.com/traditional-news-brands-key-destination-for-online-news-says-mtm-report/)
+
+nlogic facebook
+
+May 14, 2025
+
+---
+
+MTM Junior
+
+The MTM Junior Futures Report webinar...
+
+[Read](https://www.facebook.com/nlogic.ca/videos/-happening-tomorrow-the-mtm-junior-futures-report-webinar-is-your-exclusive-look/1681260262496697/)
+
+PLAYBACK
+
+Apr 21, 2025
+
+---
+
+MTM Junior
+
+70% rely on word-of-mouth to find content for their kids: MTM
+
+[Read](https://playbackonline.ca/2025/04/21/70-rely-on-word-of-mouth-to-find-content-for-their-kids-mtm/)
+
+Media in Canada
+
+Apr 21, 2025
+
+---
+
+MTM Junior
+
+70% rely on word-of-mouth to find content for their kids: MTM
+
+[Read](https://mediaincanada.com/2025/04/21/media-technology-monitor-futures-report/)
+
+Media in Canada
+
+Apr 8, 2025
+
+---
+
+MTM 18+
+
+All streamed out? SVOD growth stalls: MTM
+
+[Read](https://mediaincanada.com/2025/04/08/all-streamed-out-svod-growth-stalls-mtm/)
+
+CRTC
+
+2025
+
+---
+
+Rapport sur le marché canadien des télécommunications 2025 | CRTC
+
+[Read](https://crtc.gc.ca/fra/publications/reports/policymonitoring/2025/ctmr.htm)

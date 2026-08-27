@@ -1,5 +1,10 @@
-# build output
-dist/
+# build output — ignored except the generated Markdown page twins, which are
+# tracked so changes to what LLM agents read show up in review. Git will not
+# descend into an excluded directory, so dist/ cannot be listed on its own here:
+# the ** form plus the directory re-include is what makes the negation reachable.
+dist/**
+!dist/**/
+!dist/**/*.md.txt
 
 # generated types
 .astro/

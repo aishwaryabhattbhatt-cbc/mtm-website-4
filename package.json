@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node scripts/generate-md.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
@@ -35,6 +36,7 @@
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
+    "rehype-remark": "^10.0.1",
     "typescript": "^5.9.3"
   }
 }

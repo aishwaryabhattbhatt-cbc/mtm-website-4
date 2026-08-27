@@ -1,0 +1,161 @@
+<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/solutions/industry/ -->
+
+Industry
+
+# The benchmark for Canadian media intelligence.
+
+Instill confidence in regulators, funders and peers with the Media Technology Monitor (MTM). Twenty years of continuous, nationally representative, bilingual data. Built for the industry that shapes Canadian media policy.
+
+[Request a Demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/request-demo/)
+
+Trusted by
+
+![European Broadcasting Union](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
+
+![Shaw Rocket Fund](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/Shaw-Rocket-Fund.svg)
+
+![Canada Media Fund](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/cmf-blk.svg)
+
+![National Film Board of Canada](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/nfb.svg)
+
+![Numeris](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/numeris.png)
+
+## Research Methodology
+
+Get data that holds up when it matters most. MTM is designed with detail in mind. Every number comes from a methodology built for citation, replication, and regulatory use.
+
+01 Survey Design
+
+How questions are built and kept consistent
+
+MTM surveys are designed for longitudinal tracking — worded consistently year over year so you can measure real change with confidence. We examine devices, platforms, behaviours and much more across all major media categories.
+
+Landline + Cellphone + Online 5,000+ Variables covered
+
+02 Field Collection
+
+How respondents are reached and surveyed
+
+MTM reaches Canadians through a dual-frame sampling approach combining landline, cellphone, and online panels. This ensures coverage across age groups, regions, and both official language communities — including populations that single-mode surveys routinely miss or underreport.
+
+19,000 respondents each year Across 18+, JR. and Newcomers
+
+03 Data Processing
+
+How the data is weighted and benchmarked
+
+All responses are weighted to match the Canadian population using Statistics Canada census data. Weighting accounts for region, age, gender, and language — ensuring the final dataset is representative and consistent with national benchmarks.
+
+Statistics Canada Benchmarked Consistent weighting
+
+04 Credibility
+
+How the data is made citable and defensible
+
+MTM reports include full methodological documentation — sample sizes, confidence intervals, weighting procedures, and question wording — so you can cite the data in regulatory filings, funding applications, and peer-reviewed research with confidence.
+
+Citable by name Full methodology available
+
+Reports Library
+
+## Research Across Every Corner of Canadian Media Behaviour
+
+From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.
+
+All  MTM 18+  MTM Junior  MTM Newcomers
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+## MTM in Action for Industry Teams
+
+Learn how your organization can use the MTM to better understand audiences and users of all sizes.
+
+<!-- Card 1 -->
+
+Use Case
+
+A department is looking for detailed information on the news consumption habits of women under 50.
+
+Watch news clipsRead news onlineDevices usedAccess news via...
+
+How to leverage this
+
+Read our MTM 18+ news report for broad overview then examine key variables via the data analysis tool to enhance your understanding.
+
+<!-- Card 2 -->
+
+Use Case
+
+A team needs to understand if AI adoption is living up to the hype and how its influencing consumption of media.
+
+A.I. UsageChatGPTInternet hoursVideo hours
+
+How to leverage this
+
+Find the latest on A.I. tool usage via our A.I. report, then leverage the Forecasting tool to see where things are heading.
+
+## What the industry is saying about us
+
+![Numeris](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/numeris.png)
+
+Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.
+
+Director of Audience Strategy
