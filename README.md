@@ -4,6 +4,28 @@ Marketing website for MTM (Media Technology Monitor), a CBC initiative that trac
 
 - **Live site**: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/
 - **Base path**: `/mtm-website-4/`
+- **Future domain**: `https://www.mtm-otm.ca` (not yet cut over — see below)
+
+### Moving to www.mtm-otm.ca
+
+Every absolute URL on the site is derived from the `site` + `base` values in
+`astro.config.mjs`, so the cutover is a config change, not a find-and-replace.
+That covers canonical tags, hreflang, og:image, the sitemap, `robots.txt`,
+`llms.txt`, `site.webmanifest`, the `.md.txt` page twins, and IndexNow.
+
+Verify first:
+
+```bash
+BUILD_SITE_URL=https://www.mtm-otm.ca BUILD_BASE_PATH=/ npm run build
+```
+
+To cut over for real:
+
+1. Point DNS at GitHub Pages (`www` CNAME -> `aishwaryabhattbhatt-cbc.github.io`).
+2. Change the two defaults in `astro.config.mjs` to `https://www.mtm-otm.ca` and `/`.
+3. Add `public/CNAME` containing `www.mtm-otm.ca`. **This file is the switch** —
+   committing it makes GitHub Pages serve the custom domain, so add it last.
+4. Redeploy, then resubmit the sitemap in Google Search Console.
 
 ## Getting started
 

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/sitemap-index.xml

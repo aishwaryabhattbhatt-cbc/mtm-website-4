@@ -8,8 +8,10 @@
  * Usage: node scripts/indexnow-submit.mjs
  */
 
-const SITE_ORIGIN = 'https://aishwaryabhattbhatt-cbc.github.io';
-const BASE_PATH = '/mtm-website-4';
+// Env-driven with the same defaults as astro.config.mjs, so a domain change is
+// one variable everywhere instead of a hand-edit that gets missed here.
+const SITE_ORIGIN = process.env.BUILD_SITE_URL || 'https://aishwaryabhattbhatt-cbc.github.io';
+const BASE_PATH = (process.env.BUILD_BASE_PATH || '/mtm-website-4/').replace(/\/$/, '');
 const INDEXNOW_KEY = '1cae23d9e1e9afde45908fe7ea265e6f';
 
 async function fetchSitemapUrls() {
