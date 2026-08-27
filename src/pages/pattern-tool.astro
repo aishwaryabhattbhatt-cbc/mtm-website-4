@@ -4,22 +4,28 @@ import PatternToolSection from '../components/pattern-tool/PatternTool.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="MTM Pattern Tool" description="Internal pattern tool for MTM design development." locale="en" noindex={true}>
-  <main>
-    <PatternToolSection />
-  </main>
+<Layout
+    title="MTM Pattern Tool"
+    description="Internal pattern tool for MTM design development."
+    locale="en"
+    noindex={true}
+>
+    <main>
+        <PatternToolSection />
+    </main>
 
-  <Fragment slot="scripts">
-    <script is:inline src={`${base}js/runtime/script.js`}></script>
+    <Fragment slot="scripts">
+        <script is:inline src={`${base}js/runtime/script.js`}></script>
 
-    <script is:inline type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js"
-      }
-    }
-    </script>
+        <script is:inline type="importmap">
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.min.js"
+                }
+            }
+        </script>
 
-    <script is:inline type="module" src={`${base}js/backgrounds/pattern-tool-background.js`}></script>
-  </Fragment>
+        <script is:inline type="module" src={`${base}js/backgrounds/pattern-tool-background.js`}
+        ></script>
+    </Fragment>
 </Layout>
