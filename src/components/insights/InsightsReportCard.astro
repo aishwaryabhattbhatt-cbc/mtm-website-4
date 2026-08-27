@@ -2,6 +2,7 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 
 import ProductPill from '../shared/ProductPill.astro';
+import type { ProductVariant } from '../shared/ProductPill.astro';
 import DatePill from '../shared/DatePill.astro';
 import Button from '../shared/Button.astro';
 
@@ -17,6 +18,18 @@ interface Props {
     variable1Key?: string;
     variable2Key?: string;
     ctaKey?: string;
+    /* Literal values win over the *Key CMS lookups — that's how a caller feeds
+       this card a real report (from a backend) instead of placeholder copy. */
+    date?: string;
+    title?: string;
+    description?: string;
+    tags?: string[];
+    ctaLabel?: string;
+    /* Library cards render all three pills and filter them with CSS. A card
+       used outside that filter (e.g. report-download-2) passes the one it wants. */
+    pillVariant?: ProductVariant;
+    showDescription?: boolean;
+    showCta?: boolean;
 }
 
 const {
@@ -31,6 +44,14 @@ const {
     variable1Key = 'report_card_variable_1',
     variable2Key = 'report_card_variable_2',
     ctaKey = 'report_card_cta',
+    date,
+    title,
+    description,
+    tags,
+    ctaLabel,
+    pillVariant,
+    showDescription = true,
+    showCta = true,
 } = Astro.props as Props;
 
 const getVal = (key: string): string => {
@@ -39,13 +60,16 @@ const getVal = (key: string): string => {
     return (locale === 'fr' ? row.fr : row.en) || row.en || '';
 };
 
-const dateText = getVal(dateKey);
-const titleText = getVal(titleKey);
-const descText = getVal(descriptionKey);
-const variable1 = getVal(variable1Key);
-const variable2 = getVal(variable2Key);
-const ctaText = getVal(ctaKey);
-const variables = [variable1, variable2].filter(Boolean);
+const dateText = date ?? getVal(dateKey);
+const titleText = title ?? getVal(titleKey);
+const descText = description ?? getVal(descriptionKey);
+const ctaText = ctaLabel ?? getVal(ctaKey);
+const variables = tags ?? [getVal(variable1Key), getVal(variable2Key)].filter(Boolean);
+
+// Only CMS-sourced text gets a data-copy-key — otherwise the dev live-reload in
+// runtime/script.js would overwrite a caller's real report values with copy.
+const titleCopyKey = title === undefined ? titleKey : undefined;
+const descCopyKey = description === undefined ? descriptionKey : undefined;
 ---
 
 <div class="report-card">
@@ -68,33 +92,63 @@ const variables = [variable1, variable2].filter(Boolean);
     <div class="report-card__body">
         <div class="report-card__top">
             <div class="report-card__meta">
-                <span data-pill-variant="junior">
-                    <ProductPill variant="junior" size="big" copy={copy} locale={locale} />
-                </span>
-                <span data-pill-variant="mtm18plus">
-                    <ProductPill variant="mtm18plus" size="big" copy={copy} locale={locale} />
-                </span>
-                <span data-pill-variant="newcomers">
-                    <ProductPill variant="newcomers" size="big" copy={copy} locale={locale} />
-                </span>
+                {
+                    pillVariant ? (
+                        <span data-pill-variant={pillVariant}>
+                            <ProductPill
+                                variant={pillVariant}
+                                size="big"
+                                copy={copy}
+                                locale={locale}
+                            />
+                        </span>
+                    ) : (
+                        <Fragment>
+                            <span data-pill-variant="junior">
+                                <ProductPill
+                                    variant="junior"
+                                    size="big"
+                                    copy={copy}
+                                    locale={locale}
+                                />
+                            </span>
+                            <span data-pill-variant="mtm18plus">
+                                <ProductPill
+                                    variant="mtm18plus"
+                                    size="big"
+                                    copy={copy}
+                                    locale={locale}
+                                />
+                            </span>
+                            <span data-pill-variant="newcomers">
+                                <ProductPill
+                                    variant="newcomers"
+                                    size="big"
+                                    copy={copy}
+                                    locale={locale}
+                                />
+                            </span>
+                        </Fragment>
+                    )
+                }
                 {dateText && <DatePill date={dateText} />}
             </div>
 
             {
-                (titleText || descText) && (
+                (titleText || (showDescription && descText)) && (
                     <div class="report-card__text">
                         {titleText && (
                             <p
                                 class="text-body-p1-bold report-card__title"
-                                data-copy-key={titleKey}
+                                data-copy-key={titleCopyKey}
                             >
                                 {titleText}
                             </p>
                         )}
-                        {descText && (
+                        {showDescription && descText && (
                             <p
                                 class="text-body-p2 report-card__description"
-                                data-copy-key={descriptionKey}
+                                data-copy-key={descCopyKey}
                             >
                                 {descText}
                             </p>
@@ -114,9 +168,13 @@ const variables = [variable1, variable2].filter(Boolean);
             }
         </div>
 
-        <Button variant="tertiary" size="md" href={ctaHref}>
-            {ctaText || 'View Press Release'}
-        </Button>
+        {
+            showCta && (
+                <Button variant="tertiary" size="md" href={ctaHref}>
+                    {ctaText || 'View Press Release'}
+                </Button>
+            )
+        }
     </div>
 </div>
 

@@ -17,6 +17,11 @@ interface Props {
     value: string;
     checked?: boolean;
     formId?: string;
+    /* Literal values win over the *Key CMS lookups — that's how a caller feeds
+       this row a real report (from a backend) instead of placeholder copy. */
+    title?: string;
+    date?: string;
+    pillVariant?: ProductVariant;
 }
 
 const {
@@ -30,6 +35,9 @@ const {
     value,
     checked = true,
     formId,
+    title,
+    date,
+    pillVariant,
 } = Astro.props as Props;
 
 function tagToVariant(tag: string): ProductVariant | null {
@@ -42,9 +50,13 @@ function tagToVariant(tag: string): ProductVariant | null {
 }
 
 const tagText = tagKey in copy ? t(copy, tagKey, locale, '') : '';
-const tagVariant = tagText ? tagToVariant(tagText) : null;
-const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
-const titleText = t(copy, titleKey, locale, '');
+const tagVariant = pillVariant ?? (tagText ? tagToVariant(tagText) : null);
+const dateText = date ?? (dateKey in copy ? t(copy, dateKey, locale, '') : '');
+const titleText = title ?? t(copy, titleKey, locale, '');
+
+// Only CMS-sourced text gets a data-copy-key — otherwise the dev live-reload in
+// runtime/script.js would overwrite a caller's real report values with copy.
+const titleCopyKey = title === undefined ? titleKey : undefined;
 ---
 
 <label class="report-select-row">
@@ -98,7 +110,7 @@ const titleText = t(copy, titleKey, locale, '');
                 }
                 {dateText && <DatePill date={dateText} />}
             </span>
-            <span class="text-body-p1-bold report-select-row__title" data-copy-key={titleKey}>
+            <span class="text-body-p1-bold report-select-row__title" data-copy-key={titleCopyKey}>
                 {titleText}
             </span>
         </span>

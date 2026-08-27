@@ -6,7 +6,6 @@ import HomeFooterSection from '../../../components/home/HomeFooterSection.astro'
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import { t } from '../../../lib/i18n/t';
 import type { Locale } from '../../../lib/cms/types';
-import type { ProductVariant } from '../../../components/shared/ProductPill.astro';
 
 export function getStaticPaths() {
     return [{ params: { locale: 'en' } }, { params: { locale: 'fr' } }];
@@ -28,46 +27,26 @@ const resolvedCmsCsvUrl =
         : '');
 
 const localeSwitchUrls: Record<Locale, string> = {
-    en: `${base}en/insights/report-download/`,
-    fr: `${base}fr/insights/report-download/`,
+    en: `${base}en/insights/report-download-2/`,
+    fr: `${base}fr/insights/report-download-2/`,
 };
 
-// The reports this page offers. Swap this array for the backend lookup — each
-// row reads title/date/pillVariant straight off it, and falls back to the *Key
-// CMS copy for anything left unset.
-const reports = [
-    {
-        imageSrc: `${base}images/insights/free-reports/Picture.png`,
-        title: undefined as string | undefined,
-        date: undefined as string | undefined,
-        pillVariant: undefined as ProductVariant | undefined,
-        // Placeholder copy used until the fields above come from the backend.
-        tagKey: 'free_report_1_tag',
-        dateKey: 'free_report_1_date',
-        titleKey: 'free_report_1_title',
-        value: 'free_report_1',
-    },
-    {
-        imageSrc: `${base}images/insights/free-reports/Picture-1.png`,
-        title: undefined as string | undefined,
-        date: undefined as string | undefined,
-        pillVariant: undefined as ProductVariant | undefined,
-        tagKey: 'free_report_2_tag',
-        dateKey: 'free_report_2_date',
-        titleKey: 'free_report_2_title',
-        value: 'free_report_2',
-    },
-    {
-        imageSrc: `${base}images/insights/free-reports/Picture-2.png`,
-        title: undefined as string | undefined,
-        date: undefined as string | undefined,
-        pillVariant: undefined as ProductVariant | undefined,
-        tagKey: 'free_report_3_tag',
-        dateKey: 'free_report_3_date',
-        titleKey: 'free_report_3_title',
-        value: 'free_report_3',
-    },
-];
+// The one report this page hands over. Swap this object for the backend lookup
+// (e.g. by Astro.url.searchParams.get('report')) — the card reads title/date/tags
+// straight off it, and falls back to the *Key CMS copy for anything left unset.
+const report = {
+    imageSrc: `${base}images/insights/report-library/Picture.png`,
+    imageAlt: '',
+    title: undefined as string | undefined,
+    date: undefined as string | undefined,
+    tags: undefined as string[] | undefined,
+    pillVariant: 'mtm18plus' as const,
+    // Placeholder copy used until the fields above come from the backend.
+    tagKey: 'free_report_1_tag',
+    dateKey: 'free_report_1_date',
+    titleKey: 'free_report_1_title',
+    value: 'free_report_1',
+};
 
 const pageTitle = t(copy, 'report_download_page_title', locale, 'Download Report');
 const pageDescription = t(
@@ -95,7 +74,7 @@ const pageDescription = t(
     >
         <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-        <InsightsReportDownloadSection locale={locale} copy={copy} reports={reports} />
+        <InsightsReportDownloadSection locale={locale} copy={copy} singleCard reports={[report]} />
 
         <HomeFooterSection
             locale={locale}

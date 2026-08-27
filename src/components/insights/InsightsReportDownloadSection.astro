@@ -4,6 +4,8 @@ import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
 import FormField from '../shared/FormField.astro';
 import InsightsReportSelectRow from './InsightsReportSelectRow.astro';
+import InsightsReportCard from './InsightsReportCard.astro';
+import type { ProductVariant } from '../shared/ProductPill.astro';
 
 interface ReportItem {
     imageSrc?: string;
@@ -11,15 +13,24 @@ interface ReportItem {
     dateKey: string;
     titleKey: string;
     value: string;
+    /* singleCard mode only. Literal values (from a backend later) win over the
+     *Key CMS lookups; pillVariant picks which product pill the card shows. */
+    pillVariant?: ProductVariant;
+    title?: string;
+    date?: string;
+    tags?: string[];
+    imageAlt?: string;
 }
 
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
     reports: ReportItem[];
+    /* One fixed report shown as a library card instead of a pick-any checkbox list. */
+    singleCard?: boolean;
 }
 
-const { locale, copy, reports } = Astro.props as Props;
+const { locale, copy, reports, singleCard = false } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 const formId = 'report-download-form';
 ---
@@ -142,52 +153,77 @@ const formId = 'report-download-form';
                                 required
                             />
                         </form>
+
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            form={formId}
+                            class="report-download-section__submit"
+                            data-copy-key="report_download_submit_cta"
+                        >
+                            {t(copy, 'report_download_submit_cta', locale, 'Submit')}
+                        </Button>
                     </div>
 
                     <div class="report-download-section__reports">
-                        <p
-                            class="text-body-p3 report-download-section__reports-subtitle"
-                            data-copy-key="report_download_select_subtitle"
-                        >
-                            {
-                                t(
-                                    copy,
-                                    'report_download_select_subtitle',
-                                    locale,
-                                    'Select Free Report'
-                                )
-                            }
-                            <span class="report-download-section__reports-required">*</span>
-                        </p>
-                        <div class="report-download-section__reports-list">
-                            {
-                                reports.map((report) => (
-                                    <InsightsReportSelectRow
+                        {
+                            !singleCard && (
+                                <p
+                                    class="text-body-p3 report-download-section__reports-subtitle"
+                                    data-copy-key="report_download_select_subtitle"
+                                >
+                                    {t(
+                                        copy,
+                                        'report_download_select_subtitle',
+                                        locale,
+                                        'Select Free Report'
+                                    )}
+                                    <span class="report-download-section__reports-required">*</span>
+                                </p>
+                            )
+                        }
+                        {
+                            singleCard ? (
+                                <div class="report-download-section__card">
+                                    <InsightsReportCard
                                         locale={locale}
                                         copy={copy}
-                                        imageSrc={report.imageSrc}
-                                        tagKey={report.tagKey}
-                                        dateKey={report.dateKey}
-                                        titleKey={report.titleKey}
-                                        name="reports"
-                                        value={report.value}
-                                        formId={formId}
+                                        ctaHref=""
+                                        imageSrc={reports[0]?.imageSrc}
+                                        imageAlt={reports[0]?.imageAlt}
+                                        dateKey={reports[0]?.dateKey}
+                                        titleKey={reports[0]?.titleKey}
+                                        title={reports[0]?.title}
+                                        date={reports[0]?.date}
+                                        tags={reports[0]?.tags}
+                                        pillVariant={reports[0]?.pillVariant}
+                                        showDescription={false}
+                                        showCta={false}
                                     />
-                                ))
-                            }
-                        </div>
+                                </div>
+                            ) : (
+                                <div class="report-download-section__reports-list">
+                                    {reports.map((report) => (
+                                        <InsightsReportSelectRow
+                                            locale={locale}
+                                            copy={copy}
+                                            imageSrc={report.imageSrc}
+                                            tagKey={report.tagKey}
+                                            dateKey={report.dateKey}
+                                            titleKey={report.titleKey}
+                                            title={report.title}
+                                            date={report.date}
+                                            pillVariant={report.pillVariant}
+                                            name="reports"
+                                            value={report.value}
+                                            formId={formId}
+                                        />
+                                    ))}
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
-
-                <Button
-                    variant="primary"
-                    type="submit"
-                    form={formId}
-                    class="report-download-section__submit"
-                    data-copy-key="report_download_submit_cta"
-                >
-                    {t(copy, 'report_download_submit_cta', locale, 'Submit')}
-                </Button>
             </div>
         </div>
     </div>
@@ -330,6 +366,20 @@ const formId = 'report-download-form';
         margin-left: var(--space-1);
     }
 
+    .report-download-section__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .report-download-section__card > :global(.report-card) {
+        width: 100%;
+        max-width: 25rem;
+    }
+
     .report-download-section__reports-list {
         display: flex;
         flex-direction: column;
@@ -370,6 +420,20 @@ const formId = 'report-download-form';
             /* Match the form's own row gap — was inheriting the desktop
                column-to-column gap, which read much larger once stacked. */
             gap: var(--space-5);
+        }
+
+        .report-download-section__card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .report-download-section__card > :global(.report-card) {
+            width: 100%;
+            max-width: 25rem;
         }
 
         .report-download-section__reports-list {
