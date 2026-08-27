@@ -10,19 +10,31 @@ import { execFileSync } from 'node:child_process';
 // Usage: BUILD_BASE_PATH=/some/other/path/ npm run build
 const base = process.env.BUILD_BASE_PATH || '/mtm-website-4/';
 
-// Keep in sync with any page that sets noindex={true} in its <Layout> usage —
-// @astrojs/sitemap has no visibility into that prop, so noindex routes have to
-// be excluded here explicitly or they end up contradicting their own meta tag.
+// Every page that sets noindex={true} in its <Layout> usage. @astrojs/sitemap
+// has no visibility into that prop, so each one has to be listed here or it
+// ends up in the sitemap contradicting its own meta robots tag.
+// Keep in sync: `grep -rn "noindex" src/pages/`
+const NOINDEX_SUFFIXES = [
+  '/sign-in/',
+  '/register/',
+  '/register-success/',
+  '/forgot-password/',
+  '/contact/',
+  '/contact-success/',
+  '/request-demo-success/',
+  '/submission-error/',
+  '/insights/report-download/',
+  '/insights/report-download-2/',
+  '/insights/download-success/',
+];
+
 /** @param {string} pageUrl */
 function isNoindexPath(pageUrl) {
   const path = new URL(pageUrl).pathname;
   return (
     path === base ||
-    path.endsWith('/sign-in/') ||
-    path.endsWith('/request-demo-success/') ||
-    path.endsWith('/insights/report-download/') ||
-    path.endsWith('/contact/') ||
-    path.startsWith(`${base}pattern-tool`)
+    path.startsWith(`${base}pattern-tool`) ||
+    NOINDEX_SUFFIXES.some((suffix) => path.endsWith(suffix))
   );
 }
 
