@@ -190,22 +190,63 @@ const tabs = [
         gap: var(--space-7);
     }
 
-    .content-fly-in {
+    /* Marker only — the observer finds this element and toggles `is-visible`
+       on it. It must not animate itself: .left-text's backdrop-filter is a
+       descendant, and an ancestor with opacity < 1, a transform, OR
+       will-change on either creates a new backdrop root. While any of those
+       were live the blur had no backdrop to sample, so the glass was simply
+       absent until all three landed on their neutral values together at
+       1.1s — reading as the card's background "arriving late". Same opt-out
+       as ProductFeaturesSection's display:contents wrapper. */
+    .content.content-fly-in,
+    .content.content-fly-in.is-visible {
+        opacity: 1;
+        /* Compound selector on purpose: bare `.content-fly-in` scopes to the
+           same specificity as the global `.content-fly-in.is-visible`, which
+           sets transform: translateY(0) — and translateY(0) is a containing
+           block, which is the very thing that kills the blur. */
+        transform: none;
+        transition: none;
+        will-change: auto;
+    }
+
+    /* The card ramps its own glass rather than being faded by an ancestor.
+       background/border-color/backdrop-filter are all animatable and none of
+       them create a backdrop root, so the blur is live from the first frame
+       and comes in with the tabs. .left-text below keeps the resolved values;
+       this is only the pre-reveal state and the transition between them. */
+    .left-text {
+        transition:
+            background var(--motion-duration-heading) var(--motion-ease-standard),
+            border-color var(--motion-duration-heading) var(--motion-ease-standard),
+            backdrop-filter var(--motion-duration-heading) var(--motion-ease-standard);
+    }
+
+    .content-fly-in:not(.is-visible) .left-text {
+        background: color-mix(in srgb, var(--surface-white) 0%, transparent);
+        border-color: color-mix(in srgb, var(--surface-white) 0%, transparent);
+        /* blur(0px), not blur(0) — Safari won't interpolate the unitless form. */
+        backdrop-filter: blur(0px);
+    }
+
+    /* The entrance itself now rides the card's contents and the box canvas.
+       .right-visual is included because it had no entrance of its own — it
+       was relying on the wrapper that just opted out. */
+    .content-fly-in .heading,
+    .content-fly-in .tabs-panel,
+    .content-fly-in .right-visual {
         opacity: 0;
         transform: translateY(1.625rem);
         transition:
             opacity var(--motion-duration-heading) ease,
             transform var(--motion-duration-heading) var(--motion-ease-standard);
-        will-change: opacity, transform;
     }
 
-    .content-fly-in.is-visible {
+    .content-fly-in.is-visible .heading,
+    .content-fly-in.is-visible .tabs-panel,
+    .content-fly-in.is-visible .right-visual {
         opacity: 1;
-        /* `none` (not translateY(0)) and releasing will-change: a transformed
-           ancestor blocks the tabs card's backdrop-filter from sampling the
-           WebGL background behind it, so the glass blur silently stops working. */
         transform: none;
-        will-change: auto;
     }
 
     .box-variables-6,
