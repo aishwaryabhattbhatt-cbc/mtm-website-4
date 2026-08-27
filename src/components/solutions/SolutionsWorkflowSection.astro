@@ -277,10 +277,6 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
     .solutions-workflow-step-desc {
         margin: 0;
         color: var(--text-secondary);
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
     }
 
     .solutions-workflow-tags {
@@ -288,6 +284,13 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
         flex-wrap: wrap;
         gap: var(--space-2);
         margin-top: var(--space-3);
+    }
+
+    /* Set by the sync script below when any one card's tags wrap, so all
+       three cards stack together instead of one being taller than the rest. */
+    .solutions-workflow-tags.is-stacked {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .solutions-workflow-tag {
@@ -376,5 +379,28 @@ const step3Tags = [getTag('step3_tag1'), getTag('step3_tag2')].filter(Boolean);
             );
             cardObserver.observe(cardsRow);
         }
+
+        // Tag rows wrap per-card, so one card can end up two rows tall while
+        // its neighbours stay on one. Measure each row's natural width and, if
+        // any of them overflows, stack all of them.
+        const tagGroups = [...section.querySelectorAll<HTMLElement>('.solutions-workflow-tags')];
+        const syncTagWrap = () => {
+            if (!tagGroups.length) return;
+            const overflows = tagGroups.some((group) => {
+                const tags = [...group.children] as HTMLElement[];
+                if (tags.length < 2) return false;
+                const gap = parseFloat(getComputedStyle(group).columnGap) || 0;
+                const total =
+                    tags.reduce((sum, tag) => sum + tag.getBoundingClientRect().width, 0) +
+                    gap * (tags.length - 1);
+                // Sub-pixel slack: layout widths are fractional.
+                return total > group.clientWidth + 0.5;
+            });
+            tagGroups.forEach((group) => group.classList.toggle('is-stacked', overflows));
+        };
+
+        syncTagWrap();
+        document.fonts?.ready.then(syncTagWrap);
+        window.addEventListener('resize', syncTagWrap);
     });
 </script>
