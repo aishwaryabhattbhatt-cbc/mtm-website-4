@@ -648,5 +648,25 @@
     "key": "download_confirmation_insights_cta",
     "en": "Go Back to Exploring",
     "fr": ""
+  },
+  "submission_error_title": {
+    "key": "submission_error_title",
+    "en": "Something Went Wrong",
+    "fr": ""
+  },
+  "submission_error_description": {
+    "key": "submission_error_description",
+    "en": "We could not submit your form. Please try again — if the problem continues, contact us and our team will help.",
+    "fr": ""
+  },
+  "submission_error_retry_cta": {
+    "key": "submission_error_retry_cta",
+    "en": "Try Again",
+    "fr": ""
+  },
+  "submission_error_contact_cta": {
+    "key": "submission_error_contact_cta",
+    "en": "Contact Us",
+    "fr": ""
   }
 }

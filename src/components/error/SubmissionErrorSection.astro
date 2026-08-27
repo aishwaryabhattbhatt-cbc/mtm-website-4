@@ -1,0 +1,182 @@
+---
+// src/components/error/SubmissionErrorSection.astro
+// Catch-all destination for any form that fails to submit — mirrors
+// ContactSuccessSection.astro's glass-card layout with a failure state.
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { t } from '../../lib/i18n/t';
+import Button from '../shared/Button.astro';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+}
+
+const { locale, copy } = Astro.props as Props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="submission-error" data-home-href={`${base}${locale}/`}>
+    <div class="submission-error__pattern" aria-hidden="true">
+        <img
+            src={`${base}images/request-demo/hero-pattern.png`}
+            alt=""
+            class="submission-error__pattern-img"
+        />
+    </div>
+
+    <div class="submission-error__card">
+        <div class="submission-error__content">
+            <span class="submission-error__icon" aria-hidden="true">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon-m"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </span>
+
+            <h2 data-copy-key="submission_error_title">
+                {t(copy, 'submission_error_title', locale, 'Something Went Wrong')}
+            </h2>
+
+            <p
+                class="text-body-p1 submission-error__description"
+                data-copy-key="submission_error_description"
+            >
+                {
+                    t(
+                        copy,
+                        'submission_error_description',
+                        locale,
+                        'We could not submit your form. Please try again — if the problem continues, contact us and our team will help.'
+                    )
+                }
+            </p>
+
+            <div class="submission-error__actions">
+                <Button variant="primary" size="lg" id="submission-error-retry">
+                    {t(copy, 'submission_error_retry_cta', locale, 'Try Again')}
+                </Button>
+                <Button variant="secondary" size="lg" href={`${base}${locale}/contact/`}>
+                    {t(copy, 'submission_error_contact_cta', locale, 'Contact Us')}
+                </Button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Catch-all page — any form can land here, so "Try Again" returns to
+    // whichever form the visitor came from rather than a fixed href.
+    const retry = document.getElementById('submission-error-retry');
+    retry?.addEventListener('click', () => {
+        const sameOrigin =
+            document.referrer && new URL(document.referrer).origin === window.location.origin;
+        if (sameOrigin) {
+            history.back();
+            return;
+        }
+        const home = retry.closest<HTMLElement>('.submission-error')?.dataset.homeHref;
+        if (home) window.location.href = home;
+    });
+</script>
+
+<style>
+    .submission-error {
+        position: relative;
+        width: 100%;
+        overflow: clip;
+        padding: var(--section-pad-block-lg) var(--content-margin-inline);
+        margin-top: var(--navbar-height);
+        background: var(--surface-white);
+    }
+
+    .submission-error__pattern {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .submission-error__pattern-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .submission-error__card {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 90rem);
+        margin: 0 auto;
+        padding: var(--space-12) var(--space-12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--layout-card-radius);
+        background: rgba(255, 255, 255, 0.39);
+        border: var(--stroke-1) solid rgba(255, 255, 255, 0.37);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-beautiful);
+    }
+
+    .submission-error__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--space-4);
+        max-width: 32rem;
+    }
+
+    .submission-error__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--space-9);
+        height: var(--space-9);
+        border-radius: var(--radius-full);
+        background: var(--feedback-error);
+        color: var(--text-white);
+        flex-shrink: 0;
+    }
+
+    .submission-error__content h2 {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .submission-error__description {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .submission-error__actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-4);
+        margin-top: var(--space-2);
+    }
+
+    @media (max-width: 1023px) {
+        .submission-error {
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .submission-error__card {
+            padding: var(--space-8) var(--space-5);
+        }
+    }
+</style>

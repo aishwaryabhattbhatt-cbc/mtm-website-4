@@ -1,0 +1,56 @@
+---
+// Astro emits this as /404.html; GitHub Pages serves it for any unmatched path
+// under the base, so it is not locale-scoped — English, with the locale
+// switcher pointing at each homepage.
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/shared/Navbar.astro';
+import NotFoundSection from '../components/error/NotFoundSection.astro';
+import HomeFooterSection from '../components/home/HomeFooterSection.astro';
+import { getPageDictionary } from '../lib/cms/getPageContent';
+import { t } from '../lib/i18n/t';
+import type { Locale } from '../lib/cms/types';
+
+const locale: Locale = 'en';
+const copy = await getPageDictionary('home');
+const base = import.meta.env.BASE_URL;
+
+const localeSwitchUrls: Record<Locale, string> = {
+    en: `${base}en/`,
+    fr: `${base}fr/`,
+};
+
+const pageTitle = t(copy, 'not_found_page_title', locale, 'MTM | Page Not Found');
+const pageDescription = t(
+    copy,
+    'not_found_page_description',
+    locale,
+    'The page you are looking for could not be found.'
+);
+---
+
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    locale={locale}
+    alternates={localeSwitchUrls}
+    noindex={true}
+>
+    <main data-locale={locale}>
+        <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
+
+        <NotFoundSection locale={locale} copy={copy} />
+
+        <HomeFooterSection
+            locale={locale}
+            copy={copy}
+            showCta={false}
+            showNewsletter={false}
+            showBgLeftCenter={false}
+            extraTopPadding={true}
+        />
+    </main>
+
+    <Fragment slot="scripts">
+        <script is:inline src={`${base}js/runtime/script.js`}></script>
+    </Fragment>
+</Layout>

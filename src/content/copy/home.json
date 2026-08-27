@@ -683,5 +683,25 @@
     "key": "footer_terms_conditions_label",
     "en": "Terms & Conditions",
     "fr": ""
+  },
+  "not_found_code": {
+    "key": "not_found_code",
+    "en": "404",
+    "fr": ""
+  },
+  "not_found_title": {
+    "key": "not_found_title",
+    "en": "Page Not Found",
+    "fr": ""
+  },
+  "not_found_description": {
+    "key": "not_found_description",
+    "en": "The page you are looking for has moved or no longer exists. Head back to the homepage to keep exploring.",
+    "fr": ""
+  },
+  "not_found_cta": {
+    "key": "not_found_cta",
+    "en": "Back to Home",
+    "fr": ""
   }
 }
