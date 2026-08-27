@@ -38,3 +38,8 @@ CLAUDE.md
 SKILLS.md
 REVIEW.md
 skills-lock.json
+
+# parked MTM topic insights page (intentionally excluded from git)
+src/pages/[locale]/insights/ai-emerging-technology.astro
+src/content/copy/insights-ai-technology.json
+src/components/topics/

@@ -169,6 +169,11 @@
     "en": "Forecasting",
     "fr": ""
   },
+  "tools_analytic_cta": {
+    "key": "tools_analytic_cta",
+    "en": "Go to Analytic Tools",
+    "fr": ""
+  },
   "tools_census_eyebrow": {
     "key": "tools_census_eyebrow",
     "en": "Census Tools",
@@ -202,6 +207,11 @@
   "tools_learn_more": {
     "key": "tools_learn_more",
     "en": "Learn more",
+    "fr": ""
+  },
+  "tools_census_cta": {
+    "key": "tools_census_cta",
+    "en": "Go to Census Tool",
     "fr": ""
   },
   "stat_value": {

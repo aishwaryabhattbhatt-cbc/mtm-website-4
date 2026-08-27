@@ -91,7 +91,7 @@
   },
   "dat_cta": {
     "key": "dat_cta",
-    "en": "Learn More",
+    "en": "Go to Data Analysis Tool",
     "fr": ""
   },
   "dat_callout": {
@@ -116,7 +116,7 @@
   },
   "trending_cta": {
     "key": "trending_cta",
-    "en": "Learn More",
+    "en": "Go to Trending Tool",
     "fr": ""
   },
   "trending_callout": {
@@ -136,7 +136,7 @@
   },
   "forecasting_cta": {
     "key": "forecasting_cta",
-    "en": "Learn More",
+    "en": "Go to Forecasting Tool",
     "fr": ""
   },
   "forecasting_callout": {
@@ -196,7 +196,7 @@
   },
   "report_action_cta_2": {
     "key": "report_action_cta_2",
-    "en": "SAMPLE REPORT",
+    "en": "GET SAMPLE REPORT",
     "fr": ""
   },
   "methodology_title": {
@@ -207,11 +207,6 @@
   "methodology_description": {
     "key": "methodology_description",
     "en": "MTM 18+ is based on a nationally representative telephone survey with a follow up online compontent, reaching Canadian adults across all provinces and territories.",
-    "fr": ""
-  },
-  "methodology_cta": {
-    "key": "methodology_cta",
-    "en": "",
     "fr": ""
   },
   "sample_title": {
@@ -361,7 +356,7 @@
   },
   "explore_title": {
     "key": "explore_title",
-    "en": "Explore More Data",
+    "en": "Explore More Data Products",
     "fr": ""
   }
 }

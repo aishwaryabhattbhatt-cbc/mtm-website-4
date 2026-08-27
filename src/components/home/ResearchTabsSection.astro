@@ -349,14 +349,23 @@ const tabs = [
         white-space: nowrap;
     }
 
-    /* FAQ-accordion glide: clip animates height between 0 and the body's
-       measured height (set from JS in setTab) */
+    /* FAQ-accordion glide: clip animates between 0 and --tab-body-open-h.
+       That variable is ONE value shared by all three tabs (the tallest body
+       at the current width, measured in JS), so whichever tab is open the
+       panel is exactly the same height — which is what keeps the gradient
+       rail (.tabs-panel::after, sized top:0/bottom:0) from resizing when
+       you switch tabs. The 3.25rem fallback is a pre-JS / no-JS floor so
+       the space is already claimed before the first measurement lands. */
     .tab-body-clip {
         display: block;
         width: 100%;
         height: 0;
         overflow: hidden;
         transition: height 450ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .tab-item.active .tab-body-clip {
+        height: var(--tab-body-open-h, 3.25rem);
     }
 
     .tab-body {
@@ -841,6 +850,10 @@ const tabs = [
     // it mid-transition — the bar visibly hitches even though its
     // transition is a clean linear ramp. One height for all of them keeps
     // the panel still and the ramp smooth.
+    // The tallest of the three bodies at the current width. Every tab opens
+    // to this, so the panel — and therefore the gradient rail — is the same
+    // height no matter which tab is active. Measured rather than hardcoded
+    // so it stays right when the copy wraps differently per locale.
     function measureOpenHeight() {
         let openHeight = 0;
         tabs.forEach((t) => {
@@ -848,46 +861,44 @@ const tabs = [
             // scrollHeight, not getBoundingClientRect() — the latter is
             // transform-aware, and .content gets scaled down by an ancestor
             // in the row-mode breakpoints below. Reading a post-transform
-            // height back into an inline style on a descendant of that same
+            // height back into a length on a descendant of that same
             // transform double-shrinks it, clipping the text.
+            //
+            // Safe to read while the clip is collapsed: overflow:hidden
+            // doesn't change how .tab-body itself lays out, and scrollHeight
+            // is the body's own content height, not the clip's.
             if (body) openHeight = Math.max(openHeight, body.scrollHeight);
         });
         return openHeight;
     }
 
-    // Reserve the open body's height on the panel so it is already at its
-    // final size before the first tab opens. Must run at load, not at
-    // scroll-in: .tab-body-clip paints at height 0, and .home-section-2 has
-    // no min-height under 1023px, so the section is purely content-sized
-    // there. Opening tab 0 from the IntersectionObserver then grew the whole
-    // section under the reader — that alone was the 0.16 mobile CLS.
+    // Publish the reservation as a variable on the panel. Idempotent by
+    // construction: measureOpenHeight() reads .tab-body's own scrollHeight,
+    // which this write never feeds back into — so re-running on every resize
+    // can't ratchet the value upward the way the old getBoundingClientRect()
+    // -on-the-panel reservation did.
+    //
+    // Must run at load, not at scroll-in: .tab-body-clip paints at height 0,
+    // and .home-section-2 has no min-height under 1023px, so the section is
+    // purely content-sized there. Opening tab 0 from the IntersectionObserver
+    // then grew the whole section under the reader — that alone was the 0.16
+    // mobile CLS.
     function reserveTabPanelHeight(openHeight: number) {
-        if (!tabsPanel) return;
-        let openNow = 0;
-        tabs.forEach((t) => {
-            const clip = t.querySelector<HTMLElement>('.tab-body-clip');
-            if (clip) openNow += parseFloat(clip.style.height || '0') || 0;
-        });
-        const closedBase = tabsPanel.getBoundingClientRect().height - openNow;
-        tabsPanel.style.minHeight = `${closedBase + openHeight}px`;
+        if (!tabsPanel || !openHeight) return;
+        tabsPanel.style.setProperty('--tab-body-open-h', `${openHeight}px`);
     }
 
-    function syncTabBodyHeights(activeIdx: number) {
-        const openHeight = measureOpenHeight();
-        reserveTabPanelHeight(openHeight);
-
-        tabs.forEach((t, i) => {
-            const clip = t.querySelector<HTMLElement>('.tab-body-clip');
-            if (!clip) return;
-            clip.style.height = i === activeIdx ? openHeight + 'px' : '0';
-        });
+    // Open/closed is a class now, not an inline height — the CSS above maps
+    // .active to the shared variable. Only the measurement is scripted.
+    function syncTabBodyHeights() {
+        reserveTabPanelHeight(measureOpenHeight());
     }
 
     function setTab(idx: number, progressDurationMs = TAB_DURATION_MS) {
         if (idx === currentTab) return;
         currentTab = idx;
         tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
-        syncTabBodyHeights(idx);
+        syncTabBodyHeights();
 
         const boxVisual = document.getElementById('boxVisual');
         const extraBoxIds = ['box6', 'box7', 'box8', 'box9', 'box10', 'box11', 'box12', 'box13'];
@@ -1310,12 +1321,33 @@ const tabs = [
         // on scroll-in.
         reserveTabPanelHeight(measureOpenHeight());
 
-        window.addEventListener('resize', () => {
-            normalizeBoxVisual();
-            // re-measure the open body — line wrapping changes with width
-            if (currentTab >= 0) syncTabBodyHeights(currentTab);
-            // ...and before the first tab opens, keep the reservation honest
-            else reserveTabPanelHeight(measureOpenHeight());
-        });
+        // First measurement above runs against the fallback font. Once the
+        // webfont swaps in the bodies re-wrap, so the reservation has to be
+        // retaken or the rail sits at the fallback's height.
+        document.fonts?.ready.then(() => reserveTabPanelHeight(measureOpenHeight()));
+
+        // rAF-coalesced so a burst of resize/observer callbacks costs one
+        // layout pass, and so the write below can never re-enter the
+        // ResizeObserver synchronously.
+        let remeasureQueued = false;
+        function remeasure() {
+            if (remeasureQueued) return;
+            remeasureQueued = true;
+            requestAnimationFrame(() => {
+                remeasureQueued = false;
+                normalizeBoxVisual();
+                // Line wrapping changes with width, so the tallest body does
+                // too — retake it whether or not a tab has opened yet.
+                reserveTabPanelHeight(measureOpenHeight());
+            });
+        }
+
+        window.addEventListener('resize', remeasure);
+
+        // Catches width changes `resize` misses — scrollbar appearing, zoom,
+        // and the left column re-flowing at the row-mode breakpoints.
+        if ('ResizeObserver' in window && tabsPanel) {
+            new ResizeObserver(remeasure).observe(tabsPanel);
+        }
     });
 </script>

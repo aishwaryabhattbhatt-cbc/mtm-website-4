@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^node scripts/a11y-tree-check\\.mjs 2>&1 \\| head -40$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

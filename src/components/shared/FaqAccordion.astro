@@ -41,6 +41,7 @@ const hasFooter = Astro.slots.has('footer');
                     <button
                         type="button"
                         class={`faq-accordion__trigger${idx === 0 ? ' is-open' : ''}`}
+                        id={`faq-accordion-trigger-${faq.id}`}
                         data-faq-trigger={faq.id}
                         aria-expanded={idx === 0 ? 'true' : 'false'}
                         aria-controls={`faq-accordion-content-${faq.id}`}

@@ -91,7 +91,7 @@
   },
   "dat_cta": {
     "key": "dat_cta",
-    "en": "Learn More",
+    "en": "Go to Data Analysis Tool",
     "fr": ""
   },
   "dat_callout": {
@@ -116,7 +116,7 @@
   },
   "trending_cta": {
     "key": "trending_cta",
-    "en": "Learn More",
+    "en": "Go to Trending Tool",
     "fr": ""
   },
   "trending_callout": {
@@ -176,7 +176,7 @@
   },
   "report_action_cta_2": {
     "key": "report_action_cta_2",
-    "en": "SAMPLE REPORT",
+    "en": "GET SAMPLE REPORT",
     "fr": ""
   },
   "methodology_title": {
@@ -187,11 +187,6 @@
   "methodology_description": {
     "key": "methodology_description",
     "en": "MTM Jr. is based on a nationally representative online survey conducted across Canada. Relying on panel respondents, this online survey reaches Canadian households and children across all provinces and territories.",
-    "fr": ""
-  },
-  "methodology_cta": {
-    "key": "methodology_cta",
-    "en": "Download Methodology Data",
     "fr": ""
   },
   "sample_title": {
@@ -311,7 +306,7 @@
   },
   "explore_title": {
     "key": "explore_title",
-    "en": "Explore More Data",
+    "en": "Explore More Data Products",
     "fr": ""
   }
 }

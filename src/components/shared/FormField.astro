@@ -111,7 +111,7 @@ const passwordToggleLabels = {
                     name={name}
                     class="form-field__select text-body-p3 is-placeholder"
                     value={value}
-                    aria-label={ariaLabel || resolvedLabel}
+                    aria-label={ariaLabel || resolvedLabel || resolvedPlaceholder}
                     data-select
                     {...(required && { required })}
                 >
