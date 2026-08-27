@@ -82,7 +82,7 @@ Trending
 
 Forecasting
 
-[Learn more](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/analytic-tools/)
+[Go to Analytic Tools](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/analytic-tools/)
 
 ### Census Tools
 
@@ -96,7 +96,7 @@ Compare
 
 3 more
 
-[Learn more](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
+[Go to Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
 
 ## How MTM fits the way you work already
 
