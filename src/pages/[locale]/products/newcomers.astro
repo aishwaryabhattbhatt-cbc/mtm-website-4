@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { toAbsoluteUrl } from '../../../lib/i18n/routing';
 import { buildBreadcrumbList } from '../../../lib/content/breadcrumbs';
+import { buildDataset } from '../../../lib/content/datasets';
 import Navbar from '../../../components/shared/Navbar.astro';
 import ProductsHeroSection, {
     type HeroBadge,
@@ -65,6 +66,16 @@ const pageDescription = t(
     'newcomers_page_description',
     locale,
     'Data on media and technology habits of newcomers to Canada.'
+);
+
+// Dataset description mirrors the hero paragraph that is actually rendered on
+// the page — Google's structured data policy wants marked-up values to match
+// visible content, and the meta description is not visible.
+const datasetDescription = t(
+    copy,
+    'hero_description',
+    locale,
+    'MTM Newcomers focuses on those who have come to Canada within the last 5 years.'
 );
 ---
 
@@ -138,6 +149,26 @@ const pageDescription = t(
                 areaServed: { '@type': 'Country', name: 'Canada' },
                 serviceType: 'Media and technology research data',
             })}
+        />
+        <script
+            is:inline
+            type="application/ld+json"
+            set:html={JSON.stringify(
+                buildDataset({
+                    siteRoot: toAbsoluteUrl(Astro.site, base),
+                    url: toAbsoluteUrl(Astro.site, localeSwitchUrls[locale]),
+                    name: 'MTM Newcomers Canadian Media & Technology Dataset',
+                    description: datasetDescription,
+                    keywords: [
+                        'newcomers to Canada',
+                        'immigrant media consumption',
+                        'multilingual media habits',
+                        'technology adoption Canada',
+                    ],
+                    temporalCoverage: '2021/..',
+                    locale,
+                })
+            )}
         />
         <script
             is:inline
