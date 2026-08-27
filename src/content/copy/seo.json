@@ -224,16 +224,6 @@
     "en": "We've sent your selected reports to your inbox.",
     "fr": ""
   },
-  "not_found_page_title": {
-    "key": "not_found_page_title",
-    "en": "MTM | Page Not Found",
-    "fr": ""
-  },
-  "not_found_page_description": {
-    "key": "not_found_page_description",
-    "en": "The page you are looking for could not be found.",
-    "fr": ""
-  },
   "submission_error_page_title": {
     "key": "submission_error_page_title",
     "en": "MTM | Submission Failed",
@@ -242,6 +232,16 @@
   "submission_error_page_description": {
     "key": "submission_error_page_description",
     "en": "Your form could not be submitted.",
+    "fr": ""
+  },
+  "not_found_page_title": {
+    "key": "not_found_page_title",
+    "en": "MTM | Page Not Found",
+    "fr": ""
+  },
+  "not_found_page_description": {
+    "key": "not_found_page_description",
+    "en": "The page you are looking for could not be found.",
     "fr": ""
   }
 }

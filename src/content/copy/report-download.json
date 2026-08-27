@@ -476,12 +476,12 @@
   },
   "sign_in_hero_form_email_label": {
     "key": "sign_in_hero_form_email_label",
-    "en": "Email",
+    "en": "Registered Email",
     "fr": ""
   },
   "sign_in_hero_form_email_placeholder": {
     "key": "sign_in_hero_form_email_placeholder",
-    "en": "Enter your email",
+    "en": "Enter your registered email",
     "fr": ""
   },
   "sign_in_hero_form_password_label": {
@@ -531,12 +531,12 @@
   },
   "forgot_password_hero_form_email_label": {
     "key": "forgot_password_hero_form_email_label",
-    "en": "Email",
+    "en": "Registered Email",
     "fr": ""
   },
   "forgot_password_hero_form_email_placeholder": {
     "key": "forgot_password_hero_form_email_placeholder",
-    "en": "Enter your email",
+    "en": "Enter your registered email",
     "fr": ""
   },
   "forgot_password_hero_form_submit": {
@@ -647,6 +647,31 @@
   "download_confirmation_insights_cta": {
     "key": "download_confirmation_insights_cta",
     "en": "Go Back to Exploring",
+    "fr": ""
+  },
+  "Submission Error": {
+    "key": "Submission Error",
+    "en": "",
+    "fr": ""
+  },
+  "submission_error_title": {
+    "key": "submission_error_title",
+    "en": "Something Went Wrong",
+    "fr": ""
+  },
+  "submission_error_description": {
+    "key": "submission_error_description",
+    "en": "We could not submit your form. Please try again — if the problem continues, contact us and our team will help.",
+    "fr": ""
+  },
+  "submission_error_retry_cta": {
+    "key": "submission_error_retry_cta",
+    "en": "Try Again",
+    "fr": ""
+  },
+  "submission_error_contact_cta": {
+    "key": "submission_error_contact_cta",
+    "en": "Contact Us",
     "fr": ""
   }
 }
