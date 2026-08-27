@@ -170,8 +170,12 @@ function badgeEntryStyle(badge: CollageBadge) {
                  in the mobile media query). Hidden on desktop. -->
             <img
                 src={`${collageMobileSrc}hero-mobile.webp`}
+                srcset={`${collageMobileSrc}hero-mobile-600w.webp 600w, ${collageMobileSrc}hero-mobile-900w.webp 900w, ${collageMobileSrc}hero-mobile.webp 1200w`}
+                sizes="100vw"
                 alt=""
                 class="collage-mobile-row"
+                width="1200"
+                height="807"
                 loading="lazy"
                 decoding="async"
             />

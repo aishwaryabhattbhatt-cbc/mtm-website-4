@@ -183,6 +183,8 @@ const DEFAULT_TAB_MAP = {
   'analytic-tools': '1734378829',
   'census-tool': '606257462',
   insights: '1724411017',
+  // No tab yet — gid '0' is skipped below, leaving the committed JSON alone.
+  'insights-ai-technology': '0',
   'about-us': '550283014',
   // Small utility pages share one tab — keys are page-prefixed to avoid
   // collisions (sign_in_*, register_*, request_demo_*, etc.)

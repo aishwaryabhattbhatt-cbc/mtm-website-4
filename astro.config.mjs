@@ -48,6 +48,13 @@ const LASTMOD_SOURCES = [
   ['/fr/', ['src/pages/[locale]/index.astro', 'src/content/copy/home.json']],
   ['/insights/', ['src/pages/[locale]/insights.astro', 'src/content/copy/insights.json']],
   [
+    '/insights/ai-emerging-technology/',
+    [
+      'src/pages/[locale]/insights/ai-emerging-technology.astro',
+      'src/content/copy/insights-ai-technology.json',
+    ],
+  ],
+  [
     '/products/mtm-18-plus/',
     ['src/pages/[locale]/products/mtm-18-plus.astro', 'src/content/copy/mtm-18-plus.json'],
   ],

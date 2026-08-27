@@ -43,6 +43,7 @@ A plain-text Markdown version of every page below is served at the same path wit
 ## Insights
 
 - [Insights](${root}en/insights/): Reports, infographics, and data stories on Canadian media and technology trends, drawn from MTM's continuous research since 2002.
+- [AI & Emerging Technology in Canada](${root}en/insights/ai-emerging-technology/): MTM research on AI adoption and emerging technology use in Canada — generative AI, AI tools, technology adoption, digital behaviours and connected devices, across Canadian adults, youth, and newcomers.
 
 ## Get Access
 

@@ -11,6 +11,9 @@ const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
     'analytic-tools': '1734378829',
     'census-tool': '606257462',
     insights: '1724411017',
+    // Insights topic pages have no sheet tab yet — gid '0' makes sync-copy
+    // skip them, so the committed JSON is the source of truth (same as census).
+    'insights-ai-technology': '0',
     'about-us': '550283014',
     media: '1361843616',
     advertising: '769668628',
@@ -50,6 +53,7 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=606257462&single=true&output=csv',
     insights:
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=1724411017&single=true&output=csv',
+    'insights-ai-technology': '',
     'about-us':
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=550283014&single=true&output=csv',
     media: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQsmnkAj6Ua-ePN8jhlMR7P5DWJMoaeUQax6js_mWYv_-30Sll92GvDW0xKkK-DQA/pub?gid=1361843616&single=true&output=csv',

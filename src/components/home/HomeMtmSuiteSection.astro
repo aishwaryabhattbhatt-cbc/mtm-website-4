@@ -38,6 +38,12 @@ const base = import.meta.env.BASE_URL;
 // here instead of a hardcoded destination.
 const reportDownloadHref = `${base}${locale}/insights/report-download/?from=${encodeURIComponent(`${base}${locale}/#reports-library`)}`;
 
+/* Mobile/tablet product cards only. Mirrors the .mobile-products-list layout:
+   1-per-row below 600px, 2-per-row grid up to 1340px, not rendered above that
+   (.data-products-mobile is display:none). Without this the cards pulled the
+   full 1546w desktop source for a ~400px slot. */
+const MOBILE_CARD_SIZES = '(max-width: 599px) 100vw, (max-width: 1340px) 50vw, 400px';
+
 const products = [
     {
         id: 'mtm18plus',
@@ -246,13 +252,22 @@ const products = [
                 products.map((product) => (
                     <a class="mobile-product-card" href={product.href}>
                         <div class="mobile-card-image">
-                            <Image class="mobile-card-bg" src={product.bg} alt="" loading="lazy" />
+                            <Image
+                                class="mobile-card-bg"
+                                src={product.bg}
+                                alt=""
+                                widths={[400, 640, 828, 1240]}
+                                sizes={MOBILE_CARD_SIZES}
+                                loading="lazy"
+                            />
                             {product.line && (
                                 <Image
                                     class="mobile-card-chart"
                                     src={product.line}
                                     alt=""
                                     aria-hidden="true"
+                                    widths={[400, 640, 828, 1240]}
+                                    sizes={MOBILE_CARD_SIZES}
                                     loading="lazy"
                                 />
                             )}
@@ -261,6 +276,8 @@ const products = [
                                     class="mobile-card-people"
                                     src={product.peopleCenter}
                                     alt={product.nameFallback}
+                                    widths={[400, 640, 828, 1240]}
+                                    sizes={MOBILE_CARD_SIZES}
                                     loading="lazy"
                                 />
                             )}
