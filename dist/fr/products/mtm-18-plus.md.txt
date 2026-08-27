@@ -124,21 +124,9 @@ Landline Proportion
 
 57%
 
-<!-- .is-visible is added by ProductSampleCompositionCard's own reveal stagger
-     (which also drives the value count-up), not by a self-observer here —
-     this chart only ever appears wrapped in that card's fly-in timing, and a
-     second independent viewport observer would fire the ring animation
-     before the wrapper has actually faded in. -->
-
 Cellphone Only Household (CPO) Proportion
 
 43%
-
-<!-- .is-visible is added by ProductSampleCompositionCard's own reveal stagger
-     (which also drives the value count-up), not by a self-observer here —
-     this chart only ever appears wrapped in that card's fly-in timing, and a
-     second independent viewport observer would fire the ring animation
-     before the wrapper has actually faded in. -->
 
 Sample composition is weighted to reflect the national distribution of Canadian households.
 
@@ -149,8 +137,6 @@ Research Provider
   The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Forum Research conducts all of the French and English research for the MTM 18+. Established in 1993, Forum Research Inc. is a Canadian market research and technology company, with offices in Toronto, Montreal, and Saskatoon. With over 30 years of experience, they combine industry talent, cutting-edge technology, and behavioral science to provide in-depth insights.
 
 ## Explore More Data
-
-<!-- Desktop: 3-column grid -->
 
 [![MTM Junior](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-jr-center.DhG_lzJT_Z28nRbO.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/products/juniors/)
 
@@ -169,8 +155,6 @@ Research Provider
 [MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
 
 [Detailed demographic data for sharper targeting and planning.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
-
-<!-- Mobile: horizontal scroll -->
 
 [![MTM Junior](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-jr-center.DhG_lzJT_Z28nRbO.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/products/juniors/)
 

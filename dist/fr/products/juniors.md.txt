@@ -114,8 +114,6 @@ Research Provider
 
 ## Explore More Data
 
-<!-- Desktop: 3-column grid -->
-
 [![MTM 18+](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-18-center.BwqBRMLJ_Z2s4y7O.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/products/mtm-18-plus/)
 
 [MTM 18+](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/products/mtm-18-plus/)
@@ -133,8 +131,6 @@ Research Provider
 [MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
 
 [Detailed demographic data for sharper targeting and planning.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
-
-<!-- Mobile: horizontal scroll -->
 
 [![MTM 18+](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-18-center.BwqBRMLJ_Z2s4y7O.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/products/mtm-18-plus/)
 

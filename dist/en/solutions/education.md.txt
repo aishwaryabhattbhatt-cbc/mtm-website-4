@@ -148,8 +148,6 @@ Support your research in the country's most robust longitudinal media studies, e
 
 Learn how the MTM offers essential content and tools for professors and students alike
 
-<!-- Card 1 -->
-
 Use Case
 
 A professor is looking for a historical and current data on the state of broadcast TV when developing a new curriculum.
@@ -159,8 +157,6 @@ TV viewershipTV hoursRegionAge
 How to leverage this
 
 Examine usage of linear TV and channels across a wide range of demographics via the Data Analysis Tool, or read the TV distribution report for a broader overview.
-
-<!-- Card 2 -->
 
 Use Case
 

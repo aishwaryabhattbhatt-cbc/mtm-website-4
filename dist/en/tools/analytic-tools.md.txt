@@ -56,8 +56,6 @@ Results in multiple formats
 
 Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required. Use the YourData features (hyperlink to bottom of page) for even more display options.
 
-<!-- row 1: content (4 cols) + image (8 cols) -->
-
 ## Trending Tool
 
 MTM 18+ MTM Junior
@@ -65,8 +63,6 @@ MTM 18+ MTM Junior
 The Trending tool offeres 20+ years of data all in one place. Find all the trends about past and present media technology.
 
 ![Trending Tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/trending-tool.webp)
-
-<!-- row 2: 3 feature cards -->
 
 What You See
 
@@ -86,8 +82,6 @@ Exhaustive filter options
 
 See results by age, gender, region, education, income, household composition community size and more.
 
-<!-- row 1: image (8 cols) + content (4 cols) -->
-
 ![Forecasting Tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/forecasting-tool.webp)
 
 ## Forecasting Tool
@@ -95,8 +89,6 @@ See results by age, gender, region, education, income, household composition com
 MTM 18+
 
 The Forecasting Tool helps project future technology adoption and model scenarios. Know where things are headed in the next 1 to 5 years.
-
-<!-- row 2: 3 feature cards -->
 
 What You Project
 

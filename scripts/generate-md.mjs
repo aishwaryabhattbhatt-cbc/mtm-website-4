@@ -60,6 +60,15 @@ const DROP_TAGS = new Set([
  */
 function cleanTree(pageUrl) {
     return (tree) => {
+        // Astro leaves source comments in the rendered HTML, and rehype-remark
+        // passes them straight through. They are implementation notes about CSS
+        // classes and image sizing — noise to anything reading this as content.
+        visit(tree, 'comment', (node, index, parent) => {
+            if (!parent || index === undefined) return;
+            parent.children.splice(index, 1);
+            return [visit.SKIP, index];
+        });
+
         visit(tree, 'element', (node, index, parent) => {
             if (!parent || index === undefined) return;
 

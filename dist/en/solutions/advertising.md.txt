@@ -162,8 +162,6 @@ Export clean, presentation-ready charts and cross-tabs directly from the platfor
 
 Use the MTM to sharpen your pitches, validate plans and win more business — then apply the same thinking to your clients.
 
-<!-- Card 1 -->
-
 Use Case
 
 A client is interested in promoting a new line of microwavable meals, with a focus on newcomer populations.
@@ -173,8 +171,6 @@ Ad exposureRegionsDevices usedIncome
 How to leverage this
 
 Leverage the Data Analysis Tool to find the income levels, devices used to maximize exposure.
-
-<!-- Card 2 -->
 
 Use Case
 

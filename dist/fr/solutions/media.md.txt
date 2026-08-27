@@ -124,8 +124,6 @@ Download your analysis in presentation-ready formats. Drop it straight into a de
 
 Learn how your organization can use the MTM to grow or maintain your key audiences.
 
-<!-- Card 1 -->
-
 Use Case
 
 Understanding the most effective way to promote a new TV show to affluent Baby Boomers.
@@ -135,8 +133,6 @@ Younger and Older BoomersTV hoursChannel viewershipIncomeSeeing ads on streaming
 How to leverage this
 
 Read our dedicated Baby Boomers report to learn where they are concentrating their current viewing, which are most exposed to advertising and whether traditional TV remains king for this audience.
-
-<!-- Card 2 -->
 
 Use Case
 

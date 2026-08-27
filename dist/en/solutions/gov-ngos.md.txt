@@ -164,8 +164,6 @@ Forecasting
 
 Learn how the MTM offers reports and content that can inform decisions based on robust, tried and true survey results.
 
-<!-- Card 1 -->
-
 Use Case
 
 A committee needs information about the success of foreign versus domestic streaming services in Canada, and adoption across income levels.
@@ -175,8 +173,6 @@ SVODNetflixMusic Streaming ServicesSpotifyincome
 How to leverage this
 
 Consult the Audio and SVOD reports which offer a detailed overview of the most popular video and music streaming services and their users.
-
-<!-- Card 2 -->
 
 Use Case
 

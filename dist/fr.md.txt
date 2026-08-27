@@ -1,53 +1,10 @@
 <!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/ -->
 
-<!-- Home Section 1: Hero with WebGL Noise Warp Background -->
-
-<!-- WebGL Noise Warp Canvas (Three.js) -->
-
-<!-- Grain Overlay for Texture -->
-
-<!-- Hero Content and Collage -->
-
 # The Standard for Canadian Media & Technology Insights
 
 The Media Technology Monitor is Canada's national dataset on media, technology, and content consumption — used by broadcasters, advertisers, and government to support funding, policy, and strategic decisions with evidence, not assumptions.
 
 [Request a Demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/request-demo/) Explore More
-
-<!-- Badges + image 1 grouped for mobile only: on mobile they lay out
-                 together as one row (see .collage-row-top); on desktop this div
-                 is unstyled/position:static so it's transparent to its
-                 position:absolute children, which still position themselves
-                 relative to .hero-image-collage exactly as before. -->
-
-<!-- Grouped for mobile only, same transparent-wrapper approach as
-                 .collage-row-top: unstyled/position:static on desktop, so
-                 .collage-image-2/5's position:absolute still positions them
-                 relative to .hero-image-collage exactly as before there. -->
-
-<!-- 5-hero-secondary.webp's visible card fills only ~83-87%
-                     of its own canvas (vs. ~96-99% for 2-hero-main.webp), so
-                     at an equal box size it visibly reads smaller.
-                     .collage-image-5-crop clips the ~16% scale-up applied to
-                     the image below to compensate. -->
-
-<!-- Mobile-only: replaces everything above at ≤767px (see
-                 .collage-mobile-row / .collage-row-top / .collage-image-3 etc.
-                 in the mobile media query). Hidden on desktop. -->
-
-<!-- Bottom White Gradient Overlay -->
-
-<!-- Home Section 2: Hero with WebGL Noise Warp Background -->
-
-<!-- WebGL Noise Warp Canvas (Three.js) -->
-
-<!-- Grain Overlay for Texture -->
-
-<!-- Top White Gradient Overlay -->
-
-<!-- Bottom White Gradient Overlay -->
-
-<!-- LEFT: Heading + Topic Tabs -->
 
 ## Access Trusted Research On
 
@@ -57,27 +14,13 @@ Media Behaviour Understand attention, viewing habits, engagement, and platform u
 
 5,000+ Variables Every insight above is backed by variables across demographics, attitudes, and intent, across Canada's most comprehensive media and technology dataset.
 
-<!-- RIGHT: Visual -->
-
-<!-- Tab 0 + 1 + 2: shared boxes — positions/sizes animate between tabs -->
-
 ![Box 1](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/trusted/tab-1/dat-tool.webp)
 
 ![Box 2](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/trusted/tab-1/chart-smartphone.webp)
 
-<!-- Box 4-5: always the badge+icon treatment (same panel look
-                     as the tab-2 variable badges below, just slightly
-                     bigger). Box 3 is badge+icon everywhere EXCEPT tab 0
-                     (Technology Trends), where it shows its own chart image
-                     — data-tech/data-variables are read by setTab() to swap
-                     it, and #boxVisual.tab0 .box3 below switches its visual
-                     treatment from panel-badge to full-bleed image. -->
-
 ## The MTM Suite
 
 The MTM Suite brings together four powerful data products, in-depth library reports, and interactive analytics tools—all in one integrated platform
-
-<!-- LEFT: Heading + product tabs -->
 
 Data Products
 
@@ -92,8 +35,6 @@ MTM Junior [EXPLORE MORE](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-
 MTM Newcomers [EXPLORE MORE](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/products/newcomers)
 
 MTM Census Tool [EXPLORE MORE](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool)
-
-<!-- RIGHT: Product image card -->
 
 Media and technology data for Canadians aged 18 and older.
 
@@ -110,8 +51,6 @@ Media and technology behaviour insights for newcomers who have arrived to Canada
 Detailed demographic data for sharper targeting and planning.
 
 ![MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-cs.CujlLbzD_ZBUS39.webp)
-
-<!-- MOBILE: Data Products — vertical card stack, hidden on desktop -->
 
 Data Products
 
@@ -143,8 +82,6 @@ Explore four research products, each built for a different audience.
 
 [Detailed demographic data for sharper targeting and planning.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool)
 
-<!-- LEFT: Heading + description -->
-
 Reports Library
 
 ### 70 + Reports Published Annually
@@ -153,8 +90,6 @@ Access a growing library of reports, infographics, and trend analyses covering m
 
 [SNEAK PEEK REPORT ](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/insights/report-download/?from=%2Fmtm-website-4%2Ffr%2F%23reports-library)[GO TO INSIGHTS](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/insights/)
 
-<!-- RIGHT: Reports static image card -->
-
 Canadian Viewing Profiles Feb 3, 2026
 
 MTM 18+
@@ -218,12 +153,8 @@ MTM Junior
 FAST Channels Nov 13, 2025
 
 MTM Newcomers
-
-<!-- Bottom: CTAs -->
 
 [SNEAK PEEK REPORT ](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/insights/report-download/?from=%2Fmtm-website-4%2Ffr%2F%23reports-library)[GO TO INSIGHTS](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/insights/)
-
-<!-- LEFT: Heading + tool items -->
 
 Tool Suite
 
@@ -246,8 +177,6 @@ Build custom views, apply advanced filters, and explore trends dynamically with 
 #### [MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
 
 [MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
-
-<!-- RIGHT: Video card -->
 
 [](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/mtm-suite/tools-video.mp4)
 

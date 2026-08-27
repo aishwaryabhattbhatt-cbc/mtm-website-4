@@ -128,8 +128,6 @@ NewsPodcast
 
 Learn how your organization can use the MTM to better understand audiences and users of all sizes.
 
-<!-- Card 1 -->
-
 Use Case
 
 A department is looking for detailed information on the news consumption habits of women under 50.
@@ -139,8 +137,6 @@ Watch news clipsRead news onlineDevices usedAccess news via...
 How to leverage this
 
 Read our MTM 18+ news report for broad overview then examine key variables via the data analysis tool to enhance your understanding.
-
-<!-- Card 2 -->
 
 Use Case
 
