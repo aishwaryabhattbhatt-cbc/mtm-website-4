@@ -1,0 +1,169 @@
+<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/mtm-18-plus/ -->
+
+# MTM 18+
+
+MTM 18+ is the largest and longest running study on media and technology among the adult Canadian population. By taking an exhaustive approach, it provides key insights to understand your audiences or users.
+
+[Request a Demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/request-demo/)
+
+Decades Of Data
+
+MTM 18+ has been gathering data since 2001 on large array of topics.
+
+Large, Robust Sampling
+
+We've surveyed more than 300,000 adult Canadians to date and reach an additional 12,000 or more annually.
+
+Exhaustive Value For Clients
+
+Clients gain access to a full suite of more than 45 reports annually and thousands of variables across our suite of tools.
+
+A Fully Bilingual Product
+
+All content available through MTM 18+ and the rest of the MTM product suite is offered in English and French.
+
+Data On Canadians From Coast To Coast To Coast
+
+The MTM offers data on every region and province, including the North.
+
+## Tools
+
+Explore our suite of tools and leverage data insights for confident decision-making on Canadian adults.
+
+![Data analysis tool screenshot](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/products/mtm-18-plus/data-analysis-tool.webp)
+
+### Data Analysis Tool
+
+The Data Analysis Tool (DAT) offers clients full access to our robust data set on Canadian adults. Tailor your analysis your way, filter the results, and create visually stunning outputs.
+
+[Go to Data Analysis Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/analytic-tools/)
+
+Want to know Canadians are using connected TV sets?
+
+All you need to know is a few clicks away with the DAT.
+
+![Trending tool screenshot](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/products/mtm-18-plus/trending-tool.webp)
+
+### Trending Tool
+
+The Trending Tool lets clients see how technology and media adoption has shifted since 2010. Chart your path forward with 15+ years of data and demographic data filters.
+
+[Go to Trending Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/analytic-tools/#trending-tool)
+
+How has TikTok grown?
+
+Past month usage has increased from 3% in Fall 2019 to 23% in Fall 2025.
+
+![Forecasting tool screenshot](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/products/mtm-18-plus/forecasting-tool.webp)
+
+### Forecasting Tool
+
+The Forecasting Tool is for clients with an eye on the past and the future. Easy to read charts and insights from our experts will help you stay ahead of your competition.
+
+[Go to Forecasting Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/analytic-tools/#forecasting-tool)
+
+Is Amazon Prime Video on-track to surpass Netflix?
+
+Find out this and more with acccess to the Forecasting tool.
+
+## Adoption Report
+
+Our flagship report covering the very latest data on of key media and technology adoption among adult Canadians.
+
+Top SVOD Platforms - Past Month Usage
+
+Anglophones 18+
+
+61%
+
+of households subscribe to Netflix, the platform to popularize SVOD services.
+
+56%
+
+of households subscribe to Amazon Prime Video, the current runner up in the SVOD space.
+
+Explore our full library of reports or download a free sneak peek.
+
+[GO TO INSIGHTS](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/) [GET SAMPLE REPORT](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/report-download/?from=%2Fmtm-website-4%2Fen%2Fproducts%2Fmtm-18-plus%2F%23reports)
+
+## Research Methodology
+
+MTM 18+ is based on a nationally representative telephone survey with a follow up online compontent, reaching Canadian adults across all provinces and territories.
+
+Sample Coverage
+
+- 12,000+ Canadian adults surveyed annually
+
+  The largest on-going survey of its kind.
+
+- 300,000+ Canadian adults surveyed to date
+
+  Decades of results available.
+
+- 6,000+/6,000+ Anglophone/Francophone respondents
+
+  Large, viable samples for either Official Canadian language market.
+
+Survey Design
+
+- 25+ Years of data collection
+
+  Industry standard level tracking
+
+- 22% Response rate
+
+  Exceeds industry standards
+
+- Two-Part Survey structure
+
+  Respondents complete a phone survey and an additional follow up online survey, with questions optomized for each medium
+
+Sample Composition
+
+Landline Proportion
+
+57%
+
+Cellphone Only Household (CPO) Proportion
+
+43%
+
+Sample composition is weighted to reflect the national distribution of Canadian households.
+
+Research Provider
+
+- ![Forum Research](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/products/mtm-18-plus/forum_research_logo.png)
+
+  The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Forum Research conducts all of the French and English research for the MTM 18+. Established in 1993, Forum Research Inc. is a Canadian market research and technology company, with offices in Toronto, Montreal, and Saskatoon. With over 30 years of experience, they combine industry talent, cutting-edge technology, and behavioral science to provide in-depth insights.
+
+## Explore More Data Products
+
+[![MTM Junior](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-jr-center.DhG_lzJT_Z28nRbO.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+
+[MTM Junior](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+
+[Media and technology behaviour insights for Canadians aged 2–17.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+
+[![MTM Newcomers](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-nc-center.Bw5JQzqe_dBpgS.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/newcomers/)
+
+[MTM Newcomers](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/newcomers/)
+
+[Media and technology behaviour insights for newcomers who have arrived to Canada in the past 5 years.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/newcomers/)
+
+[![MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-cs-center.ClHxdw16_Z1WAQsz.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+
+[MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+
+[Detailed demographic data for sharper targeting and planning.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+
+[![MTM Junior](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-jr-center.DhG_lzJT_Z28nRbO.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+
+[MTM Junior Media and technology behaviour insights for Canadians aged 2–17.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+
+[![MTM Newcomers](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-nc-center.Bw5JQzqe_dBpgS.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/newcomers/)
+
+[MTM Newcomers Media and technology behaviour insights for newcomers who have arrived to Canada in the past 5 years.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/newcomers/)
+
+[![MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-cs-center.ClHxdw16_Z1WAQsz.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+
+[MTM Census Tool Detailed demographic data for sharper targeting and planning.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)

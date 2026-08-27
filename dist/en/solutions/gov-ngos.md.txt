@@ -1,0 +1,193 @@
+<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/solutions/gov-ngos/ -->
+
+Government and NGOs
+
+# Trusted Data for Serving Canadians
+
+In the public and non-profit sectors, effective decisions depend on understanding the people you serve — how they access information, use technology, and engage with media. The Media Technology Monitor (MTM) provides trusted Canadian data that helps organizations design better programs, improve communications, and make evidence-based decisions with confidence.
+
+[Request a demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/request-demo/)
+
+Trusted by
+
+![Government of Canada](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/canada.svg)
+
+![CRTC](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/crtc.svg)
+
+![First Nations Market Housing Fund](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/first-nation-market.svg)
+
+![Québec](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/quebec.svg)
+
+![Telefilm Canada](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
+
+![Canadian Heritage](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/R613-EN-RGB-Colour.svg)
+
+## Insights That Support Better Public Decisions
+
+Access current, nationally representative data on how Canadians consume media and technology. MTM helps governments and NGOs better understand audiences, evaluate communications strategies, and identify emerging behavioural shifts across demographic groups and regions.
+
+Insight
+
+42%
+
+of newcomers aged 35 to 44 have used employment services since arriving in Canada
+
+Age Group Employment services used Other settlement services used
+
+Informs decisions on
+
+Funding and resource allocation, awareness campaign targeting age specific approaches for federal programs.
+
+Insight
+
+45%
+
+of teens used TikTok in the past month
+
+TikTok Instagram Facebook Snapchat Linkedin Whatsapp
+
+Informs decisions on
+
+Platform selection for public outreach, regulatory review of social media reach, and audience segmentation for government communications.
+
+Insight
+
+15% vs 30%
+
+Indigenous people are less likely to be using LinkedIn than other people living in Canada.
+
+Social Media LinkedIn Indigenous Facebook
+
+Informs decisions on
+
+Understanding what social platforms Canadians are using can ensure that your next campaign to find new employees has the greatest impact.
+
+Reports Library
+
+## Research Across Every Corner of Canadian Media Behaviour
+
+From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.
+
+All  MTM 18+  MTM Junior  MTM Newcomers
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+MTM Junior MTM 18+ MTM Newcomers Dec 12, 2025
+
+Kids and their Reliance on the media and their portable devices
+
+This report looks at the demographics of children that access news and the most used sources for news content.
+
+NewsPodcast
+
+[View Press Release](#)
+
+## Tools that empower you
+
+### Census Tool
+
+Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.
+
+Snapshot
+
+Explorer
+
+Compare
+
+3 more
+
+[Learn more](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+
+### Analytic Tools
+
+### Analytic Tools
+
+Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.
+
+Data Analysis
+
+Trending
+
+Forecasting
+
+[Learn more](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/analytic-tools/)
+
+## MTM in Action for Public Sector Teams
+
+Learn how the MTM offers reports and content that can inform decisions based on robust, tried and true survey results.
+
+Use Case
+
+A committee needs information about the success of foreign versus domestic streaming services in Canada, and adoption across income levels.
+
+SVODNetflixMusic Streaming ServicesSpotifyincome
+
+How to leverage this
+
+Consult the Audio and SVOD reports which offer a detailed overview of the most popular video and music streaming services and their users.
+
+Use Case
+
+A team is looking for information on the performance of different cellphone providers across different regions.
+
+Cellphone service providerRegion
+
+How to leverage this
+
+Find our latest cellphone report to begin, then go deeper with the data analysis tool to find actionable insights.
+
+## What government and NGO partners are saying about us
+
+![MANSO](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/manso.svg)
+
+Thanks to our subscription to MTM Newcomers, we have access to newcomer data insights and their settlement and integration journey in Manitoba. We particularly appreciate seeing information that is not available through any other sources, like newcomers' use of media, devices, and newcomer knowledge of services available through our sector. This information helps our members ensure that their services are well adapted to the needs and characteristics of the newcomers they serve.
+
+Valeria Castellanos, Language Support and Program Manager - MANSO

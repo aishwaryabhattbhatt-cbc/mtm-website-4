@@ -1,0 +1,163 @@
+<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/ -->
+
+# Ultra Localized Demographic Data
+
+Canadian census data offers precise insights for business decisions, but its complexity can be a hurdle. The MTM Census Tool is a user-friendly interactive dashboard that simplifies census data analysis, providing geography-based demographic information sourced directly from Statistics Canada.
+
+[Request a Demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/request-demo/)
+
+![MTM analytic tool dashboard](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Census-tool.webp)
+
+[Watch Video](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/census-tool/demo/)
+
+## Highlights
+
+70,000+ Geographic Areas
+
+Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal area to pinpoint where media and tech trends emerge.
+
+2,000+ Demographic Variables
+
+Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who’s driving adoption and change.
+
+![Aperçu des filtres géographiques](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/census-geo-filters.webp)
+
+![Aperçu des filtres démographiques](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/census-demo-filters.webp)
+
+## Explore Census Tool Features
+
+![Snapshot tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Snapshot-Tool.webp)
+
+### Snapshot
+
+Understand any region at a glance
+
+Population, age, income, language, immigration, indigenous identity: Any Canadian geography in seconds.
+
+What You Get
+
+- Quick Insights
+
+  Generate instant "Community Portraits" for any Canadian geography.
+
+- Key Metrics
+
+  Analyze population, age, income, and language in seconds.
+
+- Data Exports
+
+  Easily export data tables for quick analysis and sharing.
+
+![Drilldown tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Drilldown-Tool.webp)
+
+### Drilldown
+
+Multi-dimensional targeting
+
+Find exactly who you are looking for by combining up to three distinct characteristics simultaneously. Layer specific demographic filters to surface the precise communities your work is about and visualize their distribution across the map
+
+What You Get
+
+- Target Markets
+
+  Find populations with the exact combination of characteristics you require.
+
+- Visual Mapping
+
+  Use interactive maps to visualize exactly where your target population lives
+
+- Ranked Data
+
+  Access characteristic distributions and ranked geographies for your selected segments.
+
+63% 63% In Toronto, 63% of women aged 18-34 make less than $40,000/year
+
+![Ranker tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Ranker-Tool.webp)
+
+### Ranker
+
+Identify target geographies in seconds
+
+Eliminate the guesswork by ranking every geography in Canada against your specific business KPIs. Instantly identify geographies of interest.
+
+What You Get
+
+- Market Rankings
+
+  Rank geographies based on any specific Census characteristic.
+
+- Custom Criteria
+
+  Rank markets by counts, percentages, medians, or averages.
+
+- Filtered Selection
+
+  Precision-target regions by filtering out irrelevant population sizes.
+
+![Demographic Explorer tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Demo-Explorer-Tool.webp)
+
+### Demographic Explorer
+
+Deep-dive into any geography
+
+Analyze any region through granular characteristic distributions. Move beyond surface-level statistics to evaluate the unique profiles of individuals, families, and households.
+
+What You Get
+
+- Characteristic Distributions
+
+  View distributions of any characteristic in any Canadian geography.
+
+- Multidimensional Data
+
+  Access data on individuals, families, dwellings, and household types.
+
+- Aggregate Statistics
+
+  Explore averages and medians alongside distributions for thorough location understanding.
+
+11% 11% of the labour force in Saskatchewan work in the primary sector (Sector 11: Agriculture, Forestry, Fishing and Hunting, and Sector 21: Mining, Quarrying, and Oil and Gas Extraction), more than any other province
+
+![Compare tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Compare-Tool.webp)
+
+### Compare
+
+Benchmark your target geography
+
+Contextualize your regional data by contrasting local markets against provincial or national standards. Identify demographic gaps and outliers to to better understand you target market.
+
+What You Get
+
+- Market Benchmarking
+
+  Compare a market against similar regions or national benchmarks.
+
+- Visual Analysis
+
+  Contrast characteristic distributions across different geographies using intuitive charts.
+
+- Gap Identification
+
+  Identify and understand demographic differences between specific territories.
+
+![Canada Score tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Canada-Score-Tool.webp)
+
+### Canada Score
+
+Data-driven scoring tailored to your strategy
+
+Take control of your market analysis with advanced, multi-factor weighted modeling. Score and rank potential locations based on your custom persona clusters to find the best opportunities for your brand.
+
+What You Get
+
+- Strategic Alignment
+
+  Align rankings to your strategy using weighted modeling and custom personas.
+
+- Threshold Filtering
+
+  Ensure only geographies meeting your specific business thresholds are considered.
+
+- Infinite Combinations
+
+  Access millions of characteristic combinations possible across four distinct dimensions.

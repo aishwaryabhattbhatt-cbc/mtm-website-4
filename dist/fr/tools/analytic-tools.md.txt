@@ -1,0 +1,129 @@
+<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/analytic-tools/ -->
+
+# Data-Driven Decisions with Ease
+
+Our analytic tools offer all you need to understand of your desired audiences. Use the Data Analysis Tool (DAT) for thousands of variables and filters (MTM 18+, Juniors, Newcomers), the Trending Tool for identifying key trends, and the Forecasting Tool for reliable, accurate projections.
+
+[Request a Demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/request-demo/)
+
+![MTM analytic tool dashboard](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/Analytic-tool.webp)
+
+## Data Analysis Tool
+
+MTM 18+ MTM Junior MTM Newcomers
+
+The Data Analysis Tool (DAT) offers subscribers easy access to MTM 18+, Junior and Newcomers data. Select data, filter results and get answers to burning questions.
+
+#### Explore Tool Features
+
+[](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/dat/tools-query.mp4)
+
+QUERY BUILDING
+
+Easily create a custom query
+
+Select query parameters, drag variables from the master list into output rows and columns. What you arrange is exactly what you get. No SQL or python, no analyst handoff, no waiting. Go from brief to cross-tab in minutes.
+
+[](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/dat/tools-select-variables.mp4)
+
+VARIABLES
+
+Large, robust data sets at your fingertips
+
+Thousands of variables covering demographics, device ownership, media habits, platform usage — all in a single searchable list by categories. When a client asks an unexpected question mid-meeting, you have the variables to answer it on the spot.
+
+[](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/dat/tools-quick-filters.mp4)
+
+FILTERS
+
+Refine your query with Quick or Additional Filters
+
+Narrow your results by age gender or region with Quick Filters or apply any variables in the tool as filter using Additional Filters.
+
+[](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/dat/tools-drag-drop.mp4)
+
+CUSTOM TABLES
+
+Our data, your way
+
+Easily adjust or refine your query with drag and drop functionality. No headaches, just a new table with new results in seconds.
+
+[](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/dat/tools-export.mp4)
+
+OUTPUT FORMATS
+
+Results in multiple formats
+
+Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required. Use the YourData features (hyperlink to bottom of page) for even more display options.
+
+## Trending Tool
+
+MTM 18+ MTM Junior
+
+The Trending tool offeres 20+ years of data all in one place. Find all the trends about past and present media technology.
+
+![Aperçu de l'outil Tendances](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/trending-tool.webp)
+
+What You See
+
+Which technologies are rising or losing ground
+
+Track adoption curves across media types. Know which platforms are winning the streaming wars when it comes to your target audiences.
+
+What You Track
+
+Where your audiences are heading towards
+
+Multiple years of seasonal updates means you can show momentum, not just a snapshot. Bring a clear trajectory and focus to your next client meeting.
+
+What You Compare
+
+Exhaustive filter options
+
+See results by age, gender, region, education, income, household composition community size and more.
+
+![Aperçu de l'outil Prévisions](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/analytic-tools/forecasting-tool.webp)
+
+## Forecasting Tool
+
+MTM 18+
+
+The Forecasting Tool helps project future technology adoption and model scenarios. Know where things are headed in the next 1 to 5 years.
+
+What You Project
+
+Where technology adoption is heading and when
+
+Multi-year projections built on MTM's nationally representative dataset and refined by industry experts. Not a guess — a model grounded in years of observed behaviour and perfected by talented minds.
+
+What You Model
+
+Key technologies like podcasts, AI tool usage, paid TV subscriptions and more
+
+Explore a variety of different media and technology within a few clicks.
+
+What You Compare
+
+National, Anglophone and Francophone markets
+
+Find out how these markets allign or don't with an eye toward the future.
+
+## YourData
+
+YourData is your personalized hub to save, organize, and export data queries across MTM tools. Build once, reuse, refine and easily export.
+
+Smart Storage
+
+Save all your DAT, Trending, and Forecasting queries in one place.
+
+Custom Visualization
+
+Modify colours, chart labels, legends and more, no extra software required.
+
+Detailed Options
+
+Create pie charts, bar charts or tables and have full control over labelling.
+
+Flexible Exporting
+
+Download report or presentation ready data, built your way.
