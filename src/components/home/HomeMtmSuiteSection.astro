@@ -446,24 +446,26 @@ const products = [
         </div>
     </div>
     <div class="tools-suite row suite-fly-in">
-        <!-- LEFT: Heading + tool items -->
+        <!-- LEFT: tool items (heading block is hoisted out at 1024–1250px) -->
         <div class="products-left col col-12 col-lg-5">
-            <Eyebrow>{t(copy, 'package_3_eyebrow', locale, 'Tools Suite')}</Eyebrow>
+            <div class="tools-header">
+                <Eyebrow>{t(copy, 'package_3_eyebrow', locale, 'Tools Suite')}</Eyebrow>
 
-            <h3 class="suite-heading">
-                {t(copy, 'package_3_title', locale, 'Your Data, Your Way.')}
-            </h3>
+                <h3 class="suite-heading">
+                    {t(copy, 'package_3_title', locale, 'Your Data, Your Way.')}
+                </h3>
 
-            <p class="tools-description text-body-p1" data-copy-key="package_3_description">
-                {
-                    t(
-                        copy,
-                        'package_3_description',
-                        locale,
-                        "Don't just read the trends, discover them. Our proprietary toolset allows you to build custom views, forecast future shifts, and benchmark your audience against the national average."
-                    )
-                }
-            </p>
+                <p class="tools-description text-body-p1" data-copy-key="package_3_description">
+                    {
+                        t(
+                            copy,
+                            'package_3_description',
+                            locale,
+                            "Don't just read the trends, discover them. Our proprietary toolset allows you to build custom views, forecast future shifts, and benchmark your audience against the national average."
+                        )
+                    }
+                </p>
+            </div>
 
             <div class="tools-items">
                 {
@@ -1219,6 +1221,95 @@ const products = [
 
     .tools-suite .products-right {
         height: 100%;
+    }
+
+    /* Inert wrapper by default: the eyebrow/heading/description stay direct flex
+       children of .products-left, exactly as before. It only becomes a real box
+       in the 1024–1250 media query below, which is the one place the Figma
+       layout differs. */
+    .tools-header {
+        display: contents;
+    }
+
+    /* Figma 2185:16421 — at ~1236px the design lifts the heading block out of
+       the left column into its own full-width row, leaving the tool list and the
+       video card as the only two columns. That matters because the video card's
+       height is otherwise slaved to the left column (align-items: stretch +
+       height: 100%): with the heading block in there the box goes ~638x617
+       (AR 1.03) and object-fit: cover eats 46% of the frame's width. With the
+       heading lifted out the card stretches to the tool list instead (~388px),
+       which is a much wider box, so cover crops 15–33% rather than 46–60%. */
+    @media (min-width: 1024px) and (max-width: 1250px) {
+        /* dissolve both wrappers so .tools-header, .tools-items and
+           .products-right all become direct items of the 12-col .row grid */
+        .tools-suite .products-left {
+            display: contents;
+        }
+
+        .tools-header {
+            display: flex;
+            flex-direction: column;
+            /* Figma 2185:12615 — 20px between eyebrow, heading and description */
+            gap: var(--space-5);
+            /* Figma: heading block is 916 of the 1236 frame ≈ 9 of 12 columns */
+            grid-column: 1 / span 9;
+            grid-row: 1;
+        }
+
+        /* The negative pull exists to claw .products-left's 40px flex gap back
+           down to the 20px that data-products and reports-library actually show
+           between heading and description. .tools-header already sets 20px, so
+           the pull would double-count and close the gap to 0 — drop it here and
+           let the 20px gap stand on its own, matching the other two rows.
+           Scoped through .tools-header for specificity: the rule it overrides
+           is further down the file and a media query adds none. */
+        .tools-header .tools-description {
+            margin-top: 0;
+        }
+
+        .tools-items {
+            grid-column: 1 / span 5;
+            grid-row: 2;
+        }
+
+        /* no aspect-ratio and no align-self here on purpose: the card keeps the
+           base rule's height: 100% and stretches to the grid row, which row 2
+           sizes from the taller tool list — so the two columns end level */
+        .tools-suite .products-right {
+            grid-column: 6 / span 7;
+            grid-row: 2;
+        }
+
+        /* ── REPORTS LIBRARY ──
+           Same band, same problem in reverse: here the text column is the taller
+           of the two (439 vs 395 at 1250px), so the 16/10 image card leaves a
+           ragged 44px short of it. Let the card stretch to the row instead.
+           .reports-bg is already inset:0 + cover, so it fills the taller box on
+           its own, and .reports-fg is already contain + bottom center and fits
+           by width (632x363 of 1310x753), so it neither scales nor lifts off the
+           bottom edge. The ticker keeps the base rule's top: 12% + bottom: 0 and
+           so grows with the card — it's a continuously scrolling list, so the
+           extra height just reveals more rows. */
+        .reports-library {
+            align-items: stretch;
+        }
+
+        .reports-library .products-right,
+        .reports-image-card {
+            height: 100%;
+            /* released so the card can take the row's height instead */
+            aspect-ratio: auto;
+        }
+
+        /* Deliberate exception to --section-header-gap (the alias that normally
+           governs header-block → content). This row is a special case: the
+           heading block is only hoisted out of the left column inside this
+           narrow band, so it reads as part of the tools row rather than as a
+           section header standing over it. The alias's 40px leaves it floating;
+           --space-6 keeps it attached to the two columns below. */
+        .tools-suite {
+            row-gap: var(--space-6);
+        }
     }
 
     .tools-description {
