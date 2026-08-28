@@ -27,6 +27,9 @@ To cut over for real:
    committing it makes GitHub Pages serve the custom domain, so add it last.
 4. Redeploy, then resubmit the sitemap in Google Search Console.
 
+See [`docs/seo.md`](docs/seo.md) for the full SEO inventory and the parts of a
+domain change the env vars do *not* cover.
+
 ## Getting started
 
 ```sh
