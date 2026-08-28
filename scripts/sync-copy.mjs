@@ -83,8 +83,15 @@ async function fetchCsvWithRetries(url) {
   let lastErr;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
+      // Node's fetch has no default response timeout. Without this signal a
+      // Sheets connection that opens but never answers hangs forever: nothing
+      // throws, so neither the retry below nor the keep-existing-JSON fallback
+      // in main() ever runs, and CI sits on this step until the job is killed.
+      // A whole sync of 30+ tabs normally takes ~17s, so 15s per attempt is
+      // already far beyond a healthy response.
       const res = await fetch(url, {
         redirect: 'follow',
+        signal: AbortSignal.timeout(15_000),
         headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' },
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);

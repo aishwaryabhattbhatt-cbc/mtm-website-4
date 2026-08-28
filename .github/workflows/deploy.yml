@@ -22,6 +22,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Backstop for a hung external fetch (sync-copy talks to Google Sheets).
+    # A healthy build finishes in well under a minute; without this the job
+    # inherits GitHub's 6-hour default and a stall blocks the pages
+    # concurrency group for hours.
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v5
