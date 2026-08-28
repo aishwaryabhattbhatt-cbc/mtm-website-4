@@ -36,7 +36,10 @@ function collectHtmlFiles(dir, files = []) {
     if (entry.isDirectory()) {
       collectHtmlFiles(full, files);
     } else if (entry.isFile() && entry.name.endsWith('.html')) {
-      files.push(full);
+      // Skip .html drops that aren't rendered pages — e.g. Google Search
+      // Console's verification file, which is a single line of text and must
+      // keep its exact contents, so it can never satisfy page-level checks.
+      if (fs.readFileSync(full, 'utf8').includes('<html')) files.push(full);
     }
   }
   return files;
