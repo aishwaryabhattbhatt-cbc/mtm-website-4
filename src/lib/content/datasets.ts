@@ -39,7 +39,10 @@ export function buildDataset({
         },
         publisher: { '@id': `${siteRoot}#organization` },
         isAccessibleForFree: false,
-        spatialCoverage: { '@type': 'Country', name: 'Canada' },
+        // Text, not { '@type': 'Country' }: Country is a valid schema.org
+        // subtype of Place, but Google's Dataset parser rejects it and only
+        // accepts Place or plain text.
+        spatialCoverage: 'Canada',
         temporalCoverage,
         inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
     };
