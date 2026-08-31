@@ -79,6 +79,11 @@
     "en": "Organisation Name",
     "fr": ""
   },
+  "request_demo_hero_form_industry_label": {
+    "key": "request_demo_hero_form_industry_label",
+    "en": "Industry",
+    "fr": ""
+  },
   "request_demo_hero_form_language_label": {
     "key": "request_demo_hero_form_language_label",
     "en": "Language Preference",

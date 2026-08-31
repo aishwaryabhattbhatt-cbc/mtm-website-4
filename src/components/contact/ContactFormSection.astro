@@ -12,6 +12,7 @@ interface Props {
 
 const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
+const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
 ---
 
 <section class="contact-form-section section-height-100" data-contact-form-section>
@@ -42,8 +43,20 @@ const base = import.meta.env.BASE_URL;
                 class="contact-form-section__form"
                 data-contact-form
                 data-submit-href={`${base}${locale}/contact-success/`}
+                data-error-href={`${base}${locale}/submission-error/`}
+                data-form-endpoint={formEndpoint}
                 novalidate
             >
+                <input type="hidden" name="formType" value="contact" />
+                <input
+                    type="text"
+                    name="company_website"
+                    class="form-honeypot"
+                    tabindex="-1"
+                    autocomplete="off"
+                    aria-hidden="true"
+                />
+                <input type="hidden" name="language" value={locale} />
                 <div class="contact-form-section__row">
                     <FormField
                         locale={locale}
@@ -252,19 +265,23 @@ const base = import.meta.env.BASE_URL;
 </style>
 
 <script>
+    import { submitFormIfConfigured } from '../../lib/forms/submitForm';
+
     document.querySelectorAll<HTMLElement>('[data-contact-form-section]').forEach((section) => {
         const form = section.querySelector<HTMLFormElement>('[data-contact-form]');
         if (!form) return;
 
-        form.addEventListener('submit', (event) => {
+        form.addEventListener('submit', async (event) => {
             event.preventDefault();
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
-            const submitHref = form.dataset.submitHref;
-            if (submitHref) {
-                window.location.href = submitHref;
+
+            const ok = await submitFormIfConfigured(form);
+            const target = ok ? form.dataset.submitHref : form.dataset.errorHref;
+            if (target) {
+                window.location.href = target;
             }
         });
     });

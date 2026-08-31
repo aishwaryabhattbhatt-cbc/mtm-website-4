@@ -14,6 +14,7 @@ interface Props {
 
 const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
+const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
 
 const expectItems = [
     {
@@ -28,6 +29,16 @@ const expectItems = [
         key: 'request_demo_hero_expect_item_3',
         fallback: 'Expert advice on how MTM can fit in your workflow',
     },
+];
+
+const industryOptions = [
+    { value: '', label: 'Select your industry', labelKey: 'newsletter_industry_placeholder' },
+    { value: 'media', label: 'Media', labelKey: 'solutions_item_2' },
+    { value: 'advertising', label: 'Advertising', labelKey: 'solutions_item_3' },
+    { value: 'govngo', label: 'Gov & NGOs', labelKey: 'solutions_item_5' },
+    { value: 'education', label: 'Education', labelKey: 'solutions_item_4' },
+    { value: 'industry', label: 'Industry', labelKey: 'solutions_item_1' },
+    { value: 'other', label: 'Other', labelKey: 'newsletter_industry_other' },
 ];
 
 const interestOptions = [
@@ -91,18 +102,22 @@ const interestOptions = [
         </div>
 
         <div class="request-demo-hero__card hero-fade-in" style="animation-delay: 0.2s">
-            <h2
-                class="request-demo-hero__card-title text-h4"
-                data-copy-key="request_demo_hero_form_title"
-            >
-                {t(copy, 'request_demo_hero_form_title', locale, 'Talk to our experts')}
-            </h2>
-
             <form
                 class="request-demo-hero__form"
                 aria-label={t(copy, 'request_demo_hero_form_aria_label', locale, 'Request a demo')}
                 data-submit-href={`${base}${locale}/request-demo-success/`}
+                data-error-href={`${base}${locale}/submission-error/`}
+                data-form-endpoint={formEndpoint}
             >
+                <input type="hidden" name="formType" value="demo" />
+                <input
+                    type="text"
+                    name="company_website"
+                    class="form-honeypot"
+                    tabindex="-1"
+                    autocomplete="off"
+                    aria-hidden="true"
+                />
                 <div class="request-demo-hero__row">
                     <FormField
                         locale={locale}
@@ -161,6 +176,21 @@ const interestOptions = [
                         required
                     />
                 </div>
+
+                <FormField
+                    locale={locale}
+                    copy={copy}
+                    variant="field-with-label"
+                    type="select"
+                    name="industry"
+                    labelKey="request_demo_hero_form_industry_label"
+                    label="Industry"
+                    placeholderKey="newsletter_industry_placeholder"
+                    placeholder="Select your industry"
+                    labelColor="primary"
+                    options={industryOptions}
+                    required
+                />
 
                 <div class="request-demo-hero__group">
                     <p
@@ -250,7 +280,7 @@ const interestOptions = [
                 </div>
 
                 <label class="request-demo-hero__choice request-demo-hero__newsletter text-body-p3">
-                    <input type="checkbox" name="newsletter" checked />
+                    <input type="checkbox" name="newsletter" />
                     {
                         t(
                             copy,
@@ -391,11 +421,6 @@ const interestOptions = [
         box-shadow: var(--shadow-card);
     }
 
-    .request-demo-hero__card-title {
-        margin: 0;
-        color: var(--text-primary);
-    }
-
     .request-demo-hero__form {
         display: flex;
         flex-direction: column;
@@ -514,6 +539,8 @@ const interestOptions = [
 </style>
 
 <script>
+    import { submitFormIfConfigured } from '../../lib/forms/submitForm';
+
     const form = document.querySelector<HTMLFormElement>('.request-demo-hero__form');
     const emailInput = form?.querySelector<HTMLInputElement>('input[name="email"]');
 
@@ -522,7 +549,7 @@ const interestOptions = [
         emailInput.value = prefillEmail;
     }
 
-    form?.addEventListener('submit', (event) => {
+    form?.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         if (!form.checkValidity()) {
@@ -530,9 +557,10 @@ const interestOptions = [
             return;
         }
 
-        const submitHref = form.dataset.submitHref;
-        if (submitHref) {
-            window.location.href = submitHref;
+        const ok = await submitFormIfConfigured(form);
+        const target = ok ? form.dataset.submitHref : form.dataset.errorHref;
+        if (target) {
+            window.location.href = target;
         }
     });
 </script>

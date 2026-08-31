@@ -62,6 +62,16 @@ const resolvedPlaceholder = placeholderKey
     : placeholder;
 
 const resolvedLabel = labelKey ? t(copy, labelKey, locale, label || '') : label;
+
+const resolvedOptions = options.map((option) => ({
+    value: option.value,
+    label: option.labelKey ? t(copy, option.labelKey, locale, option.label) : option.label,
+}));
+const selectedOption =
+    resolvedOptions.find((option) => option.value === (value ?? '')) ?? resolvedOptions[0];
+// The empty option stays in the native <select> (for `required`) but never in the visible menu.
+const menuOptions = resolvedOptions.filter((option) => option.value !== '');
+const menuId = `${fieldId}-menu`;
 const emailErrorMessage = t(
     copy,
     'form_email_error_message',
@@ -105,24 +115,82 @@ const passwordToggleLabels = {
 
     {
         isSelect ? (
-            <div class="form-field__select-wrapper">
+            <div class="form-field__select-wrapper" data-select-root>
                 <select
                     id={fieldId}
                     name={name}
-                    class="form-field__select text-body-p3 is-placeholder"
-                    value={value}
+                    class="form-field__select-native"
                     aria-label={ariaLabel || resolvedLabel || resolvedPlaceholder}
+                    aria-hidden="true"
+                    tabindex="-1"
                     data-select
                     {...(required && { required })}
                 >
-                    {options.map((option) => (
-                        <option value={option.value}>
-                            {option.labelKey
-                                ? t(copy, option.labelKey, locale, option.label)
-                                : option.label}
+                    {resolvedOptions.map((option) => (
+                        <option
+                            value={option.value}
+                            selected={option.value === selectedOption?.value}
+                        >
+                            {option.label}
                         </option>
                     ))}
                 </select>
+
+                <button
+                    type="button"
+                    class:list={[
+                        'form-field__select-trigger',
+                        'text-body-p3',
+                        selectedOption?.value === '' && 'is-placeholder',
+                    ]}
+                    role="combobox"
+                    aria-haspopup="listbox"
+                    aria-controls={menuId}
+                    aria-expanded="false"
+                    aria-label={ariaLabel || resolvedLabel || resolvedPlaceholder}
+                    data-select-trigger
+                >
+                    <span class="form-field__select-value" data-select-value>
+                        {selectedOption?.label ?? resolvedPlaceholder}
+                    </span>
+                    <svg
+                        class="form-field__select-chevron icon-s"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <polyline
+                            points="6 9 12 15 18 9"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </button>
+
+                <ul
+                    id={menuId}
+                    class="form-field__select-menu"
+                    role="listbox"
+                    aria-label={ariaLabel || resolvedLabel || resolvedPlaceholder}
+                    data-select-menu
+                >
+                    {menuOptions.map((option, index) => (
+                        <li
+                            id={`${menuId}-option-${index}`}
+                            class="form-field__select-option text-body-p3"
+                            role="option"
+                            tabindex="-1"
+                            aria-selected={
+                                option.value === selectedOption?.value ? 'true' : 'false'
+                            }
+                            data-value={option.value}
+                        >
+                            {option.label}
+                        </li>
+                    ))}
+                </ul>
             </div>
         ) : isTextarea ? (
             <textarea
@@ -263,7 +331,7 @@ const passwordToggleLabels = {
     }
 
     .form-field__input,
-    .form-field__select {
+    .form-field__select-trigger {
         width: 100%;
         height: var(--space-8);
         padding: var(--space-2) var(--space-4);
@@ -349,55 +417,101 @@ const passwordToggleLabels = {
         display: block;
     }
 
-    .form-field__select {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        color-scheme: light;
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23707070' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-        background-repeat: no-repeat;
-        background-position: right var(--space-2) center;
-        background-size: 1.25rem;
-        padding-right: var(--space-6);
-    }
-
     .form-field__select-wrapper {
         position: relative;
         width: 100%;
     }
 
-    .form-field__select {
+    /* Kept in the layout (not display:none) so `required` validation can focus it. */
+    .form-field__select-native {
+        position: absolute;
+        inset: 0;
         width: 100%;
+        height: 100%;
+        opacity: 0;
+        pointer-events: none;
     }
 
-    .form-field__select option {
-        color: var(--text-primary);
-        background-color: var(--surface-white);
-        padding: var(--space-3);
-        border: none;
+    .form-field__select-trigger {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: var(--space-2);
+        text-align: left;
     }
 
-    .form-field__select option:disabled {
+    .form-field__select-trigger.is-placeholder {
         color: var(--neutral-grey-3);
     }
 
-    .form-field__select option[value=''] {
-        color: var(--neutral-grey-3);
+    .form-field__select-value {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
-    .form-field__select.is-placeholder {
-        color: var(--neutral-grey-3);
+    .form-field__select-chevron {
+        color: var(--neutral-grey-2);
+        transition: transform 180ms ease;
     }
 
-    .form-field__select:focus {
+    .form-field__select-trigger[aria-expanded='true'] {
+        border-color: var(--border-primary);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .form-field__select-trigger[aria-expanded='true'] .form-field__select-chevron {
+        transform: rotate(180deg);
+    }
+
+    .form-field__select-trigger:focus-visible {
         outline: none;
         border-color: var(--border-primary);
-        box-shadow: 0 0 0 3px rgba(85, 61, 204, 0.1);
+        box-shadow: 0 0 0 var(--stroke-2) color-mix(in srgb, var(--border-primary) 20%, transparent);
+    }
+
+    .form-field__select-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 5;
+        display: none;
+        width: 100%;
+        margin: 0;
+        padding: var(--space-1);
+        list-style: none;
+        background-color: var(--surface-white);
+        border: var(--stroke-1) solid var(--neutral-grey-2);
+        border-top: none;
+        border-radius: 0 0 var(--radius-s) var(--radius-s);
+        box-shadow: var(--shadow-e2);
+    }
+
+    .form-field__select-menu.is-open {
+        display: block;
+    }
+
+    .form-field__select-option {
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-xs);
+        color: var(--text-primary);
+        cursor: pointer;
+    }
+
+    .form-field__select-option:hover,
+    .form-field__select-option.is-active {
+        background-color: var(--surface-blue);
+    }
+
+    .form-field__select-option[aria-selected='true'] {
+        background-color: var(--surface-blue);
+        color: var(--text-accent);
     }
 
     @media (max-width: 1023px) {
         .form-field__input,
-        .form-field__select {
+        .form-field__select-trigger {
             height: auto;
             min-height: 2.75rem;
             padding: var(--space-3) var(--space-4);
@@ -406,9 +520,118 @@ const passwordToggleLabels = {
 </style>
 
 <script>
-    document.querySelectorAll<HTMLSelectElement>('[data-select]').forEach((select) => {
-        select.addEventListener('change', () => {
-            select.classList.toggle('is-placeholder', select.value === '');
+    document.querySelectorAll<HTMLElement>('[data-select-root]').forEach((root) => {
+        const native = root.querySelector<HTMLSelectElement>('[data-select]');
+        const trigger = root.querySelector<HTMLButtonElement>('[data-select-trigger]');
+        const menu = root.querySelector<HTMLElement>('[data-select-menu]');
+        const valueNode = root.querySelector<HTMLElement>('[data-select-value]');
+        const options = Array.from(root.querySelectorAll<HTMLElement>('[role="option"]'));
+        if (!native || !trigger || !menu || !valueNode || !options.length) return;
+
+        let activeIndex = Math.max(
+            options.findIndex((option) => option.getAttribute('aria-selected') === 'true'),
+            0
+        );
+
+        const setActive = (index: number) => {
+            activeIndex = (index + options.length) % options.length;
+            options.forEach((option, i) => option.classList.toggle('is-active', i === activeIndex));
+            trigger.setAttribute('aria-activedescendant', options[activeIndex].id);
+            options[activeIndex].scrollIntoView({ block: 'nearest' });
+        };
+
+        const open = () => {
+            menu.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+            setActive(activeIndex);
+        };
+
+        const close = () => {
+            menu.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+            trigger.removeAttribute('aria-activedescendant');
+        };
+
+        const choose = (index: number) => {
+            const option = options[index];
+            const optionValue = option.dataset.value ?? '';
+
+            native.value = optionValue;
+            native.dispatchEvent(new Event('change', { bubbles: true }));
+
+            options.forEach((item, i) =>
+                item.setAttribute('aria-selected', i === index ? 'true' : 'false')
+            );
+            valueNode.textContent = option.textContent?.trim() ?? '';
+            trigger.classList.toggle('is-placeholder', optionValue === '');
+
+            activeIndex = index;
+            close();
+            trigger.focus();
+        };
+
+        trigger.addEventListener('click', () => {
+            if (menu.classList.contains('is-open')) close();
+            else open();
+        });
+
+        options.forEach((option, index) => {
+            option.addEventListener('click', () => choose(index));
+        });
+
+        root.addEventListener('keydown', (event) => {
+            const isOpen = menu.classList.contains('is-open');
+
+            switch (event.key) {
+                case 'ArrowDown':
+                    event.preventDefault();
+                    if (isOpen) setActive(activeIndex + 1);
+                    else open();
+                    break;
+                case 'ArrowUp':
+                    event.preventDefault();
+                    if (isOpen) setActive(activeIndex - 1);
+                    else open();
+                    break;
+                case 'Enter':
+                case ' ':
+                    event.preventDefault();
+                    if (isOpen) choose(activeIndex);
+                    else open();
+                    break;
+                case 'Escape':
+                    if (isOpen) {
+                        event.preventDefault();
+                        close();
+                    }
+                    break;
+                case 'Tab':
+                    close();
+                    break;
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!root.contains(event.target as Node)) close();
+        });
+
+        // form.reset() restores the native <select>; the trigger has to follow it back.
+        const initialLabel = valueNode.textContent?.trim() ?? '';
+        const initialPlaceholder = trigger.classList.contains('is-placeholder');
+        native.form?.addEventListener('reset', () => {
+            requestAnimationFrame(() => {
+                valueNode.textContent = initialLabel;
+                trigger.classList.toggle('is-placeholder', initialPlaceholder);
+                options.forEach((option, i) =>
+                    option.setAttribute(
+                        'aria-selected',
+                        native.value === (option.dataset.value ?? '') && i === activeIndex
+                            ? 'true'
+                            : 'false'
+                    )
+                );
+                close();
+            });
         });
     });
 

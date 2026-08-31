@@ -22,6 +22,7 @@ const {
     extraTopPadding = false,
 } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
+const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
 const currentYear = new Date().getFullYear();
 const footerPhoneNumber = t(copy, 'footer_phone_number', locale, '1-855-898-4999');
 
@@ -292,7 +293,18 @@ const footerMenus = [
                             locale,
                             'Newsletter signup'
                         )}
+                        data-form-endpoint={formEndpoint}
                     >
+                        <input type="hidden" name="formType" value="newsletter" />
+                        <input
+                            type="text"
+                            name="company_website"
+                            class="form-honeypot"
+                            tabindex="-1"
+                            autocomplete="off"
+                            aria-hidden="true"
+                        />
+                        <input type="hidden" name="language" value={locale} />
                         <FormField
                             locale={locale}
                             copy={copy}
@@ -364,6 +376,16 @@ const footerMenus = [
                             <p
                                 class="home-footer__newsletter-email-error text-body-p3-small"
                                 data-newsletter-email-error
+                                data-message-invalid={
+                                    locale === 'fr'
+                                        ? 'Veuillez saisir une adresse courriel valide.'
+                                        : 'Please enter a valid email address.'
+                                }
+                                data-message-failed={
+                                    locale === 'fr'
+                                        ? "L'envoi a échoué. Veuillez réessayer."
+                                        : 'Something went wrong. Please try again.'
+                                }
                                 aria-live="polite"
                                 aria-hidden="true"
                             >
@@ -373,6 +395,41 @@ const footerMenus = [
                             </p>
                         </div>
                     </form>
+
+                    <dialog class="home-footer__newsletter-dialog" data-newsletter-dialog>
+                        <button
+                            type="button"
+                            class="home-footer__newsletter-dialog-close"
+                            aria-label={t(copy, 'newsletter_success_close', locale, 'Close')}
+                        >
+                            <svg class="icon-m" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M18 6 6 18M6 6l12 12"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </button>
+
+                        {/* takes the initial focus, so the close icon opens without a focus ring */}
+                        <div class="home-footer__newsletter-dialog-body" tabindex="-1" autofocus>
+                            <h2 data-copy-key="newsletter_success_title">
+                                {t(copy, 'newsletter_success_title', locale, "You're Subscribed!")}
+                            </h2>
+                            <p
+                                class="text-body-p2 home-footer__newsletter-dialog-text"
+                                data-copy-key="newsletter_success_description"
+                            >
+                                {t(
+                                    copy,
+                                    'newsletter_success_description',
+                                    locale,
+                                    'Thank you for subscribing. Look out for MTM reports, research releases and insights in your inbox.'
+                                )}
+                            </p>
+                        </div>
+                    </dialog>
                 </div>
             </div>
         )
@@ -612,7 +669,9 @@ const footerMenus = [
 
     .home-footer__newsletter {
         position: relative;
-        z-index: 1;
+        /* above .home-footer__footer (z-index: 1) so the industry dropdown isn't
+           painted over by the logo/links block below it */
+        z-index: 2;
         padding: var(--section-pad-block) var(--content-margin-inline);
         display: flex;
         justify-content: center;
@@ -672,6 +731,64 @@ const footerMenus = [
         justify-content: center;
         white-space: nowrap;
         align-self: flex-end;
+    }
+
+    .home-footer__newsletter-dialog {
+        position: relative;
+        /* the global reset zeroes margins, which kills the UA's modal centering */
+        margin: auto;
+        width: min(28rem, calc(100% - var(--space-8)));
+        padding: var(--space-9);
+        border: none;
+        border-radius: var(--radius-m);
+        background: var(--surface-white);
+        box-shadow: var(--shadow-e2);
+        color: var(--text-primary);
+    }
+
+    .home-footer__newsletter-dialog::backdrop {
+        background: color-mix(in srgb, var(--neutral-black) 45%, transparent);
+    }
+
+    .home-footer__newsletter-dialog-body:focus {
+        outline: none;
+    }
+
+    .home-footer__newsletter-dialog-close {
+        position: absolute;
+        top: var(--space-4);
+        right: var(--space-4);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-1);
+        border: none;
+        background: transparent;
+        /* iOS Safari tints buttons system-blue, which the currentColor icon inherits */
+        color: var(--neutral-black);
+        cursor: pointer;
+    }
+
+    .home-footer__newsletter-dialog-close:focus-visible {
+        outline: var(--stroke-2) solid var(--border-primary);
+        outline-offset: var(--stroke-2);
+        border-radius: var(--radius-xs);
+    }
+
+    .home-footer__newsletter-dialog-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+    }
+
+    .home-footer__newsletter-dialog-body h2 {
+        margin: 0;
+    }
+
+    .home-footer__newsletter-dialog-text {
+        margin: 0;
+        color: var(--text-secondary);
     }
 
     .home-footer__newsletter-email-error {
@@ -1049,6 +1166,8 @@ const footerMenus = [
 </style>
 
 <script>
+    import { submitFormIfConfigured } from '../../lib/forms/submitForm';
+
     const ctaCard = document.querySelector<HTMLElement>('.home-footer__cta-card');
     const eyebrow = ctaCard?.querySelector<HTMLElement>('.footer-eyebrow-fly-in');
     const title = ctaCard?.querySelector<HTMLElement>('.footer-title-fly-in');
@@ -1125,21 +1244,56 @@ const footerMenus = [
             '[data-newsletter-email-error]'
         );
 
-        function setNewsletterEmailError(visible: boolean) {
+        function setNewsletterEmailError(
+            visible: boolean,
+            reason: 'invalid' | 'failed' = 'invalid'
+        ) {
             if (!newsletterEmailError) return;
+            if (visible) {
+                const message =
+                    reason === 'failed'
+                        ? newsletterEmailError.dataset.messageFailed
+                        : newsletterEmailError.dataset.messageInvalid;
+                if (message) newsletterEmailError.textContent = message;
+            }
             newsletterEmailError.classList.toggle('is-visible', visible);
             newsletterEmailError.setAttribute('aria-hidden', visible ? 'false' : 'true');
         }
 
-        newsletterForm.addEventListener('submit', (event) => {
+        const newsletterDialog = document.querySelector<HTMLDialogElement>(
+            '[data-newsletter-dialog]'
+        );
+        const newsletterDialogClose = newsletterDialog?.querySelector<HTMLElement>(
+            '.home-footer__newsletter-dialog-close'
+        );
+
+        newsletterDialogClose?.addEventListener('click', () => newsletterDialog?.close());
+
+        // click on the backdrop (the dialog element itself, outside its body) dismisses
+        newsletterDialog?.addEventListener('click', (event) => {
+            if (event.target === newsletterDialog) newsletterDialog.close();
+        });
+
+        newsletterForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             if (!newsletterEmailInput) return;
 
-            if (newsletterEmailInput.checkValidity()) {
-                setNewsletterEmailError(false);
-            } else {
+            if (!newsletterEmailInput.checkValidity()) {
                 setNewsletterEmailError(true);
+                return;
             }
+
+            setNewsletterEmailError(false);
+
+            // The footer has no error page to fall back to, so a failed send
+            // surfaces in place rather than navigating the reader away.
+            if (!(await submitFormIfConfigured(newsletterForm))) {
+                setNewsletterEmailError(true, 'failed');
+                return;
+            }
+
+            newsletterForm.reset();
+            newsletterDialog?.showModal();
         });
 
         newsletterEmailInput?.addEventListener('input', () => {
