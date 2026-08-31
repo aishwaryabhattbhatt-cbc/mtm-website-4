@@ -44,7 +44,50 @@ const base = import.meta.env.BASE_URL;
                 <form
                     class="sign-in-hero__form"
                     aria-label={t(copy, 'sign_in_hero_form_aria_label', locale, 'Sign in')}
+                    data-locale={locale}
+                    data-default-redirect={`${base}${locale}/access/`}
+                    data-error-invalid={t(
+                        copy,
+                        'sign_in_hero_error_invalid',
+                        locale,
+                        locale === 'fr'
+                            ? 'Adresse courriel ou mot de passe invalide.'
+                            : 'Invalid email address or password.'
+                    )}
+                    data-error-no-access={t(
+                        copy,
+                        'sign_in_hero_error_no_access',
+                        locale,
+                        locale === 'fr'
+                            ? 'Vous n’avez actuellement pas accès à l’OTM. Veuillez communiquer avec nous pour en savoir plus.'
+                            : 'You currently do not have access to the MTM. Please contact us to learn more.'
+                    )}
+                    data-error-rate-limit={t(
+                        copy,
+                        'sign_in_hero_error_rate_limit',
+                        locale,
+                        locale === 'fr'
+                            ? 'Trop de tentatives de connexion. Veuillez réessayer dans quelques minutes.'
+                            : 'Too many login attempts. Please try again in a few minutes.'
+                    )}
+                    data-error-generic={t(
+                        copy,
+                        'sign_in_hero_error_generic',
+                        locale,
+                        locale === 'fr'
+                            ? 'Une erreur est survenue. Veuillez réessayer ou communiquer avec nous au 1-855-898-4999.'
+                            : 'An error has occurred. Please try again or contact us at 1-855-898-4999.'
+                    )}
                 >
+                    <div
+                        class="sign-in-hero__error text-body-p3"
+                        data-sign-in-error
+                        role="alert"
+                        aria-live="polite"
+                        hidden
+                    >
+                    </div>
+
                     <FormField
                         locale={locale}
                         copy={copy}
@@ -295,6 +338,18 @@ const base = import.meta.env.BASE_URL;
         gap: var(--space-5);
     }
 
+    .sign-in-hero__error {
+        margin: 0;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--radius-s);
+        background: color-mix(in srgb, var(--feedback-error) 10%, var(--surface-white));
+        color: var(--feedback-error);
+    }
+
+    .sign-in-hero__error[hidden] {
+        display: none;
+    }
+
     .sign-in-hero__field-group {
         display: flex;
         flex-direction: column;
@@ -372,18 +427,126 @@ const base = import.meta.env.BASE_URL;
 </style>
 
 <script>
+    interface AntiforgeryResponse {
+        requestToken?: string;
+    }
+
+    interface LoginResponse {
+        redirectUrl?: string;
+        errorCode?: string;
+    }
+
     const form = document.querySelector<HTMLFormElement>('.sign-in-hero__form');
 
-    form?.addEventListener('submit', (event) => {
+    const emailInput = form?.querySelector<HTMLInputElement>('input[name="email"]');
+    const passwordInput = form?.querySelector<HTMLInputElement>('input[name="password"]');
+    const submitButton = form?.querySelector<HTMLButtonElement>('.sign-in-hero__submit');
+    const errorElement = form?.querySelector<HTMLElement>('[data-sign-in-error]');
+    const forgotLink = document.querySelector<HTMLAnchorElement>('.sign-in-hero__forgot');
+
+    const showError = (message: string) => {
+        if (!errorElement) return;
+        errorElement.textContent = message;
+        errorElement.hidden = false;
+    };
+
+    const clearError = () => {
+        if (!errorElement) return;
+        errorElement.textContent = '';
+        errorElement.hidden = true;
+    };
+
+    const getErrorMessage = (errorCode?: string, status?: number) => {
+        if (!form) return '';
+
+        if (status === 429) {
+            return form.dataset.errorRateLimit || form.dataset.errorGeneric || '';
+        }
+
+        if (errorCode === 'no_access') {
+            return form.dataset.errorNoAccess || form.dataset.errorGeneric || '';
+        }
+
+        if (errorCode === 'invalid_login' || status === 401) {
+            return form.dataset.errorInvalid || form.dataset.errorGeneric || '';
+        }
+
+        return form.dataset.errorGeneric || '';
+    };
+
+    form?.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         if (!form.checkValidity()) {
             form.reportValidity();
+            return;
+        }
+
+        if (!emailInput || !passwordInput || !submitButton) return;
+
+        clearError();
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+
+        try {
+            const antiforgeryResponse = await fetch('/api/auth/antiforgery', {
+                method: 'GET',
+                credentials: 'same-origin',
+                cache: 'no-store',
+                headers: {
+                    Accept: 'application/json',
+                },
+            });
+
+            if (!antiforgeryResponse.ok) {
+                throw new Error('Unable to initialize login request.');
+            }
+
+            const antiforgery = (await antiforgeryResponse.json()) as AntiforgeryResponse;
+
+            if (!antiforgery.requestToken) {
+                throw new Error('Antiforgery token was not returned.');
+            }
+
+            const query = new URLSearchParams(window.location.search);
+            const returnUrl = query.get('r');
+
+            const loginResponse = await fetch('/api/auth/login', {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'XSRF-TOKEN': antiforgery.requestToken,
+                },
+                body: JSON.stringify({
+                    email: emailInput.value.trim(),
+                    password: passwordInput.value,
+                    returnUrl,
+                    locale: form.dataset.locale || 'en',
+                }),
+            });
+
+            let result: LoginResponse = {};
+
+            if (loginResponse.headers.get('content-type')?.includes('application/json')) {
+                result = (await loginResponse.json()) as LoginResponse;
+            }
+
+            if (!loginResponse.ok) {
+                showError(getErrorMessage(result.errorCode, loginResponse.status));
+                return;
+            }
+
+            window.location.href = result.redirectUrl || form.dataset.defaultRedirect || '/';
+        } catch (error) {
+            console.error('Login failed.', error);
+            showError(getErrorMessage());
+        } finally {
+            submitButton.disabled = false;
+            submitButton.removeAttribute('aria-busy');
         }
     });
-
-    const emailInput = form?.querySelector<HTMLInputElement>('input[name="email"]');
-    const forgotLink = document.querySelector<HTMLAnchorElement>('.sign-in-hero__forgot');
 
     if (emailInput && forgotLink) {
         const baseHref = forgotLink.getAttribute('href') || '';
