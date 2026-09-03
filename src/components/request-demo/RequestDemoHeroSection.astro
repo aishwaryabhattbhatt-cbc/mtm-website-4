@@ -574,14 +574,33 @@ const interestOptions = [
     // Our input names -> HubSpot fields. `objectTypeId` is required for properties
     // that live on the Company object (0-2) rather than the Contact (0-1); the form
     // rejects those two as missing if they're sent unqualified.
-    const FIELD_MAP: Array<{ formName: string; name: string; objectTypeId?: string }> = [
+    const FIELD_MAP: Array<{
+        formName: string;
+        name: string;
+        objectTypeId?: string;
+        values?: Record<string, string>;
+    }> = [
         { formName: 'firstName', name: 'firstname' },
         { formName: 'lastName', name: 'lastname' },
         { formName: 'email', name: 'email' },
         { formName: 'organisation', name: 'name', objectTypeId: '0-2' },
-        { formName: 'industry', name: 'choose_industry', objectTypeId: '0-2' },
-        { formName: 'language', name: 'language' },
-        { formName: 'message', name: 'message' },
+        {
+            formName: 'industry',
+            name: 'select_industry',
+            // HubSpot's internal names for this property are the full labels, so our
+            // short slugs have to be translated. A value outside this list is dropped
+            // silently by HubSpot, so these must stay in step with the property options.
+            values: {
+                media: 'Media and Broadcasting',
+                advertising: 'Advertising and Marketing',
+                govngo: 'Government and NGOs',
+                education: 'Education and Research',
+                industry: 'Industry',
+                other: 'Other',
+            },
+        },
+        { formName: 'language', name: 'language', values: { en: 'English', fr: 'French' } },
+        { formName: 'message', name: 'description' },
     ];
 
     form?.addEventListener('submit', async (event) => {
@@ -601,14 +620,27 @@ const interestOptions = [
             return;
         }
 
-        const fields = FIELD_MAP.map(({ formName, name, objectTypeId }) => ({
-            ...(objectTypeId ? { objectTypeId } : {}),
-            name,
-            value: String(data.get(formName) ?? '').trim(),
-        })).filter((field) => field.value !== '');
+        const fields = FIELD_MAP.map(({ formName, name, objectTypeId, values }) => {
+            const raw = String(data.get(formName) ?? '').trim();
+            return {
+                ...(objectTypeId ? { objectTypeId } : {}),
+                name,
+                value: values ? (values[raw] ?? '') : raw,
+            };
+        }).filter((field) => field.value !== '');
 
-        // HubSpot expects multi-checkbox values as one semicolon-delimited string.
-        const interests = data.getAll('interests').map(String);
+        // HubSpot expects multi-checkbox values as one semicolon-delimited string,
+        // using the property's internal names (which here are the full labels).
+        const INTEREST_VALUES: Record<string, string> = {
+            mtm18: 'MTM 18+',
+            junior: 'MTM Junior',
+            newcomer: 'MTM Newcomers',
+            census: 'MTM Census',
+        };
+        const interests = data
+            .getAll('interests')
+            .map((value) => INTEREST_VALUES[String(value)])
+            .filter(Boolean);
         if (interests.length > 0) {
             fields.push({ name: 'what_are_you_interested_in_', value: interests.join(';') });
         }
