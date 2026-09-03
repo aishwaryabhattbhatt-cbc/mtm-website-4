@@ -128,13 +128,6 @@ function checkFile(filePath) {
     // aria-label/for wiring in static HTML output. Avoid false positives here.
     if (type === 'checkbox' || type === 'radio') continue;
 
-    // An aria-hidden input is not in the accessibility tree at all, so it
-    // cannot lack an accessible name. The forms' spam honeypots rely on this:
-    // a screen reader user must never meet a field that silently voids their
-    // submission. The genuine risk here — aria-hidden on something still
-    // reachable by keyboard — is caught by the aria-hidden-focusable check.
-    if (getAttr(attrs, 'aria-hidden').toLowerCase() === 'true') continue;
-
     const id = getAttr(attrs, 'id');
     const fromLabel = id && labelsByFor.has(id) ? labelsByFor.get(id) : '';
 

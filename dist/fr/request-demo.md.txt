@@ -10,6 +10,8 @@ What You Can Expect
 - Q & A to understand how the MTM can support you
 - Expert advice on how MTM can fit in your workflow
 
+Company website
+
 First Name \*
 
 John
@@ -47,7 +49,7 @@ What are you interested in?
 
 Something else? Please enter below.
 
-\[ ] Subscribe to our newsletter Submit
+\[x] Subscribe to our newsletter Submit
 
 Trusted by
 

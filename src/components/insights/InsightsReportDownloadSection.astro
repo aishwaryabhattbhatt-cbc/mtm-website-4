@@ -32,7 +32,6 @@ interface Props {
 
 const { locale, copy, reports, singleCard = false } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
-const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
 const formId = 'report-download-form';
 ---
 
@@ -80,20 +79,8 @@ const formId = 'report-download-form';
                             class="report-download-section__form"
                             data-report-download-form
                             data-submit-href={`${base}${locale}/insights/download-success/`}
-                            data-error-href={`${base}${locale}/submission-error/`}
-                            data-form-endpoint={formEndpoint}
                             novalidate
                         >
-                            <input type="hidden" name="formType" value="report" />
-                            <input
-                                type="text"
-                                name="company_website"
-                                class="form-honeypot"
-                                tabindex="-1"
-                                autocomplete="off"
-                                aria-hidden="true"
-                            />
-                            <input type="hidden" name="language" value={locale} />
                             <div class="report-download-section__row">
                                 <FormField
                                     locale={locale}
@@ -479,13 +466,11 @@ const formId = 'report-download-form';
 </style>
 
 <script>
-    import { submitFormIfConfigured } from '../../lib/forms/submitForm';
-
     document.querySelectorAll<HTMLElement>('[data-report-download-section]').forEach((section) => {
         const form = section.querySelector<HTMLFormElement>('[data-report-download-form]');
         if (!form) return;
 
-        form.addEventListener('submit', async (event) => {
+        form.addEventListener('submit', (event) => {
             event.preventDefault();
             if (!form.checkValidity()) {
                 form.reportValidity();
@@ -493,12 +478,6 @@ const formId = 'report-download-form';
             }
             const submitHref = form.dataset.submitHref;
             if (!submitHref) return;
-
-            if (!(await submitFormIfConfigured(form))) {
-                const errorHref = form.dataset.errorHref;
-                if (errorHref) window.location.href = errorHref;
-                return;
-            }
 
             // Forward the "from" param (the page/section the visitor started
             // from) on to the success page, so its "Go Back to Exploring"

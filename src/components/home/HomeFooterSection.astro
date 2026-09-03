@@ -22,7 +22,6 @@ const {
     extraTopPadding = false,
 } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
-const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
 const currentYear = new Date().getFullYear();
 const footerPhoneNumber = t(copy, 'footer_phone_number', locale, '1-855-898-4999');
 
@@ -293,18 +292,7 @@ const footerMenus = [
                             locale,
                             'Newsletter signup'
                         )}
-                        data-form-endpoint={formEndpoint}
                     >
-                        <input type="hidden" name="formType" value="newsletter" />
-                        <input
-                            type="text"
-                            name="company_website"
-                            class="form-honeypot"
-                            tabindex="-1"
-                            autocomplete="off"
-                            aria-hidden="true"
-                        />
-                        <input type="hidden" name="language" value={locale} />
                         <FormField
                             locale={locale}
                             copy={copy}
@@ -376,16 +364,6 @@ const footerMenus = [
                             <p
                                 class="home-footer__newsletter-email-error text-body-p3-small"
                                 data-newsletter-email-error
-                                data-message-invalid={
-                                    locale === 'fr'
-                                        ? 'Veuillez saisir une adresse courriel valide.'
-                                        : 'Please enter a valid email address.'
-                                }
-                                data-message-failed={
-                                    locale === 'fr'
-                                        ? "L'envoi a échoué. Veuillez réessayer."
-                                        : 'Something went wrong. Please try again.'
-                                }
                                 aria-live="polite"
                                 aria-hidden="true"
                             >
@@ -1166,8 +1144,6 @@ const footerMenus = [
 </style>
 
 <script>
-    import { submitFormIfConfigured } from '../../lib/forms/submitForm';
-
     const ctaCard = document.querySelector<HTMLElement>('.home-footer__cta-card');
     const eyebrow = ctaCard?.querySelector<HTMLElement>('.footer-eyebrow-fly-in');
     const title = ctaCard?.querySelector<HTMLElement>('.footer-title-fly-in');
@@ -1244,18 +1220,8 @@ const footerMenus = [
             '[data-newsletter-email-error]'
         );
 
-        function setNewsletterEmailError(
-            visible: boolean,
-            reason: 'invalid' | 'failed' = 'invalid'
-        ) {
+        function setNewsletterEmailError(visible: boolean) {
             if (!newsletterEmailError) return;
-            if (visible) {
-                const message =
-                    reason === 'failed'
-                        ? newsletterEmailError.dataset.messageFailed
-                        : newsletterEmailError.dataset.messageInvalid;
-                if (message) newsletterEmailError.textContent = message;
-            }
             newsletterEmailError.classList.toggle('is-visible', visible);
             newsletterEmailError.setAttribute('aria-hidden', visible ? 'false' : 'true');
         }
@@ -1274,26 +1240,17 @@ const footerMenus = [
             if (event.target === newsletterDialog) newsletterDialog.close();
         });
 
-        newsletterForm.addEventListener('submit', async (event) => {
+        newsletterForm.addEventListener('submit', (event) => {
             event.preventDefault();
             if (!newsletterEmailInput) return;
 
-            if (!newsletterEmailInput.checkValidity()) {
+            if (newsletterEmailInput.checkValidity()) {
+                setNewsletterEmailError(false);
+                newsletterForm.reset();
+                newsletterDialog?.showModal();
+            } else {
                 setNewsletterEmailError(true);
-                return;
             }
-
-            setNewsletterEmailError(false);
-
-            // The footer has no error page to fall back to, so a failed send
-            // surfaces in place rather than navigating the reader away.
-            if (!(await submitFormIfConfigured(newsletterForm))) {
-                setNewsletterEmailError(true, 'failed');
-                return;
-            }
-
-            newsletterForm.reset();
-            newsletterDialog?.showModal();
         });
 
         newsletterEmailInput?.addEventListener('input', () => {

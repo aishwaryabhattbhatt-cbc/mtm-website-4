@@ -295,16 +295,3 @@ body {
     position: relative;
     z-index: 10;
 }
-
-/* Honeypot field carried by every public lead form. Visually removed but still
-   submitted, so the handler can drop a bot that fills every input. Deliberately
-   not display:none — some bots skip hidden fields, which defeats the point. */
-.form-honeypot {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-}
