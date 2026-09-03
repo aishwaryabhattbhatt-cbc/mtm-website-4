@@ -14,7 +14,14 @@ interface Props {
 
 const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
-const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+
+// From the HubSpot form embed snippet. Public values (they ship in the client
+// bundle), so the literals are safe fallbacks when .env isn't present — e.g. a
+// fresh clone or a CI job that hasn't had the build variables set.
+const hubspotPortalId = import.meta.env.PUBLIC_HUBSPOT_PORTAL_ID || '343607035';
+const hubspotFormGuid =
+    import.meta.env.PUBLIC_HUBSPOT_FORM_GUID || 'db1da805-3985-4e72-b94a-3857b546af69';
+const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
 
 const expectItems = [
     {
@@ -107,17 +114,21 @@ const interestOptions = [
                 aria-label={t(copy, 'request_demo_hero_form_aria_label', locale, 'Request a demo')}
                 data-submit-href={`${base}${locale}/request-demo-success/`}
                 data-error-href={`${base}${locale}/submission-error/`}
-                data-form-endpoint={formEndpoint}
+                data-hs-portal={hubspotPortalId}
+                data-hs-form={hubspotFormGuid}
+                data-hs-region={hubspotRegion}
             >
-                <input type="hidden" name="formType" value="demo" />
-                <input
-                    type="text"
-                    name="company_website"
-                    class="form-honeypot"
-                    tabindex="-1"
-                    autocomplete="off"
-                    aria-hidden="true"
-                />
+                {/* Honeypot: bots fill it, humans never see it. Hidden from AT too. */}
+                <div class="request-demo-hero__hp" aria-hidden="true">
+                    <label for="request-demo-company-website">Company website</label>
+                    <input
+                        id="request-demo-company-website"
+                        type="text"
+                        name="companyWebsite"
+                        tabindex="-1"
+                        autocomplete="off"
+                    />
+                </div>
                 <div class="request-demo-hero__row">
                     <FormField
                         locale={locale}
@@ -280,7 +291,7 @@ const interestOptions = [
                 </div>
 
                 <label class="request-demo-hero__choice request-demo-hero__newsletter text-body-p3">
-                    <input type="checkbox" name="newsletter" />
+                    <input type="checkbox" name="newsletter" checked />
                     {
                         t(
                             copy,
@@ -307,6 +318,17 @@ const interestOptions = [
         background: var(--surface-white);
         margin-top: var(--navbar-height);
         padding: var(--section-pad-block) var(--content-margin-inline);
+    }
+
+    /* Honeypot. display:none is skipped by some bots, so move it out of view instead. */
+    .request-demo-hero__hp {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        pointer-events: none;
     }
 
     .hero-fade-in {
@@ -539,8 +561,6 @@ const interestOptions = [
 </style>
 
 <script>
-    import { submitFormIfConfigured } from '../../lib/forms/submitForm';
-
     const form = document.querySelector<HTMLFormElement>('.request-demo-hero__form');
     const emailInput = form?.querySelector<HTMLInputElement>('input[name="email"]');
 
@@ -548,6 +568,21 @@ const interestOptions = [
     if (emailInput && prefillEmail) {
         emailInput.value = prefillEmail;
     }
+
+    const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+    // Our input names -> HubSpot fields. `objectTypeId` is required for properties
+    // that live on the Company object (0-2) rather than the Contact (0-1); the form
+    // rejects those two as missing if they're sent unqualified.
+    const FIELD_MAP: Array<{ formName: string; name: string; objectTypeId?: string }> = [
+        { formName: 'firstName', name: 'firstname' },
+        { formName: 'lastName', name: 'lastname' },
+        { formName: 'email', name: 'email' },
+        { formName: 'organisation', name: 'name', objectTypeId: '0-2' },
+        { formName: 'industry', name: 'choose_industry', objectTypeId: '0-2' },
+        { formName: 'language', name: 'language' },
+        { formName: 'message', name: 'message' },
+    ];
 
     form?.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -557,10 +592,63 @@ const interestOptions = [
             return;
         }
 
-        const ok = await submitFormIfConfigured(form);
-        const target = ok ? form.dataset.submitHref : form.dataset.errorHref;
-        if (target) {
-            window.location.href = target;
+        const { submitHref, errorHref, hsPortal, hsForm, hsRegion } = form.dataset;
+        const data = new FormData(form);
+
+        // Honeypot tripped: pretend it worked, send nothing.
+        if (String(data.get('companyWebsite') ?? '').trim() !== '') {
+            if (submitHref) window.location.href = submitHref;
+            return;
+        }
+
+        const fields = FIELD_MAP.map(({ formName, name, objectTypeId }) => ({
+            ...(objectTypeId ? { objectTypeId } : {}),
+            name,
+            value: String(data.get(formName) ?? '').trim(),
+        })).filter((field) => field.value !== '');
+
+        // HubSpot expects multi-checkbox values as one semicolon-delimited string.
+        const interests = data.getAll('interests').map(String);
+        if (interests.length > 0) {
+            fields.push({ name: 'what_are_you_interested_in_', value: interests.join(';') });
+        }
+
+        // Set by the HubSpot tracking script; ties the submission to the visitor's
+        // session. Absent on a first visit with cookies blocked, which is fine.
+        const hutk = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]*)/)?.[1];
+
+        submitButton?.setAttribute('disabled', '');
+        submitButton?.setAttribute('aria-busy', 'true');
+
+        try {
+            const response = await fetch(
+                `https://api-${hsRegion}.hsforms.com/submissions/v3/integration/submit/${hsPortal}/${hsForm}`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        fields,
+                        context: {
+                            pageUri: window.location.href,
+                            pageName: document.title,
+                            ...(hutk ? { hutk } : {}),
+                        },
+                    }),
+                }
+            );
+
+            if (!response.ok) {
+                // The body names the offending field, which is the only practical
+                // way to debug a rejection. Surface it before redirecting away.
+                throw new Error(`HubSpot responded ${response.status}: ${await response.text()}`);
+            }
+
+            if (submitHref) window.location.href = submitHref;
+        } catch (error) {
+            console.error('Request demo submission failed', error);
+            submitButton?.removeAttribute('disabled');
+            submitButton?.removeAttribute('aria-busy');
+            if (errorHref) window.location.href = errorHref;
         }
     });
 </script>
