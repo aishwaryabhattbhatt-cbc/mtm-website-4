@@ -59,6 +59,14 @@ function hasText(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
+function isAriaHidden(attrs) {
+  return getAttr(attrs, 'aria-hidden').toLowerCase() === 'true';
+}
+
+function elementSnippet(value) {
+  return stripTags(value).slice(0, 160) || value.slice(0, 160);
+}
+
 function checkFile(filePath) {
   const rel = path.relative(process.cwd(), filePath).replaceAll('\\', '/');
   const html = fs.readFileSync(filePath, 'utf8');
@@ -84,13 +92,15 @@ function checkFile(filePath) {
       issues.push({
         type: 'img-missing-alt',
         file: rel,
-        detail: stripTags(m[0]).slice(0, 160),
+        detail: elementSnippet(m[0]),
       });
     }
   }
 
   for (const m of html.matchAll(/<select\b([^>]*)>/gi)) {
     const attrs = m[1] || '';
+    if (isAriaHidden(attrs)) continue;
+
     const id = getAttr(attrs, 'id');
     const name =
       getAttr(attrs, 'aria-label') ||
@@ -98,12 +108,14 @@ function checkFile(filePath) {
       (id && labelsByFor.has(id) ? labelsByFor.get(id) : '');
 
     if (!hasText(name)) {
-      issues.push({ type: 'select-no-name', file: rel, detail: stripTags(m[0]).slice(0, 160) });
+      issues.push({ type: 'select-no-name', file: rel, detail: elementSnippet(m[0]) });
     }
   }
 
   for (const m of html.matchAll(/<textarea\b([^>]*)>/gi)) {
     const attrs = m[1] || '';
+    if (isAriaHidden(attrs)) continue;
+
     const id = getAttr(attrs, 'id');
     const name =
       getAttr(attrs, 'aria-label') ||
@@ -114,7 +126,7 @@ function checkFile(filePath) {
       issues.push({
         type: 'textarea-no-name',
         file: rel,
-        detail: stripTags(m[0]).slice(0, 160),
+        detail: elementSnippet(m[0]),
       });
     }
   }
@@ -122,7 +134,7 @@ function checkFile(filePath) {
   for (const m of html.matchAll(/<input\b([^>]*)>/gi)) {
     const attrs = m[1] || '';
     const type = (getAttr(attrs, 'type') || 'text').toLowerCase();
-    if (type === 'hidden') continue;
+    if (type === 'hidden' || isAriaHidden(attrs)) continue;
 
     // Checkbox/radio controls are frequently label-wrapped without explicit
     // aria-label/for wiring in static HTML output. Avoid false positives here.
@@ -142,19 +154,21 @@ function checkFile(filePath) {
     }
 
     if (!hasText(name)) {
-      issues.push({ type: 'input-no-name', file: rel, detail: stripTags(m[0]).slice(0, 160) });
+      issues.push({ type: 'input-no-name', file: rel, detail: elementSnippet(m[0]) });
     }
   }
 
   for (const m of html.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)) {
     const attrs = m[1] || '';
+    if (isAriaHidden(attrs)) continue;
+
     const text = stripTags(m[2] || '');
     const name = getAttr(attrs, 'aria-label') || getAttr(attrs, 'aria-labelledby') || text;
     if (!hasText(name)) {
       issues.push({
         type: 'button-no-name',
         file: rel,
-        detail: stripTags(m[0]).slice(0, 160),
+        detail: elementSnippet(m[0]),
       });
     }
   }
@@ -182,7 +196,7 @@ function checkFile(filePath) {
 
   for (const m of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
     const attrs = m[1] || '';
-    if (!/\shref\s*=/i.test(attrs)) continue;
+    if (!/\shref\s*=/i.test(attrs) || isAriaHidden(attrs)) continue;
     const inner = m[2] || '';
     const imgAlt = (inner.match(/<img\b[^>]*>/i) || [''])[0];
     const name =
@@ -192,7 +206,7 @@ function checkFile(filePath) {
       getAttr(imgAlt, 'alt') ||
       getAttr(attrs, 'title');
     if (!hasText(name)) {
-      strict.push({ type: 'link-no-name', file: rel, detail: stripTags(m[0]).slice(0, 160) });
+      strict.push({ type: 'link-no-name', file: rel, detail: elementSnippet(m[0]) });
     }
   }
 
@@ -205,7 +219,7 @@ function checkFile(filePath) {
     const role = getAttr(attrs, 'role').toLowerCase();
     const tabindex = getAttr(attrs, 'tabindex');
     const ariaHidden = getAttr(attrs, 'aria-hidden').toLowerCase();
-    const snippet = stripTags(m[0]).slice(0, 160) || m[0].slice(0, 160);
+    const snippet = elementSnippet(m[0]);
 
     if (hasText(role) && !role.split(/\s+/).every((r) => VALID_ROLES.has(r))) {
       strict.push({ type: 'invalid-role', file: rel, detail: `role="${role}" ${snippet}` });
@@ -281,7 +295,7 @@ function checkFile(filePath) {
       strict.push({
         type: 'click-handler-not-keyboard-accessible',
         file: rel,
-        detail: stripTags(m[0]).slice(0, 160) || m[0].slice(0, 160),
+        detail: elementSnippet(m[0]),
       });
     }
   }
