@@ -41,9 +41,44 @@ const base = import.meta.env.BASE_URL;
             <form
                 class="contact-form-section__form"
                 data-contact-form
+                data-locale={locale}
                 data-submit-href={`${base}${locale}/contact-success/`}
+                data-error-rate-limit={t(
+                    copy,
+                    'contact_error_rate_limit',
+                    locale,
+                    locale === 'fr'
+                        ? 'Trop de demandes ont été envoyées. Veuillez réessayer dans quelques minutes.'
+                        : 'Too many requests have been submitted. Please try again in a few minutes.'
+                )}
+                data-error-generic={t(
+                    copy,
+                    'contact_error_generic',
+                    locale,
+                    locale === 'fr'
+                        ? 'Une erreur est survenue. Veuillez réessayer ou communiquer avec nous au 1-855-898-4999.'
+                        : 'An error has occurred. Please try again or contact us at 1-855-898-4999.'
+                )}
                 novalidate
             >
+                <div
+                    class="contact-form-section__error text-body-p3"
+                    data-contact-error
+                    role="alert"
+                    aria-live="polite"
+                    hidden
+                >
+                </div>
+
+                <input
+                    class="contact-form-section__honeypot"
+                    type="text"
+                    name="website"
+                    tabindex="-1"
+                    autocomplete="off"
+                    aria-hidden="true"
+                />
+
                 <div class="contact-form-section__row">
                     <FormField
                         locale={locale}
@@ -188,6 +223,26 @@ const base = import.meta.env.BASE_URL;
         gap: var(--space-5);
     }
 
+    .contact-form-section__error {
+        margin: 0;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--radius-s);
+        background: color-mix(in srgb, var(--feedback-error) 10%, var(--surface-white));
+        color: var(--feedback-error);
+    }
+
+    .contact-form-section__error[hidden] {
+        display: none;
+    }
+
+    .contact-form-section__honeypot {
+        position: absolute;
+        left: -10000px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+
     .contact-form-section__row {
         display: flex;
         gap: var(--space-5);
@@ -252,19 +307,65 @@ const base = import.meta.env.BASE_URL;
 </style>
 
 <script>
+    import { ApiClientError, postJson } from '../../lib/forms/api';
+
     document.querySelectorAll<HTMLElement>('[data-contact-form-section]').forEach((section) => {
         const form = section.querySelector<HTMLFormElement>('[data-contact-form]');
         if (!form) return;
 
-        form.addEventListener('submit', (event) => {
+        const submitButton = form.querySelector<HTMLButtonElement>('.contact-form-section__submit');
+        const errorElement = form.querySelector<HTMLElement>('[data-contact-error]');
+
+        const showError = (message: string) => {
+            if (!errorElement) return;
+            errorElement.textContent = message;
+            errorElement.hidden = false;
+        };
+
+        const clearError = () => {
+            if (!errorElement) return;
+            errorElement.textContent = '';
+            errorElement.hidden = true;
+        };
+
+        form.addEventListener('submit', async (event) => {
             event.preventDefault();
+
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
-            const submitHref = form.dataset.submitHref;
-            if (submitHref) {
-                window.location.href = submitHref;
+
+            if (!submitButton) return;
+
+            clearError();
+            submitButton.disabled = true;
+            submitButton.setAttribute('aria-busy', 'true');
+
+            const formData = new FormData(form);
+
+            try {
+                await postJson('/api/forms/contact', {
+                    firstName: String(formData.get('firstName') || '').trim(),
+                    lastName: String(formData.get('lastName') || '').trim(),
+                    email: String(formData.get('email') || '').trim(),
+                    message: String(formData.get('message') || '').trim(),
+                    locale: form.dataset.locale || 'en',
+                    website: String(formData.get('website') || ''),
+                });
+
+                const submitHref = form.dataset.submitHref;
+                window.location.href = submitHref || '/';
+            } catch (error) {
+                console.error('Contact form submission failed.', error);
+                const message =
+                    error instanceof ApiClientError && error.status === 429
+                        ? form.dataset.errorRateLimit
+                        : form.dataset.errorGeneric;
+                showError(message || 'Unable to submit the form.');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.removeAttribute('aria-busy');
             }
         });
     });

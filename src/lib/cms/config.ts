@@ -27,6 +27,7 @@ const DEFAULT_PAGE_TAB_MAP: PageTabMap = {
     'request-demo-success': '133994915',
     'sign-in': '133994915',
     'forgot-password': '133994915',
+    'reset-password': '133994915',
     register: '133994915',
     'register-success': '133994915',
     'contact-success': '133994915',
@@ -72,6 +73,8 @@ const DEFAULT_PAGE_CSV_URL_MAP: PageTabMap = {
     'sign-in':
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
     'forgot-password':
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
+    'reset-password':
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',
     register:
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vTtJO_WQ583iizQJkxxd7JsA4lvGBfLM5HuqU2uXYEvdyUPWyo3O8JHJgU-9rxB3g/pub?gid=133994915&single=true&output=csv',

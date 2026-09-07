@@ -51,8 +51,43 @@ const base = import.meta.env.BASE_URL;
                         locale,
                         'Create your user account'
                     )}
+                    data-locale={locale}
                     data-submit-href={`${base}${locale}/register-success/`}
+                    data-error-invalid-domain={t(
+                        copy,
+                        'register_hero_error_invalid_domain',
+                        locale,
+                        locale === 'fr'
+                            ? 'Adresse courriel invalide — vous devez utiliser l’un des domaines autorisés.'
+                            : 'Invalid email address — you must use one of the allowed domains.'
+                    )}
+                    data-error-rate-limit={t(
+                        copy,
+                        'register_hero_error_rate_limit',
+                        locale,
+                        locale === 'fr'
+                            ? 'Trop de demandes ont été envoyées. Veuillez réessayer dans quelques minutes.'
+                            : 'Too many requests have been submitted. Please try again in a few minutes.'
+                    )}
+                    data-error-generic={t(
+                        copy,
+                        'register_hero_error_generic',
+                        locale,
+                        locale === 'fr'
+                            ? 'Une erreur est survenue. Veuillez réessayer ou communiquer avec nous au 1-855-898-4999.'
+                            : 'An error has occurred. Please try again or contact us at 1-855-898-4999.'
+                    )}
+                    novalidate
                 >
+                    <div
+                        class="register-hero__error text-body-p3"
+                        data-register-error
+                        role="alert"
+                        aria-live="polite"
+                        hidden
+                    >
+                    </div>
+
                     <div class="register-hero__row">
                         <FormField
                             locale={locale}
@@ -294,6 +329,18 @@ const base = import.meta.env.BASE_URL;
         gap: var(--space-5);
     }
 
+    .register-hero__error {
+        margin: 0;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--radius-s);
+        background: color-mix(in srgb, var(--feedback-error) 10%, var(--surface-white));
+        color: var(--feedback-error);
+    }
+
+    .register-hero__error[hidden] {
+        display: none;
+    }
+
     .register-hero__row {
         display: flex;
         gap: var(--space-5);
@@ -386,9 +433,25 @@ const base = import.meta.env.BASE_URL;
 </style>
 
 <script>
-    const form = document.querySelector<HTMLFormElement>('.register-hero__form');
+    import { ApiClientError, postJson } from '../../lib/forms/api';
 
-    form?.addEventListener('submit', (event) => {
+    const form = document.querySelector<HTMLFormElement>('.register-hero__form');
+    const submitButton = form?.querySelector<HTMLButtonElement>('.register-hero__submit');
+    const errorElement = form?.querySelector<HTMLElement>('[data-register-error]');
+
+    const showError = (message: string) => {
+        if (!errorElement) return;
+        errorElement.textContent = message;
+        errorElement.hidden = false;
+    };
+
+    const clearError = () => {
+        if (!errorElement) return;
+        errorElement.textContent = '';
+        errorElement.hidden = true;
+    };
+
+    form?.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         if (!form.checkValidity()) {
@@ -396,9 +459,42 @@ const base = import.meta.env.BASE_URL;
             return;
         }
 
-        const submitHref = form.dataset.submitHref;
-        if (submitHref) {
-            window.location.href = submitHref;
+        if (!submitButton) return;
+
+        clearError();
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+
+        const formData = new FormData(form);
+
+        try {
+            await postJson('/api/auth/register', {
+                firstName: String(formData.get('firstName') || '').trim(),
+                lastName: String(formData.get('lastName') || '').trim(),
+                email: String(formData.get('email') || '').trim(),
+                department: String(formData.get('department') || '').trim(),
+                jobTitle: String(formData.get('jobTitle') || '').trim(),
+            });
+
+            const submitHref = form.dataset.submitHref;
+            window.location.href = submitHref || '/';
+        } catch (error) {
+            console.error('Registration failed.', error);
+
+            let message = form.dataset.errorGeneric;
+
+            if (error instanceof ApiClientError) {
+                if (error.status === 429) {
+                    message = form.dataset.errorRateLimit;
+                } else if (error.errorCode === 'invalid_email_domain') {
+                    message = form.dataset.errorInvalidDomain;
+                }
+            }
+
+            showError(message || 'Unable to submit the registration form.');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.removeAttribute('aria-busy');
         }
     });
 </script>

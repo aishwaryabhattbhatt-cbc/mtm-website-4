@@ -673,5 +673,15 @@
     "key": "submission_error_contact_cta",
     "en": "Contact Us",
     "fr": ""
+  },
+  "contact_error_rate_limit": {
+    "key": "contact_error_rate_limit",
+    "en": "Too many requests have been submitted. Please try again in a few minutes.",
+    "fr": "Trop de demandes ont été envoyées. Veuillez réessayer dans quelques minutes."
+  },
+  "contact_error_generic": {
+    "key": "contact_error_generic",
+    "en": "An error has occurred. Please try again or contact us at 1-855-898-4999.",
+    "fr": "Une erreur est survenue. Veuillez réessayer ou communiquer avec nous au 1-855-898-4999."
   }
 }
