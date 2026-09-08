@@ -1,14 +1,14 @@
-<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/ -->
+<!-- Source: https://dev.mtm-otm.ca/fr/tools/census-tool/ -->
 
 # Ultra Localized Demographic Data
 
 Canadian census data offers precise insights for business decisions, but its complexity can be a hurdle. The MTM Census Tool is a user-friendly interactive dashboard that simplifies census data analysis, providing geography-based demographic information sourced directly from Statistics Canada.
 
-[Request a Demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/request-demo/)
+[Request a Demo](https://dev.mtm-otm.ca/fr/request-demo/)
 
-![MTM analytic tool dashboard](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Census-tool.webp)
+![MTM analytic tool dashboard](https://dev.mtm-otm.ca/images/tools/census-tool/Census-tool.webp)
 
-[Watch Video](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/census-tool/demo/)
+[Watch Video](https://dev.mtm-otm.ca/fr/census-tool/demo/)
 
 ## Highlights
 
@@ -20,13 +20,13 @@ Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal ar
 
 Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who’s driving adoption and change.
 
-![Aperçu des filtres géographiques](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/census-geo-filters.webp)
+![Aperçu des filtres géographiques](https://dev.mtm-otm.ca/images/tools/census-tool/census-geo-filters.webp)
 
-![Aperçu des filtres démographiques](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/census-demo-filters.webp)
+![Aperçu des filtres démographiques](https://dev.mtm-otm.ca/images/tools/census-tool/census-demo-filters.webp)
 
 ## Explore Census Tool Features
 
-![Snapshot tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Snapshot-Tool.webp)
+![Snapshot tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Snapshot-Tool.webp)
 
 ### Snapshot
 
@@ -48,7 +48,7 @@ What You Get
 
   Easily export data tables for quick analysis and sharing.
 
-![Drilldown tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Drilldown-Tool.webp)
+![Drilldown tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Drilldown-Tool.webp)
 
 ### Drilldown
 
@@ -72,7 +72,7 @@ What You Get
 
 63% 63% In Toronto, 63% of women aged 18-34 make less than $40,000/year
 
-![Ranker tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Ranker-Tool.webp)
+![Ranker tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Ranker-Tool.webp)
 
 ### Ranker
 
@@ -94,7 +94,7 @@ What You Get
 
   Precision-target regions by filtering out irrelevant population sizes.
 
-![Demographic Explorer tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Demo-Explorer-Tool.webp)
+![Demographic Explorer tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Demo-Explorer-Tool.webp)
 
 ### Demographic Explorer
 
@@ -118,7 +118,7 @@ What You Get
 
 11% 11% of the labour force in Saskatchewan work in the primary sector (Sector 11: Agriculture, Forestry, Fishing and Hunting, and Sector 21: Mining, Quarrying, and Oil and Gas Extraction), more than any other province
 
-![Compare tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Compare-Tool.webp)
+![Compare tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Compare-Tool.webp)
 
 ### Compare
 
@@ -140,7 +140,7 @@ What You Get
 
   Identify and understand demographic differences between specific territories.
 
-![Canada Score tool preview](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/tools/census-tool/Canada-Score-Tool.webp)
+![Canada Score tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Canada-Score-Tool.webp)
 
 ### Canada Score
 

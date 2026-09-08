@@ -1,4 +1,4 @@
-<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/solutions/media/ -->
+<!-- Source: https://dev.mtm-otm.ca/fr/solutions/media/ -->
 
 Media and Broadcasting
 
@@ -6,45 +6,45 @@ Media and Broadcasting
 
 In a rapidly evolving media landscape, guesswork is a liability. The Media Technology Monitor (MTM) is an investment in unparalleled evidence-based market intelligence that will sharpen your strategy, drive audience engagement and secure your competitive edge.
 
-[Request a demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/request-demo/)
+[Request a demo](https://dev.mtm-otm.ca/fr/request-demo/)
 
 Trusted by
 
-![Quebecor](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/quebecor.svg)
+![Quebecor](https://dev.mtm-otm.ca/images/home/solutions/logos/media/quebecor.svg)
 
-![Accessible Media Inc.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/ami-tv.svg)
+![Accessible Media Inc.](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
 
-![Videotron](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/videotron.svg)
+![Videotron](https://dev.mtm-otm.ca/images/home/solutions/logos/media/videotron.svg)
 
-![Rogers](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/rogers.svg)
+![Rogers](https://dev.mtm-otm.ca/images/home/solutions/logos/media/rogers.svg)
 
-![Bell](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/bell.svg)
+![Bell](https://dev.mtm-otm.ca/images/home/solutions/logos/media/bell.svg)
 
-![Telus](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/telus.svg)
+![Telus](https://dev.mtm-otm.ca/images/home/solutions/logos/media/telus.svg)
 
-![TVA](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/tva.svg)
+![TVA](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tva.svg)
 
-![TVO](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/tvo.svg)
+![TVO](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tvo.svg)
 
-![TV5](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/tv5.svg)
+![TV5](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tv5.svg)
 
-![Télé-Québec](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/tele-quebec.svg)
+![Télé-Québec](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tele-quebec.svg)
 
-![TFO](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/tfo.svg)
+![TFO](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tfo.svg)
 
-![ABC](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/abc.svg)
+![ABC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/abc.svg)
 
-![BBC](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/bbc.svg)
+![BBC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/bbc.svg)
 
-![WildBrain Television](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/wildbrain-television.svg)
+![WildBrain Television](https://dev.mtm-otm.ca/images/home/solutions/logos/media/wildbrain-television.svg)
 
-![AQPM](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/aqpm.svg)
+![AQPM](https://dev.mtm-otm.ca/images/home/solutions/logos/media/aqpm.svg)
 
-![Nexxen](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/nexxen.svg)
+![Nexxen](https://dev.mtm-otm.ca/images/home/solutions/logos/media/nexxen.svg)
 
-![Pelmorex](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/pelmorex.svg)
+![Pelmorex](https://dev.mtm-otm.ca/images/home/solutions/logos/media/pelmorex.svg)
 
-![Samsung](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/technology/samsung.svg)
+![Samsung](https://dev.mtm-otm.ca/images/home/solutions/logos/technology/samsung.svg)
 
 ## Get ahead of changes
 
@@ -58,7 +58,7 @@ Canadians no longer live on just one platform—they stream on one, scroll on an
 
 Top Social Media Platforms
 
-![Top Social Media Platforms](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/solutions/media/insight-1.svg)
+![Top Social Media Platforms](https://dev.mtm-otm.ca/images/solutions/media/insight-1.svg)
 
 Market Intelligence
 
@@ -68,7 +68,7 @@ Not all Canadians share the same media habits—from streaming and podcasts to d
 
 FAST Channel Viewership
 
-![FAST Channel Viewership](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/solutions/media/insight-2.svg)
+![FAST Channel Viewership](https://dev.mtm-otm.ca/images/solutions/media/insight-2.svg)
 
 ## Tools that empower you
 
@@ -82,7 +82,7 @@ Trending
 
 Forecasting
 
-[Go to Analytic Tools](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/analytic-tools/)
+[Go to Analytic Tools](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
 ### Census Tools
 
@@ -96,7 +96,7 @@ Compare
 
 3 more
 
-[Go to Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
+[Go to Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
 ## How MTM fits the way you work already
 
@@ -146,7 +146,7 @@ Use our tools to take a deep dive on the platforms, time spent and online commun
 
 ## What media and broadcasting companies are saying about us
 
-![The Weather Network](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/media/the-weather-network.svg)
+![The Weather Network](https://dev.mtm-otm.ca/images/home/solutions/logos/media/the-weather-network.svg)
 
 When it comes to technology ownership and usage in Canada, the MTM is THE go-to source of information. For our team, this resource is invaluable because it allows us to make informed decisions with confidence and stay one step ahead in an ever-changing media landscape. It is a fundamental tool for our strategic planning and innovation efforts.
 

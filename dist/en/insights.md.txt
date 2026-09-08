@@ -1,10 +1,10 @@
-<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/ -->
+<!-- Source: https://dev.mtm-otm.ca/en/insights/ -->
 
 # Research Built for Faster Decisions
 
 The Media Technology Monitor (MTM) delivers more than 70 executive-level reports and infographics each year, covering the trends, platforms, behaviours, and audiences shaping Canadian media and technology. Available in both official languages, our research helps organizations quickly understand what’s changing — and what matters next.
 
-[Request a Demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/request-demo/)
+[Request a Demo](https://dev.mtm-otm.ca/en/request-demo/)
 
 MTM Junior
 
@@ -14,7 +14,7 @@ Learn about how YouTube became the primary viewing destination for Canadian yout
 
 StreamingOnline Video
 
-[View Press Release](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/reports/)
+[View Press Release](https://dev.mtm-otm.ca/en/reports/)
 
 Featured Report
 
@@ -98,7 +98,7 @@ Adoption Report
 
 Explore the latest shifts in platform adoption, connected devices, subscription services, and digital behaviours among Canadian adults.
 
-[Download](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/report-download/?from=%2Fmtm-website-4%2Fen%2Finsights%2F%23free-reports)
+[Download](https://dev.mtm-otm.ca/en/insights/report-download/?from=%2Fen%2Finsights%2F%23free-reports)
 
 MTM Junior TBD
 
@@ -106,7 +106,7 @@ Futures Report
 
 Understand how younger audiences are shaping the future of media through evolving viewing habits, gaming behaviours, and digital engagement.
 
-[Download](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/report-download/?from=%2Fmtm-website-4%2Fen%2Finsights%2F%23free-reports)
+[Download](https://dev.mtm-otm.ca/en/insights/report-download/?from=%2Fen%2Finsights%2F%23free-reports)
 
 MTM Newcomers TBD
 
@@ -114,7 +114,7 @@ Arrivals Report
 
 Gain insight into the media preferences, platform usage, and technology adoption patterns of Canadians who have arrived within the past five years.
 
-[Download](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/report-download/?from=%2Fmtm-website-4%2Fen%2Finsights%2F%23free-reports)
+[Download](https://dev.mtm-otm.ca/en/insights/report-download/?from=%2Fen%2Finsights%2F%23free-reports)
 
 Free infographic
 
@@ -130,7 +130,7 @@ Who is coming out ahead in the streaming wars?
 
 Learn how paid streaming services stack up against each other and other types of media.
 
-[Download](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/report-download/?from=%2Fmtm-website-4%2Fen%2Finsights%2F%23free-infographic)
+[Download](https://dev.mtm-otm.ca/en/insights/report-download/?from=%2Fen%2Finsights%2F%23free-infographic)
 
 SVOD Subscriptions
 

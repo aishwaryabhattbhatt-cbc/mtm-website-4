@@ -1,4 +1,4 @@
-<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/solutions/gov-ngos/ -->
+<!-- Source: https://dev.mtm-otm.ca/fr/solutions/gov-ngos/ -->
 
 Government and NGOs
 
@@ -6,21 +6,21 @@ Government and NGOs
 
 In the public and non-profit sectors, effective decisions depend on understanding the people you serve — how they access information, use technology, and engage with media. The Media Technology Monitor (MTM) provides trusted Canadian data that helps organizations design better programs, improve communications, and make evidence-based decisions with confidence.
 
-[Request a demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/request-demo/)
+[Request a demo](https://dev.mtm-otm.ca/fr/request-demo/)
 
 Trusted by
 
-![Government of Canada](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/canada.svg)
+![Government of Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/canada.svg)
 
-![CRTC](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/crtc.svg)
+![CRTC](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/crtc.svg)
 
-![First Nations Market Housing Fund](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/first-nation-market.svg)
+![First Nations Market Housing Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/first-nation-market.svg)
 
-![Québec](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/quebec.svg)
+![Québec](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/quebec.svg)
 
-![Telefilm Canada](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
+![Telefilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
 
-![Canadian Heritage](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/R613-EN-RGB-Colour.svg)
+![Canadian Heritage](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/R613-EN-RGB-Colour.svg)
 
 ## Insights That Support Better Public Decisions
 
@@ -144,7 +144,7 @@ Compare
 
 3 more
 
-[Go to Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/census-tool/)
+[Go to Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
 ### Analytic Tools
 
@@ -158,7 +158,7 @@ Trending
 
 Forecasting
 
-[Go to Analytic Tools](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/tools/analytic-tools/)
+[Go to Analytic Tools](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
 ## MTM in Action for Public Sector Teams
 
@@ -186,7 +186,7 @@ Find our latest cellphone report to begin, then go deeper with the data analysis
 
 ## What government and NGO partners are saying about us
 
-![MANSO](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/gov-ngo/manso.svg)
+![MANSO](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/manso.svg)
 
 Thanks to our subscription to MTM Newcomers, we have access to newcomer data insights and their settlement and integration journey in Manitoba. We particularly appreciate seeing information that is not available through any other sources, like newcomers' use of media, devices, and newcomer knowledge of services available through our sector. This information helps our members ensure that their services are well adapted to the needs and characteristics of the newcomers they serve.
 

@@ -1,4 +1,4 @@
-<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/solutions/education/ -->
+<!-- Source: https://dev.mtm-otm.ca/en/solutions/education/ -->
 
 Education and Research
 
@@ -6,23 +6,23 @@ Education and Research
 
 Give your students and faculty access to the same datasets by the Media Technology Monitor (MTM) that media experts, industry regulators and scholars have relied on for over two decades. Nationally representative, bilingual, and rigorous enough for peer review.
 
-[Request a demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/request-demo/)
+[Request a demo](https://dev.mtm-otm.ca/en/request-demo/)
 
 Trusted by
 
-![HEC Montréal](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/education/HEC_Montreal.svg)
+![HEC Montréal](https://dev.mtm-otm.ca/images/home/solutions/logos/education/HEC_Montreal.svg)
 
-![Mount Royal University](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/education/Mount-Royal-University.svg)
+![Mount Royal University](https://dev.mtm-otm.ca/images/home/solutions/logos/education/Mount-Royal-University.svg)
 
-![Humber Polytechnic](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/education/humber-polytechnic.svg)
+![Humber Polytechnic](https://dev.mtm-otm.ca/images/home/solutions/logos/education/humber-polytechnic.svg)
 
-![Toronto Metropolitan University](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/education/toronto-metro-univerity-logo.svg)
+![Toronto Metropolitan University](https://dev.mtm-otm.ca/images/home/solutions/logos/education/toronto-metro-univerity-logo.svg)
 
-![University of Ottawa](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/education/uOttawa.svg)
+![University of Ottawa](https://dev.mtm-otm.ca/images/home/solutions/logos/education/uOttawa.svg)
 
-![Université de Montréal](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/education/universite-de-montreal.svg)
+![Université de Montréal](https://dev.mtm-otm.ca/images/home/solutions/logos/education/universite-de-montreal.svg)
 
-![University of Manitoba](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/education/university-of-manitoba.svg)
+![University of Manitoba](https://dev.mtm-otm.ca/images/home/solutions/logos/education/university-of-manitoba.svg)
 
 ## Multiple datasets. Hundreds of research directions.
 
@@ -102,7 +102,7 @@ Trending
 
 Forecasting
 
-[Go to Analytic Tools](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/analytic-tools/)
+[Go to Analytic Tools](https://dev.mtm-otm.ca/en/tools/analytic-tools/)
 
 ### Census Tools
 
@@ -118,7 +118,7 @@ Compare
 
 3 more
 
-[Go to Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+[Go to Census Tool](https://dev.mtm-otm.ca/en/tools/census-tool/)
 
 Unlimited seats Unlimited seats No extra charge for faculty, students and staff
 
@@ -170,7 +170,7 @@ Leverage the Compare feature in the Census Tool for a granular look at different
 
 ## What academic institutions are saying about us
 
-![University of Ottawa](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/education/uOttawa.svg)
+![University of Ottawa](https://dev.mtm-otm.ca/images/home/solutions/logos/education/uOttawa.svg)
 
 As the author of nine editions of a Canadian Advertising textbook, I have included data from Media Technology Monitor (MTM) for the past five editions to enhance the Broadcast, Internet and Social Media Chapters. I believe the data improved the quality allowing students to understand the complexities of advertising planning decisions. The textbook contains the most current consumer media technology usage and adoption data to keep it in a leading market position. MTM is a wonderful partner and I look forward to working with them for the next edition.
 

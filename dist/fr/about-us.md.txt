@@ -1,6 +1,6 @@
-<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/about-us/ -->
+<!-- Source: https://dev.mtm-otm.ca/fr/about-us/ -->
 
-![MTM - Media Technology Monitor](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/mtm-logo.svg)
+![MTM - Media Technology Monitor](https://dev.mtm-otm.ca/images/mtm-logo.svg)
 
 # About the MTM
 
@@ -102,7 +102,7 @@ Every wave since 2005 uses the same core methodology, so a claim about how Canad
 
 13. Today
 
-    [Reach out to us today!](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/request-demo/)
+    [Reach out to us today!](https://dev.mtm-otm.ca/fr/request-demo/)
 
 ## News
 

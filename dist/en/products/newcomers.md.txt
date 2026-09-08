@@ -1,10 +1,10 @@
-<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/newcomers/ -->
+<!-- Source: https://dev.mtm-otm.ca/en/products/newcomers/ -->
 
 # MTM Newcomers
 
 Our newest Analytic product, MTM Newcomers focuses on those who have come to Canada within the last 5 years. Get all you need to understand the media and tech habits of this growing demographic.
 
-[Request a Demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/request-demo/)
+[Request a Demo](https://dev.mtm-otm.ca/en/request-demo/)
 
 5+ Years Of Data
 
@@ -30,13 +30,13 @@ A national online study paired with in-person interviews across 6 major Canadian
 
 Dive deep into MTM Newcomers data with our easy-to-use web-based tools.
 
-![Data analysis tool screenshot](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/products/mtm-newcomers/data-analysis-tool.webp)
+![Data analysis tool screenshot](https://dev.mtm-otm.ca/images/products/mtm-newcomers/data-analysis-tool.webp)
 
 ### Data Analysis Tool
 
 The Data Analysis Tool (DAT) allows clients to examine both newcomer and Canadian-born respondents, and drill down to the groups that matter to them the most.
 
-[Learn More](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/analytic-tools/)
+[Learn More](https://dev.mtm-otm.ca/en/tools/analytic-tools/)
 
 Are newcomers spending more time than Canadian-born individuals on social media?
 
@@ -60,7 +60,7 @@ One-third access news content in a language other than English or French.
 
 Explore our full library of reports or download a free sneak peek.
 
-[GO TO INSIGHTS](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/) [SAMPLE REPORT](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/report-download/?from=%2Fmtm-website-4%2Fen%2Fproducts%2Fnewcomers%2F%23reports)
+[GO TO INSIGHTS](https://dev.mtm-otm.ca/en/insights/) [SAMPLE REPORT](https://dev.mtm-otm.ca/en/insights/report-download/?from=%2Fen%2Fproducts%2Fnewcomers%2F%23reports)
 
 ## Research Methodology
 
@@ -96,38 +96,38 @@ Survey Design
 
 Research Provider
 
-- ![Leger Research](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/products/mtm-newcomers/leger_logo.png)
+- ![Leger Research](https://dev.mtm-otm.ca/images/products/mtm-newcomers/leger_logo.png)
 
   The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. The research was conducted by Léger during the Summer of 2025. Léger is the largest Canadian-owned market research and analytics company, with more than 600 employees in Canada and the United States.
 
 ## Explore More Data
 
-[![MTM 18+](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-18-center.BwqBRMLJ_Z2s4y7O.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/mtm-18-plus/)
+[![MTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/en/products/mtm-18-plus/)
 
-[MTM 18+](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/mtm-18-plus/)
+[MTM 18+](https://dev.mtm-otm.ca/en/products/mtm-18-plus/)
 
-[Media and technology data for Canadians aged 18 and older.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/mtm-18-plus/)
+[Media and technology data for Canadians aged 18 and older.](https://dev.mtm-otm.ca/en/products/mtm-18-plus/)
 
-[![MTM Junior](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-jr-center.DhG_lzJT_Z28nRbO.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+[![MTM Junior](https://dev.mtm-otm.ca/_astro/fg-product-jr-center.DhG_lzJT_ZL4LYN.webp)](https://dev.mtm-otm.ca/en/products/juniors/)
 
-[MTM Junior](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+[MTM Junior](https://dev.mtm-otm.ca/en/products/juniors/)
 
-[Media and technology behaviour insights for Canadians aged 2–17.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+[Media and technology behaviour insights for Canadians aged 2–17.](https://dev.mtm-otm.ca/en/products/juniors/)
 
-[![MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-cs-center.ClHxdw16_Z1WAQsz.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+[![MTM Census Tool](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/en/tools/census-tool/)
 
-[MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+[MTM Census Tool](https://dev.mtm-otm.ca/en/tools/census-tool/)
 
-[Detailed demographic data for sharper targeting and planning.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+[Detailed demographic data for sharper targeting and planning.](https://dev.mtm-otm.ca/en/tools/census-tool/)
 
-[![MTM 18+](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-18-center.BwqBRMLJ_Z2s4y7O.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/mtm-18-plus/)
+[![MTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/en/products/mtm-18-plus/)
 
-[MTM 18+ Media and technology data for Canadians aged 18 and older.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/mtm-18-plus/)
+[MTM 18+ Media and technology data for Canadians aged 18 and older.](https://dev.mtm-otm.ca/en/products/mtm-18-plus/)
 
-[![MTM Junior](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-jr-center.DhG_lzJT_Z28nRbO.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+[![MTM Junior](https://dev.mtm-otm.ca/_astro/fg-product-jr-center.DhG_lzJT_ZL4LYN.webp)](https://dev.mtm-otm.ca/en/products/juniors/)
 
-[MTM Junior Media and technology behaviour insights for Canadians aged 2–17.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/products/juniors/)
+[MTM Junior Media and technology behaviour insights for Canadians aged 2–17.](https://dev.mtm-otm.ca/en/products/juniors/)
 
-[![MTM Census Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/_astro/fg-product-cs-center.ClHxdw16_Z1WAQsz.webp)](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+[![MTM Census Tool](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/en/tools/census-tool/)
 
-[MTM Census Tool Detailed demographic data for sharper targeting and planning.](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)
+[MTM Census Tool Detailed demographic data for sharper targeting and planning.](https://dev.mtm-otm.ca/en/tools/census-tool/)

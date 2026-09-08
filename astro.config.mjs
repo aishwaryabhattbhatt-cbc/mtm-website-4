@@ -3,6 +3,12 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { execFileSync } from 'node:child_process';
 
+// build for Staging (deploy dist contents to /mtm.portal.content/mtm.public.staging):
+// npm run build BUILD_SITE_URL=https://dev.mtm-otm.ca BUILD_BASE_PATH=/
+
+// build for Prod: (deploy dist contents to /mtm.portal.content/mtm.public.prod):
+// npm run build BUILD_SITE_URL=https://mtm-otm.ca BUILD_BASE_PATH=/
+
 // Overridable for a handoff build served from somewhere other than GitHub
 // Pages (e.g. the backend developer's own host/IIS path) — every asset URL
 // in the build is prefixed with this exact string, so it must match wherever

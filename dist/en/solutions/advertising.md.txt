@@ -1,4 +1,4 @@
-<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/solutions/advertising/ -->
+<!-- Source: https://dev.mtm-otm.ca/en/solutions/advertising/ -->
 
 Advertising and Marketing
 
@@ -6,37 +6,37 @@ Advertising and Marketing
 
 Your clients expect results and we provide the media and demographic intelligence to help you deliver. The Media Technology Monitor (MTM) gives you precision targeting and pitch-winning insights.
 
-[Request a demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/request-demo/)
+[Request a demo](https://dev.mtm-otm.ca/en/request-demo/)
 
 Trusted by
 
-![Cossette](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/cosette.svg)
+![Cossette](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/cosette.svg)
 
-![EssenceMediacom](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/essencemediacom.jpeg)
+![EssenceMediacom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/essencemediacom.jpeg)
 
-![GroupM](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/group-m.svg)
+![GroupM](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/group-m.svg)
 
-![Hearts & Science](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/hearts-and-science.png)
+![Hearts & Science](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/hearts-and-science.png)
 
-![Initiative](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/initiative.png)
+![Initiative](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/initiative.png)
 
-![Jungle](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/jungle.svg)
+![Jungle](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/jungle.svg)
 
-![Media Experts](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/media-experts.svg)
+![Media Experts](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/media-experts.svg)
 
-![Mindshare](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/mindshare.svg)
+![Mindshare](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/mindshare.svg)
 
-![Omnicom](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/omnicom.svg)
+![Omnicom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/omnicom.svg)
 
-![PHD](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/phd.svg)
+![PHD](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/phd.svg)
 
-![Remitly](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/remitly.svg)
+![Remitly](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/remitly.svg)
 
-![Time & Space](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/time-space-media.png)
+![Time & Space](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
 
-![Touché!](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/touche.SVG)
+![Touché!](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/touche.SVG)
 
-![UM Worldwide](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/um-worldwide.svg)
+![UM Worldwide](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/um-worldwide.svg)
 
 ## Why trusted data changes everything
 
@@ -50,7 +50,7 @@ Our independent, nationally representative samples allow for detailed comparison
 
 Social Media Usage
 
-![Social Media Usage](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/solutions/advertising/insight-1.svg)
+![Social Media Usage](https://dev.mtm-otm.ca/images/solutions/advertising/insight-1.svg)
 
 Precision Targeting
 
@@ -60,7 +60,7 @@ The MTM allows you to see Canada in high definition. Our large library of demogr
 
 FAST CHANNEL VIEWERSHIP by income bracket
 
-![FAST CHANNEL VIEWERSHIP by income bracket](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/solutions/advertising/insight-2.svg)
+![FAST CHANNEL VIEWERSHIP by income bracket](https://dev.mtm-otm.ca/images/solutions/advertising/insight-2.svg)
 
 Reports Library
 
@@ -140,7 +140,7 @@ Understand the audience before the strategy takes shape.
 
 Use MTM to profile the target audience pre-brief. Know their viewing, streaming, and media habits so your strategy starts from evidence, not assumption.
 
-[Trending Tool ](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/analytic-tools/#trending-tool)[MTM Reports](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/)
+[Trending Tool ](https://dev.mtm-otm.ca/en/tools/analytic-tools/#trending-tool)[MTM Reports](https://dev.mtm-otm.ca/en/insights/)
 
 02 Pitch
 
@@ -148,7 +148,7 @@ Design your next pitch faster and smarter
 
 Whether you’re planning a high-impact Out-of-Home campaign, a localized digital blitz, or a retail pop-up, we give you the power to defend your pitch every step of the way.
 
-[Census Tool ](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/census-tool/)[Data Analysis Tool](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/analytic-tools/#data-analysis-tool)
+[Census Tool ](https://dev.mtm-otm.ca/en/tools/census-tool/)[Data Analysis Tool](https://dev.mtm-otm.ca/en/tools/analytic-tools/#data-analysis-tool)
 
 03 Present
 
@@ -156,7 +156,7 @@ Turn the data into the slide that closes the room.
 
 Export clean, presentation-ready charts and cross-tabs directly from the platform. When a client pushes back, you have the national dataset behind every number.
 
-[MTM Reports ](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/insights/)[YourData](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/en/tools/analytic-tools/#yourdata)
+[MTM Reports ](https://dev.mtm-otm.ca/en/insights/)[YourData](https://dev.mtm-otm.ca/en/tools/analytic-tools/#yourdata)
 
 ## MTM in Action for Ad Agencies
 
@@ -184,7 +184,7 @@ Leverage the Ranker feature in the census tool to find out where the wealthiest 
 
 ## What ad agencies are saying about us
 
-![Time & Space Media](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/advertising/time-space-media.png)
+![Time & Space Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
 
 MTM is a valuable resource for effective media planning and research for our clients. The comprehensive data, forecasting and frequent reports give us deep insight into Canadian audience behaviors and media trends.
 

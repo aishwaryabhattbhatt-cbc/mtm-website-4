@@ -1,4 +1,4 @@
-<!-- Source: https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/solutions/industry/ -->
+<!-- Source: https://dev.mtm-otm.ca/fr/solutions/industry/ -->
 
 Industry
 
@@ -6,19 +6,19 @@ Industry
 
 Instill confidence in regulators, funders and peers with the Media Technology Monitor (MTM). Twenty years of continuous, nationally representative, bilingual data. Built for the industry that shapes Canadian media policy.
 
-[Request a Demo](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/fr/request-demo/)
+[Request a Demo](https://dev.mtm-otm.ca/fr/request-demo/)
 
 Trusted by
 
-![European Broadcasting Union](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
+![European Broadcasting Union](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
 
-![Shaw Rocket Fund](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/Shaw-Rocket-Fund.svg)
+![Shaw Rocket Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/Shaw-Rocket-Fund.svg)
 
-![Canada Media Fund](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/cmf-blk.svg)
+![Canada Media Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/cmf-blk.svg)
 
-![National Film Board of Canada](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/nfb.svg)
+![National Film Board of Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/nfb.svg)
 
-![Numeris](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/numeris.png)
+![Numeris](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
 ## Research Methodology
 
@@ -150,7 +150,7 @@ Find the latest on A.I. tool usage via our A.I. report, then leverage the Foreca
 
 ## What the industry is saying about us
 
-![Numeris](https://aishwaryabhattbhatt-cbc.github.io/mtm-website-4/images/home/solutions/logos/industry/numeris.png)
+![Numeris](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
 Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.
 
