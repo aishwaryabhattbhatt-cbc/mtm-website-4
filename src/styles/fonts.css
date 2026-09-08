@@ -1,0 +1,81 @@
+/* ==========================================================================
+   SELF-HOSTED WEBFONTS
+   ==========================================================================
+   Roboto and Source Serif 4 are served from our own origin rather than
+   fonts.googleapis.com. Three reasons, in order of importance:
+
+   1. No visitor data goes to Google on every page view.
+   2. No flash of fallback text. The Google stylesheet was loaded with the
+      `media="print"` deferral trick, which leaves a window on first paint
+      where no @font-face exists yet — the browser paints in a system font,
+      then reflows once the stylesheet lands. (That window is also what made
+      Firefox log "Request for font ... blocked at visibility level 2" for
+      users on strict tracking protection: with no @font-face defined yet it
+      falls back to looking for a *locally installed* copy, which strict mode
+      blocks.)
+   3. One less DNS lookup + TLS handshake, and no runtime dependency on
+      Google Fonts being reachable.
+
+   These are the variable fonts — a single file covers the whole 100-900
+   weight range, which is why --fw-semibold-plus (650) renders correctly.
+   Italics are deliberately not included: nothing in the site uses them.
+   Subsets are latin + latin-ext only (sufficient for EN and FR).
+
+   Paths are relative on purpose: Vite rewrites them at build time with the
+   configured base path, so these keep working under both /mtm-website-4/
+   and a root-served build. Never hardcode an absolute /fonts/ URL here.
+
+   To update: re-fetch from the Google Fonts css2 API with a modern browser
+   User-Agent (an old UA gets you .ttf instead of .woff2), then copy the
+   matching unicode-range values across unchanged.
+   ========================================================================== */
+
+/* Roboto — latin */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../assets/fonts/roboto-latin.woff2') format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+        U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Roboto — latin-ext */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../assets/fonts/roboto-latin-ext.woff2') format('woff2');
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+        U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+        U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Source Serif 4 — latin */
+@font-face {
+    font-family: 'Source Serif 4';
+    font-style: normal;
+    font-weight: 200 900;
+    font-display: swap;
+    src: url('../assets/fonts/source-serif-4-latin.woff2') format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+        U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Source Serif 4 — latin-ext */
+@font-face {
+    font-family: 'Source Serif 4';
+    font-style: normal;
+    font-weight: 200 900;
+    font-display: swap;
+    src: url('../assets/fonts/source-serif-4-latin-ext.woff2') format('woff2');
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+        U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+        U+2C60-2C7F, U+A720-A7FF;
+}
