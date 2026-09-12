@@ -10,7 +10,7 @@ What You Can Expect
 - Q & A to understand how the MTM can support you
 - Expert advice on how MTM can fit in your workflow
 
-## Talk to our experts
+Company website
 
 First Name \*
 
@@ -27,6 +27,17 @@ Email \*
 Organisation \*
 
 Organisation Name
+
+Industry \*
+
+Select your industry Select your industry
+
+- Media and Broadcasting
+- Advertising and Marketing
+- Government and NGOs
+- Education and Research
+- Industry
+- Other
 
 Language Preference
 

@@ -15,6 +15,14 @@ interface Props {
 const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 
+// From the HubSpot form embed snippet. Public values (they ship in the client
+// bundle), so the literals are safe fallbacks when .env isn't present — e.g. a
+// fresh clone or a CI job that hasn't had the build variables set.
+const hubspotPortalId = import.meta.env.PUBLIC_HUBSPOT_PORTAL_ID || '343607035';
+const hubspotFormGuid =
+    import.meta.env.PUBLIC_HUBSPOT_FORM_GUID || 'db1da805-3985-4e72-b94a-3857b546af69';
+const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
+
 const expectItems = [
     {
         key: 'request_demo_hero_expect_item_1',
@@ -28,6 +36,16 @@ const expectItems = [
         key: 'request_demo_hero_expect_item_3',
         fallback: 'Expert advice on how MTM can fit in your workflow',
     },
+];
+
+const industryOptions = [
+    { value: '', label: 'Select your industry', labelKey: 'newsletter_industry_placeholder' },
+    { value: 'media', label: 'Media', labelKey: 'solutions_item_2' },
+    { value: 'advertising', label: 'Advertising', labelKey: 'solutions_item_3' },
+    { value: 'govngo', label: 'Gov & NGOs', labelKey: 'solutions_item_5' },
+    { value: 'education', label: 'Education', labelKey: 'solutions_item_4' },
+    { value: 'industry', label: 'Industry', labelKey: 'solutions_item_1' },
+    { value: 'other', label: 'Other', labelKey: 'newsletter_industry_other' },
 ];
 
 const interestOptions = [
@@ -91,18 +109,26 @@ const interestOptions = [
         </div>
 
         <div class="request-demo-hero__card hero-fade-in" style="animation-delay: 0.2s">
-            <h2
-                class="request-demo-hero__card-title text-h4"
-                data-copy-key="request_demo_hero_form_title"
-            >
-                {t(copy, 'request_demo_hero_form_title', locale, 'Talk to our experts')}
-            </h2>
-
             <form
                 class="request-demo-hero__form"
                 aria-label={t(copy, 'request_demo_hero_form_aria_label', locale, 'Request a demo')}
                 data-submit-href={`${base}${locale}/request-demo-success/`}
+                data-error-href={`${base}${locale}/submission-error/`}
+                data-hs-portal={hubspotPortalId}
+                data-hs-form={hubspotFormGuid}
+                data-hs-region={hubspotRegion}
             >
+                {/* Honeypot: bots fill it, humans never see it. Hidden from AT too. */}
+                <div class="request-demo-hero__hp" aria-hidden="true">
+                    <label for="request-demo-company-website">Company website</label>
+                    <input
+                        id="request-demo-company-website"
+                        type="text"
+                        name="companyWebsite"
+                        tabindex="-1"
+                        autocomplete="off"
+                    />
+                </div>
                 <div class="request-demo-hero__row">
                     <FormField
                         locale={locale}
@@ -161,6 +187,21 @@ const interestOptions = [
                         required
                     />
                 </div>
+
+                <FormField
+                    locale={locale}
+                    copy={copy}
+                    variant="field-with-label"
+                    type="select"
+                    name="industry"
+                    labelKey="request_demo_hero_form_industry_label"
+                    label="Industry"
+                    placeholderKey="newsletter_industry_placeholder"
+                    placeholder="Select your industry"
+                    labelColor="primary"
+                    options={industryOptions}
+                    required
+                />
 
                 <div class="request-demo-hero__group">
                     <p
@@ -279,6 +320,17 @@ const interestOptions = [
         padding: var(--section-pad-block) var(--content-margin-inline);
     }
 
+    /* Honeypot. display:none is skipped by some bots, so move it out of view instead. */
+    .request-demo-hero__hp {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        pointer-events: none;
+    }
+
     .hero-fade-in {
         opacity: 0;
         animation: hero-fade-in-up var(--motion-duration-heading) var(--motion-ease-standard)
@@ -389,11 +441,6 @@ const interestOptions = [
         border-radius: var(--radius-m);
         background: var(--surface-blue);
         box-shadow: var(--shadow-card);
-    }
-
-    .request-demo-hero__card-title {
-        margin: 0;
-        color: var(--text-primary);
     }
 
     .request-demo-hero__form {
@@ -522,7 +569,41 @@ const interestOptions = [
         emailInput.value = prefillEmail;
     }
 
-    form?.addEventListener('submit', (event) => {
+    const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+    // Our input names -> HubSpot fields. `objectTypeId` is required for properties
+    // that live on the Company object (0-2) rather than the Contact (0-1); the form
+    // rejects those two as missing if they're sent unqualified.
+    const FIELD_MAP: Array<{
+        formName: string;
+        name: string;
+        objectTypeId?: string;
+        values?: Record<string, string>;
+    }> = [
+        { formName: 'firstName', name: 'firstname' },
+        { formName: 'lastName', name: 'lastname' },
+        { formName: 'email', name: 'email' },
+        { formName: 'organisation', name: 'name', objectTypeId: '0-2' },
+        {
+            formName: 'industry',
+            name: 'select_industry',
+            // HubSpot's internal names for this property are the full labels, so our
+            // short slugs have to be translated. A value outside this list is dropped
+            // silently by HubSpot, so these must stay in step with the property options.
+            values: {
+                media: 'Media and Broadcasting',
+                advertising: 'Advertising and Marketing',
+                govngo: 'Government and NGOs',
+                education: 'Education and Research',
+                industry: 'Industry',
+                other: 'Other',
+            },
+        },
+        { formName: 'language', name: 'language', values: { en: 'English', fr: 'French' } },
+        { formName: 'message', name: 'description' },
+    ];
+
+    form?.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         if (!form.checkValidity()) {
@@ -530,9 +611,76 @@ const interestOptions = [
             return;
         }
 
-        const submitHref = form.dataset.submitHref;
-        if (submitHref) {
-            window.location.href = submitHref;
+        const { submitHref, errorHref, hsPortal, hsForm, hsRegion } = form.dataset;
+        const data = new FormData(form);
+
+        // Honeypot tripped: pretend it worked, send nothing.
+        if (String(data.get('companyWebsite') ?? '').trim() !== '') {
+            if (submitHref) window.location.href = submitHref;
+            return;
+        }
+
+        const fields = FIELD_MAP.map(({ formName, name, objectTypeId, values }) => {
+            const raw = String(data.get(formName) ?? '').trim();
+            return {
+                ...(objectTypeId ? { objectTypeId } : {}),
+                name,
+                value: values ? (values[raw] ?? '') : raw,
+            };
+        }).filter((field) => field.value !== '');
+
+        // HubSpot expects multi-checkbox values as one semicolon-delimited string,
+        // using the property's internal names (which here are the full labels).
+        const INTEREST_VALUES: Record<string, string> = {
+            mtm18: 'MTM 18+',
+            junior: 'MTM Junior',
+            newcomer: 'MTM Newcomers',
+            census: 'MTM Census',
+        };
+        const interests = data
+            .getAll('interests')
+            .map((value) => INTEREST_VALUES[String(value)])
+            .filter(Boolean);
+        if (interests.length > 0) {
+            fields.push({ name: 'what_are_you_interested_in_', value: interests.join(';') });
+        }
+
+        // Set by the HubSpot tracking script; ties the submission to the visitor's
+        // session. Absent on a first visit with cookies blocked, which is fine.
+        const hutk = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]*)/)?.[1];
+
+        submitButton?.setAttribute('disabled', '');
+        submitButton?.setAttribute('aria-busy', 'true');
+
+        try {
+            const response = await fetch(
+                `https://api-${hsRegion}.hsforms.com/submissions/v3/integration/submit/${hsPortal}/${hsForm}`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        fields,
+                        context: {
+                            pageUri: window.location.href,
+                            pageName: document.title,
+                            ...(hutk ? { hutk } : {}),
+                        },
+                    }),
+                }
+            );
+
+            if (!response.ok) {
+                // The body names the offending field, which is the only practical
+                // way to debug a rejection. Surface it before redirecting away.
+                throw new Error(`HubSpot responded ${response.status}: ${await response.text()}`);
+            }
+
+            if (submitHref) window.location.href = submitHref;
+        } catch (error) {
+            console.error('Request demo submission failed', error);
+            submitButton?.removeAttribute('disabled');
+            submitButton?.removeAttribute('aria-busy');
+            if (errorHref) window.location.href = errorHref;
         }
     });
 </script>

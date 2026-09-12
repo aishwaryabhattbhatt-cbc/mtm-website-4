@@ -384,6 +384,21 @@
     "en": "Submit",
     "fr": ""
   },
+  "newsletter_success_title": {
+    "key": "newsletter_success_title",
+    "en": "You're Subscribed!",
+    "fr": ""
+  },
+  "newsletter_success_description": {
+    "key": "newsletter_success_description",
+    "en": "Thank you for subscribing. Look out for MTM reports, research releases and insights in your inbox.",
+    "fr": ""
+  },
+  "newsletter_success_close": {
+    "key": "newsletter_success_close",
+    "en": "Close",
+    "fr": ""
+  },
   "Navigation bar": {
     "key": "Navigation bar",
     "en": "",
