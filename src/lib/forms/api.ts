@@ -56,7 +56,7 @@ export async function postJson<TRequest>(url: string, body: TRequest): Promise<A
 
     let payload: ApiPayload = {};
 
-    if (response.headers.get('content-type')?.includes('application/json')) {
+    if (/(?:\/|\+)json(?:;|$)/i.test(response.headers.get('content-type') ?? '')) {
         payload = (await response.json()) as ApiPayload;
     }
 

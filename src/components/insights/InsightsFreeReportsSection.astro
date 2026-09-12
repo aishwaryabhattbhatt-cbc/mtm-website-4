@@ -3,7 +3,8 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
 import Eyebrow from '../shared/Eyebrow.astro';
-import InsightsFreeReportCard from './InsightsFreeReportCard.astro';
+import RuntimeReportTemplate from './RuntimeReportTemplate.astro';
+import InsightsRuntime from './InsightsRuntime.astro';
 
 interface Props {
     locale: Locale;
@@ -11,37 +12,9 @@ interface Props {
 }
 
 const { locale, copy } = Astro.props as Props;
-const base = import.meta.env.BASE_URL;
-// Lets the download-success page's "Go Back to Exploring" CTA return
-// here instead of a hardcoded destination.
-const reportDownloadHref = `${base}${locale}/insights/report-download/?from=${encodeURIComponent(`${base}${locale}/insights/#free-reports`)}`;
-
-const freeReports = [
-    {
-        tagKey: 'free_report_1_tag',
-        dateKey: 'free_report_1_date',
-        titleKey: 'free_report_1_title',
-        descriptionKey: 'free_report_1_description',
-        imageSrc: `${base}images/insights/free-reports/Picture.png`,
-    },
-    {
-        tagKey: 'free_report_2_tag',
-        dateKey: 'free_report_2_date',
-        titleKey: 'free_report_2_title',
-        descriptionKey: 'free_report_2_description',
-        imageSrc: `${base}images/insights/free-reports/Picture-1.png`,
-    },
-    {
-        tagKey: 'free_report_3_tag',
-        dateKey: 'free_report_3_date',
-        titleKey: 'free_report_3_title',
-        descriptionKey: 'free_report_3_description',
-        imageSrc: `${base}images/insights/free-reports/Picture-2.png`,
-    },
-];
 ---
 
-<section class="free-reports-section" id="free-reports">
+<section class="free-reports-section" id="free-reports" data-insights-kind="free">
     <div class="free-reports-section__header heading-fly-in">
         <div class="free-reports-section__eyebrow-wrap">
             <Eyebrow>
@@ -87,24 +60,14 @@ const freeReports = [
         </div>
     </div>
 
-    <div class="free-reports-section__grid" id="freeReportsCarousel">
-        {
-            freeReports.map((report) => (
-                <div class="free-reports-section__card-wrap card-fly-in">
-                    <InsightsFreeReportCard
-                        locale={locale}
-                        copy={copy}
-                        ctaHref={reportDownloadHref}
-                        imageSrc={report.imageSrc}
-                        tagKey={report.tagKey}
-                        dateKey={report.dateKey}
-                        titleKey={report.titleKey}
-                        descriptionKey={report.descriptionKey}
-                    />
-                </div>
-            ))
-        }
-    </div>
+    <InsightsRuntime locale={locale} />
+    <div class="free-reports-section__grid" id="freeReportsCarousel" data-insights-list></div>
+    <RuntimeReportTemplate
+        locale={locale}
+        copy={copy}
+        kind="free"
+        wrapClass="free-reports-section__card-wrap card-fly-in"
+    />
 </section>
 
 <style>
@@ -174,7 +137,7 @@ const freeReports = [
         gap: var(--layout-card-gap);
     }
 
-    .free-reports-section__card-wrap {
+    :global(.free-reports-section__card-wrap) {
         min-width: 0;
     }
 
@@ -214,7 +177,7 @@ const freeReports = [
             display: none;
         }
 
-        .free-reports-section__card-wrap {
+        :global(.free-reports-section__card-wrap) {
             flex-shrink: 0;
             width: 24rem;
             scroll-snap-align: start;
@@ -231,48 +194,8 @@ const freeReports = [
             gap: var(--space-4);
         }
 
-        .free-reports-section__card-wrap {
+        :global(.free-reports-section__card-wrap) {
             width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
         }
     }
 </style>
-
-<script>
-    document.querySelectorAll<HTMLElement>('.free-reports-section').forEach((section) => {
-        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
-        if (heading) {
-            const headingObserver = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        heading.classList.add('is-visible');
-                        headingObserver.disconnect();
-                    }
-                },
-                { threshold: 0.15 }
-            );
-            headingObserver.observe(heading);
-        }
-
-        // Cards sit at the same vertical scroll position (a grid row on
-        // desktop, a single carousel row on mobile), so trigger off the
-        // row itself and keep the stagger rather than per-card observers.
-        // Raised from the 0.2 default — the row was firing while barely
-        // scrolled into view, before it was actually being looked at.
-        const cardsRow = section.querySelector<HTMLElement>('.free-reports-section__grid');
-        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
-        if (cardsRow && cards.length) {
-            const cardObserver = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        cards.forEach((card, i) => {
-                            setTimeout(() => card.classList.add('is-visible'), i * 140);
-                        });
-                        cardObserver.disconnect();
-                    }
-                },
-                { threshold: 0.4 }
-            );
-            cardObserver.observe(cardsRow);
-        }
-    });
-</script>

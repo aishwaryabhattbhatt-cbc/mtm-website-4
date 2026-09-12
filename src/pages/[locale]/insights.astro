@@ -4,7 +4,8 @@ import { toAbsoluteUrl } from '../../lib/i18n/routing';
 import { buildBreadcrumbList } from '../../lib/content/breadcrumbs';
 import Navbar from '../../components/shared/Navbar.astro';
 import InsightsHeroSection from '../../components/insights/InsightsHeroSection.astro';
-import InsightsFeaturedReportCard from '../../components/insights/InsightsFeaturedReportCard.astro';
+import RuntimeReportTemplate from '../../components/insights/RuntimeReportTemplate.astro';
+import InsightsRuntime from '../../components/insights/InsightsRuntime.astro';
 import InsightsReportsLibrarySection from '../../components/insights/InsightsReportsLibrarySection.astro';
 import InsightsFreeReportsSection from '../../components/insights/InsightsFreeReportsSection.astro';
 import InsightsSneakPeekReportsSection from '../../components/insights/InsightsSneakPeekReportsSection.astro';
@@ -71,15 +72,10 @@ const pageDescription = t(
             bgPatternSrc={`${base}images/tools/analytic-tools/analytic-tools-hero-bg.png`}
         />
 
-        <div class="insights-card-bleed" id="insights-card-bleed">
-            <div class="insights-card-bleed__inner">
-                <InsightsFeaturedReportCard
-                    locale={locale}
-                    copy={copy}
-                    ctaHref={`${base}${locale}/reports/`}
-                    imageSrc={`${base}images/insights/latest-report.png`}
-                />
-            </div>
+        <div class="insights-card-bleed" id="insights-card-bleed" data-insights-kind="featured">
+            <InsightsRuntime locale={locale} />
+            <div class="insights-card-bleed__inner" data-insights-list></div>
+            <RuntimeReportTemplate locale={locale} copy={copy} kind="featured" />
         </div>
 
         <InsightsReportsLibrarySection locale={locale} copy={copy} />
@@ -134,18 +130,43 @@ const pageDescription = t(
         }
         <script is:inline src={`${base}js/runtime/script.js`}></script>
         <script is:inline>
+            const hero = document.getElementById('insights-hero');
+            const bleed = document.getElementById('insights-card-bleed');
+            let updateFrame = 0;
+            let observedCard = null;
+
+            const cardObserver = new ResizeObserver(() => updateHeroBleed());
+
             function updateHeroBleed() {
-                const hero = document.getElementById('insights-hero');
-                const bleed = document.getElementById('insights-card-bleed');
-                const card = bleed && bleed.querySelector('.featured-report-card');
-                if (!hero || !bleed || !card) return;
-                // Overlap by 15% of card height on mobile, 50% on desktop
-                const isMobile = window.innerWidth < 768;
-                const overlapPercent = isMobile ? 0.15 : 0.5;
-                const overlap = card.offsetHeight * overlapPercent;
-                hero.style.setProperty('--hero-bleed-pad', overlap + 'px');
-                bleed.style.marginTop = '-' + overlap + 'px';
+                cancelAnimationFrame(updateFrame);
+                updateFrame = requestAnimationFrame(() => {
+                    const card = bleed && bleed.querySelector('.featured-report-card');
+
+                    if (!hero || !bleed || !card) {
+                        cardObserver.disconnect();
+                        observedCard = null;
+                        hero?.style.removeProperty('--hero-bleed-pad');
+                        bleed?.style.removeProperty('margin-top');
+                        bleed?.removeAttribute('data-positioned');
+                        return;
+                    }
+
+                    if (card !== observedCard) {
+                        cardObserver.disconnect();
+                        cardObserver.observe(card);
+                        observedCard = card;
+                    }
+
+                    // Overlap by 15% of card height on mobile, 50% on desktop.
+                    const overlapPercent = window.innerWidth < 768 ? 0.15 : 0.5;
+                    const overlap = card.offsetHeight * overlapPercent;
+                    hero.style.setProperty('--hero-bleed-pad', `${overlap}px`);
+                    bleed.style.marginTop = `-${overlap}px`;
+                    bleed.dataset.positioned = 'true';
+                });
             }
+
+            bleed?.addEventListener('insights:rendered', updateHeroBleed);
             updateHeroBleed();
             window.addEventListener('resize', updateHeroBleed);
         </script>
@@ -161,5 +182,10 @@ const pageDescription = t(
 
     .insights-card-bleed__inner {
         width: 100%;
+        opacity: 0;
+    }
+
+    .insights-card-bleed[data-positioned='true'] .insights-card-bleed__inner {
+        opacity: 1;
     }
 </style>

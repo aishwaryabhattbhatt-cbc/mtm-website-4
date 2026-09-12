@@ -17,7 +17,10 @@ const locale = (Astro.params.locale === 'fr' ? 'fr' : 'en') as Locale;
 // reuses the same rows shown on /insights/ — so it also merges in the shared
 // 'insights' dictionary. report-download's own keys win on any collision.
 const pageId = 'report-download';
-const copy = { ...(await getPageDictionary('insights')), ...(await getPageDictionary(pageId)) };
+const copy = {
+    ...(await getPageDictionary('insights')),
+    ...(await getPageDictionary(pageId)),
+};
 const cmsConfig = getRuntimeCMSConfig(pageId);
 const base = import.meta.env.BASE_URL;
 const resolvedCmsCsvUrl =
@@ -29,23 +32,6 @@ const resolvedCmsCsvUrl =
 const localeSwitchUrls: Record<Locale, string> = {
     en: `${base}en/insights/report-download-2/`,
     fr: `${base}fr/insights/report-download-2/`,
-};
-
-// The one report this page hands over. Swap this object for the backend lookup
-// (e.g. by Astro.url.searchParams.get('report')) — the card reads title/date/tags
-// straight off it, and falls back to the *Key CMS copy for anything left unset.
-const report = {
-    imageSrc: `${base}images/insights/report-library/Picture.png`,
-    imageAlt: '',
-    title: undefined as string | undefined,
-    date: undefined as string | undefined,
-    tags: undefined as string[] | undefined,
-    pillVariant: 'mtm18plus' as const,
-    // Placeholder copy used until the fields above come from the backend.
-    tagKey: 'free_report_1_tag',
-    dateKey: 'free_report_1_date',
-    titleKey: 'free_report_1_title',
-    value: 'free_report_1',
 };
 
 const pageTitle = t(copy, 'report_download_page_title', locale, 'Download Report');
@@ -74,7 +60,7 @@ const pageDescription = t(
     >
         <Navbar locale={locale} copy={copy} localeSwitchUrls={localeSwitchUrls} />
 
-        <InsightsReportDownloadSection locale={locale} copy={copy} singleCard reports={[report]} />
+        <InsightsReportDownloadSection locale={locale} copy={copy} singleCard />
 
         <HomeFooterSection
             locale={locale}

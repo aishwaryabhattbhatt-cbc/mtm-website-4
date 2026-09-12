@@ -1,0 +1,75 @@
+---
+import type { Locale } from '../../lib/cms/types';
+interface Props {
+    locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<p class="insights-status text-body-p2" data-insights-status role="status" aria-live="polite">
+    {locale === 'fr' ? 'Chargement des rapports…' : 'Loading reports…'}
+</p>
+<button type="button" class="insights-retry" data-insights-retry hidden>
+    {locale === 'fr' ? 'Réessayer' : 'Try again'}
+</button>
+<noscript
+    ><p>
+        {
+            locale === 'fr'
+                ? 'Activez JavaScript pour consulter et demander des rapports.'
+                : 'Enable JavaScript to view and request reports.'
+        }
+    </p></noscript
+>
+<style is:global>
+    [data-insights-kind][hidden],
+    [data-insights-kind] [hidden] {
+        display: none !important;
+    }
+    :is(
+        [data-insights-kind='featured'],
+        [data-insights-kind='free'],
+        [data-insights-kind='infographic'],
+        [data-insights-kind='product']
+    ):is(:not([data-insights-state]), [data-insights-state='loading']) {
+        visibility: hidden;
+    }
+    .insights-status {
+        padding: 1rem 0;
+    }
+    .insights-retry {
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
+    .insights-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+    [data-insights-kind] .report-card__meta,
+    [data-insights-kind] .featured-report-card__meta,
+    [data-insights-kind] .report-select-row__meta,
+    [data-insights-kind] .free-report-card__meta,
+    [data-insights-kind] .sneak-peek-report-card__meta-row {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    [data-insights-kind] .reports-row__pills {
+        flex-wrap: wrap;
+    }
+    [data-insights-kind] button:disabled {
+        cursor: wait;
+        opacity: 0.65;
+    }
+    [data-insights-kind='ticker'] .insights-ticker-pause {
+        position: absolute;
+        right: 0.5rem;
+        bottom: 0.5rem;
+        z-index: 4;
+        font-size: 0.875rem;
+        padding: 0.25rem 0.5rem;
+    }
+</style>
+<script>
+    import '../../lib/insights/runtime';
+</script>

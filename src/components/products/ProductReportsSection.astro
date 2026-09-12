@@ -2,6 +2,7 @@
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Reports from '../shared/Reports.astro';
+import InsightsRuntime from '../insights/InsightsRuntime.astro';
 
 interface StatItem {
     iconSrc: string;
@@ -12,6 +13,7 @@ interface StatItem {
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
+    productId: string;
     imageSrc: string;
     imageAlt?: string;
     graphIconSrc: string;
@@ -27,6 +29,7 @@ interface Props {
 const {
     locale,
     copy,
+    productId,
     imageSrc,
     imageAlt = '',
     graphIconSrc,
@@ -40,30 +43,39 @@ const {
 } = Astro.props as Props;
 ---
 
-<section class="product-reports-section" id="reports" data-flyin>
-    <div class="product-reports-headline heading-fly-in">
-        <h2 data-copy-key="report_title">
-            {t(copy, 'report_title', locale, 'Reports')}
-        </h2>
-        <p class="text-body-p1 product-reports-description" data-copy-key="report_description">
-            {t(copy, 'report_description', locale, '')}
-        </p>
-    </div>
+<section
+    class="product-reports-section"
+    id="reports"
+    data-flyin
+    data-insights-kind="product"
+    data-product-id={productId}
+>
+    <InsightsRuntime locale={locale} />
+    <div data-insights-product-content hidden style="display: contents">
+        <div class="product-reports-headline heading-fly-in">
+            <h2 data-copy-key="report_title">
+                {t(copy, 'report_title', locale, 'Reports')}
+            </h2>
+            <p class="text-body-p1 product-reports-description" data-copy-key="report_description">
+                {t(copy, 'report_description', locale, '')}
+            </p>
+        </div>
 
-    <Reports
-        locale={locale}
-        copy={copy}
-        imageSrc={imageSrc}
-        imageAlt={imageAlt}
-        graphIconSrc={graphIconSrc}
-        graphTitle={graphTitle}
-        graphDetail={graphDetail}
-        chartSrc={chartSrc}
-        chartAlt={chartAlt}
-        insightsHref={insightsHref}
-        sampleReportHref={sampleReportHref}
-        stats={stats}
-    />
+        <Reports
+            locale={locale}
+            copy={copy}
+            imageSrc={imageSrc}
+            imageAlt={imageAlt}
+            graphIconSrc={graphIconSrc}
+            graphTitle={graphTitle}
+            graphDetail={graphDetail}
+            chartSrc={chartSrc}
+            chartAlt={chartAlt}
+            insightsHref={insightsHref}
+            sampleReportHref={sampleReportHref}
+            stats={stats}
+        />
+    </div>
 </section>
 
 <style>

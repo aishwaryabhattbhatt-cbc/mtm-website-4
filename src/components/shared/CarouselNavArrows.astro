@@ -142,7 +142,10 @@ const resolvedNextLabel =
 
         const updateButtons = () => {
             const hasOverflow = scrollEl.scrollWidth > scrollEl.clientWidth + 1;
-            nav.style.display = hasOverflow ? 'flex' : 'none';
+            // An empty API-backed carousel has no overflow during initialisation.
+            // Clear the inline value when populated so the component's responsive
+            // CSS remains authoritative (some variants are desktop-hidden).
+            nav.style.display = hasOverflow ? '' : 'none';
 
             const atStart = scrollEl.scrollLeft <= 4;
             const atEnd = scrollEl.scrollLeft >= scrollEl.scrollWidth - scrollEl.clientWidth - 4;
@@ -162,6 +165,12 @@ const resolvedNextLabel =
 
         scrollEl.addEventListener('scroll', updateButtons, { passive: true });
         window.addEventListener('resize', updateButtons);
+        scrollEl
+            .closest<HTMLElement>('[data-insights-kind]')
+            ?.addEventListener('insights:rendered', updateButtons);
+
+        const sizeObserver = new ResizeObserver(updateButtons);
+        sizeObserver.observe(scrollEl);
         updateButtons();
     }
 

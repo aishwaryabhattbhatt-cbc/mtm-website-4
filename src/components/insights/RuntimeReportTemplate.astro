@@ -1,0 +1,135 @@
+---
+import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import ProductPill from '../shared/ProductPill.astro';
+import type { ProductVariant } from '../shared/ProductPill.astro';
+import InsightsReportCard from './InsightsReportCard.astro';
+import InsightsFreeReportCard from './InsightsFreeReportCard.astro';
+import InsightsFeaturedReportCard from './InsightsFeaturedReportCard.astro';
+import InsightsReportSelectRow from './InsightsReportSelectRow.astro';
+import SneakPeekReportCard from './SneakPeekReportCard.astro';
+import ReportsRow from '../home/reports/ReportsRow.astro';
+import { icons } from '../../lib/icons/registry';
+
+interface Props {
+    locale: Locale;
+    copy: CMSDictionary;
+    kind: 'library' | 'free' | 'featured' | 'row' | 'select' | 'single' | 'infographic';
+    wrapClass?: string;
+}
+const { locale, copy, kind, wrapClass = '' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const templateCopy: CMSDictionary = { ...copy };
+// These values exist only in inert templates. The runtime fills every report field before insertion.
+for (const key of [
+    'runtime_title',
+    'runtime_date',
+    'runtime_description',
+    'featured_report_title',
+    'featured_report_date',
+    'featured_report_description',
+    'variable_1',
+    'variable_2',
+    'infographic_title',
+    'infographic_description',
+    'free_report_1_date',
+]) {
+    templateCopy[key] = { key, en: ' ', fr: ' ' };
+}
+for (const key of ['runtime_tag', 'featured_report_tag']) {
+    templateCopy[key] = { key, en: 'MTM 18+', fr: 'MTM 18+' };
+}
+const products: [string, ProductVariant][] = [
+    ['OG', 'mtm18plus'],
+    ['JR', 'junior'],
+    ['NC', 'newcomers'],
+    ['CT', 'census'],
+];
+---
+
+<template data-insights-card-template={kind}>
+    <div class={wrapClass}>
+        {
+            kind === 'library' || kind === 'single' ? (
+                <InsightsReportCard
+                    locale={locale}
+                    copy={copy}
+                    ctaHref="#"
+                    imageSrc=" "
+                    title=" "
+                    date=" "
+                    description=" "
+                    tags={[' ']}
+                    pillVariant="mtm18plus"
+                    showDescription={kind !== 'single'}
+                    showCta={kind !== 'single'}
+                />
+            ) : kind === 'free' ? (
+                <InsightsFreeReportCard
+                    locale={locale}
+                    copy={templateCopy}
+                    ctaHref="#"
+                    imageSrc=" "
+                    tagKey="runtime_tag"
+                    dateKey="runtime_date"
+                    titleKey="runtime_title"
+                    descriptionKey="runtime_description"
+                />
+            ) : kind === 'featured' ? (
+                <InsightsFeaturedReportCard
+                    locale={locale}
+                    copy={templateCopy}
+                    ctaHref="#"
+                    imageSrc=" "
+                />
+            ) : kind === 'row' ? (
+                <ReportsRow
+                    locale={locale}
+                    copy={copy}
+                    title=" "
+                    date=" "
+                    products="mtm18plus"
+                    thumbnail=" "
+                    href="#"
+                />
+            ) : kind === 'select' ? (
+                <InsightsReportSelectRow
+                    locale={locale}
+                    copy={templateCopy}
+                    imageSrc=" "
+                    tagKey="runtime_tag"
+                    dateKey="runtime_date"
+                    titleKey="runtime_title"
+                    title=" "
+                    date=" "
+                    pillVariant="mtm18plus"
+                    name="reports"
+                    value=""
+                    checked={false}
+                    formId="report-download-form"
+                />
+            ) : (
+                <SneakPeekReportCard
+                    locale={locale}
+                    copy={templateCopy}
+                    imageSrc=" "
+                    graphIconSrc={`${base}${icons['service-video-svod'].gaming}`}
+                    chartSrc={`${base}images/products/mtm-18-plus/report-graph.svg`}
+                    downloadHref="#"
+                />
+            )
+        }
+    </div>
+</template>
+{
+    products.map(([id, variant]) => (
+        <template data-insights-product-template={id}>
+            <ProductPill
+                variant={variant}
+                size={kind === 'row' || kind === 'select' || kind === 'free' ? 'small' : 'big'}
+                responsive={kind === 'row'}
+                copy={copy}
+                locale={locale}
+            />
+        </template>
+    ))
+}
