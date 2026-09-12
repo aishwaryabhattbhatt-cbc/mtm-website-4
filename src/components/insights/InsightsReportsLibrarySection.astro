@@ -4,32 +4,32 @@ import { t } from '../../lib/i18n/t';
 import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
 import Eyebrow from '../shared/Eyebrow.astro';
 import Tabs from '../shared/Tabs.astro';
-import InsightsReportCard from './InsightsReportCard.astro';
+import RuntimeReportTemplate from './RuntimeReportTemplate.astro';
+import InsightsRuntime from './InsightsRuntime.astro';
 
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
+    instanceId?: string;
 }
 
-const { locale, copy } = Astro.props as Props;
-const base = import.meta.env.BASE_URL;
-
-const libraryImages = [
-    `${base}images/insights/report-library/Picture.png`,
-    `${base}images/insights/report-library/Picture-1.png`,
-    `${base}images/insights/report-library/Picture-2.png`,
-    `${base}images/insights/report-library/Picture-3.png`,
-];
-
+const { locale, copy, instanceId = 'insights' } = Astro.props as Props;
+const carouselId = `reportsLibraryCarousel-${instanceId}`;
 const filterTabs = [
     { label: t(copy, 'filter_all', locale, 'All'), value: 'all' },
-    { label: t(copy, 'filter_mtm18plus', locale, 'MTM 18+'), value: 'mtm18plus' },
+    {
+        label: t(copy, 'filter_mtm18plus', locale, 'MTM 18+'),
+        value: 'mtm18plus',
+    },
     { label: t(copy, 'filter_junior', locale, 'Junior'), value: 'junior' },
-    { label: t(copy, 'filter_newcomers', locale, 'Newcomers'), value: 'newcomers' },
+    {
+        label: t(copy, 'filter_newcomers', locale, 'Newcomers'),
+        value: 'newcomers',
+    },
 ];
 ---
 
-<section class="reports-library-section" data-filter="all">
+<section class="reports-library-section" data-filter="all" data-insights-kind="library">
     <div class="reports-library-section__header heading-fly-in">
         <div class="reports-library-section__eyebrow-wrap">
             <Eyebrow>{t(copy, 'section_2_eyebrow', locale, 'Reports Library')}</Eyebrow>
@@ -65,12 +65,12 @@ const filterTabs = [
             <Tabs
                 tabs={filterTabs}
                 showArrows={false}
-                id="reports-filter"
+                id={`reports-filter-${instanceId}`}
                 copy={copy}
                 locale={locale}
             />
             <CarouselNavArrows
-                scrollTargetSelector="#reportsLibraryCarousel"
+                scrollTargetSelector={`#${carouselId}`}
                 ariaLabel={t(
                     copy,
                     'reports_library_carousel_aria_label',
@@ -84,25 +84,14 @@ const filterTabs = [
         </div>
     </div>
 
-    <div class="reports-library-section__carousel" id="reportsLibraryCarousel">
-        {
-            (['junior', 'mtm18plus', 'newcomers', 'junior', 'mtm18plus', 'newcomers'] as const).map(
-                (variant, i) => (
-                    <div
-                        class="reports-library-section__card-wrap card-fly-in"
-                        data-card-variant={variant}
-                    >
-                        <InsightsReportCard
-                            locale={locale}
-                            copy={copy}
-                            ctaHref="#"
-                            imageSrc={libraryImages[i % libraryImages.length]}
-                        />
-                    </div>
-                )
-            )
-        }
-    </div>
+    <InsightsRuntime locale={locale} />
+    <div class="reports-library-section__carousel" id={carouselId} data-insights-list></div>
+    <RuntimeReportTemplate
+        locale={locale}
+        copy={copy}
+        kind="library"
+        wrapClass="reports-library-section__card-wrap card-fly-in"
+    />
 </section>
 
 <style>
@@ -169,7 +158,7 @@ const filterTabs = [
         display: none;
     }
 
-    .reports-library-section__card-wrap {
+    :global(.reports-library-section__card-wrap) {
         flex-shrink: 0;
         width: 24rem;
         scroll-snap-align: start;
@@ -179,13 +168,13 @@ const filterTabs = [
     }
 
     .reports-library-section.is-filter-transitioning .reports-library-section__carousel,
-    .reports-library-section.is-filter-transitioning .reports-library-section__card-wrap {
+    .reports-library-section.is-filter-transitioning :global(.reports-library-section__card-wrap) {
         opacity: 0.9;
         transform: translateY(0.125rem);
     }
 
     @media (min-width: 1024px) {
-        .reports-library-section__card-wrap {
+        :global(.reports-library-section__card-wrap) {
             width: calc(
                 (100vw - (2 * var(--content-margin-inline)) - (2 * var(--layout-card-gap))) / 3
             );
@@ -218,7 +207,7 @@ const filterTabs = [
             gap: var(--space-7);
         }
 
-        .reports-library-section__card-wrap {
+        :global(.reports-library-section__card-wrap) {
             width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
         }
 
@@ -235,96 +224,10 @@ const filterTabs = [
         }
     }
 
-    /* Hide all pills inside report cards by default */
-    .reports-library-section :global([data-pill-variant]) {
-        display: none;
-    }
-
-    /* All: show each card's assigned pill */
-    .reports-library-section[data-filter='all']
-        [data-card-variant='junior']
-        :global([data-pill-variant='junior']),
-    .reports-library-section[data-filter='all']
-        [data-card-variant='mtm18plus']
-        :global([data-pill-variant='mtm18plus']),
-    .reports-library-section[data-filter='all']
-        [data-card-variant='newcomers']
-        :global([data-pill-variant='newcomers']) {
-        display: inline-flex;
-    }
-
-    /* MTM 18+: show mtm18plus pill on all cards */
-    .reports-library-section[data-filter='mtm18plus'] :global([data-pill-variant='mtm18plus']) {
-        display: inline-flex;
-    }
-
-    /* Junior: show junior pill on all cards */
-    .reports-library-section[data-filter='junior'] :global([data-pill-variant='junior']) {
-        display: inline-flex;
-    }
-
-    /* Newcomers: show newcomers pill on all cards */
-    .reports-library-section[data-filter='newcomers'] :global([data-pill-variant='newcomers']) {
-        display: inline-flex;
-    }
-
     @media (prefers-reduced-motion: reduce) {
         .reports-library-section__carousel,
-        .reports-library-section__card-wrap {
+        :global(.reports-library-section__card-wrap) {
             transition: none;
         }
     }
 </style>
-
-<script>
-    document.querySelectorAll<HTMLElement>('.reports-library-section').forEach((section) => {
-        let filterAnimTimer: number | null = null;
-
-        section.addEventListener('tabs:change', ((e: CustomEvent) => {
-            section.classList.add('is-filter-transitioning');
-            section.dataset.filter = e.detail.value;
-
-            if (filterAnimTimer !== null) {
-                window.clearTimeout(filterAnimTimer);
-            }
-            filterAnimTimer = window.setTimeout(() => {
-                section.classList.remove('is-filter-transitioning');
-                filterAnimTimer = null;
-            }, 180);
-        }) as EventListener);
-
-        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
-        if (heading) {
-            const headingObserver = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        heading.classList.add('is-visible');
-                        headingObserver.disconnect();
-                    }
-                },
-                { threshold: 0.15 }
-            );
-            headingObserver.observe(heading);
-        }
-
-        // Carousel cards sit at the same vertical scroll position, so a
-        // per-card observer would fire them all at once — trigger off the
-        // row itself instead, and keep the stagger.
-        const cardsRow = section.querySelector<HTMLElement>('.reports-library-section__carousel');
-        const cards = section.querySelectorAll<HTMLElement>('.card-fly-in');
-        if (cardsRow && cards.length) {
-            const cardObserver = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        cards.forEach((card, i) => {
-                            setTimeout(() => card.classList.add('is-visible'), i * 140);
-                        });
-                        cardObserver.disconnect();
-                    }
-                },
-                { threshold: 0.2 }
-            );
-            cardObserver.observe(cardsRow);
-        }
-    });
-</script>

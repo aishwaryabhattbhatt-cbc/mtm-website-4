@@ -3,39 +3,27 @@ import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
 import FormField from '../shared/FormField.astro';
-import InsightsReportSelectRow from './InsightsReportSelectRow.astro';
-import InsightsReportCard from './InsightsReportCard.astro';
-import type { ProductVariant } from '../shared/ProductPill.astro';
-
-interface ReportItem {
-    imageSrc?: string;
-    tagKey: string;
-    dateKey: string;
-    titleKey: string;
-    value: string;
-    /* singleCard mode only. Literal values (from a backend later) win over the
-     *Key CMS lookups; pillVariant picks which product pill the card shows. */
-    pillVariant?: ProductVariant;
-    title?: string;
-    date?: string;
-    tags?: string[];
-    imageAlt?: string;
-}
+import RuntimeReportTemplate from './RuntimeReportTemplate.astro';
+import InsightsRuntime from './InsightsRuntime.astro';
 
 interface Props {
     locale: Locale;
     copy: CMSDictionary;
-    reports: ReportItem[];
     /* One fixed report shown as a library card instead of a pick-any checkbox list. */
     singleCard?: boolean;
 }
 
-const { locale, copy, reports, singleCard = false } = Astro.props as Props;
+const { locale, copy, singleCard = false } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 const formId = 'report-download-form';
 ---
 
-<section class="report-download-section" data-report-download-section>
+<section
+    class="report-download-section"
+    data-report-download-section
+    data-insights-kind="download"
+    data-single-card={String(singleCard)}
+>
     <div class="report-download-section__pattern" aria-hidden="true">
         <img
             src={`${base}images/request-demo/hero-pattern.png`}
@@ -71,6 +59,8 @@ const formId = 'report-download-form';
                 </p>
             </div>
 
+            <InsightsRuntime locale={locale} />
+            <p class="text-body-p2" data-download-error role="alert" tabindex="-1" hidden></p>
             <div class="report-download-section__panel hero-fade-in" style="animation-delay: 0.2s">
                 <div class="report-download-section__columns">
                     <div class="report-download-section__form-block">
@@ -78,9 +68,20 @@ const formId = 'report-download-form';
                             id={formId}
                             class="report-download-section__form"
                             data-report-download-form
-                            data-submit-href={`${base}${locale}/insights/download-success/`}
                             novalidate
                         >
+                            <div hidden aria-hidden="true">
+                                <label
+                                    >Website <input
+                                        type="text"
+                                        name="website"
+                                        tabindex="-1"
+                                        autocomplete="off"
+                                        aria-hidden="true"
+                                        maxlength="200"
+                                    /></label
+                                >
+                            </div>
                             <div class="report-download-section__row">
                                 <FormField
                                     locale={locale}
@@ -157,6 +158,7 @@ const formId = 'report-download-form';
                         <Button
                             variant="primary"
                             type="submit"
+                            disabled
                             form={formId}
                             class="report-download-section__submit"
                             data-copy-key="report_download_submit_cta"
@@ -182,46 +184,18 @@ const formId = 'report-download-form';
                                 </p>
                             )
                         }
-                        {
-                            singleCard ? (
-                                <div class="report-download-section__card">
-                                    <InsightsReportCard
-                                        locale={locale}
-                                        copy={copy}
-                                        ctaHref=""
-                                        imageSrc={reports[0]?.imageSrc}
-                                        imageAlt={reports[0]?.imageAlt}
-                                        dateKey={reports[0]?.dateKey}
-                                        titleKey={reports[0]?.titleKey}
-                                        title={reports[0]?.title}
-                                        date={reports[0]?.date}
-                                        tags={reports[0]?.tags}
-                                        pillVariant={reports[0]?.pillVariant}
-                                        showDescription={false}
-                                        showCta={false}
-                                    />
-                                </div>
-                            ) : (
-                                <div class="report-download-section__reports-list">
-                                    {reports.map((report) => (
-                                        <InsightsReportSelectRow
-                                            locale={locale}
-                                            copy={copy}
-                                            imageSrc={report.imageSrc}
-                                            tagKey={report.tagKey}
-                                            dateKey={report.dateKey}
-                                            titleKey={report.titleKey}
-                                            title={report.title}
-                                            date={report.date}
-                                            pillVariant={report.pillVariant}
-                                            name="reports"
-                                            value={report.value}
-                                            formId={formId}
-                                        />
-                                    ))}
-                                </div>
-                            )
-                        }
+                        <div
+                            class={singleCard
+                                ? 'report-download-section__card'
+                                : 'report-download-section__reports-list'}
+                            data-insights-list
+                        >
+                        </div>
+                        <RuntimeReportTemplate
+                            locale={locale}
+                            copy={copy}
+                            kind={singleCard ? 'single' : 'select'}
+                        />
                     </div>
                 </div>
             </div>
@@ -464,28 +438,3 @@ const formId = 'report-download-form';
         }
     }
 </style>
-
-<script>
-    document.querySelectorAll<HTMLElement>('[data-report-download-section]').forEach((section) => {
-        const form = section.querySelector<HTMLFormElement>('[data-report-download-form]');
-        if (!form) return;
-
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-            const submitHref = form.dataset.submitHref;
-            if (!submitHref) return;
-
-            // Forward the "from" param (the page/section the visitor started
-            // from) on to the success page, so its "Go Back to Exploring"
-            // CTA can return them to the right place instead of a fixed page.
-            const fromParam = new URLSearchParams(window.location.search).get('from');
-            window.location.href = fromParam
-                ? `${submitHref}?from=${encodeURIComponent(fromParam)}`
-                : submitHref;
-        });
-    });
-</script>

@@ -1,98 +1,31 @@
 ---
-// src/components/home/reports/ReportsTickerCard.astro
-// Figma node: 1391:11826 — Continuously scrolling reports ticker card
-
-import ReportsRow from './ReportsRow.astro';
-import type { ProductVariant } from '../../shared/ProductPill.astro';
 import type { CMSDictionary, Locale } from '../../../lib/cms/types';
-
-interface ReportItem {
-    title: string;
-    date: string;
-    products: ProductVariant | ProductVariant[];
-    thumbnail: string;
-    href?: string;
-}
-
+import RuntimeReportTemplate from '../../insights/RuntimeReportTemplate.astro';
+import InsightsRuntime from '../../insights/InsightsRuntime.astro';
 interface Props {
     class?: string;
     copy?: CMSDictionary;
     locale?: Locale;
 }
-
-const { class: className = '', copy, locale } = Astro.props;
-
-const BASE = import.meta.env.BASE_URL;
-const THUMBS = (n: number) => `${BASE}images/home/reports-thumbnails/report-${n}.png`;
-
-const allReports: ReportItem[] = [
-    {
-        title: 'Canadian Viewing Profiles',
-        date: 'Feb 3, 2026',
-        products: 'mtm18plus',
-        thumbnail: THUMBS(1),
-    },
-    {
-        title: 'Indigenous Respondents and Media Technology',
-        date: 'Jan 22, 2026',
-        products: 'mtm18plus',
-        thumbnail: THUMBS(2),
-    },
-    {
-        title: 'Zipping Through Content',
-        date: 'Jan 10, 2026',
-        products: ['mtm18plus', 'junior'],
-        thumbnail: THUMBS(3),
-    },
-    {
-        title: 'From Arrival to Integration',
-        date: 'Dec 11, 2025',
-        products: 'newcomers',
-        thumbnail: THUMBS(4),
-    },
-    {
-        title: 'Co-viewing with Kids',
-        date: 'Dec 04, 2025',
-        products: 'junior',
-        thumbnail: THUMBS(5),
-    },
-    {
-        title: 'A.I. Tool Usage Among Online Canadians',
-        date: 'Nov 27, 2025',
-        products: 'mtm18plus',
-        thumbnail: THUMBS(6),
-    },
-    { title: 'Kids and News', date: 'Nov 20, 2025', products: 'junior', thumbnail: THUMBS(7) },
-    { title: 'FAST Channels', date: 'Nov 13, 2025', products: 'newcomers', thumbnail: THUMBS(8) },
-];
-
-// Duplicate for seamless looping
-const loopedReports = [...allReports, ...allReports];
+const { class: className = '', copy = {}, locale = 'en' } = Astro.props;
 ---
 
-<div
-    class={`reports-ticker-card${className ? ` ${className}` : ''}`}
-    data-row-count={allReports.length}
->
+<div class={`reports-ticker-card${className ? ` ${className}` : ''}`} data-insights-kind="ticker">
+    <InsightsRuntime locale={locale} />
     <div class="reports-ticker-viewport">
-        <div class="reports-ticker-track">
-            {
-                loopedReports.map((report) => (
-                    <ReportsRow
-                        title={report.title}
-                        date={report.date}
-                        products={report.products}
-                        thumbnail={report.thumbnail}
-                        href={report.href}
-                        copy={copy}
-                        locale={locale}
-                    />
-                ))
-            }
-        </div>
+        <div class="reports-ticker-track" data-insights-list></div>
     </div>
+    <button
+        type="button"
+        class="insights-ticker-pause"
+        data-ticker-pause
+        aria-pressed="false"
+        hidden
+    >
+        {locale === 'fr' ? 'Pause' : 'Pause'}
+    </button>
+    <RuntimeReportTemplate locale={locale} copy={copy} kind="row" />
 </div>
-
 <style>
     /* Card fills the wrapper exactly — height is controlled by the wrapper, not the ticker */
     .reports-ticker-card {
@@ -130,45 +63,3 @@ const loopedReports = [...allReports, ...allReports];
         will-change: transform;
     }
 </style>
-
-<script>
-    const card = document.querySelector<HTMLElement>('.reports-ticker-card');
-    const track = card?.querySelector<HTMLElement>('.reports-ticker-track');
-
-    if (card && track) {
-        const rowCount = parseInt(card.dataset.rowCount ?? '8', 10);
-        // Slow, weighty ease — accelerates gently then decelerates into each stop
-        const EASING = 'cubic-bezier(0.65, 0, 0.35, 1)';
-        const SLIDE_MS = 1000;
-        const PAUSE_MS = 2000;
-        let currentIndex = 0;
-
-        // Measure the real rendered row height (includes border-bottom, sub-pixel rounding, etc.)
-        // so each step lands on an exact pixel boundary with no accumulated drift.
-        const firstRow = track.querySelector<HTMLElement>(':scope > *');
-        const rowHeightPx = firstRow?.getBoundingClientRect().height ?? 84;
-
-        function step() {
-            currentIndex++;
-            track!.style.transition = `transform ${SLIDE_MS}ms ${EASING}`;
-            track!.style.transform = `translateY(${-currentIndex * rowHeightPx}px)`;
-
-            if (currentIndex >= rowCount) {
-                // After reaching the duplicate-list position, silently reset to the start
-                setTimeout(() => {
-                    track!.style.transition = 'none';
-                    track!.style.transform = 'translateY(0)';
-                    currentIndex = 0;
-                    // Two rAFs ensure transition:none is committed before the next slide
-                    requestAnimationFrame(() =>
-                        requestAnimationFrame(() => setTimeout(step, PAUSE_MS))
-                    );
-                }, SLIDE_MS + PAUSE_MS);
-            } else {
-                setTimeout(step, SLIDE_MS + PAUSE_MS);
-            }
-        }
-
-        setTimeout(step, PAUSE_MS);
-    }
-</script>

@@ -208,13 +208,8 @@ const base = import.meta.env.BASE_URL;
 </style>
 
 <script>
-    // The "from" param carries the page/section the visitor started from
-    // (set by the report card/CTA that linked into the report-download
-    // flow, forwarded through the form's submit redirect). Point the CTA
-    // there instead of the fixed insights-page fallback when it's present.
+    import { safeLocalPath } from '../../lib/insights/client';
     const backCta = document.querySelector<HTMLAnchorElement>('[data-back-cta]');
-    const fromParam = new URLSearchParams(window.location.search).get('from');
-    if (backCta && fromParam) {
-        backCta.href = fromParam;
-    }
+    const from = safeLocalPath(new URLSearchParams(window.location.search).get('from'));
+    if (backCta && from) backCta.href = from;
 </script>
