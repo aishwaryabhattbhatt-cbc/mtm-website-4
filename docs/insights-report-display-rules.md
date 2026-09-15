@@ -68,7 +68,7 @@ The existing `CT` product is mapped for card styling as Census, but it is not on
 
 ## 4. Other report surfaces handled by the shared runtime
 
-The same implementation also supports report sections outside the attached Insights page:
+The same implementation also supports report sections outside the Insights page:
 
 | Surface | Reports displayed | Order and limit | Empty behaviour |
 | --- | --- | --- | --- |
