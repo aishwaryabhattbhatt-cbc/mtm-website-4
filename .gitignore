@@ -43,3 +43,6 @@ skills-lock.json
 src/pages/[locale]/insights/ai-emerging-technology.astro
 src/content/copy/insights-ai-technology.json
 src/components/topics/
+
+# visual studio
+.vs/

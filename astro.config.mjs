@@ -10,7 +10,7 @@ $env:BUILD_SITE_URL = 'https://localhost:5001'
 
 */
 
-/* config for Staging (deploy dist contents to /mtm.portal.content/mtm.public.staging):
+/* config for Staging (dev.mtm-otm.ca) (deploy dist contents to /mtm.portal.content/mtm.public.staging):
 
 $env:BUILD_BASE_PATH = '/'
 $env:BUILD_SITE_URL = 'https://dev.mtm-otm.ca'
