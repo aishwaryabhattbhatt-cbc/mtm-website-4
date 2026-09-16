@@ -44,6 +44,28 @@ function setText(root: HTMLElement, selector: string, text: string) {
     });
 }
 
+function setImage(root: HTMLElement, selector: string, value: string | null, alt = '') {
+    const src = safeLocalPath(value);
+    root.querySelectorAll<HTMLImageElement>(selector).forEach((image) => {
+        image.alt = alt;
+        if (!src) {
+            image.removeAttribute('src');
+            image.hidden = true;
+            return;
+        }
+
+        image.src = src;
+        image.hidden = false;
+        image.addEventListener(
+            'error',
+            () => {
+                image.hidden = true;
+            },
+            { once: true }
+        );
+    });
+}
+
 function fillProducts(section: HTMLElement, root: HTMLElement, report: InsightCard) {
     const seed = root.querySelector<HTMLElement>('.product-pill');
     if (!seed) return;
@@ -125,6 +147,10 @@ function fillCard(
         '.report-card__description, .free-report-card__description, .featured-report-card__description, .sneak-peek-report-card__description',
         report.description || report.subheading
     );
+    setText(root, '.sneak-peek-report-card__graph-name', report.graphTitle ?? '');
+    setText(root, '.sneak-peek-report-card__graph-detail', report.graphDetail ?? '');
+    setImage(root, '.sneak-peek-report-card__graph-icon', report.graphIconSrc);
+    setImage(root, '.sneak-peek-report-card__chart', report.chartSrc, report.chartAlt ?? '');
     root.querySelectorAll<HTMLTimeElement>('time.date-pill').forEach((node) => {
         node.textContent = report.dateLabel;
         node.dateTime = report.publishedDate;
@@ -315,9 +341,12 @@ function initProduct(
     locale: Locale
 ) {
     const content = section.querySelector<HTMLElement>('[data-insights-product-content]');
-    if (content) content.hidden = false;
     setText(section, '.product-reports-headline h2', report.title);
     setText(section, '.product-reports-description', report.description || report.subheading);
+    setText(section, '.report-card-graph-name', report.graphTitle ?? '');
+    setText(section, '.report-card-graph-detail', report.graphDetail ?? '');
+    setImage(section, '.report-card-graph-icon', report.graphIconSrc);
+    setImage(section, '.report-card-chart', report.chartSrc, report.chartAlt ?? '');
     const image = section.querySelector<HTMLImageElement>('.report-card-photo img');
     const src = safeLocalPath(report.imageUrl);
     if (image) {
@@ -329,6 +358,7 @@ function initProduct(
             image.hidden = true;
         }
     }
+    if (content) content.hidden = false;
     const seed = section.querySelector<HTMLAnchorElement>('.report-action-buttons > a:last-child');
     if (seed) {
         const action = report.actions[0];

@@ -19,6 +19,11 @@ export interface InsightCard {
     publishedDate: string;
     dateLabel: string;
     imageUrl: string | null;
+    graphIconSrc: string | null;
+    graphTitle: string;
+    graphDetail: string;
+    chartSrc: string | null;
+    chartAlt: string;
     isEmailCatcher: boolean;
     canRequest: boolean;
     products: InsightProduct[];

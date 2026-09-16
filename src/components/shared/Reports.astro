@@ -49,17 +49,14 @@ const {
     </div>
     <div class="report-card-graph">
         <div class="report-card-graph-header">
-            {
-                graphIconSrc && (
-                    <img
-                        src={graphIconSrc}
-                        alt={graphIconAlt}
-                        class="icon-3xl report-card-graph-icon"
-                        loading="lazy"
-                        decoding="async"
-                    />
-                )
-            }
+            <img
+                src={graphIconSrc || undefined}
+                alt={graphIconAlt}
+                class="icon-3xl report-card-graph-icon"
+                loading="lazy"
+                decoding="async"
+                hidden={!graphIconSrc}
+            />
             <div class="report-card-graph-title-group">
                 <p class="text-body-p1-bold report-card-graph-name">{graphTitle}</p>
                 <p class="text-body-p3 report-card-graph-detail">{graphDetail}</p>

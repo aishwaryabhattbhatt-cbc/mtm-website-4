@@ -8,7 +8,6 @@ import InsightsFeaturedReportCard from './InsightsFeaturedReportCard.astro';
 import InsightsReportSelectRow from './InsightsReportSelectRow.astro';
 import SneakPeekReportCard from './SneakPeekReportCard.astro';
 import ReportsRow from '../home/reports/ReportsRow.astro';
-import { icons } from '../../lib/icons/registry';
 
 interface Props {
     locale: Locale;
@@ -17,7 +16,6 @@ interface Props {
     wrapClass?: string;
 }
 const { locale, copy, kind, wrapClass = '' } = Astro.props;
-const base = import.meta.env.BASE_URL;
 const templateCopy: CMSDictionary = { ...copy };
 // These values exist only in inert templates. The runtime fills every report field before insertion.
 for (const key of [
@@ -112,8 +110,8 @@ const products: [string, ProductVariant][] = [
                     locale={locale}
                     copy={templateCopy}
                     imageSrc=" "
-                    graphIconSrc={`${base}${icons['service-video-svod'].gaming}`}
-                    chartSrc={`${base}images/products/mtm-18-plus/report-graph.svg`}
+                    graphIconSrc=""
+                    chartSrc=""
                     downloadHref="#"
                 />
             )
