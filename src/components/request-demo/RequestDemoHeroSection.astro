@@ -18,9 +18,9 @@ const base = import.meta.env.BASE_URL;
 // From the HubSpot form embed snippet. Public values (they ship in the client
 // bundle), so the literals are safe fallbacks when .env isn't present — e.g. a
 // fresh clone or a CI job that hasn't had the build variables set.
-const hubspotPortalId = import.meta.env.PUBLIC_HUBSPOT_PORTAL_ID || '343607035';
+const hubspotPortalId = import.meta.env.PUBLIC_HUBSPOT_PORTAL_ID || '343673947';
 const hubspotFormGuid =
-    import.meta.env.PUBLIC_HUBSPOT_FORM_GUID || 'db1da805-3985-4e72-b94a-3857b546af69';
+    import.meta.env.PUBLIC_HUBSPOT_FORM_GUID || 'b315a3fd-908b-48bd-a849-56704bf78505';
 const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
 
 const expectItems = [
@@ -291,7 +291,7 @@ const interestOptions = [
                 </div>
 
                 <label class="request-demo-hero__choice request-demo-hero__newsletter text-body-p3">
-                    <input type="checkbox" name="newsletter" checked />
+                    <input type="checkbox" name="newsletter" />
                     {
                         t(
                             copy,
@@ -571,19 +571,20 @@ const interestOptions = [
 
     const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
 
-    // Our input names -> HubSpot fields. `objectTypeId` is required for properties
-    // that live on the Company object (0-2) rather than the Contact (0-1); the form
-    // rejects those two as missing if they're sent unqualified.
+    // Our input names -> HubSpot fields. All Contact properties. Organisation used
+    // to go to the Company object's name (0-2/company_name), but a Company field only
+    // lands if an associated company record exists -- HubSpot will not create one for
+    // a free email domain -- and it never shows on the contact itself. The contact's
+    // own `company` stores what the person typed, every time.
     const FIELD_MAP: Array<{
         formName: string;
         name: string;
-        objectTypeId?: string;
         values?: Record<string, string>;
     }> = [
         { formName: 'firstName', name: 'firstname' },
         { formName: 'lastName', name: 'lastname' },
         { formName: 'email', name: 'email' },
-        { formName: 'organisation', name: 'name', objectTypeId: '0-2' },
+        { formName: 'organisation', name: 'company' },
         {
             formName: 'industry',
             name: 'select_industry',
@@ -600,7 +601,7 @@ const interestOptions = [
             },
         },
         { formName: 'language', name: 'language', values: { en: 'English', fr: 'French' } },
-        { formName: 'message', name: 'description' },
+        { formName: 'message', name: 'message' },
     ];
 
     form?.addEventListener('submit', async (event) => {
@@ -620,13 +621,9 @@ const interestOptions = [
             return;
         }
 
-        const fields = FIELD_MAP.map(({ formName, name, objectTypeId, values }) => {
+        const fields = FIELD_MAP.map(({ formName, name, values }) => {
             const raw = String(data.get(formName) ?? '').trim();
-            return {
-                ...(objectTypeId ? { objectTypeId } : {}),
-                name,
-                value: values ? (values[raw] ?? '') : raw,
-            };
+            return { name, value: values ? (values[raw] ?? '') : raw };
         }).filter((field) => field.value !== '');
 
         // HubSpot expects multi-checkbox values as one semicolon-delimited string,
@@ -644,6 +641,15 @@ const interestOptions = [
         if (interests.length > 0) {
             fields.push({ name: 'what_are_you_interested_in_', value: interests.join(';') });
         }
+
+        // Sent either way, so an explicit decline is recorded rather than being
+        // indistinguishable from a submission made before this field existed.
+        // HubSpot stamps the submission time, which is the consent record CASL
+        // wants -- no separate timestamp property needed.
+        fields.push({
+            name: 'newsletter_opt_in',
+            value: data.get('newsletter') ? 'true' : 'false',
+        });
 
         // Set by the HubSpot tracking script; ties the submission to the visitor's
         // session. Absent on a first visit with cookies blocked, which is fine.
