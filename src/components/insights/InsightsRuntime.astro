@@ -72,4 +72,73 @@ const { locale } = Astro.props;
 </style>
 <script>
     import '../../lib/insights/runtime';
+
+    // Scroll-in entrances for runtime-rendered sections.
+    //
+    // runtime.ts stamps `is-visible` on every fly-in element it injects, so a
+    // card can never be stranded at opacity 0 with no observer watching it —
+    // the section scripts that normally wire an IntersectionObserver run on
+    // page load, long before these cards arrive from the API. The side effect
+    // is that the entrance never plays: the cards are born in their final
+    // state, far below the fold.
+    //
+    // So once a section reports it has rendered, re-arm its elements and hand
+    // them to the same observers a static section uses (see
+    // .claude/rules/animation-conventions.md): heading observes itself at
+    // 0.15, the card row triggers once at 0.4 and staggers its children 140ms
+    // apart — matching InsightsNewsSection exactly.
+    const observers = new WeakMap<HTMLElement, IntersectionObserver[]>();
+
+    function arm(section: HTMLElement) {
+        observers.get(section)?.forEach((observer) => observer.disconnect());
+        const made: IntersectionObserver[] = [];
+
+        // Anything already on screen when its data lands keeps the visible
+        // state runtime.ts gave it — blinking it out to replay the entrance
+        // would read as a glitch, not an animation.
+        const offscreen = (el: HTMLElement) => el.getBoundingClientRect().top > window.innerHeight;
+
+        const heading = section.querySelector<HTMLElement>('.heading-fly-in');
+        if (heading && offscreen(heading)) {
+            heading.classList.remove('is-visible');
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (!entry.isIntersecting) return;
+                    heading.classList.add('is-visible');
+                    observer.disconnect();
+                },
+                { threshold: 0.15 }
+            );
+            observer.observe(heading);
+            made.push(observer);
+        }
+
+        const row = section.querySelector<HTMLElement>('[data-insights-list]');
+        const cards = [...section.querySelectorAll<HTMLElement>('.card-fly-in')];
+        if (row && cards.length && offscreen(row)) {
+            cards.forEach((card) => card.classList.remove('is-visible'));
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (!entry.isIntersecting) return;
+                    cards.forEach((card, i) => {
+                        setTimeout(() => card.classList.add('is-visible'), i * 140);
+                    });
+                    observer.disconnect();
+                },
+                { threshold: 0.4 }
+            );
+            observer.observe(row);
+            made.push(observer);
+        }
+
+        observers.set(section, made);
+    }
+
+    document.addEventListener('insights:rendered', (event) => {
+        const section = event.target as HTMLElement | null;
+        if (!section?.dataset?.insightsKind) return;
+        // The card nodes exist by now, but let layout settle so the offscreen
+        // test measures their real position rather than a pre-paint one.
+        requestAnimationFrame(() => arm(section));
+    });
 </script>

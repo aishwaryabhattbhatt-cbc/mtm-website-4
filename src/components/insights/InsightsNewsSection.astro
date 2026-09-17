@@ -143,16 +143,11 @@ const newsItems = getNewsItemsForLocale(locale)
 
     .news-section__card-wrap {
         flex-shrink: 0;
-        width: 24rem;
+        /* One fixed card width at every breakpoint — no per-breakpoint
+           overrides. Capped at the available width so the card can never be
+           wider than the carousel on a narrow phone. */
+        width: min(24rem, 100%);
         scroll-snap-align: start;
-    }
-
-    @media (min-width: 1024px) {
-        .news-section__card-wrap {
-            width: calc(
-                (100vw - (2 * var(--content-margin-inline)) - (2 * var(--layout-card-gap))) / 3
-            );
-        }
     }
 
     @media (max-width: 1023px) {
@@ -169,10 +164,6 @@ const newsItems = getNewsItemsForLocale(locale)
             justify-self: start;
             align-self: start;
         }
-
-        .news-section__card-wrap {
-            width: 24rem;
-        }
     }
 
     @media (max-width: 767px) {
@@ -183,10 +174,6 @@ const newsItems = getNewsItemsForLocale(locale)
         .news-section__content-wrap {
             gap: var(--space-4);
             max-width: 100%;
-        }
-
-        .news-section__card-wrap {
-            width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
         }
     }
 </style>

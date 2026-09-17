@@ -145,9 +145,17 @@ const pageDescription = t(
                     if (!hero || !bleed || !card) {
                         cardObserver.disconnect();
                         observedCard = null;
-                        hero?.style.removeProperty('--hero-bleed-pad');
-                        bleed?.style.removeProperty('margin-top');
                         bleed?.removeAttribute('data-positioned');
+                        // Before the API answers there is no state yet, and the
+                        // CSS reservation is holding the card's space so the
+                        // hero doesn't render short and jump. Only collapse it
+                        // once the runtime confirms there is no featured report
+                        // to show — otherwise leave the reservation standing.
+                        const state = bleed?.dataset.insightsState;
+                        if (state === 'empty' || state === 'error') {
+                            hero?.style.setProperty('--hero-bleed-pad', 'var(--section-pad-block)');
+                            bleed?.style.setProperty('margin-top', '0px');
+                        }
                         return;
                     }
 
@@ -174,18 +182,51 @@ const pageDescription = t(
 </Layout>
 
 <style>
+    /* The featured card is fetched after first paint, so nothing can measure it
+       server-side. These hold its footprint up front — without them the blue
+       hero band renders ~170px short and jumps once the card lands, a layout
+       shift on the largest above-the-fold element. updateHeroBleed() replaces
+       both values with exact measurements as soon as the real card exists, so
+       these only ever need to be close, not perfect. Heights are measured from
+       the rendered card at each breakpoint; it stacks below 1024px, which is
+       why the reserve grows there rather than shrinking. */
+    main {
+        --featured-card-reserve: 31rem;
+        --featured-card-overlap: calc(var(--featured-card-reserve) * 0.5);
+        /* consumed by .insights-hero's padding-bottom fallback */
+        --hero-bleed-reserve: var(--featured-card-overlap);
+    }
+
     .insights-card-bleed {
         position: relative;
         z-index: 1;
         padding: 0 var(--content-margin-inline);
+        margin-top: calc(-1 * var(--featured-card-overlap));
     }
 
     .insights-card-bleed__inner {
         width: 100%;
         opacity: 0;
+        min-height: var(--featured-card-reserve);
     }
 
     .insights-card-bleed[data-positioned='true'] .insights-card-bleed__inner {
         opacity: 1;
+        /* real card is in and measured — stop reserving */
+        min-height: 0;
+    }
+
+    @media (max-width: 1023px) {
+        main {
+            --featured-card-reserve: 52rem;
+        }
+    }
+
+    /* Below 768px updateHeroBleed() switches the overlap to 15%. */
+    @media (max-width: 767px) {
+        main {
+            --featured-card-reserve: 40rem;
+            --featured-card-overlap: calc(var(--featured-card-reserve) * 0.15);
+        }
     }
 </style>

@@ -67,13 +67,20 @@ const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
 
     <div class="free-report-card__body">
         <div class="free-report-card__meta">
-            {
-                tagVariant ? (
-                    <ProductPill variant={tagVariant} size="small" copy={copy} locale={locale} />
-                ) : tagText ? (
-                    <span class="free-report-card__tag text-label-small">{tagText}</span>
-                ) : null
-            }
+            <div class="free-report-card__pills">
+                {
+                    tagVariant ? (
+                        <ProductPill
+                            variant={tagVariant}
+                            size="small"
+                            copy={copy}
+                            locale={locale}
+                        />
+                    ) : tagText ? (
+                        <span class="free-report-card__tag text-label-small">{tagText}</span>
+                    ) : null
+                }
+            </div>
             {dateText && <DatePill date={dateText} />}
         </div>
 
@@ -154,6 +161,16 @@ const dateText = dateKey in copy ? t(copy, dateKey, locale, '') : '';
         align-items: center;
         justify-content: space-between;
         gap: var(--space-3);
+    }
+
+    /* The pills are grouped so space-between above pushes the date away from
+       the group as a whole. Without this wrapper the runtime's extra product
+       pills each become their own flex item and get stretched to the edges. */
+    .free-report-card__pills {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        flex-wrap: wrap;
     }
 
     .free-report-card__tag {

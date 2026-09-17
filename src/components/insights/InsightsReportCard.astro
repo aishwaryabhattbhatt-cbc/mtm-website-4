@@ -92,45 +92,47 @@ const descCopyKey = description === undefined ? descriptionKey : undefined;
     <div class="report-card__body">
         <div class="report-card__top">
             <div class="report-card__meta">
-                {
-                    pillVariant ? (
-                        <span data-pill-variant={pillVariant}>
-                            <ProductPill
-                                variant={pillVariant}
-                                size="big"
-                                copy={copy}
-                                locale={locale}
-                            />
-                        </span>
-                    ) : (
-                        <Fragment>
-                            <span data-pill-variant="junior">
+                <div class="report-card__pills">
+                    {
+                        pillVariant ? (
+                            <span data-pill-variant={pillVariant}>
                                 <ProductPill
-                                    variant="junior"
+                                    variant={pillVariant}
                                     size="big"
                                     copy={copy}
                                     locale={locale}
                                 />
                             </span>
-                            <span data-pill-variant="mtm18plus">
-                                <ProductPill
-                                    variant="mtm18plus"
-                                    size="big"
-                                    copy={copy}
-                                    locale={locale}
-                                />
-                            </span>
-                            <span data-pill-variant="newcomers">
-                                <ProductPill
-                                    variant="newcomers"
-                                    size="big"
-                                    copy={copy}
-                                    locale={locale}
-                                />
-                            </span>
-                        </Fragment>
-                    )
-                }
+                        ) : (
+                            <Fragment>
+                                <span data-pill-variant="junior">
+                                    <ProductPill
+                                        variant="junior"
+                                        size="big"
+                                        copy={copy}
+                                        locale={locale}
+                                    />
+                                </span>
+                                <span data-pill-variant="mtm18plus">
+                                    <ProductPill
+                                        variant="mtm18plus"
+                                        size="big"
+                                        copy={copy}
+                                        locale={locale}
+                                    />
+                                </span>
+                                <span data-pill-variant="newcomers">
+                                    <ProductPill
+                                        variant="newcomers"
+                                        size="big"
+                                        copy={copy}
+                                        locale={locale}
+                                    />
+                                </span>
+                            </Fragment>
+                        )
+                    }
+                </div>
                 {dateText && <DatePill date={dateText} />}
             </div>
 
@@ -188,6 +190,10 @@ const descCopyKey = description === undefined ? descriptionKey : undefined;
         box-shadow: var(--shadow-card);
         padding: var(--card-pad-thin);
         overflow: hidden;
+        /* Fill the carousel's stretched wrap. Without this the card is only as
+           tall as its content, so the body below has no slack to distribute
+           and every card ends a different height. */
+        height: 100%;
     }
 
     .report-card__image-wrap {
@@ -217,8 +223,12 @@ const descCopyKey = description === undefined ? descriptionKey : undefined;
         align-items: flex-start;
         justify-content: space-between;
         flex: 1;
-        padding: var(--card-pad-thin);
-        gap: var(--space-8);
+        padding: var(--card-pad-thin) var(--card-pad-thin) 0;
+        /* This gap is a floor, not a fixed value: `space-between` hands all
+           leftover height to it, so the tags→CTA gap shrinks as the title
+           grows and every card lands the same height. Kept low so a 2-line
+           title compresses the gap instead of making the whole row taller. */
+        gap: var(--space-3);
     }
 
     .report-card__top {
@@ -232,6 +242,16 @@ const descCopyKey = description === undefined ? descriptionKey : undefined;
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    /* The pills are grouped so space-between above pushes the date away from
+       the group as a whole. Without this wrapper each pill is its own flex
+       item, so a card with all three gets them stretched to the card edges. */
+    .report-card__pills {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        flex-wrap: wrap;
     }
 
     .report-card__tag {
@@ -264,6 +284,11 @@ const descCopyKey = description === undefined ? descriptionKey : undefined;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+        /* Clamped at 3 lines and reserved for 3, so a short description does
+           not pull the tags and CTA up and leave cards uneven. `lh` is the
+           element's own line box, so it tracks the text class at every
+           breakpoint rather than pinning a value here. */
+        min-height: 3lh;
     }
 
     .report-card__tags {
@@ -271,6 +296,18 @@ const descCopyKey = description === undefined ? descriptionKey : undefined;
         gap: var(--space-2);
         flex-wrap: wrap;
         overflow: hidden;
+        /* One pill row is always reserved so cards with no variables keep the
+           CTA on the same baseline as cards that have them. Matches the pill
+           box: its line height plus its vertical padding. */
+        min-height: calc(var(--fs-body-s) * var(--lh-relaxed) + var(--space-1) * 2);
+    }
+
+    /* runtime.ts sets [hidden] on an empty tag row, and InsightsRuntime.astro
+       hides every [hidden] descendant with `display: none !important` — so
+       holding the reserved space back needs !important to outrank it. The row
+       is empty when this applies, so nothing extra is exposed to the page. */
+    .report-card__tags[hidden] {
+        display: flex !important;
     }
 
     .report-card__var-pill {

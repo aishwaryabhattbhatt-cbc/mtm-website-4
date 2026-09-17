@@ -97,7 +97,11 @@ const filterTabs = [
 <style>
     .reports-library-section {
         width: 100%;
-        padding: var(--section-pad-block-lg) var(--content-margin-inline) var(--section-pad-block);
+        /* Bottom is --space-8, not --section-pad-block: the carousel below
+           already carries 80px of its own padding to clear the card shadow,
+           so 40px here totals the 120px (--section-pad-block-lg) that the
+           In the News section uses above its content. */
+        padding: var(--section-pad-block-lg) var(--content-margin-inline) var(--space-8);
     }
 
     .reports-library-section__header {
@@ -147,7 +151,13 @@ const filterTabs = [
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
         margin-inline: calc(-1 * var(--content-margin-inline));
-        padding: var(--space-6) var(--content-margin-inline) var(--section-pad-block-lg);
+        /* `overflow-x: auto` forces overflow-y to auto, so this container
+           clips vertically, and the bottom padding is what keeps --shadow-card
+           from being cut off: its lower layer reaches 47px + 47px/2 = 70.5px
+           below the card. The shadow is defined in fixed px but --space-12 is
+           rem-based, and at the ≤480px root of 14px it shrinks to 70px and
+           starts clipping — hence the px floor. */
+        padding: var(--space-6) var(--content-margin-inline) max(var(--space-12), 72px);
         scroll-padding-inline-start: var(--content-margin-inline);
         transition:
             opacity 180ms ease,
@@ -160,7 +170,10 @@ const filterTabs = [
 
     :global(.reports-library-section__card-wrap) {
         flex-shrink: 0;
-        width: 24rem;
+        /* One fixed card width at every breakpoint — no per-breakpoint
+           overrides. Capped at the available width so the card can never be
+           wider than the carousel on a narrow phone. */
+        width: min(24rem, 100%);
         scroll-snap-align: start;
         transition:
             opacity 180ms ease,
@@ -171,14 +184,6 @@ const filterTabs = [
     .reports-library-section.is-filter-transitioning :global(.reports-library-section__card-wrap) {
         opacity: 0.9;
         transform: translateY(0.125rem);
-    }
-
-    @media (min-width: 1024px) {
-        :global(.reports-library-section__card-wrap) {
-            width: calc(
-                (100vw - (2 * var(--content-margin-inline)) - (2 * var(--layout-card-gap))) / 3
-            );
-        }
     }
 
     @media (max-width: 1023px) {
@@ -205,10 +210,6 @@ const filterTabs = [
 
         .reports-library-section__header {
             gap: var(--space-7);
-        }
-
-        :global(.reports-library-section__card-wrap) {
-            width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
         }
 
         .reports-library-section__content-wrap {

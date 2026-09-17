@@ -74,10 +74,12 @@ const { locale, copy } = Astro.props as Props;
     .free-reports-section {
         width: 100%;
         background: var(--surface-blue);
-        /* bottom matches this section's own top padding, so the gap before
-           the infographic section below (which has no top padding of its
-           own) reads the same as the gap above this section. */
-        padding: var(--section-pad-block) var(--content-margin-inline) var(--section-pad-block);
+        /* Top matches .news-section's top padding so both sections open on the
+           same rhythm, and bottom matches top: the infographic section below
+           has no top padding of its own, so this is the whole gap down to its
+           eyebrow and it should read the same as the gap above. */
+        padding: var(--section-pad-block-lg) var(--content-margin-inline)
+            var(--section-pad-block-lg);
         display: flex;
         flex-direction: column;
         gap: 0;
@@ -143,7 +145,11 @@ const { locale, copy } = Astro.props as Props;
 
     @media (max-width: 1023px) {
         .free-reports-section {
-            padding: var(--space-9) var(--content-margin-inline) var(--space-9);
+            /* Top tracks .news-section's own ≤1023px step. Bottom is 0 because
+               the grid below turns into a scroller here and already carries
+               80px of padding to clear the card shadow — that alone matches
+               the top. */
+            padding: var(--section-pad-block) var(--content-margin-inline) 0;
             gap: 0;
         }
 
@@ -167,8 +173,13 @@ const { locale, copy } = Astro.props as Props;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
             margin-inline: calc(-1 * var(--content-margin-inline));
+            /* `overflow-x: auto` forces overflow-y to auto, so this clips
+               vertically; the bottom padding keeps --shadow-card (which
+               reaches 70.5px below the card) from being cut off. The px floor
+               is there because the shadow is fixed px while --space-12 is
+               rem-based and shrinks to 70px at the ≤480px root. */
             padding: var(--section-header-gap) var(--content-margin-inline)
-                var(--section-pad-block-lg);
+                max(var(--space-12), 72px);
             scroll-padding-inline-start: var(--content-margin-inline);
             grid-template-columns: unset;
         }
@@ -186,6 +197,13 @@ const { locale, copy } = Astro.props as Props;
     }
 
     @media (max-width: 767px) {
+        .free-reports-section {
+            /* matches .news-section's ≤767px top padding. Bottom stays 0 from
+               the ≤1023px rule — the grid's own shadow padding is already more
+               than this top value, so adding any here only widens the gap. */
+            padding-top: var(--space-9);
+        }
+
         .free-reports-section__header {
             gap: var(--space-7);
         }

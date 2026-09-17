@@ -144,4 +144,24 @@ export default defineConfig({
       },
     }),
   ],
+  vite: {
+    server: {
+      // Dev only — never reaches a build. The insights client fetches
+      // root-relative `/api/...` paths (src/lib/insights/client.ts), and the
+      // API returns root-relative `/_img/...` report images. Neither exists on
+      // the Astro dev server, so report cards render empty locally unless the
+      // site is served by the backend itself. Forwarding both to staging lets
+      // the real catalog load at localhost.
+      proxy: {
+        '/api': {
+          target: process.env.DEV_API_ORIGIN || 'https://dev.mtm-otm.ca',
+          changeOrigin: true,
+        },
+        '/_img': {
+          target: process.env.DEV_API_ORIGIN || 'https://dev.mtm-otm.ca',
+          changeOrigin: true,
+        },
+      },
+    },
+  },
 });

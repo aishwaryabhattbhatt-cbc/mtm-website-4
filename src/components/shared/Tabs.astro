@@ -227,6 +227,18 @@ const nextLabel = copy && locale ? t(copy, 'carousel_next_label', locale, 'Next'
     @media (max-width: 767px) {
         .tabs-bar__tabs {
             width: 100%;
+            /* At their min-content size the four product filters need more
+               width than a phone has, and `flex: 1` can't shrink them past it
+               while the labels are `white-space: nowrap` — so they spilled out
+               of the page instead of fitting. Scroll the bar rather than
+               truncating labels like "MTM Newcomers". */
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: none;
+        }
+
+        .tabs-bar__tabs::-webkit-scrollbar {
+            display: none;
         }
 
         .tabs-bar__tab {
