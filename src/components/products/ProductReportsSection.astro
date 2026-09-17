@@ -16,11 +16,6 @@ interface Props {
     productId: string;
     imageSrc: string;
     imageAlt?: string;
-    graphIconSrc: string;
-    graphTitle: string;
-    graphDetail: string;
-    chartSrc: string;
-    chartAlt?: string;
     insightsHref: string;
     sampleReportHref: string;
     stats: StatItem[];
@@ -32,11 +27,6 @@ const {
     productId,
     imageSrc,
     imageAlt = '',
-    graphIconSrc,
-    graphTitle,
-    graphDetail,
-    chartSrc,
-    chartAlt = '',
     insightsHref,
     sampleReportHref,
     stats,
@@ -66,11 +56,11 @@ const {
             copy={copy}
             imageSrc={imageSrc}
             imageAlt={imageAlt}
-            graphIconSrc={graphIconSrc}
-            graphTitle={graphTitle}
-            graphDetail={graphDetail}
-            chartSrc={chartSrc}
-            chartAlt={chartAlt}
+            graphIconSrc=""
+            graphTitle=""
+            graphDetail=""
+            chartSrc=""
+            chartAlt=""
             insightsHref={insightsHref}
             sampleReportHref={sampleReportHref}
             stats={stats}

@@ -127,17 +127,14 @@ const dateText = t(copy, 'free_report_1_date', locale, 'Dec 11, 2025');
         <div class="sneak-peek-report-card__body">
             <div class="sneak-peek-report-card__graph-top">
                 <div class="sneak-peek-report-card__graph-header">
-                    {
-                        graphIconSrc && (
-                            <img
-                                src={graphIconSrc}
-                                alt={graphIconAlt}
-                                class="icon-3xl sneak-peek-report-card__graph-icon"
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        )
-                    }
+                    <img
+                        src={graphIconSrc || undefined}
+                        alt={graphIconAlt}
+                        class="icon-3xl sneak-peek-report-card__graph-icon"
+                        loading="lazy"
+                        decoding="async"
+                        hidden={!graphIconSrc}
+                    />
                     <div class="sneak-peek-report-card__graph-title-group">
                         <p
                             class="text-body-p1-bold sneak-peek-report-card__graph-name"
