@@ -154,15 +154,13 @@ Build custom views, apply advanced filters, and explore trends dynamically with 
 
 ![ABC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/abc.svg)
 
-![AMI-tv](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
+![AMI](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
 
 ![AQPM](https://dev.mtm-otm.ca/images/home/solutions/logos/media/aqpm.svg)
 
-![BBC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/bbc.svg)
-
 ![Bell](https://dev.mtm-otm.ca/images/home/solutions/logos/media/bell.svg)
 
-![Cosette](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/cosette.svg)
+![Pelmorex](https://dev.mtm-otm.ca/images/home/solutions/logos/media/pelmorex.svg)
 
 ![EssenceMediacom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/essencemediacom.jpeg)
 
@@ -170,17 +168,19 @@ Build custom views, apply advanced filters, and explore trends dynamically with 
 
 ![Hearts & Science](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/hearts-and-science.png)
 
-![Initiative](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/initiative.png)
+![Initiative Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/initiative.png)
 
-![Radio 613](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/R613-EN-RGB-Colour.svg)
+![Media Experts](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/media-experts.svg)
 
-![Telefilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
+![Téléfilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
 
 ![Government of Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/canada.svg)
 
 ![CRTC](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/crtc.svg)
 
-![First Nations Market](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/first-nation-market.svg)
+![First Nations Market Housing Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/first-nation-market.svg)
+
+![Quebec Government](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/quebec.svg)
 
 ![HEC Montréal](https://dev.mtm-otm.ca/images/home/solutions/logos/education/HEC_Montreal.svg)
 
@@ -192,15 +192,11 @@ Build custom views, apply advanced filters, and explore trends dynamically with 
 
 ![University of Ottawa](https://dev.mtm-otm.ca/images/home/solutions/logos/education/uOttawa.svg)
 
-![EBU](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
+![European Broadcasting Union](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
 
-![Shaw Rocket Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/Shaw-Rocket-Fund.svg)
+![CMF](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/cmf-blk.svg)
 
-![Canada Media Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/cmf-blk.svg)
-
-![NFB](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/nfb.svg)
-
-![Numeris](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
+![Numeris (BBM Canada)](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
 Media and Broadcasting  Advertising and Marketing  Government and NGOs  Education and Research  Industry
 
@@ -236,21 +232,21 @@ Media and Broadcasting  Advertising and Marketing  Government and NGOs  Educatio
 
 ![ABC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/abc.svg)
 
-![AMI-tv](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
+![AMI](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
 
 ![AQPM](https://dev.mtm-otm.ca/images/home/solutions/logos/media/aqpm.svg)
-
-![Cosette](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/cosette.svg)
 
 ![EssenceMediacom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/essencemediacom.jpeg)
 
 ![GroupM](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/group-m.svg)
 
-![Radio 613](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/R613-EN-RGB-Colour.svg)
+![Hearts & Science](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/hearts-and-science.png)
 
-![Telefilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
+![Téléfilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
 
 ![Government of Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/canada.svg)
+
+![CRTC](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/crtc.svg)
 
 ![HEC Montréal](https://dev.mtm-otm.ca/images/home/solutions/logos/education/HEC_Montreal.svg)
 
@@ -258,11 +254,11 @@ Media and Broadcasting  Advertising and Marketing  Government and NGOs  Educatio
 
 ![Humber Polytechnic](https://dev.mtm-otm.ca/images/home/solutions/logos/education/humber-polytechnic.svg)
 
-![EBU](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
+![European Broadcasting Union](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
 
-![Shaw Rocket Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/Shaw-Rocket-Fund.svg)
+![CMF](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/cmf-blk.svg)
 
-![Canada Media Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/cmf-blk.svg)
+![Numeris (BBM Canada)](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
 Media and Broadcasting
 
@@ -270,7 +266,7 @@ Media and Broadcasting
 
 ![ABC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/abc.svg)
 
-![AMI-tv](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
+![AMI](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
 
 ![AQPM](https://dev.mtm-otm.ca/images/home/solutions/logos/media/aqpm.svg)
 
@@ -278,21 +274,21 @@ Advertising and Marketing
 
 ![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-advertising.png) [GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/advertising/)
 
-![Cosette](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/cosette.svg)
-
 ![EssenceMediacom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/essencemediacom.jpeg)
 
 ![GroupM](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/group-m.svg)
+
+![Hearts & Science](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/hearts-and-science.png)
 
 Government and NGOs
 
 ![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-govngo.png) [GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
 
-![Radio 613](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/R613-EN-RGB-Colour.svg)
-
-![Telefilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
+![Téléfilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
 
 ![Government of Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/canada.svg)
+
+![CRTC](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/crtc.svg)
 
 Education and Research
 
@@ -308,11 +304,11 @@ Industry
 
 ![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-industry.png) [GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/industry/)
 
-![EBU](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
+![European Broadcasting Union](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
 
-![Shaw Rocket Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/Shaw-Rocket-Fund.svg)
+![CMF](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/cmf-blk.svg)
 
-![Canada Media Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/cmf-blk.svg)
+![Numeris (BBM Canada)](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
 ## Frequently Asked Questions
 

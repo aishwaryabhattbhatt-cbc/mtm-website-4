@@ -49,15 +49,13 @@ What are you interested in?
 
 Something else? Please enter below.
 
-\[x] Subscribe to our newsletter Submit
+\[ ] Subscribe to our newsletter Submit
 
 Trusted by
 
-![Quebecor](https://dev.mtm-otm.ca/images/home/solutions/logos/media/quebecor.svg)
+![AMI](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
 
-![Accessible Media Inc.](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
-
-![Videotron](https://dev.mtm-otm.ca/images/home/solutions/logos/media/videotron.svg)
+![Vidéotron](https://dev.mtm-otm.ca/images/home/solutions/logos/media/videotron.svg)
 
 ![Rogers](https://dev.mtm-otm.ca/images/home/solutions/logos/media/rogers.svg)
 
@@ -69,7 +67,7 @@ Trusted by
 
 ![TVO](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tvo.svg)
 
-![TV5](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tv5.svg)
+![TV5 Québec](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tv5.svg)
 
 ![Télé-Québec](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tele-quebec.svg)
 
@@ -77,19 +75,11 @@ Trusted by
 
 ![ABC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/abc.svg)
 
-![BBC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/bbc.svg)
-
-![WildBrain Television](https://dev.mtm-otm.ca/images/home/solutions/logos/media/wildbrain-television.svg)
-
 ![AQPM](https://dev.mtm-otm.ca/images/home/solutions/logos/media/aqpm.svg)
-
-![Nexxen](https://dev.mtm-otm.ca/images/home/solutions/logos/media/nexxen.svg)
 
 ![Pelmorex](https://dev.mtm-otm.ca/images/home/solutions/logos/media/pelmorex.svg)
 
 ![Samsung](https://dev.mtm-otm.ca/images/home/solutions/logos/technology/samsung.svg)
-
-![Cossette](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/cosette.svg)
 
 ![EssenceMediacom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/essencemediacom.jpeg)
 
@@ -97,21 +87,19 @@ Trusted by
 
 ![Hearts & Science](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/hearts-and-science.png)
 
-![Initiative](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/initiative.png)
-
-![Jungle](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/jungle.svg)
+![Initiative Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/initiative.png)
 
 ![Media Experts](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/media-experts.svg)
 
 ![Mindshare](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/mindshare.svg)
 
-![Omnicom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/omnicom.svg)
+![Omnicom Media Group](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/omnicom.svg)
 
-![PHD](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/phd.svg)
+![PHD Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/phd.svg)
 
 ![Remitly](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/remitly.svg)
 
-![Time & Space](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
+![Time + Space Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
 
 ![Touché!](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/touche.SVG)
 
@@ -119,13 +107,9 @@ Trusted by
 
 ![European Broadcasting Union](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
 
-![Shaw Rocket Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/Shaw-Rocket-Fund.svg)
+![CMF](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/cmf-blk.svg)
 
-![Canada Media Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/cmf-blk.svg)
-
-![National Film Board of Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/nfb.svg)
-
-![Numeris](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
+![Numeris (BBM Canada)](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
 ![Government of Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/canada.svg)
 
@@ -133,11 +117,9 @@ Trusted by
 
 ![First Nations Market Housing Fund](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/first-nation-market.svg)
 
-![Québec](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/quebec.svg)
+![Quebec Government](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/quebec.svg)
 
-![Telefilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
-
-![Canadian Heritage](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/R613-EN-RGB-Colour.svg)
+![Téléfilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
 
 ![HEC Montréal](https://dev.mtm-otm.ca/images/home/solutions/logos/education/HEC_Montreal.svg)
 
@@ -153,25 +135,19 @@ Trusted by
 
 ![University of Manitoba](https://dev.mtm-otm.ca/images/home/solutions/logos/education/university-of-manitoba.svg)
 
-![TVO](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tvo.svg)
+![The Weather Network](https://dev.mtm-otm.ca/images/home/solutions/logos/media/the-weather-network.svg)
 
 When it comes to technology ownership and usage in Canada, the MTM is THE go-to source of information. For our team, this resource is invaluable because it allows us to make informed decisions with confidence and stay one step ahead in an ever-changing media landscape. It is a fundamental tool for our strategic planning and innovation efforts.
 
 Élise Roy-Pepin, The Weather Network
 
-![Mindshare](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/mindshare.svg)
+![Time + Space Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
 
 MTM is a valuable resource for effective media planning and research for our clients. The comprehensive data, forecasting and frequent reports give us deep insight into Canadian audience behaviors and media trends.
 
 Ryan Casey, Director, Media Operations - Time & Space Media
 
-![European Broadcasting Union](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
-
-Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.
-
-Director of Audience Strategy
-
-![CRTC](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/crtc.svg)
+![MANSO](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/manso.svg)
 
 Thanks to our subscription to MTM Newcomers, we have access to newcomer data insights and their settlement and integration journey in Manitoba. We particularly appreciate seeing information that is not available through any other sources, like newcomers' use of media, devices, and newcomer knowledge of services available through our sector. This information helps our members ensure that their services are well adapted to the needs and characteristics of the newcomers they serve.
 

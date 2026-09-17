@@ -10,11 +10,9 @@ In a rapidly evolving media landscape, guesswork is a liability. The Media Techn
 
 Trusted by
 
-![Quebecor](https://dev.mtm-otm.ca/images/home/solutions/logos/media/quebecor.svg)
+![AMI](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
 
-![Accessible Media Inc.](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
-
-![Videotron](https://dev.mtm-otm.ca/images/home/solutions/logos/media/videotron.svg)
+![Vidéotron](https://dev.mtm-otm.ca/images/home/solutions/logos/media/videotron.svg)
 
 ![Rogers](https://dev.mtm-otm.ca/images/home/solutions/logos/media/rogers.svg)
 
@@ -26,7 +24,7 @@ Trusted by
 
 ![TVO](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tvo.svg)
 
-![TV5](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tv5.svg)
+![TV5 Québec](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tv5.svg)
 
 ![Télé-Québec](https://dev.mtm-otm.ca/images/home/solutions/logos/media/tele-quebec.svg)
 
@@ -34,13 +32,7 @@ Trusted by
 
 ![ABC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/abc.svg)
 
-![BBC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/bbc.svg)
-
-![WildBrain Television](https://dev.mtm-otm.ca/images/home/solutions/logos/media/wildbrain-television.svg)
-
 ![AQPM](https://dev.mtm-otm.ca/images/home/solutions/logos/media/aqpm.svg)
-
-![Nexxen](https://dev.mtm-otm.ca/images/home/solutions/logos/media/nexxen.svg)
 
 ![Pelmorex](https://dev.mtm-otm.ca/images/home/solutions/logos/media/pelmorex.svg)
 

@@ -10,29 +10,25 @@ Your clients expect results and we provide the media and demographic intelligenc
 
 Trusted by
 
-![Cossette](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/cosette.svg)
-
 ![EssenceMediacom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/essencemediacom.jpeg)
 
 ![GroupM](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/group-m.svg)
 
 ![Hearts & Science](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/hearts-and-science.png)
 
-![Initiative](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/initiative.png)
-
-![Jungle](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/jungle.svg)
+![Initiative Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/initiative.png)
 
 ![Media Experts](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/media-experts.svg)
 
 ![Mindshare](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/mindshare.svg)
 
-![Omnicom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/omnicom.svg)
+![Omnicom Media Group](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/omnicom.svg)
 
-![PHD](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/phd.svg)
+![PHD Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/phd.svg)
 
 ![Remitly](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/remitly.svg)
 
-![Time & Space](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
+![Time + Space Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
 
 ![Touché!](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/touche.SVG)
 
@@ -128,7 +124,7 @@ Leverage the Ranker feature in the census tool to find out where the wealthiest 
 
 ## What ad agencies are saying about us
 
-![Time & Space Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
+![Time + Space Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
 
 MTM is a valuable resource for effective media planning and research for our clients. The comprehensive data, forecasting and frequent reports give us deep insight into Canadian audience behaviors and media trends.
 
