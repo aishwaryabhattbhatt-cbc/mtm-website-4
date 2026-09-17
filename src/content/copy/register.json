@@ -129,6 +129,11 @@
     "en": "Write your message here...",
     "fr": ""
   },
+  "request_demo_hero_form_industry_label": {
+    "key": "request_demo_hero_form_industry_label",
+    "en": "Industry",
+    "fr": ""
+  },
   "request_demo_hero_form_newsletter_label": {
     "key": "request_demo_hero_form_newsletter_label",
     "en": "Subscribe to our newsletter",
@@ -334,6 +339,16 @@
     "en": "Submit",
     "fr": ""
   },
+  "contact_error_rate_limit": {
+    "key": "contact_error_rate_limit",
+    "en": "Too many requests have been submitted. Please try again in a few minutes.",
+    "fr": ""
+  },
+  "contact_error_generic": {
+    "key": "contact_error_generic",
+    "en": "An error has occurred. Please try again or contact us at 1-855-898-4999.",
+    "fr": ""
+  },
   "Contact us- Success": {
     "key": "Contact us- Success",
     "en": "",
@@ -437,6 +452,21 @@
   "register_hero_form_has_account_cta": {
     "key": "register_hero_form_has_account_cta",
     "en": "Sign In",
+    "fr": ""
+  },
+  "register_hero_error_invalid_domain": {
+    "key": "register_hero_error_invalid_domain",
+    "en": "Invalid email address — you must use one of the allowed domains.",
+    "fr": ""
+  },
+  "register_hero_error_rate_limit": {
+    "key": "register_hero_error_rate_limit",
+    "en": "Too many requests have been submitted. Please try again in a few minutes.",
+    "fr": ""
+  },
+  "register_hero_error_generic": {
+    "key": "register_hero_error_generic",
+    "en": "An error has occurred. Please try again or contact us at 1-855-898-4999.",
     "fr": ""
   },
   "Register - Success": {
@@ -547,6 +577,21 @@
   "forgot_password_hero_form_remember_cta": {
     "key": "forgot_password_hero_form_remember_cta",
     "en": "Go Back to Sign In",
+    "fr": ""
+  },
+  "forgot_password_error_rate_limit": {
+    "key": "forgot_password_error_rate_limit",
+    "en": "Too many requests have been submitted. Please try again in a few minutes.",
+    "fr": ""
+  },
+  "forgot_password_error_generic": {
+    "key": "forgot_password_error_generic",
+    "en": "An error has occurred. Please try again or contact us at 1-855-898-4999.",
+    "fr": ""
+  },
+  "forgot_password_success": {
+    "key": "forgot_password_success",
+    "en": "If an account matches that address, an email with the next steps will be sent. Please also check your spam folder.",
     "fr": ""
   },
   "Report Download": {
@@ -673,20 +718,5 @@
     "key": "submission_error_contact_cta",
     "en": "Contact Us",
     "fr": ""
-  },
-  "register_hero_error_invalid_domain": {
-    "key": "register_hero_error_invalid_domain",
-    "en": "Invalid email address — you must use one of the allowed domains.",
-    "fr": "Adresse courriel invalide — vous devez utiliser l’un des domaines autorisés."
-  },
-  "register_hero_error_rate_limit": {
-    "key": "register_hero_error_rate_limit",
-    "en": "Too many requests have been submitted. Please try again in a few minutes.",
-    "fr": "Trop de demandes ont été envoyées. Veuillez réessayer dans quelques minutes."
-  },
-  "register_hero_error_generic": {
-    "key": "register_hero_error_generic",
-    "en": "An error has occurred. Please try again or contact us at 1-855-898-4999.",
-    "fr": "Une erreur est survenue. Veuillez réessayer ou communiquer avec nous au 1-855-898-4999."
   }
 }
