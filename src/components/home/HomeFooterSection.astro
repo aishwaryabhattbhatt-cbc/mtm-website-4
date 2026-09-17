@@ -23,6 +23,13 @@ const {
 } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 const currentYear = new Date().getFullYear();
+
+// From the newsletter form's HubSpot embed snippet. Public values (they ship in
+// the client bundle), so the literals are safe fallbacks when .env isn't present.
+const hubspotPortalId = import.meta.env.PUBLIC_HUBSPOT_PORTAL_ID || '343673947';
+const hubspotFormGuid =
+    import.meta.env.PUBLIC_HUBSPOT_FORM_GUID_NEWSLETTER || '8cc6ab85-7def-42f8-8465-313b0374e671';
+const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
 const footerPhoneNumber = t(copy, 'footer_phone_number', locale, '1-855-898-4999');
 
 const footerMenus = [
@@ -292,29 +299,71 @@ const footerMenus = [
                             locale,
                             'Newsletter signup'
                         )}
+                        data-hs-portal={hubspotPortalId}
+                        data-hs-form={hubspotFormGuid}
+                        data-hs-region={hubspotRegion}
+                        data-error-language={t(
+                            copy,
+                            'newsletter_error_language',
+                            locale,
+                            locale === 'fr'
+                                ? 'Veuillez choisir une langue.'
+                                : 'Please choose a language.'
+                        )}
+                        data-error-generic={t(
+                            copy,
+                            'newsletter_error_generic',
+                            locale,
+                            locale === 'fr'
+                                ? 'Une erreur est survenue. Veuillez réessayer.'
+                                : 'Something went wrong. Please try again.'
+                        )}
+                        data-error-industry={t(
+                            copy,
+                            'newsletter_error_industry',
+                            locale,
+                            locale === 'fr'
+                                ? 'Veuillez sélectionner votre secteur.'
+                                : 'Please select your industry.'
+                        )}
                     >
-                        <FormField
-                            locale={locale}
-                            copy={copy}
-                            variant="field-with-label"
-                            type="email"
-                            name="email"
-                            labelKey="newsletter_email_label"
-                            label="Work Email"
-                            placeholderKey="newsletter_email_placeholder"
-                            placeholder="Enter your work email"
-                            emailValidation="none"
-                            required
-                        />
-
-                        <div class="home-footer__newsletter-controls">
+                        {/* Honeypot: bots fill it, humans never see it. */}
+                        <div class="home-footer__newsletter-hp" aria-hidden="true">
+                            <label for="newsletter-company-website">Company website</label>
+                            <input
+                                id="newsletter-company-website"
+                                type="text"
+                                name="companyWebsite"
+                                tabindex="-1"
+                                autocomplete="off"
+                            />
+                        </div>
+                        <div class="home-footer__newsletter-row">
                             <FormField
                                 locale={locale}
                                 copy={copy}
-                                variant="field-only"
+                                variant="field-with-label"
+                                type="email"
+                                name="email"
+                                labelKey="newsletter_email_label"
+                                label="Work Email"
+                                placeholderKey="newsletter_email_placeholder"
+                                placeholder="Enter your work email"
+                                emailValidation="none"
+                                required
+                            />
+
+                            <FormField
+                                locale={locale}
+                                copy={copy}
+                                variant="field-with-label"
                                 type="select"
                                 name="industry"
+                                labelKey="newsletter_industry_label"
+                                label="Industry"
+                                placeholderKey="newsletter_industry_placeholder"
                                 placeholder="Select your industry"
+                                required
                                 options={[
                                     {
                                         value: '',
@@ -353,6 +402,42 @@ const footerMenus = [
                                     },
                                 ]}
                             />
+                        </div>
+
+                        <div class="home-footer__newsletter-controls">
+                            <div class="home-footer__newsletter-language">
+                                <p
+                                    class="text-body-p3 home-footer__newsletter-language-label"
+                                    id="newsletter-language-label"
+                                >
+                                    <>
+                                        <span data-copy-key="newsletter_language_label">
+                                            {t(
+                                                copy,
+                                                'newsletter_language_label',
+                                                locale,
+                                                'Language Preference'
+                                            )}
+                                        </span>
+                                        <span class="home-footer__newsletter-required">*</span>
+                                    </>
+                                </p>
+                                <div
+                                    class="home-footer__newsletter-language-choices"
+                                    role="radiogroup"
+                                    aria-labelledby="newsletter-language-label"
+                                    aria-required="true"
+                                >
+                                    <label class="home-footer__newsletter-choice text-body-p3">
+                                        <input type="radio" name="language" value="en" required />
+                                        {t(copy, 'newsletter_language_en', locale, 'English')}
+                                    </label>
+                                    <label class="home-footer__newsletter-choice text-body-p3">
+                                        <input type="radio" name="language" value="fr" required />
+                                        {t(copy, 'newsletter_language_fr', locale, 'French')}
+                                    </label>
+                                </div>
+                            </div>
                             <Button
                                 variant="primary"
                                 type="submit"
@@ -665,7 +750,7 @@ const footerMenus = [
     }
 
     .home-footer__newsletter-content {
-        grid-column: span 8;
+        grid-column: span 5;
         display: flex;
         flex-direction: column;
         gap: var(--space-4);
@@ -683,11 +768,67 @@ const footerMenus = [
     }
 
     .home-footer__newsletter-form {
-        grid-column: span 4;
+        /* Pinned to the last 5 columns; the middle 2 stay empty. */
+        grid-column: 8 / span 5;
         display: flex;
         flex-direction: column;
-        gap: var(--space-5);
+        gap: var(--space-4);
         width: 100%;
+    }
+
+    .home-footer__newsletter-row {
+        display: flex;
+        gap: var(--space-4);
+    }
+
+    .home-footer__newsletter-row > :global(.form-field) {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .home-footer__newsletter-language {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .home-footer__newsletter-language-label {
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    /* Matches the asterisk FormField renders on the email/industry labels. */
+    .home-footer__newsletter-required {
+        color: var(--feedback-error);
+        margin-left: var(--space-1);
+    }
+
+    /* Matches the asterisk FormField renders on the email/industry labels. */
+    .home-footer__newsletter-required {
+        color: var(--feedback-error);
+        margin-left: var(--space-1);
+    }
+
+    .home-footer__newsletter-language-choices {
+        display: flex;
+        align-items: center;
+        gap: var(--space-6);
+    }
+
+    .home-footer__newsletter-choice {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        color: var(--text-primary);
+        cursor: pointer;
+    }
+
+    .home-footer__newsletter-choice input {
+        width: var(--icon-s);
+        height: var(--icon-s);
+        flex-shrink: 0;
+        accent-color: var(--neutral-black);
+        cursor: pointer;
     }
 
     .home-footer__newsletter-controls {
@@ -712,9 +853,15 @@ const footerMenus = [
     }
 
     .home-footer__newsletter-dialog {
-        position: relative;
-        /* the global reset zeroes margins, which kills the UA's modal centering */
+        /* Must stay fixed: a top-layer dialog left in normal flow is laid out at
+           the top of the document, so focusing its autofocus element scrolls the
+           page up to it on open. inset + auto margins restore the UA centering
+           that the global margin reset zeroes out. */
+        position: fixed;
+        inset: 0;
         margin: auto;
+        max-height: calc(100% - var(--space-8));
+        overflow: auto;
         width: min(28rem, calc(100% - var(--space-8)));
         padding: var(--space-9);
         border: none;
@@ -722,6 +869,44 @@ const footerMenus = [
         background: var(--surface-white);
         box-shadow: var(--shadow-e2);
         color: var(--text-primary);
+    }
+
+    /* Entrance only — closing stays instant, which avoids the allow-discrete
+       dance needed to keep a dialog painted while it animates out. */
+    .home-footer__newsletter-dialog[open] {
+        animation: newsletter-dialog-in var(--motion-duration-card) var(--motion-ease-standard);
+    }
+
+    .home-footer__newsletter-dialog[open]::backdrop {
+        animation: newsletter-dialog-backdrop-in var(--motion-duration-card)
+            var(--motion-ease-standard);
+    }
+
+    @keyframes newsletter-dialog-in {
+        from {
+            opacity: 0;
+            transform: translateY(0.75rem) scale(0.96);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes newsletter-dialog-backdrop-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .home-footer__newsletter-dialog[open],
+        .home-footer__newsletter-dialog[open]::backdrop {
+            animation: none;
+        }
     }
 
     .home-footer__newsletter-dialog::backdrop {
@@ -767,6 +952,17 @@ const footerMenus = [
     .home-footer__newsletter-dialog-text {
         margin: 0;
         color: var(--text-secondary);
+    }
+
+    /* Honeypot. display:none is skipped by some bots, so move it out of view instead. */
+    .home-footer__newsletter-hp {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        pointer-events: none;
     }
 
     .home-footer__newsletter-email-error {
@@ -1061,7 +1257,12 @@ const footerMenus = [
 
         .home-footer__newsletter-form {
             max-width: 100%;
-            gap: var(--space-4);
+            gap: var(--space-3);
+        }
+
+        .home-footer__newsletter-row {
+            flex-direction: column;
+            gap: var(--space-3);
         }
 
         .home-footer__newsletter-controls {
@@ -1144,6 +1345,13 @@ const footerMenus = [
 </style>
 
 <script>
+    import {
+        HUBSPOT_INDUSTRY_VALUES,
+        HUBSPOT_LANGUAGE_VALUES,
+        hubspotTargetFrom,
+        submitHubspotForm,
+    } from '../../lib/forms/hubspot';
+
     const ctaCard = document.querySelector<HTMLElement>('.home-footer__cta-card');
     const eyebrow = ctaCard?.querySelector<HTMLElement>('.footer-eyebrow-fly-in');
     const title = ctaCard?.querySelector<HTMLElement>('.footer-title-fly-in');
@@ -1240,23 +1448,110 @@ const footerMenus = [
             if (event.target === newsletterDialog) newsletterDialog.close();
         });
 
-        newsletterForm.addEventListener('submit', (event) => {
+        const newsletterSubmit = newsletterForm.querySelector<HTMLButtonElement>(
+            '.home-footer__newsletter-submit'
+        );
+        const invalidEmailMessage = newsletterEmailError?.textContent ?? '';
+
+        newsletterForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             if (!newsletterEmailInput) return;
 
-            if (newsletterEmailInput.checkValidity()) {
-                setNewsletterEmailError(false);
+            if (!newsletterEmailInput.checkValidity()) {
+                if (newsletterEmailError) newsletterEmailError.textContent = invalidEmailMessage;
+                setNewsletterEmailError(true);
+                return;
+            }
+
+            const industrySelect =
+                newsletterForm.querySelector<HTMLSelectElement>('select[name="industry"]');
+
+            // Required on the HubSpot form, so an empty value is rejected there
+            // rather than silently dropped. Catch it here instead.
+            if (!industrySelect?.value) {
+                if (newsletterEmailError) {
+                    newsletterEmailError.textContent =
+                        newsletterForm.dataset.errorIndustry || invalidEmailMessage;
+                }
+                setNewsletterEmailError(true);
+                return;
+            }
+
+            const languageChecked = newsletterForm.querySelector<HTMLInputElement>(
+                'input[name="language"]:checked'
+            );
+
+            if (!languageChecked) {
+                if (newsletterEmailError) {
+                    newsletterEmailError.textContent =
+                        newsletterForm.dataset.errorLanguage || invalidEmailMessage;
+                }
+                setNewsletterEmailError(true);
+                return;
+            }
+
+            setNewsletterEmailError(false);
+
+            const data = new FormData(newsletterForm);
+
+            // Honeypot tripped: pretend it worked, send nothing.
+            if (String(data.get('companyWebsite') ?? '').trim() !== '') {
                 newsletterForm.reset();
                 newsletterDialog?.showModal();
-            } else {
+                return;
+            }
+
+            const industry = String(data.get('industry') ?? '').trim();
+            const fields = [
+                { name: 'email', value: newsletterEmailInput.value.trim() },
+                { name: 'select_industry', value: HUBSPOT_INDUSTRY_VALUES[industry] ?? '' },
+                {
+                    name: 'language',
+                    value: HUBSPOT_LANGUAGE_VALUES[String(data.get('language') ?? '')] ?? '',
+                },
+                // Submitting this form *is* the opt-in. HubSpot stamps the
+                // submission time, which is the consent record CASL wants.
+                { name: 'newsletter_opt_in', value: 'true' },
+            ];
+
+            newsletterSubmit?.setAttribute('disabled', '');
+            newsletterSubmit?.setAttribute('aria-busy', 'true');
+
+            try {
+                await submitHubspotForm(hubspotTargetFrom(newsletterForm), fields);
+                newsletterForm.reset();
+                newsletterDialog?.showModal();
+            } catch (error) {
+                console.error('Newsletter subscription failed', error);
+                if (newsletterEmailError) {
+                    newsletterEmailError.textContent =
+                        newsletterForm.dataset.errorGeneric || invalidEmailMessage;
+                }
                 setNewsletterEmailError(true);
+            } finally {
+                newsletterSubmit?.removeAttribute('disabled');
+                newsletterSubmit?.removeAttribute('aria-busy');
             }
         });
 
         newsletterEmailInput?.addEventListener('input', () => {
             if (newsletterEmailInput.checkValidity()) {
                 setNewsletterEmailError(false);
+                if (newsletterEmailError) newsletterEmailError.textContent = invalidEmailMessage;
             }
         });
+
+        const clearNewsletterMessage = () => {
+            setNewsletterEmailError(false);
+            if (newsletterEmailError) newsletterEmailError.textContent = invalidEmailMessage;
+        };
+
+        newsletterForm
+            .querySelector<HTMLSelectElement>('select[name="industry"]')
+            ?.addEventListener('change', clearNewsletterMessage);
+
+        newsletterForm
+            .querySelectorAll<HTMLInputElement>('input[name="language"]')
+            .forEach((radio) => radio.addEventListener('change', clearNewsletterMessage));
     }
 </script>

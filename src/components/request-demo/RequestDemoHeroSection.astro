@@ -561,6 +561,13 @@ const interestOptions = [
 </style>
 
 <script>
+    import {
+        HUBSPOT_INDUSTRY_VALUES,
+        HUBSPOT_LANGUAGE_VALUES,
+        hubspotTargetFrom,
+        submitHubspotForm,
+    } from '../../lib/forms/hubspot';
+
     const form = document.querySelector<HTMLFormElement>('.request-demo-hero__form');
     const emailInput = form?.querySelector<HTMLInputElement>('input[name="email"]');
 
@@ -585,22 +592,8 @@ const interestOptions = [
         { formName: 'lastName', name: 'lastname' },
         { formName: 'email', name: 'email' },
         { formName: 'organisation', name: 'company' },
-        {
-            formName: 'industry',
-            name: 'select_industry',
-            // HubSpot's internal names for this property are the full labels, so our
-            // short slugs have to be translated. A value outside this list is dropped
-            // silently by HubSpot, so these must stay in step with the property options.
-            values: {
-                media: 'Media and Broadcasting',
-                advertising: 'Advertising and Marketing',
-                govngo: 'Government and NGOs',
-                education: 'Education and Research',
-                industry: 'Industry',
-                other: 'Other',
-            },
-        },
-        { formName: 'language', name: 'language', values: { en: 'English', fr: 'French' } },
+        { formName: 'industry', name: 'select_industry', values: HUBSPOT_INDUSTRY_VALUES },
+        { formName: 'language', name: 'language', values: HUBSPOT_LANGUAGE_VALUES },
         { formName: 'message', name: 'message' },
     ];
 
@@ -612,7 +605,7 @@ const interestOptions = [
             return;
         }
 
-        const { submitHref, errorHref, hsPortal, hsForm, hsRegion } = form.dataset;
+        const { submitHref, errorHref } = form.dataset;
         const data = new FormData(form);
 
         // Honeypot tripped: pretend it worked, send nothing.
@@ -624,7 +617,7 @@ const interestOptions = [
         const fields = FIELD_MAP.map(({ formName, name, values }) => {
             const raw = String(data.get(formName) ?? '').trim();
             return { name, value: values ? (values[raw] ?? '') : raw };
-        }).filter((field) => field.value !== '');
+        });
 
         // HubSpot expects multi-checkbox values as one semicolon-delimited string,
         // using the property's internal names (which here are the full labels).
@@ -639,7 +632,7 @@ const interestOptions = [
             .map((value) => INTEREST_VALUES[String(value)])
             .filter(Boolean);
         if (interests.length > 0) {
-            fields.push({ name: 'what_are_you_interested_in_', value: interests.join(';') });
+            fields.push({ name: 'what_are_you_interested_in', value: interests.join(';') });
         }
 
         // Sent either way, so an explicit decline is recorded rather than being
@@ -651,35 +644,11 @@ const interestOptions = [
             value: data.get('newsletter') ? 'true' : 'false',
         });
 
-        // Set by the HubSpot tracking script; ties the submission to the visitor's
-        // session. Absent on a first visit with cookies blocked, which is fine.
-        const hutk = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]*)/)?.[1];
-
         submitButton?.setAttribute('disabled', '');
         submitButton?.setAttribute('aria-busy', 'true');
 
         try {
-            const response = await fetch(
-                `https://api-${hsRegion}.hsforms.com/submissions/v3/integration/submit/${hsPortal}/${hsForm}`,
-                {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        fields,
-                        context: {
-                            pageUri: window.location.href,
-                            pageName: document.title,
-                            ...(hutk ? { hutk } : {}),
-                        },
-                    }),
-                }
-            );
-
-            if (!response.ok) {
-                // The body names the offending field, which is the only practical
-                // way to debug a rejection. Surface it before redirecting away.
-                throw new Error(`HubSpot responded ${response.status}: ${await response.text()}`);
-            }
+            await submitHubspotForm(hubspotTargetFrom(form), fields);
 
             if (submitHref) window.location.href = submitHref;
         } catch (error) {

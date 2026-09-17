@@ -25,7 +25,11 @@ const base = import.meta.env.BASE_URL;
 
     <div class="register-success__card">
         <div class="register-success__content">
-            <span class="register-success__icon" aria-hidden="true">
+            <span
+                class="register-success__icon hero-fade-in"
+                style="animation-delay: 0.1s"
+                aria-hidden="true"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="icon-m"
@@ -40,12 +44,17 @@ const base = import.meta.env.BASE_URL;
                 </svg>
             </span>
 
-            <h2 data-copy-key="register_success_title">
+            <h2
+                class="hero-fade-in"
+                style="animation-delay: 0.2s"
+                data-copy-key="register_success_title"
+            >
                 {t(copy, 'register_success_title', locale, 'Registration Submitted!')}
             </h2>
 
             <p
-                class="text-body-p1 register-success__description"
+                class="text-body-p1 register-success__description hero-fade-in"
+                style="animation-delay: 0.3s"
                 data-copy-key="register_success_description"
             >
                 {
@@ -58,20 +67,46 @@ const base = import.meta.env.BASE_URL;
                 }
             </p>
 
-            <Button
-                variant="primary"
-                size="lg"
-                href={`${base}${locale}/sign-in/`}
-                class="register-success__cta"
-                data-copy-key="register_success_cta"
-            >
-                {t(copy, 'register_success_cta', locale, 'Sign In')}
-            </Button>
+            <div class="register-success__actions hero-fade-in" style="animation-delay: 0.4s">
+                <Button
+                    variant="primary"
+                    size="lg"
+                    href={`${base}${locale}/sign-in/`}
+                    class="register-success__cta"
+                    data-copy-key="register_success_cta"
+                >
+                    {t(copy, 'register_success_cta', locale, 'Sign In')}
+                </Button>
+            </div>
         </div>
     </div>
 </section>
 
 <style>
+    .hero-fade-in {
+        opacity: 0;
+        animation: hero-fade-in-up var(--motion-duration-heading) var(--motion-ease-standard)
+            forwards;
+    }
+
+    @keyframes hero-fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(1.625rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-fade-in {
+            animation: none;
+            opacity: 1;
+        }
+    }
+
     .register-success {
         position: relative;
         width: 100%;

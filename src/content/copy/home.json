@@ -369,6 +369,11 @@
     "en": "Enter your email",
     "fr": ""
   },
+  "newsletter_industry_label": {
+    "key": "newsletter_industry_label",
+    "en": "Industry",
+    "fr": "Secteur"
+  },
   "newsletter_industry_placeholder": {
     "key": "newsletter_industry_placeholder",
     "en": "Select your industry",
@@ -379,10 +384,40 @@
     "en": "Other",
     "fr": ""
   },
+  "newsletter_language_label": {
+    "key": "newsletter_language_label",
+    "en": "Language Preference",
+    "fr": "Préférence linguistique"
+  },
+  "newsletter_language_en": {
+    "key": "newsletter_language_en",
+    "en": "English",
+    "fr": "Anglais"
+  },
+  "newsletter_language_fr": {
+    "key": "newsletter_language_fr",
+    "en": "French",
+    "fr": "Français"
+  },
   "newsletter_submit": {
     "key": "newsletter_submit",
     "en": "Submit",
     "fr": ""
+  },
+  "newsletter_error_industry": {
+    "key": "newsletter_error_industry",
+    "en": "Please select your industry.",
+    "fr": "Veuillez sélectionner votre secteur."
+  },
+  "newsletter_error_language": {
+    "key": "newsletter_error_language",
+    "en": "Please choose a language.",
+    "fr": "Veuillez choisir une langue."
+  },
+  "newsletter_error_generic": {
+    "key": "newsletter_error_generic",
+    "en": "Something went wrong. Please try again.",
+    "fr": "Une erreur est survenue. Veuillez réessayer."
   },
   "newsletter_success_title": {
     "key": "newsletter_success_title",

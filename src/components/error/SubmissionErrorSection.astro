@@ -26,7 +26,11 @@ const base = import.meta.env.BASE_URL;
 
     <div class="submission-error__card">
         <div class="submission-error__content">
-            <span class="submission-error__icon" aria-hidden="true">
+            <span
+                class="submission-error__icon hero-fade-in"
+                style="animation-delay: 0.1s"
+                aria-hidden="true"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="icon-m"
@@ -42,12 +46,17 @@ const base = import.meta.env.BASE_URL;
                 </svg>
             </span>
 
-            <h2 data-copy-key="submission_error_title">
+            <h2
+                class="hero-fade-in"
+                style="animation-delay: 0.2s"
+                data-copy-key="submission_error_title"
+            >
                 {t(copy, 'submission_error_title', locale, 'Something Went Wrong')}
             </h2>
 
             <p
-                class="text-body-p1 submission-error__description"
+                class="text-body-p1 submission-error__description hero-fade-in"
+                style="animation-delay: 0.3s"
                 data-copy-key="submission_error_description"
             >
                 {
@@ -60,7 +69,7 @@ const base = import.meta.env.BASE_URL;
                 }
             </p>
 
-            <div class="submission-error__actions">
+            <div class="submission-error__actions hero-fade-in" style="animation-delay: 0.4s">
                 <Button variant="primary" size="lg" id="submission-error-retry">
                     {t(copy, 'submission_error_retry_cta', locale, 'Try Again')}
                 </Button>
@@ -89,6 +98,30 @@ const base = import.meta.env.BASE_URL;
 </script>
 
 <style>
+    .hero-fade-in {
+        opacity: 0;
+        animation: hero-fade-in-up var(--motion-duration-heading) var(--motion-ease-standard)
+            forwards;
+    }
+
+    @keyframes hero-fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(1.625rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-fade-in {
+            animation: none;
+            opacity: 1;
+        }
+    }
+
     .submission-error {
         position: relative;
         width: 100%;
