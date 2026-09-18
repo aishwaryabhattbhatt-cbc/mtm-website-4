@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:dev-site": "BUILD_BASE_PATH=/ BUILD_SITE_URL=https://dev.mtm-otm.ca astro build && node scripts/generate-md.mjs",
     "postbuild": "node scripts/generate-md.mjs",
     "preview": "astro preview",
     "astro": "astro",
