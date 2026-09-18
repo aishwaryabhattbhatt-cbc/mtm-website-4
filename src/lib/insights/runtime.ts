@@ -479,9 +479,7 @@ function initDownload(section: HTMLElement, catalog: InsightsCatalog, locale: Lo
                 organisation: String(data.get('organisation') ?? '').trim(),
                 position: String(data.get('position') ?? '').trim(),
                 locale,
-                website: String(data.get('website') ?? '').trim(),
-                pageName: document.title,
-                pageUri: window.location.href,
+                website: String(data.get('website') ?? ''),
             });
             const success = `${base}${locale}/insights/download-success/`;
             window.location.assign(from ? `${success}?from=${encodeURIComponent(from)}` : success);
