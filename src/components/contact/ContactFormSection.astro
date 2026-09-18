@@ -12,13 +12,6 @@ interface Props {
 
 const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
-
-// From the contact form's HubSpot embed snippet. Public values (they ship in the
-// client bundle), so the literals are safe fallbacks when .env isn't present.
-const hubspotPortalId = import.meta.env.PUBLIC_HUBSPOT_PORTAL_ID || '343673947';
-const hubspotFormGuid =
-    import.meta.env.PUBLIC_HUBSPOT_FORM_GUID_CONTACT || '63887aad-95d3-4f82-9b5a-9ad804033b8e';
-const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
 ---
 
 <section class="contact-form-section section-height-100" data-contact-form-section>
@@ -50,9 +43,6 @@ const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
                 data-contact-form
                 data-locale={locale}
                 data-submit-href={`${base}${locale}/contact-success/`}
-                data-hs-portal={hubspotPortalId}
-                data-hs-form={hubspotFormGuid}
-                data-hs-region={hubspotRegion}
                 data-error-rate-limit={t(
                     copy,
                     'contact_error_rate_limit',
@@ -317,11 +307,7 @@ const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
 </style>
 
 <script>
-    import {
-        HubspotSubmitError,
-        hubspotTargetFrom,
-        submitHubspotForm,
-    } from '../../lib/forms/hubspot';
+    import { ApiClientError, postJson } from '../../lib/forms/api';
 
     document.querySelectorAll<HTMLElement>('[data-contact-form-section]').forEach((section) => {
         const form = section.querySelector<HTMLFormElement>('[data-contact-form]');
@@ -367,18 +353,22 @@ const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
             }
 
             try {
-                await submitHubspotForm(hubspotTargetFrom(form), [
-                    { name: 'firstname', value: String(formData.get('firstName') || '').trim() },
-                    { name: 'lastname', value: String(formData.get('lastName') || '').trim() },
-                    { name: 'email', value: String(formData.get('email') || '').trim() },
-                    { name: 'message', value: String(formData.get('message') || '').trim() },
-                ]);
+                await postJson('/api/forms/contact', {
+                    firstName: String(formData.get('firstName') || '').trim(),
+                    lastName: String(formData.get('lastName') || '').trim(),
+                    email: String(formData.get('email') || '').trim(),
+                    message: String(formData.get('message') || '').trim(),
+                    locale: form.dataset.locale,
+                    website: String(formData.get('website') || '').trim(),
+                    pageName: document.title,
+                    pageUri: window.location.href,
+                });
 
                 window.location.href = submitHref || '/';
             } catch (error) {
                 console.error('Contact form submission failed.', error);
                 const message =
-                    error instanceof HubspotSubmitError && error.status === 429
+                    error instanceof ApiClientError && error.status === 429
                         ? form.dataset.errorRateLimit
                         : form.dataset.errorGeneric;
                 showError(message || 'Unable to submit the form.');

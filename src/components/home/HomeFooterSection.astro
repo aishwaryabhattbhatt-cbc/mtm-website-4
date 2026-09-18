@@ -24,12 +24,6 @@ const {
 const base = import.meta.env.BASE_URL;
 const currentYear = new Date().getFullYear();
 
-// From the newsletter form's HubSpot embed snippet. Public values (they ship in
-// the client bundle), so the literals are safe fallbacks when .env isn't present.
-const hubspotPortalId = import.meta.env.PUBLIC_HUBSPOT_PORTAL_ID || '343673947';
-const hubspotFormGuid =
-    import.meta.env.PUBLIC_HUBSPOT_FORM_GUID_NEWSLETTER || '8cc6ab85-7def-42f8-8465-313b0374e671';
-const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
 const footerPhoneNumber = t(copy, 'footer_phone_number', locale, '1-855-898-4999');
 
 const footerMenus = [
@@ -299,9 +293,6 @@ const footerMenus = [
                             locale,
                             'Newsletter signup'
                         )}
-                        data-hs-portal={hubspotPortalId}
-                        data-hs-form={hubspotFormGuid}
-                        data-hs-region={hubspotRegion}
                         data-error-language={t(
                             copy,
                             'newsletter_error_language',
@@ -1345,12 +1336,7 @@ const footerMenus = [
 </style>
 
 <script>
-    import {
-        HUBSPOT_INDUSTRY_VALUES,
-        HUBSPOT_LANGUAGE_VALUES,
-        hubspotTargetFrom,
-        submitHubspotForm,
-    } from '../../lib/forms/hubspot';
+    import { postJson } from '../../lib/forms/api';
 
     const ctaCard = document.querySelector<HTMLElement>('.home-footer__cta-card');
     const eyebrow = ctaCard?.querySelector<HTMLElement>('.footer-eyebrow-fly-in');
@@ -1501,24 +1487,18 @@ const footerMenus = [
                 return;
             }
 
-            const industry = String(data.get('industry') ?? '').trim();
-            const fields = [
-                { name: 'email', value: newsletterEmailInput.value.trim() },
-                { name: 'select_industry', value: HUBSPOT_INDUSTRY_VALUES[industry] ?? '' },
-                {
-                    name: 'language',
-                    value: HUBSPOT_LANGUAGE_VALUES[String(data.get('language') ?? '')] ?? '',
-                },
-                // Submitting this form *is* the opt-in. HubSpot stamps the
-                // submission time, which is the consent record CASL wants.
-                { name: 'newsletter_opt_in', value: 'true' },
-            ];
-
             newsletterSubmit?.setAttribute('disabled', '');
             newsletterSubmit?.setAttribute('aria-busy', 'true');
 
             try {
-                await submitHubspotForm(hubspotTargetFrom(newsletterForm), fields);
+                await postJson('/api/forms/newsletter', {
+                    email: newsletterEmailInput.value.trim(),
+                    industry: String(data.get('industry') ?? '').trim(),
+                    language: String(data.get('language') ?? '').trim(),
+                    website: String(data.get('companyWebsite') ?? '').trim(),
+                    pageName: document.title,
+                    pageUri: window.location.href,
+                });
                 newsletterForm.reset();
                 newsletterDialog?.showModal();
             } catch (error) {
