@@ -357,9 +357,14 @@ const formId = 'report-download-form';
     .report-download-section__reports-list {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: stretch;
-        gap: var(--space-4);
+        /* Sized so three cards land level with the Position input's bottom edge:
+           the form runs 325.6px to that edge, the subtitle above this list eats
+           26.4px, and three 87.2px cards leave 37.6px to split — 18.8px, which
+           --space-5 rounds to within 2.4px. Same value as the form's row gap,
+           so both columns keep one rhythm. */
+        gap: var(--space-5);
         flex: 1;
         min-width: 0;
     }
@@ -396,6 +401,26 @@ const formId = 'report-download-form';
             gap: var(--space-5);
         }
 
+        /* Stacked, the submit belongs under the report picker, not under the
+           fields. The form block dissolves so its two children can order
+           themselves against the reports column, which they can't do from
+           inside a nested flex container. */
+        .report-download-section__form-block {
+            display: contents;
+        }
+
+        .report-download-section__form {
+            order: 1;
+        }
+
+        .report-download-section__reports {
+            order: 2;
+        }
+
+        .report-download-section__submit {
+            order: 3;
+        }
+
         .report-download-section__card {
             display: flex;
             flex-direction: column;
@@ -429,12 +454,6 @@ const formId = 'report-download-form';
 
         .report-download-section__panel {
             padding: var(--space-6);
-        }
-
-        .report-download-section__columns {
-            /* Reports lead on mobile, ahead of the form — matches the section's
-               prior mobile priority order. */
-            flex-direction: column-reverse;
         }
     }
 </style>
