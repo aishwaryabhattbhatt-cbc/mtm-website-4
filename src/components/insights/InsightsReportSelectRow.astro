@@ -98,16 +98,18 @@ const titleCopyKey = title === undefined ? titleKey : undefined;
         </span>
         <span class="report-select-row__text">
             <span class="report-select-row__meta">
-                {
-                    tagVariant ? (
-                        <ProductPill
-                            variant={tagVariant}
-                            size="small"
-                            copy={copy}
-                            locale={locale}
-                        />
-                    ) : null
-                }
+                <span class="report-select-row__pills">
+                    {
+                        tagVariant ? (
+                            <ProductPill
+                                variant={tagVariant}
+                                size="small"
+                                copy={copy}
+                                locale={locale}
+                            />
+                        ) : null
+                    }
+                </span>
                 {dateText && <DatePill date={dateText} />}
             </span>
             <span class="text-body-p1-bold report-select-row__title" data-copy-key={titleCopyKey}>
@@ -119,9 +121,9 @@ const titleCopyKey = title === undefined ? titleKey : undefined;
 
 <style>
     .report-select-row {
+        position: relative;
         display: flex;
         align-items: center;
-        gap: var(--space-4);
         width: 100%;
         cursor: pointer;
     }
@@ -138,20 +140,35 @@ const titleCopyKey = title === undefined ? titleKey : undefined;
         border: 0;
     }
 
+    /* Sits on the thumbnail rather than in its own column: the card then gets
+       the full row width. Offsets clear the card's padding plus a --space-2
+       inset, so the box reads as inset from the image's corner. The shadow
+       keeps a white box legible over a busy photo. */
     .report-select-row__box {
+        position: absolute;
+        top: calc(var(--space-2) + var(--space-2));
+        left: calc(var(--space-3) + var(--space-2));
+        z-index: 1;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: var(--space-4);
-        height: var(--space-4);
+        width: var(--space-6);
+        height: var(--space-6);
         flex-shrink: 0;
         border-radius: var(--radius-xs);
-        border: var(--stroke-1) solid var(--border-tertiary);
+        border: var(--stroke-2) solid var(--neutral-black);
         background: var(--surface-white);
         color: var(--text-white);
+        box-shadow: var(--shadow-card);
         transition:
             background var(--motion-duration-card),
             border-color var(--motion-duration-card);
+    }
+
+    /* Heavier tick to match the larger box — a size class can't change per
+       breakpoint, so the weight carries the extra prominence. */
+    .report-select-row__check {
+        stroke-width: 4;
     }
 
     .report-select-row__check {
@@ -222,6 +239,16 @@ const titleCopyKey = title === undefined ? titleKey : undefined;
         width: 100%;
     }
 
+    /* The pills are grouped so space-between above pushes the date away from
+       the group as a whole. Without this wrapper the runtime's extra pills are
+       each their own flex item and get stretched across the row. */
+    .report-select-row__pills {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        min-width: 0;
+    }
+
     .report-select-row__title {
         display: block;
         width: 100%;
@@ -232,9 +259,38 @@ const titleCopyKey = title === undefined ? titleKey : undefined;
         white-space: nowrap;
     }
 
-    @media (max-width: 767px) {
+    /* Still two columns here, so the list is narrow. The row layout stays, but
+       the thumbnail gives some width back to the title and takes the card's
+       full height instead of holding its own 134:64 ratio. */
+    @media (min-width: 1024px) and (max-width: 1200px) {
         .report-select-row__image-wrap {
-            width: 6rem;
+            width: 7.5rem;
+            aspect-ratio: auto;
+            align-self: stretch;
+        }
+    }
+
+    @media (max-width: 767px) {
+        /* Only the offsets change — the card's padding is even at this width. */
+        .report-select-row__box {
+            top: calc(var(--space-3) + var(--space-2));
+            left: calc(var(--space-3) + var(--space-2));
+        }
+
+        /* Image leads, text underneath: beside the text at phone widths the
+           thumbnail left the title almost no room. */
+        .report-select-row__card {
+            flex-direction: column;
+            align-items: stretch;
+            /* Even inset once the image is the top edge — the tighter vertical
+               padding only read right when the image sat beside the text. */
+            padding: var(--space-3);
+        }
+
+        /* Full width, height following the same 134:64 ratio as the desktop
+           thumbnail, so every card in the list is the same height. */
+        .report-select-row__image-wrap {
+            width: 100%;
         }
     }
 </style>
