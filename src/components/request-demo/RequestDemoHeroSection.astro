@@ -15,14 +15,6 @@ interface Props {
 const { locale, copy } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 
-// From the HubSpot form embed snippet. Public values (they ship in the client
-// bundle), so the literals are safe fallbacks when .env isn't present — e.g. a
-// fresh clone or a CI job that hasn't had the build variables set.
-const hubspotPortalId = import.meta.env.PUBLIC_HUBSPOT_PORTAL_ID || '343673947';
-const hubspotFormGuid =
-    import.meta.env.PUBLIC_HUBSPOT_FORM_GUID || 'b315a3fd-908b-48bd-a849-56704bf78505';
-const hubspotRegion = import.meta.env.PUBLIC_HUBSPOT_REGION || 'na3';
-
 const expectItems = [
     {
         key: 'request_demo_hero_expect_item_1',
@@ -114,9 +106,6 @@ const interestOptions = [
                 aria-label={t(copy, 'request_demo_hero_form_aria_label', locale, 'Request a demo')}
                 data-submit-href={`${base}${locale}/request-demo-success/`}
                 data-error-href={`${base}${locale}/submission-error/`}
-                data-hs-portal={hubspotPortalId}
-                data-hs-form={hubspotFormGuid}
-                data-hs-region={hubspotRegion}
             >
                 {/* Honeypot: bots fill it, humans never see it. Hidden from AT too. */}
                 <div class="request-demo-hero__hp" aria-hidden="true">
@@ -561,12 +550,7 @@ const interestOptions = [
 </style>
 
 <script>
-    import {
-        HUBSPOT_INDUSTRY_VALUES,
-        HUBSPOT_LANGUAGE_VALUES,
-        hubspotTargetFrom,
-        submitHubspotForm,
-    } from '../../lib/forms/hubspot';
+    import { postJson } from '../../lib/forms/api';
 
     const form = document.querySelector<HTMLFormElement>('.request-demo-hero__form');
     const emailInput = form?.querySelector<HTMLInputElement>('input[name="email"]');
@@ -577,25 +561,6 @@ const interestOptions = [
     }
 
     const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
-
-    // Our input names -> HubSpot fields. All Contact properties. Organisation used
-    // to go to the Company object's name (0-2/company_name), but a Company field only
-    // lands if an associated company record exists -- HubSpot will not create one for
-    // a free email domain -- and it never shows on the contact itself. The contact's
-    // own `company` stores what the person typed, every time.
-    const FIELD_MAP: Array<{
-        formName: string;
-        name: string;
-        values?: Record<string, string>;
-    }> = [
-        { formName: 'firstName', name: 'firstname' },
-        { formName: 'lastName', name: 'lastname' },
-        { formName: 'email', name: 'email' },
-        { formName: 'organisation', name: 'company' },
-        { formName: 'industry', name: 'select_industry', values: HUBSPOT_INDUSTRY_VALUES },
-        { formName: 'language', name: 'language', values: HUBSPOT_LANGUAGE_VALUES },
-        { formName: 'message', name: 'message' },
-    ];
 
     form?.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -614,41 +579,24 @@ const interestOptions = [
             return;
         }
 
-        const fields = FIELD_MAP.map(({ formName, name, values }) => {
-            const raw = String(data.get(formName) ?? '').trim();
-            return { name, value: values ? (values[raw] ?? '') : raw };
-        });
-
-        // HubSpot expects multi-checkbox values as one semicolon-delimited string,
-        // using the property's internal names (which here are the full labels).
-        const INTEREST_VALUES: Record<string, string> = {
-            mtm18: 'MTM 18+',
-            junior: 'MTM Junior',
-            newcomer: 'MTM Newcomers',
-            census: 'MTM Census',
-        };
-        const interests = data
-            .getAll('interests')
-            .map((value) => INTEREST_VALUES[String(value)])
-            .filter(Boolean);
-        if (interests.length > 0) {
-            fields.push({ name: 'what_are_you_interested_in', value: interests.join(';') });
-        }
-
-        // Sent either way, so an explicit decline is recorded rather than being
-        // indistinguishable from a submission made before this field existed.
-        // HubSpot stamps the submission time, which is the consent record CASL
-        // wants -- no separate timestamp property needed.
-        fields.push({
-            name: 'newsletter_opt_in',
-            value: data.get('newsletter') ? 'true' : 'false',
-        });
-
         submitButton?.setAttribute('disabled', '');
         submitButton?.setAttribute('aria-busy', 'true');
 
         try {
-            await submitHubspotForm(hubspotTargetFrom(form), fields);
+            await postJson('/api/forms/request-demo', {
+                firstName: String(data.get('firstName') ?? '').trim(),
+                lastName: String(data.get('lastName') ?? '').trim(),
+                email: String(data.get('email') ?? '').trim(),
+                organisation: String(data.get('organisation') ?? '').trim(),
+                industry: String(data.get('industry') ?? '').trim(),
+                language: String(data.get('language') ?? '').trim(),
+                interests: data.getAll('interests').map(String),
+                message: String(data.get('message') ?? '').trim(),
+                newsletter: data.has('newsletter'),
+                website: String(data.get('companyWebsite') ?? '').trim(),
+                pageName: document.title,
+                pageUri: window.location.href,
+            });
 
             if (submitHref) window.location.href = submitHref;
         } catch (error) {
