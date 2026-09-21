@@ -41,7 +41,7 @@ const {
     data-product-id={productId}
 >
     <InsightsRuntime locale={locale} />
-    <div data-insights-product-content hidden style="display: contents">
+    <div class="product-reports-content" data-insights-product-content hidden>
         <div class="product-reports-headline heading-fly-in">
             <h2 data-copy-key="report_title">
                 {t(copy, 'report_title', locale, 'Reports')}
@@ -74,6 +74,10 @@ const {
         padding: var(--section-pad-block-lg) var(--content-margin-inline);
         background-color: var(--surface-blue);
         scroll-margin-top: var(--navbar-height);
+    }
+
+    .product-reports-content {
+        display: contents;
     }
 
     .product-reports-headline {

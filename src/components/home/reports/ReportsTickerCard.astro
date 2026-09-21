@@ -15,15 +15,6 @@ const { class: className = '', copy = {}, locale = 'en' } = Astro.props;
     <div class="reports-ticker-viewport">
         <div class="reports-ticker-track" data-insights-list></div>
     </div>
-    <button
-        type="button"
-        class="insights-ticker-pause"
-        data-ticker-pause
-        aria-pressed="false"
-        hidden
-    >
-        {locale === 'fr' ? 'Pause' : 'Pause'}
-    </button>
     <RuntimeReportTemplate locale={locale} copy={copy} kind="row" />
 </div>
 <style>
