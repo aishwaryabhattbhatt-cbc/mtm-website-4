@@ -92,7 +92,7 @@ Access a growing library of reports, infographics, and trend analyses covering m
 
 Chargement des rapports…
 
-RéessayerPause
+Réessayer
 
 [SNEAK PEEK REPORT ](https://dev.mtm-otm.ca/fr/insights/report-download/?from=%2Ffr%2F%23reports-library)[GO TO INSIGHTS](https://dev.mtm-otm.ca/fr/insights/)
 

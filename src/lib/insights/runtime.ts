@@ -86,6 +86,19 @@ function fillProducts(section: HTMLElement, root: HTMLElement, report: InsightCa
     anchor.replaceWith(fragment);
 }
 
+function sectionActionLabel(section: HTMLElement, locale: Locale, fallback: string): string {
+    switch (section.dataset.insightsKind) {
+        case 'featured':
+        case 'library':
+            return message(locale, 'Press release', 'Communiqué de presse');
+        case 'free':
+        case 'infographic':
+            return message(locale, 'Download', 'Télécharger');
+        default:
+            return fallback;
+    }
+}
+
 function fillActions(
     section: HTMLElement,
     root: HTMLElement,
@@ -111,11 +124,12 @@ function fillActions(
         const link = seed.cloneNode(true) as HTMLAnchorElement;
         link.href = href;
         link.removeAttribute('data-copy-key');
+        const actionLabel = sectionActionLabel(section, locale, action.label);
         const label = link.querySelector<HTMLElement>(
             '.btn-tertiary-label, .free-report-card__download-btn > span, .sneak-peek-report-card__download-btn > span'
         );
-        if (label) label.textContent = action.label;
-        else link.textContent = action.label;
+        if (label) label.textContent = actionLabel;
+        else link.textContent = actionLabel;
         actions.append(link);
     }
     seed.replaceWith(actions);
