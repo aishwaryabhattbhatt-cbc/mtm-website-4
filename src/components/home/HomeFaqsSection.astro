@@ -59,14 +59,6 @@ const askMtmIconPath = `${import.meta.env.BASE_URL}${icons.tool.askMtm}`;
     </Fragment>
 </FaqAccordion>
 
-<script>
-    document.querySelectorAll<HTMLElement>('.home-faqs__ask-mtm-button').forEach((trigger) => {
-        trigger.addEventListener('click', () => {
-            document.querySelector<HTMLElement>('.ask-mtm-sticky-button__btn')?.click();
-        });
-    });
-</script>
-
 <style>
     .home-faqs__footer {
         width: 100%;
