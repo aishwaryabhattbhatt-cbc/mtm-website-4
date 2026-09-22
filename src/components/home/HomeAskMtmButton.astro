@@ -26,6 +26,50 @@ const askMtmIconPath = `${base}icons/products/AskMTM-REV.svg`;
     </Button>
 </div>
 
+<script is:inline>
+    (() => {
+        const chatbotId = 'EdK2rLimZ6FDYc_PYkug6';
+
+        // Install Chatbase's command queue before loading its script so an
+        // early click can still be handled once the widget is ready.
+        if (!window.chatbase || window.chatbase('getState') !== 'initialized') {
+            window.chatbase = (...args) => {
+                window.chatbase.q = window.chatbase.q || [];
+                window.chatbase.q.push(args);
+            };
+
+            window.chatbase = new Proxy(window.chatbase, {
+                get(target, property) {
+                    if (property === 'q') return target.q;
+                    return (...args) => target(property, ...args);
+                },
+            });
+        }
+
+        const loadChatbase = () => {
+            if (document.getElementById(chatbotId)) return;
+
+            const script = document.createElement('script');
+            script.src = 'https://www.chatbase.co/embed.min.js';
+            script.id = chatbotId;
+            script.domain = 'www.chatbase.co';
+            document.body.appendChild(script);
+        };
+
+        if (document.readyState === 'complete') {
+            loadChatbase();
+        } else {
+            window.addEventListener('load', loadChatbase, { once: true });
+        }
+
+        document
+            .querySelectorAll('.ask-mtm-sticky-button__btn, .home-faqs__ask-mtm-button')
+            .forEach((trigger) => {
+                trigger.addEventListener('click', () => window.chatbase.open());
+            });
+    })();
+</script>
+
 <style>
     .ask-mtm-sticky-button {
         position: fixed;
@@ -83,6 +127,13 @@ const askMtmIconPath = `${base}icons/products/AskMTM-REV.svg`;
         flex-shrink: 0;
         width: var(--icon-xl);
         height: var(--icon-xl);
+    }
+
+    /* The site supplies its own Ask MTM trigger, so suppress Chatbase's
+       injected launcher while leaving the chat window available to open(). */
+    :global(#chatbase-bubble-button),
+    :global(#chatbase-bubble-label) {
+        display: none !important;
     }
 
     @media (max-width: 767px) {
