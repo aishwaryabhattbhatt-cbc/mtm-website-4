@@ -2,17 +2,17 @@
   "hero_title": {
     "key": "hero_title",
     "en": "MTM 18+",
-    "fr": ""
+    "fr": "OTM 18+"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "MTM 18+ is the largest and longest running study on media and technology among the adult Canadian population. By taking an exhaustive approach, it provides key insights to understand your audiences or users.",
-    "fr": ""
+    "fr": "L’OTM 18+ est la plus vaste et la plus longue étude sur les médias et les technologies menée auprès de la population adulte canadienne. Son approche exhaustive vous permet d’obtenir des renseignements essentiels pour comprendre votre auditoire ou vos utilisateurs."
   },
   "hero_cta": {
     "key": "hero_cta",
     "en": "Request a Demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "Features": {
     "key": "Features",
@@ -22,341 +22,341 @@
   "feature_1_title": {
     "key": "feature_1_title",
     "en": "Decades Of Data",
-    "fr": ""
+    "fr": "Des décennies de données"
   },
   "feature_1_description": {
     "key": "feature_1_description",
     "en": "MTM 18+ has been gathering data since 2001 on large array of topics.",
-    "fr": ""
+    "fr": "Depuis 2001, l’OTM 18+ recueille des données sur un vaste éventail de sujets."
   },
   "feature_2_title": {
     "key": "feature_2_title",
     "en": "Large, Robust Sampling",
-    "fr": ""
+    "fr": "Un échantillonnage vaste et pertinent"
   },
   "feature_2_description": {
     "key": "feature_2_description",
     "en": "We've surveyed more than 300,000 adult Canadians to date and reach an additional 12,000 or more annually.",
-    "fr": ""
+    "fr": "Jusqu’à maintenant, nous avons sondé plus de 300 000 adultes au Canada, et nous en ajoutons 12 000 chaque année."
   },
   "feature_3_title": {
     "key": "feature_3_title",
     "en": "Exhaustive Value For Clients",
-    "fr": ""
+    "fr": "Des données complètes pour notre clientèle"
   },
   "feature_3_description": {
     "key": "feature_3_description",
     "en": "Clients gain access to a full suite of more than 45 reports annually and thousands of variables across our suite of tools.",
-    "fr": ""
+    "fr": "Notre clientèle a accès à plus de 45 rapports variés chaque année ainsi qu’à des milliers de variables grâce à notre suite d’outils."
   },
   "feature_4_title": {
     "key": "feature_4_title",
     "en": "A Fully Bilingual Product",
-    "fr": ""
+    "fr": "Un produit entièrement bilingue"
   },
   "feature_4_description": {
     "key": "feature_4_description",
     "en": "All content available through MTM 18+ and the rest of the MTM product suite is offered in English and French.",
-    "fr": ""
+    "fr": "Tout le contenu de l’OTM 18+ et des autres produits de la suite OTM est offert en français et en anglais."
   },
   "feature_5_title": {
     "key": "feature_5_title",
     "en": "Data On Canadians From Coast To Coast To Coast",
-    "fr": ""
+    "fr": "Des données sur les Canadiens de partout au pays"
   },
   "feature_5_description": {
     "key": "feature_5_description",
     "en": "The MTM offers data on every region and province, including the North.",
-    "fr": ""
+    "fr": "L’OTM offre des données sur toutes les régions et toutes les provinces, dont le Nord canadien."
   },
   "tools_title": {
     "key": "tools_title",
     "en": "Tools",
-    "fr": ""
+    "fr": "Outils"
   },
   "tools_description": {
     "key": "tools_description",
     "en": "Explore our suite of tools and leverage data insights for confident decision-making on Canadian adults.",
-    "fr": ""
+    "fr": "Explorez notre suite d’outils et tirez parti des données et des renseignements pour prendre des décisions éclairées en ce qui a trait aux adultes canadiens."
   },
   "dat_title": {
     "key": "dat_title",
     "en": "Data Analysis Tool",
-    "fr": ""
+    "fr": "Outil d’analyse de données"
   },
   "dat_description": {
     "key": "dat_description",
     "en": "The Data Analysis Tool (DAT) offers clients full access to our robust data set on Canadian adults. Tailor your analysis your way, filter the results, and create visually stunning outputs.",
-    "fr": ""
+    "fr": "L’outil d’analyse de données (OAD) offre à notre clientèle un accès complet à notre ensemble de données détaillées sur les adultes canadiens. Vous pouvez personnaliser vos analyses, filtrer les résultats et les présenter dans un format visuellement attrayant."
   },
   "dat_cta": {
     "key": "dat_cta",
     "en": "Go to Data Analysis Tool",
-    "fr": ""
+    "fr": "Accéder à l’outil d’analyse de données"
   },
   "dat_callout": {
     "key": "dat_callout",
-    "en": "Want to know Canadians are using connected TV sets?\nAll you need to know is a few clicks away with the DAT.",
-    "fr": ""
+    "en": "Want to know how many Canadians are using connected TV sets?\nAll you need to know is a few clicks away with the DAT.",
+    "fr": "Vous voulez savoir combien de Canadiens utilisent des téléviseurs connectés? L’OAD répondra à toutes vos questions en quelques clics."
   },
   "-": {
     "key": "-",
     "en": "Key Insight\nSamsung is the most common TV set brand among Canadians.",
-    "fr": ""
+    "fr": "Observation clé\n Samsung est la marque de téléviseurs la plus répandue chez les Canadiens."
   },
   "trending_title": {
     "key": "trending_title",
     "en": "Trending Tool",
-    "fr": ""
+    "fr": "Outil d’évaluation des tendances"
   },
   "trending_description": {
     "key": "trending_description",
     "en": "The Trending Tool lets clients see how technology and media adoption has shifted since 2010. Chart your path forward with 15+ years of data and demographic data filters.",
-    "fr": ""
+    "fr": "L’outil d’évaluation des tendances informe notre clientèle sur l’évolution de l’adoption des technologies et des médias depuis 2010. Utilisez les données accumulées pendant plus de 15 ans couplées à des filtres démographiques pour tracer votre voie vers l’avenir."
   },
   "trending_cta": {
     "key": "trending_cta",
     "en": "Go to Trending Tool",
-    "fr": ""
+    "fr": "Accéder à l’outil d’évaluation des tendances"
   },
   "trending_callout": {
     "key": "trending_callout",
     "en": "How has TikTok grown? Past month usage has increased from 3% in Fall 2019 to 23% in Fall 2025.",
-    "fr": ""
+    "fr": "Quelle est la croissance affichée par TikTok? L’utilisation de la plateforme au cours du mois précédent est passée de 3 % à l’automne 2019 à 23 % à l’automne 2025."
   },
   "forecasting_title": {
     "key": "forecasting_title",
     "en": "Forecasting Tool",
-    "fr": ""
+    "fr": "Outil de prévisions"
   },
   "forecasting_description": {
     "key": "forecasting_description",
     "en": "The Forecasting Tool is for clients with an eye on the past and the future. Easy to read charts and insights from our experts will help you stay ahead of your competition.",
-    "fr": ""
+    "fr": "L’outil de prévisions est destiné aux clients qui se préoccupent autant du passé que de l’avenir. Des tableaux faciles à lire accompagnés d’observations de nos experts vous aideront à garder une longueur d’avance sur la concurrence."
   },
   "forecasting_cta": {
     "key": "forecasting_cta",
     "en": "Go to Forecasting Tool",
-    "fr": ""
+    "fr": "Accéder à l’outil de prévisions"
   },
   "forecasting_callout": {
     "key": "forecasting_callout",
     "en": "Is Amazon Prime Video on-track to surpass Netflix?\nFind out this and more with acccess to the Forecasting tool.",
-    "fr": ""
+    "fr": "Amazon Prime Video est-elle en voie de surpasser Netflix?\n Découvrez si c’est le cas et apprenez-en plus encore grâce à l’outil de prévisions."
   },
   "report_title": {
     "key": "report_title",
     "en": "Adoption Report",
-    "fr": ""
+    "fr": "Rapport sur l’adoption"
   },
   "report_description": {
     "key": "report_description",
     "en": "Our flagship report covering the very latest data on of key media and technology adoption among adult Canadians.",
-    "fr": ""
+    "fr": "Notre rapport phare présente les toutes dernières données sur l’adoption des médias et des technologies clés par les Canadiens adultes."
   },
   "graph_name": {
     "key": "graph_name",
     "en": "Top SVOD Platforms - Past Month Usage",
-    "fr": ""
+    "fr": "Plateformes de VSDA les plus populaires – Utilisation au cours du mois précédent"
   },
   "graph_detail": {
     "key": "graph_detail",
     "en": "Anglophones 18+",
-    "fr": ""
+    "fr": "Anglophones 18+"
   },
   "stat_1_value": {
     "key": "stat_1_value",
     "en": "61%",
-    "fr": ""
+    "fr": "61 %"
   },
   "stat_1_description": {
     "key": "stat_1_description",
     "en": "of households subscribe to Netflix, the platform to popularize SVOD services.",
-    "fr": ""
+    "fr": "des ménages sont abonnés à Netflix, la plateforme qui a popularisé les services de VSDA."
   },
   "stat_2_value": {
     "key": "stat_2_value",
     "en": "56%",
-    "fr": ""
+    "fr": "56 %"
   },
   "stat_2_description": {
     "key": "stat_2_description",
     "en": "of households subscribe to Amazon Prime Video, the current runner up in the SVOD space.",
-    "fr": ""
+    "fr": "des ménages sont abonnés à Amazon Prime Video, la plateforme de VSDA qui se classe actuellement au deuxième rang."
   },
   "report_action_text": {
     "key": "report_action_text",
     "en": "Explore our full library of reports or download a free sneak peek.",
-    "fr": ""
+    "fr": "Explorez toute notre bibliothèque de rapports ou téléchargez gratuitement un aperçu des grandes tendances."
   },
   "report_action_cta_1": {
     "key": "report_action_cta_1",
     "en": "GO TO INSIGHTS",
-    "fr": ""
+    "fr": "ACCÉDER AUX OBSERVATIONS"
   },
   "report_action_cta_2": {
     "key": "report_action_cta_2",
     "en": "GET SAMPLE REPORT",
-    "fr": ""
+    "fr": "OBTENIR UN EXEMPLE DE RAPPORT"
   },
   "methodology_title": {
     "key": "methodology_title",
     "en": "Research Methodology",
-    "fr": ""
+    "fr": "Méthodologie de recherche"
   },
   "methodology_description": {
     "key": "methodology_description",
-    "en": "MTM 18+ is based on a nationally representative telephone survey with a follow up online compontent, reaching Canadian adults across all provinces and territories.",
-    "fr": ""
+    "en": "MTM 18+ is based on a nationally representative telephone survey with a follow up online component, reaching Canadian adults across all provinces and territories.",
+    "fr": "L’OTM 18+ est fondé sur un sondage téléphonique représentatif à l’échelle nationale et un suivi en ligne qui permettent d’atteindre des adultes canadiens de toutes les provinces et de tous les territoires."
   },
   "sample_title": {
     "key": "sample_title",
     "en": "Sample Coverage",
-    "fr": ""
+    "fr": "Taille de l’échantillon"
   },
   "sample_stat_1": {
     "key": "sample_stat_1",
     "en": "12,000+",
-    "fr": ""
+    "fr": "Plus de 12 000"
   },
   "sample_stat_1_label": {
     "key": "sample_stat_1_label",
     "en": "Canadian adults surveyed annually",
-    "fr": ""
+    "fr": "adultes canadiens sondés chaque année"
   },
   "sample_stat_1_description": {
     "key": "sample_stat_1_description",
     "en": "The largest on-going survey of its kind.",
-    "fr": ""
+    "fr": "Il s’agit actuellement du plus important sondage en son genre."
   },
   "sample_stat_2": {
     "key": "sample_stat_2",
     "en": "300,000+",
-    "fr": ""
+    "fr": "Plus de 300 000"
   },
   "sample_stat_2_label": {
     "key": "sample_stat_2_label",
     "en": "Canadian adults surveyed to date",
-    "fr": ""
+    "fr": "adultes canadiens sondés à ce jour"
   },
   "sample_stat_2_description": {
     "key": "sample_stat_2_description",
     "en": "Decades of results available.",
-    "fr": ""
+    "fr": "Des décennies de résultats disponibles."
   },
   "sample_stat_3": {
     "key": "sample_stat_3",
     "en": "6,000+/6,000+",
-    "fr": ""
+    "fr": "Plus de 6 000"
   },
   "sample_stat_3_label": {
     "key": "sample_stat_3_label",
     "en": "Anglophone/Francophone respondents",
-    "fr": ""
+    "fr": "répondants anglophones et francophones, respectivement"
   },
   "sample_stat_3_description": {
     "key": "sample_stat_3_description",
     "en": "Large, viable samples for either Official Canadian language market.",
-    "fr": ""
+    "fr": "De vastes échantillons exploitables pour les marchés des deux langues officielles du Canada."
   },
   "survey_title": {
     "key": "survey_title",
     "en": "Survey Design",
-    "fr": ""
+    "fr": "Conception du sondage"
   },
   "survey_stat_1": {
     "key": "survey_stat_1",
     "en": "25+",
-    "fr": ""
+    "fr": "Plus de 25 ans"
   },
   "survey_stat_1_label": {
     "key": "survey_stat_1_label",
     "en": "Years of data collection",
-    "fr": ""
+    "fr": "de données accumulées"
   },
   "survey_stat_1_description": {
     "key": "survey_stat_1_description",
     "en": "Industry standard level tracking",
-    "fr": ""
+    "fr": "Suivi conforme aux normes de l’industrie."
   },
   "survey_stat_2": {
     "key": "survey_stat_2",
     "en": "22%",
-    "fr": ""
+    "fr": "22 %"
   },
   "survey_stat_2_label": {
     "key": "survey_stat_2_label",
     "en": "Response rate",
-    "fr": ""
+    "fr": "de réponse"
   },
   "survey_stat_2_description": {
     "key": "survey_stat_2_description",
     "en": "Exceeds industry standards",
-    "fr": ""
+    "fr": "Un taux de réponse supérieur aux normes de l’industrie."
   },
   "survey_stat_3": {
     "key": "survey_stat_3",
     "en": "Two-Part",
-    "fr": ""
+    "fr": "Deux volets"
   },
   "survey_stat_3_label": {
     "key": "survey_stat_3_label",
     "en": "Survey structure",
-    "fr": ""
+    "fr": "de sondage"
   },
   "survey_stat_3_description": {
     "key": "survey_stat_3_description",
     "en": "Respondents complete a phone survey and an additional follow up online survey, with questions optomized for each medium",
-    "fr": ""
+    "fr": "Les personnes sondées répondent à un sondage téléphonique et remplissent un sondage de suivi en ligne, avec des questions optimisées pour chaque mode de sondage."
   },
   "data_collected_title": {
     "key": "data_collected_title",
     "en": "Sample Composition",
-    "fr": ""
+    "fr": "Composition de l’échantillon"
   },
   "method_1": {
     "key": "method_1",
     "en": "Landline Proportion",
-    "fr": ""
+    "fr": "Proportion de lignes terrestres"
   },
   "method_1_percentage": {
     "key": "method_1_percentage",
     "en": "57%",
-    "fr": ""
+    "fr": "57 %"
   },
   "method_2": {
     "key": "method_2",
     "en": "Cellphone Only Household (CPO) Proportion",
-    "fr": ""
+    "fr": "Proportion de ménages ayant uniquement des cellulaires"
   },
   "method_2_percentage": {
     "key": "method_2_percentage",
     "en": "43%",
-    "fr": ""
+    "fr": "43 %"
   },
   "data_collected_description": {
     "key": "data_collected_description",
     "en": "Sample composition is weighted to reflect the national distribution of Canadian households.",
-    "fr": ""
+    "fr": "La composition de l’échantillon est pondérée de façon à refléter la répartition des ménages canadiens à l’échelle nationale."
   },
   "provider_title": {
     "key": "provider_title",
     "en": "Research Provider",
-    "fr": ""
+    "fr": "Fournisseur"
   },
   "provider_label": {
     "key": "provider_label",
     "en": "Forum Research",
-    "fr": ""
+    "fr": "Forum Research"
   },
   "provider_description": {
     "key": "provider_description",
     "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Forum Research conducts all of the French and English research for the MTM 18+.\n\nEstablished in 1993, Forum Research Inc. is a Canadian market research and technology company, with offices in Toronto, Montreal, and Saskatoon. With over 30 years of experience, they combine industry talent, cutting-edge technology, and behavioral science to provide in-depth insights.",
-    "fr": ""
+    "fr": "L’OTM et tous ses sondages sont des produits du service Recherche et Analyse de CBC/Radio-Canada. Forum Research effectue toutes les recherches liées à l’OTM 18+ en français et en anglais. \n \n La société Forum Research Inc., fondée en 1993, est une entreprise canadienne d’études de marché et de technologie qui a des bureaux à Toronto, Montréal et Saskatoon. Forte de plus de 30 ans d’expérience, elle combine de talentueux spécialistes de l’industrie, des technologies de pointe et les sciences du comportement pour fournir des renseignements détaillés."
   },
   "explore_title": {
     "key": "explore_title",
     "en": "Explore More Data Products",
-    "fr": ""
+    "fr": "Découvrir d’autres produits de données"
   }
 }

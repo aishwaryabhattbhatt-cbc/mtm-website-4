@@ -2,387 +2,387 @@
   "hero_title": {
     "key": "hero_title",
     "en": "The Standard for Canadian Media & Technology Insights",
-    "fr": ""
+    "fr": "LA source de précieuses données sur les médias et les technologies au Canada"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "The Media Technology Monitor is Canada's national dataset on media, technology, and content consumption — used by broadcasters, advertisers, and government to support funding, policy, and strategic decisions with evidence, not assumptions.",
-    "fr": ""
+    "fr": "L’Observateur des technologies médias est l’ensemble de données nationales du Canada sur la consommation de médias, de technologies et de contenu. Les radiodiffuseurs, les annonceurs et le gouvernement l’utilisent pour prendre des décisions fondées sur des données plutôt que des hypothèses en matière de financement, de politiques et de décisions stratégiques."
   },
   "hero_cta_1": {
     "key": "hero_cta_1",
     "en": "Request a Demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "hero_cta_2": {
     "key": "hero_cta_2",
     "en": "Explore More",
-    "fr": ""
+    "fr": "Explorer"
   },
   "access_title": {
     "key": "access_title",
     "en": "Access Trusted Research On",
-    "fr": ""
+    "fr": "Accédez à des recherches fiables sur :"
   },
   "access_item_1_title": {
     "key": "access_item_1_title",
     "en": "Technology Trends",
-    "fr": ""
+    "fr": "Les tendances technologiques"
   },
   "access_item_1_description": {
     "key": "access_item_1_description",
     "en": "Track rapid shifts across streaming platforms, AI advancements, connected devices, and emerging technologies. Identify where consumer demand is heading next.",
-    "fr": ""
+    "fr": "Suivez les changements rapides relativement aux plateformes de diffusion en continu, aux progrès de l’intelligence artificielle, aux appareils connectés et aux technologies émergentes. Prévoyez où se concentrera la demande des consommateurs à l’avenir."
   },
   "access_item_2_title": {
     "key": "access_item_2_title",
     "en": "Media Behaviour",
-    "fr": ""
+    "fr": "Les comportements de consommation des médias"
   },
   "access_item_2_description": {
     "key": "access_item_2_description",
     "en": "Understand attention, viewing habits, engagement, and platform usage across audiences and channels. See exactly where and how Canadians are spending their time.",
-    "fr": ""
+    "fr": "Informez-vous sur ce qui attire l’attention, sur les habitudes de visionnement, sur l’engagement et sur l’utilisation des plateformes, pour tous les publics et tous les canaux. Voyez exactement où et comment les Canadiens passent leur temps."
   },
   "access_item_3_title": {
     "key": "access_item_3_title",
     "en": "5,000+ Variables",
-    "fr": ""
+    "fr": "Plus de 5 000 variables"
   },
   "access_item_3_description": {
     "key": "access_item_3_description",
     "en": "Every insight above is backed by variables across demographics, attitudes, and intent, across Canada's most comprehensive media and technology dataset.",
-    "fr": ""
+    "fr": "Chacun des renseignements ci-dessus est étayé par des variables sur les groupes démographiques, leurs comportements et leurs intentions, tirées de l’ensemble de données le plus complet du Canada sur les médias et les technologies."
   },
   "package_title": {
     "key": "package_title",
     "en": "The MTM Suite",
-    "fr": ""
+    "fr": "La suite OTM"
   },
   "package_description": {
     "key": "package_description",
     "en": "The MTM Suite brings together four powerful data products, in-depth library reports, and interactive analytics tools—all in one integrated platform",
-    "fr": ""
+    "fr": "La suite OTM réunit en une plateforme intégrée quatre puissants produits de données, des bibliothèques de rapports détaillés et des outils d’analyse interactifs."
   },
   "package_1_eyebrow": {
     "key": "package_1_eyebrow",
     "en": "Data Products",
-    "fr": ""
+    "fr": "Produits de données"
   },
   "package_1_title": {
     "key": "package_1_title",
     "en": "41 Million Canadians Mapped",
-    "fr": ""
+    "fr": "41 millions de Canadiens représentés"
   },
   "package_1_description": {
     "key": "package_1_description",
     "en": "Explore four research products, each built for a different audience.",
-    "fr": ""
+    "fr": "Examinez quatre produits de recherche, dont chacun a été conçu pour un public différent."
   },
   "product_1_title": {
     "key": "product_1_title",
     "en": "MTM 18+",
-    "fr": ""
+    "fr": "OTM 18+"
   },
   "product_1_description": {
     "key": "product_1_description",
     "en": "Media and technology data for Canadians aged 18 and older.",
-    "fr": ""
+    "fr": "Données sur la consommation des médias et des technologies chez les Canadiens de 18 ans et plus."
   },
   "product_2_title": {
     "key": "product_2_title",
     "en": "MTM Junior",
-    "fr": ""
+    "fr": "OTM Junior"
   },
   "product_2_description": {
     "key": "product_2_description",
     "en": "Media and technology behaviour insights for Canadians aged 2–17.",
-    "fr": ""
+    "fr": "Données sur les comportements des Canadiens de 2 à 17 ans à l’égard des médias et des technologies."
   },
   "product_3_title": {
     "key": "product_3_title",
     "en": "MTM Newcomers",
-    "fr": ""
+    "fr": "OTM Nouveaux arrivants"
   },
   "product_3_description": {
     "key": "product_3_description",
     "en": "Media and technology behaviour insights for newcomers who have arrived to Canada in the past 5 years.",
-    "fr": ""
+    "fr": "Données sur les comportements de consommation des médias et des technologies des personnes arrivées au Canada au cours des cinq dernières années."
   },
   "product_4_title": {
     "key": "product_4_title",
     "en": "MTM Census Tool",
-    "fr": ""
+    "fr": "Outil de recensement de l’OTM"
   },
   "product_4_description": {
     "key": "product_4_description",
     "en": "Detailed demographic data for sharper targeting and planning.",
-    "fr": ""
+    "fr": "Données démographiques détaillées pour permettre une planification et un ciblage plus précis."
   },
   "mtm_suite_cta": {
     "key": "mtm_suite_cta",
     "en": "EXPLORE THIS PRODUCT",
-    "fr": ""
+    "fr": "DÉCOUVRIR CE PRODUIT"
   },
   "package_2_eyebrow": {
     "key": "package_2_eyebrow",
     "en": "Reports Library",
-    "fr": ""
+    "fr": "Bibliothèque de rapports"
   },
   "package_2_title": {
     "key": "package_2_title",
     "en": "70 + Reports Published Annually",
-    "fr": ""
+    "fr": "Plus de 70 rapports publiés chaque année"
   },
   "package_2_description": {
     "key": "package_2_description",
     "en": "Access a growing library of reports, infographics, and trend analyses covering media, technology, platforms, behaviours, and demographic groups across Canada — available in both official languages. Explore the latest findings or download a sample report to see the depth of MTM insights.",
-    "fr": ""
+    "fr": "Accédez à un nombre toujours croissant de rapports, d’infographies et d’analyses des tendances portant sur les médias, les technologies, les plateformes, les comportements et les groupes démographiques à l’échelle du Canada, et ce, dans les deux langues officielles. Examinez les dernières conclusions des rapports ou téléchargez-en un exemplaire pour constater la profondeur des analyses de l’OTM."
   },
   "reports_cta_1": {
     "key": "reports_cta_1",
     "en": "Learn More About Reports",
-    "fr": ""
+    "fr": "En savoir plus sur les rapports"
   },
   "reports_cta_2": {
     "key": "reports_cta_2",
     "en": "Download a Sample Report",
-    "fr": ""
+    "fr": "Télécharger un exemple de rapport"
   },
   "package_2_cta_2": {
     "key": "package_2_cta_2",
     "en": "SNEAK PEEK REPORT",
-    "fr": ""
+    "fr": "APERÇU DES GRANDES TENDANCES"
   },
   "package_2_cta_1": {
     "key": "package_2_cta_1",
     "en": "GO TO INSIGHTS",
-    "fr": ""
+    "fr": "ACCÉDER AUX OBSERVATIONS"
   },
   "package_3_eyebrow": {
     "key": "package_3_eyebrow",
     "en": "Tool Suite",
-    "fr": ""
+    "fr": "Suite d’outils"
   },
   "package_3_title": {
     "key": "package_3_title",
     "en": "Your Data, Your Way.",
-    "fr": ""
+    "fr": "Vos données, à votre façon."
   },
   "package_3_description": {
     "key": "package_3_description",
     "en": "Build custom views, apply advanced filters, and explore trends dynamically with MTM’s suite of interactive data tools.",
-    "fr": ""
+    "fr": "Créez des affichages personnalisés, utilisez des filtres avancés et examinez les tendances de façon dynamique grâce à la suite d’outils de données interactifs de l’OTM."
   },
   "tools_item_1_title": {
     "key": "tools_item_1_title",
     "en": "Data Analysis Tool",
-    "fr": ""
+    "fr": "Outil d’analyse de données"
   },
   "tools_item_1_tags": {
     "key": "tools_item_1_tags",
     "en": "MTM 18+, MTM Junior, MTM Newcomers",
-    "fr": ""
+    "fr": "OTM 18+, OTM Junior, OTM Nouveaux arrivants"
   },
   "tools_item_2_title": {
     "key": "tools_item_2_title",
     "en": "Trending Tool",
-    "fr": ""
+    "fr": "Outil d’évaluation des tendances"
   },
   "tools_item_2_tags": {
     "key": "tools_item_2_tags",
     "en": "MTM 18+, MTM Junior",
-    "fr": ""
+    "fr": "OTM 18+, OTM Junior"
   },
   "tools_item_3_title": {
     "key": "tools_item_3_title",
     "en": "Forecasting Tool",
-    "fr": ""
+    "fr": "Outil de prévisions"
   },
   "tools_item_3_tags": {
     "key": "tools_item_3_tags",
     "en": "MTM 18+",
-    "fr": ""
+    "fr": "OTM 18+"
   },
   "tools_item_4_title": {
     "key": "tools_item_4_title",
     "en": "MTM Census Tool",
-    "fr": ""
+    "fr": "Outil de recensement de l’OTM"
   },
   "solutions_title": {
     "key": "solutions_title",
     "en": "Solutions for Every Decision-Maker",
-    "fr": ""
+    "fr": "Des solutions pour tous les décideurs"
   },
   "solutions_item_1": {
     "key": "solutions_item_1",
     "en": "Industry",
-    "fr": ""
+    "fr": "Industrie"
   },
   "solutions_item_2": {
     "key": "solutions_item_2",
     "en": "Media and Broadcasting",
-    "fr": ""
+    "fr": "Médias et radiodiffusion"
   },
   "solutions_item_3": {
     "key": "solutions_item_3",
     "en": "Advertising and Marketing",
-    "fr": ""
+    "fr": "Publicité et marketing"
   },
   "solutions_item_4": {
     "key": "solutions_item_4",
     "en": "Education and Research",
-    "fr": ""
+    "fr": "Éducation et recherche"
   },
   "solutions_item_5": {
     "key": "solutions_item_5",
     "en": "Government and NGOs",
-    "fr": ""
+    "fr": "Gouvernement et ONG"
   },
   "solutions_cta": {
     "key": "solutions_cta",
     "en": "GO TO SOLUTIONS",
-    "fr": ""
+    "fr": "ACCÉDER AUX SOLUTIONS"
   },
   "faq_section_title": {
     "key": "faq_section_title",
     "en": "Frequently Asked Questions",
-    "fr": ""
+    "fr": "Foire aux questions"
   },
   "faq_1_question": {
     "key": "faq_1_question",
     "en": "When is data released for MTM 18+, MTM Jr., MTM Newcomers, and the MTM Census Tool?",
-    "fr": ""
+    "fr": "Quand les données de l’OTM 18+, de l’OTM Junior, de l’OTM Nouveaux arrivants et de l’outil de recensement de l’OTM sont-elles publiées?"
   },
   "faq_1_answer": {
     "key": "faq_1_answer",
     "en": "Release schedules vary by product:\n\nMTM 18+: Releases twice a year, with Fall data available in February and Spring data available in July.\n\nMTM Junior: Releases annually in May.\n\nMTM Newcomers: Releases annually in October or November.\n\nMTM Census Tool: Updated with new Statistics Canada Census data following each national census. The next update, based on the 2026 Census, is expected in Spring/Summer 2027.",
-    "fr": ""
+    "fr": "Le calendrier de lancement diffère selon les produits :\n \n OTM 18+ : Les données sont publiées deux fois par année. Celles de l’automne sont disponibles en février et celles du printemps, en juillet.\n \n OTM Junior : Les données sont publiées chaque année en mai.\n \n OTM Nouveaux arrivants : Les données sont publiées chaque année en octobre ou en novembre.\n \n Outil de recensement de l’OTM : Les données sont mises à jour après chaque recensement national de Statistique Canada. La prochaine mise à jour, en fonction du recensement de 2026, devrait avoir lieu au printemps ou à l’été 2027."
   },
   "faq_2_question": {
     "key": "faq_2_question",
     "en": "How much does it cost for an MTM subscription?",
-    "fr": ""
+    "fr": "Combien coûte un abonnement à l’OTM?"
   },
   "faq_2_answer": {
     "key": "faq_2_answer",
     "en": "Costs will vary based on the size of your organization as well as which MTM products you opt in for. We offer discounts for those who subscribe to multiple MTM products. Contact us today for a quote and more details.",
-    "fr": ""
+    "fr": "Le coût diffère en fonction de la taille de l’organisation et des produits de l’OTM choisis. Nous offrons des rabais à ceux qui s’abonnent à plusieurs produits. Pour connaître nos tarifs et obtenir d’autres précisions, communiquez avec nous dès maintenant."
   },
   "faq_3_question": {
     "key": "faq_3_question",
     "en": "How many accounts/seats does an MTM subscription come with?",
-    "fr": ""
+    "fr": "Combien de comptes/places un abonnement à l’OTM comprend-il?"
   },
   "faq_3_answer": {
     "key": "faq_3_answer",
     "en": "We offer an unlimited amount of seats for subscribers and include a self-sign up page for users.",
-    "fr": ""
+    "fr": "Nous offrons un nombre illimité de places aux abonnés, et l’abonnement comprend une page d’auto-inscription pour les utilisateurs."
   },
   "faq_4_question": {
     "key": "faq_4_question",
     "en": "Can I buy an individual report?",
-    "fr": ""
+    "fr": "Puis-je acheter un seul rapport?"
   },
   "faq_4_answer": {
     "key": "faq_4_answer",
     "en": "A subscription to an MTM product includes full access to its suite of reports and web-based tools. Reports are not available for individual purchase.",
-    "fr": ""
+    "fr": "L’abonnement à un produit de l’OTM comprend un accès complet à sa suite de rapports et d’outils en ligne. Les rapports ne peuvent pas être achetés individuellement."
   },
   "faq_ask_mtm_label": {
     "key": "faq_ask_mtm_label",
     "en": "Ask MTM",
-    "fr": ""
+    "fr": "AlloOTM"
   },
   "faq_contact_button": {
     "key": "faq_contact_button",
     "en": "Contact us",
-    "fr": ""
+    "fr": "Nous joindre"
   },
   "faq_footer_text_after": {
     "key": "faq_footer_text_after",
     "en": "or",
-    "fr": ""
+    "fr": "ou"
   },
   "faq_footer_text_before": {
     "key": "faq_footer_text_before",
     "en": "Got a question not listed here? Speak to our chatbot",
-    "fr": ""
+    "fr": "Vous avez une question qui ne figure pas ici? Parlez-en à notre agent conversationnel."
   },
   "cta_subtitle": {
     "key": "cta_subtitle",
     "en": "Ready to get started?",
-    "fr": ""
+    "fr": "Ça vous intéresse?"
   },
   "cta_title": {
     "key": "cta_title",
     "en": "Discover how MTM can help your organization make smarter, data-driven decisions.",
-    "fr": ""
+    "fr": "Découvrez comment l’OTM peut aider votre organisation à prendre des décisions plus éclairées et fondées sur des données."
   },
   "cta_button": {
     "key": "cta_button",
     "en": "Request a Demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "footer_cta_email_label": {
     "key": "footer_cta_email_label",
     "en": "Email",
-    "fr": ""
+    "fr": "Courriel"
   },
   "footer_cta_email_placeholder": {
     "key": "footer_cta_email_placeholder",
     "en": "Enter your email",
-    "fr": ""
+    "fr": "Entrez votre adresse courriel"
   },
   "form_email_error_message": {
     "key": "form_email_error_message",
     "en": "Please enter a valid email address.",
-    "fr": ""
+    "fr": "Veuillez entrer une adresse courriel valide."
   },
   "form_password_show_label": {
     "key": "form_password_show_label",
     "en": "Show password",
-    "fr": ""
+    "fr": "Afficher le mot de passe"
   },
   "form_password_hide_label": {
     "key": "form_password_hide_label",
     "en": "Hide password",
-    "fr": ""
+    "fr": "Masquer le mot de passe"
   },
   "newsletter_title": {
     "key": "newsletter_title",
     "en": "Subscribe to Our Newsletter",
-    "fr": ""
+    "fr": "Abonnez-vous à notre infolettre"
   },
   "newsletter_description": {
     "key": "newsletter_description",
     "en": "Stay informed with the latest Canadian media and technology trends, new reports, research releases, and industry insights delivered directly to your inbox.",
-    "fr": ""
+    "fr": "Abonnez-vous à notre infolettre pour recevoir des nouvelles sur les tendances en matière de médias et de technologies au Canada, les rapports publiés, les nouvelles recherches et les analyses de l’industrie, directement dans votre boîte de réception."
   },
   "newsletter_email_label": {
     "key": "newsletter_email_label",
     "en": "Email",
-    "fr": ""
+    "fr": "Courriel"
   },
   "newsletter_email_placeholder": {
     "key": "newsletter_email_placeholder",
     "en": "Enter your email",
-    "fr": ""
+    "fr": "Entrez votre adresse courriel"
   },
   "newsletter_industry_placeholder": {
     "key": "newsletter_industry_placeholder",
     "en": "Select your industry",
-    "fr": ""
+    "fr": "Sélectionnez votre secteur"
   },
   "newsletter_industry_other": {
     "key": "newsletter_industry_other",
     "en": "Other",
-    "fr": ""
+    "fr": "Autre"
   },
   "newsletter_submit": {
     "key": "newsletter_submit",
     "en": "Submit",
-    "fr": ""
+    "fr": "Soumettre"
   },
   "newsletter_industry_label": {
     "key": "newsletter_industry_label",
@@ -447,57 +447,57 @@
   "nav_products_label": {
     "key": "nav_products_label",
     "en": "PRODUCTS",
-    "fr": ""
+    "fr": "PRODUITS"
   },
   "nav_products_main_label": {
     "key": "nav_products_main_label",
     "en": "Analytic Products",
-    "fr": ""
+    "fr": "Produits d’analyse"
   },
   "nav_products_side_label": {
     "key": "nav_products_side_label",
     "en": "Census Product",
-    "fr": ""
+    "fr": "Produit de recensement"
   },
   "nav_products_item_1_title": {
     "key": "nav_products_item_1_title",
     "en": "MTM 18+",
-    "fr": ""
+    "fr": "OTM 18+"
   },
   "nav_products_item_1_description": {
     "key": "nav_products_item_1_description",
     "en": "Media and technology data for Canadians aged 18 and older.",
-    "fr": ""
+    "fr": "Données sur la consommation des médias et des technologies chez les Canadiens de 18 ans et plus."
   },
   "nav_products_item_2_title": {
     "key": "nav_products_item_2_title",
     "en": "MTM Junior",
-    "fr": ""
+    "fr": "OTM Junior"
   },
   "nav_products_item_2_description": {
     "key": "nav_products_item_2_description",
     "en": "Media and technology behaviour insights for ages 2–17.",
-    "fr": ""
+    "fr": "Données sur les comportements des Canadiens de 2 à 17 ans à l’égard des médias et des technologies."
   },
   "nav_products_item_3_title": {
     "key": "nav_products_item_3_title",
     "en": "MTM Newcomers",
-    "fr": ""
+    "fr": "OTM Nouveaux arrivants"
   },
   "nav_products_item_3_description": {
     "key": "nav_products_item_3_description",
     "en": "Media and technology data for newcomers who have arrived to Canada in the past 5 years",
-    "fr": ""
+    "fr": "Données sur les médias et des technologies pour les personnes arrivées au Canada au cours des cinq dernières années."
   },
   "nav_products_side_title": {
     "key": "nav_products_side_title",
     "en": "MTM Census",
-    "fr": ""
+    "fr": "Outil de recensement de l’OTM"
   },
   "nav_products_side_description": {
     "key": "nav_products_side_description",
     "en": "Detailed demographic data for sharper targeting and planning.",
-    "fr": ""
+    "fr": "Données démographiques détaillées pour permettre une planification et un ciblage plus précis."
   },
   "Tools": {
     "key": "Tools",
@@ -507,57 +507,57 @@
   "nav_tools_label": {
     "key": "nav_tools_label",
     "en": "TOOLS",
-    "fr": ""
+    "fr": "OUTILS"
   },
   "nav_tools_main_label": {
     "key": "nav_tools_main_label",
     "en": "Analytic Tools",
-    "fr": ""
+    "fr": "Outils d’analyse"
   },
   "nav_tools_item_1_title": {
     "key": "nav_tools_item_1_title",
     "en": "Data Analysis Tool",
-    "fr": ""
+    "fr": "Outil d’analyse de données"
   },
   "nav_tools_item_1_description": {
     "key": "nav_tools_item_1_description",
     "en": "Explore, filter, and compare data quickly and clearly.",
-    "fr": ""
+    "fr": "Examinez, filtrez et comparez des données de façon rapide et claire."
   },
   "nav_tools_item_2_title": {
     "key": "nav_tools_item_2_title",
     "en": "Trending Tool",
-    "fr": ""
+    "fr": "Outil d’évaluation des tendances"
   },
   "nav_tools_item_2_description": {
     "key": "nav_tools_item_2_description",
     "en": "Track key trends over time with confidence.",
-    "fr": ""
+    "fr": "Suivez en toute confiance les principales tendances au fil du temps."
   },
   "nav_tools_item_3_title": {
     "key": "nav_tools_item_3_title",
     "en": "Forecasting Tool",
-    "fr": ""
+    "fr": "Outil de prévisions"
   },
   "nav_tools_item_3_description": {
     "key": "nav_tools_item_3_description",
     "en": "Project future shifts across your target segments.",
-    "fr": ""
+    "fr": "Prévoyez les futurs changements au sein de vos segments cibles."
   },
   "nav_tools_side_label": {
     "key": "nav_tools_side_label",
     "en": "Census Tool",
-    "fr": ""
+    "fr": "Outil de recensement"
   },
   "nav_tools_side_title": {
     "key": "nav_tools_side_title",
     "en": "Census Tool",
-    "fr": ""
+    "fr": "Outil de recensement"
   },
   "nav_tools_side_description": {
     "key": "nav_tools_side_description",
     "en": "Specialized toolkit for census-based analysis.",
-    "fr": ""
+    "fr": "Boîte à outils spécialisée pour les analyses fondées sur le recensement."
   },
   "Solutions dropdown": {
     "key": "Solutions dropdown",
@@ -567,47 +567,47 @@
   "nav_solutions_label": {
     "key": "nav_solutions_label",
     "en": "SOLUTIONS",
-    "fr": ""
+    "fr": "SOLUTIONS"
   },
   "nav_solutions_item_1_description": {
     "key": "nav_solutions_item_1_description",
     "en": "Measure sector reach and performance more precisely.",
-    "fr": ""
+    "fr": "Mesurez plus précisément la portée et les performances sectorielles."
   },
   "nav_solutions_item_2_description": {
     "key": "nav_solutions_item_2_description",
     "en": "Understand audiences and cross-platform consumption.",
-    "fr": ""
+    "fr": "Apprenez à comprendre les auditoires et la consommation sur les différentes plateformes."
   },
   "nav_solutions_item_3_description": {
     "key": "nav_solutions_item_3_description",
     "en": "Support media and marketing decisions with confidence.",
-    "fr": ""
+    "fr": "Prenez en toute confiance des décisions relatives aux médias et au marketing."
   },
   "nav_solutions_item_4_description": {
     "key": "nav_solutions_item_4_description",
     "en": "Access insights that strengthen learning outcomes.",
-    "fr": ""
+    "fr": "Accédez à des renseignements qui renforcent l’apprentissage."
   },
   "nav_solutions_item_5_description": {
     "key": "nav_solutions_item_5_description",
     "en": "Plan services and policies with reliable evidence.",
-    "fr": ""
+    "fr": "Planifiez vos services et vos politiques à l’aide de données fiables."
   },
   "nav_insights_label": {
     "key": "nav_insights_label",
     "en": "INSIGHTS",
-    "fr": ""
+    "fr": "OBSERVATIONS"
   },
   "nav_sign_in_cta": {
     "key": "nav_sign_in_cta",
     "en": "SIGN IN",
-    "fr": ""
+    "fr": "SE CONNECTER"
   },
   "nav_request_demo_cta": {
     "key": "nav_request_demo_cta",
     "en": "REQUEST A DEMO",
-    "fr": ""
+    "fr": "DEMANDER UNE DÉMONSTRATION"
   },
   "Footer": {
     "key": "Footer",
@@ -617,141 +617,141 @@
   "footer_menu_company_title": {
     "key": "footer_menu_company_title",
     "en": "Company",
-    "fr": ""
+    "fr": "Organisation"
   },
   "footer_menu_company_item_1": {
     "key": "footer_menu_company_item_1",
     "en": "Home",
-    "fr": ""
+    "fr": "Accueil"
   },
   "footer_menu_company_item_2": {
     "key": "footer_menu_company_item_2",
     "en": "About Us",
-    "fr": ""
+    "fr": "À propos de nous"
   },
   "footer_menu_company_item_3": {
     "key": "footer_menu_company_item_3",
     "en": "Contact Us",
-    "fr": ""
+    "fr": "Nous joindre"
   },
   "footer_menu_products_title": {
     "key": "footer_menu_products_title",
     "en": "Products",
-    "fr": ""
+    "fr": "Produits"
   },
   "footer_menu_products_item_1": {
     "key": "footer_menu_products_item_1",
     "en": "MTM 18+",
-    "fr": ""
+    "fr": "OTM 18+"
   },
   "footer_menu_products_item_2": {
     "key": "footer_menu_products_item_2",
     "en": "MTM Junior",
-    "fr": ""
+    "fr": "OTM Junior"
   },
   "footer_menu_products_item_3": {
     "key": "footer_menu_products_item_3",
     "en": "MTM Newcomers",
-    "fr": ""
+    "fr": "OTM Nouveaux arrivants"
   },
   "footer_menu_products_item_4": {
     "key": "footer_menu_products_item_4",
     "en": "Census",
-    "fr": ""
+    "fr": "Outil de recensement"
   },
   "footer_menu_tools_title": {
     "key": "footer_menu_tools_title",
     "en": "Tools",
-    "fr": ""
+    "fr": "Outils"
   },
   "footer_menu_tools_item_1": {
     "key": "footer_menu_tools_item_1",
     "en": "Data Analysis",
-    "fr": ""
+    "fr": "Analyse de données"
   },
   "footer_menu_tools_item_2": {
     "key": "footer_menu_tools_item_2",
     "en": "Trending",
-    "fr": ""
+    "fr": "Tendances"
   },
   "footer_menu_tools_item_3": {
     "key": "footer_menu_tools_item_3",
     "en": "Forecasting",
-    "fr": ""
+    "fr": "Prévisions"
   },
   "footer_menu_tools_item_4": {
     "key": "footer_menu_tools_item_4",
     "en": "Census",
-    "fr": ""
+    "fr": "Recensement"
   },
   "footer_menu_solutions_title": {
     "key": "footer_menu_solutions_title",
     "en": "Solutions",
-    "fr": ""
+    "fr": "Solutions"
   },
   "footer_menu_insights_title": {
     "key": "footer_menu_insights_title",
     "en": "Insights",
-    "fr": ""
+    "fr": "Observations"
   },
   "footer_menu_insights_item_1": {
     "key": "footer_menu_insights_item_1",
     "en": "Reports",
-    "fr": ""
+    "fr": "Rapports"
   },
   "footer_address_company": {
     "key": "footer_address_company",
     "en": "Media Technology Monitor",
-    "fr": ""
+    "fr": "Observateur des technologies médias"
   },
   "footer_address_street": {
     "key": "footer_address_street",
     "en": "181 Queen St, Ottawa, Ontario, K1P1K9",
-    "fr": ""
+    "fr": "181, rue Queen, Ottawa (Ontario) K1P 1K9"
   },
   "footer_phone_number": {
     "key": "footer_phone_number",
     "en": "1-855-898-4999",
-    "fr": ""
+    "fr": "1 855 898-4999"
   },
   "footer_copyright_text": {
     "key": "footer_copyright_text",
-    "en": "Media Technology Monitor. All Rights Reserved. A division of CBC/Radio-Canada.",
-    "fr": ""
+    "en": "Media Technology Monitor, a division of CBC/Radio-Canada. All rights reserved.",
+    "fr": "Observateur des technologies médias, une division de CBC/Radio-Canada. Tous droits réservés."
   },
   "footer_site_policies_label": {
     "key": "footer_site_policies_label",
     "en": "Site Policies",
-    "fr": ""
+    "fr": "Politiques du site"
   },
   "footer_privacy_policy_label": {
     "key": "footer_privacy_policy_label",
     "en": "Privacy Policy",
-    "fr": ""
+    "fr": "Vie privée"
   },
   "footer_terms_conditions_label": {
     "key": "footer_terms_conditions_label",
     "en": "Terms & Conditions",
-    "fr": ""
+    "fr": "Conditions"
   },
   "not_found_code": {
     "key": "not_found_code",
     "en": "404",
-    "fr": ""
+    "fr": "404"
   },
   "not_found_title": {
     "key": "not_found_title",
     "en": "Page Not Found",
-    "fr": ""
+    "fr": "Page non trouvée"
   },
   "not_found_description": {
     "key": "not_found_description",
     "en": "The page you are looking for has moved or no longer exists. Head back to the homepage to keep exploring.",
-    "fr": ""
+    "fr": "La page que vous recherchez n’existe plus ou a été déplacée. Pour continuer à explorer, retournez à la page d’accueil."
   },
   "not_found_cta": {
     "key": "not_found_cta",
     "en": "Back to Home",
-    "fr": ""
+    "fr": "Retour à l’accueil"
   }
 }

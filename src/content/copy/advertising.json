@@ -2,236 +2,236 @@
   "hero_eyebrow": {
     "key": "hero_eyebrow",
     "en": "Advertising and Marketing",
-    "fr": ""
+    "fr": "Publicité et marketing"
   },
   "hero_title": {
     "key": "hero_title",
     "en": "Win the pitch, Validate the plan",
-    "fr": ""
+    "fr": "Remportez le contrat, validez le plan"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "Your clients expect results and we provide the media and demographic intelligence to help you deliver. The  Media Technology Monitor (MTM) gives you precision targeting and pitch-winning insights.",
-    "fr": ""
+    "fr": "Vos clients veulent des résultats, et nous vous fournissons les renseignements médiatiques et démographiques nécessaires pour les leur donner. L’Observateur des technologies médias (OTM) vous permet de toucher votre cible avec précision et vous fournit l’information nécessaire pour remporter des contrats."
   },
   "hero_cta": {
     "key": "hero_cta",
     "en": "Request a demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "trusted_by_label": {
     "key": "trusted_by_label",
     "en": "Trusted by",
-    "fr": ""
+    "fr": "Clientèle"
   },
   "problem_title": {
     "key": "problem_title",
     "en": "Why trusted data changes everything",
-    "fr": ""
+    "fr": "Tout repose sur des données fiables"
   },
   "problem_description": {
     "key": "problem_description",
     "en": "MTM gives your agency the competitive edge, transforming campaigns from speculation into pitches that guarantee client confidence",
-    "fr": ""
+    "fr": "L’OTM donne à votre agence un avantage concurrentiel qui permet de transformer des campagnes spéculatives en présentations qui gagneront la confiance de vos clients."
   },
   "insight_1_eyebrow": {
     "key": "insight_1_eyebrow",
     "en": "Trustworthy Data",
-    "fr": ""
+    "fr": "Données fiables"
   },
   "insight_1_title": {
     "key": "insight_1_title",
     "en": "300,000+ Canadians surveyed to date.",
-    "fr": ""
+    "fr": "Plus de 300 000 Canadiens sondés à ce jour"
   },
   "insight_1_description": {
     "key": "insight_1_description",
     "en": "Our independent, nationally representative samples allow for detailed comparisons against your internal data and other sources. With the MTM, know where and how Canadians are engaged with an exhaustive array of media platforms and leave nothing up to chance.",
-    "fr": ""
+    "fr": "Nos échantillons indépendants et représentatifs à l’échelle nationale vous permettent de faire des comparaisons détaillées par rapport à vos données internes ou à des données provenant d’autres sources. Grâce à l’OTM, brossez un portrait exhaustif des plateformes médiatiques auxquelles les Canadiens consacrent leur attention, sans rien laisser au hasard."
   },
   "insight_1_chart_title": {
     "key": "insight_1_chart_title",
     "en": "Social Media Usage",
-    "fr": ""
+    "fr": "Utilisation des médias sociaux"
   },
   "insight_2_eyebrow": {
     "key": "insight_2_eyebrow",
     "en": "Precision Targeting",
-    "fr": ""
+    "fr": "Ciblage précis"
   },
   "insight_2_title": {
     "key": "insight_2_title",
     "en": "Get deep into the details.",
-    "fr": ""
+    "fr": "Plongez dans les détails"
   },
   "insight_2_description": {
     "key": "insight_2_description",
     "en": "The MTM allows you to see Canada in high definition. Our large library of demographic details lets you filter data by income brackets, age groups, families, racialized groups and more.",
-    "fr": ""
+    "fr": "L’OTM vous permet de voir le Canada en haute définition. Notre vaste bibliothèque de renseignements démographiques vous permet de filtrer les données par tranche de revenu, groupe d’âge, famille ou groupe racisé, entre autres."
   },
   "insight_2_chart_title": {
     "key": "insight_2_chart_title",
     "en": "FAST CHANNEL VIEWERSHIP by income bracket",
-    "fr": ""
+    "fr": "Visionnement de chaînes FAST selon la tranche de revenu"
   },
   "MTM Reports as the solution": {
     "key": "MTM Reports as the solution",
     "en": "Same as insights page",
-    "fr": ""
+    "fr": "Identique à la page sur les observations"
   },
   "workflow_title": {
     "key": "workflow_title",
     "en": "How MTM fits the way you work already",
-    "fr": ""
+    "fr": "L’OTM est adapté à vos méthodes de travail"
   },
   "workflow_description": {
     "key": "workflow_description",
     "en": "You don't open a research tool and start clicking. You have a business question. MTM is built to answer it, at every stage of your workflow.",
-    "fr": ""
+    "fr": "On n’ouvre pas un outil de recherche pour cliquer au hasard; tout commence par une question d’affaires. L’OTM est conçu pour répondre à vos questions à chaque étape de votre flux de travail."
   },
   "workflow_step_1_number": {
     "key": "workflow_step_1_number",
     "en": "01 Plan",
-    "fr": ""
+    "fr": "01 Planification"
   },
   "workflow_step_1_title": {
     "key": "workflow_step_1_title",
     "en": "Understand the audience before the strategy takes shape.",
-    "fr": ""
+    "fr": "Brossez un portrait clair de l’auditoire avant d’élaborer votre stratégie"
   },
   "workflow_step_1_description": {
     "key": "workflow_step_1_description",
     "en": "Use MTM to profile the target audience pre-brief. Know their viewing, streaming, and media habits so your strategy starts from evidence, not assumption.",
-    "fr": ""
+    "fr": "Utilisez l’OTM pour établir le profil de l’auditoire cible avant la rédaction du brief. Familiarisez-vous avec ses habitudes de visionnement et de consommation de médias pour que votre stratégie soit fondée sur des données plutôt que sur des suppositions."
   },
   "step1_tag1": {
     "key": "step1_tag1",
     "en": "Trending Tool",
-    "fr": ""
+    "fr": "Outil d’évaluation des tendances"
   },
   "step1_tag2": {
     "key": "step1_tag2",
     "en": "MTM Reports",
-    "fr": ""
+    "fr": "Rapports de l’OTM"
   },
   "workflow_step_2_number": {
     "key": "workflow_step_2_number",
     "en": "02 Pitch",
-    "fr": ""
+    "fr": "02 Conception"
   },
   "workflow_step_2_title": {
     "key": "workflow_step_2_title",
     "en": "Design your next pitch faster and smarter",
-    "fr": ""
+    "fr": "Concevez votre prochaine présentation plus rapidement et plus judicieusement"
   },
   "workflow_step_2_description": {
     "key": "workflow_step_2_description",
     "en": "Whether you’re planning a high-impact Out-of-Home campaign, a localized digital blitz, or a retail pop-up, we give you the power to defend your pitch every step of the way.",
-    "fr": ""
+    "fr": "Que vous soyez en train de préparer une campagne d’affichage extérieur à impact élevé, une campagne éclair numérique localisée ou une boutique éphémère de vente au détail, nous vous donnons des outils pour défendre vos arguments à chaque étape."
   },
   "step2_tag1": {
     "key": "step2_tag1",
     "en": "Census Tool",
-    "fr": ""
+    "fr": "Outil de recensement"
   },
   "step2_tag2": {
     "key": "step2_tag2",
     "en": "Data Analysis Tool",
-    "fr": ""
+    "fr": "Outil d’analyse de données"
   },
   "workflow_step_3_number": {
     "key": "workflow_step_3_number",
     "en": "03 Present",
-    "fr": ""
+    "fr": "03 Présentation"
   },
   "workflow_step_3_title": {
     "key": "workflow_step_3_title",
     "en": "Turn the data into the slide that closes the room.",
-    "fr": ""
+    "fr": "Transformez les données en diapositives convaincantes"
   },
   "workflow_step_3_description": {
     "key": "workflow_step_3_description",
     "en": "Export clean, presentation-ready charts and cross-tabs directly from the platform. When a client pushes back, you have the national dataset behind every number.",
-    "fr": ""
+    "fr": "Exportez des graphiques et des tableaux croisés clairs, prêts à être présentés, directement à partir de la plateforme. Si un client hésite, vous disposez des données nationales pour appuyer chacun de vos chiffres."
   },
   "step3_tag1": {
     "key": "step3_tag1",
     "en": "MTM Reports",
-    "fr": ""
+    "fr": "Rapports de l’OTM"
   },
   "step3_tag2": {
     "key": "step3_tag2",
     "en": "YourData",
-    "fr": ""
+    "fr": "VosDonnées"
   },
   "usecases_title": {
     "key": "usecases_title",
     "en": "MTM in Action for Ad Agencies",
-    "fr": ""
+    "fr": "L’OTM en action pour les agences de publicité"
   },
   "usecases_card_title": {
     "key": "usecases_card_title",
     "en": "Use Case",
-    "fr": ""
+    "fr": "Cas d’utilisation"
   },
   "leverage_title": {
     "key": "leverage_title",
     "en": "How to leverage this",
-    "fr": ""
+    "fr": "Comment en tirer parti"
   },
   "usecases_description": {
     "key": "usecases_description",
     "en": "Use the MTM to sharpen your pitches, validate plans and win more business — then apply the same thinking to your clients.",
-    "fr": ""
+    "fr": "Utilisez l’OTM pour affiner vos présentations, vérifier vos plans et remporter plus de contrats, puis appliquez la même mentalité à votre clientèle."
   },
   "usecase_1_description": {
     "key": "usecase_1_description",
     "en": "A client is interested in promoting a new line of microwavable meals, with a focus on newcomer populations.",
-    "fr": ""
+    "fr": "Un client souhaite promouvoir une nouvelle gamme de repas à cuire au micro-ondes en ciblant particulièrement les nouveaux arrivants."
   },
   "usecase_1_variables": {
     "key": "usecase_1_variables",
     "en": "Ad exposure, Regions, Devices used, Income",
-    "fr": ""
+    "fr": "Exposition à la publicité, Régions, Appareils utilisés, Revenu"
   },
   "usecase_1_cta": {
     "key": "usecase_1_cta",
     "en": "Leverage the Data Analysis Tool to find the income levels, devices used to maximize exposure.",
-    "fr": ""
+    "fr": "Utilisez l’outil d’analyse de données pour déterminer les niveaux de revenu et les appareils utilisés afin de maximiser l’exposition."
   },
   "usecase_2_description": {
     "key": "usecase_2_description",
     "en": "A luxury car brand is interested in reaching the most affluent households in Canada.",
-    "fr": ""
+    "fr": "Une marque de voitures de luxe vise les ménages les plus aisés du Canada."
   },
   "usecase_2_variables": {
     "key": "usecase_2_variables",
     "en": "FSA, Postal Code, Income",
-    "fr": ""
+    "fr": "RTA, Code postal, Revenu"
   },
   "usecase_2_cta": {
     "key": "usecase_2_cta",
     "en": "Leverage the Ranker feature in the census tool to find out where the wealthiest Canadians reside and target your campaign effectively.",
-    "fr": ""
+    "fr": "Tirez parti de la fonction Classement de l’outil de recensement pour savoir où résident les Canadiens les plus aisés et bien les cibler dans le cadre de votre campagne."
   },
   "testimonial_title": {
     "key": "testimonial_title",
     "en": "What ad agencies are saying about us",
-    "fr": ""
+    "fr": "Ce que les agences de publicité disent de nous"
   },
   "testimonial_logo": {
     "key": "testimonial_logo",
     "en": "Time & Space Media",
-    "fr": ""
+    "fr": "Time & Space Media"
   },
   "testimonial_quote": {
     "key": "testimonial_quote",
     "en": "MTM is a valuable resource for effective media planning and research for our clients. The comprehensive data, forecasting and frequent reports give us deep insight into Canadian audience behaviors and media trends.",
-    "fr": ""
+    "fr": "L’OTM est une précieuse ressource pour préparer des plans et des recherches médiatiques efficaces pour nos clients. Les données exhaustives, les prévisions et les rapports fréquents nous donnent une idée précise des comportements du public canadien et des tendances médiatiques."
   },
   "testimonial_attribution": {
     "key": "testimonial_attribution",
     "en": "Ryan Casey, Director, Media Operations - Time & Space Media",
-    "fr": ""
+    "fr": "Ryan Casey, directeur, Exploitation média – Time & Space Media"
   }
 }

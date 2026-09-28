@@ -2,17 +2,17 @@
   "hero_title": {
     "key": "hero_title",
     "en": "MTM Newcomers",
-    "fr": ""
+    "fr": "OTM Nouveaux arrivants"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "Our newest Analytic product, MTM Newcomers focuses on those who have come to Canada within the last 5 years. Get all you need to understand the media and tech habits of this growing demographic.",
-    "fr": ""
+    "fr": "L’OTM Nouveaux arrivants, notre tout dernier produit d’analyse, est axé sur les gens qui sont arrivés au Canada au cours des cinq dernières années. Obtenez tous les renseignements nécessaires pour comprendre les habitudes médiatiques et technologiques de cette population croissante."
   },
   "hero_cta": {
     "key": "hero_cta",
     "en": "Request a Demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "Features": {
     "key": "Features",
@@ -22,276 +22,271 @@
   "feature_1_title": {
     "key": "feature_1_title",
     "en": "5+ Years Of Data",
-    "fr": ""
+    "fr": "Plus de cinq ans de données accumulées"
   },
   "feature_1_description": {
     "key": "feature_1_description",
     "en": "Our full data set, readily available for clients to explore and learn about this segment.",
-    "fr": ""
+    "fr": "Notre clientèle peut facilement accéder à notre ensemble complet de données pour examiner ce segment et en apprendre plus à son sujet."
   },
   "feature_2_title": {
     "key": "feature_2_title",
     "en": "New Audiences",
-    "fr": ""
+    "fr": "De nouveaux auditoires"
   },
   "feature_2_description": {
     "key": "feature_2_description",
     "en": "Newcomers represent one of the fastest growing segments of the Canadian population, and MTM Newcomers is your ticket to reaching them.",
-    "fr": ""
+    "fr": "Les nouveaux arrivants constituent l’un des segments de la population canadienne dont la croissance est la plus rapide, et l’OTM Nouveaux arrivants vous y donne accès."
   },
   "feature_3_title": {
     "key": "feature_3_title",
     "en": "A Large, Diverse Sample",
-    "fr": ""
+    "fr": "Un échantillon vaste et varié"
   },
   "feature_3_description": {
     "key": "feature_3_description",
     "en": "We survey more than 4,000 newcomers annually and an additional 1,000 Canadian-born respondents as a control sample.",
-    "fr": ""
+    "fr": "Nous sondons chaque année plus de 4 000 nouveaux arrivants, auxquels nous ajoutons 1 000 autres répondants nés au Canada à titre d’échantillon témoin."
   },
   "feature_4_title": {
     "key": "feature_4_title",
     "en": "Surveys In 12 Languages",
-    "fr": ""
+    "fr": "Des sondages en 12 langues"
   },
   "feature_4_description": {
     "key": "feature_4_description",
     "en": "Tagalog, Cantonese, Mandarin, French and English and more, ensuring all newcomers can participate.",
-    "fr": ""
+    "fr": "Pour permettre à tous les nouveaux arrivants d’y participer, le sondage est effectué en tagalog, en cantonais, en mandarin, en français, en anglais et en d’autres langues."
   },
   "feature_5_title": {
     "key": "feature_5_title",
     "en": "Online And In-Person Interview",
-    "fr": ""
+    "fr": "Des entrevues en ligne et en personne"
   },
   "feature_5_description": {
     "key": "feature_5_description",
     "en": "A national online study paired with in-person interviews across 6 major Canadian cities.",
-    "fr": ""
+    "fr": "Une étude nationale en ligne est combinée à des entrevues en personne dans six grandes villes canadiennes."
   },
   "tools_title": {
     "key": "tools_title",
     "en": "Tools",
-    "fr": ""
+    "fr": "Outils"
   },
   "tools_description": {
     "key": "tools_description",
     "en": "Dive deep into MTM Newcomers data with our easy-to-use web-based tools.",
-    "fr": ""
+    "fr": "Plongez au cœur des données de l’OTM Nouveaux arrivants grâce à nos outils web faciles à utiliser."
   },
   "dat_title": {
     "key": "dat_title",
     "en": "Data Analysis Tool",
-    "fr": ""
+    "fr": "Outil d’analyse de données"
   },
   "dat_description": {
     "key": "dat_description",
     "en": "The Data Analysis Tool (DAT) allows clients to examine both newcomer and Canadian-born respondents, and drill down to the groups that matter to them the most.",
-    "fr": ""
+    "fr": "L’outil d’analyse de données (OAD) permet aux membres de notre clientèle d’examiner tous les répondants, les nouveaux arrivants comme les personnes nées au Canada, et de se pencher plus en détail sur les groupes les plus importants pour eux."
   },
   "dat_cta": {
     "key": "dat_cta",
     "en": "Learn More",
-    "fr": ""
+    "fr": "En savoir plus"
   },
   "dat_callout": {
     "key": "dat_callout",
     "en": "Are newcomers spending more time than Canadian-born individuals on social media? See the whole social media landscape with the DAT.",
-    "fr": ""
+    "fr": "Les nouveaux arrivants passent-ils plus de temps sur les médias sociaux que les personnes nées au Canada? L’OAD vous permet d’examiner l’ensemble des médias sociaux."
   },
   "???(Key Insights text?)": {
     "key": "???(Key Insights text?)",
-    "en": "Key Insights\nNewcomers spend almost twice as much time using social media as Canadian-born individuals in a typical week.",
-    "fr": ""
+    "en": "Key Insight\nNewcomers spend almost twice as much time using social media as Canadian-born individuals in a typical week.",
+    "fr": "Observation clé\n Au cours d’une semaine type, les nouveaux arrivants passent presque deux fois plus de temps sur les médias sociaux que les personnes nées au Canada."
   },
   "report_title": {
     "key": "report_title",
     "en": "Top Trends Report",
-    "fr": ""
+    "fr": "Rapport sur les principales tendances"
   },
   "report_description": {
     "key": "report_description",
     "en": "Your guide to newcomers starts here, with the latest data you need to know.",
-    "fr": ""
+    "fr": "Voici votre guide sur les nouveaux arrivants, avec les dernières données qu’il vous faut."
   },
   "graph_name": {
     "key": "graph_name",
     "en": "Watching Content In Non-Official Languages",
-    "fr": ""
+    "fr": "Visionnement de contenu dans des langues non officielles"
   },
   "graph_detail": {
     "key": "graph_detail",
     "en": "Newcomers 18+",
-    "fr": ""
+    "fr": "Nouveaux arrivants 18+"
   },
   "stat_1_value": {
     "key": "stat_1_value",
     "en": "48%",
-    "fr": ""
+    "fr": "48 %"
   },
   "stat_1_description": {
     "key": "stat_1_description",
     "en": "Almost half of newcomers watch TV or video content in a language other than English or French.",
-    "fr": ""
+    "fr": "Près de la moitié des nouveaux arrivants regardent du contenu télévisé ou vidéo dans une langue autre que l’anglais ou le français."
   },
   "stat_2_value": {
     "key": "stat_2_value",
     "en": "33%",
-    "fr": ""
+    "fr": "33 %"
   },
   "stat_2_description": {
     "key": "stat_2_description",
     "en": "One-third access news content in a language other than English or French.",
-    "fr": ""
+    "fr": "Un tiers d’entre eux visionne du contenu d’information dans une langue autre que l’anglais ou le français."
   },
   "report_action_text": {
     "key": "report_action_text",
     "en": "Explore our full library of reports or download a free sneak peek.",
-    "fr": ""
+    "fr": "Explorez toute notre bibliothèque de rapports ou téléchargez gratuitement un aperçu des grandes tendances."
   },
   "report_action_cta_1": {
     "key": "report_action_cta_1",
     "en": "GO TO INSIGHTS",
-    "fr": ""
+    "fr": "ACCÉDER AUX OBSERVATIONS"
   },
   "report_action_cta_2": {
     "key": "report_action_cta_2",
-    "en": "SAMPLE REPORT",
-    "fr": ""
+    "en": "GET SAMPLE REPORT",
+    "fr": "OBTENIR UN EXEMPLE DE RAPPORT"
   },
   "methodology_title": {
     "key": "methodology_title",
     "en": "Research Methodology",
-    "fr": ""
+    "fr": "Méthodologie de recherche"
   },
   "methodology_description": {
     "key": "methodology_description",
     "en": "MTM Newcomers surveys those who have come to Canada within the past 5 years.",
-    "fr": ""
-  },
-  "methodology_cta": {
-    "key": "methodology_cta",
-    "en": "Download Methodology Data",
-    "fr": ""
+    "fr": "L’OTM Nouveaux arrivants sonde les personnes arrivées au Canada au cours des cinq dernières années."
   },
   "sample_title": {
     "key": "sample_title",
     "en": "Sample Coverage",
-    "fr": ""
+    "fr": "Taille de l’échantillon"
   },
   "sample_stat_1": {
     "key": "sample_stat_1",
     "en": "4,000+",
-    "fr": ""
+    "fr": "Plus de 4 000"
   },
   "sample_stat_1_label": {
     "key": "sample_stat_1_label",
     "en": "Newcomers surveyed",
-    "fr": ""
+    "fr": "nouveaux arrivants sondés"
   },
   "sample_stat_1_description": {
     "key": "sample_stat_1_description",
     "en": "A large, wide ranging sample.",
-    "fr": ""
+    "fr": "Un échantillon vaste et varié."
   },
   "sample_stat_2": {
     "key": "sample_stat_2",
     "en": "1,000+",
-    "fr": ""
+    "fr": "Plus de 1 000"
   },
   "sample_stat_2_label": {
     "key": "sample_stat_2_label",
     "en": "Canadian-born individuals surveyed",
-    "fr": ""
+    "fr": "personnes nées au Canada sondées"
   },
   "sample_stat_2_description": {
     "key": "sample_stat_2_description",
     "en": "A control sample to understand how newcomers differ.",
-    "fr": ""
+    "fr": "Un échantillon témoin pour comprendre les différences propres aux nouveaux arrivants."
   },
   "sample_stat_3": {
     "key": "sample_stat_3",
     "en": "18",
-    "fr": ""
+    "fr": "18"
   },
   "sample_stat_3_label": {
     "key": "sample_stat_3_label",
     "en": "Sub-Regions Of Origin",
-    "fr": ""
+    "fr": "sous-régions d’origine"
   },
   "sample_stat_3_description": {
     "key": "sample_stat_3_description",
     "en": "Viable newcomer samples from Eastern Asia, Southeast Asia, Southern Asia, West Central Asia and East Middle East, Eastern Africa, Western Africa, Northern Africa, Central Africa, Southern Africa, Eastern Europe, Western Europe, Northern Europe, Southern Europe, United States, Central America, Caribbean and Bermuda, South America, Oceania",
-    "fr": ""
+    "fr": "Échantillons exploitables de nouveaux arrivants provenant de diverses régions : Asie de l’Est, Asie du Sud-Est, Asie du Sud, Asie occidentale centrale et est du Moyen-Orient, Afrique orientale, Afrique occidentale, Afrique du Nord, Afrique centrale, Afrique australe, Europe de l’Est, Europe de l’Ouest, Europe du Nord, Europe du Sud, États-Unis, Amérique centrale, Caraïbes et Bermudes, Amérique du Sud et Océanie."
   },
   "survey_title": {
     "key": "survey_title",
     "en": "Survey Design",
-    "fr": ""
+    "fr": "Conception du sondage"
   },
   "survey_stat_1": {
     "key": "survey_stat_1",
     "en": "5+",
-    "fr": ""
+    "fr": "Plus de cinq ans"
   },
   "survey_stat_1_label": {
     "key": "survey_stat_1_label",
     "en": "Years of data collection",
-    "fr": ""
+    "fr": "de données accumulées"
   },
   "survey_stat_1_description": {
     "key": "survey_stat_1_description",
     "en": "Industry standard level tracking",
-    "fr": ""
+    "fr": "Suivi conforme aux normes de l’industrie."
   },
   "survey_stat_2": {
     "key": "survey_stat_2",
     "en": "Online + In-Person Interviews",
-    "fr": ""
+    "fr": "Entrevues en ligne et en personne"
   },
   "survey_stat_2_label": {
     "key": "survey_stat_2_label",
     "en": "Conducted across 6 major cities",
-    "fr": ""
+    "fr": "effectuées dans six grandes villes"
   },
   "survey_stat_2_description": {
     "key": "survey_stat_2_description",
     "en": "Surveying newcomers in-person in Toronto, Montreal, Calgary, Halifax, Vancouver and Winnipeg paired with a national online study",
-    "fr": ""
+    "fr": "Entrevues en personne avec de nouveaux arrivants à Toronto, Montréal, Calgary, Halifax, Vancouver et Winnipeg, combinées à une étude nationale en ligne."
   },
   "survey_stat_3": {
     "key": "survey_stat_3",
     "en": "12",
-    "fr": ""
+    "fr": "12"
   },
   "survey_stat_3_label": {
     "key": "survey_stat_3_label",
     "en": "Languages",
-    "fr": ""
+    "fr": "langues"
   },
   "survey_stat_3_description": {
     "key": "survey_stat_3_description",
     "en": "The survey is conducted in English, French, Tagalog, Cantonese, Mandarin, Punjabi, Arabic, Spanish, Amharic, Hindi, Ukrainian, and Swahili to ensure that the majority of the newcomer population can participate.",
-    "fr": ""
+    "fr": "Pour permettre à la plupart des nouveaux arrivants d’y participer, le sondage est effectué en anglais, en français, en tagalog, en cantonais, en mandarin, en pendjabi, en arabe, en espagnol, en amharique, en hindi, en ukrainien et en swahili."
   },
   "provider_title": {
     "key": "provider_title",
     "en": "Research Provider",
-    "fr": ""
+    "fr": "Fournisseur"
   },
   "provider_label": {
     "key": "provider_label",
     "en": "Leger Research",
-    "fr": ""
+    "fr": "Léger"
   },
   "provider_description": {
     "key": "provider_description",
     "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. The research was conducted by Léger during the Summer of 2025.\r\n\nLéger is the largest Canadian-owned market research and analytics company, with more than 600 employees in Canada and the United States.",
-    "fr": ""
+    "fr": "L’OTM et tous ses sondages sont des produits du service Recherche et Analyse de CBC/Radio-Canada. Le sondage a été réalisé par Léger au cours de l’été 2025.\n \n Léger, qui compte plus de 600 employés au Canada et aux États-Unis, est la plus grande société canadienne d’études et d’analyses de marché."
   },
   "explore_title": {
     "key": "explore_title",
-    "en": "Explore More Data",
-    "fr": ""
+    "en": "Explore More Data Products",
+    "fr": "Découvrir d’autres produits de données"
   }
 }

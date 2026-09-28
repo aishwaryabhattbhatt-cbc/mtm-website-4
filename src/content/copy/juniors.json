@@ -2,17 +2,17 @@
   "hero_title": {
     "key": "hero_title",
     "en": "MTM Junior",
-    "fr": ""
+    "fr": "OTM Junior"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "MTM Jr. is the first annual youth media survey in Canada. With a focus on media consumption of Canadians aged 2 to 17, it offers you a roadmap to todays young and emerging audiences.",
-    "fr": ""
+    "fr": "L’OTM Junior est le premier sondage annuel sur les jeunes et les médias au Canada. Axé sur la consommation des médias par les Canadiens de 2 à 17 ans, il vous permettra de mieux comprendre les auditoires jeunes et émergents."
   },
   "hero_cta": {
     "key": "hero_cta",
     "en": "Request a Demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "Features": {
     "key": "Features",
@@ -22,291 +22,291 @@
   "feature_1_title": {
     "key": "feature_1_title",
     "en": "8 Years Of Data",
-    "fr": ""
+    "fr": "Huit ans de données accumulées"
   },
   "feature_1_description": {
     "key": "feature_1_description",
     "en": "MTM Jr. offers 8 years worth of exhaustive results readily available to clients.",
-    "fr": ""
+    "fr": "L’OTM Junior comprend huit années de données exhaustives auxquelles notre clientèle peut facilement accéder."
   },
   "feature_2_title": {
     "key": "feature_2_title",
     "en": "A Large Sample You Can Rely On",
-    "fr": ""
+    "fr": "Un échantillon vaste et fiable"
   },
   "feature_2_description": {
     "key": "feature_2_description",
     "en": "We reach more than 3,000 Canadians aged 2-17 across more than 2,000 households every year.",
-    "fr": ""
+    "fr": "Chaque année, nous sondons plus de 3 000 Canadiens de 2 à 17 ans répartis dans plus de 2 000 ménages."
   },
   "feature_3_title": {
     "key": "feature_3_title",
     "en": "Focused on Kids",
-    "fr": ""
+    "fr": "Pleins feux sur les jeunes"
   },
   "feature_3_description": {
     "key": "feature_3_description",
     "en": "Gain deep insights on children aged 2-6, 7-11, 12-17 and the households they reside in.",
-    "fr": ""
+    "fr": "Apprenez à connaître en détail les enfants de 2 à 6 ans, de 7 à 11 ans et les adolescents de 12 à 17 ans ainsi que les ménages dans lesquels ils vivent."
   },
   "feature_4_title": {
     "key": "feature_4_title",
     "en": "A Fully Bilingual Product",
-    "fr": ""
+    "fr": "Un produit entièrement bilingue"
   },
   "feature_4_description": {
     "key": "feature_4_description",
     "en": "All content available through MTM Jr. and the rest of the MTM product suite is offered in English and French.",
-    "fr": ""
+    "fr": "Tout le contenu de l’OTM Junior et des autres produits de la suite OTM est offert en français et en anglais."
   },
   "feature_5_title": {
     "key": "feature_5_title",
     "en": "Surveying Teens Directly",
-    "fr": ""
+    "fr": "Sondage direct auprès des adolescents"
   },
   "feature_5_description": {
     "key": "feature_5_description",
     "en": "MTM Jr. surveys Canadians 12-17 directly to gain the most accurate and detailed findings possible.",
-    "fr": ""
+    "fr": "L’OTM Junior sonde directement des Canadiens de 12 à 17 ans pour obtenir les résultats les plus précis et détaillés possibles."
   },
   "tools_title": {
     "key": "tools_title",
     "en": "Tools",
-    "fr": ""
+    "fr": "Outils"
   },
   "tools_description": {
     "key": "tools_description",
     "en": "Get the full picture on kids media and technology habits with our easy-to-use web-based tools.",
-    "fr": ""
+    "fr": "Nos outils web conviviaux vous donnent une vue d’ensemble des habitudes des jeunes en matière de médias et de technologie."
   },
   "dat_title": {
     "key": "dat_title",
     "en": "Data Analysis Tool",
-    "fr": ""
+    "fr": "Outil d’analyse de données"
   },
   "dat_description": {
     "key": "dat_description",
     "en": "The Data Analysis Tool (DAT) makes playing with data fun, but yields real results. Dig into what kids are watching, listening to, playing and scrolling, create visuals your clients will love, all within minutes.",
-    "fr": ""
+    "fr": "Grâce à l’outil d’analyse de données (OAD), il n’aura jamais été aussi utile de s’amuser avec des données. Découvrez ce que les jeunes regardent, ce qu’ils écoutent, ce à quoi ils jouent et ce qu’ils font défiler et créez des images qui plairont à vos clients, le tout en quelques minutes."
   },
   "dat_cta": {
     "key": "dat_cta",
     "en": "Go to Data Analysis Tool",
-    "fr": ""
+    "fr": "Accéder à l’outil d’analyse de données"
   },
   "dat_callout": {
     "key": "dat_callout",
     "en": "How many kids are playing video games?\nFind this and so much more on the DAT.",
-    "fr": ""
+    "fr": "Combien de jeunes jouent à des jeux vidéo?\n Découvrez la réponse à cette question et à bien d’autres grâce à l’OAD."
   },
   "???(Key Insights text?)": {
     "key": "???(Key Insights text?)",
     "en": "Key Insight\n76% of kids have played a video game in the past month and smartphones/tablets are the most popular way to play (53%)",
-    "fr": ""
+    "fr": "Observation clé\n 76 % des jeunes ont joué à des jeux vidéo au cours du mois précédent; le téléphone intelligent et la tablette sont les appareils les plus utilisés pour le faire (53 %)."
   },
   "trending_title": {
     "key": "trending_title",
     "en": "Trending Tool",
-    "fr": ""
+    "fr": "Outil d’évaluation des tendances"
   },
   "trending_description": {
     "key": "trending_description",
     "en": "Kids change and so do their habits. With the Trending Tool, see how devices, services and platforms have changed over the last 8 years.",
-    "fr": ""
+    "fr": "Les jeunes changent et leurs habitudes aussi. L’outil d’évaluation des tendances vous permet de voir les changements propres aux appareils, aux services et aux plateformes au cours des huit dernières années."
   },
   "trending_cta": {
     "key": "trending_cta",
     "en": "Go to Trending Tool",
-    "fr": ""
+    "fr": "Accéder à l’outil d’évaluation des tendances"
   },
   "trending_callout": {
     "key": "trending_callout",
     "en": "Are teens still on Facebook or have they left it behind for Instagram? See where all key social media platforms stand with the Trending Tool.",
-    "fr": ""
+    "fr": "Les adolescents sont-ils toujours sur Facebook ou l’ont-ils abandonné pour passer à Instagram? L’outil d’évaluation des tendances vous montrera où se situent les principales plateformes de médias sociaux."
   },
   "report_title": {
     "key": "report_title",
     "en": "Futures Report",
-    "fr": ""
+    "fr": "Rapport sur la génération de demain"
   },
   "report_description": {
     "key": "report_description",
     "en": "Find actionable insights on the newest trends for Canadian kids with the Futures Report.",
-    "fr": ""
+    "fr": "Le rapport sur la génération de demain vous permet de trouver des renseignements utiles sur les dernières tendances concernant les jeunes canadiens."
   },
   "graph_name": {
     "key": "graph_name",
     "en": "FAST Channel Viewership - Past Month",
-    "fr": ""
+    "fr": "Visionnement de chaînes FAST – mois précédent"
   },
   "graph_detail": {
     "key": "graph_detail",
     "en": "Canadians 2-17",
-    "fr": ""
+    "fr": "Canadiens de 2 à 17 ans"
   },
   "stat_1_value": {
     "key": "stat_1_value",
     "en": "39%",
-    "fr": ""
+    "fr": "39 %"
   },
   "stat_1_description": {
     "key": "stat_1_description",
     "en": "The percentage of Canadians aged 2-17 that have watched a free ad-supported TV channel (FAST) in the past month.",
-    "fr": ""
+    "fr": "Pourcentage de Canadiens de 2 à 17 ans qui ont regardé une chaîne de télévision en continu gratuite avec publicité (FAST) au cours du mois précédent."
   },
   "stat_2_value": {
     "key": "stat_2_value",
     "en": "43%",
-    "fr": ""
+    "fr": "43%"
   },
   "stat_2_description": {
     "key": "stat_2_description",
-    "en": "The percentaged of anglophone children who are tuning in for FAST content.",
-    "fr": ""
+    "en": "The percentage of anglophone children who are tuning in for FAST content.",
+    "fr": "Pourcentage de jeunes anglophones qui visionnent du contenu de chaînes FAST."
   },
   "report_action_text": {
     "key": "report_action_text",
     "en": "Explore our full library of reports or download a free sneak peek.",
-    "fr": ""
+    "fr": "Explorez toute notre bibliothèque de rapports ou téléchargez gratuitement un aperçu des grandes tendances."
   },
   "report_action_cta_1": {
     "key": "report_action_cta_1",
     "en": "GO TO INSIGHTS",
-    "fr": ""
+    "fr": "ACCÉDER AUX OBSERVATIONS"
   },
   "report_action_cta_2": {
     "key": "report_action_cta_2",
     "en": "GET SAMPLE REPORT",
-    "fr": ""
+    "fr": "OBTENIR UN EXEMPLE DE RAPPORT"
   },
   "methodology_title": {
     "key": "methodology_title",
     "en": "Research Methodology",
-    "fr": ""
+    "fr": "Méthodologie de recherche"
   },
   "methodology_description": {
     "key": "methodology_description",
     "en": "MTM Jr. is based on a nationally representative online survey conducted across Canada. Relying on panel respondents, this online survey reaches Canadian households and children across all provinces and territories.",
-    "fr": ""
+    "fr": "L’OTM Junior est basé sur un sondage en ligne représentatif à l’échelle nationale et mené dans tout le Canada. Ce sondage en ligne, mené auprès des répondants d’un panel, s’adresse aux ménages et aux jeunes canadiens de toutes les provinces et de tous les territoires."
   },
   "sample_title": {
     "key": "sample_title",
     "en": "Sample Coverage",
-    "fr": ""
+    "fr": "Taille de l’échantillon"
   },
   "sample_stat_1": {
     "key": "sample_stat_1",
     "en": "3,000+",
-    "fr": ""
+    "fr": "Plus de 3 000"
   },
   "sample_stat_1_label": {
     "key": "sample_stat_1_label",
     "en": "Canadians (aged 2-17) surveyed annually.",
-    "fr": ""
+    "fr": "Canadiens (de 2 à 17 ans) sondés chaque année"
   },
   "sample_stat_1_description": {
     "key": "sample_stat_1_description",
     "en": "A robust, nationally respresentative sample.",
-    "fr": ""
+    "fr": "Un vaste échantillon représentatif à l’échelle nationale."
   },
   "sample_stat_2": {
     "key": "sample_stat_2",
     "en": "2,000+",
-    "fr": ""
+    "fr": "Plus de 2 000"
   },
   "sample_stat_2_label": {
     "key": "sample_stat_2_label",
     "en": "Canadian households surveyed annually",
-    "fr": ""
+    "fr": "ménages canadiens sondés chaque année"
   },
   "sample_stat_2_description": {
     "key": "sample_stat_2_description",
     "en": "Reaching households from coast to coast to coast",
-    "fr": ""
+    "fr": "Nous sondons des ménages de tout le pays."
   },
   "sample_stat_3": {
     "key": "sample_stat_3",
     "en": "50/50",
-    "fr": ""
+    "fr": "Proportions égales"
   },
   "sample_stat_3_label": {
     "key": "sample_stat_3_label",
     "en": "Anglophone respondents/Francophone respondents",
-    "fr": ""
+    "fr": "de répondants francophones et anglophones"
   },
   "sample_stat_3_description": {
     "key": "sample_stat_3_description",
     "en": "Large, viable samples for both anglophone and francophone children and households.",
-    "fr": ""
+    "fr": "Vastes échantillons exploitables de jeunes et de ménages, tant anglophones que francophones."
   },
   "survey_title": {
     "key": "survey_title",
     "en": "Survey Design",
-    "fr": ""
+    "fr": "Conception du sondage"
   },
   "survey_stat_1": {
     "key": "survey_stat_1",
     "en": "8+",
-    "fr": ""
+    "fr": "Plus de huit"
   },
   "survey_stat_1_label": {
     "key": "survey_stat_1_label",
     "en": "Years of data collection",
-    "fr": ""
+    "fr": "ans de données accumulées"
   },
   "survey_stat_1_description": {
     "key": "survey_stat_1_description",
     "en": "Industry standard level tracking.",
-    "fr": ""
+    "fr": "Suivi conforme aux normes de l’industrie."
   },
   "survey_stat_2": {
     "key": "survey_stat_2",
     "en": "Teens",
-    "fr": ""
+    "fr": "Adolescents"
   },
   "survey_stat_2_label": {
     "key": "survey_stat_2_label",
     "en": "Surveyed directly",
-    "fr": ""
+    "fr": "sondés directement"
   },
   "survey_stat_2_description": {
     "key": "survey_stat_2_description",
     "en": "Asking teens directly to allow for the most accurate and detailed insights.",
-    "fr": ""
+    "fr": "Nous nous adressons directement aux adolescents pour obtenir les renseignements les plus précis et les plus détaillés possibles."
   },
   "survey_stat_3": {
     "key": "survey_stat_3",
     "en": "Two-Part",
-    "fr": ""
+    "fr": "Deux volets"
   },
   "survey_stat_3_label": {
     "key": "survey_stat_3_label",
     "en": "Survey structure",
-    "fr": ""
+    "fr": "de sondage"
   },
   "survey_stat_3_description": {
     "key": "survey_stat_3_description",
     "en": "Parents complete complete a survey about their household and their children aged 2-11 while teens (aged 12-17) respond directly to a survey of their own.",
-    "fr": ""
+    "fr": "Les parents remplissent un sondage sur leur ménage et leurs enfants de 2 à 11 ans, tandis que les adolescents (de 12 à 17 ans) répondent eux-mêmes directement à un sondage."
   },
   "provider_title": {
     "key": "provider_title",
     "en": "Research Provider",
-    "fr": ""
+    "fr": "Fournisseur"
   },
   "provider_label": {
     "key": "provider_label",
     "en": "Ad Hoc Research",
-    "fr": ""
+    "fr": "Ad hoc recherche"
   },
   "provider_description": {
     "key": "provider_description",
     "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Ad Hoc Research conducts all of the French and English research for the MTM Jr. MTM Jr. research was conducted in February 2026.\r\n\nFounded in 1984 in Montreal, Canada, Ad Hoc Research is a full-service marketing, communications and social research firm, with a multidisciplinary team of more than 100 employees and a constantly growing network of national and international clients. Leaders in the Canadian market, Ad Hoc Research builds lasting relationships with their clients, guiding them every step of the way with a creative and passionate approach.",
-    "fr": ""
+    "fr": "L’OTM et tous ses sondages sont des produits du service Recherche et Analyse de CBC/Radio-Canada. La société Ad hoc recherche effectue toutes les recherches en français et en anglais pour l’OTM Junior. Le sondage de l’OTM Junior a été mené en février 2026. \n \n Fondée en 1984 à Montréal (Canada), Ad hoc recherche offre des services complets de recherche marketing, communicationnelle et sociale grâce à une équipe multidisciplinaire comptant plus de 100 employés et à un réseau sans cesse croissant de clients nationaux et internationaux. Leader sur le marché canadien, Ad hoc recherche établit des relations durables avec ses clients en les guidant, à toutes les étapes des projets, par son approche à la fois créative et passionnée."
   },
   "explore_title": {
     "key": "explore_title",
     "en": "Explore More Data Products",
-    "fr": ""
+    "fr": "Découvrir d’autres produits de données"
   }
 }

@@ -7,12 +7,12 @@
   "about_hero_title": {
     "key": "about_hero_title",
     "en": "About the MTM",
-    "fr": ""
+    "fr": "À propos de l’OTM"
   },
   "about_what_body": {
     "key": "about_what_body",
     "en": "MTM (Media Technology Monitor) is a continuous, bilingual research initiative that tracks how Canadians use media and technology — from streaming and social platforms to devices and emerging tech — across English and French Canada. Running since 2005, MTM exists so that understanding how Canadians actually use media doesn't require guesswork: broadcasters, advertisers, educators, and policymakers all plan around the same independent numbers.",
-    "fr": ""
+    "fr": "L’OTM (Observateur des technologies médias) est une initiative de recherche bilingue continue qui permet de mesurer la façon dont les Canadiens utilisent les médias et les technologies, des plateformes de diffusion en continu aux médias sociaux en passant par les appareils et les technologies émergentes, partout au Canada et dans les deux langues officielles. Il a été créé en 2005 pour permettre de comprendre sans équivoque de quelle façon les Canadiens utilisent réellement les médias. Ainsi, les radiodiffuseurs, les annonceurs, les enseignants et les décideurs politiques peuvent tous compter sur les mêmes chiffres objectifs pour leurs activités de planification."
   },
   "Values": {
     "key": "Values",
@@ -22,47 +22,47 @@
   "about_values_title": {
     "key": "about_values_title",
     "en": "What makes the data reliable",
-    "fr": ""
+    "fr": "Ce qui rend les données fiables"
   },
   "about_values_item_1_label": {
     "key": "about_values_item_1_label",
     "en": "Scale",
-    "fr": ""
+    "fr": "Échelle"
   },
   "about_values_item_1_desc": {
     "key": "about_values_item_1_desc",
     "en": "12,000+ Canadians surveyed twice a year — enough sample to break down by niche demographics.",
-    "fr": ""
+    "fr": "Plus de 12 000 Canadiens sondés deux fois par année : un échantillon suffisant pour être divisé par groupe démographique."
   },
   "about_values_item_2_label": {
     "key": "about_values_item_2_label",
     "en": "Recency",
-    "fr": ""
+    "fr": "Récence"
   },
   "about_values_item_2_desc": {
     "key": "about_values_item_2_desc",
     "en": "Refreshed every spring and fall, so the numbers reflect how Canadians use media right now.",
-    "fr": ""
+    "fr": "Les données sont actualisées au printemps et à l’automne; les chiffres illustrent donc la façon dont les Canadiens utilisent les médias actuellement."
   },
   "about_values_item_3_label": {
     "key": "about_values_item_3_label",
     "en": "Coverage",
-    "fr": ""
+    "fr": "Couverture"
   },
   "about_values_item_3_desc": {
     "key": "about_values_item_3_desc",
     "en": "5,000+ variables across demographics, devices, and platforms — one dataset, not a patchwork of surveys.",
-    "fr": ""
+    "fr": "Plus de 5 000 variables tenant compte de divers groupes démographiques, de divers appareils et de diverses plateformes : un ensemble de données unique plutôt qu’une mosaïque de sondages."
   },
   "about_values_item_4_label": {
     "key": "about_values_item_4_label",
     "en": "Comparability",
-    "fr": ""
+    "fr": "Comparabilité"
   },
   "about_values_item_4_desc": {
     "key": "about_values_item_4_desc",
     "en": "The same core methodology every wave since 2005, so trend claims actually hold up.",
-    "fr": ""
+    "fr": "Nous utilisons la même méthodologie de base pour chaque sondage depuis 2005. Les affirmations sur les tendances sont donc bien fondées."
   },
   "Timeline": {
     "key": "Timeline",
@@ -72,202 +72,202 @@
   "about_timeline_title": {
     "key": "about_timeline_title",
     "en": "Timeline",
-    "fr": ""
+    "fr": "Chronologie"
   },
   "about_timeline_description": {
     "key": "about_timeline_description",
     "en": "Every wave since 2005 uses the same core methodology, so a claim about how Canadian media habits shifted can be traced to an exact year.",
-    "fr": ""
+    "fr": "Depuis 2005, nous utilisons la même méthodologie de base pour chaque sondage, ce qui permet de retracer les fondements d’une affirmation sur l’évolution des habitudes médiatiques des Canadiens jusqu’à une année précise."
   },
   "about_timeline_item_1_year": {
     "key": "about_timeline_item_1_year",
     "en": "2005",
-    "fr": ""
+    "fr": "2005"
   },
   "about_timeline_item_1_title": {
     "key": "about_timeline_item_1_title",
     "en": "MTM launches",
-    "fr": ""
+    "fr": "Lancement de l’OTM"
   },
   "about_timeline_item_1_body": {
     "key": "about_timeline_item_1_body",
     "en": "An annual fall survey of 8,000 Canadians, gathering media and technology data by landline telephone.",
-    "fr": ""
+    "fr": "Il s’agit d’un sondage annuel mené en automne auprès de 8 000 Canadiens pour recueillir des données sur les médias et la technologie par ligne terrestre."
   },
   "about_timeline_item_2_year": {
     "key": "about_timeline_item_2_year",
     "en": "2010",
-    "fr": ""
+    "fr": "2010"
   },
   "about_timeline_item_2_title": {
     "key": "about_timeline_item_2_title",
     "en": "Spring wave added",
-    "fr": ""
+    "fr": "Ajout du sondage printanier"
   },
   "about_timeline_item_2_body": {
     "key": "about_timeline_item_2_body",
     "en": "The annual sample grows to 12,000 Canadians across fall and spring waves — the release cadence still used today.",
-    "fr": ""
+    "fr": "L’échantillon annuel passe à 12 000 Canadiens pour les sondages de l’automne et du printemps. Ce rythme de publication est toujours utilisé aujourd’hui."
   },
   "about_timeline_item_3_year": {
     "key": "about_timeline_item_3_year",
     "en": "2011",
-    "fr": ""
+    "fr": "2011"
   },
   "about_timeline_item_3_title": {
     "key": "about_timeline_item_3_title",
     "en": "MTM Portal launches",
-    "fr": ""
+    "fr": "Lancement du portail de l’OTM"
   },
   "about_timeline_item_3_body": {
     "key": "about_timeline_item_3_body",
     "en": "MTM data becomes available online for the first time, giving users direct access to survey findings.",
-    "fr": ""
+    "fr": "Les données de l’OTM sont publiées en ligne pour la première fois, ce qui donne aux utilisateurs un accès direct aux résultats du sondage."
   },
   "about_timeline_item_4_year": {
     "key": "about_timeline_item_4_year",
     "en": "2012",
-    "fr": ""
+    "fr": "2012"
   },
   "about_timeline_item_4_title": {
     "key": "about_timeline_item_4_title",
     "en": "Cell-phone-only households added",
-    "fr": ""
+    "fr": "Ajout des ménages ayant uniquement des cellulaires"
   },
   "about_timeline_item_4_body": {
     "key": "about_timeline_item_4_body",
     "en": "The sample is updated to keep pace with how Canadians were actually reachable by phone, as landlines gave way to mobile.",
-    "fr": ""
+    "fr": "L’échantillon est mis à jour pour suivre la cadence à laquelle on peut joindre les Canadiens par téléphone, alors que les lignes terrestres cèdent la place aux téléphones cellulaires."
   },
   "about_timeline_item_5_year": {
     "key": "about_timeline_item_5_year",
     "en": "2015",
-    "fr": ""
+    "fr": "2015"
   },
   "about_timeline_item_5_title": {
     "key": "about_timeline_item_5_title",
     "en": "10th anniversary",
-    "fr": ""
+    "fr": "Dixième anniversaire"
   },
   "about_timeline_item_5_body": {
     "key": "about_timeline_item_5_body",
     "en": "The interactive Trending Tool and Forecasting Tool launch, unlocking 1,500+ data points for exploration.",
-    "fr": ""
+    "fr": "Lancement de l’outil d’évaluation des tendances et de l’outil de prévisions, qui permettent aux utilisateurs d’examiner plus de 1 500 points de données sous forme interactive."
   },
   "about_timeline_item_6_year": {
     "key": "about_timeline_item_6_year",
     "en": "2019",
-    "fr": ""
+    "fr": "2019"
   },
   "about_timeline_item_6_title": {
     "key": "about_timeline_item_6_title",
     "en": "MTM Jr. launches",
-    "fr": ""
+    "fr": "Lancement de l’OTM Junior"
   },
   "about_timeline_item_6_body": {
     "key": "about_timeline_item_6_body",
     "en": "Coverage extends to Canadians aged 2–17, with additional EDI questions added to the survey.",
-    "fr": ""
+    "fr": "La portée du sondage s’étend aux Canadiens de 2 à 17 ans, et des questions supplémentaires sur l’équité, la diversité et l’inclusion sont ajoutées au sondage."
   },
   "about_timeline_item_7_year": {
     "key": "about_timeline_item_7_year",
     "en": "2021",
-    "fr": ""
+    "fr": "2021"
   },
   "about_timeline_item_7_title": {
     "key": "about_timeline_item_7_title",
     "en": "MTM Newcomers launches",
-    "fr": ""
+    "fr": "Lancement de l’OTM Nouveaux arrivants"
   },
   "about_timeline_item_7_body": {
     "key": "about_timeline_item_7_body",
     "en": "A dedicated survey reaches Canadians new to the country, while the sample also expands to include Northern Canada and a booster sample of Indigenous respondents.",
-    "fr": ""
+    "fr": "Un sondage est consacré aux Canadiens qui viennent d’arriver au pays; l’échantillon est également accru pour s’étendre au Nord canadien et inclure un échantillon d’appoint de répondants autochtones."
   },
   "about_timeline_item_8_year": {
     "key": "about_timeline_item_8_year",
     "en": "2022",
-    "fr": ""
+    "fr": "2022"
   },
   "about_timeline_item_8_title": {
     "key": "about_timeline_item_8_title",
     "en": "MTM Jr. sample grows",
-    "fr": ""
+    "fr": "Croissance de l’échantillon de l’OTM Junior"
   },
   "about_timeline_item_8_body": {
     "key": "about_timeline_item_8_body",
     "en": "The MTM Jr. sample expands, sharpening the picture of media habits among younger Canadians.",
-    "fr": ""
+    "fr": "L’échantillon de l’OTM Junior prend de l’ampleur, ce qui permet de tracer un portrait plus précis des habitudes médiatiques des jeunes Canadiens."
   },
   "about_timeline_item_9_year": {
     "key": "about_timeline_item_9_year",
     "en": "2023",
-    "fr": ""
+    "fr": "2023"
   },
   "about_timeline_item_9_title": {
     "key": "about_timeline_item_9_title",
     "en": "70+ reports released",
-    "fr": ""
+    "fr": "Plus de 70 rapports publiés"
   },
   "about_timeline_item_9_body": {
     "key": "about_timeline_item_9_body",
     "en": "Data from across the year turns into reports and infographics, making insights easier to share and act on.",
-    "fr": ""
+    "fr": "Les données recueillies toute l’année sont traduites en rapports et en infographies, ce qui facilite leur partage et les rend plus exploitables."
   },
   "about_timeline_item_10_year": {
     "key": "about_timeline_item_10_year",
     "en": "2024",
-    "fr": ""
+    "fr": "2024"
   },
   "about_timeline_item_10_title": {
     "key": "about_timeline_item_10_title",
     "en": "YourData tool launches",
-    "fr": ""
+    "fr": "Lancement de l’outil VosDonnées"
   },
   "about_timeline_item_10_body": {
     "key": "about_timeline_item_10_body",
     "en": "Users can create high quality, report ready tables and charts themselves directly on the Portal.",
-    "fr": ""
+    "fr": "Les utilisateurs peuvent maintenant créer eux-mêmes, directement dans le portail, des tableaux et des graphiques de grande qualité prêts à publier dans des rapports."
   },
   "about_timeline_item_11_year": {
     "key": "about_timeline_item_11_year",
     "en": "2025",
-    "fr": ""
+    "fr": "2025"
   },
   "about_timeline_item_11_title": {
     "key": "about_timeline_item_11_title",
     "en": "MTM Census Tool launches",
-    "fr": ""
+    "fr": "Lancement de l’outil de recensement"
   },
   "about_timeline_item_11_body": {
     "key": "about_timeline_item_11_body",
     "en": "Census data becomes directly explorable within the Portal.",
-    "fr": ""
+    "fr": "On peut maintenant examiner les données du recensement directement dans le portail."
   },
   "about_timeline_item_12_year": {
     "key": "about_timeline_item_12_year",
     "en": "2026",
-    "fr": ""
+    "fr": "2026"
   },
   "about_timeline_item_12_title": {
     "key": "about_timeline_item_12_title",
     "en": "Census Tool 2.0 & AskMTM",
-    "fr": ""
+    "fr": "Outil de recensement 2.0 et AlloOTM"
   },
   "about_timeline_item_12_body": {
     "key": "about_timeline_item_12_body",
     "en": "An upgraded Census Tool arrives alongside a new AI chatbot, making it faster to find answers within MTM's data.",
-    "fr": ""
+    "fr": "Lancement d’un outil de recensement mis à niveau et d’un nouvel agent conversationnel alimenté par l’IA qui permet de trouver plus rapidement des réponses dans les données de l’OTM."
   },
   "about_timeline_today_label": {
     "key": "about_timeline_today_label",
     "en": "Today",
-    "fr": ""
+    "fr": "Aujourd’hui"
   },
   "about_timeline_today_cta": {
     "key": "about_timeline_today_cta",
     "en": "Reach out to us today!",
-    "fr": ""
+    "fr": "Communiquez avec nous dès aujourd’hui!"
   },
   "News": {
     "key": "News",
@@ -277,16 +277,16 @@
   "section_5_title": {
     "key": "section_5_title",
     "en": "News",
-    "fr": ""
+    "fr": "Nouvelles"
   },
   "section_5_description": {
     "key": "section_5_description",
     "en": "Stay up to date with the latest MTM findings, product updates, and timely analysis on media and technology trends across Canada.",
-    "fr": ""
+    "fr": "Tenez-vous au courant des tout derniers résultats de l’OTM, des mises à jour apportées aux produits et des analyses ponctuelles des tendances pancanadiennes en ce qui concerne les médias et les technologies."
   },
   "news_cta": {
     "key": "news_cta",
     "en": "Read",
-    "fr": ""
+    "fr": "Lire"
   }
 }

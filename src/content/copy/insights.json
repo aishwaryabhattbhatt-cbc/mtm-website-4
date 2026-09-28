@@ -2,17 +2,17 @@
   "hero_title": {
     "key": "hero_title",
     "en": "Research Built for Faster Decisions",
-    "fr": ""
+    "fr": "Des recherches conçues pour accélérer la prise de décision"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "The Media Technology Monitor (MTM) delivers more than 70 executive-level reports and infographics each year, covering the trends, platforms, behaviours, and audiences shaping Canadian media and technology. Available in both official languages, our research helps organizations quickly understand what’s changing — and what matters next.",
-    "fr": ""
+    "fr": "L’Observateur des technologies médias (OTM) présente chaque année plus de 70 rapports et infographies de synthèse couvrant les tendances, les plateformes, les comportements et les auditoires qui façonnent la technologie et les médias canadiens. Nos recherches, qui sont offertes dans les deux langues officielles, aident les organisations à comprendre rapidement ce qui change – et ce dont il faut tenir compte pour l’avenir."
   },
   "hero_cta_1": {
     "key": "hero_cta_1",
     "en": "Request a Demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "featured_report_tag": {
     "key": "featured_report_tag",
@@ -57,37 +57,37 @@
   "section_2_eyebrow": {
     "key": "section_2_eyebrow",
     "en": "Reports Library",
-    "fr": ""
+    "fr": "Bibliothèque de rapports"
   },
   "section_2_title": {
     "key": "section_2_title",
     "en": "Research Across Every Corner of Canadian Media Behaviour",
-    "fr": ""
+    "fr": "Des recherches sur tous les aspects du comportement de consommation des médias au Canada"
   },
   "section_2_description": {
     "key": "section_2_description",
     "en": "From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.",
-    "fr": ""
+    "fr": "Diffusion en continu, plateformes de médias sociaux, consommation de nouvelles, jeux vidéo, IA, appareils connectés : les rapports de l’OTM révèlent comment les Canadiens de toutes les générations et de tous les groupes démographiques interagissent avec les médias et les technologies."
   },
   "filter_all": {
     "key": "filter_all",
     "en": "All",
-    "fr": ""
+    "fr": "Tous"
   },
   "filter_mtm18plus": {
     "key": "filter_mtm18plus",
     "en": "MTM 18+",
-    "fr": ""
+    "fr": "OTM 18+"
   },
   "filter_junior": {
     "key": "filter_junior",
     "en": "MTM Junior",
-    "fr": ""
+    "fr": "OTM Junior"
   },
   "filter_newcomers": {
     "key": "filter_newcomers",
     "en": "MTM Newcomers",
-    "fr": ""
+    "fr": "OTM Nouveaux arrivants"
   },
   "Reports (to be auto-filled)": {
     "key": "Reports (to be auto-filled)",
@@ -137,17 +137,17 @@
   "section_3_eyebrow": {
     "key": "section_3_eyebrow",
     "en": "Free Reports",
-    "fr": ""
+    "fr": "Rapports gratuits"
   },
   "section_3_title": {
     "key": "section_3_title",
     "en": "Deep Dives Into Key Canadian Audiences",
-    "fr": ""
+    "fr": "Analyses détaillées des principaux auditoires canadiens"
   },
   "section_3_description": {
     "key": "section_3_description",
     "en": "Access a selection of reports and have a better understanding of\nCanadians’ behaviours, attitudes, and technology adoption patterns \nacross distinct demographic and cultural segments.",
-    "fr": ""
+    "fr": "Consultez des rapports sélectionnés pour mieux comprendre les comportements, les attitudes et les habitudes des Canadiens de segments démographiques et culturels distincts en matière d’adoption des technologies."
   },
   "free_report_1_tag": {
     "key": "free_report_1_tag",
@@ -222,17 +222,17 @@
   "section_4_eyebrow": {
     "key": "section_4_eyebrow",
     "en": "Free infographic",
-    "fr": ""
+    "fr": "Infographie gratuite"
   },
   "section_4_title": {
     "key": "section_4_title",
     "en": "Gain Insights from Our Infographics",
-    "fr": ""
+    "fr": "Obtenez des renseignements grâce à nos infographies"
   },
   "section_4_description": {
     "key": "section_4_description",
     "en": "MTM infographics translate complex research into concise, visual storytelling designed for presentations, strategy sessions, and quick decision-making.",
-    "fr": ""
+    "fr": "Les infographies de l’OTM traduisent les recherches complexes en présentations visuelles concises destinées aux exposés, aux réunions stratégiques et à la prise de décision rapide."
   },
   "(to be auto-filled)": {
     "key": "(to be auto-filled)",
@@ -277,12 +277,12 @@
   "section_5_title": {
     "key": "section_5_title",
     "en": "In The News",
-    "fr": ""
+    "fr": "Dans l’actualité"
   },
   "section_5_description": {
     "key": "section_5_description",
     "en": "Read articles and interviews showcasing how MTM insights are shaping conversations across the industry.",
-    "fr": ""
+    "fr": "Lisez des articles et des entrevues qui montrent comment les données de l’OTM soutiennent les conversations dans l’ensemble de l’industrie."
   },
   "news list": {
     "key": "news list",

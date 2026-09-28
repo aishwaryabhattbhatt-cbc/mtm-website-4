@@ -2,361 +2,361 @@
   "hero_eyebrow": {
     "key": "hero_eyebrow",
     "en": "Education and Research",
-    "fr": ""
+    "fr": "Éducation et recherche"
   },
   "hero_title": {
     "key": "hero_title",
     "en": "Fuel Academic Excellence with Real-World Media Intelligence",
-    "fr": ""
+    "fr": "Des données réelles sur les médias pour favoriser l’excellence universitaire"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "Give your students and faculty access to the same datasets by the Media Technology Monitor (MTM) that media experts, industry regulators and scholars have relied on for over two decades. Nationally representative, bilingual, and rigorous enough for peer review.",
-    "fr": ""
+    "fr": "Donnez à votre corps étudiant et professoral accès aux données de l’Observateur des technologies médias (OTM) auxquelles se fient les experts des médias, les organismes de réglementation de l’industrie et les chercheurs depuis plus de 20 ans. Elles sont représentatives à l’échelle nationale, bilingues et suffisamment rigoureuses pour passer un examen par des pairs."
   },
   "hero_cta": {
     "key": "hero_cta",
     "en": "Request a demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "trusted_by_label": {
     "key": "trusted_by_label",
     "en": "Trusted by",
-    "fr": ""
+    "fr": "Clientèle"
   },
   "dataset_title": {
     "key": "dataset_title",
     "en": "Multiple datasets. Hundreds of research directions.",
-    "fr": ""
+    "fr": "De multiples ensembles de données, des centaines de possibilités de recherche"
   },
   "dataset_description": {
     "key": "dataset_description",
     "en": "MTM tracks how Canadians consume media and technology across 5000+ variables — spanning platforms, behaviours, demographics, and devices. Browse by topic to find what your research needs.",
-    "fr": ""
+    "fr": "L’OTM mesure la consommation de médias et de technologies des Canadiens en fonction de plus de 5 000 variables : plateformes, comportements, données démographiques, appareils, etc. Parcourez les données par sujet et trouvez ce qu’il faut pour votre recherche."
   },
   "topic_example_label": {
     "key": "topic_example_label",
     "en": "Example",
-    "fr": ""
+    "fr": "Exemple"
   },
   "topic_variables_label": {
     "key": "topic_variables_label",
     "en": "Variables available",
-    "fr": ""
+    "fr": "Variables"
   },
   "topic_1_eyebrow": {
     "key": "topic_1_eyebrow",
     "en": "Sports",
-    "fr": ""
+    "fr": "Sports"
   },
   "topic_1_example_question": {
     "key": "topic_1_example_question",
     "en": "What share of Canadians watched a live sporting event online last month?",
-    "fr": ""
+    "fr": "Quelle est la proportion de Canadiens qui ont regardé en direct un événement sportif en ligne le mois dernier?"
   },
   "topic_1_variables": {
     "key": "topic_1_variables",
     "en": "Watched sports online, Sports, SVOD, ESPN+, TSN",
-    "fr": ""
+    "fr": "Visionnement de sports en ligne, Sports, VSDA, ESPN+, TSN"
   },
   "topic_2_eyebrow": {
     "key": "topic_2_eyebrow",
     "en": "Streaming",
-    "fr": ""
+    "fr": "Diffusion en continu"
   },
   "topic_2_example_question": {
     "key": "topic_2_example_question",
     "en": "How does Twitch viewership differ between Teens and Gen Z Canadians?",
-    "fr": ""
+    "fr": "En quoi le visionnement de Twitch diffère-t-il chez les adolescents et chez les membres de la génération Z au Canada?"
   },
   "topic_2_variables": {
     "key": "topic_2_variables",
     "en": "Age 12 to 17, Age 18 to 24, Twitch",
-    "fr": ""
+    "fr": "12 à 17 ans, 18 à 24 ans, Twitch"
   },
   "topic_3_eyebrow": {
     "key": "topic_3_eyebrow",
     "en": "AI Tool Adoption",
-    "fr": ""
+    "fr": "Adoption des outils d’IA"
   },
   "topic_3_example_question": {
     "key": "topic_3_example_question",
     "en": "How rapidly has AI tool adoption grown among Canadians since 2023?",
-    "fr": ""
+    "fr": "À quelle vitesse l’adoption des outils d’IA a-t-elle augmenté chez les Canadiens depuis 2023?"
   },
   "topic_3_variables": {
     "key": "topic_3_variables",
     "en": "ChatGPT, Gemini, Claude, Age 18 to 24, Grok",
-    "fr": ""
+    "fr": "ChatGPT, Gemini, Claude, 18 à 24 ans, Grok"
   },
   "topic_4_eyebrow": {
     "key": "topic_4_eyebrow",
     "en": "Gaming & Consoles",
-    "fr": ""
+    "fr": "Jeux vidéo et consoles"
   },
   "topic_4_example_question": {
     "key": "topic_4_example_question",
     "en": "How does gaming device ownership vary across income levels in Canada?",
-    "fr": ""
+    "fr": "De quelle façon la possession d’une console de jeu varie-t-elle selon le revenu au Canada?"
   },
   "topic_4_variables": {
     "key": "topic_4_variables",
     "en": "Game console owners, Nintendo Switch, PlayStation, XBox, Income",
-    "fr": ""
+    "fr": "Propriétaires de consoles de jeu, Nintendo Switch, PlayStation, Xbox, Revenu"
   },
   "topic_5_eyebrow": {
     "key": "topic_5_eyebrow",
     "en": "Language & Culture",
-    "fr": ""
+    "fr": "Langue et culture"
   },
   "topic_5_example_question": {
     "key": "topic_5_example_question",
     "en": "How do media consumption patterns differ between English- and French-speaking Canadians?",
-    "fr": ""
+    "fr": "Quelles sont les différences entre les habitudes de consommation médiatique des anglophones et des francophones?"
   },
   "topic_5_variables": {
     "key": "topic_5_variables",
     "en": "Anglophone, Francophone, Social Media, Language spoken at Home, News, TV hours",
-    "fr": ""
+    "fr": "Anglophones, Francophones, Médias sociaux, Langue parlée à la maison, Nouvelles, Nombre d’heures consacrées à la télévision"
   },
   "topic_6_eyebrow": {
     "key": "topic_6_eyebrow",
     "en": "News Consumption",
-    "fr": ""
+    "fr": "Consommation de nouvelles"
   },
   "topic_6_example_question": {
     "key": "topic_6_example_question",
     "en": "Are younger Canadians abandoning traditional news formats in favour of social media?",
-    "fr": ""
+    "fr": "Les jeunes Canadiens abandonnent-ils les médias traditionnels au profit des médias sociaux?"
   },
   "topic_6_variables": {
     "key": "topic_6_variables",
     "en": "Read online news, News consumption platform, Social media, CTV, YouTube",
-    "fr": ""
+    "fr": "Lecture de nouvelles en ligne, Plateforme de consommation de nouvelles, Médias sociaux, Télévision connectée, YouTube"
   },
   "dataset_footer": {
     "key": "dataset_footer",
     "en": "Over 5000+ variables available across 200+ topic areas, searchable and filterable in our tools.",
-    "fr": ""
+    "fr": "Plus de 5 000 variables, sur plus de 200 sujets, peuvent être consultées et filtrées grâce à nos outils."
   },
   "tools_title": {
     "key": "tools_title",
     "en": "Powerful tools designed for serious inquiry",
-    "fr": ""
+    "fr": "Des outils puissants pour les questions sérieuses"
   },
   "tools_analytic_eyebrow": {
     "key": "tools_analytic_eyebrow",
     "en": "Analytic Tools",
-    "fr": ""
+    "fr": "Outils d’analyse"
   },
   "education_tools_analytic_description": {
     "key": "education_tools_analytic_description",
     "en": "Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.",
-    "fr": ""
+    "fr": "Faites une requête dans tout l’ensemble de données de l’OTM par plateforme, région, langue et données démographiques. Créez des tableaux croisés personnalisés en quelques minutes, suivez les courbes d’adoption au fil du temps et modélisez votre auditoire pour déterminer où il en sera dans trois ans, le tout en un seul clic."
   },
   "tools_analytic_feature_1": {
     "key": "tools_analytic_feature_1",
     "en": "Data Analysis",
-    "fr": ""
+    "fr": "Analyse de données"
   },
   "tools_analytic_feature_2": {
     "key": "tools_analytic_feature_2",
     "en": "Trending",
-    "fr": ""
+    "fr": "Tendances"
   },
   "tools_analytic_feature_3": {
     "key": "tools_analytic_feature_3",
     "en": "Forecasting",
-    "fr": ""
+    "fr": "Prévisions"
   },
   "tools_analytic_cta": {
     "key": "tools_analytic_cta",
     "en": "Go to Analytic Tools",
-    "fr": ""
+    "fr": "Accéder aux outils d’analyse"
   },
   "tools_census_eyebrow": {
     "key": "tools_census_eyebrow",
-    "en": "Census Tools",
-    "fr": ""
+    "en": "Census Tool",
+    "fr": "Outil de recensement"
   },
   "education_tools_census_description": {
     "key": "education_tools_census_description",
     "en": "Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.",
-    "fr": ""
+    "fr": "Cartographiez votre public cible en fonction du code postal. Repérez les communautés mal desservies, déterminez la taille des marchés locaux et comparez votre portée à la population nationale, le tout à partir d’un tableau de bord unique directement alimenté par les données du recensement de Statistique Canada."
   },
   "tools_census_feature_1": {
     "key": "tools_census_feature_1",
     "en": "Snapshot",
-    "fr": ""
+    "fr": "Aperçu"
   },
   "tools_census_feature_2": {
     "key": "tools_census_feature_2",
     "en": "Explorer",
-    "fr": ""
+    "fr": "Explorateur"
   },
   "tools_census_feature_3": {
     "key": "tools_census_feature_3",
     "en": "Compare",
-    "fr": ""
+    "fr": "Comparaison"
   },
   "tools_census_more": {
     "key": "tools_census_more",
     "en": "3 more",
-    "fr": ""
+    "fr": "(et trois autres)"
   },
   "tools_learn_more": {
     "key": "tools_learn_more",
     "en": "Learn more",
-    "fr": ""
+    "fr": "En savoir plus"
   },
   "tools_census_cta": {
     "key": "tools_census_cta",
     "en": "Go to Census Tool",
-    "fr": ""
+    "fr": "Accéder à l’outil de recensement"
   },
   "stat_value": {
     "key": "stat_value",
     "en": "Unlimited seats",
-    "fr": ""
+    "fr": "Nombre de places illimité"
   },
   "stat_description": {
     "key": "stat_description",
     "en": "No extra charge for faculty, students and staff",
-    "fr": ""
+    "fr": "Aucuns frais supplémentaires pour le corps professoral, les étudiants et le personnel administratif."
   },
   "workflow_title": {
     "key": "workflow_title",
-    "en": "Gold standard research all of your research needs",
-    "fr": ""
+    "en": "Gold standard research for all of your research needs",
+    "fr": "Un outil de recherche de premier ordre"
   },
   "workflow_description": {
     "key": "workflow_description",
     "en": "We provide universities and colleges with the insights needed to drive innovation and learning across every specialization and at every stage of their academic journey.",
-    "fr": ""
+    "fr": "Nous fournissons aux établissements universitaires et collégiaux des renseignements essentiels pour stimuler l’innovation et l’apprentissage dans tous les domaines et à chaque étape du parcours scolaire."
   },
   "workflow_step_1_number": {
     "key": "workflow_step_1_number",
     "en": "01 For Students",
-    "fr": ""
+    "fr": "01 Pour les étudiants"
   },
   "workflow_step_1_title": {
     "key": "workflow_step_1_title",
     "en": "Build Market-Ready Skills",
-    "fr": ""
+    "fr": "Développez des compétences pertinentes pour le marché"
   },
   "workflow_step_1_description": {
     "key": "workflow_step_1_description",
     "en": "Ground assignments in the most up-to-date research and build market-ready skills by navigating the same metrics and trends used by Canada’s top industry leaders and governmental institutions.",
-    "fr": ""
+    "fr": "Ancrez vos travaux dans les recherches les plus récentes et développez des compétences pertinentes pour le marché en utilisant les mêmes mesures et les mêmes tendances que les principaux chefs de file de l’industrie et les plus grandes institutions gouvernementales du Canada."
   },
   "workflow_step_2_number": {
     "key": "workflow_step_2_number",
     "en": "02 For Faculty",
-    "fr": ""
+    "fr": "02 Pour le corps professoral"
   },
   "workflow_step_2_title": {
     "key": "workflow_step_2_title",
     "en": "Enrich Course Curriculum",
-    "fr": ""
+    "fr": "Enrichissez votre programme de cours"
   },
   "workflow_step_2_description": {
     "key": "workflow_step_2_description",
     "en": "Enhance your curriculum with authentic, up-to-date reports and datasets that turn abstract concepts into tangible lessons.",
-    "fr": ""
+    "fr": "Améliorez votre curriculum grâce à des rapports et à des ensembles de données authentiques et à jour qui transforment des concepts abstraits en leçons tangibles."
   },
   "workflow_step_3_number": {
     "key": "workflow_step_3_number",
     "en": "03 For Research Projects",
-    "fr": ""
+    "fr": "03 Pour les projets de recherche"
   },
   "workflow_step_3_title": {
     "key": "workflow_step_3_title",
     "en": "Power Serious Academic Inquiry",
-    "fr": ""
+    "fr": "Alimentez des recherches sérieuses"
   },
   "workflow_step_3_description": {
     "key": "workflow_step_3_description",
     "en": "Support your research in the country's most robust longitudinal media studies, ensuring your findings are both current and credible.",
-    "fr": ""
+    "fr": "Étayez vos recherches grâce aux études médiatiques longitudinales les plus robustes du pays, en vous assurant que vos résultats sont à la fois actuels et crédibles."
   },
   "usecases_title": {
     "key": "usecases_title",
     "en": "MTM in Action for Educators",
-    "fr": ""
+    "fr": "L’OTM en action pour l’éducation"
   },
   "usecases_description": {
     "key": "usecases_description",
     "en": "Learn how the MTM offers essential content and tools for professors and students alike",
-    "fr": ""
+    "fr": "Découvrez le rôle essentiel du contenu et des outils de l’OTM pour le corps professoral et étudiant."
   },
   "usecases_card_title": {
     "key": "usecases_card_title",
     "en": "Use Case",
-    "fr": ""
+    "fr": "Cas d’utilisation"
   },
   "leverage_title": {
     "key": "leverage_title",
     "en": "How to leverage this",
-    "fr": ""
+    "fr": "Comment en tirer parti"
   },
   "usecase_1_description": {
     "key": "usecase_1_description",
     "en": "A professor is looking for a historical and current data on the state of broadcast TV when developing a new curriculum.",
-    "fr": ""
+    "fr": "Une professeure cherche des données historiques et actuelles sur l’état de la télévision pour élaborer un nouveau programme de cours."
   },
   "usecase_1_variables": {
     "key": "usecase_1_variables",
     "en": "TV viewership, TV hours, Region, Age",
-    "fr": ""
+    "fr": "Auditoire de la télévision, Heures consacrées à la télévision, Région, Âge"
   },
   "usecase_1_cta_title": {
     "key": "usecase_1_cta_title",
     "en": "How you can use it",
-    "fr": ""
+    "fr": "Comment l’utiliser"
   },
   "usecase_1_cta": {
     "key": "usecase_1_cta",
     "en": "Examine usage of linear TV and channels across a wide range of demographics via the Data Analysis Tool, or read the TV distribution report for a broader overview.",
-    "fr": ""
+    "fr": "Étudiez la consommation de la télévision linéaire et de ses chaînes au sein d’un vaste éventail de groupes démographique avec l’outil d’analyse de données, ou lisez le rapport sur la télédistribution pour obtenir un aperçu plus complet."
   },
   "usecase_2_description": {
     "key": "usecase_2_description",
     "en": "A student writing a masters thesis on different locations for data centres across different communities.",
-    "fr": ""
+    "fr": "Un étudiant rédige un mémoire de maîtrise sur différents emplacements pour accueillir des centres de données dans diverses collectivités."
   },
   "usecase_2_variables": {
     "key": "usecase_2_variables",
     "en": "Municipalities, Postal Code, Age, Income",
-    "fr": ""
+    "fr": "Municipalités, Code postal, Âge, Revenu"
   },
   "usecase_2_cta_title": {
     "key": "usecase_2_cta_title",
     "en": "How you can use it",
-    "fr": ""
+    "fr": "Comment l’utiliser"
   },
   "usecase_2_cta": {
     "key": "usecase_2_cta",
     "en": "Leverage the Compare feature in the Census Tool for a granular look at different prospective locations.",
-    "fr": ""
+    "fr": "Servez-vous de la fonction Comparaison de l’outil de recensement pour obtenir un portrait détaillé des différents emplacements potentiels."
   },
   "testimonial_title": {
     "key": "testimonial_title",
     "en": "What academic institutions are saying about us",
-    "fr": ""
+    "fr": "Ce que les établissements universitaires disent de nous"
   },
   "testimonial_logo": {
     "key": "testimonial_logo",
     "en": "University of Ottawa",
-    "fr": ""
+    "fr": "Université d’Ottawa"
   },
   "testimonial_quote": {
     "key": "testimonial_quote",
     "en": "As the author of nine editions of a Canadian Advertising textbook, I have included data from Media Technology Monitor (MTM) for the past five editions to enhance the Broadcast, Internet and Social Media Chapters. I believe the data improved the quality allowing students to understand the complexities of advertising planning decisions. The textbook contains the most current consumer media technology usage and adoption data to keep it in a leading market position. MTM is a wonderful partner and I look forward to working with them for the next edition.",
-    "fr": ""
+    "fr": "Je suis l’auteur de neuf éditions d’un manuel sur la publicité au Canada et, dans les cinq dernières éditions, j’ai ajouté des données de l’Observateur des technologies médias (OTM) pour améliorer les chapitres sur la radiodiffusion, Internet et les médias sociaux. Je crois que ces données ont amélioré la qualité du manuel en permettant aux étudiants de comprendre la complexité des décisions liées à la planification publicitaire. Pour que mon manuel demeure à l’avant-garde du marché, j’y ai inclus les toutes dernières données sur l’utilisation et l’adoption des technologies médias par les consommateurs. L’OTM est un partenaire formidable et j’ai hâte d’y avoir recours pour la prochaine édition."
   },
   "testimonial_attribution": {
     "key": "testimonial_attribution",
     "en": "Michael Guolla, Professor, University of Ottawa",
-    "fr": ""
+    "fr": "Michael Guolla, professeur, Université d’Ottawa"
   }
 }

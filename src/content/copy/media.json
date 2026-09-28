@@ -2,291 +2,286 @@
   "hero_eyebrow": {
     "key": "hero_eyebrow",
     "en": "Media and Broadcasting",
-    "fr": ""
+    "fr": "Médias et radiodiffusion"
   },
   "hero_title": {
     "key": "hero_title",
     "en": "Know your audience",
-    "fr": ""
+    "fr": "Apprenez à mieux connaître votre auditoire"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "In a rapidly evolving media landscape, guesswork is a liability. The Media Technology Monitor (MTM) is an investment in unparalleled evidence-based market intelligence that will sharpen your strategy, drive audience engagement and secure your competitive edge.",
-    "fr": ""
+    "fr": "Dans un contexte médiatique en constante évolution, il est dangereux de faire des devinettes. Investir dans l’Observateur des technologies médias (OTM), c’est investir dans de l’information commerciale sans égal, fondée sur des données probantes, qui affinera votre stratégie, stimulera l’engagement de l’auditoire et vous permettra de conserver votre avantage concurrentiel."
   },
   "hero_cta": {
     "key": "hero_cta",
     "en": "Request a demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "trusted_by_label": {
     "key": "trusted_by_label",
     "en": "Trusted by",
-    "fr": ""
+    "fr": "Clientèle"
   },
   "problem_title": {
     "key": "problem_title",
     "en": "Get ahead of changes",
-    "fr": ""
+    "fr": "Prenez de l’avance sur les changements"
   },
   "problem_description": {
     "key": "problem_description",
     "en": "Attention fragmentation is real – know where your audience is now, where it will be next and who you may not be reaching yet.",
-    "fr": ""
+    "fr": "La fragmentation de l’attention est un phénomène réel : sachez sur quoi se concentre actuellement votre auditoire, sur quoi il se concentrera ensuite et quels sont ceux que vous n’atteignez peut-être pas encore."
   },
   "insight_1_eyebrow": {
     "key": "insight_1_eyebrow",
     "en": "Platform Diversification",
-    "fr": ""
+    "fr": "Diversification des plateformes"
   },
   "insight_1_title": {
     "key": "insight_1_title",
     "en": "Meet your audience where they're at.",
-    "fr": ""
+    "fr": "Retrouvez votre auditoire là où il est"
   },
   "insight_1_description": {
     "key": "insight_1_description",
     "en": "Canadians no longer live on just one platform—they stream on one, scroll on another,  and stay connected on a third. MTM tracks the full media diet across all screens, platforms, and services to capture real-world insights for any target audience",
-    "fr": ""
+    "fr": "Les Canadiens ne se limitent plus à une seule plateforme : ils écoutent du contenu en continu sur une plateforme et en font défiler sur une autre pendant qu’ils échangent avec leurs proches sur une troisième. L’OTM fait le suivi de la consommation médiatique complète sur tous les écrans, toutes les plateformes et tous les services afin de recueillir des renseignements concrets sur tous les auditoires cibles."
   },
   "insight_1_chart_title": {
     "key": "insight_1_chart_title",
     "en": "Top Social Media Platforms",
-    "fr": ""
+    "fr": "Plateformes de médias sociaux les plus populaires"
   },
   "insight_2_eyebrow": {
     "key": "insight_2_eyebrow",
     "en": "Market Intelligence",
-    "fr": ""
+    "fr": "Veille stratégique"
   },
   "insight_2_title": {
     "key": "insight_2_title",
     "en": "Stop marketing to the 'average' Canadian.",
-    "fr": ""
+    "fr": "Cessez de cibler le Canadien « moyen » dans vos stratégies de marketing"
   },
   "insight_2_description": {
     "key": "insight_2_description",
     "en": "Not all Canadians share the same media habits—from streaming and podcasts to device ownership. MTM provides high-definition visibility, filtering data by ethnicity, age, income, and family structure so you connect exactly when and how your audience needs you.",
-    "fr": ""
+    "fr": "De la diffusion en continu aux baladodiffusions, en passant par les appareils qu’ils possèdent, les Canadiens n’ont pas tous les mêmes habitudes en matière de médias. L’OTM offre une visualisation en haute définition, avec filtration des données par origine ethnique, âge, revenu et structure familiale, pour vous permettre de joindre votre auditoire au moment et par les moyens qui répondent le mieux à leurs besoins."
   },
   "insight_2_chart_title": {
     "key": "insight_2_chart_title",
     "en": "FAST Channel Viewership",
-    "fr": ""
+    "fr": "Visionnement de chaînes FAST"
   },
   "tools_title": {
     "key": "tools_title",
     "en": "Tools that empower you",
-    "fr": ""
+    "fr": "Des outils à votre service"
   },
   "tools_analytic_eyebrow": {
     "key": "tools_analytic_eyebrow",
     "en": "Analytic Tools",
-    "fr": ""
+    "fr": "Outils d’analyse"
   },
   "media_tools_analytic_description": {
     "key": "media_tools_analytic_description",
     "en": "Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.",
-    "fr": ""
+    "fr": "Faites une requête dans tout l’ensemble de données de l’OTM par plateforme, région, langue et données démographiques. Créez des tableaux croisés personnalisés en quelques minutes, suivez les courbes d’adoption au fil du temps et modélisez votre auditoire pour déterminer où il en sera dans trois ans, le tout en un seul clic."
   },
   "tools_analytic_feature_1": {
     "key": "tools_analytic_feature_1",
     "en": "Data Analysis",
-    "fr": ""
+    "fr": "Analyse de données"
   },
   "tools_analytic_feature_2": {
     "key": "tools_analytic_feature_2",
     "en": "Trending",
-    "fr": ""
+    "fr": "Tendances"
   },
   "tools_analytic_feature_3": {
     "key": "tools_analytic_feature_3",
     "en": "Forecasting",
-    "fr": ""
+    "fr": "Prévisions"
   },
   "tools_analytic_cta": {
     "key": "tools_analytic_cta",
     "en": "Go to Analytic Tools",
-    "fr": ""
+    "fr": "Accéder aux outils d’analyse"
   },
   "tools_census_eyebrow": {
     "key": "tools_census_eyebrow",
-    "en": "Census Tools",
-    "fr": ""
+    "en": "Census Tool",
+    "fr": "Outil de recensement"
   },
   "media_tools_census_description": {
     "key": "media_tools_census_description",
     "en": "Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.",
-    "fr": ""
+    "fr": "Cartographiez votre public cible en fonction du code postal. Repérez les communautés mal desservies, déterminez la taille des marchés locaux et comparez votre portée à la population nationale, le tout à partir d’un tableau de bord unique directement alimenté par les données du recensement de Statistique Canada."
   },
   "tools_census_feature_1": {
     "key": "tools_census_feature_1",
     "en": "Snapshot",
-    "fr": ""
+    "fr": "Aperçu"
   },
   "tools_census_feature_2": {
     "key": "tools_census_feature_2",
     "en": "Explorer",
-    "fr": ""
+    "fr": "Explorateur"
   },
   "tools_census_feature_3": {
     "key": "tools_census_feature_3",
     "en": "Compare",
-    "fr": ""
+    "fr": "Comparaison"
   },
   "tools_census_more": {
     "key": "tools_census_more",
     "en": "3 more",
-    "fr": ""
+    "fr": "(et trois autres)"
   },
   "tools_learn_more": {
     "key": "tools_learn_more",
     "en": "Learn more",
-    "fr": ""
+    "fr": "En savoir plus"
   },
   "tools_census_cta": {
     "key": "tools_census_cta",
     "en": "Go to Census Tool",
-    "fr": ""
+    "fr": "Accéder à l’outil de recensement"
   },
   "workflow_title": {
     "key": "workflow_title",
     "en": "How MTM fits the way you work already",
-    "fr": ""
+    "fr": "L’OTM est adapté à vos méthodes de travail"
   },
   "workflow_description": {
     "key": "workflow_description",
     "en": "You don't open a research tool and start clicking. You have a business question. MTM is built to answer it, at every stage of your workflow.",
-    "fr": ""
+    "fr": "On n’ouvre pas un outil de recherche pour cliquer au hasard; tout commence par une question d’affaires. L’OTM est conçu pour répondre à vos questions à chaque étape de votre flux de travail."
   },
   "workflow_step_1_number": {
     "key": "workflow_step_1_number",
     "en": "01 Query",
-    "fr": ""
+    "fr": "01 Requête"
   },
   "workflow_step_1_title": {
     "key": "workflow_step_1_title",
     "en": "Select your variables",
-    "fr": ""
+    "fr": "Sélectionnez vos variables"
   },
   "workflow_step_1_description": {
     "key": "workflow_step_1_description",
     "en": "Start with a question — platform reach, time spent, device ownership, service provider. Pull exactly the variables you need from and the MTM lets you build your view in minutes.",
-    "fr": ""
+    "fr": "Commencez par une question : la portée des plateformes, le temps consacré à celles-ci, la possession d’appareils, les fournisseurs de services. Choisissez exactement les variables qu’il vous faut et l’OTM vous permet de les visualiser en quelques minutes."
   },
   "workflow_step_2_number": {
     "key": "workflow_step_2_number",
     "en": "02 Customize",
-    "fr": ""
+    "fr": "02 Personnalisation"
   },
   "workflow_step_2_title": {
     "key": "workflow_step_2_title",
     "en": "Build your cross-tab or chart",
-    "fr": ""
+    "fr": "Créez votre tableau croisé ou votre graphique"
   },
   "workflow_step_2_description": {
     "key": "workflow_step_2_description",
     "en": "Drag variables into rows and columns. Filter by region, language, age or strategic target group. Every output is yours to configure - no fixed tables, no waiting.",
-    "fr": ""
+    "fr": "Faites glisser les variables dans des rangées et des colonnes. Filtrez par région, langue, âge ou groupe cible stratégique. Vous pouvez configurer tous les résultats. Pas de tableaux fixes, pas d’attente."
   },
   "workflow_step_3_number": {
     "key": "workflow_step_3_number",
     "en": "03 Export",
-    "fr": ""
+    "fr": "03 Exportation"
   },
   "workflow_step_3_title": {
     "key": "workflow_step_3_title",
     "en": "Export for your client",
-    "fr": ""
+    "fr": "Exportez les résultats pour votre client"
   },
   "workflow_step_3_description": {
     "key": "workflow_step_3_description",
     "en": "Download your analysis in presentation-ready formats. Drop it straight into a deck, a brief, or a regulatory submission - formatted and ready to go.",
-    "fr": ""
+    "fr": "Téléchargez votre analyse dans des formats prêts à présenter. Déposez-les directement dans une présentation, un document d’information ou une demande réglementaire, déjà formatés et prêts à utiliser."
   },
   "usecases_title": {
     "key": "usecases_title",
     "en": "MTM in Action for Media Teams",
-    "fr": ""
+    "fr": "L’OTM en action pour les équipes médias"
   },
   "usecases_description": {
     "key": "usecases_description",
     "en": "Learn how your organization can use the MTM to grow or maintain your key audiences.",
-    "fr": ""
+    "fr": "Apprenez comment votre organisation peut utiliser l’OTM pour accroître ou maintenir ses auditoires cibles."
   },
   "usecases_card_title": {
     "key": "usecases_card_title",
     "en": "Use Case",
-    "fr": ""
+    "fr": "Cas d’utilisation"
   },
   "leverage_title": {
     "key": "leverage_title",
     "en": "How to leverage this",
-    "fr": ""
+    "fr": "Comment en tirer parti"
   },
   "usecase_1_description": {
     "key": "usecase_1_description",
     "en": "Understanding the most effective way to promote a new TV show to affluent Baby Boomers.",
-    "fr": ""
+    "fr": "Comprendre quelle est la façon la plus efficace de promouvoir une nouvelle émission de télévision auprès des baby-boomers aisés."
   },
   "usecase_1_variables": {
     "key": "usecase_1_variables",
     "en": "Younger and Older Boomers, TV hours, Channel viewership, Income, Seeing ads on streaming services",
-    "fr": ""
+    "fr": "Jeunes baby-boomers et baby-boomers plus âgés, Nombre d’heures consacrées à la télévision, Auditoire des chaînes, Revenu, Publicités sur les services de diffusion en continu"
   },
   "usecase_1_cta_title": {
     "key": "usecase_1_cta_title",
     "en": "How you can use it",
-    "fr": ""
+    "fr": "Comment l’utiliser"
   },
   "usecase_1_cta": {
     "key": "usecase_1_cta",
     "en": "Read our dedicated Baby Boomers report to learn where they are concentrating their current viewing, which are most exposed to advertising and whether traditional TV remains king for this audience.",
-    "fr": ""
-  },
-  "usecase_2_brand": {
-    "key": "usecase_2_brand",
-    "en": "(No logo/leave this blank) (change \"Case Study\" for \"Data In Action\" or \"Use Case\")",
-    "fr": ""
+    "fr": "Lisez notre rapport sur les baby-boomers pour savoir où leur visionnement se concentre actuellement, lesquels d’entre eux sont les plus exposées à la publicité et si la télévision traditionnelle demeure le média par excellence pour cet auditoire."
   },
   "usecase_2_description": {
     "key": "usecase_2_description",
     "en": "Gaining maximum exposure for a podcast aimed at men aged 18 to 35",
-    "fr": ""
+    "fr": "Maximiser l’exposition d’un balado destiné aux hommes de 18 à 35 ans."
   },
   "usecase_2_variables": {
     "key": "usecase_2_variables",
     "en": "Podcast listenership, Podcast hours, Streaming audio platforms, Social media usage",
-    "fr": ""
+    "fr": "Écoute de balados, Nombre d’heures consacrées aux balados, Plateformes de diffusion audio en continu, Utilisation des médias sociaux"
   },
   "usecase_2_cta_title": {
     "key": "usecase_2_cta_title",
     "en": "How you can use it",
-    "fr": ""
+    "fr": "Comment l’utiliser"
   },
   "usecase_2_cta": {
     "key": "usecase_2_cta",
     "en": "Use our tools to take a deep dive on the platforms, time spent and online communities where this group is most active.",
-    "fr": ""
+    "fr": "Utilisez nos outils pour approfondir vos connaissances sur les plateformes utilisées, le temps consacré à celles-ci et les communautés en ligne où ce groupe est le plus actif."
   },
   "testimonial_title": {
     "key": "testimonial_title",
     "en": "What media and broadcasting companies are saying about us",
-    "fr": ""
+    "fr": "Ce que les entreprises de médias et de radiodiffusion disent de nous"
   },
   "testimonial_logo": {
     "key": "testimonial_logo",
     "en": "The Weather Network",
-    "fr": ""
+    "fr": "MétéoMédia"
   },
   "testimonial_quote": {
     "key": "testimonial_quote",
     "en": "When it comes to technology ownership and usage in Canada, the MTM is THE go-to source of information. For our team, this resource is invaluable because it allows us to make informed decisions with confidence and stay one step ahead in an ever-changing media landscape. It is a fundamental tool for our strategic planning and innovation efforts.",
-    "fr": ""
+    "fr": "En matière de possession et d’utilisation des technologies au Canada, l’OTM est LA source d’information par excellence. Pour notre équipe, cette ressource est inestimable, car elle nous permet de prendre des décisions éclairées en toute confiance et de conserver une longueur d’avance dans un paysage médiatique en constante évolution. Elle constitue un outil fondamental pour notre planification stratégique et nos efforts d’innovation."
   },
   "testimonial_attribution": {
     "key": "testimonial_attribution",
     "en": "Élise Roy-Pepin, The Weather Network",
-    "fr": ""
+    "fr": "Élise Roy-Pepin, MétéoMédia"
   }
 }

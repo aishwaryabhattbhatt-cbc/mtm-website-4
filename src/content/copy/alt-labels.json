@@ -2,176 +2,176 @@
   "nav_logo_aria_label": {
     "key": "nav_logo_aria_label",
     "en": "MTM home",
-    "fr": ""
+    "fr": "Accueil de l’OTM"
   },
   "nav_logo_alt": {
     "key": "nav_logo_alt",
     "en": "MTM - Media Technology Monitor",
-    "fr": ""
+    "fr": "OTM – Observateur des technologies médias"
   },
   "nav_menu_toggle_aria_label": {
     "key": "nav_menu_toggle_aria_label",
     "en": "Open navigation menu",
-    "fr": ""
+    "fr": "Ouvrir le menu de navigation"
   },
   "nav_linkedin_aria_label": {
     "key": "nav_linkedin_aria_label",
     "en": "LinkedIn",
-    "fr": ""
+    "fr": "LinkedIn"
   },
   "footer_logo_aria_label": {
     "key": "footer_logo_aria_label",
     "en": "MTM home",
-    "fr": ""
+    "fr": "Accueil de l’OTM"
   },
   "footer_linkedin_aria_label": {
     "key": "footer_linkedin_aria_label",
     "en": "LinkedIn",
-    "fr": ""
+    "fr": "LinkedIn"
   },
   "footer_cta_form_aria_label": {
     "key": "footer_cta_form_aria_label",
     "en": "Request a demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "footer_newsletter_form_aria_label": {
     "key": "footer_newsletter_form_aria_label",
     "en": "Newsletter signup",
-    "fr": ""
+    "fr": "Inscription à l’infolettre"
   },
   "mtm_suite_explore_prefix": {
     "key": "mtm_suite_explore_prefix",
     "en": "Explore",
-    "fr": ""
+    "fr": "Explorer"
   },
   "mtm_suite_video_aria_label": {
     "key": "mtm_suite_video_aria_label",
     "en": "Tools suite demonstration",
-    "fr": ""
+    "fr": "Démonstration de la suite d’outils"
   },
   "mtm_suite_video_toggle_aria_label": {
     "key": "mtm_suite_video_toggle_aria_label",
     "en": "Play/pause video",
-    "fr": ""
+    "fr": "Lecture/pause de la vidéo"
   },
   "solutions_logos_aria_label": {
     "key": "solutions_logos_aria_label",
     "en": "Client logos",
-    "fr": ""
+    "fr": "Logos des clients"
   },
   "carousel_default_aria_label": {
     "key": "carousel_default_aria_label",
     "en": "Carousel navigation",
-    "fr": ""
+    "fr": "Navigation en carrousel"
   },
   "carousel_prev_label": {
     "key": "carousel_prev_label",
     "en": "Previous",
-    "fr": ""
+    "fr": "Précédent"
   },
   "carousel_next_label": {
     "key": "carousel_next_label",
     "en": "Next",
-    "fr": ""
+    "fr": "Suivant"
   },
   "methodology_carousel_aria_label": {
     "key": "methodology_carousel_aria_label",
     "en": "Cards navigation",
-    "fr": ""
+    "fr": "Navigation dans les cartes"
   },
   "methodology_carousel_prev_label": {
     "key": "methodology_carousel_prev_label",
     "en": "Previous card",
-    "fr": ""
+    "fr": "Carte précédente"
   },
   "methodology_carousel_next_label": {
     "key": "methodology_carousel_next_label",
     "en": "Next card",
-    "fr": ""
+    "fr": "Carte suivante"
   },
   "explore_more_carousel_aria_label": {
     "key": "explore_more_carousel_aria_label",
     "en": "Product navigation",
-    "fr": ""
+    "fr": "Navigation dans les produits"
   },
   "explore_more_carousel_prev_label": {
     "key": "explore_more_carousel_prev_label",
     "en": "Previous product",
-    "fr": ""
+    "fr": "Produit précédent"
   },
   "explore_more_carousel_next_label": {
     "key": "explore_more_carousel_next_label",
     "en": "Next product",
-    "fr": ""
+    "fr": "Produit suivant"
   },
   "use_cases_carousel_aria_label": {
     "key": "use_cases_carousel_aria_label",
     "en": "Case study navigation",
-    "fr": ""
+    "fr": "Navigation dans les études de cas"
   },
   "use_cases_carousel_prev_label": {
     "key": "use_cases_carousel_prev_label",
     "en": "Previous case study",
-    "fr": ""
+    "fr": "Étude de cas précédente"
   },
   "use_cases_carousel_next_label": {
     "key": "use_cases_carousel_next_label",
     "en": "Next case study",
-    "fr": ""
+    "fr": "Étude de cas suivante"
   },
   "reports_library_carousel_aria_label": {
     "key": "reports_library_carousel_aria_label",
     "en": "Reports navigation",
-    "fr": ""
+    "fr": "Navigation dans les rapports"
   },
   "news_carousel_aria_label": {
     "key": "news_carousel_aria_label",
     "en": "News navigation",
-    "fr": ""
+    "fr": "Navigation dans les actualités"
   },
   "request_demo_hero_form_aria_label": {
     "key": "request_demo_hero_form_aria_label",
     "en": "Request a demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "register_hero_form_aria_label": {
     "key": "register_hero_form_aria_label",
     "en": "Create your user account",
-    "fr": ""
+    "fr": "Créer votre compte d’utilisateur"
   },
   "sign_in_hero_form_aria_label": {
     "key": "sign_in_hero_form_aria_label",
     "en": "Sign in",
-    "fr": ""
+    "fr": "Ouvrir une session"
   },
   "forgot_password_hero_form_aria_label": {
     "key": "forgot_password_hero_form_aria_label",
     "en": "Forgot password",
-    "fr": ""
+    "fr": "Mot de passe oublié"
   },
   "dat_features_carousel_aria_label": {
     "key": "dat_features_carousel_aria_label",
     "en": "Feature navigation",
-    "fr": ""
+    "fr": "Navigation dans les fonctions"
   },
   "dat_features_carousel_prev_label": {
     "key": "dat_features_carousel_prev_label",
     "en": "Previous feature",
-    "fr": ""
+    "fr": "Fonction précédente"
   },
   "dat_features_carousel_next_label": {
     "key": "dat_features_carousel_next_label",
     "en": "Next feature",
-    "fr": ""
+    "fr": "Prochaine fonction"
   },
   "insight_1_chart_alt": {
     "key": "insight_1_chart_alt",
     "en": "Trustworthy data visualization",
-    "fr": ""
+    "fr": "Visualisation de données fiable"
   },
   "insight_2_chart_alt": {
     "key": "insight_2_chart_alt",
     "en": "Precision audience targeting visualization",
-    "fr": ""
+    "fr": "Visualisation du ciblage précis de l’auditoire"
   }
 }

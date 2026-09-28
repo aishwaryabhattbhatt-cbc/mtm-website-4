@@ -502,16 +502,42 @@ function badgeEntryStyle(badge: CollageBadge) {
 
         .hero-title {
             /* stays at 4.5rem baseline, grows to 5.25rem max at 1920px */
-            font-size: clamp(var(--fs-hero), calc(4.5rem + (100vw - 1555px) * 0.00211), 5.25rem);
+            font-size: calc(
+                clamp(var(--fs-hero), calc(4.5rem + (100vw - 1555px) * 0.00211), 5.25rem) *
+                    var(--hero-title-locale-scale, 1)
+            );
         }
 
         .hero-subtitle {
-            font-size: clamp(var(--fs-body-xl), calc(1.5rem + (100vw - 1555px) * 0.00068), 1.75rem);
+            font-size: calc(
+                clamp(var(--fs-body-xl), calc(1.5rem + (100vw - 1555px) * 0.00068), 1.75rem) *
+                    var(--hero-subtitle-locale-scale, 1)
+            );
         }
 
         .hero-image-collage {
             zoom: var(--collage-scale);
             flex-shrink: 0;
+        }
+    }
+
+    /* French title/subtitle run ~45% longer than English and push the hero
+       taller beside the collage; shrink them on desktop only (≤1023px stacks,
+       so height is fine). Subtitle shrinks less to stay readable at 1024px. */
+    html[lang='fr'] .home-section-1 .hero-title {
+        --hero-title-locale-scale: 0.8;
+    }
+
+    html[lang='fr'] .home-section-1 .hero-subtitle {
+        --hero-subtitle-locale-scale: 0.85;
+    }
+
+    /* --ls-subhead is a fixed -1.5px, tuned for 24px text; at the shrunk French
+       size (~14px at 1024px) that's -0.1em and the glyphs crowd. Keep the same
+       -1.5/24 ratio instead so tracking shrinks with the font. */
+    @media (min-width: 1024px) {
+        html[lang='fr'] .home-section-1 .hero-subtitle {
+            letter-spacing: -0.0625em;
         }
     }
 
@@ -522,11 +548,13 @@ function badgeEntryStyle(badge: CollageBadge) {
         }
 
         .hero-title {
-            font-size: calc(var(--fs-hero) * var(--hero-scale));
+            font-size: calc(var(--fs-hero) * var(--hero-scale) * var(--hero-title-locale-scale, 1));
         }
 
         .hero-subtitle {
-            font-size: calc(var(--fs-body-xl) * var(--hero-scale));
+            font-size: calc(
+                var(--fs-body-xl) * var(--hero-scale) * var(--hero-subtitle-locale-scale, 1)
+            );
         }
 
         .hero-image-collage {
@@ -542,11 +570,13 @@ function badgeEntryStyle(badge: CollageBadge) {
         }
 
         .hero-title {
-            font-size: calc(var(--fs-hero) * var(--hero-scale));
+            font-size: calc(var(--fs-hero) * var(--hero-scale) * var(--hero-title-locale-scale, 1));
         }
 
         .hero-subtitle {
-            font-size: calc(var(--fs-body-xl) * var(--hero-scale));
+            font-size: calc(
+                var(--fs-body-xl) * var(--hero-scale) * var(--hero-subtitle-locale-scale, 1)
+            );
         }
 
         .hero-image-collage {

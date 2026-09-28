@@ -2,32 +2,32 @@
   "hero_title": {
     "key": "hero_title",
     "en": "Data-Driven Decisions with Ease",
-    "fr": ""
+    "fr": "Des décisions fondées sur les données, en toute simplicité"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "Our analytic tools offer all you need to understand of your desired audiences. Use the Data Analysis Tool (DAT) for thousands of variables and filters (MTM 18+, Juniors, Newcomers), the Trending Tool for identifying key trends, and the Forecasting Tool for reliable, accurate projections.",
-    "fr": ""
+    "fr": "Nos outils d’analyse comprennent tout ce qu’il faut pour vous aider à comprendre les auditoires que vous souhaitez atteindre. Utilisez l’outil d’analyse de données (OAD) pour profiter de milliers de variables et de filtres (OTM 18+, OTM Junior, OTM Nouveaux arrivants), l’outil d’analyse des tendances pour cerner les principales tendances, et l’outil de prévision pour effectuer des projections aussi fiables que précises."
   },
   "hero_cta_1": {
     "key": "hero_cta_1",
     "en": "Request a Demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "tool_1_title": {
     "key": "tool_1_title",
     "en": "Data Analysis Tool",
-    "fr": ""
+    "fr": "Outil d’analyse de données"
   },
   "tool_1_tags": {
     "key": "tool_1_tags",
     "en": "MTM 18+, MTM Junior, MTM Newcomer",
-    "fr": ""
+    "fr": "OTM 18+, OTM Junior, OTM Nouveaux arrivants"
   },
   "tool_1_description": {
     "key": "tool_1_description",
     "en": "The Data Analysis Tool (DAT) offers subscribers easy access to MTM 18+, Junior and Newcomers data. Select data, filter results and get answers to burning questions.",
-    "fr": ""
+    "fr": "L’outil d’analyse de données (OAD) offre à nos abonnés un accès facile aux données de l’OTM 18+, de l’OTM Junior et de l’OTM Nouveaux arrivants. Sélectionnez des données et filtrez les résultats pour trouver des réponses aux questions importantes."
   },
   "Tool Features": {
     "key": "Tool Features",
@@ -37,251 +37,251 @@
   "dat_features_tagline": {
     "key": "dat_features_tagline",
     "en": "Explore Tool Features",
-    "fr": ""
+    "fr": "Découvrez les fonctionnalités de l’outil"
   },
   "dat_feature_1_title": {
     "key": "dat_feature_1_title",
     "en": "QUERY BUILDING",
-    "fr": ""
+    "fr": "CRÉATION DE REQUÊTES"
   },
   "dat_feature_1_label": {
     "key": "dat_feature_1_label",
     "en": "Easily create a custom query",
-    "fr": ""
+    "fr": "Créez facilement des requêtes personnalisées"
   },
   "dat_feature_1_description": {
     "key": "dat_feature_1_description",
     "en": "Select query parameters, drag variables from the master list into output rows and columns. What you arrange is exactly what you get. No SQL or python, no analyst handoff, no waiting. Go from brief to cross-tab in minutes.",
-    "fr": ""
+    "fr": "Sélectionnez les paramètres de requête et faites glisser les variables de la liste principale dans les rangées et les colonnes de résultats. Vous obtiendrez exactement les données que vous voulez. Pas de langage SQL ou Python, pas de transfert à un analyste, pas d’attente : vous passerez de la requête initiale au tableau croisé en un rien de temps."
   },
   "dat_feature_2_title": {
     "key": "dat_feature_2_title",
     "en": "VARIABLES",
-    "fr": ""
+    "fr": "VARIABLES"
   },
   "dat_feature_2_label": {
     "key": "dat_feature_2_label",
     "en": "Large, robust data sets at your fingertips",
-    "fr": ""
+    "fr": "De vastes ensembles de données pertinentes à portée de main"
   },
   "dat_feature_2_description": {
     "key": "dat_feature_2_description",
     "en": "Thousands of variables covering demographics, device ownership, media habits, platform usage — all in a single searchable list by categories. When a client asks an unexpected question mid-meeting, you have the variables to answer it on the spot.",
-    "fr": ""
+    "fr": "Des milliers de variables, allant des caractéristiques démographiques à la propriété d’appareils, en passant par les habitudes de consommation des médias et d’utilisation des plateformes, sont regroupées dans une seule liste pouvant faire l’objet de recherches par catégories. Si un client pose une question inattendue au milieu d’une réunion, vous disposerez des variables nécessaires pour y répondre sur-le-champ."
   },
   "dat_feature_3_title": {
     "key": "dat_feature_3_title",
     "en": "FILTERS",
-    "fr": ""
+    "fr": "FILTRES"
   },
   "dat_feature_3_label": {
     "key": "dat_feature_3_label",
     "en": "Refine your query with Quick or Additional Filters",
-    "fr": ""
+    "fr": "Affinez votre requête au moyen des filtres rapides et des filtres additionnels"
   },
   "dat_feature_3_description": {
     "key": "dat_feature_3_description",
     "en": "Narrow your results by age gender or region with Quick Filters or apply any variables in the tool as filter using Additional Filters.",
-    "fr": ""
+    "fr": "Précisez les résultats en fonction de l’âge, du genre ou de la région au moyen des filtres rapides, ou utilisez n’importe quelle variable de l’outil comme filtre en l’ajoutant aux filtres additionnels."
   },
   "dat_feature_4_title": {
     "key": "dat_feature_4_title",
     "en": "CUSTOM TABLES",
-    "fr": ""
+    "fr": "TABLEAUX PERSONNALISÉS"
   },
   "dat_feature_4_label": {
     "key": "dat_feature_4_label",
     "en": "Our data, your way",
-    "fr": ""
+    "fr": "Nos données, à votre façon"
   },
   "dat_feature_4_description": {
     "key": "dat_feature_4_description",
     "en": "Easily adjust or refine your query with drag and drop functionality. No headaches, just a new table with new results in seconds.",
-    "fr": ""
+    "fr": "Utilisez la fonction glisser-déposer pour adapter ou affiner vos requêtes facilement. C’est simple et convivial : vous obtenez un nouveau tableau et de nouveaux résultats en quelques secondes."
   },
   "dat_feature_5_title": {
     "key": "dat_feature_5_title",
     "en": "OUTPUT FORMATS",
-    "fr": ""
+    "fr": "FORMAT DES RÉSULTATS"
   },
   "dat_feature_5_label": {
     "key": "dat_feature_5_label",
     "en": "Results in multiple formats",
-    "fr": ""
+    "fr": "Des résultats dans plusieurs formats"
   },
   "dat_feature_5_description": {
     "key": "dat_feature_5_description",
-    "en": "Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required. Use the YourData features (hyperlink to bottom of page) for even more display options.",
-    "fr": ""
+    "en": "Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required. Use the YourData features for even more display options.",
+    "fr": "Choisissez le type de graphique que vous désirez – circulaire, à barres ou linéaire –, puis exportez-le en format Excel, PDF ou Word, ou encore sous forme d’image. Aucun reformatage requis. Utilisez les fonctions VosDonnées pour encore plus d’options d’affichage."
   },
   "tool_2_title": {
     "key": "tool_2_title",
     "en": "Trending Tool",
-    "fr": ""
+    "fr": "Outil d’évaluation des tendances"
   },
   "tool_2_tags": {
     "key": "tool_2_tags",
     "en": "MTM 18+, MTM Junior",
-    "fr": ""
+    "fr": "OTM 18+, OTM Junior"
   },
   "tool_2_description": {
     "key": "tool_2_description",
     "en": "The Trending tool offeres 20+ years of data all in one place. Find all the trends about past and present media technology.",
-    "fr": ""
+    "fr": "L’outil d’évaluation des tendances permet d’accéder à plus de 20 ans de données accumulées. Découvrez toutes les tendances actuelles et passées en matière de technologies médias."
   },
   "trending_feature_1_eyebrow": {
     "key": "trending_feature_1_eyebrow",
     "en": "What You See",
-    "fr": ""
+    "fr": "Ce que vous voyez"
   },
   "trending_feature_1_title": {
     "key": "trending_feature_1_title",
     "en": "Which technologies are rising or losing ground",
-    "fr": ""
+    "fr": "Les technologies qui sont en hausse ou en baisse"
   },
   "trending_feature_1_description": {
     "key": "trending_feature_1_description",
     "en": "Track adoption curves across media types. Know which platforms are winning the streaming wars when it comes to your target audiences.",
-    "fr": ""
+    "fr": "Faites le suivi des courbes d’adoption de tous les types de médias. Sachez quelles sont les plateformes de diffusion en continu de l’heure pour votre public cible."
   },
   "trending_feature_2_eyebrow": {
     "key": "trending_feature_2_eyebrow",
     "en": "What You Track",
-    "fr": ""
+    "fr": "Ce que vous suivez"
   },
   "trending_feature_2_title": {
     "key": "trending_feature_2_title",
     "en": "Where your audiences are heading towards",
-    "fr": ""
+    "fr": "La direction que prend votre auditoire"
   },
   "trending_feature_2_description": {
     "key": "trending_feature_2_description",
     "en": "Multiple years of seasonal updates means you can show momentum, not just a snapshot. Bring a clear trajectory and focus to your next client meeting.",
-    "fr": ""
+    "fr": "Grâce à plusieurs années de mises à jour saisonnières, vous pouvez cerner des tendances au lieu de vous contenter d’instantanés. Établissez une trajectoire et une cible claires pour vos prochaines rencontres avec des clients."
   },
   "trending_feature_3_eyebrow": {
     "key": "trending_feature_3_eyebrow",
     "en": "What You Compare",
-    "fr": ""
+    "fr": "Ce que vous comparez"
   },
   "trending_feature_3_title": {
     "key": "trending_feature_3_title",
     "en": "Exhaustive filter options",
-    "fr": ""
+    "fr": "Des choix de filtres exhaustifs"
   },
   "trending_feature_3_description": {
     "key": "trending_feature_3_description",
     "en": "See results by age, gender, region, education, income, household composition community size and more.",
-    "fr": ""
+    "fr": "Visualisez les résultats en fonction de l’âge, du genre, de la région, de la scolarité, du revenu, de la composition du ménage et de la taille de la collectivité, entre autres."
   },
   "tool_3_title": {
     "key": "tool_3_title",
     "en": "Forecasting Tool",
-    "fr": ""
+    "fr": "Outil de prévisions"
   },
   "tool_3_tags": {
     "key": "tool_3_tags",
     "en": "MTM 18+",
-    "fr": ""
+    "fr": "OTM 18+"
   },
   "tool_3_description": {
     "key": "tool_3_description",
     "en": "The Forecasting Tool helps project future technology adoption and model scenarios. Know where things are headed in the next 1 to 5 years.",
-    "fr": ""
+    "fr": "L’outil de prévisions aide à prédire l’adoption future des technologies et à modéliser des scénarios. Anticipez les tendances en vous projetant jusqu’à cinq ans dans l’avenir."
   },
   "forecasting_feature_1_eyebrow": {
     "key": "forecasting_feature_1_eyebrow",
     "en": "What You Project",
-    "fr": ""
+    "fr": "Ce que vous prédisez"
   },
   "forecasting_feature_1_title": {
     "key": "forecasting_feature_1_title",
     "en": "Where technology adoption is heading and when",
-    "fr": ""
+    "fr": "La trajectoire et le rythme de l’adoption des technologies"
   },
   "forecasting_feature_1_description": {
     "key": "forecasting_feature_1_description",
     "en": "Multi-year projections built on MTM's nationally representative dataset and refined by industry experts. Not a guess — a model grounded in years of observed behaviour and perfected by talented minds.",
-    "fr": ""
+    "fr": "Des projections pluriannuelles sont établies à partir de l’ensemble de données de l’OTM, représentatives à l’échelle nationale et affinées par des experts de l’industrie. Pas de devinettes : un modèle ancré dans des années de comportements observés et perfectionné par des esprits talentueux."
   },
   "forecasting_feature_2_eyebrow": {
     "key": "forecasting_feature_2_eyebrow",
     "en": "What You Model",
-    "fr": ""
+    "fr": "Ce que vous modélisez"
   },
   "forecasting_feature_2_title": {
     "key": "forecasting_feature_2_title",
     "en": "Key technologies like podcasts, AI tool usage, paid TV subscriptions and more",
-    "fr": ""
+    "fr": "Des technologies clés comme les baladodiffusions, l’utilisation des outils d’IA et les abonnements à la télévision payante, entre autres"
   },
   "forecasting_feature_2_description": {
     "key": "forecasting_feature_2_description",
     "en": "Explore a variety of different media and technology within a few clicks.",
-    "fr": ""
+    "fr": "Explorez une panoplie de médias et de technologies en quelques clics."
   },
   "forecasting_feature_3_eyebrow": {
     "key": "forecasting_feature_3_eyebrow",
     "en": "What You Compare",
-    "fr": ""
+    "fr": "Ce que vous comparez"
   },
   "forecasting_feature_3_title": {
     "key": "forecasting_feature_3_title",
     "en": "National, Anglophone and Francophone markets",
-    "fr": ""
+    "fr": "Les marchés national, anglophone et francophone"
   },
   "forecasting_feature_3_description": {
     "key": "forecasting_feature_3_description",
     "en": "Find out how these markets allign or don't with an eye toward the future.",
-    "fr": ""
+    "fr": "Découvrez comment ces marchés sont alignés ou non en gardant un regard tourné vers l’avenir."
   },
   "yourdata_title": {
     "key": "yourdata_title",
     "en": "YourData",
-    "fr": ""
+    "fr": "VosDonnées"
   },
   "yourdata_description": {
     "key": "yourdata_description",
     "en": "YourData is your personalized hub to save, organize, and export data queries across MTM tools. Build once, reuse, refine and easily export.",
-    "fr": ""
+    "fr": "VosDonnées est votre plateforme personnalisée pour sauvegarder, organiser et exporter des requêtes de données dans les outils de l’OTM. Construisez vos requêtes une seule fois, puis réutilisez-les, affinez-les et exportez-les facilement."
   },
   "yourdata_feature_1_title": {
     "key": "yourdata_feature_1_title",
     "en": "Smart Storage",
-    "fr": ""
+    "fr": "Stockage intelligent"
   },
   "yourdata_feature_1_description": {
     "key": "yourdata_feature_1_description",
     "en": "Save all your DAT, Trending, and Forecasting queries in one place.",
-    "fr": ""
+    "fr": "Sauvegardez au même endroit toutes vos requêtes effectuées dans l’OAD, l’outil d’évaluation des tendances et l’outil de prévisions."
   },
   "yourdata_feature_2_title": {
     "key": "yourdata_feature_2_title",
     "en": "Custom Visualization",
-    "fr": ""
+    "fr": "Visualisation personnalisée"
   },
   "yourdata_feature_2_description": {
     "key": "yourdata_feature_2_description",
     "en": "Modify colours, chart labels, legends and more, no extra software required.",
-    "fr": ""
+    "fr": "Modifiez les couleurs, les étiquettes des graphiques, les légendes, etc., sans avoir à utiliser un autre logiciel."
   },
   "yourdata_feature_3_title": {
     "key": "yourdata_feature_3_title",
     "en": "Detailed Options",
-    "fr": ""
+    "fr": "Options détaillées"
   },
   "yourdata_feature_3_description": {
     "key": "yourdata_feature_3_description",
     "en": "Create pie charts, bar charts or tables and have full control over labelling.",
-    "fr": ""
+    "fr": "Créez des graphiques circulaires, des graphiques à barres ou des tableaux et contrôlez entièrement les étiquettes."
   },
   "yourdata_feature_4_title": {
     "key": "yourdata_feature_4_title",
     "en": "Flexible Exporting",
-    "fr": ""
+    "fr": "Exportation souple"
   },
   "yourdata_feature_4_description": {
     "key": "yourdata_feature_4_description",
     "en": "Download report or presentation ready data, built your way.",
-    "fr": ""
+    "fr": "Téléchargez des données prêtes à être intégrées dans des rapports ou des présentations, en fonction de vos besoins."
   }
 }
