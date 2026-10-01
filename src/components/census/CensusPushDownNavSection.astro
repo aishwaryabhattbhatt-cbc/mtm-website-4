@@ -11,15 +11,15 @@ const { locale, copy } = Astro.props;
 
 const tabs = [
     { number: '01', key: 'tool_1_title', fallback: 'Snapshot', id: 'census-snapshot' },
-    { number: '02', key: 'tool_2_title', fallback: 'Drilldown', id: 'census-drilldown' },
-    { number: '03', key: 'tool_3_title', fallback: 'Ranker', id: 'census-ranker' },
     {
-        number: '04',
+        number: '02',
         key: 'tool_4_title',
         fallback: 'Demographic Explorer',
         id: 'census-demographic-explorer',
     },
-    { number: '05', key: 'tool_5_title', fallback: 'Compare', id: 'census-compare' },
+    { number: '03', key: 'tool_2_title', fallback: 'Drilldown', id: 'census-drilldown' },
+    { number: '04', key: 'tool_5_title', fallback: 'Compare', id: 'census-compare' },
+    { number: '05', key: 'tool_3_title', fallback: 'Ranker', id: 'census-ranker' },
     {
         number: '06',
         key: 'tool_6_title',
@@ -234,10 +234,10 @@ const tabs = [
         const buttons = nav.querySelectorAll<HTMLButtonElement>('.census-push-down-nav__tab');
         const sectionIds = [
             'census-snapshot',
-            'census-drilldown',
-            'census-ranker',
             'census-demographic-explorer',
+            'census-drilldown',
             'census-compare',
+            'census-ranker',
             'census-canada-score',
         ];
 
