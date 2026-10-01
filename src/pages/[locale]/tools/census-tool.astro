@@ -1,6 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { toAbsoluteUrl } from '../../../lib/i18n/routing';
+import { localizedAsset, toAbsoluteUrl } from '../../../lib/i18n/routing';
 import { buildBreadcrumbList } from '../../../lib/content/breadcrumbs';
 import Navbar from '../../../components/shared/Navbar.astro';
 import ToolsHeroSection from '../../../components/tools/ToolsHeroSection.astro';
@@ -74,7 +74,10 @@ const pageDescription = t(
             locale={locale}
             copy={copy}
             ctaHref={`${base}${locale}/request-demo/`}
-            heroImageSrc={`${base}images/tools/census-tool/Census-tool.webp`}
+            heroImageSrc={localizedAsset(
+                `${base}images/tools/census-tool/Census-tool.webp`,
+                locale
+            )}
             bgPatternSrc={`${base}images/tools/census-tool/census-tool-hero-bg.webp`}
             secondaryCtaHref={`${base}${locale}/census-tool/demo/`}
             secondaryCtaLabel="Watch Video"

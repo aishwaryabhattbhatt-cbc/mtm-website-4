@@ -2,251 +2,251 @@
   "hero_eyebrow": {
     "key": "hero_eyebrow",
     "en": "Government and NGOs",
-    "fr": ""
+    "fr": "Gouvernement et ONG"
   },
   "hero_title": {
     "key": "hero_title",
     "en": "Trusted Data for Serving Canadians",
-    "fr": ""
+    "fr": "Des données fiables pour servir les Canadiens"
   },
   "hero_description": {
     "key": "hero_description",
     "en": "In the public and non-profit sectors, effective decisions depend on understanding the people you serve — how they access information, use technology, and engage with media. The Media Technology Monitor (MTM) provides trusted Canadian data that helps organizations design better programs, improve communications, and make evidence-based decisions with confidence.",
-    "fr": ""
+    "fr": "Pour une organisation publique ou un organisme sans but lucratif, la prise de bonnes décisions repose sur la connaissance des gens que l’on sert : la façon dont ils accèdent à l’information, utilisent les technologies et interagissent avec les médias. L’Observateur des technologies médias (OTM) fournit des données canadiennes fiables qui aident les organisations à concevoir de meilleurs programmes, à mieux communiquer et à prendre, en toute confiance, des décisions fondées sur des données probantes."
   },
   "hero_cta": {
     "key": "hero_cta",
     "en": "Request a demo",
-    "fr": ""
+    "fr": "Demander une démonstration"
   },
   "trusted_by_label": {
     "key": "trusted_by_label",
     "en": "Trusted by",
-    "fr": ""
+    "fr": "Clientèle"
   },
   "insights_title": {
     "key": "insights_title",
     "en": "Insights That Support Better Public Decisions",
-    "fr": ""
+    "fr": "Des renseignements qui éclairent la prise de décisions pour le public"
   },
   "insights_description": {
     "key": "insights_description",
     "en": "Access current, nationally representative data on how Canadians consume media and technology. MTM helps governments and NGOs better understand audiences, evaluate communications strategies, and identify emerging behavioural shifts across demographic groups and regions.",
-    "fr": ""
+    "fr": "Accédez à des données actuelles et représentatives à l’échelle nationale sur la façon dont les Canadiens consomment les médias et les technologies. L’OTM aide les gouvernements et les ONG à mieux comprendre les auditoires, à évaluer leurs stratégies de communication et à cerner des changements de comportement émergents au sein des groupes démographiques et les régions."
   },
   "insight_card_label": {
     "key": "insight_card_label",
     "en": "Insight",
-    "fr": ""
+    "fr": "Observation"
   },
   "insight_informs_label": {
     "key": "insight_informs_label",
     "en": "Informs decisions on",
-    "fr": ""
+    "fr": "ÉcIaire les décisions sur :"
   },
   "insight_1_stat": {
     "key": "insight_1_stat",
     "en": "42%",
-    "fr": ""
+    "fr": "42 %"
   },
   "insight_1_description": {
     "key": "insight_1_description",
     "en": "of newcomers aged 35 to 44 have used employment services since arriving in Canada",
-    "fr": ""
+    "fr": "des nouveaux arrivants de 35 à 44 ans ont eu recours à des services d’emploi depuis leur arrivée au Canada."
   },
   "insight_1_variables": {
     "key": "insight_1_variables",
     "en": "Age Group, Employment services used, Other settlement services used",
-    "fr": ""
+    "fr": "Groupe d’âge, Services d’emploi utilisés, Autres services d’établissement utilisés"
   },
   "insight_1_informs": {
     "key": "insight_1_informs",
     "en": "Funding and resource allocation, awareness campaign targeting age specific approaches for federal programs.",
-    "fr": ""
+    "fr": "La répartition du financement et des ressources, et les campagnes de sensibilisation aux programmes fédéraux visant des groupes d’âge en particulier."
   },
   "insight_2_stat": {
     "key": "insight_2_stat",
     "en": "45%",
-    "fr": ""
+    "fr": "45 %"
   },
   "insight_2_description": {
     "key": "insight_2_description",
     "en": "of teens used TikTok in the past month",
-    "fr": ""
+    "fr": "des adolescents ont utilisé TikTok au cours du mois précédant le sondage."
   },
   "insight_2_variables": {
     "key": "insight_2_variables",
     "en": "TikTok, Instagram, Facebook, Snapchat, Linkedin, WhatsApp",
-    "fr": ""
+    "fr": "TikTok, Instagram, Facebook, Snapchat, LinkedIn, WhatsApp"
   },
   "insight_2_informs": {
     "key": "insight_2_informs",
     "en": "Platform selection for public outreach, regulatory review of social media reach, and audience segmentation for government communications.",
-    "fr": ""
+    "fr": "La sélection de plateformes pour sensibiliser le public, l’examen réglementaire de la portée des médias sociaux et la segmentation de l’auditoire pour les communications gouvernementales."
   },
   "insight_3_stat": {
     "key": "insight_3_stat",
     "en": "15% vs 30%",
-    "fr": ""
+    "fr": "15 % contre 30 %"
   },
   "insight_3_description": {
     "key": "insight_3_description",
     "en": "Indigenous people are less likely to be using LinkedIn than other people living in Canada.",
-    "fr": ""
+    "fr": "Les répondants autochtones sont moins susceptibles d’utiliser LinkedIn que les autres personnes vivant au Canada."
   },
   "insight_3_variables": {
     "key": "insight_3_variables",
     "en": "Social Media, LinkedIn, Indigenous, Facebook",
-    "fr": ""
+    "fr": "Médias sociaux, LinkedIn, Peuples autochtones, Facebook"
   },
   "insight_3_informs": {
     "key": "insight_3_informs",
     "en": "Understanding what social platforms Canadians are using can ensure that your next campaign to find new employees has the greatest impact.",
-    "fr": ""
+    "fr": "Les plateformes de médias sociaux à utiliser pour maximiser les résultats de votre prochaine campagne de recrutement de personnel."
   },
   "Report": {
     "key": "Report",
     "en": "Same as insights",
-    "fr": ""
+    "fr": "Identique aux observations"
   },
   "tools_title": {
     "key": "tools_title",
     "en": "Tools that empower you",
-    "fr": ""
+    "fr": "Des outils à votre service"
   },
   "tools_census_eyebrow": {
     "key": "tools_census_eyebrow",
     "en": "Census Tool",
-    "fr": ""
+    "fr": "Outil de recensement"
   },
   "gov_ngos_tools_census_description": {
     "key": "gov_ngos_tools_census_description",
     "en": "Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.",
-    "fr": ""
+    "fr": "Cartographiez votre public cible en fonction du code postal. Repérez les communautés mal desservies, déterminez la taille des marchés locaux et comparez votre portée à la population nationale, le tout à partir d’un tableau de bord unique directement alimenté par les données du recensement de Statistique Canada."
   },
   "tools_census_feature_1": {
     "key": "tools_census_feature_1",
     "en": "Snapshot",
-    "fr": ""
+    "fr": "Aperçu"
   },
   "tools_census_feature_2": {
     "key": "tools_census_feature_2",
     "en": "Explorer",
-    "fr": ""
+    "fr": "Explorateur"
   },
   "tools_census_feature_3": {
     "key": "tools_census_feature_3",
     "en": "Compare",
-    "fr": ""
+    "fr": "Comparaison"
   },
   "tools_census_more": {
     "key": "tools_census_more",
     "en": "3 more",
-    "fr": ""
+    "fr": "(et trois autres)"
   },
   "tools_census_cta": {
     "key": "tools_census_cta",
     "en": "Go to Census Tool",
-    "fr": ""
+    "fr": "Accéder à l’outil de recensement"
   },
   "tools_analytic_eyebrow": {
     "key": "tools_analytic_eyebrow",
     "en": "Analytic Tools",
-    "fr": ""
+    "fr": "Outils d’analyse"
   },
   "gov_ngos_tools_analytic_description": {
     "key": "gov_ngos_tools_analytic_description",
     "en": "Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.",
-    "fr": ""
+    "fr": "Faites une requête dans tout l’ensemble de données de l’OTM par plateforme, région, langue et données démographiques. Créez des tableaux croisés personnalisés en quelques minutes, suivez les courbes d’adoption au fil du temps et modélisez votre auditoire pour déterminer où il en sera dans trois ans, le tout en un seul clic."
   },
   "tools_analytic_feature_1": {
     "key": "tools_analytic_feature_1",
     "en": "Data Analysis",
-    "fr": ""
+    "fr": "Analyse de données"
   },
   "tools_analytic_feature_2": {
     "key": "tools_analytic_feature_2",
     "en": "Trending",
-    "fr": ""
+    "fr": "Tendances"
   },
   "tools_analytic_feature_3": {
     "key": "tools_analytic_feature_3",
     "en": "Forecasting",
-    "fr": ""
+    "fr": "Prévisions"
   },
   "tools_analytic_cta": {
     "key": "tools_analytic_cta",
     "en": "Go to Analytic Tools",
-    "fr": ""
+    "fr": "Accéder aux outils d’analyse"
   },
   "usecases_title": {
     "key": "usecases_title",
     "en": "MTM in Action for Public Sector Teams",
-    "fr": ""
+    "fr": "L’OTM en action pour les équipes du secteur public"
   },
   "usecases_description": {
     "key": "usecases_description",
     "en": "Learn how the MTM offers reports and content that can inform decisions based on robust, tried and true survey results.",
-    "fr": ""
+    "fr": "Découvrez comment les rapports et le contenu de l’OTM peuvent éclairer les décisions fondées sur des résultats de sondage précis, éprouvés et fiables."
   },
   "usecases_card_title": {
     "key": "usecases_card_title",
     "en": "Use Case",
-    "fr": ""
+    "fr": "Cas d’utilisation"
   },
   "leverage_title": {
     "key": "leverage_title",
     "en": "How to leverage this",
-    "fr": ""
+    "fr": "Comment en tirer parti"
   },
   "usecase_1_description": {
     "key": "usecase_1_description",
     "en": "A committee needs information about the success of foreign versus domestic streaming services in Canada, and adoption across income levels.",
-    "fr": ""
+    "fr": "Un comité a besoin d’information sur le succès des services de diffusion en continu étrangers au Canada par rapport aux services nationaux, ainsi que sur leur adoption par les Canadiens de toutes les tranches de revenu."
   },
   "usecase_1_variables": {
     "key": "usecase_1_variables",
     "en": "SVOD, Netflix, Music Streaming Services, Spotify, income",
-    "fr": ""
+    "fr": "VSDA, Netflix, Services de musique en continu, Spotify, Revenu"
   },
   "usecase_1_cta": {
     "key": "usecase_1_cta",
     "en": "Consult the Audio and SVOD reports which offer a detailed overview of the most popular video and music streaming services and their users.",
-    "fr": ""
+    "fr": "Consultez les rapports sur le contenu audio et la VSDA (vidéo sur demande par abonnement), qui brossent un portrait détaillé des services de vidéo et de musique en continu et de vidéos les plus populaires et de leurs utilisateurs."
   },
   "usecase_2_description": {
     "key": "usecase_2_description",
     "en": "A team is looking for information on the performance of different cellphone providers across different regions.",
-    "fr": ""
+    "fr": "Une équipe cherche des renseignements sur les résultats de différents fournisseurs de téléphonie cellulaire dans différentes régions."
   },
   "usecase_2_variables": {
     "key": "usecase_2_variables",
     "en": "Cellphone service provider, Region",
-    "fr": ""
+    "fr": "Fournisseur de services de téléphonie cellulaire, Région"
   },
   "usecase_2_cta": {
     "key": "usecase_2_cta",
     "en": "Find our latest cellphone report to begin, then go deeper with the data analysis tool to find actionable insights.",
-    "fr": ""
+    "fr": "Pour commencer, trouvez notre tout dernier rapport sur les téléphones cellulaires, puis creusez la question à l’aide de l’outil d’analyse de données pour trouver des renseignements utiles."
   },
   "testimonial_title": {
     "key": "testimonial_title",
     "en": "What government and NGO partners are saying about us",
-    "fr": ""
+    "fr": "Ce que les organismes gouvernementaux et non gouvernementaux disent de nous"
   },
   "testimonial_logo": {
     "key": "testimonial_logo",
     "en": "MANSO",
-    "fr": ""
+    "fr": "MANSO"
   },
   "testimonial_quote": {
     "key": "testimonial_quote",
     "en": "Thanks to our subscription to MTM Newcomers, we have access to newcomer data insights and their settlement and integration journey in Manitoba. We particularly appreciate seeing information that is not available through any other sources, like newcomers' use of media, devices, and newcomer knowledge of services available through our sector. This information helps our members ensure that their services are well adapted to the needs and characteristics of the newcomers they serve.",
-    "fr": ""
+    "fr": "Grâce à notre abonnement à l’OTM Nouveaux arrivants, nous avons accès à des données sur les nouveaux arrivants et sur leur parcours pour s’établir et s’intégrer au Manitoba. Nous nous réjouissons particulièrement de pouvoir accéder à de l’information qui ne se trouve pas ailleurs, comme l’utilisation des médias et des appareils par les nouveaux arrivants, ou leur connaissance des services offerts par notre secteur. Ces renseignements aident nos membres à s’assurer que leurs services sont bien adaptés aux besoins et aux caractéristiques des nouveaux arrivants."
   },
   "testimonial_attribution": {
     "key": "testimonial_attribution",
     "en": "Valeria Castellanos,  Language Support and Program Manager - MANSO",
-    "fr": ""
+    "fr": "Valeria Castellanos, gestionnaire de programmes et du soutien linguistique – MANSO"
   }
 }

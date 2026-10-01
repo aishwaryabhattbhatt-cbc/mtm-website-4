@@ -282,13 +282,13 @@ const descCopyKey = description === undefined ? descriptionKey : undefined;
         margin: 0;
         overflow: hidden;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
-        /* Clamped at 3 lines and reserved for 3, so a short description does
+        /* Clamped at 5 lines and reserved for 5, so a short description does
            not pull the tags and CTA up and leave cards uneven. `lh` is the
            element's own line box, so it tracks the text class at every
            breakpoint rather than pinning a value here. */
-        min-height: 3lh;
+        min-height: 5lh;
     }
 
     .report-card__tags {

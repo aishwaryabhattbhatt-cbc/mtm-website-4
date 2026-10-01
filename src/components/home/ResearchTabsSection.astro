@@ -3,14 +3,10 @@
 // Figma node: 1:9423 — "Access credible research on" animated section
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import { localizedAsset } from '../../lib/i18n/routing';
 import { icons } from '../../lib/icons/registry';
 
 const base = import.meta.env.BASE_URL;
-const techBox1Src = `${base}images/home/trusted/tab-1/dat-tool.webp`;
-const techBox2Src = `${base}images/home/trusted/tab-1/chart-smartphone.webp`;
-const techBox3Src = `${base}images/home/trusted/tab-1/chart-export-options.webp`;
-const mediaBox1Src = `${base}images/home/trusted/tab-2/chart-audio-streaming.webp`;
-const mediaBox2Src = `${base}images/home/trusted/tab-2/report-jr.webp`;
 
 // Same badge-panel treatment as ProductsHeroSection/HomeHeroSection: a white
 // rounded-square panel behind a centered line icon. Standing in for the
@@ -58,6 +54,20 @@ interface Props {
 }
 
 const { locale, copy } = Astro.props as Props;
+const techBox1Src = localizedAsset(`${base}images/home/trusted/tab-1/dat-tool.webp`, locale);
+const techBox2Src = localizedAsset(
+    `${base}images/home/trusted/tab-1/chart-smartphone.webp`,
+    locale
+);
+const techBox3Src = localizedAsset(
+    `${base}images/home/trusted/tab-1/chart-export-options.webp`,
+    locale
+);
+const mediaBox1Src = localizedAsset(
+    `${base}images/home/trusted/tab-2/chart-audio-streaming.webp`,
+    locale
+);
+const mediaBox2Src = localizedAsset(`${base}images/home/trusted/tab-2/report-jr.webp`, locale);
 
 const tabs = [
     {

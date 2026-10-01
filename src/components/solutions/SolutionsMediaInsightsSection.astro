@@ -1,5 +1,6 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { localizedAsset } from '../../lib/i18n/routing';
 import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
 import SolutionsInsightCard from './SolutionsInsightCard.astro';
@@ -53,7 +54,7 @@ const { locale, copy, base } = Astro.props as Props;
                     "Canadians don't live on one platform. They stream on one device, podcast on another, and browse FAST channels in the evening. MTM tracks the full picture across every screen — so you know where attention is actually going."
                 )}
                 descriptionKey="insight_1_description"
-                imageSrc={`${base}images/solutions/media/insight-1.svg`}
+                imageSrc={localizedAsset(`${base}images/solutions/media/insight-1.svg`, locale)}
                 imageAlt={t(copy, 'insight_1_chart_title', locale, 'Platform reach over time')}
                 imageTitle={t(copy, 'insight_1_chart_title', locale, 'Platform reach over time')}
                 imageTitleKey="insight_1_chart_title"
@@ -79,7 +80,7 @@ const { locale, copy, base } = Astro.props as Props;
                     'The MTM allows you to see Canada in high definition. From streaming subscriptions to podcast habits to device ownership — not all Canadians have the same media behaviours.'
                 )}
                 descriptionKey="insight_2_description"
-                imageSrc={`${base}images/solutions/media/insight-2.svg`}
+                imageSrc={localizedAsset(`${base}images/solutions/media/insight-2.svg`, locale)}
                 imageAlt={t(copy, 'insight_2_chart_title', locale, 'Audience breakdown by segment')}
                 imageTitle={t(
                     copy,

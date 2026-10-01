@@ -2,6 +2,7 @@
 // src/components/home/HomeHeroSection.astro
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import { localizedAsset } from '../../lib/i18n/routing';
 import Button from '../shared/Button.astro';
 import { icons } from '../../lib/icons/registry';
 
@@ -116,7 +117,7 @@ function badgeEntryStyle(badge: CollageBadge) {
                     ))
                 }
                 <img
-                    src={`${collageSrc}1.svg`}
+                    src={localizedAsset(`${collageSrc}1.svg`, locale)}
                     alt=""
                     class="collage-image collage-image-1"
                     loading="lazy"
@@ -124,14 +125,14 @@ function badgeEntryStyle(badge: CollageBadge) {
                 />
             </div>
             <img
-                src={`${collageSrc}3-update.svg`}
+                src={localizedAsset(`${collageSrc}3-update.svg`, locale)}
                 alt=""
                 class="collage-image collage-image-3"
                 loading="lazy"
                 decoding="async"
             />
             <img
-                src={`${collageSrc}4-hero-charting.webp`}
+                src={localizedAsset(`${collageSrc}4-hero-charting.webp`, locale)}
                 alt=""
                 class="collage-image collage-image-4"
                 loading="lazy"
@@ -143,7 +144,7 @@ function badgeEntryStyle(badge: CollageBadge) {
                  relative to .hero-image-collage exactly as before there. -->
             <div class="collage-row-bottom">
                 <img
-                    src={`${collageSrc}2-hero-main.webp`}
+                    src={localizedAsset(`${collageSrc}2-hero-main.webp`, locale)}
                     alt=""
                     class="collage-image collage-image-2"
                     loading="lazy"
@@ -169,8 +170,8 @@ function badgeEntryStyle(badge: CollageBadge) {
                  .collage-mobile-row / .collage-row-top / .collage-image-3 etc.
                  in the mobile media query). Hidden on desktop. -->
             <img
-                src={`${collageMobileSrc}hero-mobile.webp`}
-                srcset={`${collageMobileSrc}hero-mobile-600w.webp 600w, ${collageMobileSrc}hero-mobile-900w.webp 900w, ${collageMobileSrc}hero-mobile.webp 1200w`}
+                src={localizedAsset(`${collageMobileSrc}hero-mobile.webp`, locale)}
+                srcset={`${localizedAsset(`${collageMobileSrc}hero-mobile-600w.webp`, locale)} 600w, ${localizedAsset(`${collageMobileSrc}hero-mobile-900w.webp`, locale)} 900w, ${localizedAsset(`${collageMobileSrc}hero-mobile.webp`, locale)} 1200w`}
                 sizes="100vw"
                 alt=""
                 class="collage-mobile-row"
@@ -737,6 +738,6 @@ function badgeEntryStyle(badge: CollageBadge) {
     if (card1) {
         const variants = ['1A', '1B', '1C', '1D'];
         const pick = variants[Math.floor(Math.random() * variants.length)];
-        card1.src = card1.src.replace(/1\.svg$/, `${pick}.svg`);
+        card1.src = card1.src.replace(/1(-fr)?\.svg$/, (_m, fr = '') => `${pick}${fr}.svg`);
     }
 </script>

@@ -1,5 +1,6 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { localizedAsset } from '../../lib/i18n/routing';
 import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
 import SolutionsInsightCard from './SolutionsInsightCard.astro';
@@ -53,7 +54,10 @@ const { locale, copy, base } = Astro.props as Props;
                     'Our independent, nationally representative samples allow for detailed comparisons against your internal data and other sources. With the MTM, know where and how Canadians are engaged with an exhaustive array of media platforms and leave nothing up to chance.'
                 )}
                 descriptionKey="insight_1_description"
-                imageSrc={`${base}images/solutions/advertising/insight-1.svg`}
+                imageSrc={localizedAsset(
+                    `${base}images/solutions/advertising/insight-1.svg`,
+                    locale
+                )}
                 imageAlt={t(copy, 'insight_1_chart_title', locale, '300,000+ Canadians surveyed')}
                 imageTitle={t(copy, 'insight_1_chart_title', locale, '300,000+ Canadians surveyed')}
                 imageTitleKey="insight_1_chart_title"
@@ -79,7 +83,10 @@ const { locale, copy, base } = Astro.props as Props;
                     'The MTM allows you to see Canada in high definition. Let your clients benefit from the surgical precision of being able to filter data by specific racialized groups, families, age groups, income brackets and more!'
                 )}
                 descriptionKey="insight_2_description"
-                imageSrc={`${base}images/solutions/advertising/insight-2.svg`}
+                imageSrc={localizedAsset(
+                    `${base}images/solutions/advertising/insight-2.svg`,
+                    locale
+                )}
                 imageAlt={t(copy, 'insight_2_chart_title', locale, 'Audience breakdown by segment')}
                 imageTitle={t(
                     copy,

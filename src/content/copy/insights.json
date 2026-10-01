@@ -22,31 +22,31 @@
   "featured_report_label": {
     "key": "featured_report_label",
     "en": "Featured Report",
-    "fr": ""
+    "fr": "Rapport vedette"
   },
   "featured_report_title": {
     "key": "featured_report_title",
-    "en": "YouTube Is The New Cable",
+    "en": "",
     "fr": ""
   },
   "featured_report_description": {
     "key": "featured_report_description",
-    "en": "Learn about how YouTube became the primary viewing destination for Canadian youth, with key details across different language markets, age groups, regions, viewership of other content and more.",
+    "en": "",
     "fr": ""
   },
   "variable_1": {
     "key": "variable_1",
-    "en": "Streaming",
+    "en": "",
     "fr": ""
   },
   "variable_2": {
     "key": "variable_2",
-    "en": "Online Video",
+    "en": "",
     "fr": ""
   },
   "featured_report_cta": {
     "key": "featured_report_cta",
-    "en": "View Press Release",
+    "en": "",
     "fr": ""
   },
   "Reports Library": {
@@ -96,37 +96,37 @@
   },
   "report_card_tag": {
     "key": "report_card_tag",
-    "en": "Juniors",
+    "en": "",
     "fr": ""
   },
   "report_card_date": {
     "key": "report_card_date",
-    "en": "Dec 12, 2025",
+    "en": "",
     "fr": ""
   },
   "report_card_title": {
     "key": "report_card_title",
-    "en": "Kids and their Reliance on the media and their portable devices",
+    "en": "",
     "fr": ""
   },
   "report_card_description": {
     "key": "report_card_description",
-    "en": "This report looks at the demographics of children that access news and the most used sources for news content.",
+    "en": "",
     "fr": ""
   },
   "report_card_variable_1": {
     "key": "report_card_variable_1",
-    "en": "News",
+    "en": "",
     "fr": ""
   },
   "report_card_variable_2": {
     "key": "report_card_variable_2",
-    "en": "Podcast",
+    "en": "",
     "fr": ""
   },
   "report_card_cta": {
     "key": "report_card_cta",
-    "en": "View Press Release",
+    "en": "",
     "fr": ""
   },
   "Free Reports": {
@@ -151,67 +151,67 @@
   },
   "free_report_1_tag": {
     "key": "free_report_1_tag",
-    "en": "MTM 18+",
+    "en": "",
     "fr": ""
   },
   "free_report_1_date": {
     "key": "free_report_1_date",
-    "en": "Dec 11, 2025",
+    "en": "",
     "fr": ""
   },
   "free_report_1_title": {
     "key": "free_report_1_title",
-    "en": "Adoption Report",
+    "en": "",
     "fr": ""
   },
   "free_report_1_description": {
     "key": "free_report_1_description",
-    "en": "Explore the latest shifts in platform adoption, connected devices, subscription services, and digital behaviours among Canadian adults.",
+    "en": "",
     "fr": ""
   },
   "free_report_2_tag": {
     "key": "free_report_2_tag",
-    "en": "MTM Junior",
+    "en": "",
     "fr": ""
   },
   "free_report_2_date": {
     "key": "free_report_2_date",
-    "en": "TBD",
+    "en": "",
     "fr": ""
   },
   "free_report_2_title": {
     "key": "free_report_2_title",
-    "en": "Futures Report",
+    "en": "",
     "fr": ""
   },
   "free_report_2_description": {
     "key": "free_report_2_description",
-    "en": "Understand how younger audiences are shaping the future of media through evolving viewing habits, gaming behaviours, and digital engagement.",
+    "en": "",
     "fr": ""
   },
   "free_report_3_tag": {
     "key": "free_report_3_tag",
-    "en": "MTM Newcomers",
+    "en": "",
     "fr": ""
   },
   "free_report_3_date": {
     "key": "free_report_3_date",
-    "en": "TBD",
+    "en": "",
     "fr": ""
   },
   "free_report_3_title": {
     "key": "free_report_3_title",
-    "en": "Arrivals Report",
+    "en": "",
     "fr": ""
   },
   "free_report_3_description": {
     "key": "free_report_3_description",
-    "en": "Gain insight into the media preferences, platform usage, and technology adoption patterns of Canadians who have arrived within the past five years.",
+    "en": "",
     "fr": ""
   },
   "free_report_cta": {
     "key": "free_report_cta",
-    "en": "Download",
+    "en": "",
     "fr": ""
   },
   "Free Infographics": {
@@ -288,5 +288,50 @@
     "key": "news list",
     "en": "MTM | In the News",
     "fr": ""
+  },
+  "These are coming from the admin dashboard": {
+    "key": "These are coming from the admin dashboard",
+    "en": "",
+    "fr": ""
+  },
+  "Report Tags": {
+    "key": "Report Tags",
+    "en": "",
+    "fr": ""
+  },
+  "Juniors": {
+    "key": "Juniors",
+    "en": "",
+    "fr": ""
+  },
+  "Teens & AI": {
+    "key": "Teens & AI",
+    "en": "AI Tools",
+    "fr": "Outils d'IA"
+  },
+  "Kids and Traditional TV": {
+    "key": "Kids and Traditional TV",
+    "en": "Discovery Methods",
+    "fr": "Méthodes de découverte"
+  },
+  "FAST Channels 2026": {
+    "key": "FAST Channels 2026",
+    "en": "Fast Channels",
+    "fr": "De chaînes FAST"
+  },
+  "MTM Futures Report": {
+    "key": "MTM Futures Report",
+    "en": "",
+    "fr": ""
+  },
+  "MTM 18+": {
+    "key": "MTM 18+",
+    "en": "",
+    "fr": ""
+  },
+  "Online Audio Overview": {
+    "key": "Online Audio Overview",
+    "en": "Online audio content",
+    "fr": "Contenu audio en ligne"
   }
 }

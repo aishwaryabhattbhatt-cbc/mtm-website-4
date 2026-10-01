@@ -15,6 +15,12 @@ export function getLocaleSwitchUrls(base: string, path = ''): Record<Locale, str
     };
 }
 
+// Images with baked-in English text have a French twin named `name-fr.ext`
+// next to them; French pages load that one instead.
+export function localizedAsset(path: string, locale: Locale): string {
+    return locale === 'fr' ? path.replace(/(\.\w+)$/, '-fr$1') : path;
+}
+
 // hreflang and JSON-LD `url` fields must be fully-qualified per Google's spec —
 // internal <a href> usage (Navbar, etc.) works fine with the root-relative
 // paths above, but resolve through this before emitting either of those two.

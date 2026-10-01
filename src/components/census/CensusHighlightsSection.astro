@@ -1,5 +1,6 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { localizedAsset } from '../../lib/i18n/routing';
 import { t } from '../../lib/i18n/t';
 
 interface Props {
@@ -18,7 +19,7 @@ const rows = [
         statFb: '70,000+ Geographic Areas',
         descKey: 'highlights_stat_1_description',
         descFb: 'Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal area to pinpoint where media and tech trends emerge.',
-        imgSrc: `${base}images/tools/census-tool/census-geo-filters.webp`,
+        imgSrc: localizedAsset(`${base}images/tools/census-tool/census-geo-filters.webp`, locale),
         imgAlt: locale === 'fr' ? 'Aperçu des filtres géographiques' : 'Geographic filters preview',
     },
     {
@@ -28,7 +29,7 @@ const rows = [
         statFb: '2,000+ Demographic Variables',
         descKey: 'highlights_stat_2_description',
         descFb: "Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who's driving adoption and change.",
-        imgSrc: `${base}images/tools/census-tool/census-demo-filters.webp`,
+        imgSrc: localizedAsset(`${base}images/tools/census-tool/census-demo-filters.webp`, locale),
         imgAlt:
             locale === 'fr' ? 'Aperçu des filtres démographiques' : 'Demographic filters preview',
     },

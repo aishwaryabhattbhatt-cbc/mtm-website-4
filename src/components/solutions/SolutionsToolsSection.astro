@@ -1,5 +1,6 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { localizedAsset } from '../../lib/i18n/routing';
 import { t } from '../../lib/i18n/t';
 import Button from '../shared/Button.astro';
 import { icons } from '../../lib/icons/registry';
@@ -118,7 +119,10 @@ const censusDescriptionFallback =
                     </div>
                     <div class="solutions-tools-card__preview">
                         <img
-                            src={`${base}images/tools/analytic-tools/Analytic-tool.webp`}
+                            src={localizedAsset(
+                                `${base}images/tools/analytic-tools/Analytic-tool.webp`,
+                                locale
+                            )}
                             alt=""
                             class="solutions-tools-card__preview-img"
                             loading="lazy"
@@ -134,7 +138,10 @@ const censusDescriptionFallback =
                 <article class="solutions-tools-card card-fly-in">
                     <div class="solutions-tools-card__preview">
                         <img
-                            src={`${base}images/tools/census-tool/Census-tool.webp`}
+                            src={localizedAsset(
+                                `${base}images/tools/census-tool/Census-tool.webp`,
+                                locale
+                            )}
                             alt=""
                             class="solutions-tools-card__preview-img"
                             loading="lazy"
@@ -349,7 +356,10 @@ const censusDescriptionFallback =
                             </div>
                             <div class="solutions-tools-card__preview">
                                 <img
-                                    src={`${base}images/tools/analytic-tools/Analytic-tool.webp`}
+                                    src={localizedAsset(
+                                        `${base}images/tools/analytic-tools/Analytic-tool.webp`,
+                                        locale
+                                    )}
                                     alt=""
                                     class="solutions-tools-card__preview-img"
                                     loading="lazy"
@@ -402,7 +412,10 @@ const censusDescriptionFallback =
                         <article class="solutions-tools-card solutions-tools-card--accordion">
                             <div class="solutions-tools-card__preview">
                                 <img
-                                    src={`${base}images/tools/census-tool/Census-tool.webp`}
+                                    src={localizedAsset(
+                                        `${base}images/tools/census-tool/Census-tool.webp`,
+                                        locale
+                                    )}
                                     alt=""
                                     class="solutions-tools-card__preview-img"
                                     loading="lazy"

@@ -1,5 +1,6 @@
 ---
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
+import { localizedAsset } from '../../lib/i18n/routing';
 import { t } from '../../lib/i18n/t';
 import { icons } from '../../lib/icons/registry';
 import CarouselNavArrows from '../shared/CarouselNavArrows.astro';
@@ -95,7 +96,7 @@ const features = [
                     <div class="dat-features__card-slot" aria-hidden="true">
                         <img
                             class="dat-features__card-slot-img dat-features__card-cover"
-                            src={`${base}${f.image}`}
+                            src={localizedAsset(`${base}${f.image}`, locale)}
                             alt=""
                             loading="lazy"
                             decoding="async"
@@ -108,7 +109,10 @@ const features = [
                             preload="metadata"
                             aria-hidden="true"
                         >
-                            <source src={`${base}${f.videoSrc}`} type="video/mp4" />
+                            <source
+                                src={localizedAsset(`${base}${f.videoSrc}`, locale)}
+                                type="video/mp4"
+                            />
                         </video>
                     </div>
                     <div class="dat-features__card-body">
