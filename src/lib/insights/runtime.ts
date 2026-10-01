@@ -66,6 +66,33 @@ function setImage(root: HTMLElement, selector: string, value: string | null, alt
     });
 }
 
+// Reorders a card's pills first-fit-decreasing by measured width, so the
+// rows the flex-wrap produces are as full as they can be before the 2-row cap.
+// Re-runs on width change; packing is width-sorted, so DOM order never matters.
+const packedWidth = new WeakMap<HTMLElement, number>();
+const pillPacker = new ResizeObserver((entries) => {
+    for (const { target } of entries) {
+        const tags = target as HTMLElement;
+        const width = tags.clientWidth;
+        if (!width || packedWidth.get(tags) === width) continue;
+        packedWidth.set(tags, width);
+        const gap = parseFloat(getComputedStyle(tags).columnGap) || 0;
+        const pills = [...tags.children] as HTMLElement[];
+        const rows: { left: number; pills: HTMLElement[] }[] = [];
+        pills
+            .map((pill) => ({ pill, w: pill.offsetWidth }))
+            .sort((a, b) => b.w - a.w)
+            .forEach(({ pill, w }) => {
+                const row = rows.find((r) => r.left >= w + gap);
+                if (row) {
+                    row.left -= w + gap;
+                    row.pills.push(pill);
+                } else rows.push({ left: width - w, pills: [pill] });
+            });
+        tags.append(...rows.flatMap((r) => r.pills));
+    }
+});
+
 function fillProducts(section: HTMLElement, root: HTMLElement, report: InsightCard) {
     const seed = root.querySelector<HTMLElement>('.product-pill');
     if (!seed) return;
@@ -199,6 +226,10 @@ function fillCard(
                 tags.append(node);
             }
         tags.hidden = !tags.children.length;
+        if (tags.classList.contains('report-card__tags')) {
+            packedWidth.delete(tags);
+            pillPacker.observe(tags);
+        }
     }
     const checkbox = root.querySelector<HTMLInputElement>('input[name="reports"]');
     if (checkbox) checkbox.value = String(report.id);

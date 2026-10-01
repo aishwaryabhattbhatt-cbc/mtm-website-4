@@ -299,7 +299,10 @@ const descCopyKey = description === undefined ? descriptionKey : undefined;
         /* One pill row is always reserved so cards with no variables keep the
            CTA on the same baseline as cards that have them. Matches the pill
            box: its line height plus its vertical padding. */
-        min-height: calc(var(--fs-body-s) * var(--lh-relaxed) + var(--space-1) * 2);
+        --pill-row: calc(var(--fs-body-s) * var(--lh-relaxed) + var(--space-1) * 2);
+        min-height: var(--pill-row);
+        /* Capped at two rows; runtime.ts packs the pills so those rows are full. */
+        max-height: calc(var(--pill-row) * 2 + var(--space-2));
     }
 
     /* runtime.ts sets [hidden] on an empty tag row, and InsightsRuntime.astro
