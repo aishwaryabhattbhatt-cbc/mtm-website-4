@@ -387,52 +387,52 @@
   "newsletter_industry_label": {
     "key": "newsletter_industry_label",
     "en": "Industry",
-    "fr": ""
+    "fr": "Industrie"
   },
   "newsletter_language_label": {
     "key": "newsletter_language_label",
     "en": "Language Preference",
-    "fr": ""
+    "fr": "Langue de préférence"
   },
   "newsletter_language_en": {
     "key": "newsletter_language_en",
     "en": "English",
-    "fr": ""
+    "fr": "Anglais"
   },
   "newsletter_language_fr": {
     "key": "newsletter_language_fr",
     "en": "French",
-    "fr": ""
+    "fr": "Français"
   },
   "newsletter_error_industry": {
     "key": "newsletter_error_industry",
     "en": "Please select your industry.",
-    "fr": ""
+    "fr": "Sélectionnez votre industrie"
   },
   "newsletter_error_language": {
     "key": "newsletter_error_language",
     "en": "Please choose a language.",
-    "fr": ""
+    "fr": "Sélectionnez votre langue"
   },
   "newsletter_error_generic": {
     "key": "newsletter_error_generic",
     "en": "Something went wrong. Please try again.",
-    "fr": ""
+    "fr": "Une erreur est survenue. Veuillez réessayer."
   },
   "newsletter_success_title": {
     "key": "newsletter_success_title",
     "en": "You're Subscribed!",
-    "fr": ""
+    "fr": "Votre abonnement est activé!"
   },
   "newsletter_success_description": {
     "key": "newsletter_success_description",
     "en": "Thank you for subscribing. Look out for MTM reports, research releases and insights in your inbox.",
-    "fr": ""
+    "fr": "Merci pour votre abonnement à notre infolettre. Vous aurez maintenant accès à nos rapports publiés, nos nouvelles recherches et nos analyses, directement dans votre boîte de courriel."
   },
   "newsletter_success_close": {
     "key": "newsletter_success_close",
     "en": "Close",
-    "fr": ""
+    "fr": "Fermer"
   },
   "Navigation bar": {
     "key": "Navigation bar",

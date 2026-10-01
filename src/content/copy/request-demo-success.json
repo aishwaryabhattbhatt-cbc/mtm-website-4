@@ -342,12 +342,12 @@
   "contact_error_rate_limit": {
     "key": "contact_error_rate_limit",
     "en": "Too many requests have been submitted. Please try again in a few minutes.",
-    "fr": ""
+    "fr": "Le volume des demandes est trop élevé. Réessayez dans quelques minutes."
   },
   "contact_error_generic": {
     "key": "contact_error_generic",
     "en": "An error has occurred. Please try again or contact us at 1-855-898-4999.",
-    "fr": ""
+    "fr": "Une erreur est survenue. Veuillez réessayer ou communiquer avec nous au 1 855 898-4999."
   },
   "Contact us- Success": {
     "key": "Contact us- Success",
@@ -457,17 +457,17 @@
   "register_hero_error_invalid_domain": {
     "key": "register_hero_error_invalid_domain",
     "en": "Invalid email address — you must use one of the allowed domains.",
-    "fr": ""
+    "fr": "Courriel invalide – veuillez utiliser un nom de domaine autorisé."
   },
   "register_hero_error_rate_limit": {
     "key": "register_hero_error_rate_limit",
     "en": "Too many requests have been submitted. Please try again in a few minutes.",
-    "fr": ""
+    "fr": "Le volume des demandes est trop élevé. Réessayez dans quelques minutes."
   },
   "register_hero_error_generic": {
     "key": "register_hero_error_generic",
     "en": "An error has occurred. Please try again or contact us at 1-855-898-4999.",
-    "fr": ""
+    "fr": "Une erreur est survenue. Veuillez réessayer ou communiquer avec nous au 1 855 898-4999."
   },
   "Register - Success": {
     "key": "Register - Success",
@@ -502,7 +502,7 @@
   "sign_in_hero_subtitle": {
     "key": "sign_in_hero_subtitle",
     "en": "Sign in to access your MTM dashboard, tools, and reports.",
-    "fr": ""
+    "fr": "Ouvrez une session pour accéder à votre tableau de bord, aux outils et aux rapports de l’OTM."
   },
   "sign_in_hero_form_email_label": {
     "key": "sign_in_hero_form_email_label",
@@ -582,17 +582,17 @@
   "forgot_password_error_rate_limit": {
     "key": "forgot_password_error_rate_limit",
     "en": "Too many requests have been submitted. Please try again in a few minutes.",
-    "fr": ""
+    "fr": "Le volume des demandes est trop élevé. Réessayez dans quelques minutes."
   },
   "forgot_password_error_generic": {
     "key": "forgot_password_error_generic",
     "en": "An error has occurred. Please try again or contact us at 1-855-898-4999.",
-    "fr": ""
+    "fr": "Une erreur est survenue. Veuillez réessayer ou communiquer avec nous au 1 855 898-4999."
   },
   "forgot_password_success": {
     "key": "forgot_password_success",
     "en": "If an account matches that address, an email with the next steps will be sent. Please also check your spam folder.",
-    "fr": ""
+    "fr": "Si un compte correspond à cette adresse, vous recevrez un courriel comprenant les prochaines étapes à suivre. Veuillez aussi vérifier votre boîte de courriels indésirables."
   },
   "Report Download": {
     "key": "Report Download",
