@@ -157,7 +157,7 @@
   "stat_2_value": {
     "key": "stat_2_value",
     "en": "43%",
-    "fr": "43%"
+    "fr": "43 %"
   },
   "stat_2_description": {
     "key": "stat_2_description",
@@ -301,8 +301,8 @@
   },
   "provider_description": {
     "key": "provider_description",
-    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Ad Hoc Research conducts all of the French and English research for the MTM Jr. MTM Jr. research was conducted in February 2026.\r\n\nFounded in 1984 in Montreal, Canada, Ad Hoc Research is a full-service marketing, communications and social research firm, with a multidisciplinary team of more than 100 employees and a constantly growing network of national and international clients. Leaders in the Canadian market, Ad Hoc Research builds lasting relationships with their clients, guiding them every step of the way with a creative and passionate approach.",
-    "fr": "L’OTM et tous ses sondages sont des produits du service Recherche et Analyse de CBC/Radio-Canada. La société Ad hoc recherche effectue toutes les recherches en français et en anglais pour l’OTM Junior. Le sondage de l’OTM Junior a été mené en février 2026. \n \n Fondée en 1984 à Montréal (Canada), Ad hoc recherche offre des services complets de recherche marketing, communicationnelle et sociale grâce à une équipe multidisciplinaire comptant plus de 100 employés et à un réseau sans cesse croissant de clients nationaux et internationaux. Leader sur le marché canadien, Ad hoc recherche établit des relations durables avec ses clients en les guidant, à toutes les étapes des projets, par son approche à la fois créative et passionnée."
+    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Corporate Research. Ad Hoc Research conducts all of the French and English research for the MTM Jr. MTM Jr. research was conducted in February 2026.\n\nFounded in 1984 in Montreal, Canada, Ad Hoc Research is a full-service marketing, communications and social research firm, with a multidisciplinary team of more than 100 employees and a constantly growing network of national and international clients. Leaders in the Canadian market, Ad Hoc Research builds lasting relationships with their clients, guiding them every step of the way with a creative and passionate approach.",
+    "fr": "L’OTM et tous ses sondages sont des produits du service Recherche institutionnelle de CBC/Radio-Canada. La société Ad hoc recherche effectue toutes les recherches en français et en anglais pour l’OTM Junior. Le sondage de l’OTM Junior a été mené en février 2026. \n \n Fondée en 1984 à Montréal (Canada), Ad hoc recherche offre des services complets de recherche marketing, communicationnelle et sociale grâce à une équipe multidisciplinaire comptant plus de 100 employés et à un réseau sans cesse croissant de clients nationaux et internationaux. Leader sur le marché canadien, Ad hoc recherche établit des relations durables avec ses clients en les guidant, à toutes les étapes des projets, par son approche à la fois créative et passionnée."
   },
   "explore_title": {
     "key": "explore_title",

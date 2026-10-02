@@ -162,7 +162,7 @@
   "graph_detail": {
     "key": "graph_detail",
     "en": "Anglophones 18+",
-    "fr": "Anglophones de 18ans et +"
+    "fr": "Anglophones de 18 ans et +"
   },
   "stat_1_value": {
     "key": "stat_1_value",
@@ -351,8 +351,8 @@
   },
   "provider_description": {
     "key": "provider_description",
-    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Forum Research conducts all of the French and English research for the MTM 18+.\n\nEstablished in 1993, Forum Research Inc. is a Canadian market research and technology company, with offices in Toronto, Montreal, and Saskatoon. With over 30 years of experience, they combine industry talent, cutting-edge technology, and behavioral science to provide in-depth insights.",
-    "fr": "L’OTM et tous ses sondages sont des produits du service Recherche et Analyse de CBC/Radio-Canada. Forum Research effectue toutes les recherches liées à l’OTM 18+ en français et en anglais. \n \n La société Forum Research Inc., fondée en 1993, est une entreprise canadienne d’études de marché et de technologie qui a des bureaux à Toronto, Montréal et Saskatoon. Forte de plus de 30 ans d’expérience, elle combine de talentueux spécialistes de l’industrie, des technologies de pointe et les sciences du comportement pour fournir des renseignements détaillés."
+    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Corporate Research. Forum Research conducts all of the French and English research for the MTM 18+.\n\nEstablished in 1993, Forum Research Inc. is a Canadian market research and technology company, with offices in Toronto, Montreal, and Saskatoon. With over 30 years of experience, they combine industry talent, cutting-edge technology, and behavioral science to provide in-depth insights.",
+    "fr": "L’OTM et tous ses sondages sont des produits du service Recherche institutionnelle de CBC/Radio-Canada. Forum Research effectue toutes les recherches liées à l’OTM 18+ en français et en anglais. \n \n La société Forum Research Inc., fondée en 1993, est une entreprise canadienne d’études de marché et de technologie qui a des bureaux à Toronto, Montréal et Saskatoon. Forte de plus de 30 ans d’expérience, elle combine de talentueux spécialistes de l’industrie, des technologies de pointe et les sciences du comportement pour fournir des renseignements détaillés."
   },
   "explore_title": {
     "key": "explore_title",

@@ -217,6 +217,11 @@ const isMulti = sets.length > 1;
         .solutions-trusted-by-strip--desktop-static .solutions-trusted-by-set[aria-hidden='true'] {
             display: none;
         }
+
+        /* The marquee's inter-set gap would push a static row off-centre. */
+        .solutions-trusted-by-strip--desktop-static .solutions-trusted-by-set {
+            padding-right: 0;
+        }
     }
 
     @media (max-width: 767px) {

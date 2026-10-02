@@ -518,21 +518,25 @@ const cards = [
         display: block;
     }
 
+    /* Flex rather than a 5-column grid so a set with fewer than 5 logos
+       (industry has 3) centres instead of sitting in the left-hand slots.
+       Each item keeps the one-fifth width a full row would give it. */
     .home-solutions__logos-grid {
         width: 100%;
         display: none;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        justify-content: center;
         gap: var(--space-6);
     }
 
     .home-solutions__logos-grid.is-active {
-        display: grid;
+        display: flex;
     }
 
     .home-solutions__logo-placeholder {
         border-radius: var(--radius-s);
         min-height: var(--space-10);
-        width: 100%;
+        width: calc((100% - 4 * var(--space-6)) / 5);
+        flex: none;
         display: flex;
         align-items: center;
         justify-content: center;
