@@ -463,6 +463,10 @@ function badgeEntryStyle(badge: CollageBadge) {
         }
     }
 
+    /* tan(atan2(A, B)) is A / B as a unitless number. Plain `length / length`
+       in calc() is unsupported in Firefox, which drops the whole declaration
+       (title falls to 16px, collage loses its zoom). Don't "simplify" it back. */
+
     /* Desktop scaling: both columns scale via --hero-scale so proportions are preserved.
        Title uses clamp() only to cap growth above 1555px; everywhere else it tracks the scale. */
 
@@ -484,14 +488,16 @@ function badgeEntryStyle(badge: CollageBadge) {
        640:620 ratio through the squeeze too. */
     @media (min-width: 1555px) {
         .home-section-1 .hero-container {
-            --hero-natural-scale: min(1.45, calc(1 + (100vw - 1555px) / 1000px));
+            --hero-natural-scale: min(1.45, calc(1 + tan(atan2(100vw - 1555px, 1000px))));
             --hero-content-natural: calc(640px * var(--hero-natural-scale));
             --hero-collage-natural: calc(620px * var(--hero-natural-scale));
             --hero-fit-scale: min(
                 1,
-                calc(
-                    (100vw - 2 * var(--content-margin-inline)) /
-                        (var(--hero-content-natural) + var(--hero-collage-natural))
+                tan(
+                    atan2(
+                        100vw - 2 * var(--content-margin-inline),
+                        var(--hero-content-natural) + var(--hero-collage-natural)
+                    )
                 )
             );
             --collage-scale: calc(var(--hero-natural-scale) * var(--hero-fit-scale));
@@ -545,7 +551,7 @@ function badgeEntryStyle(badge: CollageBadge) {
     /* Scale-down: 1555px → 1440px */
     @media (min-width: 1440px) and (max-width: 1554px) {
         .home-section-1 .hero-container {
-            --hero-scale: calc(0.913 + (100vw - 1440px) / 1321px);
+            --hero-scale: calc(0.913 + tan(atan2(100vw - 1440px, 1321px)));
         }
 
         .hero-title {
@@ -567,7 +573,7 @@ function badgeEntryStyle(badge: CollageBadge) {
     /* Scale-down: 1439px → 1024px */
     @media (min-width: 1024px) and (max-width: 1439px) {
         .home-section-1 .hero-container {
-            --hero-scale: calc(0.7 + (100vw - 1024px) / 1949px);
+            --hero-scale: calc(0.7 + tan(atan2(100vw - 1024px, 1949px)));
         }
 
         .hero-title {
@@ -634,7 +640,7 @@ function badgeEntryStyle(badge: CollageBadge) {
     /* Scale collage to fit within the content width in column layout */
     @media (max-width: 1023px) {
         .hero-image-collage {
-            zoom: min(1, calc((100vw - 2 * var(--content-margin-inline)) / 620px));
+            zoom: min(1, tan(atan2(100vw - 2 * var(--content-margin-inline), 620px)));
         }
     }
 

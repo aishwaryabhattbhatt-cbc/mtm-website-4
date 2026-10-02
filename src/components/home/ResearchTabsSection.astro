@@ -731,10 +731,13 @@ const tabs = [
        safe without re-introducing the leftover-gap problem a min-width
        floor would cause. */
 
+    /* tan(atan2(A, B)) = A / B as a unitless number — plain `length / length`
+       in calc() is unsupported in Firefox. See HomeHeroSection.astro. */
+
     /* Range 1: 1440–1554px. Scale interpolates 1.0 → 0.913 */
     @media (min-width: 1440px) and (max-width: 1554px) {
         .research-section {
-            --research-scale: calc(0.913 + (100vw - 1440px) / 1321px);
+            --research-scale: calc(0.913 + tan(atan2(100vw - 1440px, 1321px)));
         }
         .right-visual {
             flex: 0 0 auto;
@@ -749,7 +752,7 @@ const tabs = [
     /* Range 2: 1024–1439px. Scale interpolates 0.913 → 0.541 */
     @media (min-width: 1024px) and (max-width: 1439px) {
         .research-section {
-            --research-scale: calc(0.541 + (100vw - 1024px) / 1115px);
+            --research-scale: calc(0.541 + tan(atan2(100vw - 1024px, 1115px)));
         }
         .right-visual {
             flex: 0 0 auto;
