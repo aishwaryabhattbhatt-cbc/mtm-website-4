@@ -1080,7 +1080,7 @@ const footerMenus = [
 
     .home-footer__footer-logo {
         display: inline-flex;
-        width: 9.5rem;
+        width: 12.5rem;
     }
 
     .home-footer__footer-logo img {
@@ -1173,13 +1173,12 @@ const footerMenus = [
             gap: var(--space-5);
         }
 
-        /* Matches the navbar logo. That one is sized by height (40px on
-           .logo-image), so this switches from width- to height-driven here —
-           a rem value would not line up, since the root drops to 14px at this
-           breakpoint while the navbar stays on a pixel height. */
+        /* Height-driven here rather than width — a rem value would shrink with
+           the root (14px at this breakpoint), so the logo stays on a pixel
+           height. A step above the navbar's 48px since this is the full logo. */
         .home-footer__footer-logo {
             width: auto;
-            height: 40px;
+            height: 56px;
         }
 
         .home-footer__footer-logo img {
