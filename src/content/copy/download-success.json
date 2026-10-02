@@ -601,8 +601,8 @@
   },
   "report_download_hero_title": {
     "key": "report_download_hero_title",
-    "en": "Download This Report",
-    "fr": "Télécharger ce rapport"
+    "en": "Download This Content",
+    "fr": "Télécharger ce contenu"
   },
   "report_download_hero_description": {
     "key": "report_download_hero_description",
