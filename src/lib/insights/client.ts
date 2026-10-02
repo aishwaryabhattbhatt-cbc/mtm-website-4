@@ -32,6 +32,7 @@ export interface InsightCard {
 }
 export interface InsightsCatalog {
     reports: InsightCard[];
+    libraryReportIdsByProduct?: Record<string, number[]>;
     featuredReportId: number | null;
     freeReportIds: number[];
     infographicReportId: number | null;

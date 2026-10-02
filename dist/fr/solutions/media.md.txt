@@ -1,14 +1,14 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/solutions/media/ -->
 
-Media and Broadcasting
+Médias et radiodiffusion
 
-# Know your audience
+# Apprenez à mieux connaître votre auditoire
 
-In a rapidly evolving media landscape, guesswork is a liability. The Media Technology Monitor (MTM) is an investment in unparalleled evidence-based market intelligence that will sharpen your strategy, drive audience engagement and secure your competitive edge.
+Dans un contexte médiatique en constante évolution, il est dangereux de faire des devinettes. Investir dans l’Observateur des technologies médias (OTM), c’est investir dans de l’information commerciale sans égal, fondée sur des données probantes, qui affinera votre stratégie, stimulera l’engagement de l’auditoire et vous permettra de conserver votre avantage concurrentiel.
 
-[Request a demo](https://dev.mtm-otm.ca/fr/request-demo/)
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/)
 
-Trusted by
+Clientèle
 
 ![AMI](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
 
@@ -38,108 +38,108 @@ Trusted by
 
 ![Samsung](https://dev.mtm-otm.ca/images/home/solutions/logos/technology/samsung.svg)
 
-## Get ahead of changes
+## Prenez de l’avance sur les changements
 
-Attention fragmentation is real – know where your audience is now, where it will be next and who you may not be reaching yet.
+La fragmentation de l’attention est un phénomène réel : sachez sur quoi se concentre actuellement votre auditoire, sur quoi il se concentrera ensuite et quels sont ceux que vous n’atteignez peut-être pas encore.
 
-Platform Diversification
+Diversification des plateformes
 
-Meet your audience where they're at.
+Retrouvez votre auditoire là où il est
 
-Canadians no longer live on just one platform—they stream on one, scroll on another, and stay connected on a third. MTM tracks the full media diet across all screens, platforms, and services to capture real-world insights for any target audience
+Les Canadiens ne se limitent plus à une seule plateforme : ils écoutent du contenu en continu sur une plateforme et en font défiler sur une autre pendant qu’ils échangent avec leurs proches sur une troisième. L’OTM fait le suivi de la consommation médiatique complète sur tous les écrans, toutes les plateformes et tous les services afin de recueillir des renseignements concrets sur tous les auditoires cibles.
 
-Top Social Media Platforms
+Plateformes de médias sociaux les plus populaires
 
-![Top Social Media Platforms](https://dev.mtm-otm.ca/images/solutions/media/insight-1.svg)
+![Plateformes de médias sociaux les plus populaires](https://dev.mtm-otm.ca/images/solutions/media/insight-1-fr.svg)
 
-Market Intelligence
+Veille stratégique
 
-Stop marketing to the 'average' Canadian.
+Cessez de cibler le Canadien « moyen » dans vos stratégies de marketing
 
-Not all Canadians share the same media habits—from streaming and podcasts to device ownership. MTM provides high-definition visibility, filtering data by ethnicity, age, income, and family structure so you connect exactly when and how your audience needs you.
+De la diffusion en continu aux baladodiffusions, en passant par les appareils qu’ils possèdent, les Canadiens n’ont pas tous les mêmes habitudes en matière de médias. L’OTM offre une visualisation en haute définition, avec filtration des données par origine ethnique, âge, revenu et structure familiale, pour vous permettre de joindre votre auditoire au moment et par les moyens qui répondent le mieux à leurs besoins.
 
-FAST Channel Viewership
+Visionnement de chaînes FAST
 
-![FAST Channel Viewership](https://dev.mtm-otm.ca/images/solutions/media/insight-2.svg)
+![Visionnement de chaînes FAST](https://dev.mtm-otm.ca/images/solutions/media/insight-2-fr.svg)
 
-## Tools that empower you
+## Des outils à votre service
 
-### Analytic Tools
+### Outils d’analyse
 
-Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.
+Faites une requête dans tout l’ensemble de données de l’OTM par plateforme, région, langue et données démographiques. Créez des tableaux croisés personnalisés en quelques minutes, suivez les courbes d’adoption au fil du temps et modélisez votre auditoire pour déterminer où il en sera dans trois ans, le tout en un seul clic.
 
-Data Analysis
+Analyse de données
 
-Trending
+Tendances
 
-Forecasting
+Prévisions
 
-[Go to Analytic Tools](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
+[Accéder aux outils d’analyse](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-### Census Tools
+### Outil de recensement
 
-Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.
+Cartographiez votre public cible en fonction du code postal. Repérez les communautés mal desservies, déterminez la taille des marchés locaux et comparez votre portée à la population nationale, le tout à partir d’un tableau de bord unique directement alimenté par les données du recensement de Statistique Canada.
 
-Snapshot
+Aperçu
 
-Explorer
+Explorateur
 
-Compare
+Comparaison
 
-3 more
+(et trois autres)
 
-[Go to Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Accéder à l’outil de recensement](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-## How MTM fits the way you work already
+## L’OTM est adapté à vos méthodes de travail
 
-You don't open a research tool and start clicking. You have a business question. MTM is built to answer it, at every stage of your workflow.
+On n’ouvre pas un outil de recherche pour cliquer au hasard; tout commence par une question d’affaires. L’OTM est conçu pour répondre à vos questions à chaque étape de votre flux de travail.
 
-01 Query
+01 Requête
 
-Select your variables
+Sélectionnez vos variables
 
-Start with a question — platform reach, time spent, device ownership, service provider. Pull exactly the variables you need from and the MTM lets you build your view in minutes.
+Commencez par une question : la portée des plateformes, le temps consacré à celles-ci, la possession d’appareils, les fournisseurs de services. Choisissez exactement les variables qu’il vous faut et l’OTM vous permet de les visualiser en quelques minutes.
 
-02 Customize
+02 Personnalisation
 
-Build your cross-tab or chart
+Créez votre tableau croisé ou votre graphique
 
-Drag variables into rows and columns. Filter by region, language, age or strategic target group. Every output is yours to configure - no fixed tables, no waiting.
+Faites glisser les variables dans des rangées et des colonnes. Filtrez par région, langue, âge ou groupe cible stratégique. Vous pouvez configurer tous les résultats. Pas de tableaux fixes, pas d’attente.
 
-03 Export
+03 Exportation
 
-Export for your client
+Exportez les résultats pour votre client
 
-Download your analysis in presentation-ready formats. Drop it straight into a deck, a brief, or a regulatory submission - formatted and ready to go.
+Téléchargez votre analyse dans des formats prêts à présenter. Déposez-les directement dans une présentation, un document d’information ou une demande réglementaire, déjà formatés et prêts à utiliser.
 
-## MTM in Action for Media Teams
+## L’OTM en action pour les équipes médias
 
-Learn how your organization can use the MTM to grow or maintain your key audiences.
+Apprenez comment votre organisation peut utiliser l’OTM pour accroître ou maintenir ses auditoires cibles.
 
-Use Case
+Cas d’utilisation
 
-Understanding the most effective way to promote a new TV show to affluent Baby Boomers.
+Comprendre quelle est la façon la plus efficace de promouvoir une nouvelle émission de télévision auprès des baby-boomers aisés.
 
-Younger and Older BoomersTV hoursChannel viewershipIncomeSeeing ads on streaming services
+Jeunes baby-boomers et baby-boomers plus âgésNombre d’heures consacrées à la télévisionAuditoire des chaînesRevenuPublicités sur les services de diffusion en continu
 
-How to leverage this
+Comment en tirer parti
 
-Read our dedicated Baby Boomers report to learn where they are concentrating their current viewing, which are most exposed to advertising and whether traditional TV remains king for this audience.
+Lisez notre rapport sur les baby-boomers pour savoir où leur visionnement se concentre actuellement, lesquels d’entre eux sont les plus exposées à la publicité et si la télévision traditionnelle demeure le média par excellence pour cet auditoire.
 
-Use Case
+Cas d’utilisation
 
-Gaining maximum exposure for a podcast aimed at men aged 18 to 35
+Maximiser l’exposition d’un balado destiné aux hommes de 18 à 35 ans.
 
-Podcast listenershipPodcast hoursStreaming audio platformsSocial media usage
+Écoute de baladosNombre d’heures consacrées aux baladosPlateformes de diffusion audio en continuUtilisation des médias sociaux
 
-How to leverage this
+Comment en tirer parti
 
-Use our tools to take a deep dive on the platforms, time spent and online communities where this group is most active.
+Utilisez nos outils pour approfondir vos connaissances sur les plateformes utilisées, le temps consacré à celles-ci et les communautés en ligne où ce groupe est le plus actif.
 
-## What media and broadcasting companies are saying about us
+## Ce que les entreprises de médias et de radiodiffusion disent de nous
 
 ![The Weather Network](https://dev.mtm-otm.ca/images/home/solutions/logos/media/the-weather-network.svg)
 
-When it comes to technology ownership and usage in Canada, the MTM is THE go-to source of information. For our team, this resource is invaluable because it allows us to make informed decisions with confidence and stay one step ahead in an ever-changing media landscape. It is a fundamental tool for our strategic planning and innovation efforts.
+En matière de possession et d’utilisation des technologies au Canada, l’OTM est LA source d’information par excellence. Pour notre équipe, cette ressource est inestimable, car elle nous permet de prendre des décisions éclairées en toute confiance et de conserver une longueur d’avance dans un paysage médiatique en constante évolution. Elle constitue un outil fondamental pour notre planification stratégique et nos efforts d’innovation.
 
-Élise Roy-Pepin, The Weather Network
+Élise Roy-Pepin, MétéoMédia

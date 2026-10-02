@@ -1,50 +1,50 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/insights/ -->
 
-# Research Built for Faster Decisions
+# Des recherches conçues pour accélérer la prise de décision
 
-The Media Technology Monitor (MTM) delivers more than 70 executive-level reports and infographics each year, covering the trends, platforms, behaviours, and audiences shaping Canadian media and technology. Available in both official languages, our research helps organizations quickly understand what’s changing — and what matters next.
+L’Observateur des technologies médias (OTM) présente chaque année plus de 70 rapports et infographies de synthèse couvrant les tendances, les plateformes, les comportements et les auditoires qui façonnent la technologie et les médias canadiens. Nos recherches, qui sont offertes dans les deux langues officielles, aident les organisations à comprendre rapidement ce qui change – et ce dont il faut tenir compte pour l’avenir.
 
-[Request a Demo](https://dev.mtm-otm.ca/fr/request-demo/)
-
-Chargement des rapports…
-
-Réessayer
-
-Reports Library
-
-## Research Across Every Corner of Canadian Media Behaviour
-
-From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.
-
-All  MTM 18+  MTM Junior  MTM Newcomers
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/)
 
 Chargement des rapports…
 
 Réessayer
 
-Free Reports
+Bibliothèque de rapports
 
-## Deep Dives Into Key Canadian Audiences
+## Des recherches sur tous les aspects du comportement de consommation des médias au Canada
 
-Access a selection of reports and have a better understanding of Canadians’ behaviours, attitudes, and technology adoption patterns across distinct demographic and cultural segments.
+Diffusion en continu, plateformes de médias sociaux, consommation de nouvelles, jeux vidéo, IA, appareils connectés : les rapports de l’OTM révèlent comment les Canadiens de toutes les générations et de tous les groupes démographiques interagissent avec les médias et les technologies.
 
-Chargement des rapports…
-
-Réessayer
-
-Free infographic
-
-## Gain Insights from Our Infographics
-
-MTM infographics translate complex research into concise, visual storytelling designed for presentations, strategy sessions, and quick decision-making.
+Tous  OTM 18+  OTM Junior  OTM Nouveaux arrivants
 
 Chargement des rapports…
 
 Réessayer
 
-## In The News
+Rapports gratuits
 
-Read articles and interviews showcasing how MTM insights are shaping conversations across the industry.
+## Analyses détaillées des principaux auditoires canadiens
+
+Consultez des rapports sélectionnés pour mieux comprendre les comportements, les attitudes et les habitudes des Canadiens de segments démographiques et culturels distincts en matière d’adoption des technologies.
+
+Chargement des rapports…
+
+Réessayer
+
+Infographie gratuite
+
+## Obtenez des renseignements grâce à nos infographies
+
+Les infographies de l’OTM traduisent les recherches complexes en présentations visuelles concises destinées aux exposés, aux réunions stratégiques et à la prise de décision rapide.
+
+Chargement des rapports…
+
+Réessayer
+
+## Dans l’actualité
+
+Lisez des articles et des entrevues qui montrent comment les données de l’OTM soutiennent les conversations dans l’ensemble de l’industrie.
 
 Radio-Canada
 
@@ -52,7 +52,7 @@ Mar 5, 2026
 
 ---
 
-MTM 18+
+OTM 18+
 
 Les données de l'OTM 18+ de l’automne 2025 sont arrivées
 
@@ -64,7 +64,7 @@ Mar 4, 2026
 
 ---
 
-MTM 18+
+OTM 18+
 
 Le sondage de l’OTM 18 ans+ : des informations essentielles sur les tendances en matière de technologie des médias au Canada
 
@@ -76,7 +76,7 @@ Mar 2, 2026
 
 ---
 
-MTM 18+
+OTM 18+
 
 Crave en ascension fulgurante devant les géants internationaux
 
@@ -88,7 +88,7 @@ Feb 24, 2026
 
 ---
 
-MTM 18+
+OTM 18+
 
 L'Aperçu des grandes tendances de l'automne 2025 de l'OTM souligne l'évolution de la diffusion en continu, du multitâche et des microvidéos au Canada
 
@@ -100,7 +100,7 @@ Feb 24, 2026
 
 ---
 
-MTM 18+
+OTM 18+
 
 77 % des foyers canadien seraient abonnés à la vidéo sur demande
 
@@ -112,7 +112,7 @@ Feb 4, 2026
 
 ---
 
-MTM 18+
+OTM 18+
 
 Un balado comme outil pédagogique en techniques en santé
 
@@ -124,7 +124,7 @@ Jan 9, 2026
 
 ---
 
-MTM 18+
+OTM 18+
 
 Info-réveil
 
@@ -136,7 +136,7 @@ Jan 8, 2026
 
 ---
 
-MTM 18+
+OTM 18+
 
 La moitié des jeunes Canadiens regarde des contenus en accéléré
 
@@ -148,7 +148,7 @@ Nov 21, 2025
 
 ---
 
-MTM Newcomers
+OTM Nouveaux arrivants
 
 Nouveaux arrivants: les habitudes médiatiques et technologiques
 
@@ -160,7 +160,7 @@ Nov 3, 2025
 
 ---
 
-MTM Newcomers
+OTM Nouveaux arrivants
 
 Premier regard sur les données de L’OTM Nouveaux arrivants 2025
 
@@ -172,7 +172,7 @@ Oct 27, 2025
 
 ---
 
-MTM Junior
+OTM Junior
 
 Habitudes d’écoute des jeunes Canadiens de 2 à 17 ans en 2025
 
@@ -184,7 +184,7 @@ Oct 23, 2025
 
 ---
 
-MTM Newcomers
+OTM Nouveaux arrivants
 
 La nouvelle saison de l'OTM Nouveaux arrivants est lancée !
 
@@ -196,7 +196,7 @@ Oct 9, 2025
 
 ---
 
-MTM 18+
+OTM 18+
 
 Rapport sur le marché canadien des télécommunications 2025
 
@@ -208,7 +208,7 @@ Oct 6, 2025
 
 ---
 
-MTM Newcomers
+OTM Nouveaux arrivants
 
 Webinaire : Premier regard sur les données de L’OTM Nouveaux arrivants 2025
 
@@ -220,7 +220,7 @@ Oct 2, 2025
 
 ---
 
-MTM Junior
+OTM Junior
 
 Repenser la télé pour ados
 
@@ -232,7 +232,7 @@ Sep 26, 2025
 
 ---
 
-MTM Junior MTM 18+
+OTM Junior OTM 18+
 
 Souffler les braises : pour une stratégie nationale de l’audiovisuel au Québec
 
@@ -244,7 +244,7 @@ Sep 18, 2025
 
 ---
 
-MTM 18+
+OTM 18+
 
 Abonnements et habitudes d’écoute des Canadiens par marché linguistique (printemps 2025)
 
@@ -256,7 +256,7 @@ May 14, 2025
 
 ---
 
-MTM Junior
+OTM Junior
 
 Comprendre les plus jeunes consommateurs de médias au Canada : une introduction à l’OTM Jr.
 

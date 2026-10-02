@@ -295,3 +295,8 @@ body {
     position: relative;
     z-index: 10;
 }
+
+/* Chatbase overrides */
+#chatbase-message-bubbles {
+    max-width: 313px !important;
+}

@@ -1,156 +1,156 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/ -->
 
-# The Standard for Canadian Media & Technology Insights
+# La source de précieuses données sur les médias et les technologies au Canada
 
-The Media Technology Monitor is Canada's national dataset on media, technology, and content consumption — used by broadcasters, advertisers, and government to support funding, policy, and strategic decisions with evidence, not assumptions.
+L’Observateur des technologies médias est l’ensemble de données nationales du Canada sur la consommation de médias, de technologies et de contenu. Les radiodiffuseurs, les annonceurs et le gouvernement l’utilisent pour prendre des décisions fondées sur des données plutôt que des hypothèses en matière de financement, de politiques et de décisions stratégiques.
 
-[Request a Demo](https://dev.mtm-otm.ca/fr/request-demo/) Explore More
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/) Explorer
 
-## Access Trusted Research On
+## Accédez à des recherches fiables sur :
 
-Technology Trends Track rapid shifts across streaming platforms, AI advancements, connected devices, and emerging technologies. Identify where consumer demand is heading next.
+Les tendances technologiques Suivez les changements rapides relativement aux plateformes de diffusion en continu, aux progrès de l’intelligence artificielle, aux appareils connectés et aux technologies émergentes. Prévoyez où se concentrera la demande des consommateurs à l’avenir.
 
-Media Behaviour Understand attention, viewing habits, engagement, and platform usage across audiences and channels. See exactly where and how Canadians are spending their time.
+Les comportements de consommation des médias Informez-vous sur ce qui attire l’attention, sur les habitudes de visionnement, sur l’engagement et sur l’utilisation des plateformes, pour tous les publics et tous les canaux. Voyez exactement où et comment les Canadiens passent leur temps.
 
-5,000+ Variables Every insight above is backed by variables across demographics, attitudes, and intent, across Canada's most comprehensive media and technology dataset.
+Plus de 5 000 variables Chacun des renseignements ci-dessus est étayé par des variables sur les groupes démographiques, leurs comportements et leurs intentions, tirées de l’ensemble de données le plus complet du Canada sur les médias et les technologies.
 
-![Box 1](https://dev.mtm-otm.ca/images/home/trusted/tab-1/dat-tool.webp)
+![Box 1](https://dev.mtm-otm.ca/images/home/trusted/tab-1/dat-tool-fr.webp)
 
-![Box 2](https://dev.mtm-otm.ca/images/home/trusted/tab-1/chart-smartphone.webp)
+![Box 2](https://dev.mtm-otm.ca/images/home/trusted/tab-1/chart-smartphone-fr.webp)
 
-## The MTM Suite
+## La suite OTM
 
-The MTM Suite brings together four powerful data products, in-depth library reports, and interactive analytics tools—all in one integrated platform
+La suite OTM réunit en une plateforme intégrée quatre puissants produits de données, des bibliothèques de rapports détaillés et des outils d’analyse interactifs.
 
-Data Products
+Produits de données
 
-### 41 Million Canadians Mapped
+### 41 millions de Canadiens représentés
 
-Explore four research products, each built for a different audience.
+Examinez quatre produits de recherche, dont chacun a été conçu pour un public différent.
 
-MTM 18+ [EXPLORE THIS PRODUCT](https://dev.mtm-otm.ca/fr/products/mtm-18-plus)
+OTM 18+ [DÉCOUVRIR CE PRODUIT](https://dev.mtm-otm.ca/fr/products/mtm-18-plus)
 
-MTM Junior [EXPLORE THIS PRODUCT](https://dev.mtm-otm.ca/fr/products/juniors)
+OTM Junior [DÉCOUVRIR CE PRODUIT](https://dev.mtm-otm.ca/fr/products/juniors)
 
-MTM Newcomers [EXPLORE THIS PRODUCT](https://dev.mtm-otm.ca/fr/products/newcomers)
+OTM Nouveaux arrivants [DÉCOUVRIR CE PRODUIT](https://dev.mtm-otm.ca/fr/products/newcomers)
 
-MTM Census Tool [EXPLORE THIS PRODUCT](https://dev.mtm-otm.ca/fr/tools/census-tool)
+Outil de recensement de l’OTM [DÉCOUVRIR CE PRODUIT](https://dev.mtm-otm.ca/fr/tools/census-tool)
 
-Media and technology data for Canadians aged 18 and older.
+Données sur la consommation des médias et des technologies chez les Canadiens de 18 ans et plus.
 
 ![MTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18.DXnKtDMS_1EpQDI.webp)
 
-Media and technology behaviour insights for Canadians aged 2–17.
+Données sur les comportements des Canadiens de 2 à 17 ans à l’égard des médias et des technologies.
 
 ![MTM Junior](https://dev.mtm-otm.ca/_astro/fg-product-jr.CbXtGcVs_Z6YJ1P.webp)
 
-Media and technology behaviour insights for newcomers who have arrived to Canada in the past 5 years.
+Données sur les comportements de consommation des médias et des technologies des personnes arrivées au Canada au cours des cinq dernières années.
 
 ![MTM Newcomers](https://dev.mtm-otm.ca/_astro/fg-product-nc.3IOGMkMN_1T41EY.webp)
 
-Detailed demographic data for sharper targeting and planning.
+Données démographiques détaillées pour permettre une planification et un ciblage plus précis.
 
 ![MTM Census Tool](https://dev.mtm-otm.ca/_astro/fg-product-cs.CujlLbzD_1FGXC8.webp)
 
-Data Products
+Produits de données
 
-### 41 Million Canadians Mapped
+### 41 millions de Canadiens représentés
 
-Explore four research products, each built for a different audience.
+Examinez quatre produits de recherche, dont chacun a été conçu pour un public différent.
 
 [![MTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/fr/products/mtm-18-plus)
 
-[MTM 18+](https://dev.mtm-otm.ca/fr/products/mtm-18-plus)
+[OTM 18+](https://dev.mtm-otm.ca/fr/products/mtm-18-plus)
 
-[Media and technology data for Canadians aged 18 and older.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus)
+[Données sur la consommation des médias et des technologies chez les Canadiens de 18 ans et plus.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus)
 
 [![MTM Junior](https://dev.mtm-otm.ca/_astro/fg-product-jr-center.DhG_lzJT_ZL4LYN.webp)](https://dev.mtm-otm.ca/fr/products/juniors)
 
-[MTM Junior](https://dev.mtm-otm.ca/fr/products/juniors)
+[OTM Junior](https://dev.mtm-otm.ca/fr/products/juniors)
 
-[Media and technology behaviour insights for Canadians aged 2–17.](https://dev.mtm-otm.ca/fr/products/juniors)
+[Données sur les comportements des Canadiens de 2 à 17 ans à l’égard des médias et des technologies.](https://dev.mtm-otm.ca/fr/products/juniors)
 
 [![MTM Newcomers](https://dev.mtm-otm.ca/_astro/fg-product-nc-center.Bw5JQzqe_1zUusT.webp)](https://dev.mtm-otm.ca/fr/products/newcomers)
 
-[MTM Newcomers](https://dev.mtm-otm.ca/fr/products/newcomers)
+[OTM Nouveaux arrivants](https://dev.mtm-otm.ca/fr/products/newcomers)
 
-[Media and technology behaviour insights for newcomers who have arrived to Canada in the past 5 years.](https://dev.mtm-otm.ca/fr/products/newcomers)
+[Données sur les comportements de consommation des médias et des technologies des personnes arrivées au Canada au cours des cinq dernières années.](https://dev.mtm-otm.ca/fr/products/newcomers)
 
 [![MTM Census Tool](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/fr/tools/census-tool)
 
-[MTM Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool)
+[Outil de recensement de l’OTM](https://dev.mtm-otm.ca/fr/tools/census-tool)
 
-[Detailed demographic data for sharper targeting and planning.](https://dev.mtm-otm.ca/fr/tools/census-tool)
+[Données démographiques détaillées pour permettre une planification et un ciblage plus précis.](https://dev.mtm-otm.ca/fr/tools/census-tool)
 
-Reports Library
+Bibliothèque de rapports
 
-### 70 + Reports Published Annually
+### Plus de 70 rapports publiés chaque année
 
-Access a growing library of reports, infographics, and trend analyses covering media, technology, platforms, behaviours, and demographic groups across Canada — available in both official languages. Explore the latest findings or download a sample report to see the depth of MTM insights.
+Accédez à un nombre toujours croissant de rapports, d’infographies et d’analyses des tendances portant sur les médias, les technologies, les plateformes, les comportements et les groupes démographiques à l’échelle du Canada, et ce, dans les deux langues officielles. Examinez les dernières conclusions des rapports ou téléchargez-en un exemplaire pour constater la profondeur des analyses de l’OTM.
 
-[SNEAK PEEK REPORT ](https://dev.mtm-otm.ca/fr/insights/report-download/?from=%2Ffr%2F%23reports-library)[GO TO INSIGHTS](https://dev.mtm-otm.ca/fr/insights/)
+[APERÇU DES GRANDES TENDANCES ](https://dev.mtm-otm.ca/fr/insights/report-download/?from=%2Ffr%2F%23reports-library)[ACCÉDER AUX OBSERVATIONS](https://dev.mtm-otm.ca/fr/insights/)
 
 Chargement des rapports…
 
 Réessayer
 
-[SNEAK PEEK REPORT ](https://dev.mtm-otm.ca/fr/insights/report-download/?from=%2Ffr%2F%23reports-library)[GO TO INSIGHTS](https://dev.mtm-otm.ca/fr/insights/)
+[APERÇU DES GRANDES TENDANCES ](https://dev.mtm-otm.ca/fr/insights/report-download/?from=%2Ffr%2F%23reports-library)[ACCÉDER AUX OBSERVATIONS](https://dev.mtm-otm.ca/fr/insights/)
 
-Tool Suite
+Suite d’outils
 
-### Your Data, Your Way.
+### Vos données, à votre façon.
 
-Build custom views, apply advanced filters, and explore trends dynamically with MTM’s suite of interactive data tools.
+Créez des affichages personnalisés, utilisez des filtres avancés et examinez les tendances de façon dynamique grâce à la suite d’outils de données interactifs de l’OTM.
 
-#### [Data Analysis Tool](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
+#### [Outil d’analyse de données](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-[MTM 18+ MTM Junior MTM Newcomers](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
+[OTM 18+ OTM Junior OTM Nouveaux arrivants](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-#### [Trending Tool](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#trending-tool)
+#### [Outil d’évaluation des tendances](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#trending-tool)
 
-[MTM 18+ MTM Junior](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#trending-tool)
+[OTM 18+ OTM Junior](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#trending-tool)
 
-#### [Forecasting Tool](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#forecasting-tool)
+#### [Outil de prévisions](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#forecasting-tool)
 
-[MTM 18+](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#forecasting-tool)
+[OTM 18+](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#forecasting-tool)
 
-#### [MTM Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+#### [Outil de recensement de l’OTM](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-[MTM Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Outil de recensement de l’OTM](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
 [](https://dev.mtm-otm.ca/images/home/mtm-suite/tools-video.mp4)
 
-## Solutions for Every Decision-Maker
+## Des solutions pour tous les décideurs
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-media.jpg)](https://dev.mtm-otm.ca/fr/solutions/media/)
 
-#### [Media and Broadcasting](https://dev.mtm-otm.ca/fr/solutions/media/)
+#### [Médias et radiodiffusion](https://dev.mtm-otm.ca/fr/solutions/media/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/media/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/media/)
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-advertising.png)](https://dev.mtm-otm.ca/fr/solutions/advertising/)
 
-#### [Advertising and Marketing](https://dev.mtm-otm.ca/fr/solutions/advertising/)
+#### [Publicité et marketing](https://dev.mtm-otm.ca/fr/solutions/advertising/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/advertising/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/advertising/)
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-govngo.png)](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
 
-#### [Government and NGOs](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
+#### [Gouvernement et ONG](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-education.png)](https://dev.mtm-otm.ca/fr/solutions/education/)
 
-#### [Education and Research](https://dev.mtm-otm.ca/fr/solutions/education/)
+#### [Éducation et recherche](https://dev.mtm-otm.ca/fr/solutions/education/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/education/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/education/)
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-industry.png)](https://dev.mtm-otm.ca/fr/solutions/industry/)
 
-#### [Industry](https://dev.mtm-otm.ca/fr/solutions/industry/)
+#### [Industrie](https://dev.mtm-otm.ca/fr/solutions/industry/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/industry/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/industry/)
 
 ![ABC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/abc.svg)
 
@@ -198,37 +198,37 @@ Build custom views, apply advanced filters, and explore trends dynamically with 
 
 ![Numeris (BBM Canada)](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
-Media and Broadcasting  Advertising and Marketing  Government and NGOs  Education and Research  Industry
+Médias et radiodiffusion  Publicité et marketing  Gouvernement et ONG  Éducation et recherche  Industrie
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-media.jpg)](https://dev.mtm-otm.ca/fr/solutions/media/)
 
-#### [Media and Broadcasting](https://dev.mtm-otm.ca/fr/solutions/media/)
+#### [Médias et radiodiffusion](https://dev.mtm-otm.ca/fr/solutions/media/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/media/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/media/)
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-advertising.png)](https://dev.mtm-otm.ca/fr/solutions/advertising/)
 
-#### [Advertising and Marketing](https://dev.mtm-otm.ca/fr/solutions/advertising/)
+#### [Publicité et marketing](https://dev.mtm-otm.ca/fr/solutions/advertising/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/advertising/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/advertising/)
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-govngo.png)](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
 
-#### [Government and NGOs](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
+#### [Gouvernement et ONG](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-education.png)](https://dev.mtm-otm.ca/fr/solutions/education/)
 
-#### [Education and Research](https://dev.mtm-otm.ca/fr/solutions/education/)
+#### [Éducation et recherche](https://dev.mtm-otm.ca/fr/solutions/education/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/education/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/education/)
 
 [![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-industry.png)](https://dev.mtm-otm.ca/fr/solutions/industry/)
 
-#### [Industry](https://dev.mtm-otm.ca/fr/solutions/industry/)
+#### [Industrie](https://dev.mtm-otm.ca/fr/solutions/industry/)
 
-[GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/industry/)
+[ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/industry/)
 
 ![ABC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/abc.svg)
 
@@ -260,9 +260,9 @@ Media and Broadcasting  Advertising and Marketing  Government and NGOs  Educatio
 
 ![Numeris (BBM Canada)](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
-Media and Broadcasting
+Médias et radiodiffusion
 
-![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-media.jpg) [GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/media/)
+![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-media.jpg) [ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/media/)
 
 ![ABC](https://dev.mtm-otm.ca/images/home/solutions/logos/media/abc.svg)
 
@@ -270,9 +270,9 @@ Media and Broadcasting
 
 ![AQPM](https://dev.mtm-otm.ca/images/home/solutions/logos/media/aqpm.svg)
 
-Advertising and Marketing
+Publicité et marketing
 
-![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-advertising.png) [GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/advertising/)
+![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-advertising.png) [ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/advertising/)
 
 ![EssenceMediacom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/essencemediacom.jpeg)
 
@@ -280,9 +280,9 @@ Advertising and Marketing
 
 ![Hearts & Science](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/hearts-and-science.png)
 
-Government and NGOs
+Gouvernement et ONG
 
-![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-govngo.png) [GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
+![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-govngo.png) [ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/gov-ngos/)
 
 ![Téléfilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
 
@@ -290,9 +290,9 @@ Government and NGOs
 
 ![CRTC](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/crtc.svg)
 
-Education and Research
+Éducation et recherche
 
-![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-education.png) [GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/education/)
+![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-education.png) [ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/education/)
 
 ![HEC Montréal](https://dev.mtm-otm.ca/images/home/solutions/logos/education/HEC_Montreal.svg)
 
@@ -300,9 +300,9 @@ Education and Research
 
 ![Humber Polytechnic](https://dev.mtm-otm.ca/images/home/solutions/logos/education/humber-polytechnic.svg)
 
-Industry
+Industrie
 
-![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-industry.png) [GO TO SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/industry/)
+![Professional using a laptop](https://dev.mtm-otm.ca/images/home/solutions/cards/solutions-industry.png) [ACCÉDER AUX SOLUTIONS](https://dev.mtm-otm.ca/fr/solutions/industry/)
 
 ![European Broadcasting Union](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
 
@@ -310,26 +310,26 @@ Industry
 
 ![Numeris (BBM Canada)](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
-## Frequently Asked Questions
+## Foire aux questions
 
-When is data released for MTM 18+, MTM Jr., MTM Newcomers, and the MTM Census Tool?
+Quand les données de l’OTM 18+, de l’OTM Junior, de l’OTM Nouveaux arrivants et de l’outil de recensement de l’OTM sont-elles publiées?
 
-Release schedules vary by product: MTM 18+: Releases twice a year, with Fall data available in February and Spring data available in July. MTM Junior: Releases annually in May. MTM Newcomers: Releases annually in October or November. MTM Census Tool: Updated with new Statistics Canada Census data following each national census. The next update, based on the 2026 Census, is expected in Spring/Summer 2027.
+Le calendrier de lancement diffère selon les produits : OTM 18+ : Les données sont publiées deux fois par année. Celles de l’automne sont disponibles en février et celles du printemps, en juillet. OTM Junior : Les données sont publiées chaque année en mai. OTM Nouveaux arrivants : Les données sont publiées chaque année en octobre ou en novembre. Outil de recensement de l’OTM : Les données sont mises à jour après chaque recensement national de Statistique Canada. La prochaine mise à jour, en fonction du recensement de 2026, devrait avoir lieu au printemps ou à l’été 2027.
 
-How much does it cost for an MTM subscription?
+Combien coûte un abonnement à l’OTM?
 
-Costs will vary based on the size of your organization as well as which MTM products you opt in for. We offer discounts for those who subscribe to multiple MTM products. Contact us today for a quote and more details.
+Le coût diffère en fonction de la taille de l’organisation et des produits de l’OTM choisis. Nous offrons des rabais à ceux qui s’abonnent à plusieurs produits. Pour connaître nos tarifs et obtenir d’autres précisions, communiquez avec nous dès maintenant.
 
-How many accounts/seats does an MTM subscription come with?
+Combien de comptes/places un abonnement à l’OTM comprend-il?
 
-We offer an unlimited amount of seats for subscribers and include a self-sign up page for users.
+Nous offrons un nombre illimité de places aux abonnés, et l’abonnement comprend une page d’auto-inscription pour les utilisateurs.
 
-Can I buy an individual report?
+Puis-je acheter un seul rapport?
 
-A subscription to an MTM product includes full access to its suite of reports and web-based tools. Reports are not available for individual purchase.
+L’abonnement à un produit de l’OTM comprend un accès complet à sa suite de rapports et d’outils en ligne. Les rapports ne peuvent pas être achetés individuellement.
 
-Got a question not listed here? Speak to our chatbot
+Vous avez une question qui ne figure pas ici? Parlez-en à notre agent conversationnel.
 
-![Ask MTM](https://dev.mtm-otm.ca/icons/tool/tool-ask-mtm.svg)Ask MTM or [Contact us](https://dev.mtm-otm.ca/fr/contact)
+![Ask MTM](https://dev.mtm-otm.ca/icons/tool/tool-ask-mtm.svg)AlloOTM ou [Nous joindre](https://dev.mtm-otm.ca/fr/contact)
 
-![Ask MTM](https://dev.mtm-otm.ca/icons/products/AskMTM-REV.svg)Ask MTM
+![Ask MTM](https://dev.mtm-otm.ca/icons/products/AskMTM-REV.svg)AlloOTM

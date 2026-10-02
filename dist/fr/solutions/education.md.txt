@@ -1,14 +1,14 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/solutions/education/ -->
 
-Education and Research
+Éducation et recherche
 
-# Fuel Academic Excellence with Real-World Media Intelligence
+# Des données réelles sur les médias pour favoriser l’excellence universitaire
 
-Give your students and faculty access to the same datasets by the Media Technology Monitor (MTM) that media experts, industry regulators and scholars have relied on for over two decades. Nationally representative, bilingual, and rigorous enough for peer review.
+Donnez à votre corps étudiant et professoral accès aux données de l’Observateur des technologies médias (OTM) auxquelles se fient les experts des médias, les organismes de réglementation de l’industrie et les chercheurs depuis plus de 20 ans. Elles sont représentatives à l’échelle nationale, bilingues et suffisamment rigoureuses pour passer un examen par des pairs.
 
-[Request a demo](https://dev.mtm-otm.ca/fr/request-demo/)
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/)
 
-Trusted by
+Clientèle
 
 ![HEC Montréal](https://dev.mtm-otm.ca/images/home/solutions/logos/education/HEC_Montreal.svg)
 
@@ -24,154 +24,154 @@ Trusted by
 
 ![University of Manitoba](https://dev.mtm-otm.ca/images/home/solutions/logos/education/university-of-manitoba.svg)
 
-## Multiple datasets. Hundreds of research directions.
+## De multiples ensembles de données, des centaines de possibilités de recherche
 
-MTM tracks how Canadians consume media and technology across 5000+ variables — spanning platforms, behaviours, demographics, and devices. Browse by topic to find what your research needs.
+L’OTM mesure la consommation de médias et de technologies des Canadiens en fonction de plus de 5 000 variables : plateformes, comportements, données démographiques, appareils, etc. Parcourez les données par sujet et trouvez ce qu’il faut pour votre recherche.
 
 Sports
 
-Example
+Exemple
 
-“What share of Canadians watched a live sporting event online last month?”
+“Quelle est la proportion de Canadiens qui ont regardé en direct un événement sportif en ligne le mois dernier?”
 
-Variables available
+Variables
 
-Watched sports onlineSportsSVODESPN+TSN
+Visionnement de sports en ligneSportsVSDAESPN+TSN
 
-Streaming
+Diffusion en continu
 
-Example
+Exemple
 
-“How does Twitch viewership differ between Teens and Gen Z Canadians?”
+“En quoi le visionnement de Twitch diffère-t-il chez les adolescents et chez les membres de la génération Z au Canada?”
 
-Variables available
+Variables
 
-Age 12 to 17Age 18 to 24Twitch
+12 à 17 ans18 à 24 ansTwitch
 
-AI Tool Adoption
+Adoption des outils d’IA
 
-Example
+Exemple
 
-“How rapidly has AI tool adoption grown among Canadians since 2023?”
+“À quelle vitesse l’adoption des outils d’IA a-t-elle augmenté chez les Canadiens depuis 2023?”
 
-Variables available
+Variables
 
-ChatGPTGeminiClaudeAge 18 to 24Grok
+ChatGPTGeminiClaude18 à 24 ansGrok
 
-Gaming & Consoles
+Jeux vidéo et consoles
 
-Example
+Exemple
 
-“How does gaming device ownership vary across income levels in Canada?”
+“De quelle façon la possession d’une console de jeu varie-t-elle selon le revenu au Canada?”
 
-Variables available
+Variables
 
-Game console ownersNintendo SwitchPlayStationXBoxIncome
+Propriétaires de consoles de jeuNintendo SwitchPlayStationXboxRevenu
 
-Language & Culture
+Langue et culture
 
-Example
+Exemple
 
-“How do media consumption patterns differ between English- and French-speaking Canadians?”
+“Quelles sont les différences entre les habitudes de consommation médiatique des anglophones et des francophones?”
 
-Variables available
+Variables
 
-AnglophoneFrancophoneSocial MediaLanguage spoken at HomeNewsTV hours
+AnglophonesFrancophonesMédias sociauxLangue parlée à la maisonNouvellesNombre d’heures consacrées à la télévision
 
-News Consumption
+Consommation de nouvelles
 
-Example
+Exemple
 
-“Are younger Canadians abandoning traditional news formats in favour of social media?”
+“Les jeunes Canadiens abandonnent-ils les médias traditionnels au profit des médias sociaux?”
 
-Variables available
+Variables
 
-Read online newsNews consumption platformSocial mediaCTVYouTube
+Lecture de nouvelles en lignePlateforme de consommation de nouvellesMédias sociauxTélévision connectéeYouTube
 
-Over 5000+ variables available across 200+ topic areas, searchable and filterable in our tools.
+Plus de 5 000 variables, sur plus de 200 sujets, peuvent être consultées et filtrées grâce à nos outils.
 
-## Powerful tools designed for serious inquiry
+## Des outils puissants pour les questions sérieuses
 
-### Analytic Tools
+### Outils d’analyse
 
-Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.
+Faites une requête dans tout l’ensemble de données de l’OTM par plateforme, région, langue et données démographiques. Créez des tableaux croisés personnalisés en quelques minutes, suivez les courbes d’adoption au fil du temps et modélisez votre auditoire pour déterminer où il en sera dans trois ans, le tout en un seul clic.
 
-Data Analysis
+Analyse de données
 
-Trending
+Tendances
 
-Forecasting
+Prévisions
 
-[Go to Analytic Tools](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
+[Accéder aux outils d’analyse](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-### Census Tools
+### Outil de recensement
 
-### Census Tools
+### Outil de recensement
 
-Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.
+Cartographiez votre public cible en fonction du code postal. Repérez les communautés mal desservies, déterminez la taille des marchés locaux et comparez votre portée à la population nationale, le tout à partir d’un tableau de bord unique directement alimenté par les données du recensement de Statistique Canada.
 
-Snapshot
+Aperçu
 
-Explorer
+Explorateur
 
-Compare
+Comparaison
 
-3 more
+(et trois autres)
 
-[Go to Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Accéder à l’outil de recensement](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-Unlimited seats Unlimited seats No extra charge for faculty, students and staff
+Nombre de places illimité Nombre de places illimité Aucuns frais supplémentaires pour le corps professoral, les étudiants et le personnel administratif.
 
-## Gold standard research all of your research needs
+## Un outil de recherche de premier ordre
 
-We provide universities and colleges with the insights needed to drive innovation and learning across every specialization and at every stage of their academic journey.
+Nous fournissons aux établissements universitaires et collégiaux des renseignements essentiels pour stimuler l’innovation et l’apprentissage dans tous les domaines et à chaque étape du parcours scolaire.
 
-01 For Students
+01 Pour les étudiants
 
-Build Market-Ready Skills
+Développez des compétences pertinentes pour le marché
 
-Ground assignments in the most up-to-date research and build market-ready skills by navigating the same metrics and trends used by Canada’s top industry leaders and governmental institutions.
+Ancrez vos travaux dans les recherches les plus récentes et développez des compétences pertinentes pour le marché en utilisant les mêmes mesures et les mêmes tendances que les principaux chefs de file de l’industrie et les plus grandes institutions gouvernementales du Canada.
 
-02 For Faculty
+02 Pour le corps professoral
 
-Enrich Course Curriculum
+Enrichissez votre programme de cours
 
-Enhance your curriculum with authentic, up-to-date reports and datasets that turn abstract concepts into tangible lessons.
+Améliorez votre curriculum grâce à des rapports et à des ensembles de données authentiques et à jour qui transforment des concepts abstraits en leçons tangibles.
 
-03 For Research Projects
+03 Pour les projets de recherche
 
-Power Serious Academic Inquiry
+Alimentez des recherches sérieuses
 
-Support your research in the country's most robust longitudinal media studies, ensuring your findings are both current and credible.
+Étayez vos recherches grâce aux études médiatiques longitudinales les plus robustes du pays, en vous assurant que vos résultats sont à la fois actuels et crédibles.
 
-## MTM in Action for Educators
+## L’OTM en action pour l’éducation
 
-Learn how the MTM offers essential content and tools for professors and students alike
+Découvrez le rôle essentiel du contenu et des outils de l’OTM pour le corps professoral et étudiant.
 
-Use Case
+Cas d’utilisation
 
-A professor is looking for a historical and current data on the state of broadcast TV when developing a new curriculum.
+Une professeure cherche des données historiques et actuelles sur l’état de la télévision pour élaborer un nouveau programme de cours.
 
-TV viewershipTV hoursRegionAge
+Auditoire de la télévisionHeures consacrées à la télévisionRégionÂge
 
-How to leverage this
+Comment en tirer parti
 
-Examine usage of linear TV and channels across a wide range of demographics via the Data Analysis Tool, or read the TV distribution report for a broader overview.
+Étudiez la consommation de la télévision linéaire et de ses chaînes au sein d’un vaste éventail de groupes démographique avec l’outil d’analyse de données, ou lisez le rapport sur la télédistribution pour obtenir un aperçu plus complet.
 
-Use Case
+Cas d’utilisation
 
-A student writing a masters thesis on different locations for data centres across different communities.
+Un étudiant rédige un mémoire de maîtrise sur différents emplacements pour accueillir des centres de données dans diverses collectivités.
 
-MunicipalitiesPostal CodeAgeIncome
+MunicipalitésCode postalÂgeRevenu
 
-How to leverage this
+Comment en tirer parti
 
-Leverage the Compare feature in the Census Tool for a granular look at different prospective locations.
+Servez-vous de la fonction Comparaison de l’outil de recensement pour obtenir un portrait détaillé des différents emplacements potentiels.
 
-## What academic institutions are saying about us
+## Ce que les établissements universitaires disent de nous
 
 ![University of Ottawa](https://dev.mtm-otm.ca/images/home/solutions/logos/education/uOttawa.svg)
 
-As the author of nine editions of a Canadian Advertising textbook, I have included data from Media Technology Monitor (MTM) for the past five editions to enhance the Broadcast, Internet and Social Media Chapters. I believe the data improved the quality allowing students to understand the complexities of advertising planning decisions. The textbook contains the most current consumer media technology usage and adoption data to keep it in a leading market position. MTM is a wonderful partner and I look forward to working with them for the next edition.
+Je suis l’auteur de neuf éditions d’un manuel sur la publicité au Canada et, dans les cinq dernières éditions, j’ai ajouté des données de l’Observateur des technologies médias (OTM) pour améliorer les chapitres sur la radiodiffusion, Internet et les médias sociaux. Je crois que ces données ont amélioré la qualité du manuel en permettant aux étudiants de comprendre la complexité des décisions liées à la planification publicitaire. Pour que mon manuel demeure à l’avant-garde du marché, j’y ai inclus les toutes dernières données sur l’utilisation et l’adoption des technologies médias par les consommateurs. L’OTM est un partenaire formidable et j’ai hâte d’y avoir recours pour la prochaine édition.
 
-Michael Guolla, Professor, University of Ottawa
+Michael Guolla, professeur, Université d’Ottawa

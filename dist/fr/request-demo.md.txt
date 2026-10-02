@@ -1,57 +1,57 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/request-demo/ -->
 
-# Book A Demo Today!
+# Réservez une démonstration dès aujourd’hui!
 
-Interested to see what the MTM can do for you? Book a demo with one of our experts to walk you though the products and tools in more detail.
+Vous voulez voir ce que l’OTM peut faire pour vous? Réservez une démonstration avec un membre de notre équipe d’experts, qui vous montrera les produits et les outils plus en détail.
 
-What You Can Expect
+À quoi vous attendre
 
-- Personalized walk-through of the tools, reports and services
-- Q & A to understand how the MTM can support you
-- Expert advice on how MTM can fit in your workflow
+- Une présentation personnalisée de tous les outils, rapports et services offerts
+- Des questions-réponses pour vous permettre de comprendre ce que l’OTM peut faire pour vous
+- Des conseils experts sur l’intégration de l’OTM à vos flux de travail
 
 Company website
 
-First Name \*
+Prénom \*
 
 John
 
-Last Name \*
+Nom \*
 
 Doe
 
-Email \*
+Courriel \*
 
-[Enter your email](<mailto:Enter your email>)
+[Entrez votre adresse courriel](<mailto:Entrez votre adresse courriel>)
 
 Organisation \*
 
-Organisation Name
+Nom de l’organisation
 
-Industry \*
+Industrie \*
 
-Select your industry Select your industry
+Sélectionnez votre secteur Sélectionnez votre secteur
 
-- Media and Broadcasting
-- Advertising and Marketing
-- Government and NGOs
-- Education and Research
-- Industry
-- Other
+- Médias et radiodiffusion
+- Publicité et marketing
+- Gouvernement et ONG
+- Éducation et recherche
+- Industrie
+- Autre
 
-Language Preference
+Langue de préférence
 
-\[x] English \[ ] French
+\[x] Anglais \[ ] Français
 
-What are you interested in?
+Quel produit vous intéresse?
 
-\[ ] MTM 18+ \[ ] Junior \[ ] Newcomer \[ ] Census
+\[ ] OTM 18+ \[ ] OTM Junior \[ ] OTM Nouveaux arrivants \[ ] Outil de recensement
 
-Something else? Please enter below.
+Autre chose? Veuillez l’indiquer.
 
-\[ ] Subscribe to our newsletter Submit
+\[ ] Abonnez-vous à notre infolettre Soumettre
 
-Trusted by
+Clientèle
 
 ![AMI](https://dev.mtm-otm.ca/images/home/solutions/logos/media/ami-tv.svg)
 
@@ -137,24 +137,24 @@ Trusted by
 
 ![The Weather Network](https://dev.mtm-otm.ca/images/home/solutions/logos/media/the-weather-network.svg)
 
-When it comes to technology ownership and usage in Canada, the MTM is THE go-to source of information. For our team, this resource is invaluable because it allows us to make informed decisions with confidence and stay one step ahead in an ever-changing media landscape. It is a fundamental tool for our strategic planning and innovation efforts.
+En matière de possession et d’utilisation des technologies au Canada, l’OTM est LA source d’information par excellence. Pour notre équipe, cette ressource est inestimable, car elle nous permet de prendre des décisions éclairées en toute confiance et de conserver une longueur d’avance dans un paysage médiatique en constante évolution. Elle constitue un outil fondamental pour notre planification stratégique et nos efforts d’innovation.
 
-Élise Roy-Pepin, The Weather Network
+Élise Roy-Pepin, MétéoMédia
 
 ![Time + Space Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
 
-MTM is a valuable resource for effective media planning and research for our clients. The comprehensive data, forecasting and frequent reports give us deep insight into Canadian audience behaviors and media trends.
+L’OTM est une précieuse ressource pour préparer des plans et des recherches médiatiques efficaces pour nos clients. Les données exhaustives, les prévisions et les rapports fréquents nous donnent une idée précise des comportements du public canadien et des tendances médiatiques.
 
-Ryan Casey, Director, Media Operations - Time & Space Media
+Ryan Casey, directeur, Exploitation média – Time & Space Media
 
 ![MANSO](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/manso.svg)
 
-Thanks to our subscription to MTM Newcomers, we have access to newcomer data insights and their settlement and integration journey in Manitoba. We particularly appreciate seeing information that is not available through any other sources, like newcomers' use of media, devices, and newcomer knowledge of services available through our sector. This information helps our members ensure that their services are well adapted to the needs and characteristics of the newcomers they serve.
+Grâce à notre abonnement à l’OTM Nouveaux arrivants, nous avons accès à des données sur les nouveaux arrivants et sur leur parcours pour s’établir et s’intégrer au Manitoba. Nous nous réjouissons particulièrement de pouvoir accéder à de l’information qui ne se trouve pas ailleurs, comme l’utilisation des médias et des appareils par les nouveaux arrivants, ou leur connaissance des services offerts par notre secteur. Ces renseignements aident nos membres à s’assurer que leurs services sont bien adaptés aux besoins et aux caractéristiques des nouveaux arrivants.
 
-Valeria Castellanos, Language Support and Program Manager - MANSO
+Valeria Castellanos, gestionnaire de programmes et du soutien linguistique – MANSO
 
 ![University of Ottawa](https://dev.mtm-otm.ca/images/home/solutions/logos/education/uOttawa.svg)
 
-As the author of nine editions of a Canadian Advertising textbook, I have included data from Media Technology Monitor (MTM) for the past five editions to enhance the Broadcast, Internet and Social Media Chapters. I believe the data improved the quality allowing students to understand the complexities of advertising planning decisions. The textbook contains the most current consumer media technology usage and adoption data to keep it in a leading market position. MTM is a wonderful partner and I look forward to working with them for the next edition.
+Je suis l’auteur de neuf éditions d’un manuel sur la publicité au Canada et, dans les cinq dernières éditions, j’ai ajouté des données de l’Observateur des technologies médias (OTM) pour améliorer les chapitres sur la radiodiffusion, Internet et les médias sociaux. Je crois que ces données ont amélioré la qualité du manuel en permettant aux étudiants de comprendre la complexité des décisions liées à la planification publicitaire. Pour que mon manuel demeure à l’avant-garde du marché, j’y ai inclus les toutes dernières données sur l’utilisation et l’adoption des technologies médias par les consommateurs. L’OTM est un partenaire formidable et j’ai hâte d’y avoir recours pour la prochaine édition.
 
-Michael Guolla, Professor, University of Ottawa
+Michael Guolla, professeur, Université d’Ottawa

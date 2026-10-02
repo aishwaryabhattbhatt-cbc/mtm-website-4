@@ -1,145 +1,145 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/products/juniors/ -->
 
-# MTM Junior
+# OTM Junior
 
-MTM Jr. is the first annual youth media survey in Canada. With a focus on media consumption of Canadians aged 2 to 17, it offers you a roadmap to todays young and emerging audiences.
+L’OTM Junior est le premier sondage annuel sur les jeunes et les médias au Canada. Axé sur la consommation des médias par les Canadiens de 2 à 17 ans, il vous permettra de mieux comprendre les auditoires jeunes et émergents.
 
-[Request a Demo](https://dev.mtm-otm.ca/fr/request-demo/)
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/)
 
-8 Years Of Data
+Huit ans de données accumulées
 
-MTM Jr. offers 8 years worth of exhaustive results readily available to clients.
+L’OTM Junior comprend huit années de données exhaustives auxquelles notre clientèle peut facilement accéder.
 
-A Large Sample You Can Rely On
+Un échantillon vaste et fiable
 
-We reach more than 3,000 Canadians aged 2-17 across more than 2,000 households every year.
+Chaque année, nous sondons plus de 3 000 Canadiens de 2 à 17 ans répartis dans plus de 2 000 ménages.
 
-Focused on Kids
+Pleins feux sur les jeunes
 
-Gain deep insights on children aged 2-6, 7-11, 12-17 and the households they reside in.
+Apprenez à connaître en détail les enfants de 2 à 6 ans, de 7 à 11 ans et les adolescents de 12 à 17 ans ainsi que les ménages dans lesquels ils vivent.
 
-A Fully Bilingual Product
+Un produit entièrement bilingue
 
-All content available through MTM Jr. and the rest of the MTM product suite is offered in English and French.
+Tout le contenu de l’OTM Junior et des autres produits de la suite OTM est offert en français et en anglais.
 
-Surveying Teens Directly
+Sondage direct auprès des adolescents
 
-MTM Jr. surveys Canadians 12-17 directly to gain the most accurate and detailed findings possible.
+L’OTM Junior sonde directement des Canadiens de 12 à 17 ans pour obtenir les résultats les plus précis et détaillés possibles.
 
-## Tools
+## Outils
 
-Get the full picture on kids media and technology habits with our easy-to-use web-based tools.
+Nos outils web conviviaux vous donnent une vue d’ensemble des habitudes des jeunes en matière de médias et de technologie.
 
-![Data analysis tool screenshot](https://dev.mtm-otm.ca/images/products/mtm-junior/data-analysis-tool.webp)
+![Data analysis tool screenshot](https://dev.mtm-otm.ca/images/products/mtm-junior/data-analysis-tool-fr.webp)
 
-### Data Analysis Tool
+### Outil d’analyse de données
 
-The Data Analysis Tool (DAT) makes playing with data fun, but yields real results. Dig into what kids are watching, listening to, playing and scrolling, create visuals your clients will love, all within minutes.
+Grâce à l’outil d’analyse de données (OAD), il n’aura jamais été aussi utile de s’amuser avec des données. Découvrez ce que les jeunes regardent, ce qu’ils écoutent, ce à quoi ils jouent et ce qu’ils font défiler et créez des images qui plairont à vos clients, le tout en quelques minutes.
 
-[Go to Data Analysis Tool](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
+[Accéder à l’outil d’analyse de données](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-How many kids are playing video games?
+Combien de jeunes jouent à des jeux vidéo?
 
-Find this and so much more on the DAT.
+Découvrez la réponse à cette question et à bien d’autres grâce à l’OAD.
 
-![Trending tool screenshot](https://dev.mtm-otm.ca/images/products/mtm-junior/trending-tool.webp)
+![Trending tool screenshot](https://dev.mtm-otm.ca/images/products/mtm-junior/trending-tool-fr.webp)
 
-### Trending Tool
+### Outil d’évaluation des tendances
 
-Kids change and so do their habits. With the Trending Tool, see how devices, services and platforms have changed over the last 8 years.
+Les jeunes changent et leurs habitudes aussi. L’outil d’évaluation des tendances vous permet de voir les changements propres aux appareils, aux services et aux plateformes au cours des huit dernières années.
 
-[Go to Trending Tool](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#trending-tool)
+[Accéder à l’outil d’évaluation des tendances](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#trending-tool)
 
-Are teens still on Facebook or have they left it behind for Instagram?
+Les adolescents sont-ils toujours sur Facebook ou l’ont-ils abandonné pour passer à Instagram?
 
-See where all key social media platforms stand with the Trending Tool.
+L’outil d’évaluation des tendances vous montrera où se situent les principales plateformes de médias sociaux.
 
 Chargement des rapports…
 
 Réessayer
 
-## Futures Report
+## Rapport sur la génération de demain
 
-Find actionable insights on the newest trends for Canadian kids with the Futures Report.
+Le rapport sur la génération de demain vous permet de trouver des renseignements utiles sur les dernières tendances concernant les jeunes canadiens.
 
-39%
+39 %
 
-The percentage of Canadians aged 2-17 that have watched a free ad-supported TV channel (FAST) in the past month.
+Pourcentage de Canadiens de 2 à 17 ans qui ont regardé une chaîne de télévision en continu gratuite avec publicité (FAST) au cours du mois précédent.
 
 43%
 
-The percentaged of anglophone children who are tuning in for FAST content.
+Pourcentage de jeunes anglophones qui visionnent du contenu de chaînes FAST.
 
-Explore our full library of reports or download a free sneak peek.
+Explorez toute notre bibliothèque de rapports ou téléchargez gratuitement un aperçu des grandes tendances.
 
-[GO TO INSIGHTS](https://dev.mtm-otm.ca/fr/insights/) [GET SAMPLE REPORT](https://dev.mtm-otm.ca/fr/insights/report-download/?from=%2Ffr%2Fproducts%2Fjuniors%2F%23reports)
+[ACCÉDER AUX OBSERVATIONS](https://dev.mtm-otm.ca/fr/insights/) [OBTENIR UN EXEMPLE DE RAPPORT](https://dev.mtm-otm.ca/fr/insights/report-download/?from=%2Ffr%2Fproducts%2Fjuniors%2F%23reports)
 
-## Research Methodology
+## Méthodologie de recherche
 
-MTM Jr. is based on a nationally representative online survey conducted across Canada. Relying on panel respondents, this online survey reaches Canadian households and children across all provinces and territories.
+L’OTM Junior est basé sur un sondage en ligne représentatif à l’échelle nationale et mené dans tout le Canada. Ce sondage en ligne, mené auprès des répondants d’un panel, s’adresse aux ménages et aux jeunes canadiens de toutes les provinces et de tous les territoires.
 
-Sample Coverage
+Taille de l’échantillon
 
-- 3,000+ Canadians (aged 2-17) surveyed annually.
+- Plus de 3 000 Canadiens (de 2 à 17 ans) sondés chaque année
 
-  A robust, nationally respresentative sample.
+  Un vaste échantillon représentatif à l’échelle nationale.
 
-- 2,000+ Canadian households surveyed annually
+- Plus de 2 000 ménages canadiens sondés chaque année
 
-  Reaching households from coast to coast to coast
+  Nous sondons des ménages de tout le pays.
 
-- 50/50 Anglophone respondents/Francophone respondents
+- Proportions égales de répondants francophones et anglophones
 
-  Large, viable samples for both anglophone and francophone children and households.
+  Vastes échantillons exploitables de jeunes et de ménages, tant anglophones que francophones.
 
-Survey Design
+Conception du sondage
 
-- 8+ Years of data collection
+- Plus de huit ans de données accumulées
 
-  Industry standard level tracking.
+  Suivi conforme aux normes de l’industrie.
 
-- Teens Surveyed directly
+- Adolescents sondés directement
 
-  Asking teens directly to allow for the most accurate and detailed insights.
+  Nous nous adressons directement aux adolescents pour obtenir les renseignements les plus précis et les plus détaillés possibles.
 
-- Two-Part Survey structure
+- Deux volets de sondage
 
-  Parents complete complete a survey about their household and their children aged 2-11 while teens (aged 12-17) respond directly to a survey of their own.
+  Les parents remplissent un sondage sur leur ménage et leurs enfants de 2 à 11 ans, tandis que les adolescents (de 12 à 17 ans) répondent eux-mêmes directement à un sondage.
 
-Research Provider
+Fournisseur
 
-- ![Ad Hoc Research](https://dev.mtm-otm.ca/images/products/mtm-junior/adhoc_research_logo.png)
+- ![Ad hoc recherche](https://dev.mtm-otm.ca/images/products/mtm-junior/adhoc_research_logo.png)
 
-  The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. Ad Hoc Research conducts all of the French and English research for the MTM Jr. MTM Jr. research was conducted in February 2026. Founded in 1984 in Montreal, Canada, Ad Hoc Research is a full-service marketing, communications and social research firm, with a multidisciplinary team of more than 100 employees and a constantly growing network of national and international clients. Leaders in the Canadian market, Ad Hoc Research builds lasting relationships with their clients, guiding them every step of the way with a creative and passionate approach.
+  L’OTM et tous ses sondages sont des produits du service Recherche et Analyse de CBC/Radio-Canada. La société Ad hoc recherche effectue toutes les recherches en français et en anglais pour l’OTM Junior. Le sondage de l’OTM Junior a été mené en février 2026. Fondée en 1984 à Montréal (Canada), Ad hoc recherche offre des services complets de recherche marketing, communicationnelle et sociale grâce à une équipe multidisciplinaire comptant plus de 100 employés et à un réseau sans cesse croissant de clients nationaux et internationaux. Leader sur le marché canadien, Ad hoc recherche établit des relations durables avec ses clients en les guidant, à toutes les étapes des projets, par son approche à la fois créative et passionnée.
 
-## Explore More Data Products
+## Découvrir d’autres produits de données
 
-[![MTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[![OTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[MTM 18+](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[OTM 18+](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[Media and technology data for Canadians aged 18 and older.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[Données sur la consommation des médias et des technologies chez les Canadiens de 18 ans et plus.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[![MTM Newcomers](https://dev.mtm-otm.ca/_astro/fg-product-nc-center.Bw5JQzqe_1zUusT.webp)](https://dev.mtm-otm.ca/fr/products/newcomers/)
+[![OTM Nouveaux arrivants](https://dev.mtm-otm.ca/_astro/fg-product-nc-center.Bw5JQzqe_1zUusT.webp)](https://dev.mtm-otm.ca/fr/products/newcomers/)
 
-[MTM Newcomers](https://dev.mtm-otm.ca/fr/products/newcomers/)
+[OTM Nouveaux arrivants](https://dev.mtm-otm.ca/fr/products/newcomers/)
 
-[Media and technology behaviour insights for newcomers who have arrived to Canada in the past 5 years.](https://dev.mtm-otm.ca/fr/products/newcomers/)
+[Données sur les comportements de consommation des médias et des technologies des personnes arrivées au Canada au cours des cinq dernières années.](https://dev.mtm-otm.ca/fr/products/newcomers/)
 
-[![MTM Census Tool](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[![Outil de recensement de l’OTM](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-[MTM Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Outil de recensement de l’OTM](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-[Detailed demographic data for sharper targeting and planning.](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Données démographiques détaillées pour permettre une planification et un ciblage plus précis.](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-[![MTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[![OTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[MTM 18+ Media and technology data for Canadians aged 18 and older.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[OTM 18+ Données sur la consommation des médias et des technologies chez les Canadiens de 18 ans et plus.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[![MTM Newcomers](https://dev.mtm-otm.ca/_astro/fg-product-nc-center.Bw5JQzqe_1zUusT.webp)](https://dev.mtm-otm.ca/fr/products/newcomers/)
+[![OTM Nouveaux arrivants](https://dev.mtm-otm.ca/_astro/fg-product-nc-center.Bw5JQzqe_1zUusT.webp)](https://dev.mtm-otm.ca/fr/products/newcomers/)
 
-[MTM Newcomers Media and technology behaviour insights for newcomers who have arrived to Canada in the past 5 years.](https://dev.mtm-otm.ca/fr/products/newcomers/)
+[OTM Nouveaux arrivants Données sur les comportements de consommation des médias et des technologies des personnes arrivées au Canada au cours des cinq dernières années.](https://dev.mtm-otm.ca/fr/products/newcomers/)
 
-[![MTM Census Tool](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[![Outil de recensement de l’OTM](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-[MTM Census Tool Detailed demographic data for sharper targeting and planning.](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Outil de recensement de l’OTM Données démographiques détaillées pour permettre une planification et un ciblage plus précis.](https://dev.mtm-otm.ca/fr/tools/census-tool/)

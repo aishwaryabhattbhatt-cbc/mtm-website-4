@@ -1,14 +1,14 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/solutions/industry/ -->
 
-Industry
+Industrie
 
-# The benchmark for Canadian media intelligence.
+# La référence en matière de renseignements sur les médias canadiens
 
-Instill confidence in regulators, funders and peers with the Media Technology Monitor (MTM). Twenty years of continuous, nationally representative, bilingual data. Built for the industry that shapes Canadian media policy.
+L’Observateur des technologies médias (OTM) vous permettra de gagner la confiance des organismes de réglementation, des bailleurs de fonds et de vos pairs. Il comprend 20 ans de données bilingues représentatives à l’échelle nationale, et il est conçu pour l’industrie qui façonne les politiques médiatiques canadiennes.
 
-[Request a Demo](https://dev.mtm-otm.ca/fr/request-demo/)
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/)
 
-Trusted by
+Clientèle
 
 ![European Broadcasting Union](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/EBU-European_Broadcasting_Union.svg)
 
@@ -16,82 +16,82 @@ Trusted by
 
 ![Numeris (BBM Canada)](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
-## Research Methodology
+## Méthodologie de recherche
 
-Get data that holds up when it matters most. MTM is designed with detail in mind. Every number comes from a methodology built for citation, replication, and regulatory use.
+Obtenez des données sur lesquelles vous pourrez compter au moment crucial. L’OTM est élaboré avec un grand souci du détail. Chaque chiffre repose sur une méthodologie conçue pour la fiabilité, la répétition et l’utilisation dans un contexte réglementaire.
 
-01 Survey Design
+01 Conception des sondages
 
-How questions are built and kept consistent
+Établissement et maintien de questions cohérentes
 
-MTM surveys are designed for longitudinal tracking — worded consistently year over year so you can measure real change with confidence. We examine devices, platforms, behaviours and much more across all major media categories.
+Les sondages de l’OTM, conçus pour assurer un suivi longitudinal, sont formulés de façon uniforme d’une année à l’autre pour vous permettre de mesurer de véritables changements en toute confiance. Nous examinons, entre autres, les appareils, les plateformes et les comportements dans toutes les principales catégories de médias.
 
-Landline + Cellphone + Online 5,000+ Variables covered
+Lignes terrestres + cellulaires + en ligne Plus de 5 000 variables prises en compte
 
-02 Field Collection
+02 Collecte sur le terrain
 
-How respondents are reached and surveyed
+Communications avec les répondants
 
-MTM reaches Canadians through a dual-frame sampling approach combining landline, cellphone, and online panels. This ensures coverage across age groups, regions, and both official language communities — including populations that single-mode surveys routinely miss or underreport.
+L’OTM joint les Canadiens en utilisant une approche d’échantillonnage à deux volets qui combine les lignes terrestres, les téléphones cellulaires et des panels en ligne. Cela assure que les données représentent tous les groupes d’âge, toutes les régions et les deux langues officielles, ainsi que des groupes que les sondages à un seul volet omettent ou sous-évaluent souvent.
 
-19,000 respondents each year Across 18+, JR. and Newcomers
+19 000 répondants chaque année Pour l’OTM 18+, l’OTM Junior et l’OTM Nouveaux arrivants
 
-03 Data Processing
+03 Traitement des données
 
-How the data is weighted and benchmarked
+Pondération et étalonnage des données
 
-All responses are weighted to match the Canadian population using Statistics Canada census data. Weighting accounts for region, age, gender, and language — ensuring the final dataset is representative and consistent with national benchmarks.
+Toutes les réponses sont pondérées à l’aide des données du recensement de Statistique Canada pour veiller à ce qu’elles correspondent à la population canadienne. Cette pondération tient compte de la région, de l’âge, du genre et de la langue pour assurer que l’ensemble de données final soit représentatif et conforme aux références nationales.
 
-Statistics Canada Benchmarked Consistent weighting
+Étalonnage fondé sur Statistique Canada Pondération constante
 
-04 Credibility
+04 Crédibilité
 
-How the data is made citable and defensible
+Données fiables et défendables
 
-MTM reports include full methodological documentation — sample sizes, confidence intervals, weighting procedures, and question wording — so you can cite the data in regulatory filings, funding applications, and peer-reviewed research with confidence.
+Les rapports de l’OTM comprennent une documentation complète sur la méthodologie adoptée qui décrit la taille des échantillons, les intervalles de confiance, le processus de pondération et la formulation des questions, afin que vous puissiez vous fier aux données lorsque vous les présentez aux instances de réglementation ou les utilisez dans le cadre de demandes de financement ou de recherches évaluées par les pairs.
 
-Citable by name Full methodology available
+Source fiable Méthodologie complète disponible
 
-Reports Library
+Bibliothèque de rapports
 
-## Research Across Every Corner of Canadian Media Behaviour
+## Des recherches sur tous les aspects du comportement de consommation des médias au Canada
 
-From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.
+Diffusion en continu, plateformes de médias sociaux, consommation de nouvelles, jeux vidéo, IA, appareils connectés : les rapports de l’OTM révèlent comment les Canadiens de toutes les générations et de tous les groupes démographiques interagissent avec les médias et les technologies.
 
-All  MTM 18+  MTM Junior  MTM Newcomers
+Tous  OTM 18+  OTM Junior  OTM Nouveaux arrivants
 
 Chargement des rapports…
 
 Réessayer
 
-## MTM in Action for Industry Teams
+## L’OTM en action pour les équipes de l’industrie
 
-Learn how your organization can use the MTM to better understand audiences and users of all sizes.
+Découvrez comment votre organisation peut utiliser l’OTM pour approfondir sa connaissance des catégories d’auditoires et d’utilisateurs de toutes tailles.
 
-Use Case
+Cas d’utilisation
 
-A department is looking for detailed information on the news consumption habits of women under 50.
+Une équipe cherche des renseignements détaillés sur les habitudes de consommation de nouvelles des femmes de moins de 50 ans.
 
-Watch news clipsRead news onlineDevices usedAccess news via...
+Visionnement d’extraits de nouvellesLecture de nouvelles en ligneAppareils utilisésAccès aux nouvelles par l’intermédiaire de…
 
-How to leverage this
+Comment en tirer parti
 
-Read our MTM 18+ news report for broad overview then examine key variables via the data analysis tool to enhance your understanding.
+Lisez le rapport sur les nouvelles de l’OTM 18+ pour obtenir un aperçu général, puis examinez les principales variables avec l’outil d’analyse de données pour approfondir vos connaissances.
 
-Use Case
+Cas d’utilisation
 
-A team needs to understand if AI adoption is living up to the hype and how its influencing consumption of media.
+Une équipe doit comprendre si l’adoption de l’IA est aussi importante qu’on le dit et quelle est son influence sur la consommation de médias.
 
-A.I. UsageChatGPTInternet hoursVideo hours
+Utilisation de l’IAChatGPTHeures passées sur InternetHeures d’écoute de vidéos
 
-How to leverage this
+Comment en tirer parti
 
-Find the latest on A.I. tool usage via our A.I. report, then leverage the Forecasting tool to see where things are heading.
+Trouvez les derniers renseignements sur l’utilisation des outils d’intelligence artificielle dans notre rapport sur l’intelligence artificielle, puis utilisez l’outil de prévisions pour voir comment l’évolution se profile.
 
-## What the industry is saying about us
+## Ce que l’industrie dit de nous
 
 ![Numeris (BBM Canada)](https://dev.mtm-otm.ca/images/home/solutions/logos/industry/numeris.png)
 
 Our decisions have to stand up to scrutiny — from where funding goes to how impact is measured. MTM's data gives us that credibility. It connects audience behaviour to real outcomes, helping us plan investments and policies that actually reflect how Canadians consume media today.
 
-Director of Audience Strategy
+— Director of Audience Strategy

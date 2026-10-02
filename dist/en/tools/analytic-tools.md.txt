@@ -54,7 +54,7 @@ OUTPUT FORMATS
 
 Results in multiple formats
 
-Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required. Use the YourData features (hyperlink to bottom of page) for even more display options.
+Choose your chart type: bar, pie, line; then export to Excel, PDF, Word, or image. No reformatting required. Use the YourData features for even more display options.
 
 ## Trending Tool
 

@@ -48,52 +48,6 @@ What You Get
 
   Easily export data tables for quick analysis and sharing.
 
-![Drilldown tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Drilldown-Tool.webp)
-
-### Drilldown
-
-Multi-dimensional targeting
-
-Find exactly who you are looking for by combining up to three distinct characteristics simultaneously. Layer specific demographic filters to surface the precise communities your work is about and visualize their distribution across the map
-
-What You Get
-
-- Target Markets
-
-  Find populations with the exact combination of characteristics you require.
-
-- Visual Mapping
-
-  Use interactive maps to visualize exactly where your target population lives
-
-- Ranked Data
-
-  Access characteristic distributions and ranked geographies for your selected segments.
-
-63% 63% In Toronto, 63% of women aged 18-34 make less than $40,000/year
-
-![Ranker tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Ranker-Tool.webp)
-
-### Ranker
-
-Identify target geographies in seconds
-
-Eliminate the guesswork by ranking every geography in Canada against your specific business KPIs. Instantly identify geographies of interest.
-
-What You Get
-
-- Market Rankings
-
-  Rank geographies based on any specific Census characteristic.
-
-- Custom Criteria
-
-  Rank markets by counts, percentages, medians, or averages.
-
-- Filtered Selection
-
-  Precision-target regions by filtering out irrelevant population sizes.
-
 ![Demographic Explorer tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Demo-Explorer-Tool.webp)
 
 ### Demographic Explorer
@@ -116,7 +70,29 @@ What You Get
 
   Explore averages and medians alongside distributions for thorough location understanding.
 
-11% 11% of the labour force in Saskatchewan work in the primary sector (Sector 11: Agriculture, Forestry, Fishing and Hunting, and Sector 21: Mining, Quarrying, and Oil and Gas Extraction), more than any other province
+63% 63% In Toronto, 63% of women aged 18-34 make less than $40,000/year
+
+![Drilldown tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Drilldown-Tool.webp)
+
+### Drilldown
+
+Multi-dimensional targeting
+
+Find exactly who you are looking for by combining up to three distinct characteristics simultaneously. Layer specific demographic filters to surface the precise communities your work is about and visualize their distribution across the map
+
+What You Get
+
+- Target Markets
+
+  Find populations with the exact combination of characteristics you require.
+
+- Visual Mapping
+
+  Use interactive maps to visualize exactly where your target population lives
+
+- Ranked Data
+
+  Access characteristic distributions and ranked geographies for your selected segments.
 
 ![Compare tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Compare-Tool.webp)
 
@@ -140,9 +116,33 @@ What You Get
 
   Identify and understand demographic differences between specific territories.
 
+11% 11% of the labour force in Saskatchewan work in the primary sector (Sector 11: Agriculture, Forestry, Fishing and Hunting, and Sector 21: Mining, Quarrying, and Oil and Gas Extraction), more than any other province
+
+![Ranker tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Ranker-Tool.webp)
+
+### Ranker
+
+Identify target geographies in seconds
+
+Eliminate the guesswork by ranking every geography in Canada against your specific business KPIs. Instantly identify geographies of interest.
+
+What You Get
+
+- Market Rankings
+
+  Rank geographies based on any specific Census characteristic.
+
+- Custom Criteria
+
+  Rank markets by counts, percentages, medians, or averages.
+
+- Filtered Selection
+
+  Precision-target regions by filtering out irrelevant population sizes.
+
 ![Canada Score tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Canada-Score-Tool.webp)
 
-### Canada Score
+### CanadaScore
 
 Data-driven scoring tailored to your strategy
 

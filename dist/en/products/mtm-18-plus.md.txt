@@ -38,7 +38,7 @@ The Data Analysis Tool (DAT) offers clients full access to our robust data set o
 
 [Go to Data Analysis Tool](https://dev.mtm-otm.ca/en/tools/analytic-tools/)
 
-Want to know Canadians are using connected TV sets?
+Want to know how many Canadians are using connected TV sets?
 
 All you need to know is a few clicks away with the DAT.
 
@@ -88,7 +88,7 @@ Explore our full library of reports or download a free sneak peek.
 
 ## Research Methodology
 
-MTM 18+ is based on a nationally representative telephone survey with a follow up online compontent, reaching Canadian adults across all provinces and territories.
+MTM 18+ is based on a nationally representative telephone survey with a follow up online component, reaching Canadian adults across all provinces and territories.
 
 Sample Coverage
 

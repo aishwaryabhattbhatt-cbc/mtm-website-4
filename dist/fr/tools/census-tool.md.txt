@@ -1,163 +1,163 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/tools/census-tool/ -->
 
-# Ultra Localized Demographic Data
+# Des données démographiques ultras localisées
 
-Canadian census data offers precise insights for business decisions, but its complexity can be a hurdle. The MTM Census Tool is a user-friendly interactive dashboard that simplifies census data analysis, providing geography-based demographic information sourced directly from Statistics Canada.
+Les données du recensement canadien fournissent des renseignements précis pour les décisions d’affaires, mais leur complexité peut constituer un obstacle. L’outil de recensement de l’OTM est un tableau de bord interactif et convivial qui simplifie l’analyse des données du recensement et fournit des données démographiques fondées sur l’emplacement géographique, provenant directement de Statistique Canada.
 
-[Request a Demo](https://dev.mtm-otm.ca/fr/request-demo/)
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/)
 
-![MTM analytic tool dashboard](https://dev.mtm-otm.ca/images/tools/census-tool/Census-tool.webp)
+![MTM analytic tool dashboard](https://dev.mtm-otm.ca/images/tools/census-tool/Census-tool-fr.webp)
 
 [Watch Video](https://dev.mtm-otm.ca/fr/census-tool/demo/)
 
-## Highlights
+## Faits saillants
 
-70,000+ Geographic Areas
+Plus de 70 000 zones géographiques
 
-Analyze audiences across 70,000+ Geographic Areas, by region, city, or postal area to pinpoint where media and tech trends emerge.
+Analysez les auditoires de plus de 70 000 zones géographiques par région, par ville ou par région postale pour cerner les tendances liées aux médias et aux technologies.
 
-2,000+ Demographic Variables
+Plus de 2 000 variables démographiques
 
-Segment by 2,000+ Demographic Variables like age, gender, income, or language to reveal who’s driving adoption and change.
+Segmentez vos résultats en utilisant plus de 2 000 variables démographiques, comme l’âge, le genre, le revenu ou la langue pour révéler les moteurs d’adoption et de changement.
 
-![Aperçu des filtres géographiques](https://dev.mtm-otm.ca/images/tools/census-tool/census-geo-filters.webp)
+![Aperçu des filtres géographiques](https://dev.mtm-otm.ca/images/tools/census-tool/census-geo-filters-fr.webp)
 
-![Aperçu des filtres démographiques](https://dev.mtm-otm.ca/images/tools/census-tool/census-demo-filters.webp)
+![Aperçu des filtres démographiques](https://dev.mtm-otm.ca/images/tools/census-tool/census-demo-filters-fr.webp)
 
-## Explore Census Tool Features
+## Découvrez les fonctionnalités de l’outil de recensement
 
-![Snapshot tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Snapshot-Tool.webp)
+![Snapshot tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Snapshot-Tool-fr.webp)
 
-### Snapshot
+### Aperçu
 
-Understand any region at a glance
+Cernez n’importe quelle région en un coup d’œil
 
-Population, age, income, language, immigration, indigenous identity: Any Canadian geography in seconds.
+Population, âge, revenu, langue, immigration, identité autochtone : définissez le profil d’une zone géographique canadienne en quelques secondes.
 
-What You Get
+Ce que vous obtenez
 
-- Quick Insights
+- Information rapide
 
-  Generate instant "Community Portraits" for any Canadian geography.
+  Générez instantanément des « portraits de communauté » de n’importe quelle zone géographique du Canada.
 
-- Key Metrics
+- Mesures clés
 
-  Analyze population, age, income, and language in seconds.
+  Analysez la population, l’âge, le revenu et les langues en quelques secondes.
 
-- Data Exports
+- Exportations de données
 
-  Easily export data tables for quick analysis and sharing.
+  Exportez facilement des tableaux de données pour pouvoir les analyser et les transmettre rapidement.
 
-![Drilldown tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Drilldown-Tool.webp)
+![Demographic Explorer tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Demo-Explorer-Tool-fr.webp)
 
-### Drilldown
+### Explorateur démographique
 
-Multi-dimensional targeting
+Explorez en détail n’importe quelle zone géographique
 
-Find exactly who you are looking for by combining up to three distinct characteristics simultaneously. Layer specific demographic filters to surface the precise communities your work is about and visualize their distribution across the map
+Analysez toutes les régions en fonction de la répartition granulaire de caractéristiques précises. Allez au-delà des statistiques superficielles pour évaluer les profils uniques des personnes, des familles et des ménages.
 
-What You Get
+Ce que vous obtenez
 
-- Target Markets
+- Répartition de caractéristiques précises
 
-  Find populations with the exact combination of characteristics you require.
+  Affichez la répartition de n’importe quelle caractéristique dans toutes les zones géographiques du Canada.
 
-- Visual Mapping
+- Données multidimensionnelles
 
-  Use interactive maps to visualize exactly where your target population lives
+  Obtenez des données sur les personnes, les familles, les logements et les types de ménages.
 
-- Ranked Data
+- Regroupement de statistiques
 
-  Access characteristic distributions and ranked geographies for your selected segments.
+  Examinez les moyennes, les médianes et la répartition de caractéristiques précises pour bien connaître une région.
 
-63% 63% In Toronto, 63% of women aged 18-34 make less than $40,000/year
+63 % 63 % À Toronto, 63 % des femmes de 18 à 34 ans gagnent moins de 40 000 $ par année.
 
-![Ranker tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Ranker-Tool.webp)
+![Drilldown tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Drilldown-Tool-fr.webp)
 
-### Ranker
+### Analyse
 
-Identify target geographies in seconds
+Ciblage multidimensionnel
 
-Eliminate the guesswork by ranking every geography in Canada against your specific business KPIs. Instantly identify geographies of interest.
+Trouvez exactement les gens que vous cherchez en combinant simultanément jusqu’à trois caractéristiques distinctes. Superposez des filtres démographiques pour mettre en évidence les communautés précises sur lesquelles porte votre travail et visualiser leur répartition sur la carte.
 
-What You Get
+Ce que vous obtenez
 
-- Market Rankings
+- Marchés cibles
 
-  Rank geographies based on any specific Census characteristic.
+  Trouvez des populations présentant la combinaison exacte de caractéristiques que vous recherchez.
 
-- Custom Criteria
+- Cartographie visuelle
 
-  Rank markets by counts, percentages, medians, or averages.
+  Utilisez des cartes interactives pour visualiser exactement le lieu où habite votre population cible.
 
-- Filtered Selection
+- Données classées
 
-  Precision-target regions by filtering out irrelevant population sizes.
+  Obtenez une répartition selon des caractéristiques précises et un classement des zones géographiques pour les segments que vous avez sélectionnés.
 
-![Demographic Explorer tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Demo-Explorer-Tool.webp)
+![Compare tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Compare-Tool-fr.webp)
 
-### Demographic Explorer
+### Comparaison
 
-Deep-dive into any geography
+Faites une analyse comparative de votre zone géographique cible
 
-Analyze any region through granular characteristic distributions. Move beyond surface-level statistics to evaluate the unique profiles of individuals, families, and households.
+Mettez vos données régionales en contexte en comparant les marchés locaux aux moyennes provinciales ou nationales. Identifiez les écarts démographiques et les données marginales pour mieux comprendre votre marché cible.
 
-What You Get
+Ce que vous obtenez
 
-- Characteristic Distributions
+- Analyse comparative du marché
 
-  View distributions of any characteristic in any Canadian geography.
+  Comparez un marché à des régions similaires ou à des références nationales.
 
-- Multidimensional Data
+- Analyse visuelle
 
-  Access data on individuals, families, dwellings, and household types.
+  Comparez la répartition de caractéristiques précises dans différentes zones géographiques à l’aide de graphiques intuitifs.
 
-- Aggregate Statistics
+- Repérage des écarts
 
-  Explore averages and medians alongside distributions for thorough location understanding.
+  Repérez les différences démographiques entre des territoires précis en comprenez-en la cause.
 
-11% 11% of the labour force in Saskatchewan work in the primary sector (Sector 11: Agriculture, Forestry, Fishing and Hunting, and Sector 21: Mining, Quarrying, and Oil and Gas Extraction), more than any other province
+11 % 11 % de la main-d’œuvre de la Saskatchewan travaille dans le secteur primaire (secteur 11 : Agriculture, foresterie, pêche et chasse, et secteur 21 : Extraction minière, exploitation en carrière, et extraction de pétrole et de gaz), ce qui est un taux supérieur à ceux de toutes les autres provinces.
 
-![Compare tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Compare-Tool.webp)
+![Ranker tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Ranker-Tool-fr.webp)
 
-### Compare
+### Classement
 
-Benchmark your target geography
+Repérez des zones géographiques cibles en quelques secondes
 
-Contextualize your regional data by contrasting local markets against provincial or national standards. Identify demographic gaps and outliers to to better understand you target market.
+Éliminez les hypothèses en classant chaque zone géographique du Canada en fonction des IRC relatifs à vos activités. Trouvez instantanément les zones géographiques qui vous intéressent.
 
-What You Get
+Ce que vous obtenez
 
-- Market Benchmarking
+- Classement du marché
 
-  Compare a market against similar regions or national benchmarks.
+  Classez les zones géographiques en fonction de n’importe quelle caractéristique précise du recensement.
 
-- Visual Analysis
+- Critères personnalisés
 
-  Contrast characteristic distributions across different geographies using intuitive charts.
+  Classez les marchés en fonction de chiffres, de pourcentages, de médianes ou de moyennes.
 
-- Gap Identification
+- Sélection par filtres
 
-  Identify and understand demographic differences between specific territories.
+  Ciblez des régions avec précision en éliminant les populations de tailles non pertinentes.
 
-![Canada Score tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Canada-Score-Tool.webp)
+![Canada Score tool preview](https://dev.mtm-otm.ca/images/tools/census-tool/Canada-Score-Tool-fr.webp)
 
-### Canada Score
+### CanadaScore
 
-Data-driven scoring tailored to your strategy
+Une notation fondée sur des données et adaptée à votre stratégie
 
-Take control of your market analysis with advanced, multi-factor weighted modeling. Score and rank potential locations based on your custom persona clusters to find the best opportunities for your brand.
+Prenez le contrôle de votre analyse de marché grâce à une modélisation pondérée avancée à plusieurs facteurs. Notez et classez des emplacements potentiels en fonction de vos groupes de personas pour trouver les meilleures occasions pour votre marque.
 
-What You Get
+Ce que vous obtenez
 
-- Strategic Alignment
+- Concordance stratégique
 
-  Align rankings to your strategy using weighted modeling and custom personas.
+  Faites concorder votre stratégie avec les classements à l’aide de modèles pondérés et de personas personnalisés.
 
-- Threshold Filtering
+- Filtrage en fonction de seuils
 
-  Ensure only geographies meeting your specific business thresholds are considered.
+  Veillez à ce que seules les zones géographiques qui respectent les seuils propres à vos activités soient prises en compte.
 
-- Infinite Combinations
+- Combinaisons infinies
 
-  Access millions of characteristic combinations possible across four distinct dimensions.
+  Accédez à des millions de combinaisons possibles de caractéristiques dans quatre dimensions distinctes.

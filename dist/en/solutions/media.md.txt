@@ -76,7 +76,7 @@ Forecasting
 
 [Go to Analytic Tools](https://dev.mtm-otm.ca/en/tools/analytic-tools/)
 
-### Census Tools
+### Census Tool
 
 Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.
 

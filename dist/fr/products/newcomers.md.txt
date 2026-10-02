@@ -1,133 +1,133 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/products/newcomers/ -->
 
-# MTM Newcomers
+# OTM Nouveaux arrivants
 
-Our newest Analytic product, MTM Newcomers focuses on those who have come to Canada within the last 5 years. Get all you need to understand the media and tech habits of this growing demographic.
+L’OTM Nouveaux arrivants, notre tout dernier produit d’analyse, est axé sur les gens qui sont arrivés au Canada au cours des cinq dernières années. Obtenez tous les renseignements nécessaires pour comprendre les habitudes médiatiques et technologiques de cette population croissante.
 
-[Request a Demo](https://dev.mtm-otm.ca/fr/request-demo/)
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/)
 
-5+ Years Of Data
+Plus de cinq ans de données accumulées
 
-Our full data set, readily available for clients to explore and learn about this segment.
+Notre clientèle peut facilement accéder à notre ensemble complet de données pour examiner ce segment et en apprendre plus à son sujet.
 
-New Audiences
+De nouveaux auditoires
 
-Newcomers represent one of the fastest growing segments of the Canadian population, and MTM Newcomers is your ticket to reaching them.
+Les nouveaux arrivants constituent l’un des segments de la population canadienne dont la croissance est la plus rapide, et l’OTM Nouveaux arrivants vous y donne accès.
 
-A Large, Diverse Sample
+Un échantillon vaste et varié
 
-We survey more than 4,000 newcomers annually and an additional 1,000 Canadian-born respondents as a control sample.
+Nous sondons chaque année plus de 4 000 nouveaux arrivants, auxquels nous ajoutons 1 000 autres répondants nés au Canada à titre d’échantillon témoin.
 
-Surveys In 12 Languages
+Des sondages en 12 langues
 
-Tagalog, Cantonese, Mandarin, French and English and more, ensuring all newcomers can participate.
+Pour permettre à tous les nouveaux arrivants d’y participer, le sondage est effectué en tagalog, en cantonais, en mandarin, en français, en anglais et en d’autres langues.
 
-Online And In-Person Interview
+Des entrevues en ligne et en personne
 
-A national online study paired with in-person interviews across 6 major Canadian cities.
+Une étude nationale en ligne est combinée à des entrevues en personne dans six grandes villes canadiennes.
 
-## Tools
+## Outils
 
-Dive deep into MTM Newcomers data with our easy-to-use web-based tools.
+Plongez au cœur des données de l’OTM Nouveaux arrivants grâce à nos outils web faciles à utiliser.
 
-![Data analysis tool screenshot](https://dev.mtm-otm.ca/images/products/mtm-newcomers/data-analysis-tool.webp)
+![Data analysis tool screenshot](https://dev.mtm-otm.ca/images/products/mtm-newcomers/data-analysis-tool-fr.webp)
 
-### Data Analysis Tool
+### Outil d’analyse de données
 
-The Data Analysis Tool (DAT) allows clients to examine both newcomer and Canadian-born respondents, and drill down to the groups that matter to them the most.
+L’outil d’analyse de données (OAD) permet aux membres de notre clientèle d’examiner tous les répondants, les nouveaux arrivants comme les personnes nées au Canada, et de se pencher plus en détail sur les groupes les plus importants pour eux.
 
-[Learn More](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
+[En savoir plus](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-Are newcomers spending more time than Canadian-born individuals on social media?
+Les nouveaux arrivants passent-ils plus de temps sur les médias sociaux que les personnes nées au Canada?
 
-See the whole social media landscape with the DAT.
+L’OAD vous permet d’examiner l’ensemble des médias sociaux.
 
 Chargement des rapports…
 
 Réessayer
 
-## Top Trends Report
+## Rapport sur les principales tendances
 
-Your guide to newcomers starts here, with the latest data you need to know.
+Voici votre guide sur les nouveaux arrivants, avec les dernières données qu’il vous faut.
 
-48%
+48 %
 
-Almost half of newcomers watch TV or video content in a language other than English or French.
+Près de la moitié des nouveaux arrivants regardent du contenu télévisé ou vidéo dans une langue autre que l’anglais ou le français.
 
-33%
+33 %
 
-One-third access news content in a language other than English or French.
+Un tiers d’entre eux visionne du contenu d’information dans une langue autre que l’anglais ou le français.
 
-Explore our full library of reports or download a free sneak peek.
+Explorez toute notre bibliothèque de rapports ou téléchargez gratuitement un aperçu des grandes tendances.
 
-[GO TO INSIGHTS](https://dev.mtm-otm.ca/fr/insights/) [SAMPLE REPORT](https://dev.mtm-otm.ca/fr/insights/report-download/?from=%2Ffr%2Fproducts%2Fnewcomers%2F%23reports)
+[ACCÉDER AUX OBSERVATIONS](https://dev.mtm-otm.ca/fr/insights/) [OBTENIR UN EXEMPLE DE RAPPORT](https://dev.mtm-otm.ca/fr/insights/report-download/?from=%2Ffr%2Fproducts%2Fnewcomers%2F%23reports)
 
-## Research Methodology
+## Méthodologie de recherche
 
-MTM Newcomers surveys those who have come to Canada within the past 5 years.
+L’OTM Nouveaux arrivants sonde les personnes arrivées au Canada au cours des cinq dernières années.
 
-Sample Coverage
+Taille de l’échantillon
 
-- 4,000+ Newcomers surveyed
+- Plus de 4 000 nouveaux arrivants sondés
 
-  A large, wide ranging sample.
+  Un échantillon vaste et varié.
 
-- 1,000+ Canadian-born individuals surveyed
+- Plus de 1 000 personnes nées au Canada sondées
 
-  A control sample to understand how newcomers differ.
+  Un échantillon témoin pour comprendre les différences propres aux nouveaux arrivants.
 
-- 18 Sub-Regions Of Origin
+- 18 sous-régions d’origine
 
-  Viable newcomer samples from Eastern Asia, Southeast Asia, Southern Asia, West Central Asia and East Middle East, Eastern Africa, Western Africa, Northern Africa, Central Africa, Southern Africa, Eastern Europe, Western Europe, Northern Europe, Southern Europe, United States, Central America, Caribbean and Bermuda, South America, Oceania
+  Échantillons exploitables de nouveaux arrivants provenant de diverses régions : Asie de l’Est, Asie du Sud-Est, Asie du Sud, Asie occidentale centrale et est du Moyen-Orient, Afrique orientale, Afrique occidentale, Afrique du Nord, Afrique centrale, Afrique australe, Europe de l’Est, Europe de l’Ouest, Europe du Nord, Europe du Sud, États-Unis, Amérique centrale, Caraïbes et Bermudes, Amérique du Sud et Océanie.
 
-Survey Design
+Conception du sondage
 
-- 5+ Years of data collection
+- Plus de cinq ans de données accumulées
 
-  Industry standard level tracking
+  Suivi conforme aux normes de l’industrie.
 
-- Online + In-Person Interviews Conducted across 6 major cities
+- Entrevues en ligne et en personne effectuées dans six grandes villes
 
-  Surveying newcomers in-person in Toronto, Montreal, Calgary, Halifax, Vancouver and Winnipeg paired with a national online study
+  Entrevues en personne avec de nouveaux arrivants à Toronto, Montréal, Calgary, Halifax, Vancouver et Winnipeg, combinées à une étude nationale en ligne.
 
-- 12 Languages
+- 12 langues
 
-  The survey is conducted in English, French, Tagalog, Cantonese, Mandarin, Punjabi, Arabic, Spanish, Amharic, Hindi, Ukrainian, and Swahili to ensure that the majority of the newcomer population can participate.
+  Pour permettre à la plupart des nouveaux arrivants d’y participer, le sondage est effectué en anglais, en français, en tagalog, en cantonais, en mandarin, en pendjabi, en arabe, en espagnol, en amharique, en hindi, en ukrainien et en swahili.
 
-Research Provider
+Fournisseur
 
-- ![Leger Research](https://dev.mtm-otm.ca/images/products/mtm-newcomers/leger_logo.png)
+- ![Léger](https://dev.mtm-otm.ca/images/products/mtm-newcomers/leger_logo.png)
 
-  The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. The research was conducted by Léger during the Summer of 2025. Léger is the largest Canadian-owned market research and analytics company, with more than 600 employees in Canada and the United States.
+  L’OTM et tous ses sondages sont des produits du service Recherche et Analyse de CBC/Radio-Canada. Le sondage a été réalisé par Léger au cours de l’été 2025. Léger, qui compte plus de 600 employés au Canada et aux États-Unis, est la plus grande société canadienne d’études et d’analyses de marché.
 
-## Explore More Data
+## Découvrir d’autres produits de données
 
-[![MTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[![OTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[MTM 18+](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[OTM 18+](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[Media and technology data for Canadians aged 18 and older.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[Données sur la consommation des médias et des technologies chez les Canadiens de 18 ans et plus.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[![MTM Junior](https://dev.mtm-otm.ca/_astro/fg-product-jr-center.DhG_lzJT_ZL4LYN.webp)](https://dev.mtm-otm.ca/fr/products/juniors/)
+[![OTM Junior](https://dev.mtm-otm.ca/_astro/fg-product-jr-center.DhG_lzJT_ZL4LYN.webp)](https://dev.mtm-otm.ca/fr/products/juniors/)
 
-[MTM Junior](https://dev.mtm-otm.ca/fr/products/juniors/)
+[OTM Junior](https://dev.mtm-otm.ca/fr/products/juniors/)
 
-[Media and technology behaviour insights for Canadians aged 2–17.](https://dev.mtm-otm.ca/fr/products/juniors/)
+[Données sur les comportements des Canadiens de 2 à 17 ans à l’égard des médias et des technologies.](https://dev.mtm-otm.ca/fr/products/juniors/)
 
-[![MTM Census Tool](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[![Outil de recensement de l’OTM](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-[MTM Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Outil de recensement de l’OTM](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-[Detailed demographic data for sharper targeting and planning.](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Données démographiques détaillées pour permettre une planification et un ciblage plus précis.](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-[![MTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[![OTM 18+](https://dev.mtm-otm.ca/_astro/fg-product-18-center.BwqBRMLJ_Z15KsUN.webp)](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[MTM 18+ Media and technology data for Canadians aged 18 and older.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
+[OTM 18+ Données sur la consommation des médias et des technologies chez les Canadiens de 18 ans et plus.](https://dev.mtm-otm.ca/fr/products/mtm-18-plus/)
 
-[![MTM Junior](https://dev.mtm-otm.ca/_astro/fg-product-jr-center.DhG_lzJT_ZL4LYN.webp)](https://dev.mtm-otm.ca/fr/products/juniors/)
+[![OTM Junior](https://dev.mtm-otm.ca/_astro/fg-product-jr-center.DhG_lzJT_ZL4LYN.webp)](https://dev.mtm-otm.ca/fr/products/juniors/)
 
-[MTM Junior Media and technology behaviour insights for Canadians aged 2–17.](https://dev.mtm-otm.ca/fr/products/juniors/)
+[OTM Junior Données sur les comportements des Canadiens de 2 à 17 ans à l’égard des médias et des technologies.](https://dev.mtm-otm.ca/fr/products/juniors/)
 
-[![MTM Census Tool](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[![Outil de recensement de l’OTM](https://dev.mtm-otm.ca/_astro/fg-product-cs-center.ClHxdw16_ZAhLgy.webp)](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-[MTM Census Tool Detailed demographic data for sharper targeting and planning.](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Outil de recensement de l’OTM Données démographiques détaillées pour permettre une planification et un ciblage plus précis.](https://dev.mtm-otm.ca/fr/tools/census-tool/)

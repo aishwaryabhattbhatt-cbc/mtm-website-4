@@ -1,14 +1,14 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/solutions/gov-ngos/ -->
 
-Government and NGOs
+Gouvernement et ONG
 
-# Trusted Data for Serving Canadians
+# Des données fiables pour servir les Canadiens
 
-In the public and non-profit sectors, effective decisions depend on understanding the people you serve — how they access information, use technology, and engage with media. The Media Technology Monitor (MTM) provides trusted Canadian data that helps organizations design better programs, improve communications, and make evidence-based decisions with confidence.
+Pour une organisation publique ou un organisme sans but lucratif, la prise de bonnes décisions repose sur la connaissance des gens que l’on sert : la façon dont ils accèdent à l’information, utilisent les technologies et interagissent avec les médias. L’Observateur des technologies médias (OTM) fournit des données canadiennes fiables qui aident les organisations à concevoir de meilleurs programmes, à mieux communiquer et à prendre, en toute confiance, des décisions fondées sur des données probantes.
 
-[Request a demo](https://dev.mtm-otm.ca/fr/request-demo/)
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/)
 
-Trusted by
+Clientèle
 
 ![Government of Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/canada.svg)
 
@@ -20,116 +20,116 @@ Trusted by
 
 ![Téléfilm Canada](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/Telefilm_Canada.svg)
 
-## Insights That Support Better Public Decisions
+## Des renseignements qui éclairent la prise de décisions pour le public
 
-Access current, nationally representative data on how Canadians consume media and technology. MTM helps governments and NGOs better understand audiences, evaluate communications strategies, and identify emerging behavioural shifts across demographic groups and regions.
+Accédez à des données actuelles et représentatives à l’échelle nationale sur la façon dont les Canadiens consomment les médias et les technologies. L’OTM aide les gouvernements et les ONG à mieux comprendre les auditoires, à évaluer leurs stratégies de communication et à cerner des changements de comportement émergents au sein des groupes démographiques et les régions.
 
-Insight
+Observation
 
-42%
+42 %
 
-of newcomers aged 35 to 44 have used employment services since arriving in Canada
+des nouveaux arrivants de 35 à 44 ans ont eu recours à des services d’emploi depuis leur arrivée au Canada.
 
-Age Group Employment services used Other settlement services used
+Groupe d’âge Services d’emploi utilisés Autres services d’établissement utilisés
 
-Informs decisions on
+ÉcIaire les décisions sur :
 
-Funding and resource allocation, awareness campaign targeting age specific approaches for federal programs.
+La répartition du financement et des ressources, et les campagnes de sensibilisation aux programmes fédéraux visant des groupes d’âge en particulier.
 
-Insight
+Observation
 
-45%
+45 %
 
-of teens used TikTok in the past month
+des adolescents ont utilisé TikTok au cours du mois précédant le sondage.
 
-TikTok Instagram Facebook Snapchat Linkedin Whatsapp
+TikTok Instagram Facebook Snapchat LinkedIn WhatsApp
 
-Informs decisions on
+ÉcIaire les décisions sur :
 
-Platform selection for public outreach, regulatory review of social media reach, and audience segmentation for government communications.
+La sélection de plateformes pour sensibiliser le public, l’examen réglementaire de la portée des médias sociaux et la segmentation de l’auditoire pour les communications gouvernementales.
 
-Insight
+Observation
 
-15% vs 30%
+15 % contre 30 %
 
-Indigenous people are less likely to be using LinkedIn than other people living in Canada.
+Les répondants autochtones sont moins susceptibles d’utiliser LinkedIn que les autres personnes vivant au Canada.
 
-Social Media LinkedIn Indigenous Facebook
+Médias sociaux LinkedIn Peuples autochtones Facebook
 
-Informs decisions on
+ÉcIaire les décisions sur :
 
-Understanding what social platforms Canadians are using can ensure that your next campaign to find new employees has the greatest impact.
+Les plateformes de médias sociaux à utiliser pour maximiser les résultats de votre prochaine campagne de recrutement de personnel.
 
-Reports Library
+Bibliothèque de rapports
 
-## Research Across Every Corner of Canadian Media Behaviour
+## Des recherches sur tous les aspects du comportement de consommation des médias au Canada
 
-From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.
+Diffusion en continu, plateformes de médias sociaux, consommation de nouvelles, jeux vidéo, IA, appareils connectés : les rapports de l’OTM révèlent comment les Canadiens de toutes les générations et de tous les groupes démographiques interagissent avec les médias et les technologies.
 
-All  MTM 18+  MTM Junior  MTM Newcomers
+Tous  OTM 18+  OTM Junior  OTM Nouveaux arrivants
 
 Chargement des rapports…
 
 Réessayer
 
-## Tools that empower you
+## Des outils à votre service
 
-### Census Tool
+### Outil de recensement
 
-Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.
+Cartographiez votre public cible en fonction du code postal. Repérez les communautés mal desservies, déterminez la taille des marchés locaux et comparez votre portée à la population nationale, le tout à partir d’un tableau de bord unique directement alimenté par les données du recensement de Statistique Canada.
 
-Snapshot
+Aperçu
 
-Explorer
+Explorateur
 
-Compare
+Comparaison
 
-3 more
+(et trois autres)
 
-[Go to Census Tool](https://dev.mtm-otm.ca/fr/tools/census-tool/)
+[Accéder à l’outil de recensement](https://dev.mtm-otm.ca/fr/tools/census-tool/)
 
-### Analytic Tools
+### Outils d’analyse
 
-### Analytic Tools
+### Outils d’analyse
 
-Query MTM's full dataset by platform, region, language, and demographic. Build custom cross-tabs in minutes, track adoption curves over time, and model where your audience will be in three years — all at the click of a button.
+Faites une requête dans tout l’ensemble de données de l’OTM par plateforme, région, langue et données démographiques. Créez des tableaux croisés personnalisés en quelques minutes, suivez les courbes d’adoption au fil du temps et modélisez votre auditoire pour déterminer où il en sera dans trois ans, le tout en un seul clic.
 
-Data Analysis
+Analyse de données
 
-Trending
+Tendances
 
-Forecasting
+Prévisions
 
-[Go to Analytic Tools](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
+[Accéder aux outils d’analyse](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-## MTM in Action for Public Sector Teams
+## L’OTM en action pour les équipes du secteur public
 
-Learn how the MTM offers reports and content that can inform decisions based on robust, tried and true survey results.
+Découvrez comment les rapports et le contenu de l’OTM peuvent éclairer les décisions fondées sur des résultats de sondage précis, éprouvés et fiables.
 
-Use Case
+Cas d’utilisation
 
-A committee needs information about the success of foreign versus domestic streaming services in Canada, and adoption across income levels.
+Un comité a besoin d’information sur le succès des services de diffusion en continu étrangers au Canada par rapport aux services nationaux, ainsi que sur leur adoption par les Canadiens de toutes les tranches de revenu.
 
-SVODNetflixMusic Streaming ServicesSpotifyincome
+VSDANetflixServices de musique en continuSpotifyRevenu
 
-How to leverage this
+Comment en tirer parti
 
-Consult the Audio and SVOD reports which offer a detailed overview of the most popular video and music streaming services and their users.
+Consultez les rapports sur le contenu audio et la VSDA (vidéo sur demande par abonnement), qui brossent un portrait détaillé des services de vidéo et de musique en continu et de vidéos les plus populaires et de leurs utilisateurs.
 
-Use Case
+Cas d’utilisation
 
-A team is looking for information on the performance of different cellphone providers across different regions.
+Une équipe cherche des renseignements sur les résultats de différents fournisseurs de téléphonie cellulaire dans différentes régions.
 
-Cellphone service providerRegion
+Fournisseur de services de téléphonie cellulaireRégion
 
-How to leverage this
+Comment en tirer parti
 
-Find our latest cellphone report to begin, then go deeper with the data analysis tool to find actionable insights.
+Pour commencer, trouvez notre tout dernier rapport sur les téléphones cellulaires, puis creusez la question à l’aide de l’outil d’analyse de données pour trouver des renseignements utiles.
 
-## What government and NGO partners are saying about us
+## Ce que les organismes gouvernementaux et non gouvernementaux disent de nous
 
 ![MANSO](https://dev.mtm-otm.ca/images/home/solutions/logos/gov-ngo/manso.svg)
 
-Thanks to our subscription to MTM Newcomers, we have access to newcomer data insights and their settlement and integration journey in Manitoba. We particularly appreciate seeing information that is not available through any other sources, like newcomers' use of media, devices, and newcomer knowledge of services available through our sector. This information helps our members ensure that their services are well adapted to the needs and characteristics of the newcomers they serve.
+Grâce à notre abonnement à l’OTM Nouveaux arrivants, nous avons accès à des données sur les nouveaux arrivants et sur leur parcours pour s’établir et s’intégrer au Manitoba. Nous nous réjouissons particulièrement de pouvoir accéder à de l’information qui ne se trouve pas ailleurs, comme l’utilisation des médias et des appareils par les nouveaux arrivants, ou leur connaissance des services offerts par notre secteur. Ces renseignements aident nos membres à s’assurer que leurs services sont bien adaptés aux besoins et aux caractéristiques des nouveaux arrivants.
 
-Valeria Castellanos, Language Support and Program Manager - MANSO
+Valeria Castellanos, gestionnaire de programmes et du soutien linguistique – MANSO

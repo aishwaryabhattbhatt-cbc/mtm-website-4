@@ -104,9 +104,9 @@ Forecasting
 
 [Go to Analytic Tools](https://dev.mtm-otm.ca/en/tools/analytic-tools/)
 
-### Census Tools
+### Census Tool
 
-### Census Tools
+### Census Tool
 
 Map your audience at the postal code level. Identify underserved communities, size local markets, and benchmark your reach against the national population — all from a single dashboard sourced directly from Statistics Canada census data.
 
@@ -122,7 +122,7 @@ Compare
 
 Unlimited seats Unlimited seats No extra charge for faculty, students and staff
 
-## Gold standard research all of your research needs
+## Gold standard research for all of your research needs
 
 We provide universities and colleges with the insights needed to drive innovation and learning across every specialization and at every stage of their academic journey.
 

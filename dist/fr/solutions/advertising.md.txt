@@ -1,14 +1,14 @@
 <!-- Source: https://dev.mtm-otm.ca/fr/solutions/advertising/ -->
 
-Advertising and Marketing
+Publicité et marketing
 
-# Win the pitch, Validate the plan
+# Remportez le contrat, validez le plan
 
-Your clients expect results and we provide the media and demographic intelligence to help you deliver. The Media Technology Monitor (MTM) gives you precision targeting and pitch-winning insights.
+Vos clients veulent des résultats, et nous vous fournissons les renseignements médiatiques et démographiques nécessaires pour les leur donner. L’Observateur des technologies médias (OTM) vous permet de toucher votre cible avec précision et vous fournit l’information nécessaire pour remporter des contrats.
 
-[Request a demo](https://dev.mtm-otm.ca/fr/request-demo/)
+[Demander une démonstration](https://dev.mtm-otm.ca/fr/request-demo/)
 
-Trusted by
+Clientèle
 
 ![EssenceMediacom](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/essencemediacom.jpeg)
 
@@ -34,98 +34,98 @@ Trusted by
 
 ![UM Worldwide](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/um-worldwide.svg)
 
-## Why trusted data changes everything
+## Tout repose sur des données fiables
 
-MTM gives your agency the competitive edge, transforming campaigns from speculation into pitches that guarantee client confidence
+L’OTM donne à votre agence un avantage concurrentiel qui permet de transformer des campagnes spéculatives en présentations qui gagneront la confiance de vos clients.
 
-Trustworthy Data
+Données fiables
 
-300,000+ Canadians surveyed to date.
+Plus de 300 000 Canadiens sondés à ce jour
 
-Our independent, nationally representative samples allow for detailed comparisons against your internal data and other sources. With the MTM, know where and how Canadians are engaged with an exhaustive array of media platforms and leave nothing up to chance.
+Nos échantillons indépendants et représentatifs à l’échelle nationale vous permettent de faire des comparaisons détaillées par rapport à vos données internes ou à des données provenant d’autres sources. Grâce à l’OTM, brossez un portrait exhaustif des plateformes médiatiques auxquelles les Canadiens consacrent leur attention, sans rien laisser au hasard.
 
-Social Media Usage
+Utilisation des médias sociaux
 
-![Social Media Usage](https://dev.mtm-otm.ca/images/solutions/advertising/insight-1.svg)
+![Utilisation des médias sociaux](https://dev.mtm-otm.ca/images/solutions/advertising/insight-1-fr.svg)
 
-Precision Targeting
+Ciblage précis
 
-Get deep into the details.
+Plongez dans les détails
 
-The MTM allows you to see Canada in high definition. Our large library of demographic details lets you filter data by income brackets, age groups, families, racialized groups and more.
+L’OTM vous permet de voir le Canada en haute définition. Notre vaste bibliothèque de renseignements démographiques vous permet de filtrer les données par tranche de revenu, groupe d’âge, famille ou groupe racisé, entre autres.
 
-FAST CHANNEL VIEWERSHIP by income bracket
+Visionnement de chaînes FAST selon la tranche de revenu
 
-![FAST CHANNEL VIEWERSHIP by income bracket](https://dev.mtm-otm.ca/images/solutions/advertising/insight-2.svg)
+![Visionnement de chaînes FAST selon la tranche de revenu](https://dev.mtm-otm.ca/images/solutions/advertising/insight-2-fr.svg)
 
-Reports Library
+Bibliothèque de rapports
 
-## Research Across Every Corner of Canadian Media Behaviour
+## Des recherches sur tous les aspects du comportement de consommation des médias au Canada
 
-From streaming and social platforms to news consumption, gaming, AI, and connected devices, MTM reports uncover how Canadians engage with media and technology across generations and demographic groups.
+Diffusion en continu, plateformes de médias sociaux, consommation de nouvelles, jeux vidéo, IA, appareils connectés : les rapports de l’OTM révèlent comment les Canadiens de toutes les générations et de tous les groupes démographiques interagissent avec les médias et les technologies.
 
-All  MTM 18+  MTM Junior  MTM Newcomers
+Tous  OTM 18+  OTM Junior  OTM Nouveaux arrivants
 
 Chargement des rapports…
 
 Réessayer
 
-## How MTM fits the way you work already
+## L’OTM est adapté à vos méthodes de travail
 
-You don't open a research tool and start clicking. You have a business question. MTM is built to answer it, at every stage of your workflow.
+On n’ouvre pas un outil de recherche pour cliquer au hasard; tout commence par une question d’affaires. L’OTM est conçu pour répondre à vos questions à chaque étape de votre flux de travail.
 
-01 Plan
+01 Planification
 
-Understand the audience before the strategy takes shape.
+Brossez un portrait clair de l’auditoire avant d’élaborer votre stratégie
 
-Use MTM to profile the target audience pre-brief. Know their viewing, streaming, and media habits so your strategy starts from evidence, not assumption.
+Utilisez l’OTM pour établir le profil de l’auditoire cible avant la rédaction du brief. Familiarisez-vous avec ses habitudes de visionnement et de consommation de médias pour que votre stratégie soit fondée sur des données plutôt que sur des suppositions.
 
-[Trending Tool ](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#trending-tool)[MTM Reports](https://dev.mtm-otm.ca/fr/insights/)
+[Outil d’évaluation des tendances ](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)[Rapports de l’OTM](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-02 Pitch
+02 Conception
 
-Design your next pitch faster and smarter
+Concevez votre prochaine présentation plus rapidement et plus judicieusement
 
-Whether you’re planning a high-impact Out-of-Home campaign, a localized digital blitz, or a retail pop-up, we give you the power to defend your pitch every step of the way.
+Que vous soyez en train de préparer une campagne d’affichage extérieur à impact élevé, une campagne éclair numérique localisée ou une boutique éphémère de vente au détail, nous vous donnons des outils pour défendre vos arguments à chaque étape.
 
-[Census Tool ](https://dev.mtm-otm.ca/fr/tools/census-tool/)[Data Analysis Tool](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#data-analysis-tool)
+[Outil de recensement ](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)[Outil d’analyse de données](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-03 Present
+03 Présentation
 
-Turn the data into the slide that closes the room.
+Transformez les données en diapositives convaincantes
 
-Export clean, presentation-ready charts and cross-tabs directly from the platform. When a client pushes back, you have the national dataset behind every number.
+Exportez des graphiques et des tableaux croisés clairs, prêts à être présentés, directement à partir de la plateforme. Si un client hésite, vous disposez des données nationales pour appuyer chacun de vos chiffres.
 
-[MTM Reports ](https://dev.mtm-otm.ca/fr/insights/)[YourData](https://dev.mtm-otm.ca/fr/tools/analytic-tools/#yourdata)
+[Rapports de l’OTM ](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)[VosDonnées](https://dev.mtm-otm.ca/fr/tools/analytic-tools/)
 
-## MTM in Action for Ad Agencies
+## L’OTM en action pour les agences de publicité
 
-Use the MTM to sharpen your pitches, validate plans and win more business — then apply the same thinking to your clients.
+Utilisez l’OTM pour affiner vos présentations, vérifier vos plans et remporter plus de contrats, puis appliquez la même mentalité à votre clientèle.
 
-Use Case
+Cas d’utilisation
 
-A client is interested in promoting a new line of microwavable meals, with a focus on newcomer populations.
+Un client souhaite promouvoir une nouvelle gamme de repas à cuire au micro-ondes en ciblant particulièrement les nouveaux arrivants.
 
-Ad exposureRegionsDevices usedIncome
+Exposition à la publicitéRégionsAppareils utilisésRevenu
 
-How to leverage this
+Comment en tirer parti
 
-Leverage the Data Analysis Tool to find the income levels, devices used to maximize exposure.
+Utilisez l’outil d’analyse de données pour déterminer les niveaux de revenu et les appareils utilisés afin de maximiser l’exposition.
 
-Use Case
+Cas d’utilisation
 
-A luxury car brand is interested in reaching the most affluent households in Canada.
+Une marque de voitures de luxe vise les ménages les plus aisés du Canada.
 
-FSAPostal CodeIncome
+RTACode postalRevenu
 
-How to leverage this
+Comment en tirer parti
 
-Leverage the Ranker feature in the census tool to find out where the wealthiest Canadians reside and target your campaign effectively.
+Tirez parti de la fonction Classement de l’outil de recensement pour savoir où résident les Canadiens les plus aisés et bien les cibler dans le cadre de votre campagne.
 
-## What ad agencies are saying about us
+## Ce que les agences de publicité disent de nous
 
 ![Time + Space Media](https://dev.mtm-otm.ca/images/home/solutions/logos/advertising/time-space-media.png)
 
-MTM is a valuable resource for effective media planning and research for our clients. The comprehensive data, forecasting and frequent reports give us deep insight into Canadian audience behaviors and media trends.
+L’OTM est une précieuse ressource pour préparer des plans et des recherches médiatiques efficaces pour nos clients. Les données exhaustives, les prévisions et les rapports fréquents nous donnent une idée précise des comportements du public canadien et des tendances médiatiques.
 
-Ryan Casey, Director, Media Operations - Time & Space Media
+Ryan Casey, directeur, Exploitation média – Time & Space Media

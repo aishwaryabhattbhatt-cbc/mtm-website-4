@@ -2,6 +2,7 @@ import { ApiClientError, postJson } from '../forms/api';
 import type { Locale } from '../cms/types';
 import { actionHref, getCatalog, positiveId, resetCatalogCache, safeLocalPath } from './client';
 import type { InsightCard, InsightsCatalog } from './client';
+import { libraryReports } from './library';
 
 const base = import.meta.env.BASE_URL;
 const cleanup = new WeakMap<HTMLElement, () => void>();
@@ -360,12 +361,7 @@ function initLibrary(
     controls: LibraryControls
 ) {
     const applyFilter = (value: string) => {
-        const reports =
-            value === 'all'
-                ? catalog.reports
-                : catalog.reports.filter((report) =>
-                      report.products.some((product) => product.variant === value)
-                  );
+        const reports = libraryReports(catalog, value);
         list.replaceChildren(...reports.map((report) => card(section, report, catalog, locale)));
         list.scrollLeft = 0;
         status(
