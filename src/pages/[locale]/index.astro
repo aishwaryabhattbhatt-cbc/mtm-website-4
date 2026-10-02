@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { toAbsoluteUrl } from '../../lib/i18n/routing';
+import { localizedAsset, toAbsoluteUrl } from '../../lib/i18n/routing';
 import Navbar from '../../components/shared/Navbar.astro';
 import HomeHeroSection from '../../components/home/HomeHeroSection.astro';
 import HomeIntroductionSection from '../../components/home/HomeIntroductionSection.astro';
@@ -47,7 +47,7 @@ const pageDescription = t(
 const siteRoot = toAbsoluteUrl(Astro.site, base);
 const organizationId = `${siteRoot}#organization`;
 const websiteId = `${siteRoot}#website`;
-const logoUrl = toAbsoluteUrl(Astro.site, `${base}images/mtm-logo.svg`);
+const logoUrl = toAbsoluteUrl(Astro.site, localizedAsset(`${base}images/mtm-logo.svg`, locale));
 const linkedInUrl = 'https://www.linkedin.com/company/media-technology-monitor/';
 
 const organizationJsonLd = {

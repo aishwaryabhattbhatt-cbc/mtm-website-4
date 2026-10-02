@@ -2,6 +2,7 @@
 // src/components/shared/Navbar.astro
 import type { CMSDictionary, Locale } from '../../lib/cms/types';
 import { t } from '../../lib/i18n/t';
+import { localizedAsset } from '../../lib/i18n/routing';
 import { icons } from '../../lib/icons/registry';
 import Button from './Button.astro';
 
@@ -239,7 +240,7 @@ const solutionsDropdown = {
             aria-label={t(copy, 'nav_logo_aria_label', locale, 'MTM home')}
         >
             <img
-                src={`${base}images/mtm-logo.svg`}
+                src={localizedAsset(`${base}images/mtm-logo.svg`, locale)}
                 alt={t(copy, 'nav_logo_alt', locale, 'MTM - Media Technology Monitor')}
                 class="logo-image"
             />
