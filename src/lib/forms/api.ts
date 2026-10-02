@@ -75,5 +75,22 @@ export async function postJson<TRequest>(url: string, body: TRequest): Promise<A
         throw new ApiClientError(response.status, result.errorCode, errors);
     }
 
+    trackSuccess(url);
+
     return result;
+}
+
+// GA4 conversion events, fired only after the API confirms the submit.
+// gtag only exists on the production host (see Layout.astro), so this is a
+// no-op on dev and local builds.
+function trackSuccess(url: string): void {
+    const gtag = (window as { gtag?: (...args: unknown[]) => void }).gtag;
+    if (!gtag) return;
+
+    if (url.startsWith('/api/forms/')) {
+        const formName = url.slice('/api/forms/'.length).replace(/-/g, '_');
+        gtag('event', 'generate_lead', { form_name: formName });
+    } else if (url === '/api/auth/register') {
+        gtag('event', 'sign_up', { method: 'email' });
+    }
 }

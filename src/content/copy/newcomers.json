@@ -6,8 +6,8 @@
   },
   "hero_description": {
     "key": "hero_description",
-    "en": "Our newest Analytic product, MTM Newcomers focuses on those who have come to Canada within the last 5 years. Get all you need to understand the media and tech habits of this growing demographic.",
-    "fr": "L’OTM Nouveaux arrivants, notre tout dernier produit d’analyse, est axé sur les gens qui sont arrivés au Canada au cours des cinq dernières années. Obtenez tous les renseignements nécessaires pour comprendre les habitudes médiatiques et technologiques de cette population croissante."
+    "en": "MTM Newcomers focuses on those who have come to Canada within the last 5 years. Get all you need to understand the media and tech habits of this growing demographic.",
+    "fr": "L’OTM Nouveaux arrivants est axé sur les gens qui sont arrivés au Canada au cours des cinq dernières années. Obtenez tous les renseignements nécessaires pour comprendre les habitudes médiatiques et technologiques de cette population croissante."
   },
   "hero_cta": {
     "key": "hero_cta",
@@ -97,12 +97,12 @@
   "dat_callout": {
     "key": "dat_callout",
     "en": "Are newcomers spending more time than Canadian-born individuals on social media? See the whole social media landscape with the DAT.",
-    "fr": "Les nouveaux arrivants passent-ils plus de temps sur les médias sociaux que les personnes nées au Canada? L’OAD vous permet d’examiner l’ensemble des médias sociaux."
+    "fr": "Les nouveaux arrivants passent-ils plus de temps sur les réseaux sociaux que les personnes nées au Canada? L’OAD vous permet d’examiner l’ensemble des réseaux sociaux."
   },
   "???(Key Insights text?)": {
     "key": "???(Key Insights text?)",
     "en": "Key Insight\nNewcomers spend almost twice as much time using social media as Canadian-born individuals in a typical week.",
-    "fr": "Observation clé\n Au cours d’une semaine type, les nouveaux arrivants passent presque deux fois plus de temps sur les médias sociaux que les personnes nées au Canada."
+    "fr": "Observation clé\n Au cours d’une semaine type, les nouveaux arrivants passent presque deux fois plus de temps sur les réseaux sociaux que les personnes nées au Canada."
   },
   "report_title": {
     "key": "report_title",
@@ -122,7 +122,7 @@
   "graph_detail": {
     "key": "graph_detail",
     "en": "Newcomers 18+",
-    "fr": "Nouveaux arrivants 18+"
+    "fr": "Nouveaux arrivants de 18 ans et +"
   },
   "stat_1_value": {
     "key": "stat_1_value",
@@ -281,8 +281,8 @@
   },
   "provider_description": {
     "key": "provider_description",
-    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Research and Analysis. The research was conducted by Léger during the Summer of 2025.\r\n\nLéger is the largest Canadian-owned market research and analytics company, with more than 600 employees in Canada and the United States.",
-    "fr": "L’OTM et tous ses sondages sont des produits du service Recherche et Analyse de CBC/Radio-Canada. Le sondage a été réalisé par Léger au cours de l’été 2025.\n \n Léger, qui compte plus de 600 employés au Canada et aux États-Unis, est la plus grande société canadienne d’études et d’analyses de marché."
+    "en": "The MTM and all of its surveys are a product of CBC/Radio-Canada Corporate Research. The research was conducted by Léger during the Summer of 2025.\n\nLéger is the largest Canadian-owned market research and analytics company, with more than 600 employees in Canada and the United States.",
+    "fr": "L’OTM et tous ses sondages sont des produits du service Recherche institutionnelle de CBC/Radio-Canada. Le sondage a été réalisé par Léger au cours de l’été 2025.\n \n Léger, qui compte plus de 600 employés au Canada et aux États-Unis, est la plus grande société canadienne d’études et d’analyses de marché."
   },
   "explore_title": {
     "key": "explore_title",

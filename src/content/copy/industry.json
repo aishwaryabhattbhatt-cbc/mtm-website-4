@@ -211,17 +211,17 @@
   },
   "testimonial_logo": {
     "key": "testimonial_logo",
-    "en": "",
-    "fr": ""
+    "en": "Numeris",
+    "fr": "Numeris"
   },
   "testimonial_quote": {
     "key": "testimonial_quote",
-    "en": "",
-    "fr": ""
+    "en": "Our partnership with MTM is built on mutual respect for the power of data, sound research methodology, and a shared commitment to delivering value. By complementing our audience intelligence with their specialized media and technology research, we can provide clients with a richer understanding of the markets they serve.",
+    "fr": "Notre partenariat avec MTM repose sur le respect mutuel de la puissance des données, d’une méthodologie de recherche rigoureuse et d’un engagement commun à créer de la valeur. En combinant notre expertise en matière d’audience avec leurs recherches spécialisées dans les domaines des médias et de la technologie, nous pouvons offrir à nos clients une compréhension plus approfondie des marchés qu’ils desservent."
   },
   "testimonial_attribution": {
     "key": "testimonial_attribution",
-    "en": "",
-    "fr": ""
+    "en": "Alicia Olson-Keating, President & CEO, Numeris",
+    "fr": "Alicia Olson-Keating, President & CEO, Numeris"
   }
 }

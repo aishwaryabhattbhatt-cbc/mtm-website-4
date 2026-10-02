@@ -43,6 +43,26 @@ const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
 const ogLocale = locale === 'fr' ? 'fr_CA' : 'en_CA';
 const resolvedAlternateEn = alternates.en ? toAbsoluteUrl(Astro.site, alternates.en) : undefined;
 const resolvedAlternateFr = alternates.fr ? toAbsoluteUrl(Astro.site, alternates.fr) : undefined;
+// GA4 ships only in the production build (BUILD_SITE_URL=https://mtm-otm.ca);
+// dev, localhost and GitHub Pages builds contain no tag at all.
+const includeAnalytics = Astro.site?.hostname === 'mtm-otm.ca';
+// Same property as the previous site, so reporting continues across the
+// relaunch. The hostname check is a second guard: a production build uploaded
+// somewhere else still sends nothing. No consent handling yet, matching the
+// old site — Consent Mode can be added here later.
+const ga4Id = 'G-EM98CKVS2D';
+const ga4Snippet = `<script>
+if (/^(www\\.)?mtm-otm\\.ca$/.test(location.hostname)) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', '${ga4Id}');
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=${ga4Id}';
+    document.head.appendChild(s);
+}
+</script>`;
 ---
 
 <!doctype html>
@@ -65,6 +85,7 @@ const resolvedAlternateFr = alternates.fr ? toAbsoluteUrl(Astro.site, alternates
                 }
             }
         </script>
+        {includeAnalytics && <Fragment set:html={ga4Snippet} />}
         <meta name="description" content={description} />
         <meta name="robots" content={robotsContent} />
         <meta name="theme-color" content="#ffffff" />

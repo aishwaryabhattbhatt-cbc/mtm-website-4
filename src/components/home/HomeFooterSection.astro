@@ -23,6 +23,8 @@ const {
 } = Astro.props as Props;
 const base = import.meta.env.BASE_URL;
 const currentYear = new Date().getFullYear();
+// Policy pages don't exist yet; flip back to true once they're published.
+const showPolicyLinks = false;
 
 const footerPhoneNumber = t(copy, 'footer_phone_number', locale, '1-855-898-4999');
 
@@ -565,19 +567,26 @@ const footerMenus = [
                     in
                 </a>
 
-                <div
-                    class="home-footer__footer-policies home-footer__footer-policies--mobile text-body-p3"
-                >
-                    <a href={`${base}${locale}/contact/`}
-                        >{t(copy, 'footer_site_policies_label', locale, 'Site Policies')}</a
-                    >
-                    <a href={`${base}${locale}/contact/`}
-                        >{t(copy, 'footer_privacy_policy_label', locale, 'Privacy Policy')}</a
-                    >
-                    <a href={`${base}${locale}/contact/`}
-                        >{t(copy, 'footer_terms_conditions_label', locale, 'Terms & Conditions')}</a
-                    >
-                </div>
+                {
+                    showPolicyLinks && (
+                        <div class="home-footer__footer-policies home-footer__footer-policies--mobile text-body-p3">
+                            <a href={`${base}${locale}/contact/`}>
+                                {t(copy, 'footer_site_policies_label', locale, 'Site Policies')}
+                            </a>
+                            <a href={`${base}${locale}/contact/`}>
+                                {t(copy, 'footer_privacy_policy_label', locale, 'Privacy Policy')}
+                            </a>
+                            <a href={`${base}${locale}/contact/`}>
+                                {t(
+                                    copy,
+                                    'footer_terms_conditions_label',
+                                    locale,
+                                    'Terms & Conditions'
+                                )}
+                            </a>
+                        </div>
+                    )
+                }
             </div>
         </div>
 
@@ -594,19 +603,23 @@ const footerMenus = [
                 }
             </p>
 
-            <div class="home-footer__footer-policies text-body-p3">
-                <a href={`${base}${locale}/contact/`}
-                    >{t(copy, 'footer_site_policies_label', locale, 'Site Policies')}</a
-                >
-                <span aria-hidden="true">|</span>
-                <a href={`${base}${locale}/contact/`}
-                    >{t(copy, 'footer_privacy_policy_label', locale, 'Privacy Policy')}</a
-                >
-                <span aria-hidden="true">|</span>
-                <a href={`${base}${locale}/contact/`}
-                    >{t(copy, 'footer_terms_conditions_label', locale, 'Terms & Conditions')}</a
-                >
-            </div>
+            {
+                showPolicyLinks && (
+                    <div class="home-footer__footer-policies text-body-p3">
+                        <a href={`${base}${locale}/contact/`}>
+                            {t(copy, 'footer_site_policies_label', locale, 'Site Policies')}
+                        </a>
+                        <span aria-hidden="true">|</span>
+                        <a href={`${base}${locale}/contact/`}>
+                            {t(copy, 'footer_privacy_policy_label', locale, 'Privacy Policy')}
+                        </a>
+                        <span aria-hidden="true">|</span>
+                        <a href={`${base}${locale}/contact/`}>
+                            {t(copy, 'footer_terms_conditions_label', locale, 'Terms & Conditions')}
+                        </a>
+                    </div>
+                )
+            }
         </div>
     </div>
 </footer>
