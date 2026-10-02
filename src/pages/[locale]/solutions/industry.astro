@@ -8,7 +8,7 @@ import SolutionsTrustedBySection from '../../../components/solutions/SolutionsTr
 import SolutionsMethodologySection from '../../../components/solutions/SolutionsMethodologySection.astro';
 import SolutionsReportsLibrarySection from '../../../components/solutions/SolutionsReportsLibrarySection.astro';
 import SolutionsUseCasesSection from '../../../components/solutions/SolutionsUseCasesSection.astro';
-import SolutionsMediaTestimonialsSection from '../../../components/solutions/SolutionsMediaTestimonialsSection.astro';
+// import SolutionsMediaTestimonialsSection from '../../../components/solutions/SolutionsMediaTestimonialsSection.astro';
 import HomeFooterSection from '../../../components/home/HomeFooterSection.astro';
 import { getPageDictionary, getRuntimeCMSConfig } from '../../../lib/cms/getPageContent';
 import { t } from '../../../lib/i18n/t';
@@ -130,6 +130,8 @@ const trustedByLogos = [
             ]}
         />
 
+        {
+            /* Testimonial hidden for now — restore this and its import to bring it back.
         <SolutionsMediaTestimonialsSection
             locale={locale}
             copy={copy}
@@ -137,6 +139,8 @@ const trustedByLogos = [
             logoSrc={`${base}images/home/solutions/logos/industry/numeris.png`}
             logoAlt="Numeris (BBM Canada)"
         />
+        */
+        }
 
         <HomeFooterSection locale={locale} copy={copy} />
     </main>
