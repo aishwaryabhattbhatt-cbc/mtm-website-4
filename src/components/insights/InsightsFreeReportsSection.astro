@@ -139,8 +139,14 @@ const { locale, copy } = Astro.props as Props;
         gap: var(--layout-card-gap);
     }
 
+    /* Pass-through for InsightsFreeReportCard's five subgrid rows — it must be
+       subgridded itself or the shared title track never reaches the card. */
     :global(.free-reports-section__card-wrap) {
         min-width: 0;
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 5;
+        row-gap: 0;
     }
 
     @media (max-width: 1023px) {
@@ -166,9 +172,11 @@ const { locale, copy } = Astro.props as Props;
             display: flex;
         }
 
+        /* Column-flow grid rather than flex so the cards' subgrid title
+           alignment still holds in the scroller. */
         .free-reports-section__grid {
-            display: flex;
-            gap: var(--layout-card-gap);
+            grid-auto-flow: column;
+            grid-auto-columns: 24rem;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
@@ -189,10 +197,7 @@ const { locale, copy } = Astro.props as Props;
         }
 
         :global(.free-reports-section__card-wrap) {
-            flex-shrink: 0;
-            width: 24rem;
             scroll-snap-align: start;
-            min-width: unset;
         }
     }
 
@@ -212,8 +217,8 @@ const { locale, copy } = Astro.props as Props;
             gap: var(--space-4);
         }
 
-        :global(.free-reports-section__card-wrap) {
-            width: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
+        .free-reports-section__grid {
+            grid-auto-columns: calc(100vw - 2 * var(--content-margin-inline) - var(--space-5));
         }
     }
 </style>
