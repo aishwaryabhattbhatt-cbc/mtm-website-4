@@ -37,7 +37,7 @@
   "feature_2_description": {
     "key": "feature_2_description",
     "en": "We've surveyed more than 300,000 adult Canadians to date and reach an additional 12,000 or more annually.",
-    "fr": "Jusqu’à maintenant, nous avons sondé plus de 300 000 adultes au Canada, et nous en ajoutons 12 000 chaque année."
+    "fr": "Jusqu’à maintenant, nous avons sondé plus de 300 000 adultes au Canada, et nous en ajoutons 12 000 ou plus chaque année."
   },
   "feature_3_title": {
     "key": "feature_3_title",
@@ -162,7 +162,7 @@
   "graph_detail": {
     "key": "graph_detail",
     "en": "Anglophones 18+",
-    "fr": "Anglophones 18+"
+    "fr": "Anglophones de 18ans et +"
   },
   "stat_1_value": {
     "key": "stat_1_value",

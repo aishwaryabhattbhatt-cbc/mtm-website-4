@@ -7,7 +7,7 @@
   "hero_description": {
     "key": "hero_description",
     "en": "The Media Technology Monitor is Canada's national dataset on media, technology, and content consumption — used by broadcasters, advertisers, and government to support funding, policy, and strategic decisions with evidence, not assumptions.",
-    "fr": "L’Observateur des technologies médias est l’ensemble de données nationales du Canada sur la consommation de médias, de technologies et de contenu. Les radiodiffuseurs, les annonceurs et le gouvernement l’utilisent pour prendre des décisions fondées sur des données plutôt que des hypothèses en matière de financement, de politiques et de décisions stratégiques."
+    "fr": "L’Observateur des technologies médias est un ensemble de données portant sur la consommation des médias et des contenus, ainsi que sur l'utilisation des technologies à travers le Canada. Les radiodiffuseurs, les annonceurs et le gouvernement l’utilisent pour prendre des décisions fondées sur des données plutôt que des hypothèses en matière de financement, de politiques et de décisions stratégiques."
   },
   "hero_cta_1": {
     "key": "hero_cta_1",
@@ -27,7 +27,7 @@
   "access_item_1_title": {
     "key": "access_item_1_title",
     "en": "Technology Trends",
-    "fr": "Les tendances technologiques"
+    "fr": "Les tendances en matière de technologies"
   },
   "access_item_1_description": {
     "key": "access_item_1_description",
@@ -57,12 +57,12 @@
   "package_title": {
     "key": "package_title",
     "en": "The MTM Suite",
-    "fr": "La suite OTM"
+    "fr": "La suite de l'OTM"
   },
   "package_description": {
     "key": "package_description",
     "en": "The MTM Suite brings together four powerful data products, in-depth library reports, and interactive analytics tools—all in one integrated platform",
-    "fr": "La suite OTM réunit en une plateforme intégrée quatre puissants produits de données, des bibliothèques de rapports détaillés et des outils d’analyse interactifs."
+    "fr": "L'OTM réunit sur une seule plateforme quatre puissants produits de données, des bibliothèques de rapports détaillés et des outils d’analyse interactifs."
   },
   "package_1_eyebrow": {
     "key": "package_1_eyebrow",
@@ -166,8 +166,8 @@
   },
   "package_3_title": {
     "key": "package_3_title",
-    "en": "Your Data, Your Way.",
-    "fr": "Vos données, à votre façon."
+    "en": "Your Data, Your Way",
+    "fr": "Vos données, à votre façon"
   },
   "package_3_description": {
     "key": "package_3_description",
@@ -257,7 +257,7 @@
   "faq_1_answer": {
     "key": "faq_1_answer",
     "en": "Release schedules vary by product:\n\nMTM 18+: Releases twice a year, with Fall data available in February and Spring data available in July.\n\nMTM Junior: Releases annually in May.\n\nMTM Newcomers: Releases annually in October or November.\n\nMTM Census Tool: Updated with new Statistics Canada Census data following each national census. The next update, based on the 2026 Census, is expected in Spring/Summer 2027.",
-    "fr": "Le calendrier de lancement diffère selon les produits :\n \n OTM 18+ : Les données sont publiées deux fois par année. Celles de l’automne sont disponibles en février et celles du printemps, en juillet.\n \n OTM Junior : Les données sont publiées chaque année en mai.\n \n OTM Nouveaux arrivants : Les données sont publiées chaque année en octobre ou en novembre.\n \n Outil de recensement de l’OTM : Les données sont mises à jour après chaque recensement national de Statistique Canada. La prochaine mise à jour, en fonction du recensement de 2026, devrait avoir lieu au printemps ou à l’été 2027."
+    "fr": "Le calendrier de publication diffère selon les produits :\n \n OTM 18+ : Les données sont publiées deux fois par année. Celles de l’automne sont disponibles en février et celles du printemps, en juillet.\n \n OTM Junior : Les données sont publiées chaque année en mai.\n \n OTM Nouveaux arrivants : Les données sont publiées chaque année en octobre ou en novembre.\n \n Outil de recensement de l’OTM : Les données sont mises à jour après chaque recensement national de Statistique Canada. La prochaine mise à jour, en fonction du recensement de 2026, devrait avoir lieu au printemps ou à l’été 2027."
   },
   "faq_2_question": {
     "key": "faq_2_question",
@@ -277,7 +277,7 @@
   "faq_3_answer": {
     "key": "faq_3_answer",
     "en": "We offer an unlimited amount of seats for subscribers and include a self-sign up page for users.",
-    "fr": "Nous offrons un nombre illimité de places aux abonnés, et l’abonnement comprend une page d’auto-inscription pour les utilisateurs."
+    "fr": "Nous offrons un nombre illimité de places aux abonnés, et l’abonnement comprend un formulaire d'incription autonome pour les utilisateurs."
   },
   "faq_4_question": {
     "key": "faq_4_question",
@@ -522,7 +522,7 @@
   "nav_tools_item_1_description": {
     "key": "nav_tools_item_1_description",
     "en": "Explore, filter, and compare data quickly and clearly.",
-    "fr": "Examinez, filtrez et comparez des données de façon rapide et claire."
+    "fr": "Découvrez, filtrez et comparez des données de façon rapide et claire."
   },
   "nav_tools_item_2_title": {
     "key": "nav_tools_item_2_title",
@@ -707,12 +707,12 @@
   "footer_address_street": {
     "key": "footer_address_street",
     "en": "181 Queen St, Ottawa, Ontario, K1P1K9",
-    "fr": "181, rue Queen, Ottawa (Ontario) K1P 1K9"
+    "fr": "181 rue Queen, Ottawa, Ontario, K1P 1K9"
   },
   "footer_phone_number": {
     "key": "footer_phone_number",
     "en": "1-855-898-4999",
-    "fr": "1 855 898-4999"
+    "fr": "1-855-898-4999"
   },
   "footer_copyright_text": {
     "key": "footer_copyright_text",

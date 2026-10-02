@@ -129,25 +129,25 @@
     "en": "",
     "fr": ""
   },
-  "Free Reports": {
-    "key": "Free Reports",
+  "Free Infographic": {
+    "key": "Free Infographic",
     "en": "",
     "fr": ""
   },
   "section_3_eyebrow": {
     "key": "section_3_eyebrow",
-    "en": "Free Reports",
-    "fr": "Rapports gratuits"
+    "en": "Free infographic",
+    "fr": "Infographie gratuite"
   },
   "section_3_title": {
     "key": "section_3_title",
-    "en": "Deep Dives Into Key Canadian Audiences",
-    "fr": "Analyses détaillées des principaux auditoires canadiens"
+    "en": "Gain Insights from Our Infographics",
+    "fr": "Obtenez des renseignements grâce à nos infographies"
   },
   "section_3_description": {
     "key": "section_3_description",
-    "en": "Access a selection of reports and have a better understanding of\nCanadians’ behaviours, attitudes, and technology adoption patterns \nacross distinct demographic and cultural segments.",
-    "fr": "Consultez des rapports sélectionnés pour mieux comprendre les comportements, les attitudes et les habitudes des Canadiens de segments démographiques et culturels distincts en matière d’adoption des technologies."
+    "en": "MTM infographics translate complex research into concise, visual storytelling designed for presentations, strategy sessions, and quick decision-making.",
+    "fr": "Les infographies de l’OTM traduisent les recherches complexes en présentations visuelles concises destinées aux exposés, aux réunions stratégiques et à la prise de décision rapide."
   },
   "free_report_1_tag": {
     "key": "free_report_1_tag",
@@ -214,25 +214,25 @@
     "en": "",
     "fr": ""
   },
-  "Free Infographics": {
-    "key": "Free Infographics",
+  "Free Report": {
+    "key": "Free Report",
     "en": "",
     "fr": ""
   },
   "section_4_eyebrow": {
     "key": "section_4_eyebrow",
-    "en": "Free infographic",
-    "fr": "Infographie gratuite"
+    "en": "Free Report",
+    "fr": "Rapport gratuit"
   },
   "section_4_title": {
     "key": "section_4_title",
-    "en": "Gain Insights from Our Infographics",
-    "fr": "Obtenez des renseignements grâce à nos infographies"
+    "en": "Deep Dives Into Key Canadian Audiences",
+    "fr": "Analyses détaillées des principaux auditoires canadiens"
   },
   "section_4_description": {
     "key": "section_4_description",
-    "en": "MTM infographics translate complex research into concise, visual storytelling designed for presentations, strategy sessions, and quick decision-making.",
-    "fr": "Les infographies de l’OTM traduisent les recherches complexes en présentations visuelles concises destinées aux exposés, aux réunions stratégiques et à la prise de décision rapide."
+    "en": "Access a selection of reports and have a better understanding of\nCanadians’ behaviours, attitudes, and technology adoption patterns across distinct demographic and cultural segments.",
+    "fr": "Consultez des rapports sélectionnés pour mieux comprendre les comportements, les attitudes et les habitudes des Canadiens de segments démographiques et culturels distincts en matière d’adoption des technologies."
   },
   "(to be auto-filled)": {
     "key": "(to be auto-filled)",
@@ -333,5 +333,20 @@
     "key": "Online Audio Overview",
     "en": "Online audio content",
     "fr": "Contenu audio en ligne"
+  },
+  "Online Gambling": {
+    "key": "Online Gambling",
+    "en": "Advertising",
+    "fr": "Publicité"
+  },
+  "Vertical Video": {
+    "key": "Vertical Video",
+    "en": "Short-Form Video",
+    "fr": "Microvidéos"
+  },
+  "Connected TVs": {
+    "key": "Connected TVs",
+    "en": "Online video content",
+    "fr": "Contenu vidéo en ligne"
   }
 }
